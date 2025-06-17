@@ -34,7 +34,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(198, 175);
+            label1.Location = new Point(340, 52);
             label1.Name = "label1";
             label1.Size = new Size(231, 20);
             label1.TabIndex = 0;
@@ -44,7 +44,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(640, 400);
+            ClientSize = new Size(900, 504);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
             Name = "fManagePDK";

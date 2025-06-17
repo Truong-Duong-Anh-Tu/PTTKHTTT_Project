@@ -1,9 +1,9 @@
 ﻿CREATE DATABASE DB_TRUNGTAMTHI ON
     (Name = DB_TrungTamThi_data, 
-    FileName = 'C:\Users\ANH TU\Documents\Third Year\HK II\PTTK HTTT\Project\Database\DataFile\DB_TrungTamThi_data.mdf')
+    FileName = 'D:\DataFile\DB_TrungTamThi_data.mdf')
 LOG ON
     (Name = DB_TrungTamThi_log,
-    FileName = 'C:\Users\ANH TU\Documents\Third Year\HK II\PTTK HTTT\Project\Database\DataFile\DB_TrungTamThi_log.ldf');
+    FileName = 'D:\DataFile\DB_TrungTamThi_log.ldf');
 go
 
 use DB_TRUNGTAMTHI;
@@ -23,6 +23,11 @@ CREATE TABLE NHANVIEN (
   NV_MaPhongBan varchar(10) NOT NULL
 )
 GO
+
+CREATE TABLE TAIKHOAN (
+  TK_TenDangNhap varchar(10) PRIMARY KEY,
+  TK_MatKhau varchar(100),
+)
 
 CREATE TABLE PHONGBAN (
   PB_MaPhongBan varchar(10) PRIMARY KEY,
@@ -249,7 +254,8 @@ GO
 ALTER TABLE THONGBAO ADD FOREIGN KEY (TB_MaNhanVienNhan) REFERENCES NHANVIEN (NV_MaNhanVien)
 GO
 
-
+ALTER TABLE TAIKHOAN ADD FOREIGN KEY (TK_TenDangNhap) REFERENCES NHANVIEN (NV_MaNhanVien)
+GO
 -- Xóa database:
 /*
 use master;

@@ -1,4 +1,7 @@
 ﻿--Insert data
+use DB_TRUNGTAMTHI;
+go
+	
 INSERT INTO KHACHHANG (KH_MaKhachHang, KH_LoaiKhachHang, KH_Email, KH_SDT) 
 VALUES
   ('KH00001', N'Tự do', 'r3a1w@example.com', '0311000231'),
@@ -144,4 +147,10 @@ VALUES
   ('NV018', N'Bùi Thị Ánh Vân', CONVERT(date, '18/06/1991', 103), N'Nữ',  'r34tr@ttthi.vn','0989012345','012345678918', N'Nam Định', N'Nhập liệu', 7400000, 'PB003'),
   ('NV019', N'Lê Thanh Nhật', CONVERT(date, '19/07/1989', 103), N'Nam', 's192e@ttthi.vn','0990123456','012345678919', N'Hải Dương', N'Tiếp nhận', 8200000, 'PB001'),
   ('NV020', N'Đỗ Thùy Dung', CONVERT(date, '20/08/1990', 103), N'Nữ',  't2th2@ttthi.vn','0901234567','012345678920', N'Hà Giang', N'Kế toán', 8600000, 'PB002');
+GO
+
+INSERT INTO TAIKHOAN (TK_TenDangNhap, TK_MatKhau)
+VALUES
+	('NV001', '1234'),
+	('NV016', '1234');
 GO

@@ -23,8 +23,7 @@ namespace PTTKHTTTProject.DAO
         // Private constructor to prevent external instantiation
         private DataProvider()
         {
-            // TODO: Update with your actual connection string
-            _connectionString = "\"Server=localhost;Database=DB_TRUNGTAMTHI;User Id=sa;Password=123;\"";
+            _connectionString = "Data Source=localhost;Initial Catalog=DB_TRUNGTAMTHI;User Id=sa;Password=123;TrustServerCertificate=True;";
         }
 
         /// <summary>
@@ -86,7 +85,14 @@ namespace PTTKHTTTProject.DAO
             for (int i = 0; i < parameters.Length; i++)
             {
                 var paramName = "@p" + i;
-                command.CommandText = command.CommandText.Replace("?", paramName, StringComparison.Ordinal);
+                // Replace only the first occurrence of '?' with the parameter name
+                int index = command.CommandText.IndexOf("?");
+                if (index < 0)
+                    break;
+                command.CommandText = command.CommandText.Substring(0, index)
+                                         + paramName
+                                         + command.CommandText.Substring(index + 1);
+                // Add the parameter with its value
                 command.Parameters.AddWithValue(paramName, parameters[i] ?? DBNull.Value);
             }
         }

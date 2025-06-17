@@ -86,7 +86,7 @@
             // 
             // btnQLPDK
             // 
-            btnQLPDK.Location = new Point(3, 164);
+            btnQLPDK.Location = new Point(3, 156);
             btnQLPDK.Name = "btnQLPDK";
             btnQLPDK.Size = new Size(150, 53);
             btnQLPDK.TabIndex = 2;
@@ -96,7 +96,7 @@
             // 
             // btnTTCN
             // 
-            btnTTCN.Location = new Point(3, 100);
+            btnTTCN.Location = new Point(3, 95);
             btnTTCN.Name = "btnTTCN";
             btnTTCN.Size = new Size(150, 53);
             btnTTCN.TabIndex = 1;
@@ -153,11 +153,11 @@
             tlpMenu.RowCount = 6;
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 70.103096F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 29.8969078F));
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 64F));
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 60F));
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 168F));
-            tlpMenu.Size = new Size(156, 451);
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 270F));
+            tlpMenu.Size = new Size(156, 548);
             tlpMenu.TabIndex = 4;
             // 
             // panel1
@@ -172,14 +172,14 @@
             panel1.Controls.Add(ptbMenu);
             panel1.Location = new Point(149, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(650, 51);
+            panel1.Size = new Size(910, 51);
             panel1.TabIndex = 5;
             // 
             // btnSignOut
             // 
             btnSignOut.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSignOut.BackColor = Color.DeepSkyBlue;
-            btnSignOut.Location = new Point(548, 11);
+            btnSignOut.Location = new Point(808, 11);
             btnSignOut.Name = "btnSignOut";
             btnSignOut.Size = new Size(87, 33);
             btnSignOut.TabIndex = 6;
@@ -191,7 +191,7 @@
             // 
             lblName_Role.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblName_Role.AutoSize = true;
-            lblName_Role.Location = new Point(402, 17);
+            lblName_Role.Location = new Point(662, 17);
             lblName_Role.Name = "lblName_Role";
             lblName_Role.Size = new Size(132, 20);
             lblName_Role.TabIndex = 6;
@@ -201,7 +201,7 @@
             // 
             ptbAvatar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ptbAvatar.Image = Properties.Resources.avatar;
-            ptbAvatar.Location = new Point(359, 7);
+            ptbAvatar.Location = new Point(619, 7);
             ptbAvatar.Name = "ptbAvatar";
             ptbAvatar.Size = new Size(37, 37);
             ptbAvatar.SizeMode = PictureBoxSizeMode.Zoom;
@@ -237,7 +237,7 @@
             pnlChildForm.Controls.Add(pnlSalaryRole);
             pnlChildForm.Location = new Point(160, 52);
             pnlChildForm.Name = "pnlChildForm";
-            pnlChildForm.Size = new Size(640, 400);
+            pnlChildForm.Size = new Size(900, 504);
             pnlChildForm.TabIndex = 6;
             // 
             // panel3
@@ -261,34 +261,34 @@
             panel3.Controls.Add(tbxDiaChi);
             panel3.Location = new Point(282, 116);
             panel3.Name = "panel3";
-            panel3.Size = new Size(350, 276);
+            panel3.Size = new Size(610, 380);
             panel3.TabIndex = 2;
             // 
             // tbxCCCD
             // 
-            tbxCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            tbxCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             tbxCCCD.BorderStyle = BorderStyle.None;
-            tbxCCCD.Location = new Point(240, 118);
+            tbxCCCD.Location = new Point(367, 167);
             tbxCCCD.Name = "tbxCCCD";
-            tbxCCCD.Size = new Size(102, 20);
+            tbxCCCD.Size = new Size(207, 20);
             tbxCCCD.TabIndex = 25;
             // 
             // tbxSDT
             // 
-            tbxSDT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            tbxSDT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             tbxSDT.BorderStyle = BorderStyle.None;
-            tbxSDT.Location = new Point(239, 76);
+            tbxSDT.Location = new Point(365, 107);
             tbxSDT.Name = "tbxSDT";
-            tbxSDT.Size = new Size(103, 20);
+            tbxSDT.Size = new Size(209, 20);
             tbxSDT.TabIndex = 24;
             // 
             // tbxEmail
             // 
-            tbxEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Right;
+            tbxEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             tbxEmail.BorderStyle = BorderStyle.None;
-            tbxEmail.Location = new Point(239, 39);
+            tbxEmail.Location = new Point(365, 50);
             tbxEmail.Name = "tbxEmail";
-            tbxEmail.Size = new Size(103, 20);
+            tbxEmail.Size = new Size(209, 20);
             tbxEmail.TabIndex = 23;
             // 
             // lblCCCD
@@ -296,7 +296,7 @@
             lblCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblCCCD.AutoSize = true;
             lblCCCD.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCCCD.Location = new Point(177, 118);
+            lblCCCD.Location = new Point(307, 167);
             lblCCCD.Name = "lblCCCD";
             lblCCCD.Size = new Size(55, 20);
             lblCCCD.TabIndex = 18;
@@ -307,7 +307,7 @@
             lblSDT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblSDT.AutoSize = true;
             lblSDT.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSDT.Location = new Point(177, 76);
+            lblSDT.Location = new Point(307, 107);
             lblSDT.Name = "lblSDT";
             lblSDT.Size = new Size(42, 20);
             lblSDT.TabIndex = 17;
@@ -318,7 +318,7 @@
             lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmail.Location = new Point(177, 39);
+            lblEmail.Location = new Point(307, 50);
             lblEmail.Name = "lblEmail";
             lblEmail.Size = new Size(54, 20);
             lblEmail.TabIndex = 16;
@@ -329,7 +329,7 @@
             lblDiaChi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblDiaChi.AutoSize = true;
             lblDiaChi.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDiaChi.Location = new Point(18, 160);
+            lblDiaChi.Location = new Point(18, 224);
             lblDiaChi.Name = "lblDiaChi";
             lblDiaChi.Size = new Size(64, 20);
             lblDiaChi.TabIndex = 15;
@@ -340,7 +340,7 @@
             lblGioiTinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblGioiTinh.AutoSize = true;
             lblGioiTinh.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblGioiTinh.Location = new Point(18, 118);
+            lblGioiTinh.Location = new Point(18, 167);
             lblGioiTinh.Name = "lblGioiTinh";
             lblGioiTinh.Size = new Size(75, 20);
             lblGioiTinh.TabIndex = 14;
@@ -350,7 +350,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(18, 76);
+            label1.Location = new Point(18, 107);
             label1.Name = "label1";
             label1.Size = new Size(86, 20);
             label1.TabIndex = 13;
@@ -360,7 +360,7 @@
             // 
             lblMaNV.AutoSize = true;
             lblMaNV.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMaNV.Location = new Point(18, 39);
+            lblMaNV.Location = new Point(18, 50);
             lblMaNV.Name = "lblMaNV";
             lblMaNV.Size = new Size(64, 20);
             lblMaNV.TabIndex = 12;
@@ -380,36 +380,36 @@
             // 
             tbxMaNV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbxMaNV.BorderStyle = BorderStyle.None;
-            tbxMaNV.Location = new Point(106, 39);
+            tbxMaNV.Location = new Point(106, 50);
             tbxMaNV.Name = "tbxMaNV";
-            tbxMaNV.Size = new Size(152, 20);
+            tbxMaNV.Size = new Size(200, 20);
             tbxMaNV.TabIndex = 20;
             // 
             // tbxNgaySinh
             // 
             tbxNgaySinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbxNgaySinh.BorderStyle = BorderStyle.None;
-            tbxNgaySinh.Location = new Point(106, 76);
+            tbxNgaySinh.Location = new Point(106, 107);
             tbxNgaySinh.Name = "tbxNgaySinh";
-            tbxNgaySinh.Size = new Size(152, 20);
+            tbxNgaySinh.Size = new Size(200, 20);
             tbxNgaySinh.TabIndex = 19;
             // 
             // tbxGioiTInh
             // 
             tbxGioiTInh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbxGioiTInh.BorderStyle = BorderStyle.None;
-            tbxGioiTInh.Location = new Point(106, 118);
+            tbxGioiTInh.Location = new Point(106, 167);
             tbxGioiTInh.Name = "tbxGioiTInh";
-            tbxGioiTInh.Size = new Size(152, 20);
+            tbxGioiTInh.Size = new Size(200, 20);
             tbxGioiTInh.TabIndex = 21;
             // 
             // tbxDiaChi
             // 
             tbxDiaChi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbxDiaChi.BorderStyle = BorderStyle.None;
-            tbxDiaChi.Location = new Point(106, 160);
+            tbxDiaChi.Location = new Point(106, 224);
             tbxDiaChi.Name = "tbxDiaChi";
-            tbxDiaChi.Size = new Size(152, 20);
+            tbxDiaChi.Size = new Size(200, 20);
             tbxDiaChi.TabIndex = 22;
             // 
             // panel2
@@ -424,14 +424,14 @@
             panel2.Controls.Add(ptbDetailAvatar);
             panel2.Location = new Point(17, 116);
             panel2.Name = "panel2";
-            panel2.Size = new Size(259, 276);
+            panel2.Size = new Size(259, 380);
             panel2.TabIndex = 1;
             // 
             // tbxChucVu
             // 
             tbxChucVu.Anchor = AnchorStyles.None;
             tbxChucVu.BorderStyle = BorderStyle.None;
-            tbxChucVu.Location = new Point(25, 244);
+            tbxChucVu.Location = new Point(25, 309);
             tbxChucVu.Name = "tbxChucVu";
             tbxChucVu.Size = new Size(213, 20);
             tbxChucVu.TabIndex = 12;
@@ -440,7 +440,7 @@
             // 
             tbxHoTen.Anchor = AnchorStyles.None;
             tbxHoTen.BorderStyle = BorderStyle.None;
-            tbxHoTen.Location = new Point(25, 198);
+            tbxHoTen.Location = new Point(25, 250);
             tbxHoTen.Name = "tbxHoTen";
             tbxHoTen.Size = new Size(213, 20);
             tbxHoTen.TabIndex = 11;
@@ -450,7 +450,7 @@
             lblChucVu.Anchor = AnchorStyles.None;
             lblChucVu.AutoSize = true;
             lblChucVu.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblChucVu.Location = new Point(99, 221);
+            lblChucVu.Location = new Point(97, 286);
             lblChucVu.Name = "lblChucVu";
             lblChucVu.Size = new Size(64, 20);
             lblChucVu.TabIndex = 10;
@@ -461,7 +461,7 @@
             lblHovaTen.Anchor = AnchorStyles.None;
             lblHovaTen.AutoSize = true;
             lblHovaTen.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHovaTen.Location = new Point(91, 176);
+            lblHovaTen.Location = new Point(91, 228);
             lblHovaTen.Name = "lblHovaTen";
             lblHovaTen.Size = new Size(75, 20);
             lblHovaTen.TabIndex = 9;
@@ -481,9 +481,9 @@
             // 
             ptbDetailAvatar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ptbDetailAvatar.Image = Properties.Resources.avatar;
-            ptbDetailAvatar.Location = new Point(66, 39);
+            ptbDetailAvatar.Location = new Point(60, 76);
             ptbDetailAvatar.Name = "ptbDetailAvatar";
-            ptbDetailAvatar.Size = new Size(128, 137);
+            ptbDetailAvatar.Size = new Size(144, 144);
             ptbDetailAvatar.SizeMode = PictureBoxSizeMode.Zoom;
             ptbDetailAvatar.TabIndex = 7;
             ptbDetailAvatar.TabStop = false;
@@ -498,14 +498,14 @@
             pnlSalaryRole.Controls.Add(lblDetailRole);
             pnlSalaryRole.Location = new Point(17, 14);
             pnlSalaryRole.Name = "pnlSalaryRole";
-            pnlSalaryRole.Size = new Size(609, 96);
+            pnlSalaryRole.Size = new Size(869, 96);
             pnlSalaryRole.TabIndex = 0;
             // 
             // ptbSalary
             // 
             ptbSalary.Anchor = AnchorStyles.None;
             ptbSalary.Image = Properties.Resources.Rupee;
-            ptbSalary.Location = new Point(415, 27);
+            ptbSalary.Location = new Point(545, 27);
             ptbSalary.Name = "ptbSalary";
             ptbSalary.Size = new Size(42, 40);
             ptbSalary.SizeMode = PictureBoxSizeMode.Zoom;
@@ -516,7 +516,7 @@
             // 
             ptbDRole.Anchor = AnchorStyles.None;
             ptbDRole.Image = Properties.Resources.UserIcon;
-            ptbDRole.Location = new Point(34, 27);
+            ptbDRole.Location = new Point(164, 27);
             ptbDRole.Name = "ptbDRole";
             ptbDRole.Size = new Size(42, 40);
             ptbDRole.SizeMode = PictureBoxSizeMode.Zoom;
@@ -528,7 +528,7 @@
             lblDetailSalary.Anchor = AnchorStyles.None;
             lblDetailSalary.AutoSize = true;
             lblDetailSalary.Font = new Font("Yu Gothic UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDetailSalary.Location = new Point(463, 27);
+            lblDetailSalary.Location = new Point(593, 27);
             lblDetailSalary.Name = "lblDetailSalary";
             lblDetailSalary.Size = new Size(87, 25);
             lblDetailSalary.TabIndex = 1;
@@ -539,7 +539,7 @@
             lblDetailRole.Anchor = AnchorStyles.None;
             lblDetailRole.AutoSize = true;
             lblDetailRole.Font = new Font("Yu Gothic UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDetailRole.Location = new Point(82, 27);
+            lblDetailRole.Location = new Point(212, 27);
             lblDetailRole.Name = "lblDetailRole";
             lblDetailRole.Size = new Size(75, 25);
             lblDetailRole.TabIndex = 0;
@@ -550,13 +550,12 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
+            ClientSize = new Size(1060, 554);
             Controls.Add(pnlChildForm);
             Controls.Add(tlpMenu);
             Controls.Add(panel1);
             Name = "fHome";
             Text = "fHome";
-            WindowState = FormWindowState.Maximized;
             Load += fHome_Load;
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).EndInit();
             tlpLogoName.ResumeLayout(false);

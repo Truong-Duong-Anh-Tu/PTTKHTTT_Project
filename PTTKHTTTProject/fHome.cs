@@ -86,7 +86,7 @@ namespace PTTKHTTTProject
             if (activeForm != null)
             {
                 activeForm.Close();
-            }    
+            }
 
             activeForm = childForm;
             childForm.TopLevel = false;
