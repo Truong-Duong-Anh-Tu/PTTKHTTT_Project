@@ -555,6 +555,7 @@
             Controls.Add(tlpMenu);
             Controls.Add(panel1);
             Name = "fHome";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fHome";
             Load += fHome_Load;
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).EndInit();
