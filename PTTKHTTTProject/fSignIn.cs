@@ -10,8 +10,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using Microsoft.Data.SqlClient;
-using PTTKHTTTProject.DAO;
-using PTTKHTTTProject.GDI;
+using PTTKHTTTProject.BUS;
 
 namespace PTTKHTTTProject
 {
@@ -27,18 +26,6 @@ namespace PTTKHTTTProject
 
         }
 
-        public bool CheckUser(string username, string password)
-        {
-            object obj = DataProvider.Instance.ExecuteScalar(
-                "EXEC usp_CheckTaiKhoan ?, ?",
-                username.Trim(), password.Trim());
-
-            Debug.WriteLine($"Calling usp_CheckTaiKhoan with '{username.Trim()}', '{password.Trim()}'");
-
-            if (obj == null || obj == DBNull.Value) return false;
-            return (bool)obj;
-        }
-
         private void btnSignIn_Click(object sender, EventArgs e)
         {
             string username = tbxUsername.Text;
@@ -50,9 +37,9 @@ namespace PTTKHTTTProject
                 return;
             }
 
-            if (CheckUser(username, password))
+            if (TaiKhoanBUS.DangNhap(username, password))
             {
-                fHome fh = new fHome();
+                fNhapLieu fh = new fNhapLieu();
                 this.Hide();
                 fh.ShowDialog();
                 this.Show();

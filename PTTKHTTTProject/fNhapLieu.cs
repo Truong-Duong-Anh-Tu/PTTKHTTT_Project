@@ -12,12 +12,13 @@ using System.Security.Cryptography;
 
 namespace PTTKHTTTProject
 {
-    public partial class fHome : Form
+    public partial class fNhapLieu : Form
     {
         private Form? activeForm;
-        public fHome()
+        public fNhapLieu()
         {
             InitializeComponent();
+            openChildForm(new fInfo());
         }
 
         private void lblNameHome_Click(object sender, EventArgs e)
@@ -43,15 +44,17 @@ namespace PTTKHTTTProject
 
             if (clicked == btnTTCN)
             {
-                if (activeForm != null)
-                {
-                    activeForm.Close();
-                }
+                openChildForm(new fInfo());
             }
 
-            if (clicked == btnQLPDK)
+            if (clicked == btnQLKQT)
             {
-                openChildForm(new fManagePDK());
+                openChildForm(new fManageKQT());
+            }
+
+            if (clicked == btnThongBao)
+            {
+                openChildForm(new fNotification());
             }
         }
 
@@ -66,6 +69,10 @@ namespace PTTKHTTTProject
             gp.AddEllipse(0, 0, size, size);
 
             ptbAvatar.Region = new Region(gp);
+
+            btnTTCN.FlatAppearance.BorderColor = SystemColors.Control;
+            btnQLKQT.FlatAppearance.BorderColor= SystemColors.Control;
+            btnThongBao.FlatAppearance.BorderColor= SystemColors.Control;
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)

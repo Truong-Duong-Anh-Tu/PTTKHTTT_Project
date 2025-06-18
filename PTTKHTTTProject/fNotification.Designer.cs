@@ -1,6 +1,6 @@
 ﻿namespace PTTKHTTTProject
 {
-    partial class fManagePDK
+    partial class fNotification
     {
         /// <summary>
         /// Required designer variable.
@@ -34,21 +34,21 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(340, 52);
+            label1.Location = new Point(357, 122);
             label1.Name = "label1";
-            label1.Size = new Size(231, 20);
+            label1.Size = new Size(153, 20);
             label1.TabIndex = 0;
-            label1.Text = "Tạm: Trang quản lý phiếu đăng ký";
+            label1.Text = "Tam: Trang thong bao";
             // 
-            // fManagePDK
+            // fNotification
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 504);
+            ClientSize = new Size(882, 457);
             Controls.Add(label1);
             FormBorderStyle = FormBorderStyle.None;
-            Name = "fManagePDK";
-            Text = "QUAN LI PHIEU DANG KY DU THI";
+            Name = "fNotification";
+            Text = "fThongBao";
             ResumeLayout(false);
             PerformLayout();
         }

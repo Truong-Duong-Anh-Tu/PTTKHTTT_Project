@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PTTKHTTTProject
 {
-    public partial class fManagePDK : Form
+    public partial class fManageKQT : Form
     {
-        public fManagePDK()
+        public fManageKQT()
         {
             InitializeComponent();
         }
