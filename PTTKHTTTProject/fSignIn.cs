@@ -41,10 +41,48 @@ namespace PTTKHTTTProject
 
             if (TaiKhoanBUS.DangNhap(username, password))
             {
-                fNhapLieu fh = new fNhapLieu();
-                this.Hide();
-                fh.ShowDialog();
-                this.Show();
+                string role = TaiKhoanBUS.CheckRole(username);
+
+                if (role == "Nhập liệu")
+                {
+                    fNhapLieu fnl= new fNhapLieu();
+                    this.Hide();
+                    fnl.ShowDialog();
+                    this.Show();
+                }
+                else if (role == "Tiếp nhận")
+                {
+                    fTiepNhan ftn = new fTiepNhan();
+                    this.Hide();
+                    ftn.ShowDialog();
+                    this.Show();
+                }    
+                else if (role == "Kế toán")
+                {
+                    fKeToan fkt = new fKeToan();
+                    this.Hide();
+                    fkt.ShowDialog();
+                    this.Show();
+                }
+                else if (role == "Quản trị hệ thống")
+                {
+                    fQuanTriDL fqt = new fQuanTriDL();
+                    this.Hide();
+                    fqt.ShowDialog();
+                    this.Show();
+                }   
+                else if (role == "Coi thi")
+                {
+                    fCoiThi fct = new fCoiThi();
+                    this.Hide();
+                    fct.ShowDialog();
+                    this.Show();
+                }
+                else
+                {
+                    MessageBox.Show("Tai khaon chua co vai tro de dang nhap", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
             }
             else
             {

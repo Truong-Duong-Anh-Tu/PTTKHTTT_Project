@@ -15,3 +15,16 @@ begin
 	where TK_TenDangNhap = @username;
 end;
 go
+
+create or alter procedure usp_GetRoleOfUser
+	@username varchar(10),
+	@role nvarchar(20) OUTPUT
+as
+begin
+	set NOCOUNT ON;
+
+	select @role = nv.NV_ChucVu
+	from TAIKHOAN as tk join NHANVIEN as nv on tk.TK_TenDangNhap = nv.NV_MaNhanVien
+	where nv.NV_MaNhanVien = @username
+end;
+go

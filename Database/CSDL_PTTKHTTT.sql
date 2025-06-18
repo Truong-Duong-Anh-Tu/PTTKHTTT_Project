@@ -1,9 +1,9 @@
 ﻿CREATE DATABASE DB_TRUNGTAMTHI ON
     (Name = DB_TrungTamThi_data, 
-    FileName = 'C:\Users\ANH TU\Documents\Third Year\HK II\PTTK HTTT\Project\DataFile\DB_TrungTamThi_data.mdf')
+    FileName = 'D:\DataFile\DB_TrungTamThi_data.mdf')
 LOG ON
     (Name = DB_TrungTamThi_log,
-    FileName = 'C:\Users\ANH TU\Documents\Third Year\HK II\PTTK HTTT\Project\DataFile\DB_TrungTamThi_log.ldf');
+    FileName = 'D:\DataFile\DB_TrungTamThi_log.ldf');
 go
 
 use DB_TRUNGTAMTHI;

@@ -23,5 +23,12 @@ namespace PTTKHTTTProject.BUS
 
             return BCrypt.Net.BCrypt.Verify(password, storedPassword);
         }
+
+        public static string CheckRole(string username)
+        {
+            string role = TaiKhoanDAO.getRole(username);
+
+            return role;
+        }
     }
 }
