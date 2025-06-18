@@ -3,20 +3,27 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Text;
+using System.Data;
 using System.Threading.Tasks;
+using BCrypt.Net;
+using Microsoft.Data.SqlClient;
 
 namespace PTTKHTTTProject.DAO
 {
     internal class TaiKhoanDAO
     {
-        public static bool checkLogin(string username, string password)
+        public static string getAccount(string username)
         {
-            object obj = DataProvider.Instance.ExecuteScalar(
-                "EXEC usp_CheckTaiKhoan ?, ?",
-                username.Trim(), password.Trim());
+            var pUser = new SqlParameter("@username", SqlDbType.VarChar, 50)
+            { Value = username.Trim() };
+            var pPass = new SqlParameter("@password", SqlDbType.VarChar, 100)
+            { Direction = ParameterDirection.Output };
 
-            if (obj == null || obj == DBNull.Value) return false;
-            return (bool)obj;
+            DataProvider.Instance.ExecuteNonQuerySP("usp_GetPasswordOfUsername", pUser, pPass);
+
+            string storedHash = pPass.Value as string ?? string.Empty;
+
+            return storedHash;
         }
     }
 }

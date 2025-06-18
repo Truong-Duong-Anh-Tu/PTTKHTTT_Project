@@ -14,7 +14,14 @@ namespace PTTKHTTTProject.BUS
             username = username.Trim();
             password = password.Trim();
 
-            return TaiKhoanDAO.checkLogin(username, password);
+            string storedPassword = TaiKhoanDAO.getAccount(username);
+
+            if (storedPassword == String.Empty)
+            {
+                return false;
+            }
+
+            return BCrypt.Net.BCrypt.Verify(password, storedPassword);
         }
     }
 }

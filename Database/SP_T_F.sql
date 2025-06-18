@@ -3,20 +3,15 @@ use DB_TRUNGTAMTHI;
 go
 
 --Kiem tra tai khoan
-create or alter procedure usp_CheckTaiKhoan
+create or alter procedure usp_GetPasswordOfUsername
 	@username varchar(10),
-	@password varchar(100)
+	@password varchar(100) OUTPUT
 as
 begin
 	set NOCOUNT ON;
-	if exists (select 1 from TAIKHOAN where TK_TenDangNhap = @username and TK_MatKhau = @password)
-		select cast(1 as bit) as IsValid;
-	else
-		select cast(0 as bit) as IsValid;
+	
+	select @password = TK_MatKhau
+	from TAIKHOAN
+	where TK_TenDangNhap = @username;
 end;
 go
-
-declare @qw varchar(10) = 'NV001';
-declare @op varchar(100) = '1234';
-
-EXEC usp_CheckTaiKhoan @qw, @op;

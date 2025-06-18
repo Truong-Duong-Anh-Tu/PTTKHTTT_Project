@@ -37,6 +37,8 @@ namespace PTTKHTTTProject
                 return;
             }
 
+            //Debug.WriteLine(BCrypt.Net.BCrypt.HashPassword(password.Trim()));
+
             if (TaiKhoanBUS.DangNhap(username, password))
             {
                 fNhapLieu fh = new fNhapLieu();
