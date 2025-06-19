@@ -7,14 +7,17 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PTTKHTTTProject.BUS;
 
 namespace PTTKHTTTProject
 {
     public partial class fInfo : Form
     {
-        public fInfo()
+        private string username;
+        public fInfo(string accessUser)
         {
             InitializeComponent();
+            username = accessUser;
         }
 
         private void pnlSalaryRole_Paint(object sender, PaintEventArgs e)
@@ -48,6 +51,27 @@ namespace PTTKHTTTProject
                 borderColor, 2, style,
                 borderColor, 2, style,
                 borderColor, 2, style);
+        }
+
+        private void fInfo_Load(object sender, EventArgs e)
+        {
+            Dictionary<string, string> info = InfoEmployeeBUS.getInfoOfUser(username);
+
+            tbxHoTen.Text = info["Hoten"];
+            tbxChucVu.Text = info["ChucVu"];
+            tbxMaNV.Text = info["MaNV"];
+            tbxNgaySinh.Text = info["NSinh"];
+            tbxGioiTinh.Text = info["GTinh"];
+            tbxDiaChi.Text = info["DChi"];
+            tbxEmail.Text = info["Email"];
+            tbxSDT.Text = info["SDT"];
+            tbxCCCD.Text = info["CCCD"];
+
+            lblDetailRole.Text = info["ChucVu"];
+            lblDetailSalary.Text = info["Luong"];
+
+            lblWelcome.Text = $"Chào mừng {info["Hoten"].Trim().Split(' ').Last()}";
+
         }
     }
 }

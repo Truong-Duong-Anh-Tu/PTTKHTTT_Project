@@ -99,32 +99,32 @@
             // lblName
             // 
             lblName.AutoSize = true;
-            lblName.Font = new Font("Yu Gothic UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblName.Location = new Point(182, 192);
+            lblName.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblName.Location = new Point(182, 188);
             lblName.Name = "lblName";
-            lblName.Size = new Size(245, 50);
+            lblName.Size = new Size(253, 50);
             lblName.TabIndex = 8;
-            lblName.Text = "TRUNG TAM TO CHUC THI\r\nANH NGU VA TIN HOC ACCI";
+            lblName.Text = "TRUNG TÂM TỔ CHỨC THI\r\nANH NGỮ VÀ TIN HỌC ACCI";
             // 
             // tbxUsername
             // 
             tbxUsername.BorderStyle = BorderStyle.FixedSingle;
-            tbxUsername.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxUsername.Font = new Font("Cambria", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxUsername.Location = new Point(476, 164);
             tbxUsername.Name = "tbxUsername";
-            tbxUsername.PlaceholderText = "Nhap ten dang nhap";
-            tbxUsername.Size = new Size(247, 30);
+            tbxUsername.PlaceholderText = "Nhập tên đăng nhập";
+            tbxUsername.Size = new Size(247, 29);
             tbxUsername.TabIndex = 9;
             // 
             // tbxPassword
             // 
             tbxPassword.BorderStyle = BorderStyle.FixedSingle;
-            tbxPassword.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxPassword.Font = new Font("Cambria", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxPassword.Location = new Point(476, 212);
             tbxPassword.Name = "tbxPassword";
             tbxPassword.PasswordChar = '*';
-            tbxPassword.PlaceholderText = "Mat khau";
-            tbxPassword.Size = new Size(247, 30);
+            tbxPassword.PlaceholderText = "Mật khẩu";
+            tbxPassword.Size = new Size(247, 29);
             tbxPassword.TabIndex = 10;
             tbxPassword.UseSystemPasswordChar = true;
             // 

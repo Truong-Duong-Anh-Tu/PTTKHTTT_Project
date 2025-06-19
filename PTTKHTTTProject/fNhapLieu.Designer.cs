@@ -53,22 +53,24 @@
             // btnThongBao
             // 
             btnThongBao.FlatStyle = FlatStyle.Flat;
+            btnThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThongBao.Location = new Point(3, 217);
             btnThongBao.Name = "btnThongBao";
-            btnThongBao.Size = new Size(150, 53);
+            btnThongBao.Size = new Size(150, 55);
             btnThongBao.TabIndex = 2;
-            btnThongBao.Text = "Thong bao\r\n";
+            btnThongBao.Text = "Thông báo";
             btnThongBao.UseVisualStyleBackColor = true;
             btnThongBao.Click += tlpMenu_Click_1;
             // 
             // btnTTCN
             // 
             btnTTCN.FlatStyle = FlatStyle.Flat;
+            btnTTCN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTTCN.Location = new Point(3, 95);
             btnTTCN.Name = "btnTTCN";
-            btnTTCN.Size = new Size(150, 53);
+            btnTTCN.Size = new Size(150, 55);
             btnTTCN.TabIndex = 1;
-            btnTTCN.Text = "Thong tin ca nhan";
+            btnTTCN.Text = "Thông tin cá nhân";
             btnTTCN.UseVisualStyleBackColor = true;
             btnTTCN.Click += tlpMenu_Click_1;
             // 
@@ -76,9 +78,9 @@
             // 
             ptbLogoHome.Anchor = AnchorStyles.None;
             ptbLogoHome.Image = Properties.Resources.logo;
-            ptbLogoHome.Location = new Point(14, 6);
+            ptbLogoHome.Location = new Point(12, 4);
             ptbLogoHome.Name = "ptbLogoHome";
-            ptbLogoHome.Size = new Size(47, 47);
+            ptbLogoHome.Size = new Size(51, 51);
             ptbLogoHome.SizeMode = PictureBoxSizeMode.Zoom;
             ptbLogoHome.TabIndex = 1;
             ptbLogoHome.TabStop = false;
@@ -111,6 +113,7 @@
             // 
             // tlpMenu
             // 
+            tlpMenu.BackColor = SystemColors.Control;
             tlpMenu.ColumnCount = 1;
             tlpMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tlpMenu.Controls.Add(btnQLKQT, 0, 3);
@@ -132,11 +135,12 @@
             // btnQLKQT
             // 
             btnQLKQT.FlatStyle = FlatStyle.Flat;
+            btnQLKQT.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnQLKQT.Location = new Point(3, 156);
             btnQLKQT.Name = "btnQLKQT";
-            btnQLKQT.Size = new Size(150, 53);
+            btnQLKQT.Size = new Size(150, 55);
             btnQLKQT.TabIndex = 2;
-            btnQLKQT.Text = "Quan ly ket qua thi";
+            btnQLKQT.Text = "Quản lý kết quả thi";
             btnQLKQT.UseVisualStyleBackColor = true;
             btnQLKQT.Click += tlpMenu_Click_1;
             // 
@@ -163,7 +167,7 @@
             btnSignOut.Name = "btnSignOut";
             btnSignOut.Size = new Size(87, 33);
             btnSignOut.TabIndex = 6;
-            btnSignOut.Text = "Dang xuat";
+            btnSignOut.Text = "Đăng xuất";
             btnSignOut.UseVisualStyleBackColor = false;
             btnSignOut.Click += btnSignOut_Click;
             // 
@@ -171,9 +175,10 @@
             // 
             lblName_Role.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblName_Role.AutoSize = true;
+            lblName_Role.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
             lblName_Role.Location = new Point(600, 17);
             lblName_Role.Name = "lblName_Role";
-            lblName_Role.Size = new Size(132, 20);
+            lblName_Role.Size = new Size(117, 17);
             lblName_Role.TabIndex = 6;
             lblName_Role.Text = "<Name and Role>";
             // 
@@ -194,9 +199,9 @@
             lblOption.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblOption.Location = new Point(52, 17);
             lblOption.Name = "lblOption";
-            lblOption.Size = new Size(131, 20);
+            lblOption.Size = new Size(135, 20);
             lblOption.TabIndex = 6;
-            lblOption.Text = "<Ten chuc nang>";
+            lblOption.Text = "Thông tin cá nhân";
             // 
             // ptbMenu
             // 
@@ -227,7 +232,7 @@
             Controls.Add(panel1);
             Name = "fNhapLieu";
             StartPosition = FormStartPosition.CenterScreen;
-            Text = "NHAP LIEU";
+            Text = "NHẬP LIỆU";
             Load += fHome_Load;
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).EndInit();
             tlpLogoName.ResumeLayout(false);

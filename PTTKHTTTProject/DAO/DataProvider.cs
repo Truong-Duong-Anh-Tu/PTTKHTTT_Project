@@ -41,6 +41,17 @@ namespace PTTKHTTTProject.DAO
             return dt;
         }
 
+        public DataTable ExecuteQuerySP(string sql, params SqlParameter[] parameters)
+        {
+            using var conn = new SqlConnection(_connectionString);
+            using var cmd = new SqlCommand(sql, conn) { CommandType = CommandType.StoredProcedure };
+            AddParameters(cmd, parameters);
+            using var adapter = new SqlDataAdapter(cmd);
+            var dt = new DataTable();
+            adapter.Fill(dt);
+            return dt;
+        }
+
         public object ExecuteScalar(string sql, params SqlParameter[] parameters)
         {
             using var conn = new SqlConnection(_connectionString);

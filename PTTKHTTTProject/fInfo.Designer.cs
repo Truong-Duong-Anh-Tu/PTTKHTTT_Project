@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pnlSalaryRole = new Panel();
+            lblWelcome = new Label();
             lblDetailSalary = new Label();
             ptbSalary = new PictureBox();
             lblDetailRole = new Label();
@@ -48,7 +49,7 @@
             lblSDT = new Label();
             lblEmail = new Label();
             tbxDiaChi = new TextBox();
-            tbxGioiTInh = new TextBox();
+            tbxGioiTinh = new TextBox();
             tbxNgaySinh = new TextBox();
             tbxMaNV = new TextBox();
             lblDiaChi = new Label();
@@ -66,6 +67,7 @@
             // 
             // pnlSalaryRole
             // 
+            pnlSalaryRole.Controls.Add(lblWelcome);
             pnlSalaryRole.Controls.Add(lblDetailSalary);
             pnlSalaryRole.Controls.Add(ptbSalary);
             pnlSalaryRole.Controls.Add(lblDetailRole);
@@ -76,14 +78,24 @@
             pnlSalaryRole.TabIndex = 0;
             pnlSalaryRole.Paint += pnlSalaryRole_Paint;
             // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWelcome.Location = new Point(5, 5);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(116, 20);
+            lblWelcome.TabIndex = 6;
+            lblWelcome.Text = "<Place holder>";
+            // 
             // lblDetailSalary
             // 
             lblDetailSalary.Anchor = AnchorStyles.None;
             lblDetailSalary.AutoSize = true;
-            lblDetailSalary.Font = new Font("Yu Gothic UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDetailSalary.Font = new Font("Cambria", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDetailSalary.Location = new Point(694, 40);
             lblDetailSalary.Name = "lblDetailSalary";
-            lblDetailSalary.Size = new Size(87, 25);
+            lblDetailSalary.Size = new Size(85, 21);
             lblDetailSalary.TabIndex = 5;
             lblDetailSalary.Text = "<Salary>";
             // 
@@ -102,10 +114,10 @@
             // 
             lblDetailRole.Anchor = AnchorStyles.None;
             lblDetailRole.AutoSize = true;
-            lblDetailRole.Font = new Font("Yu Gothic UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDetailRole.Font = new Font("Cambria", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDetailRole.Location = new Point(173, 40);
             lblDetailRole.Name = "lblDetailRole";
-            lblDetailRole.Size = new Size(68, 23);
+            lblDetailRole.Size = new Size(64, 20);
             lblDetailRole.TabIndex = 3;
             lblDetailRole.Text = "<Role>";
             // 
@@ -137,12 +149,12 @@
             // lblAnhDaiDien
             // 
             lblAnhDaiDien.AutoSize = true;
-            lblAnhDaiDien.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAnhDaiDien.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblAnhDaiDien.Location = new Point(3, 5);
             lblAnhDaiDien.Name = "lblAnhDaiDien";
-            lblAnhDaiDien.Size = new Size(96, 20);
+            lblAnhDaiDien.Size = new Size(97, 20);
             lblAnhDaiDien.TabIndex = 14;
-            lblAnhDaiDien.Text = "Anh dai dien";
+            lblAnhDaiDien.Text = "Ảnh đại diện";
             // 
             // tbxChucVu
             // 
@@ -152,17 +164,18 @@
             tbxChucVu.Name = "tbxChucVu";
             tbxChucVu.Size = new Size(213, 20);
             tbxChucVu.TabIndex = 13;
+            tbxChucVu.TextAlign = HorizontalAlignment.Center;
             // 
             // lblChucVu
             // 
             lblChucVu.Anchor = AnchorStyles.None;
             lblChucVu.AutoSize = true;
-            lblChucVu.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblChucVu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblChucVu.Location = new Point(85, 292);
             lblChucVu.Name = "lblChucVu";
-            lblChucVu.Size = new Size(64, 20);
+            lblChucVu.Size = new Size(65, 20);
             lblChucVu.TabIndex = 13;
-            lblChucVu.Text = "Chuc vu";
+            lblChucVu.Text = "Chức vụ";
             // 
             // tbxHoTen
             // 
@@ -172,17 +185,18 @@
             tbxHoTen.Name = "tbxHoTen";
             tbxHoTen.Size = new Size(213, 20);
             tbxHoTen.TabIndex = 12;
+            tbxHoTen.TextAlign = HorizontalAlignment.Center;
             // 
             // lblHovaTen
             // 
             lblHovaTen.Anchor = AnchorStyles.None;
             lblHovaTen.AutoSize = true;
-            lblHovaTen.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHovaTen.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblHovaTen.Location = new Point(80, 227);
             lblHovaTen.Name = "lblHovaTen";
-            lblHovaTen.Size = new Size(75, 20);
+            lblHovaTen.Size = new Size(76, 20);
             lblHovaTen.TabIndex = 10;
-            lblHovaTen.Text = "Ho va ten";
+            lblHovaTen.Text = "Họ và tên";
             // 
             // ptbDetailAvatar
             // 
@@ -204,7 +218,7 @@
             pnlInfoNV.Controls.Add(lblSDT);
             pnlInfoNV.Controls.Add(lblEmail);
             pnlInfoNV.Controls.Add(tbxDiaChi);
-            pnlInfoNV.Controls.Add(tbxGioiTInh);
+            pnlInfoNV.Controls.Add(tbxGioiTinh);
             pnlInfoNV.Controls.Add(tbxNgaySinh);
             pnlInfoNV.Controls.Add(tbxMaNV);
             pnlInfoNV.Controls.Add(lblDiaChi);
@@ -249,7 +263,7 @@
             // 
             lblCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblCCCD.AutoSize = true;
-            lblCCCD.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCCCD.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCCCD.Location = new Point(316, 188);
             lblCCCD.Name = "lblCCCD";
             lblCCCD.Size = new Size(55, 20);
@@ -260,10 +274,10 @@
             // 
             lblSDT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblSDT.AutoSize = true;
-            lblSDT.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSDT.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSDT.Location = new Point(317, 126);
             lblSDT.Name = "lblSDT";
-            lblSDT.Size = new Size(42, 20);
+            lblSDT.Size = new Size(44, 20);
             lblSDT.TabIndex = 26;
             lblSDT.Text = "SDT: ";
             // 
@@ -271,10 +285,10 @@
             // 
             lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblEmail.AutoSize = true;
-            lblEmail.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblEmail.Location = new Point(317, 64);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(54, 20);
+            lblEmail.Size = new Size(55, 20);
             lblEmail.TabIndex = 25;
             lblEmail.Text = "Email: ";
             // 
@@ -287,14 +301,14 @@
             tbxDiaChi.Size = new Size(500, 20);
             tbxDiaChi.TabIndex = 24;
             // 
-            // tbxGioiTInh
+            // tbxGioiTinh
             // 
-            tbxGioiTInh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            tbxGioiTInh.BorderStyle = BorderStyle.None;
-            tbxGioiTInh.Location = new Point(111, 188);
-            tbxGioiTInh.Name = "tbxGioiTInh";
-            tbxGioiTInh.Size = new Size(200, 20);
-            tbxGioiTInh.TabIndex = 23;
+            tbxGioiTinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbxGioiTinh.BorderStyle = BorderStyle.None;
+            tbxGioiTinh.Location = new Point(111, 188);
+            tbxGioiTinh.Name = "tbxGioiTinh";
+            tbxGioiTinh.Size = new Size(200, 20);
+            tbxGioiTinh.TabIndex = 23;
             // 
             // tbxNgaySinh
             // 
@@ -318,53 +332,53 @@
             // 
             lblDiaChi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblDiaChi.AutoSize = true;
-            lblDiaChi.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDiaChi.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDiaChi.Location = new Point(19, 250);
             lblDiaChi.Name = "lblDiaChi";
             lblDiaChi.Size = new Size(64, 20);
             lblDiaChi.TabIndex = 16;
-            lblDiaChi.Text = "Dia chi: ";
+            lblDiaChi.Text = "Địa chỉ: ";
             // 
             // lblGioiTinh
             // 
             lblGioiTinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblGioiTinh.AutoSize = true;
-            lblGioiTinh.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblGioiTinh.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGioiTinh.Location = new Point(19, 188);
             lblGioiTinh.Name = "lblGioiTinh";
-            lblGioiTinh.Size = new Size(75, 20);
+            lblGioiTinh.Size = new Size(77, 20);
             lblGioiTinh.TabIndex = 15;
-            lblGioiTinh.Text = "Gioi tinh: ";
+            lblGioiTinh.Text = "Giới tính: ";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(19, 126);
             label1.Name = "label1";
-            label1.Size = new Size(86, 20);
+            label1.Size = new Size(87, 20);
             label1.TabIndex = 14;
-            label1.Text = "Ngay sinh: ";
+            label1.Text = "Ngày sinh: ";
             // 
             // lblMaNV
             // 
             lblMaNV.AutoSize = true;
-            lblMaNV.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMaNV.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMaNV.Location = new Point(19, 64);
             lblMaNV.Name = "lblMaNV";
-            lblMaNV.Size = new Size(64, 20);
+            lblMaNV.Size = new Size(65, 20);
             lblMaNV.TabIndex = 13;
-            lblMaNV.Text = "Ma NV: ";
+            lblMaNV.Text = "Mã NV: ";
             // 
             // lblTTCN
             // 
             lblTTCN.AutoSize = true;
-            lblTTCN.Font = new Font("Yu Gothic UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTTCN.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblTTCN.Location = new Point(5, 5);
             lblTTCN.Name = "lblTTCN";
-            lblTTCN.Size = new Size(133, 20);
+            lblTTCN.Size = new Size(135, 20);
             lblTTCN.TabIndex = 12;
-            lblTTCN.Text = "Thong tin ca nhan";
+            lblTTCN.Text = "Thông tin cá nhân";
             // 
             // fInfo
             // 
@@ -377,6 +391,7 @@
             FormBorderStyle = FormBorderStyle.None;
             Name = "fInfo";
             Text = "fInfo";
+            Load += fInfo_Load;
             pnlSalaryRole.ResumeLayout(false);
             pnlSalaryRole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ptbSalary).EndInit();
@@ -411,7 +426,7 @@
         private Label lblDiaChi;
         private TextBox tbxMaNV;
         private TextBox tbxNgaySinh;
-        private TextBox tbxGioiTInh;
+        private TextBox tbxGioiTinh;
         private TextBox tbxDiaChi;
         private Label lblEmail;
         private Label lblSDT;
@@ -419,5 +434,6 @@
         private TextBox tbxEmail;
         private TextBox tbxSDT;
         private TextBox tbxCCCD;
+        private Label lblWelcome;
     }
 }

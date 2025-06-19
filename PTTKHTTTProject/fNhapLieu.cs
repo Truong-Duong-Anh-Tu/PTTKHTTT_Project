@@ -8,16 +8,20 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing.Drawing2D;
+using Azure.Identity;
+using PTTKHTTTProject.BUS;
 
 namespace PTTKHTTTProject
 {
     public partial class fNhapLieu : Form
     {
         private Form? activeForm;
-        public fNhapLieu()
+        private string username;
+        public fNhapLieu(string accessUser)
         {
             InitializeComponent();
-            openChildForm(new fInfo());
+            username = accessUser;
+            openChildForm(new fInfo(username));
         }
 
         private void lblNameHome_Click(object sender, EventArgs e)
@@ -43,7 +47,7 @@ namespace PTTKHTTTProject
 
             if (clicked == btnTTCN)
             {
-                openChildForm(new fInfo());
+                openChildForm(new fInfo(username));
             }
 
             if (clicked == btnQLKQT)
@@ -72,6 +76,11 @@ namespace PTTKHTTTProject
             btnTTCN.FlatAppearance.BorderColor = SystemColors.Control;
             btnQLKQT.FlatAppearance.BorderColor= SystemColors.Control;
             btnThongBao.FlatAppearance.BorderColor= SystemColors.Control;
+
+            Dictionary<string, string> info = InfoEmployeeBUS.getInfoOfUser(username);
+
+            string name = string.IsNullOrWhiteSpace(info["Hoten"]) ? "" : info["Hoten"].Trim().Split(' ').Last();
+            lblName_Role.Text = $"{name} - Nhân viên nhập liệu";
         }
 
         private void btnSignOut_Click(object sender, EventArgs e)

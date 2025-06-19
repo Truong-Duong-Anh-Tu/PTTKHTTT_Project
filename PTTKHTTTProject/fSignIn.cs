@@ -23,7 +23,7 @@ namespace PTTKHTTTProject
 
         private void fSignIn_Load(object sender, EventArgs e)
         {
-
+            
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace PTTKHTTTProject
 
                 if (role == "Nhập liệu")
                 {
-                    fNhapLieu fnl= new fNhapLieu();
+                    fNhapLieu fnl= new fNhapLieu(username);
                     this.Hide();
                     fnl.ShowDialog();
                     this.Show();
