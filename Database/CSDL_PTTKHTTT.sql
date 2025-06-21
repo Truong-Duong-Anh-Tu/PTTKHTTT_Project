@@ -177,6 +177,7 @@ CREATE TABLE THONGBAO (
   TB_MaThongBao varchar(10) PRIMARY KEY,
   TB_MaNhanVienGui varchar(10) NOT NULL,
   TB_MaNhanVienNhan varchar(10) NOT NULL,
+  TB_ChuDe nvarchar(50),
   TB_NoiDung nvarchar(200),
   TB_ThoiGianGui datetime
 )

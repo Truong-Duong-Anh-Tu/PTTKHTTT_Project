@@ -171,3 +171,13 @@ VALUES
 	('NV011', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'), --1234 - Nhập liệu
 	('NV021', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'); --1234 - Coi thi
 GO
+
+INSERT INTO THONGBAO (TB_MaThongBao, TB_MaNhanVienGui, TB_MaNhanVienNhan, TB_ChuDe, TB_NoiDung, TB_ThoiGianGui) VALUES
+('TB000001', 'NV001', 'NV006', N'Họp', N'Chào bạn, mời tham dự cuộc họp lúc 14:00 hôm nay.', '2025-06-21 09:30:00'),
+('TB000002', 'NV001', 'NV007', N'Họp', N'Chào bạn, mời tham dự cuộc họp lúc 14:00 hôm nay.', '2025-06-21 09:30:00'),
+('TB000003', 'NV002', 'NV011', N'Xác nhận họp', N'Xác nhận đã nhận thông báo và sẽ tham gia đúng giờ.', '2025-06-21 10:00:00'),
+('TB000004', 'NV003', 'NV011', N'Báo cáo' , N'Báo cáo đã hoàn tất và gửi cho bạn xem qua.', '2025-06-20 16:45:00'),
+('TB000005', 'NV011', 'NV003', N'Kiểm tra', N'Xin bạn kiểm tra hồ sơ nhân viên mới.', '2025-06-19 11:20:00'),
+('TB000006', 'NV011', 'NV004', N'Nhắc nhở', N'Nhắc bạn cập nhật tiến độ dự án đến cuối tuần.', '2025-06-18 15:00:00'),
+('TB000007', 'NV016', 'NV002', N'Phản hồi', N'Progress đã xong 80%, đang đợi phản hồi.', '2025-06-18 16:30:00');
+GO

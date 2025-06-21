@@ -73,5 +73,10 @@ namespace PTTKHTTTProject
             lblWelcome.Text = $"Chào mừng {info["Hoten"].Trim().Split(' ').Last()}";
 
         }
+
+        private void lblDetailRole_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

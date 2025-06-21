@@ -47,17 +47,20 @@ namespace PTTKHTTTProject
 
             if (clicked == btnTTCN)
             {
+                lblOption.Text = "Thông tin cá nhân";
                 openChildForm(new fInfo(username));
             }
 
             if (clicked == btnQLKQT)
             {
+                lblOption.Text = "Quản lý kết quả thi";
                 openChildForm(new fManageKQT());
             }
 
             if (clicked == btnThongBao)
             {
-                openChildForm(new fNotification());
+                lblOption.Text = "Thông báo";
+                openChildForm(new fNotification(username));
             }
         }
 

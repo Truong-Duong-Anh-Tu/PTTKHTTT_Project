@@ -120,6 +120,7 @@
             lblDetailRole.Size = new Size(64, 20);
             lblDetailRole.TabIndex = 3;
             lblDetailRole.Text = "<Role>";
+            lblDetailRole.Click += lblDetailRole_Click;
             // 
             // ptbDRole
             // 
@@ -384,7 +385,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 504);
+            ClientSize = new Size(900, 506);
             Controls.Add(pnlInfoNV);
             Controls.Add(pnlHotenRole);
             Controls.Add(pnlSalaryRole);
