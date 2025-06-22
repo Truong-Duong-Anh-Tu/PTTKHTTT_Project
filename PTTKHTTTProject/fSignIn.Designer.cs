@@ -72,7 +72,7 @@
             btnSignIn.Name = "btnSignIn";
             btnSignIn.Size = new Size(249, 41);
             btnSignIn.TabIndex = 5;
-            btnSignIn.Text = "DANG NHAP";
+            btnSignIn.Text = "ĐĂNG NHẬP";
             btnSignIn.UseVisualStyleBackColor = false;
             btnSignIn.Click += btnSignIn_Click;
             // 
@@ -84,7 +84,7 @@
             llbForgotPassword.Size = new Size(116, 20);
             llbForgotPassword.TabIndex = 6;
             llbForgotPassword.TabStop = true;
-            llbForgotPassword.Text = "Quen mat khau?";
+            llbForgotPassword.Text = "Quên mật khẩu?";
             // 
             // ptbLogo
             // 
@@ -109,22 +109,22 @@
             // tbxUsername
             // 
             tbxUsername.BorderStyle = BorderStyle.FixedSingle;
-            tbxUsername.Font = new Font("Cambria", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxUsername.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxUsername.Location = new Point(476, 164);
             tbxUsername.Name = "tbxUsername";
             tbxUsername.PlaceholderText = "Nhập tên đăng nhập";
-            tbxUsername.Size = new Size(247, 29);
+            tbxUsername.Size = new Size(247, 31);
             tbxUsername.TabIndex = 9;
             // 
             // tbxPassword
             // 
             tbxPassword.BorderStyle = BorderStyle.FixedSingle;
-            tbxPassword.Font = new Font("Cambria", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxPassword.Location = new Point(476, 212);
             tbxPassword.Name = "tbxPassword";
             tbxPassword.PasswordChar = '*';
             tbxPassword.PlaceholderText = "Mật khẩu";
-            tbxPassword.Size = new Size(247, 29);
+            tbxPassword.Size = new Size(247, 31);
             tbxPassword.TabIndex = 10;
             tbxPassword.UseSystemPasswordChar = true;
             // 

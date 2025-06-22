@@ -4,16 +4,10 @@
     <Compile Update="fCoiThi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fInfo.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="fKeToan.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fNhapLieu.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="fManageKQT.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fQuanTriDL.cs">
@@ -22,11 +16,17 @@
     <Compile Update="fSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fNotification.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="fTiepNhan.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ucInfo.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ucManageExamResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="ucNotification.cs">
+      <SubType>UserControl</SubType>
     </Compile>
   </ItemGroup>
 </Project>

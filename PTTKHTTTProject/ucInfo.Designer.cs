@@ -1,13 +1,13 @@
 ﻿namespace PTTKHTTTProject
 {
-    partial class fInfo
+    partial class ucInfo
     {
-        /// <summary>
+        /// <summary> 
         /// Required designer variable.
         /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary>
+        /// <summary> 
         /// Clean up any resources being used.
         /// </summary>
         /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
@@ -20,27 +20,27 @@
             base.Dispose(disposing);
         }
 
-        #region Windows Form Designer generated code
+        #region Component Designer generated code
 
-        /// <summary>
-        /// Required method for Designer support - do not modify
+        /// <summary> 
+        /// Required method for Designer support - do not modify 
         /// the contents of this method with the code editor.
         /// </summary>
         private void InitializeComponent()
         {
             pnlSalaryRole = new Panel();
-            lblWelcome = new Label();
             lblDetailSalary = new Label();
             ptbSalary = new PictureBox();
             lblDetailRole = new Label();
+            lblWelcome = new Label();
             ptbDRole = new PictureBox();
             pnlHotenRole = new Panel();
-            lblAnhDaiDien = new Label();
             tbxChucVu = new TextBox();
             lblChucVu = new Label();
             tbxHoTen = new TextBox();
             lblHovaTen = new Label();
             ptbDetailAvatar = new PictureBox();
+            lblAnhDaiDien = new Label();
             pnlInfoNV = new Panel();
             tbxCCCD = new TextBox();
             tbxSDT = new TextBox();
@@ -67,148 +67,151 @@
             // 
             // pnlSalaryRole
             // 
-            pnlSalaryRole.Controls.Add(lblWelcome);
             pnlSalaryRole.Controls.Add(lblDetailSalary);
             pnlSalaryRole.Controls.Add(ptbSalary);
             pnlSalaryRole.Controls.Add(lblDetailRole);
+            pnlSalaryRole.Controls.Add(lblWelcome);
             pnlSalaryRole.Controls.Add(ptbDRole);
-            pnlSalaryRole.Location = new Point(12, 12);
+            pnlSalaryRole.Location = new Point(3, 3);
             pnlSalaryRole.Name = "pnlSalaryRole";
-            pnlSalaryRole.Size = new Size(876, 106);
+            pnlSalaryRole.Size = new Size(1015, 147);
             pnlSalaryRole.TabIndex = 0;
             pnlSalaryRole.Paint += pnlSalaryRole_Paint;
-            // 
-            // lblWelcome
-            // 
-            lblWelcome.AutoSize = true;
-            lblWelcome.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblWelcome.Location = new Point(5, 5);
-            lblWelcome.Name = "lblWelcome";
-            lblWelcome.Size = new Size(116, 20);
-            lblWelcome.TabIndex = 6;
-            lblWelcome.Text = "<Place holder>";
             // 
             // lblDetailSalary
             // 
             lblDetailSalary.Anchor = AnchorStyles.None;
             lblDetailSalary.AutoSize = true;
             lblDetailSalary.Font = new Font("Cambria", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDetailSalary.Location = new Point(694, 40);
+            lblDetailSalary.Location = new Point(773, 61);
             lblDetailSalary.Name = "lblDetailSalary";
             lblDetailSalary.Size = new Size(85, 21);
-            lblDetailSalary.TabIndex = 5;
+            lblDetailSalary.TabIndex = 10;
             lblDetailSalary.Text = "<Salary>";
             // 
             // ptbSalary
             // 
             ptbSalary.Anchor = AnchorStyles.None;
             ptbSalary.Image = Properties.Resources.Rupee;
-            ptbSalary.Location = new Point(646, 32);
+            ptbSalary.Location = new Point(725, 53);
             ptbSalary.Name = "ptbSalary";
             ptbSalary.Size = new Size(42, 40);
             ptbSalary.SizeMode = PictureBoxSizeMode.Zoom;
-            ptbSalary.TabIndex = 4;
+            ptbSalary.TabIndex = 9;
             ptbSalary.TabStop = false;
             // 
             // lblDetailRole
             // 
             lblDetailRole.Anchor = AnchorStyles.None;
             lblDetailRole.AutoSize = true;
-            lblDetailRole.Font = new Font("Cambria", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDetailRole.Location = new Point(173, 40);
+            lblDetailRole.Font = new Font("Cambria", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDetailRole.Location = new Point(227, 61);
             lblDetailRole.Name = "lblDetailRole";
-            lblDetailRole.Size = new Size(64, 20);
-            lblDetailRole.TabIndex = 3;
+            lblDetailRole.Size = new Size(70, 21);
+            lblDetailRole.TabIndex = 8;
             lblDetailRole.Text = "<Role>";
-            lblDetailRole.Click += lblDetailRole_Click;
+            // 
+            // lblWelcome
+            // 
+            lblWelcome.AutoSize = true;
+            lblWelcome.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblWelcome.Location = new Point(3, 3);
+            lblWelcome.Name = "lblWelcome";
+            lblWelcome.Size = new Size(132, 23);
+            lblWelcome.TabIndex = 7;
+            lblWelcome.Text = "<Place holder>";
             // 
             // ptbDRole
             // 
             ptbDRole.Anchor = AnchorStyles.None;
             ptbDRole.Image = Properties.Resources.UserIcon;
-            ptbDRole.Location = new Point(125, 32);
+            ptbDRole.Location = new Point(179, 53);
             ptbDRole.Name = "ptbDRole";
             ptbDRole.Size = new Size(42, 40);
             ptbDRole.SizeMode = PictureBoxSizeMode.Zoom;
-            ptbDRole.TabIndex = 2;
+            ptbDRole.TabIndex = 3;
             ptbDRole.TabStop = false;
             // 
             // pnlHotenRole
             // 
-            pnlHotenRole.Controls.Add(lblAnhDaiDien);
             pnlHotenRole.Controls.Add(tbxChucVu);
             pnlHotenRole.Controls.Add(lblChucVu);
             pnlHotenRole.Controls.Add(tbxHoTen);
             pnlHotenRole.Controls.Add(lblHovaTen);
             pnlHotenRole.Controls.Add(ptbDetailAvatar);
-            pnlHotenRole.Location = new Point(13, 127);
+            pnlHotenRole.Controls.Add(lblAnhDaiDien);
+            pnlHotenRole.Location = new Point(3, 156);
             pnlHotenRole.Name = "pnlHotenRole";
-            pnlHotenRole.Size = new Size(240, 365);
+            pnlHotenRole.Size = new Size(348, 414);
             pnlHotenRole.TabIndex = 1;
             pnlHotenRole.Paint += pnlHotenRole_Paint;
-            // 
-            // lblAnhDaiDien
-            // 
-            lblAnhDaiDien.AutoSize = true;
-            lblAnhDaiDien.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblAnhDaiDien.Location = new Point(3, 5);
-            lblAnhDaiDien.Name = "lblAnhDaiDien";
-            lblAnhDaiDien.Size = new Size(97, 20);
-            lblAnhDaiDien.TabIndex = 14;
-            lblAnhDaiDien.Text = "Ảnh đại diện";
             // 
             // tbxChucVu
             // 
             tbxChucVu.Anchor = AnchorStyles.None;
             tbxChucVu.BorderStyle = BorderStyle.None;
-            tbxChucVu.Location = new Point(14, 315);
+            tbxChucVu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxChucVu.Location = new Point(47, 347);
             tbxChucVu.Name = "tbxChucVu";
-            tbxChucVu.Size = new Size(213, 20);
-            tbxChucVu.TabIndex = 13;
+            tbxChucVu.ReadOnly = true;
+            tbxChucVu.Size = new Size(250, 23);
+            tbxChucVu.TabIndex = 18;
             tbxChucVu.TextAlign = HorizontalAlignment.Center;
             // 
             // lblChucVu
             // 
             lblChucVu.Anchor = AnchorStyles.None;
             lblChucVu.AutoSize = true;
-            lblChucVu.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblChucVu.Location = new Point(85, 292);
+            lblChucVu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblChucVu.Location = new Point(138, 321);
             lblChucVu.Name = "lblChucVu";
-            lblChucVu.Size = new Size(65, 20);
-            lblChucVu.TabIndex = 13;
+            lblChucVu.Size = new Size(74, 23);
+            lblChucVu.TabIndex = 14;
             lblChucVu.Text = "Chức vụ";
             // 
             // tbxHoTen
             // 
             tbxHoTen.Anchor = AnchorStyles.None;
             tbxHoTen.BorderStyle = BorderStyle.None;
-            tbxHoTen.Location = new Point(14, 250);
+            tbxHoTen.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxHoTen.Location = new Point(47, 276);
             tbxHoTen.Name = "tbxHoTen";
-            tbxHoTen.Size = new Size(213, 20);
-            tbxHoTen.TabIndex = 12;
+            tbxHoTen.ReadOnly = true;
+            tbxHoTen.Size = new Size(251, 23);
+            tbxHoTen.TabIndex = 17;
             tbxHoTen.TextAlign = HorizontalAlignment.Center;
             // 
             // lblHovaTen
             // 
             lblHovaTen.Anchor = AnchorStyles.None;
             lblHovaTen.AutoSize = true;
-            lblHovaTen.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblHovaTen.Location = new Point(80, 227);
+            lblHovaTen.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblHovaTen.Location = new Point(134, 250);
             lblHovaTen.Name = "lblHovaTen";
-            lblHovaTen.Size = new Size(76, 20);
-            lblHovaTen.TabIndex = 10;
+            lblHovaTen.Size = new Size(87, 23);
+            lblHovaTen.TabIndex = 16;
             lblHovaTen.Text = "Họ và tên";
             // 
             // ptbDetailAvatar
             // 
             ptbDetailAvatar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             ptbDetailAvatar.Image = Properties.Resources.avatar;
-            ptbDetailAvatar.Location = new Point(47, 64);
+            ptbDetailAvatar.Location = new Point(100, 51);
             ptbDetailAvatar.Name = "ptbDetailAvatar";
-            ptbDetailAvatar.Size = new Size(144, 144);
+            ptbDetailAvatar.Size = new Size(148, 149);
             ptbDetailAvatar.SizeMode = PictureBoxSizeMode.Zoom;
-            ptbDetailAvatar.TabIndex = 8;
+            ptbDetailAvatar.TabIndex = 9;
             ptbDetailAvatar.TabStop = false;
+            // 
+            // lblAnhDaiDien
+            // 
+            lblAnhDaiDien.AutoSize = true;
+            lblAnhDaiDien.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblAnhDaiDien.Location = new Point(3, 3);
+            lblAnhDaiDien.Name = "lblAnhDaiDien";
+            lblAnhDaiDien.Size = new Size(112, 23);
+            lblAnhDaiDien.TabIndex = 15;
+            lblAnhDaiDien.Text = "Ảnh đại diện";
             // 
             // pnlInfoNV
             // 
@@ -227,9 +230,9 @@
             pnlInfoNV.Controls.Add(label1);
             pnlInfoNV.Controls.Add(lblMaNV);
             pnlInfoNV.Controls.Add(lblTTCN);
-            pnlInfoNV.Location = new Point(259, 127);
+            pnlInfoNV.Location = new Point(357, 156);
             pnlInfoNV.Name = "pnlInfoNV";
-            pnlInfoNV.Size = new Size(629, 365);
+            pnlInfoNV.Size = new Size(661, 414);
             pnlInfoNV.TabIndex = 2;
             pnlInfoNV.Paint += pnlInfoNV_Paint;
             // 
@@ -237,162 +240,174 @@
             // 
             tbxCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             tbxCCCD.BorderStyle = BorderStyle.None;
-            tbxCCCD.Location = new Point(377, 188);
+            tbxCCCD.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxCCCD.Location = new Point(409, 196);
             tbxCCCD.Name = "tbxCCCD";
-            tbxCCCD.Size = new Size(234, 20);
-            tbxCCCD.TabIndex = 30;
+            tbxCCCD.ReadOnly = true;
+            tbxCCCD.Size = new Size(234, 23);
+            tbxCCCD.TabIndex = 33;
             // 
             // tbxSDT
             // 
             tbxSDT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             tbxSDT.BorderStyle = BorderStyle.None;
-            tbxSDT.Location = new Point(377, 126);
+            tbxSDT.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxSDT.Location = new Point(409, 123);
             tbxSDT.Name = "tbxSDT";
-            tbxSDT.Size = new Size(234, 20);
-            tbxSDT.TabIndex = 29;
+            tbxSDT.ReadOnly = true;
+            tbxSDT.Size = new Size(234, 23);
+            tbxSDT.TabIndex = 32;
             // 
             // tbxEmail
             // 
             tbxEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             tbxEmail.BorderStyle = BorderStyle.None;
-            tbxEmail.Location = new Point(377, 64);
+            tbxEmail.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxEmail.Location = new Point(409, 51);
             tbxEmail.Name = "tbxEmail";
-            tbxEmail.Size = new Size(234, 20);
-            tbxEmail.TabIndex = 28;
+            tbxEmail.ReadOnly = true;
+            tbxEmail.Size = new Size(234, 23);
+            tbxEmail.TabIndex = 31;
             // 
             // lblCCCD
             // 
             lblCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblCCCD.AutoSize = true;
-            lblCCCD.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblCCCD.Location = new Point(316, 188);
+            lblCCCD.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblCCCD.Location = new Point(348, 196);
             lblCCCD.Name = "lblCCCD";
-            lblCCCD.Size = new Size(55, 20);
-            lblCCCD.TabIndex = 27;
+            lblCCCD.Size = new Size(64, 23);
+            lblCCCD.TabIndex = 30;
             lblCCCD.Text = "CCCD: ";
             // 
             // lblSDT
             // 
             lblSDT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblSDT.AutoSize = true;
-            lblSDT.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSDT.Location = new Point(317, 126);
+            lblSDT.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSDT.Location = new Point(348, 123);
             lblSDT.Name = "lblSDT";
-            lblSDT.Size = new Size(44, 20);
-            lblSDT.TabIndex = 26;
+            lblSDT.Size = new Size(52, 23);
+            lblSDT.TabIndex = 29;
             lblSDT.Text = "SDT: ";
             // 
             // lblEmail
             // 
             lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             lblEmail.AutoSize = true;
-            lblEmail.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblEmail.Location = new Point(317, 64);
+            lblEmail.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblEmail.Location = new Point(348, 51);
             lblEmail.Name = "lblEmail";
-            lblEmail.Size = new Size(55, 20);
-            lblEmail.TabIndex = 25;
+            lblEmail.Size = new Size(64, 23);
+            lblEmail.TabIndex = 28;
             lblEmail.Text = "Email: ";
             // 
             // tbxDiaChi
             // 
             tbxDiaChi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbxDiaChi.BorderStyle = BorderStyle.None;
-            tbxDiaChi.Location = new Point(111, 250);
+            tbxDiaChi.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxDiaChi.Location = new Point(110, 265);
             tbxDiaChi.Name = "tbxDiaChi";
-            tbxDiaChi.Size = new Size(500, 20);
-            tbxDiaChi.TabIndex = 24;
+            tbxDiaChi.ReadOnly = true;
+            tbxDiaChi.Size = new Size(533, 23);
+            tbxDiaChi.TabIndex = 27;
             // 
             // tbxGioiTinh
             // 
             tbxGioiTinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbxGioiTinh.BorderStyle = BorderStyle.None;
-            tbxGioiTinh.Location = new Point(111, 188);
+            tbxGioiTinh.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxGioiTinh.Location = new Point(110, 196);
             tbxGioiTinh.Name = "tbxGioiTinh";
-            tbxGioiTinh.Size = new Size(200, 20);
-            tbxGioiTinh.TabIndex = 23;
+            tbxGioiTinh.ReadOnly = true;
+            tbxGioiTinh.Size = new Size(232, 23);
+            tbxGioiTinh.TabIndex = 26;
             // 
             // tbxNgaySinh
             // 
             tbxNgaySinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbxNgaySinh.BorderStyle = BorderStyle.None;
-            tbxNgaySinh.Location = new Point(111, 126);
+            tbxNgaySinh.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxNgaySinh.Location = new Point(110, 121);
             tbxNgaySinh.Name = "tbxNgaySinh";
-            tbxNgaySinh.Size = new Size(200, 20);
-            tbxNgaySinh.TabIndex = 22;
+            tbxNgaySinh.ReadOnly = true;
+            tbxNgaySinh.Size = new Size(232, 23);
+            tbxNgaySinh.TabIndex = 25;
             // 
             // tbxMaNV
             // 
             tbxMaNV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             tbxMaNV.BorderStyle = BorderStyle.None;
-            tbxMaNV.Location = new Point(111, 64);
+            tbxMaNV.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxMaNV.Location = new Point(110, 51);
             tbxMaNV.Name = "tbxMaNV";
-            tbxMaNV.Size = new Size(200, 20);
-            tbxMaNV.TabIndex = 21;
+            tbxMaNV.ReadOnly = true;
+            tbxMaNV.Size = new Size(232, 23);
+            tbxMaNV.TabIndex = 24;
             // 
             // lblDiaChi
             // 
             lblDiaChi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblDiaChi.AutoSize = true;
-            lblDiaChi.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblDiaChi.Location = new Point(19, 250);
+            lblDiaChi.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblDiaChi.Location = new Point(18, 265);
             lblDiaChi.Name = "lblDiaChi";
-            lblDiaChi.Size = new Size(64, 20);
-            lblDiaChi.TabIndex = 16;
+            lblDiaChi.Size = new Size(75, 23);
+            lblDiaChi.TabIndex = 23;
             lblDiaChi.Text = "Địa chỉ: ";
             // 
             // lblGioiTinh
             // 
             lblGioiTinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             lblGioiTinh.AutoSize = true;
-            lblGioiTinh.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblGioiTinh.Location = new Point(19, 188);
+            lblGioiTinh.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblGioiTinh.Location = new Point(17, 196);
             lblGioiTinh.Name = "lblGioiTinh";
-            lblGioiTinh.Size = new Size(77, 20);
-            lblGioiTinh.TabIndex = 15;
+            lblGioiTinh.Size = new Size(90, 23);
+            lblGioiTinh.TabIndex = 22;
             lblGioiTinh.Text = "Giới tính: ";
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label1.Location = new Point(19, 126);
+            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            label1.Location = new Point(17, 123);
             label1.Name = "label1";
-            label1.Size = new Size(87, 20);
-            label1.TabIndex = 14;
+            label1.Size = new Size(99, 23);
+            label1.TabIndex = 21;
             label1.Text = "Ngày sinh: ";
             // 
             // lblMaNV
             // 
             lblMaNV.AutoSize = true;
-            lblMaNV.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblMaNV.Location = new Point(19, 64);
+            lblMaNV.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblMaNV.Location = new Point(17, 51);
             lblMaNV.Name = "lblMaNV";
-            lblMaNV.Size = new Size(65, 20);
-            lblMaNV.TabIndex = 13;
+            lblMaNV.Size = new Size(74, 23);
+            lblMaNV.TabIndex = 20;
             lblMaNV.Text = "Mã NV: ";
             // 
             // lblTTCN
             // 
             lblTTCN.AutoSize = true;
-            lblTTCN.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblTTCN.Location = new Point(5, 5);
+            lblTTCN.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblTTCN.Location = new Point(3, 3);
             lblTTCN.Name = "lblTTCN";
-            lblTTCN.Size = new Size(135, 20);
-            lblTTCN.TabIndex = 12;
+            lblTTCN.Size = new Size(154, 23);
+            lblTTCN.TabIndex = 19;
             lblTTCN.Text = "Thông tin cá nhân";
             // 
-            // fInfo
+            // ucInfo
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(900, 506);
             Controls.Add(pnlInfoNV);
             Controls.Add(pnlHotenRole);
             Controls.Add(pnlSalaryRole);
-            FormBorderStyle = FormBorderStyle.None;
-            Name = "fInfo";
-            Text = "fInfo";
-            Load += fInfo_Load;
+            Name = "ucInfo";
+            Size = new Size(1021, 573);
+            Load += ucInfo_Load;
             pnlSalaryRole.ResumeLayout(false);
             pnlSalaryRole.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)ptbSalary).EndInit();
@@ -409,10 +424,12 @@
 
         private Panel pnlSalaryRole;
         private PictureBox ptbDRole;
+        private Label lblWelcome;
         private Label lblDetailRole;
         private PictureBox ptbSalary;
         private Label lblDetailSalary;
         private Panel pnlHotenRole;
+        private Label lblAnhDaiDien;
         private PictureBox ptbDetailAvatar;
         private Label lblHovaTen;
         private TextBox tbxHoTen;
@@ -420,7 +437,6 @@
         private TextBox tbxChucVu;
         private Panel pnlInfoNV;
         private Label lblTTCN;
-        private Label lblAnhDaiDien;
         private Label lblMaNV;
         private Label label1;
         private Label lblGioiTinh;
@@ -435,6 +451,5 @@
         private TextBox tbxEmail;
         private TextBox tbxSDT;
         private TextBox tbxCCCD;
-        private Label lblWelcome;
     }
 }

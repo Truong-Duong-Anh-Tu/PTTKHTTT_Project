@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PTTKHTTTProject.BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,14 +8,14 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PTTKHTTTProject.BUS;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PTTKHTTTProject
 {
-    public partial class fNotification : Form
+    public partial class ucNotification : UserControl
     {
         private string username;
-        public fNotification(string accessUser)
+        public ucNotification(string accessUser)
         {
             InitializeComponent();
             username = accessUser;
@@ -43,8 +44,8 @@ namespace PTTKHTTTProject
                 lvListMail.View = View.Details;
                 lvListMail.FullRowSelect = true; // Có thể chọn cả hàng
                 lvListMail.Columns.Clear();
-                lvListMail.Columns.Add("Người gửi", 80, HorizontalAlignment.Left);
-                lvListMail.Columns.Add("Chủ đề", 155, HorizontalAlignment.Left);
+                lvListMail.Columns.Add("Người gửi", 95, HorizontalAlignment.Left);
+                lvListMail.Columns.Add("Chủ đề", 197, HorizontalAlignment.Left);
 
                 List<Dictionary<string, string>> listMail = MailBUS.getListMail(username);
 
@@ -63,11 +64,6 @@ namespace PTTKHTTTProject
             }
         }
 
-        private void fNotification_Load(object sender, EventArgs e)
-        {
-
-        }
-
         private void lvListMail_SelectedIndexChanged(object sender, EventArgs e)
         {
             if (lvListMail.SelectedItems.Count > 0)
@@ -81,11 +77,6 @@ namespace PTTKHTTTProject
 
                 tbxFullMail.Text = fullmail;
             }
-        }
-
-        private void pnlMail_Paint(object sender, PaintEventArgs e)
-        {
-
         }
     }
 }

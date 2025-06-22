@@ -41,7 +41,7 @@
             ptbAvatar = new PictureBox();
             lblOption = new Label();
             ptbMenu = new PictureBox();
-            pnlChildForm = new Panel();
+            pnlChildControl = new Panel();
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).BeginInit();
             tlpLogoName.SuspendLayout();
             tlpMenu.SuspendLayout();
@@ -54,7 +54,7 @@
             // 
             btnThongBao.FlatStyle = FlatStyle.Flat;
             btnThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThongBao.Location = new Point(3, 227);
+            btnThongBao.Location = new Point(3, 218);
             btnThongBao.Name = "btnThongBao";
             btnThongBao.Size = new Size(150, 55);
             btnThongBao.TabIndex = 2;
@@ -66,7 +66,7 @@
             // 
             btnTTCN.FlatStyle = FlatStyle.Flat;
             btnTTCN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTTCN.Location = new Point(3, 105);
+            btnTTCN.Location = new Point(3, 95);
             btnTTCN.Name = "btnTTCN";
             btnTTCN.Size = new Size(150, 55);
             btnTTCN.TabIndex = 1;
@@ -126,17 +126,17 @@
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 70.103096F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 29.8969078F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 137F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 272F));
-            tlpMenu.Size = new Size(156, 558);
+            tlpMenu.Size = new Size(156, 625);
             tlpMenu.TabIndex = 4;
             // 
             // btnQLKQT
             // 
             btnQLKQT.FlatStyle = FlatStyle.Flat;
             btnQLKQT.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQLKQT.Location = new Point(3, 166);
+            btnQLKQT.Location = new Point(3, 156);
             btnQLKQT.Name = "btnQLKQT";
             btnQLKQT.Size = new Size(150, 55);
             btnQLKQT.TabIndex = 2;
@@ -156,14 +156,14 @@
             panel1.Controls.Add(ptbMenu);
             panel1.Location = new Point(149, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(911, 51);
+            panel1.Size = new Size(1032, 51);
             panel1.TabIndex = 5;
             // 
             // btnSignOut
             // 
             btnSignOut.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSignOut.BackColor = Color.DeepSkyBlue;
-            btnSignOut.Location = new Point(809, 9);
+            btnSignOut.Location = new Point(930, 9);
             btnSignOut.Name = "btnSignOut";
             btnSignOut.Size = new Size(87, 33);
             btnSignOut.TabIndex = 6;
@@ -176,7 +176,7 @@
             lblName_Role.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblName_Role.AutoSize = true;
             lblName_Role.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblName_Role.Location = new Point(601, 17);
+            lblName_Role.Location = new Point(722, 17);
             lblName_Role.Name = "lblName_Role";
             lblName_Role.Size = new Size(117, 17);
             lblName_Role.TabIndex = 6;
@@ -186,7 +186,7 @@
             // 
             ptbAvatar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             ptbAvatar.Image = Properties.Resources.avatar;
-            ptbAvatar.Location = new Point(558, 7);
+            ptbAvatar.Location = new Point(679, 7);
             ptbAvatar.Name = "ptbAvatar";
             ptbAvatar.Size = new Size(37, 37);
             ptbAvatar.SizeMode = PictureBoxSizeMode.Zoom;
@@ -214,20 +214,20 @@
             ptbMenu.TabIndex = 6;
             ptbMenu.TabStop = false;
             // 
-            // pnlChildForm
+            // pnlChildControl
             // 
-            pnlChildForm.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
-            pnlChildForm.Location = new Point(160, 52);
-            pnlChildForm.Name = "pnlChildForm";
-            pnlChildForm.Size = new Size(900, 506);
-            pnlChildForm.TabIndex = 6;
+            pnlChildControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlChildControl.Location = new Point(160, 52);
+            pnlChildControl.Name = "pnlChildControl";
+            pnlChildControl.Size = new Size(1021, 573);
+            pnlChildControl.TabIndex = 6;
             // 
             // fNhapLieu
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1061, 561);
-            Controls.Add(pnlChildForm);
+            ClientSize = new Size(1182, 628);
+            Controls.Add(pnlChildControl);
             Controls.Add(tlpMenu);
             Controls.Add(panel1);
             Name = "fNhapLieu";
@@ -258,7 +258,7 @@
         private PictureBox ptbAvatar;
         private Label lblName_Role;
         private Button btnSignOut;
-        private Panel pnlChildForm;
+        private Panel pnlChildControl;
         private Button btnQLKQT;
     }
 }
