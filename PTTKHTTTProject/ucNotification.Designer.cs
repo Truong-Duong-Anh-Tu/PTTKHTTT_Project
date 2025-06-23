@@ -31,7 +31,7 @@
             btnAddNoti = new FontAwesome.Sharp.IconButton();
             pnlSelections = new Panel();
             btnBinMail = new Button();
-            btnmailSended = new Button();
+            btnMailSended = new Button();
             btnMailReceived = new Button();
             pnlMail = new Panel();
             tbxFullMail = new RichTextBox();
@@ -59,7 +59,7 @@
             // pnlSelections
             // 
             pnlSelections.Controls.Add(btnBinMail);
-            pnlSelections.Controls.Add(btnmailSended);
+            pnlSelections.Controls.Add(btnMailSended);
             pnlSelections.Controls.Add(btnMailReceived);
             pnlSelections.Location = new Point(38, 97);
             pnlSelections.Name = "pnlSelections";
@@ -78,17 +78,17 @@
             btnBinMail.UseVisualStyleBackColor = true;
             btnBinMail.Click += pnlSelections_Click;
             // 
-            // btnmailSended
+            // btnMailSended
             // 
-            btnmailSended.FlatStyle = FlatStyle.Flat;
-            btnmailSended.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnmailSended.Location = new Point(0, 68);
-            btnmailSended.Name = "btnmailSended";
-            btnmailSended.Size = new Size(166, 58);
-            btnmailSended.TabIndex = 2;
-            btnmailSended.Text = "Thư đã gửi";
-            btnmailSended.UseVisualStyleBackColor = true;
-            btnmailSended.Click += pnlSelections_Click;
+            btnMailSended.FlatStyle = FlatStyle.Flat;
+            btnMailSended.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMailSended.Location = new Point(0, 68);
+            btnMailSended.Name = "btnMailSended";
+            btnMailSended.Size = new Size(166, 58);
+            btnMailSended.TabIndex = 2;
+            btnMailSended.Text = "Thư đã gửi";
+            btnMailSended.UseVisualStyleBackColor = true;
+            btnMailSended.Click += pnlSelections_Click;
             // 
             // btnMailReceived
             // 
@@ -149,7 +149,7 @@
         private FontAwesome.Sharp.IconButton btnAddNoti;
         private Panel pnlSelections;
         private Button btnBinMail;
-        private Button btnmailSended;
+        private Button btnMailSended;
         private Button btnMailReceived;
         private Panel pnlMail;
         private RichTextBox tbxFullMail;

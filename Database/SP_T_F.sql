@@ -18,7 +18,7 @@ begin
 end;
 go
 
---Lấy chức vụ của tài khoản đang đăng nhập
+--Lấy chức vụ của nhân viên dựa vào mã nhân viên
 create or alter procedure usp_GetRoleOfUser
 	@username varchar(10),
 	@role nvarchar(20) OUTPUT
@@ -27,12 +27,12 @@ begin
 	set NOCOUNT ON;
 
 	select @role = nv.NV_ChucVu
-	from TAIKHOAN as tk join NHANVIEN as nv on tk.TK_TenDangNhap = nv.NV_MaNhanVien
+	from NHANVIEN as nv
 	where nv.NV_MaNhanVien = @username
 end;
 go
 
---Lay thong tin cua tai khoan dang nhap
+--Lấy thông tin tài khoản đăng nhập
 create or alter procedure usp_GetInfomationOfUser
 	@username varchar(10)
 as
@@ -62,8 +62,6 @@ begin
 
 end
 go
-
-
 
 --TRIGGER
 create or alter trigger utg_CheckDoiTuong

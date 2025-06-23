@@ -47,20 +47,51 @@ namespace PTTKHTTTProject
                 lvListMail.Columns.Add("Người gửi", 95, HorizontalAlignment.Left);
                 lvListMail.Columns.Add("Chủ đề", 197, HorizontalAlignment.Left);
 
-                List<Dictionary<string, string>> listMail = MailBUS.getListMail(username);
+                List<Dictionary<string, string>> listMail = MailBUS.getListMailReceive(username);
 
                 foreach (var mail in listMail)
                 {
-                    string senderm = mail["TB_MaNhanVienGui"];
-                    string subject = mail["TB_ChuDe"];
-                    string body = mail["TB_NoiDung"];
-                    string time = mail["TB_ThoiGianGui"];
+                    string senderm = mail["MaNhanVienGui"];
+                    string rolesender = mail["VaiTroNVGui"];
+                    string recipient = mail["MaDoiTuongNhan"];
+                    string rolerecipient = mail["TenVTDoiTuong"];
+                    string subject = mail["ChuDe"];
+                    string body = mail["NoiDung"];
+                    string time = mail["ThoiGianGui"];
 
-                    var item = new ListViewItem([senderm, subject, body, time]);
+                    var item = new ListViewItem([senderm, subject, senderm + " - " + rolesender, recipient + " - " + rolerecipient, body, time]);
 
                     lvListMail.Items.Add(item);
                 }
 
+            }
+
+            else if (clicked == btnMailSended)
+            {
+                tbxFullMail.Clear();
+                lvListMail.Items.Clear();
+                lvListMail.View = View.Details;
+                lvListMail.FullRowSelect = true; // Có thể chọn cả hàng
+                lvListMail.Columns.Clear();
+                lvListMail.Columns.Add("Bên nhận", 95, HorizontalAlignment.Left);
+                lvListMail.Columns.Add("Chủ đề", 197, HorizontalAlignment.Left);
+
+                List<Dictionary<string, string>> listMail = MailBUS.getListMailSend(username);
+
+                foreach (var mail in listMail)
+                {
+                    string senderm = mail["MaNhanVienGui"];
+                    string rolesender = mail["VaiTroNVGui"];
+                    string recipient = mail["MaDoiTuongNhan"];
+                    string rolerecipient = mail["TenVTDoiTuong"];
+                    string subject = mail["ChuDe"];
+                    string body = mail["NoiDung"];
+                    string time = mail["ThoiGianGui"];
+
+                    var item = new ListViewItem([recipient, subject, senderm + " - " + rolesender, recipient + " - " + rolerecipient, body, time]);
+
+                    lvListMail.Items.Add(item);
+                }
             }
         }
 
@@ -70,10 +101,11 @@ namespace PTTKHTTTProject
             {
                 var selected = lvListMail.SelectedItems[0];
 
-                string fullmail = $"Từ: {selected.SubItems[0].Text}\n" +
+                string fullmail = $"Từ: {selected.SubItems[2].Text}\n" + 
+                    $"Đến: {selected.SubItems[3].Text}\n" +
                     $"Chủ đề: {selected.SubItems[1].Text}\n" +
-                    $"Thời gian gửi: {selected.SubItems[3].Text}\n\n\n" +
-                    $"{selected.SubItems[2].Text}";
+                    $"Thời gian gửi: {selected.SubItems[5].Text}\n\n\n" +
+                    $"{selected.SubItems[4].Text}";
 
                 tbxFullMail.Text = fullmail;
             }

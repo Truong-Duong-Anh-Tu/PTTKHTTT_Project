@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Globalization;
 using System.Linq;
 using System.Text;
@@ -11,20 +12,34 @@ namespace PTTKHTTTProject.BUS
 {
     internal class MailBUS
     {
-        public static List<Dictionary<string, string>> getListMail(string username)
+        public static List<Dictionary<string, string>> getListMailReceive(string username)
         {
             List<Dictionary<string, string>> listMail = new List<Dictionary<string, string>>();
 
-            DataTable dt = MailDAO.LoadReceiveMail(username.Trim());
+            string department = MailDAO.getDepartment(username);
+
+            DataTable dt = MailDAO.LoadReceiveMail(username.Trim(), department.Trim());
 
             foreach (DataRow dr in dt.Rows)
             {
                 Dictionary<string, string> temp = new Dictionary<string, string>();
 
-                temp["TB_MaNhanVienGui"] = dr["TB_MaNhanVienGui"].ToString() ?? "Unknown";
-                temp["TB_ChuDe"] = dr["TB_ChuDe"].ToString() ?? "Unknown";
-                temp["TB_NoiDung"] = dr["TB_NoiDung"].ToString() ?? "Unknown";
-                temp["TB_ThoiGianGui"] = dr["TB_ThoiGianGui"] == DBNull.Value
+                temp["MaNhanVienGui"] = dr["TB_MaNhanVienGui"].ToString() ?? "Unknown";
+                temp["VaiTroNVGui"] = MailDAO.getRole(temp["MaNhanVienGui"]);
+
+                temp["MaDoiTuongNhan"] = dr["TB_MaDoiTuongNhan"].ToString() ?? "Unknown";
+                if (temp["MaDoiTuongNhan"].Contains("PB"))
+                {
+                    temp["TenVTDoiTuong"] = MailDAO.getDepartmentName(temp["MaDoiTuongNhan"]);
+                }
+                else
+                {
+                    temp["TenVTDoiTuong"] = MailDAO.getRole(username);
+                }
+
+                temp["ChuDe"] = dr["TB_ChuDe"].ToString() ?? "Unknown";
+                temp["NoiDung"] = dr["TB_NoiDung"].ToString() ?? "Unknown";
+                temp["ThoiGianGui"] = dr["TB_ThoiGianGui"] == DBNull.Value
                                             ? "Unknown"
                                             : ((DateTime)dr["TB_ThoiGianGui"])
                                                 .ToString("dd/MM/yyyy HH:mm:ss");
@@ -32,10 +47,48 @@ namespace PTTKHTTTProject.BUS
                 listMail.Add(temp);
             }
 
-            listMail = listMail.OrderByDescending(dict => ParseOrMin(dict["TB_ThoiGianGui"])).ToList();
+            listMail = listMail.OrderByDescending(dict => ParseOrMin(dict["ThoiGianGui"])).ToList();
+
+            return listMail;    
+        }
+
+        public static List<Dictionary<string, string>> getListMailSend(string username)
+        {
+            List<Dictionary<string, string>> listMail = new List<Dictionary<string, string>>();
+
+            DataTable dt = MailDAO.LoadSendMail(username.Trim());
+            string rolesender = MailDAO.getRole(username.Trim());
+
+            foreach (DataRow dr in dt.Rows)
+            {
+                Dictionary<string, string> temp = new Dictionary<string, string>();
+
+                temp["MaNhanVienGui"] = username;
+                temp["VaiTroNVGui"] = rolesender;
+
+                temp["MaDoiTuongNhan"] = dr["TB_MaDoiTuongNhan"].ToString() ?? "Unknown";
+                if (temp["MaDoiTuongNhan"].Contains("PB"))
+                {
+                    temp["TenVTDoiTuong"] = MailDAO.getDepartmentName(temp["MaDoiTuongNhan"]);
+                }
+                else
+                {
+                    temp["TenVTDoiTuong"] = MailDAO.getRole(temp["MaDoiTuongNhan"]);
+                }    
+
+                temp["ChuDe"] = dr["TB_ChuDe"].ToString() ?? "Unknown";
+                temp["NoiDung"] = dr["TB_NoiDung"].ToString() ?? "Unknown";
+                temp["ThoiGianGui"] = dr["TB_ThoiGianGui"] == DBNull.Value
+                                            ? "Unknown"
+                                            : ((DateTime)dr["TB_ThoiGianGui"])
+                                                .ToString("dd/MM/yyyy HH:mm:ss");
+
+                listMail.Add(temp);
+            }
+
+            listMail = listMail.OrderByDescending(dict => ParseOrMin(dict["ThoiGianGui"])).ToList();
 
             return listMail;
-                
         }
 
         private static DateTime ParseOrMin(string s)

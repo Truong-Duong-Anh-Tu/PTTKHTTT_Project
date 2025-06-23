@@ -183,4 +183,4 @@ INSERT INTO THONGBAO (TB_MaThongBao, TB_MaNhanVienGui, TB_MaDoiTuongNhan, TB_Chu
 ('67DF5E9C-2E3B-4D35-B154-933D1767E0DE', 'NV012', 'PB003', N'Phản hồi', N'Nhập liệu thông tin người này: \n a, \n b', '2025-03-12 15:30:00');
 GO
 
-drop table THONGBAO;
+--select * from thongbao

@@ -21,7 +21,7 @@ namespace PTTKHTTTProject
         public fNhapLieu(string accessUser)
         {
             InitializeComponent();
-            username = accessUser;
+            username = accessUser.ToUpper();
             //openChildForm(new fInfo(username));
             activeControl = new UserControl();
             CustomUC.openChildControl(pnlChildControl, activeControl, new ucInfo(username));
