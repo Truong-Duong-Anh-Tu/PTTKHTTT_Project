@@ -163,6 +163,8 @@
             // 
             btnSignOut.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSignOut.BackColor = Color.DeepSkyBlue;
+            btnSignOut.FlatStyle = FlatStyle.Flat;
+            btnSignOut.ForeColor = SystemColors.Control;
             btnSignOut.Location = new Point(930, 9);
             btnSignOut.Name = "btnSignOut";
             btnSignOut.Size = new Size(87, 33);

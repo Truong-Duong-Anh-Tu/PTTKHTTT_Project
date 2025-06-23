@@ -53,7 +53,7 @@
             panel2.BackColor = Color.DeepSkyBlue;
             panel2.Location = new Point(59, -2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(333, 53);
+            panel2.Size = new Size(354, 53);
             panel2.TabIndex = 1;
             // 
             // panel3
@@ -61,16 +61,18 @@
             panel3.BackColor = Color.DeepSkyBlue;
             panel3.Location = new Point(59, 401);
             panel3.Name = "panel3";
-            panel3.Size = new Size(333, 50);
+            panel3.Size = new Size(354, 50);
             panel3.TabIndex = 2;
             // 
             // btnSignIn
             // 
             btnSignIn.BackColor = Color.DeepSkyBlue;
+            btnSignIn.FlatStyle = FlatStyle.Flat;
             btnSignIn.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnSignIn.ForeColor = SystemColors.Control;
             btnSignIn.Location = new Point(474, 262);
             btnSignIn.Name = "btnSignIn";
-            btnSignIn.Size = new Size(249, 41);
+            btnSignIn.Size = new Size(247, 36);
             btnSignIn.TabIndex = 5;
             btnSignIn.Text = "ĐĂNG NHẬP";
             btnSignIn.UseVisualStyleBackColor = false;
@@ -79,7 +81,7 @@
             // llbForgotPassword
             // 
             llbForgotPassword.AutoSize = true;
-            llbForgotPassword.Location = new Point(476, 313);
+            llbForgotPassword.Location = new Point(474, 301);
             llbForgotPassword.Name = "llbForgotPassword";
             llbForgotPassword.Size = new Size(116, 20);
             llbForgotPassword.TabIndex = 6;
@@ -110,7 +112,7 @@
             // 
             tbxUsername.BorderStyle = BorderStyle.FixedSingle;
             tbxUsername.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbxUsername.Location = new Point(476, 164);
+            tbxUsername.Location = new Point(474, 160);
             tbxUsername.Name = "tbxUsername";
             tbxUsername.PlaceholderText = "Nhập tên đăng nhập";
             tbxUsername.Size = new Size(247, 31);
@@ -120,7 +122,7 @@
             // 
             tbxPassword.BorderStyle = BorderStyle.FixedSingle;
             tbxPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbxPassword.Location = new Point(476, 212);
+            tbxPassword.Location = new Point(474, 211);
             tbxPassword.Name = "tbxPassword";
             tbxPassword.PasswordChar = '*';
             tbxPassword.PlaceholderText = "Mật khẩu";

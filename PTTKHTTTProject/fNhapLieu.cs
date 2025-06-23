@@ -59,6 +59,7 @@ namespace PTTKHTTTProject
             {
                 lblOption.Text = "Quản lý kết quả thi";
                 //openChildForm(new fManageKQT());
+                CustomUC.openChildControl(pnlChildControl , activeControl, new ucManageExamResult());
             }
 
             if (clicked == btnThongBao)
