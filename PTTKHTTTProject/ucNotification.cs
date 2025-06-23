@@ -78,5 +78,11 @@ namespace PTTKHTTTProject
                 tbxFullMail.Text = fullmail;
             }
         }
+
+        private void btnAddNoti_Click(object sender, EventArgs e)
+        {
+            fCreateNotification fcn = new fCreateNotification(username);
+            fcn.ShowDialog();
+        }
     }
 }

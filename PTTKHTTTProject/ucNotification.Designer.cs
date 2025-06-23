@@ -54,6 +54,7 @@
             btnAddNoti.TabIndex = 3;
             btnAddNoti.Text = "Soạn thông báo";
             btnAddNoti.UseVisualStyleBackColor = true;
+            btnAddNoti.Click += btnAddNoti_Click;
             // 
             // pnlSelections
             // 
