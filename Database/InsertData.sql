@@ -184,3 +184,78 @@ INSERT INTO THONGBAO (TB_MaThongBao, TB_MaNhanVienGui, TB_MaDoiTuongNhan, TB_Chu
 GO
 
 --select * from thongbao
+
+INSERT INTO LICHTHI
+  (LT_MaLichThi, LT_MaKyThi, LT_SLDangKy, LT_TrangThai, LT_TenKyThi, LT_NgayThi, LT_MaPhongThi, LT_TGBatDau, LT_TGKetThuc)
+VALUES
+  ('LT01', 'KT01', 20, N'Đã lên lịch', N'Kỳ thi tiếng Anh A2',
+   '2025-07-01', 'P001', '08:00:00', '10:00:00'),
+  ('LT02', 'KT02', 18, N'Đã lên lịch', N'Kỳ thi tiếng Anh B1',
+   '2025-07-02', 'P002', '13:00:00', '15:00:00'),
+  ('LT03', 'KT03', 25, N'Đã lên lịch', N'Kỳ thi tiếng Anh B2',
+   '2025-07-03', 'P003', '09:00:00', '11:30:00'),
+  ('LT04', 'KT04', 22, N'Đã lên lịch', N'Kỳ thi năng lực công chức',
+   '2025-07-04', 'P004', '14:00:00', '17:00:00'),
+  ('LT05', 'KT05', 15, N'Đã lên lịch', N'Kỳ thi tiếng Hàn TOPIK I',
+   '2025-07-05', 'P005', '08:30:00', '10:30:00');
+GO
+
+INSERT INTO BAITHI
+  (BT_MaBaiThi, BT_MaKyThi, BT_SoBaoDanh, BT_ThoiGianLamBai, BT_DiemSo, BT_DonViCham)
+VALUES
+  -- Đợt thi KT01
+  ('BT0001', 'KT01', 'TS00001', '01:30:00',  7.5, 'DVCT01'),
+  ('BT0002', 'KT01', 'TS00002', '01:45:00',  8.2, 'DVCT02'),
+  ('BT0003', 'KT01', 'TS00003', '02:00:00',  6.9, 'DVCT01'),
+  ('BT0004', 'KT01', 'TS00004', '01:20:00',  9.0, 'DVCT02'),
+  ('BT0005', 'KT01', 'TS00005', '01:50:00',  5.5, 'DVCT01'),
+  ('BT0006', 'KT01', 'TS00006', '02:10:00',  8.7, 'DVCT02'),
+  ('BT0007', 'KT01', 'TS00007', '01:40:00',  7.8, 'DVCT01'),
+  ('BT0008', 'KT01', 'TS00008', '01:35:00',  6.3, 'DVCT02'),
+  ('BT0009', 'KT01', 'TS00009', '01:55:00',  9.5, 'DVCT01'),
+  ('BT0010', 'KT01', 'TS00010', '02:00:00', 10.0, 'DVCT02'),
+
+  -- Đợt thi KT02
+  ('BT0011', 'KT02', 'TS00011', '01:25:00',  8.0, 'DVCT01'),
+  ('BT0012', 'KT02', 'TS00012', '01:30:00',  7.2, 'DVCT02'),
+  ('BT0013', 'KT02', 'TS00013', '01:45:00',  6.8, 'DVCT01'),
+  ('BT0014', 'KT02', 'TS00014', '02:05:00',  9.1, 'DVCT02'),
+  ('BT0015', 'KT02', 'TS00015', '01:50:00',  5.9, 'DVCT01'),
+  ('BT0016', 'KT02', 'TS00016', '01:35:00',  8.4, 'DVCT02'),
+  ('BT0017', 'KT02', 'TS00017', '01:40:00',  7.6, 'DVCT01'),
+  ('BT0018', 'KT02', 'TS00018', '02:10:00',  6.5, 'DVCT02'),
+  ('BT0019', 'KT02', 'TS00019', '01:55:00',  9.3, 'DVCT01'),
+  ('BT0020', 'KT02', 'TS00020', '02:00:00', 10.0, 'DVCT02');
+GO
+
+INSERT INTO PHIEUDANGKYDUTHI 
+(PDKDT_MaPhieu, PDKDT_ThoiGianLap, PDKDT_DiaChiChuyenPhat, PDKDT_TrangThaiThanhToan, PDKDT_MaKhachHang, PDKDT_MaLichTHi, PDKDT_MaNhanVienLap)
+VALUES
+('PDK001', '2025-06-01', N'12 Nguyễn Văn Cừ, Hà Nội', N'Chưa thanh toán', 'KH00001', 'LT01', 'NV001'),
+('PDK002', '2025-06-02', N'45 Trần Phú, Hà Nội', N'Đã thanh toán', 'KH00002', 'LT01', 'NV002'),
+('PDK003', '2025-06-03', N'98 Lê Lợi, Đà Nẵng', N'Thanh toán gia hạn', 'KH00003', 'LT02', 'NV003'),
+('PDK004', '2025-06-03', N'22 Phan Đình Phùng, Huế', N'Đã thanh toán', 'KH00004', 'LT02', 'NV004'),
+('PDK005', '2025-06-04', N'36 Điện Biên Phủ, Hải Phòng', N'Chưa thanh toán', 'KH00005', 'LT03', 'NV005'),
+('PDK006', '2025-06-04', N'88 Nguyễn Huệ, Cần Thơ', N'Đã thanh toán', 'KH00006', 'LT03', 'NV001'),
+('PDK007', '2025-06-05', N'10 Trưng Nữ Vương, HCM', N'Thanh toán gia hạn', 'KH00007', 'LT04', 'NV002'),
+('PDK008', '2025-06-06', N'49 Pasteur, HCM', N'Chưa thanh toán', 'KH00008', 'LT04', 'NV003'),
+('PDK009', '2025-06-07', N'52 Lý Tự Trọng, Hà Nội', N'Đã thanh toán', 'KH00009', 'LT05', 'NV004'),
+('PDK010', '2025-06-07', N'33 Nguyễn Tri Phương, ĐN', N'Đã thanh toán', 'KH00010', 'LT05', 'NV005');
+GO
+
+INSERT INTO PHIEUDUTHI 
+(PDT_MaPhieu, PDT_MaPhieuDangKy, PDT_SoBaoDanh, PDT_MaLichThi, PDT_MaPhongThi)
+VALUES
+('PDT001', 'PDK001', 'TS00001', 'LT01', 'P001'),
+('PDT002', 'PDK002', 'TS00002', 'LT01', 'P001'),
+('PDT003', 'PDK003', 'TS00003', 'LT02', 'P002'),
+('PDT004', 'PDK004', 'TS00004', 'LT02', 'P002'),
+('PDT005', 'PDK005', 'TS00005', 'LT03', 'P003'),
+('PDT006', 'PDK006', 'TS00006', 'LT03', 'P003'),
+('PDT007', 'PDK007', 'TS00007', 'LT04', 'P004'),
+('PDT008', 'PDK008', 'TS00008', 'LT04', 'P004'),
+('PDT009', 'PDK009', 'TS00009', 'LT05', 'P005'),
+('PDT010', 'PDK010', 'TS00010', 'LT05', 'P005');
+GO
+
+--delete from BAITHI

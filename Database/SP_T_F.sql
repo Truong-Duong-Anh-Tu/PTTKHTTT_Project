@@ -63,6 +63,71 @@ begin
 end
 go
 
+--Hien thi thong tin ket qua cua cac thi sinh dua vao ky thi
+create or alter procedure usp_ThongTinKetQuaThi
+	@examtest varchar(10)
+as
+begin
+	set NOCOUNT ON;
+
+	select ts.TS_SoBaoDanh, ts.TS_HoTen, ts.TS_CCCD, ts.TS_NgaySinh, ts.TS_GioiTinh, bt.BT_DiemSo
+	from BAITHI as bt join THISINH as ts on bt.BT_SoBaoDanh = ts.TS_SoBaoDanh
+	where bt.BT_MaKyThi = @examtest
+end
+go
+
+--Them thong tin bai thi
+create or alter procedure usp_ThemBaiThi
+	@examcode varchar(10),
+	@examtest varchar(10),
+	@candidate varchar(10),
+	@examtime time,
+	@point float,
+	@examunit varchar(10)
+
+as
+begin
+	set NOCOUNT ON;
+
+	insert into BAITHI (BT_MaBaiThi, BT_MaKyThi, BT_SoBaoDanh, BT_ThoiGianLamBai, BT_DiemSo, BT_DonViCham)
+	values(@examcode, @examtest, @candidate, @examtime, @point, @examunit)
+end
+go
+
+--Cap nhat thong tin bai thi
+create or alter procedure usp_CapNhatBaiThi
+	@examcode varchar(10),
+	@examtest varchar(10),
+	@candidate varchar(10),
+	@examtime time,
+	@point float,
+	@examunit varchar(10)
+
+as
+begin
+	set NOCOUNT ON;
+
+	if not exists(select * from BAITHI where BT_MaBaiThi = @examcode)
+    begin
+        print(N'Bai Thi khong ton tai')
+        return
+    end
+
+	else
+    begin
+        update BAITHI
+        set BT_MaKyThi = coalesce(@examtest, BT_MaKyThi),
+            BT_SoBaoDanh = coalesce(@candidate, BT_SoBaoDanh),
+            BT_ThoiGianLamBai = coalesce(@examtime, BT_ThoiGianLamBai),
+            BT_DiemSo = coalesce(@point, BT_DiemSo), 
+            BT_DonViCham = coalesce(@examunit, BT_DonViCham)
+        where BT_MaBaiThi = @examcode;
+    end
+end
+go
+
+--Xoa bai thi
+
 --TRIGGER
 create or alter trigger utg_CheckDoiTuong
 on THONGBAO

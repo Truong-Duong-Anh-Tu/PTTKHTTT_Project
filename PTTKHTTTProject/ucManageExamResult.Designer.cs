@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             pnlManageResult = new Panel();
+            lblChonThiSinh = new Label();
             lblChonLich = new Label();
             lblKyThi = new Label();
             dtpExamDate = new DateTimePicker();
@@ -36,7 +37,6 @@
             textBox1 = new TextBox();
             cbxExamName = new ComboBox();
             dtgvResult = new DataGridView();
-            lblChonThiSinh = new Label();
             pnlManageResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).BeginInit();
             SuspendLayout();
@@ -56,11 +56,21 @@
             pnlManageResult.Size = new Size(1015, 567);
             pnlManageResult.TabIndex = 0;
             // 
+            // lblChonThiSinh
+            // 
+            lblChonThiSinh.AutoSize = true;
+            lblChonThiSinh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblChonThiSinh.Location = new Point(853, 51);
+            lblChonThiSinh.Name = "lblChonThiSinh";
+            lblChonThiSinh.Size = new Size(141, 23);
+            lblChonThiSinh.TabIndex = 8;
+            lblChonThiSinh.Text = "Tìm kiếm thí sinh";
+            // 
             // lblChonLich
             // 
             lblChonLich.AutoSize = true;
             lblChonLich.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblChonLich.Location = new Point(237, 51);
+            lblChonLich.Location = new Point(356, 51);
             lblChonLich.Name = "lblChonLich";
             lblChonLich.Size = new Size(125, 23);
             lblChonLich.TabIndex = 7;
@@ -80,10 +90,11 @@
             // 
             dtpExamDate.CalendarFont = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpExamDate.CustomFormat = " dddd dd/MM/yyyy";
+            dtpExamDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpExamDate.Format = DateTimePickerFormat.Custom;
-            dtpExamDate.Location = new Point(237, 81);
+            dtpExamDate.Location = new Point(356, 77);
             dtpExamDate.Name = "dtpExamDate";
-            dtpExamDate.Size = new Size(241, 27);
+            dtpExamDate.Size = new Size(241, 30);
             dtpExamDate.TabIndex = 5;
             // 
             // lblSearchExam
@@ -111,29 +122,26 @@
             cbxExamName.FormattingEnabled = true;
             cbxExamName.Location = new Point(22, 77);
             cbxExamName.Name = "cbxExamName";
-            cbxExamName.Size = new Size(198, 31);
+            cbxExamName.Size = new Size(328, 31);
             cbxExamName.TabIndex = 1;
+            cbxExamName.SelectedIndexChanged += cbxExamName_SelectedIndexChanged;
             // 
             // dtgvResult
             // 
+            dtgvResult.AllowUserToAddRows = false;
+            dtgvResult.AllowUserToDeleteRows = false;
+            dtgvResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvResult.BackgroundColor = SystemColors.ControlLightLight;
             dtgvResult.BorderStyle = BorderStyle.None;
             dtgvResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dtgvResult.Location = new Point(22, 136);
+            dtgvResult.MultiSelect = false;
             dtgvResult.Name = "dtgvResult";
             dtgvResult.RowHeadersWidth = 51;
+            dtgvResult.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvResult.Size = new Size(972, 410);
             dtgvResult.TabIndex = 0;
-            // 
-            // lblChonThiSinh
-            // 
-            lblChonThiSinh.AutoSize = true;
-            lblChonThiSinh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblChonThiSinh.Location = new Point(853, 51);
-            lblChonThiSinh.Name = "lblChonThiSinh";
-            lblChonThiSinh.Size = new Size(141, 23);
-            lblChonThiSinh.TabIndex = 8;
-            lblChonThiSinh.Text = "Tìm kiếm thí sinh";
+            dtgvResult.CellContentClick += dtgvResult_CellContentClick;
             // 
             // ucManageExamResult
             // 
@@ -142,6 +150,7 @@
             Controls.Add(pnlManageResult);
             Name = "ucManageExamResult";
             Size = new Size(1021, 573);
+            Load += ucManageExamResult_Load;
             pnlManageResult.ResumeLayout(false);
             pnlManageResult.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).EndInit();
