@@ -131,6 +131,7 @@
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 272F));
             tlpMenu.Size = new Size(156, 625);
             tlpMenu.TabIndex = 4;
+            tlpMenu.Paint += tlpMenu_Paint;
             // 
             // btnQLKQT
             // 

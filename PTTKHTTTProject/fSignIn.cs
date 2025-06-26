@@ -23,7 +23,7 @@ namespace PTTKHTTTProject
 
         private void fSignIn_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         private void btnSignIn_Click(object sender, EventArgs e)
@@ -45,7 +45,7 @@ namespace PTTKHTTTProject
 
                 if (role == "Nhập liệu")
                 {
-                    fNhapLieu fnl= new fNhapLieu(username);
+                    fNhapLieu fnl = new fNhapLieu(username);
                     this.Hide();
                     fnl.ShowDialog();
                     this.Show();
@@ -56,7 +56,7 @@ namespace PTTKHTTTProject
                     this.Hide();
                     ftn.ShowDialog();
                     this.Show();
-                }    
+                }
                 else if (role == "Kế toán")
                 {
                     fKeToan fkt = new fKeToan();
@@ -66,11 +66,11 @@ namespace PTTKHTTTProject
                 }
                 else if (role == "Quản trị hệ thống")
                 {
-                    fQuanTriDL fqt = new fQuanTriDL();
+                    fQuanTriDL fqt = new fQuanTriDL(username);
                     this.Hide();
                     fqt.ShowDialog();
                     this.Show();
-                }   
+                }
                 else if (role == "Coi thi")
                 {
                     fCoiThi fct = new fCoiThi();
@@ -80,7 +80,7 @@ namespace PTTKHTTTProject
                 }
                 else
                 {
-                    MessageBox.Show("Tai khaon chua co vai tro de dang nhap", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tai khoan chua co vai tro de dang nhap", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
@@ -89,6 +89,16 @@ namespace PTTKHTTTProject
                 MessageBox.Show("Ten dang nhap hoac mat khau sai.", "Wrong Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
+        }
+
+        private void ptbLogo_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbxPassword_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

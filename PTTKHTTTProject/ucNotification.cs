@@ -101,7 +101,7 @@ namespace PTTKHTTTProject
             {
                 var selected = lvListMail.SelectedItems[0];
 
-                string fullmail = $"Từ: {selected.SubItems[2].Text}\n" + 
+                string fullmail = $"Từ: {selected.SubItems[2].Text}\n" +
                     $"Đến: {selected.SubItems[3].Text}\n" +
                     $"Chủ đề: {selected.SubItems[1].Text}\n" +
                     $"Thời gian gửi: {selected.SubItems[5].Text}\n\n\n" +
@@ -115,6 +115,11 @@ namespace PTTKHTTTProject
         {
             fCreateNotification fcn = new fCreateNotification(username);
             fcn.ShowDialog();
+        }
+
+        private void tbxFullMail_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

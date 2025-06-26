@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fSignIn));
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
@@ -72,7 +73,7 @@
             btnSignIn.ForeColor = SystemColors.Control;
             btnSignIn.Location = new Point(474, 262);
             btnSignIn.Name = "btnSignIn";
-            btnSignIn.Size = new Size(247, 36);
+            btnSignIn.Size = new Size(267, 36);
             btnSignIn.TabIndex = 5;
             btnSignIn.Text = "ĐĂNG NHẬP";
             btnSignIn.UseVisualStyleBackColor = false;
@@ -81,7 +82,7 @@
             // llbForgotPassword
             // 
             llbForgotPassword.AutoSize = true;
-            llbForgotPassword.Location = new Point(474, 301);
+            llbForgotPassword.Location = new Point(474, 325);
             llbForgotPassword.Name = "llbForgotPassword";
             llbForgotPassword.Size = new Size(116, 20);
             llbForgotPassword.TabIndex = 6;
@@ -90,19 +91,20 @@
             // 
             // ptbLogo
             // 
-            ptbLogo.Image = Properties.Resources.logo;
-            ptbLogo.Location = new Point(121, 188);
+            ptbLogo.Image = (Image)resources.GetObject("ptbLogo.Image");
+            ptbLogo.Location = new Point(91, 173);
             ptbLogo.Name = "ptbLogo";
-            ptbLogo.Size = new Size(55, 54);
+            ptbLogo.Size = new Size(100, 92);
             ptbLogo.SizeMode = PictureBoxSizeMode.Zoom;
             ptbLogo.TabIndex = 7;
             ptbLogo.TabStop = false;
+            ptbLogo.Click += ptbLogo_Click;
             // 
             // lblName
             // 
             lblName.AutoSize = true;
             lblName.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblName.Location = new Point(182, 188);
+            lblName.Location = new Point(197, 192);
             lblName.Name = "lblName";
             lblName.Size = new Size(253, 50);
             lblName.TabIndex = 8;
@@ -115,20 +117,25 @@
             tbxUsername.Location = new Point(474, 160);
             tbxUsername.Name = "tbxUsername";
             tbxUsername.PlaceholderText = "Nhập tên đăng nhập";
-            tbxUsername.Size = new Size(247, 31);
+            tbxUsername.Size = new Size(267, 31);
             tbxUsername.TabIndex = 9;
+            tbxUsername.TextAlign = HorizontalAlignment.Center;
             // 
             // tbxPassword
             // 
+            tbxPassword.BackColor = SystemColors.HighlightText;
             tbxPassword.BorderStyle = BorderStyle.FixedSingle;
             tbxPassword.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxPassword.ForeColor = Color.Black;
             tbxPassword.Location = new Point(474, 211);
             tbxPassword.Name = "tbxPassword";
             tbxPassword.PasswordChar = '*';
             tbxPassword.PlaceholderText = "Mật khẩu";
-            tbxPassword.Size = new Size(247, 31);
+            tbxPassword.Size = new Size(267, 31);
             tbxPassword.TabIndex = 10;
+            tbxPassword.TextAlign = HorizontalAlignment.Center;
             tbxPassword.UseSystemPasswordChar = true;
+            tbxPassword.TextChanged += tbxPassword_TextChanged;
             // 
             // fSignIn
             // 

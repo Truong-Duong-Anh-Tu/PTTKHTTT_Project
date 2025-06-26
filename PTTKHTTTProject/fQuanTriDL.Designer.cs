@@ -28,12 +28,42 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "fQuanTriDL";
+            panelSidebar = new Panel();
+            panelMain = new Panel();
+            SuspendLayout();
+            // 
+            // panelSidebar
+            // 
+            panelSidebar.Location = new Point(1, 0);
+            panelSidebar.Name = "panelSidebar";
+            panelSidebar.Size = new Size(200, 625);
+            panelSidebar.TabIndex = 0;
+            panelSidebar.Paint += panelSidebar_Paint;
+            // 
+            // panelMain
+            // 
+            panelMain.Location = new Point(207, 52);
+            panelMain.Name = "panelMain";
+            panelMain.Size = new Size(1021, 573);
+            panelMain.TabIndex = 1;
+            panelMain.Paint += panelMain_Paint;
+            // 
+            // fQuanTriDL
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1268, 655);
+            Controls.Add(panelMain);
+            Controls.Add(panelSidebar);
+            Name = "fQuanTriDL";
+            Text = "fQuanTriDL";
+            Load += fQuanTriDL_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private Panel panelSidebar;
+        private Panel panelMain;
     }
 }
