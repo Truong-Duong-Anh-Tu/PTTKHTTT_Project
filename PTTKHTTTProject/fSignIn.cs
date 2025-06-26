@@ -39,7 +39,7 @@ namespace PTTKHTTTProject
 
             //Debug.WriteLine(BCrypt.Net.BCrypt.HashPassword(password.Trim()));
 
-            if (TaiKhoanBUS.DangNhap(username, password))
+            if (TaiKhoanBUS.checkSignIn(username, password))
             {
                 string role = TaiKhoanBUS.CheckRole(username);
 

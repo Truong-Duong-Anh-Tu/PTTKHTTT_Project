@@ -9,7 +9,7 @@ namespace PTTKHTTTProject.BUS
 {
     internal class TaiKhoanBUS
     {
-        public static bool DangNhap(string username, string password)
+        public static bool checkSignIn(string username, string password)
         {
             username = username.Trim();
             password = password.Trim();
