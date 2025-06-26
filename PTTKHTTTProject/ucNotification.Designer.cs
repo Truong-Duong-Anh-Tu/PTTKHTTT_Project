@@ -113,18 +113,18 @@
             // 
             // tbxFullMail
             // 
-            tbxFullMail.BorderStyle = BorderStyle.FixedSingle;
-            tbxFullMail.Location = new Point(312, 5);
+            tbxFullMail.BorderStyle = BorderStyle.None;
+            tbxFullMail.Location = new Point(312, 3);
             tbxFullMail.Name = "tbxFullMail";
-            tbxFullMail.Size = new Size(491, 465);
+            tbxFullMail.Size = new Size(491, 467);
             tbxFullMail.TabIndex = 1;
             tbxFullMail.Text = "";
             // 
             // lvListMail
             // 
-            lvListMail.Location = new Point(3, 5);
+            lvListMail.Location = new Point(3, 3);
             lvListMail.Name = "lvListMail";
-            lvListMail.Size = new Size(303, 465);
+            lvListMail.Size = new Size(303, 467);
             lvListMail.TabIndex = 0;
             lvListMail.UseCompatibleStateImageBehavior = false;
             lvListMail.SelectedIndexChanged += lvListMail_SelectedIndexChanged;
