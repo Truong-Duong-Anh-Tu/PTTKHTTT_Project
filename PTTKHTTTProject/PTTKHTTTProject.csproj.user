@@ -34,5 +34,11 @@
     <Compile Update="ucNotification.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="uc_KT_ManageReceipt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="uc_KT_ManageRenewal.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
   </ItemGroup>
 </Project>

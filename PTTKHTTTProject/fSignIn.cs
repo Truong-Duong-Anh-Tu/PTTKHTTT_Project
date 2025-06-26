@@ -59,7 +59,7 @@ namespace PTTKHTTTProject
                 }    
                 else if (role == "Kế toán")
                 {
-                    fKeToan fkt = new fKeToan();
+                    fKeToan fkt = new fKeToan(username);
                     this.Hide();
                     fkt.ShowDialog();
                     this.Show();
