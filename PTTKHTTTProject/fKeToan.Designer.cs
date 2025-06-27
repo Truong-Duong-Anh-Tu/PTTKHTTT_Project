@@ -300,7 +300,7 @@
             Controls.Add(tlpMenuKeToan);
             Controls.Add(panel1);
             Name = "fKeToan";
-            Text = "fKeToan";
+            Text = "KẾ TOÁN";
             tlpMenuKeToan.ResumeLayout(false);
             tlpLogoName.ResumeLayout(false);
             tlpLogoName.PerformLayout();

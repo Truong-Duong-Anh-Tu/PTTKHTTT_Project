@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             pnlManageResult = new Panel();
+            btnSearchReceipt = new Button();
             lblSearchReceipt = new Label();
             txbInput = new TextBox();
             dtgvResult = new DataGridView();
-            btnSearchReceipt = new Button();
             pnlManageResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).BeginInit();
             SuspendLayout();
@@ -43,11 +43,20 @@
             pnlManageResult.Controls.Add(lblSearchReceipt);
             pnlManageResult.Controls.Add(txbInput);
             pnlManageResult.Controls.Add(dtgvResult);
-            pnlManageResult.Location = new Point(2, 3);
+            pnlManageResult.Location = new Point(0, 0);
             pnlManageResult.Margin = new Padding(3, 2, 3, 2);
             pnlManageResult.Name = "pnlManageResult";
             pnlManageResult.Size = new Size(888, 425);
             pnlManageResult.TabIndex = 1;
+            // 
+            // btnSearchReceipt
+            // 
+            btnSearchReceipt.Location = new Point(794, 57);
+            btnSearchReceipt.Name = "btnSearchReceipt";
+            btnSearchReceipt.Size = new Size(75, 26);
+            btnSearchReceipt.TabIndex = 5;
+            btnSearchReceipt.Text = "Tìm";
+            btnSearchReceipt.UseVisualStyleBackColor = true;
             // 
             // lblSearchReceipt
             // 
@@ -86,21 +95,12 @@
             dtgvResult.Size = new Size(850, 308);
             dtgvResult.TabIndex = 0;
             // 
-            // btnSearchReceipt
-            // 
-            btnSearchReceipt.Location = new Point(794, 57);
-            btnSearchReceipt.Name = "btnSearchReceipt";
-            btnSearchReceipt.Size = new Size(75, 26);
-            btnSearchReceipt.TabIndex = 5;
-            btnSearchReceipt.Text = "Tìm";
-            btnSearchReceipt.UseVisualStyleBackColor = true;
-            // 
-            // uc_KT_ManageReceipt
+            // uc_KT_ManageRenewal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(pnlManageResult);
-            Name = "uc_KT_ManageReceipt";
+            Name = "uc_KT_ManageRenewal";
             Size = new Size(893, 430);
             pnlManageResult.ResumeLayout(false);
             pnlManageResult.PerformLayout();

@@ -50,12 +50,12 @@ namespace PTTKHTTTProject
             if (clicked == btnQLPT)
             {
                 lblOption.Text = "Quản lý phiếu thu";
-                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageRenewal());
+                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageReceipt());
             }
             if (clicked == btnQLPGH)
             {
                 lblOption.Text = "Quản lý phiếu gia hạn";
-                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageReceipt());
+                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageRenewal());
             }
             if (clicked == btnKTThongBao)
             {
@@ -94,11 +94,6 @@ namespace PTTKHTTTProject
             {
                 this.Close();
             }
-        }
-
-        private void btnKTThongBao_Click(object sender, EventArgs e)
-        {
-
         }
     }
 }
