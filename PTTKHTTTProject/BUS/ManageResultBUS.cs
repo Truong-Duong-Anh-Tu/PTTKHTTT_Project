@@ -19,19 +19,5 @@ namespace PTTKHTTTProject.BUS
 
             return dt;
         }
-
-        public static List<string> loadExamType()
-        {
-            List<string> examList = new List<string>();
-            DataTable dt = ManageResultDAO.getExamType();
-
-            foreach (DataRow dr in dt.Rows)
-            {
-                string temp = $"{dr["KT_MaKyThi"]} - {dr["KT_TenKyThi"]}";
-                examList.Add(temp);
-            }
-
-            return examList;
-        }
     }
 }

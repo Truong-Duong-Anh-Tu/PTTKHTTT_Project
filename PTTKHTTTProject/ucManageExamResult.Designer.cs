@@ -28,11 +28,12 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pnlManageResult = new Panel();
+            cbxExamDate = new ComboBox();
             lblChonThiSinh = new Label();
             lblChonLich = new Label();
             lblKyThi = new Label();
-            dtpExamDate = new DateTimePicker();
             lblSearchExam = new Label();
             tbxSearchCandidate = new TextBox();
             cbxExamName = new ComboBox();
@@ -43,10 +44,10 @@
             // 
             // pnlManageResult
             // 
+            pnlManageResult.Controls.Add(cbxExamDate);
             pnlManageResult.Controls.Add(lblChonThiSinh);
             pnlManageResult.Controls.Add(lblChonLich);
             pnlManageResult.Controls.Add(lblKyThi);
-            pnlManageResult.Controls.Add(dtpExamDate);
             pnlManageResult.Controls.Add(lblSearchExam);
             pnlManageResult.Controls.Add(tbxSearchCandidate);
             pnlManageResult.Controls.Add(cbxExamName);
@@ -55,6 +56,15 @@
             pnlManageResult.Name = "pnlManageResult";
             pnlManageResult.Size = new Size(1015, 567);
             pnlManageResult.TabIndex = 0;
+            // 
+            // cbxExamDate
+            // 
+            cbxExamDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxExamDate.FormattingEnabled = true;
+            cbxExamDate.Location = new Point(367, 77);
+            cbxExamDate.Name = "cbxExamDate";
+            cbxExamDate.Size = new Size(270, 31);
+            cbxExamDate.TabIndex = 9;
             // 
             // lblChonThiSinh
             // 
@@ -85,18 +95,6 @@
             lblKyThi.Size = new Size(102, 23);
             lblKyThi.TabIndex = 6;
             lblKyThi.Text = "Chọn Kỳ Thi";
-            // 
-            // dtpExamDate
-            // 
-            dtpExamDate.CalendarFont = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpExamDate.CustomFormat = "";
-            dtpExamDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpExamDate.Format = DateTimePickerFormat.Custom;
-            dtpExamDate.Location = new Point(356, 77);
-            dtpExamDate.Name = "dtpExamDate";
-            dtpExamDate.Size = new Size(241, 30);
-            dtpExamDate.TabIndex = 5;
-            dtpExamDate.ValueChanged += dtpExamDate_ValueChanged;
             // 
             // lblSearchExam
             // 
@@ -132,18 +130,34 @@
             // 
             dtgvResult.AllowUserToAddRows = false;
             dtgvResult.AllowUserToDeleteRows = false;
+            dtgvResult.AllowUserToOrderColumns = true;
+            dtgvResult.AllowUserToResizeColumns = false;
+            dtgvResult.AllowUserToResizeRows = false;
             dtgvResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvResult.BackgroundColor = SystemColors.ControlLightLight;
-            dtgvResult.BorderStyle = BorderStyle.None;
+            dtgvResult.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dtgvResult.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgvResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvResult.GridColor = SystemColors.Window;
             dtgvResult.Location = new Point(22, 136);
             dtgvResult.MultiSelect = false;
             dtgvResult.Name = "dtgvResult";
+            dtgvResult.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dtgvResult.RowHeadersVisible = false;
             dtgvResult.RowHeadersWidth = 51;
             dtgvResult.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvResult.Size = new Size(972, 410);
             dtgvResult.TabIndex = 0;
             dtgvResult.CellContentClick += dtgvResult_CellContentClick;
+            dtgvResult.CellPainting += dtgvResult_CellPainting;
             // 
             // ucManageExamResult
             // 
@@ -167,8 +181,8 @@
         private TextBox tbxSearchCandidate;
         private Label lblSearchExam;
         private Label lblKyThi;
-        private DateTimePicker dtpExamDate;
         private Label lblChonLich;
         private Label lblChonThiSinh;
+        private ComboBox cbxExamDate;
     }
 }

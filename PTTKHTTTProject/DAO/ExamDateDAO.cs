@@ -5,19 +5,17 @@ using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xaml;
-using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PTTKHTTTProject.DAO
 {
-    internal class ManageResultDAO
+    internal class ExamDateDAO
     {
-        public static DataTable getCandidateAndPoint(string examtype)
+        public static DataTable getExamDate(string examtype)
         {
             var pExamtype = new SqlParameter("@examtest", SqlDbType.VarChar, 10)
             { Value = examtype.Trim() };
 
-            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_ThongTinKetQuaThi", pExamtype);
+            DataTable dt = DataProvider.Instance.ExecuteQuery("SELECT LT_MaLichThi, LT_NgayThi, LT_TGBatDau FROM LICHTHI WHERE LT_MaKyThi = @examtest");
 
             return dt;
         }

@@ -21,19 +21,11 @@ namespace PTTKHTTTProject
             bs_ResultExam = new BindingSource();
         }
 
-        public ComboBox GetCbxExamName()
-        {
-            return cbxExamName;
-        }
-
-
-        public void loadCandicateAndPoint(ComboBox cbxExamName)
+        public void loadCandicateAndPoint()
         {
             if (cbxExamName.SelectedIndex != -1)
             {
                 string examtype = $"{cbxExamName.SelectedItem}";
-
-                Debug.WriteLine(examtype);
 
                 bs_ResultExam.DataSource = ManageResultBUS.loadCandidateAndPoint(examtype);
 
@@ -43,21 +35,73 @@ namespace PTTKHTTTProject
 
         private void cbxExamName_SelectedIndexChanged(object sender, EventArgs e)
         {
-            loadCandicateAndPoint(GetCbxExamName());
+            loadCandicateAndPoint();
+        }
+
+        private void loadExamDate()
+        {
+            if (cbxExamName.SelectedIndex != -1)
+            {
+                string examtype = $"{cbxExamName.SelectedItem}";
+
+            }
         }
 
         private void ucManageExamResult_Load(object sender, EventArgs e)
         {
-            dtpExamDate.CustomFormat = " ";
-            cbxExamName.DataSource = ManageResultBUS.loadExamType();
+            dtgvResult.AutoGenerateColumns = false;
+            dtgvResult.Columns.Clear();
+
+            dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "TS_HoTen",
+                HeaderText = "Họ và tên",
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
+                Width = 200
+            });
+
+            dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "TS_SoBaoDanh",
+                HeaderText = "Số báo danh"
+            });
+
+            dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "TS_CCCD",
+                HeaderText = "CCCD"
+            });
+
+            dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "TS_NgaySinh",
+                HeaderText = "Ngày sinh"
+            });
+
+            dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "TS_GioiTinh",
+                HeaderText = "Giới tính"
+            });
+
+            dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
+            {
+                DataPropertyName = "BT_DiemSo",
+                HeaderText = "Điểm số"
+            });
+
             var btnCol = new DataGridViewButtonColumn
             {
                 Name = "btnAction",
                 HeaderText = "Hành động",
-                Text = "Xem chi tiết",
-                UseColumnTextForButtonValue = true
+                UseColumnTextForButtonValue = true,
             };
+            btnCol.DefaultCellStyle.Padding = new Padding(35, 0, 35, 0);
             dtgvResult.Columns.Add(btnCol);
+
+            dtgvResult.RowTemplate.MinimumHeight = 40;
+
+            cbxExamName.DataSource = ExamTypeBUS.loadExamType();
         }
 
         private void dtgvResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -65,24 +109,50 @@ namespace PTTKHTTTProject
             dtgvResult.ClearSelection();
         }
 
-        private void dtpExamDate_ValueChanged(object sender, EventArgs e)
-        {
-            dtpExamDate.CustomFormat = " dddd dd/MM/yyyy";
-        }
-
         private void tbxSearchCandidate_TextChanged(object sender, EventArgs e)
         {
             string filter = tbxSearchCandidate.Text.Trim().ToString();
 
-            if( string.IsNullOrEmpty(filter))
+            if (string.IsNullOrEmpty(filter))
             {
                 bs_ResultExam.Filter = string.Empty;
             }
             else
             {
                 bs_ResultExam.Filter = $"TS_SoBaoDanh LIKE '%{filter}%'";
-            }    
-                
+            }
+
+        }
+
+        private void dtgvResult_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1 && e.ColumnIndex >= 0)
+            {
+                e.PaintBackground(e.CellBounds, true);
+                using (var pen = new Pen(Color.LightGray))
+                {
+                    // Vẽ đường ở đáy header cell
+                    e.Graphics.DrawLine(pen,
+                        e.CellBounds.Left,
+                        e.CellBounds.Bottom - 1,
+                        e.CellBounds.Right,
+                        e.CellBounds.Bottom - 1);
+                }
+                e.PaintContent(e.CellBounds);
+                e.Handled = true;
+            }
+
+            if (e.ColumnIndex != dtgvResult.Columns["btnAction"].Index || e.RowIndex < 0)
+            {
+                return;
+            }
+            e.Paint(e.CellBounds, DataGridViewPaintParts.All);
+            var icon = Properties.Resources.Edit; // icon từ resource
+            int iconW = 16, iconH = 16;
+            int x = e.CellBounds.X + (e.CellBounds.Width - iconW) / 2;
+            int y = e.CellBounds.Y + (e.CellBounds.Height - iconH) / 2;
+            e.Graphics.DrawImage(icon, x, y, iconW, iconH);
+            e.Handled = true;
         }
     }
 }
