@@ -73,7 +73,7 @@ CREATE TABLE PHIEUDANGKYDUTHI (
   PDKDT_DiaChiChuyenPhat nvarchar(100),
   PDKDT_TrangThaiThanhToan nvarchar(20) CHECK (PDKDT_TrangThaiThanhToan IN (N'Chưa thanh toán', N'Thanh toán gia hạn', N'Đã thanh toán')),
   PDKDT_MaKhachHang varchar(10) NOT NULL,
-  PDKDT_MaLichTHi varchar(10) NOT NULL,
+  PDKDT_MaLichThi varchar(10) NOT NULL,
   PDKDT_MaNhanVienLap varchar(10) NOT NULL
 )
 GO
@@ -82,7 +82,7 @@ CREATE TABLE PHONGTHI (
   PT_MaPhongThi varchar(10) PRIMARY KEY,
   PT_HinhThuc nvarchar(30) CHECK (PT_HinhThuc IN (N'Tự luận', N'Trắc nghiệm', N'Trác nghiệm-Tự luận')),
   PT_SLThiSinhToiDa int,
-  PT_SLThiSinhToiTHieu int,
+  PT_SLThiSinhToiThieu int,
   PT_SLNhanVienCoiThi int,
 )
 GO
@@ -198,7 +198,7 @@ GO
 ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaKhachHang) REFERENCES KHACHHANG (KH_MaKhachHang)
 GO
 
-ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaLichTHi) REFERENCES LICHTHI (LT_MaLichThi)
+ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaLichThi) REFERENCES LICHTHI (LT_MaLichThi)
 GO
 
 ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaNhanVienLap) REFERENCES NHANVIEN (NV_MaNhanVien)
