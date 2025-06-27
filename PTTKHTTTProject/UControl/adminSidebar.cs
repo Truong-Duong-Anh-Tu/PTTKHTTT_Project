@@ -13,16 +13,12 @@ namespace PTTKHTTTProject
     public partial class adminSidebar : UserControl
     {
         public event EventHandler? NotificationButtonClick;
-        public event EventHandler<string>? SidebarButtonClicked; 
+        public event EventHandler<string>? SidebarButtonClicked;
+
         public adminSidebar()
         {
             InitializeComponent();
         }
-        private void textBox1_TextChanged(object sender, EventArgs e)
-        {
-
-        }
-
         private void tableLayoutPanel1_Paint(object sender, PaintEventArgs e)
         {
 
@@ -40,13 +36,8 @@ namespace PTTKHTTTProject
             if (sender is Button clickedButton)
             {
                 SidebarButtonClicked?.Invoke(this, clickedButton.Text);
-                if (clickedButton.Name == "btnThongbao")
-                {
-                    NotificationButtonClick?.Invoke(this, EventArgs.Empty);
-                }
             }
-            // Nếu sender không phải là Button (ví dụ: người dùng lỡ nối sự kiện của control khác vào đây)
-            // thì code sẽ không làm gì cả và không bị lỗi.
+
         }
 
         private void adminSidebar_Load(object sender, EventArgs e)

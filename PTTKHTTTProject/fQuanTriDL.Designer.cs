@@ -59,6 +59,7 @@
             // 
             // panelHeader
             // 
+            panelHeader.BackColor = SystemColors.ButtonHighlight;
             panelHeader.Controls.Add(Logout);
             panelHeader.Controls.Add(labelUsername);
             panelHeader.Controls.Add(pictureAvatar);
@@ -68,7 +69,6 @@
             panelHeader.Name = "panelHeader";
             panelHeader.Size = new Size(1021, 59);
             panelHeader.TabIndex = 2;
-            panelHeader.Paint += panelHeader_Paint;
             // 
             // Logout
             // 

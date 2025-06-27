@@ -9,6 +9,8 @@ using System.Threading.Tasks;
 using System.Windows.Forms;
 using PTTKHTTTProject.BUS;
 
+using PTTKHTTTProject.UControl;
+
 namespace PTTKHTTTProject
 {
     public partial class fQuanTriDL : Form
@@ -17,8 +19,9 @@ namespace PTTKHTTTProject
         public fQuanTriDL(string username)
         {
             InitializeComponent();
-            LoadAdminSideBar();
             this.loggedInUsername = username.ToUpper();
+            LoadAdminSideBar();
+            ShowTongQuan();
         }
 
         private void LoadAdminSideBar()
@@ -32,6 +35,14 @@ namespace PTTKHTTTProject
             panelSidebar.Controls.Add(sidebar);
         }
 
+        private void ShowTongQuan()
+        {
+            labelHeader.Text = "Tổng quan";
+            panelMain.Controls.Clear();
+            adminTongQuan tongQuanControl = new adminTongQuan();
+            tongQuanControl.Dock = DockStyle.Fill;
+            panelMain.Controls.Add(tongQuanControl);
+        }
         private void Sidebar_SidebarButtonClicked(object? sender, string buttonText)
         {
             // Cập nhật text cho labelHeader
@@ -50,7 +61,7 @@ namespace PTTKHTTTProject
             }
             else if (buttonText == "Tổng quan")
             {
-
+                ShowTongQuan();
             }
             else if (buttonText == "Quản lý lịch thi")
             {
@@ -75,6 +86,14 @@ namespace PTTKHTTTProject
             else if (buttonText == "Quản lý phòng thi")
             {
 
+            }
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Cancel Confirmation", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
             }
         }
         private void panelSidebar_Paint(object sender, PaintEventArgs e)
@@ -110,14 +129,6 @@ namespace PTTKHTTTProject
         private void labelUsername_Click(object sender, EventArgs e)
         {
 
-        }
-
-        private void Logout_Click(object sender, EventArgs e)
-        {
-            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Cancel Confirmation", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
-            {
-                this.Close();
-            }
         }
 
         private void panelHeader_Paint(object sender, PaintEventArgs e)
