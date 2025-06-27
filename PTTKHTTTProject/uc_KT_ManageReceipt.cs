@@ -18,10 +18,5 @@ namespace PTTKHTTTProject
         {
             InitializeComponent();
         }
-
-        private void pnlManageResult_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
     }
 }

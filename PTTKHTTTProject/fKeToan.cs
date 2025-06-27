@@ -18,56 +18,53 @@ namespace PTTKHTTTProject
         private UserControl activeControl;
         private string username;
 
-        public fKeToan(string userAccount)
+        public fKeToan(string accessUser)
         {
             InitializeComponent();
-            username = userAccount.ToUpper();
+            username = accessUser.ToUpper();
             activeControl = new UserControl();
             CustomUC.openChildControl(pnlChildControl, activeControl, new ucInfo(username));
         }
 
-        private void button1_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void tlpMenuKeToan_Click_1(object sender, EventArgs e)
         {
-            var click = sender as Button;
-            if (click == null) return;
+            var clicked = sender as Button;
+            if (clicked == null) return;
 
-            // Reset all buttons to default color
+            // 1. Reset tất cả về màu mặc định
             foreach (var btn in tlpMenuKeToan.Controls.OfType<Button>())
             {
                 btn.BackColor = SystemColors.Control;
                 btn.ForeColor = Color.Black;
             }
-            // Set color for the clicked button
-            click.BackColor = Color.DeepSkyBlue;
-            click.ForeColor = Color.White;
-            if (click == btnTTCN)
+
+            // 2. Set màu cho nút được click
+            clicked.BackColor = Color.DeepSkyBlue;
+            clicked.ForeColor = Color.White;
+
+            if (clicked == btnTTCN)
             {
                 lblOption.Text = "Thông tin cá nhân";
                 CustomUC.openChildControl(pnlChildControl, activeControl, new ucInfo(username));
             }
-            if (click == btnQLPT)
+            if (clicked == btnQLPT)
             {
                 lblOption.Text = "Quản lý phiếu thu";
-                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageReceipt());
-            }
-            if (click == btnQLPGH)
-            {
-                lblOption.Text = "Quản lý phiếu gia hạn";
                 CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageRenewal());
             }
-            if (click == btnThongBao)
+            if (clicked == btnQLPGH)
+            {
+                lblOption.Text = "Quản lý phiếu gia hạn";
+                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageReceipt());
+            }
+            if (clicked == btnKTThongBao)
             {
                 lblOption.Text = "Thông báo";
                 CustomUC.openChildControl(pnlChildControl, activeControl, new ucNotification(username));
             }
         }
 
-        private void fHome_Load(object sender, EventArgs e)
+        private void fKeToan_Load(object sender, EventArgs e)
         {
             btnTTCN.BackColor = Color.DeepSkyBlue;
             btnTTCN.ForeColor = Color.White;
@@ -83,7 +80,7 @@ namespace PTTKHTTTProject
             btnTTCN.FlatAppearance.BorderColor = SystemColors.Control;
             btnQLPT.FlatAppearance.BorderColor = SystemColors.Control;
             btnQLPGH.FlatAppearance.BorderColor = SystemColors.Control;
-            btnThongBao.FlatAppearance.BorderColor = SystemColors.Control;
+            btnKTThongBao.FlatAppearance.BorderColor = SystemColors.Control;
 
             Dictionary<string, string> info = InfoEmployeeBUS.getInfoOfUser(username);
 
@@ -97,6 +94,11 @@ namespace PTTKHTTTProject
             {
                 this.Close();
             }
+        }
+
+        private void btnKTThongBao_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

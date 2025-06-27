@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             tlpMenuKeToan = new TableLayoutPanel();
-            btnThongBao = new Button();
+            btnKTThongBao = new Button();
             btnQLPT = new Button();
             btnTTCN = new Button();
             btnQLPGH = new Button();
@@ -61,7 +61,7 @@
             tlpMenuKeToan.BackColor = SystemColors.Control;
             tlpMenuKeToan.ColumnCount = 1;
             tlpMenuKeToan.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tlpMenuKeToan.Controls.Add(btnThongBao, 0, 5);
+            tlpMenuKeToan.Controls.Add(btnKTThongBao, 0, 5);
             tlpMenuKeToan.Controls.Add(btnQLPT, 0, 3);
             tlpMenuKeToan.Controls.Add(btnTTCN, 0, 2);
             tlpMenuKeToan.Controls.Add(btnQLPGH, 0, 4);
@@ -78,17 +78,18 @@
             tlpMenuKeToan.Size = new Size(136, 469);
             tlpMenuKeToan.TabIndex = 5;
             // 
-            // btnThongBao
+            // btnKTThongBao
             // 
-            btnThongBao.FlatStyle = FlatStyle.Flat;
-            btnThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThongBao.Location = new Point(3, 209);
-            btnThongBao.Margin = new Padding(3, 2, 3, 2);
-            btnThongBao.Name = "btnThongBao";
-            btnThongBao.Size = new Size(130, 41);
-            btnThongBao.TabIndex = 4;
-            btnThongBao.Text = "Thông báo";
-            btnThongBao.UseVisualStyleBackColor = true;
+            btnKTThongBao.FlatStyle = FlatStyle.Flat;
+            btnKTThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnKTThongBao.Location = new Point(3, 209);
+            btnKTThongBao.Margin = new Padding(3, 2, 3, 2);
+            btnKTThongBao.Name = "btnKTThongBao";
+            btnKTThongBao.Size = new Size(130, 41);
+            btnKTThongBao.TabIndex = 4;
+            btnKTThongBao.Text = "Thông báo";
+            btnKTThongBao.UseVisualStyleBackColor = true;
+            btnKTThongBao.Click += tlpMenuKeToan_Click_1;
             // 
             // btnQLPT
             // 
@@ -101,6 +102,7 @@
             btnQLPT.TabIndex = 2;
             btnQLPT.Text = "Quản lý phiếu thu";
             btnQLPT.UseVisualStyleBackColor = true;
+            btnQLPT.Click += tlpMenuKeToan_Click_1;
             // 
             // btnTTCN
             // 
@@ -113,6 +115,7 @@
             btnTTCN.TabIndex = 1;
             btnTTCN.Text = "Thông tin cá nhân";
             btnTTCN.UseVisualStyleBackColor = true;
+            btnTTCN.Click += tlpMenuKeToan_Click_1;
             // 
             // btnQLPGH
             // 
@@ -125,6 +128,7 @@
             btnQLPGH.TabIndex = 2;
             btnQLPGH.Text = "Quản lý phiếu gia hạn";
             btnQLPGH.UseVisualStyleBackColor = true;
+            btnQLPGH.Click += tlpMenuKeToan_Click_1;
             // 
             // tlpLogoName
             // 
@@ -325,7 +329,7 @@
         private PictureBox ptbMenu;
         private PictureBox pictureBox1;
         private Label label1;
-        private Button btnThongBao;
+        private Button btnKTThongBao;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
         private Panel pnlChildControl;
         private Button btnKTSignout;
