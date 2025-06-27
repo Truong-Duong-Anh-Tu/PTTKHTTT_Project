@@ -14,9 +14,11 @@ namespace PTTKHTTTProject
 {
     public partial class ucManageExamResult : UserControl
     {
+        private BindingSource bs_ResultExam;
         public ucManageExamResult()
         {
             InitializeComponent();
+            bs_ResultExam = new BindingSource();
         }
 
         public ComboBox GetCbxExamName()
@@ -33,7 +35,9 @@ namespace PTTKHTTTProject
 
                 Debug.WriteLine(examtype);
 
-                dtgvResult.DataSource = ManageResultBUS.loadCandidateAndPoint(examtype);
+                bs_ResultExam.DataSource = ManageResultBUS.loadCandidateAndPoint(examtype);
+
+                dtgvResult.DataSource = bs_ResultExam;
             }
         }
 
@@ -44,6 +48,7 @@ namespace PTTKHTTTProject
 
         private void ucManageExamResult_Load(object sender, EventArgs e)
         {
+            dtpExamDate.CustomFormat = " ";
             cbxExamName.DataSource = ManageResultBUS.loadExamType();
             var btnCol = new DataGridViewButtonColumn
             {
@@ -58,6 +63,26 @@ namespace PTTKHTTTProject
         private void dtgvResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dtgvResult.ClearSelection();
+        }
+
+        private void dtpExamDate_ValueChanged(object sender, EventArgs e)
+        {
+            dtpExamDate.CustomFormat = " dddd dd/MM/yyyy";
+        }
+
+        private void tbxSearchCandidate_TextChanged(object sender, EventArgs e)
+        {
+            string filter = tbxSearchCandidate.Text.Trim().ToString();
+
+            if( string.IsNullOrEmpty(filter))
+            {
+                bs_ResultExam.Filter = string.Empty;
+            }
+            else
+            {
+                bs_ResultExam.Filter = $"TS_SoBaoDanh LIKE '%{filter}%'";
+            }    
+                
         }
     }
 }

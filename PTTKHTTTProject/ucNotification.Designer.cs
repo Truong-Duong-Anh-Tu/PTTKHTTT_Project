@@ -30,7 +30,6 @@
         {
             btnAddNoti = new FontAwesome.Sharp.IconButton();
             pnlSelections = new Panel();
-            btnBinMail = new Button();
             btnMailSended = new Button();
             btnMailReceived = new Button();
             pnlMail = new Panel();
@@ -58,25 +57,12 @@
             // 
             // pnlSelections
             // 
-            pnlSelections.Controls.Add(btnBinMail);
             pnlSelections.Controls.Add(btnMailSended);
             pnlSelections.Controls.Add(btnMailReceived);
             pnlSelections.Location = new Point(38, 97);
             pnlSelections.Name = "pnlSelections";
             pnlSelections.Size = new Size(166, 473);
             pnlSelections.TabIndex = 4;
-            // 
-            // btnBinMail
-            // 
-            btnBinMail.FlatStyle = FlatStyle.Flat;
-            btnBinMail.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnBinMail.Location = new Point(0, 132);
-            btnBinMail.Name = "btnBinMail";
-            btnBinMail.Size = new Size(166, 58);
-            btnBinMail.TabIndex = 3;
-            btnBinMail.Text = "Thùng rác";
-            btnBinMail.UseVisualStyleBackColor = true;
-            btnBinMail.Click += pnlSelections_Click;
             // 
             // btnMailSended
             // 
@@ -148,7 +134,6 @@
 
         private FontAwesome.Sharp.IconButton btnAddNoti;
         private Panel pnlSelections;
-        private Button btnBinMail;
         private Button btnMailSended;
         private Button btnMailReceived;
         private Panel pnlMail;

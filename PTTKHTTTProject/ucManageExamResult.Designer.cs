@@ -34,7 +34,7 @@
             lblKyThi = new Label();
             dtpExamDate = new DateTimePicker();
             lblSearchExam = new Label();
-            textBox1 = new TextBox();
+            tbxSearchCandidate = new TextBox();
             cbxExamName = new ComboBox();
             dtgvResult = new DataGridView();
             pnlManageResult.SuspendLayout();
@@ -48,7 +48,7 @@
             pnlManageResult.Controls.Add(lblKyThi);
             pnlManageResult.Controls.Add(dtpExamDate);
             pnlManageResult.Controls.Add(lblSearchExam);
-            pnlManageResult.Controls.Add(textBox1);
+            pnlManageResult.Controls.Add(tbxSearchCandidate);
             pnlManageResult.Controls.Add(cbxExamName);
             pnlManageResult.Controls.Add(dtgvResult);
             pnlManageResult.Location = new Point(3, 3);
@@ -89,13 +89,14 @@
             // dtpExamDate
             // 
             dtpExamDate.CalendarFont = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpExamDate.CustomFormat = " dddd dd/MM/yyyy";
+            dtpExamDate.CustomFormat = "";
             dtpExamDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpExamDate.Format = DateTimePickerFormat.Custom;
             dtpExamDate.Location = new Point(356, 77);
             dtpExamDate.Name = "dtpExamDate";
             dtpExamDate.Size = new Size(241, 30);
             dtpExamDate.TabIndex = 5;
+            dtpExamDate.ValueChanged += dtpExamDate_ValueChanged;
             // 
             // lblSearchExam
             // 
@@ -107,14 +108,15 @@
             lblSearchExam.TabIndex = 4;
             lblSearchExam.Text = "Tìm kiếm lịch thi";
             // 
-            // textBox1
+            // tbxSearchCandidate
             // 
-            textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(742, 78);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Số báo danh thí sinh";
-            textBox1.Size = new Size(252, 30);
-            textBox1.TabIndex = 3;
+            tbxSearchCandidate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxSearchCandidate.Location = new Point(742, 78);
+            tbxSearchCandidate.Name = "tbxSearchCandidate";
+            tbxSearchCandidate.PlaceholderText = "Số báo danh thí sinh";
+            tbxSearchCandidate.Size = new Size(252, 30);
+            tbxSearchCandidate.TabIndex = 3;
+            tbxSearchCandidate.TextChanged += tbxSearchCandidate_TextChanged;
             // 
             // cbxExamName
             // 
@@ -162,7 +164,7 @@
         private Panel pnlManageResult;
         private DataGridView dtgvResult;
         private ComboBox cbxExamName;
-        private TextBox textBox1;
+        private TextBox tbxSearchCandidate;
         private Label lblSearchExam;
         private Label lblKyThi;
         private DateTimePicker dtpExamDate;
