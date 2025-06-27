@@ -26,19 +26,56 @@ namespace PTTKHTTTProject
             adminSidebar sidebar = new adminSidebar();
 
             // Lắng nghe các sự kiện:
-            sidebar.NotificationButtonClick += Sidebar_NotificationButtonClick;
+            sidebar.SidebarButtonClicked += Sidebar_SidebarButtonClicked;
             sidebar.Dock = DockStyle.Fill;
             panelSidebar.Controls.Clear();
             panelSidebar.Controls.Add(sidebar);
         }
 
-        private void Sidebar_NotificationButtonClick(object? sender, EventArgs e)
+        private void Sidebar_SidebarButtonClicked(object? sender, string buttonText)
         {
-            // Code để hiển thị UserControl Thông báo (đã làm ở lần trước)
-            ucNotification notificationControl = new ucNotification(this.loggedInUsername);
-            notificationControl.Dock = DockStyle.Fill;
+            // Cập nhật text cho labelHeader
+            labelHeader.Text = buttonText;
+
+            // Xóa control cũ trong panelMain
             panelMain.Controls.Clear();
-            panelMain.Controls.Add(notificationControl);
+
+            // Bạn có thể thêm logic để hiển thị các UserControl khác nhau tại đây
+            // Ví dụ:
+            if (buttonText == "Thông báo")
+            {
+                ucNotification notificationControl = new ucNotification(this.loggedInUsername);
+                notificationControl.Dock = DockStyle.Fill;
+                panelMain.Controls.Add(notificationControl);
+            }
+            else if (buttonText == "Tổng quan")
+            {
+
+            }
+            else if (buttonText == "Quản lý lịch thi")
+            {
+
+            }
+            else if (buttonText == "Quản lý kỳ thi")
+            {
+
+            }
+            else if (buttonText == "Quản lý lịch nhân viên")
+            {
+
+            }
+            else if(buttonText == "Quản lý nhân viên")
+            {
+
+            }
+            else if (buttonText == "Phát hành phiếu dự thi")
+            {
+
+            }
+            else if (buttonText == "Quản lý phòng thi")
+            {
+
+            }
         }
         private void panelSidebar_Paint(object sender, PaintEventArgs e)
         {
@@ -51,6 +88,39 @@ namespace PTTKHTTTProject
         }
 
         private void panelMain_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelHeader_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureAvatar_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelUsername_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void Logout_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Cancel Confirmation", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
+        private void panelHeader_Paint(object sender, PaintEventArgs e)
         {
 
         }

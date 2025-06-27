@@ -13,6 +13,7 @@ namespace PTTKHTTTProject
     public partial class adminSidebar : UserControl
     {
         public event EventHandler? NotificationButtonClick;
+        public event EventHandler<string>? SidebarButtonClicked; 
         public adminSidebar()
         {
             InitializeComponent();
@@ -35,15 +36,17 @@ namespace PTTKHTTTProject
 
         private void btnTongQuan_Click_1(object sender, EventArgs e)
         {
-            Button clickedButton = (Button)sender;
-            if (clickedButton.Name == "btnThongbao")
+            // Kiểm tra xem đối tượng gửi sự kiện có phải là một Button không
+            if (sender is Button clickedButton)
             {
-                NotificationButtonClick?.Invoke(this, EventArgs.Empty);
+                SidebarButtonClicked?.Invoke(this, clickedButton.Text);
+                if (clickedButton.Name == "btnThongbao")
+                {
+                    NotificationButtonClick?.Invoke(this, EventArgs.Empty);
+                }
             }
-            else
-            {
-                // Handle other button clicks if necessary
-            }
+            // Nếu sender không phải là Button (ví dụ: người dùng lỡ nối sự kiện của control khác vào đây)
+            // thì code sẽ không làm gì cả và không bị lỗi.
         }
 
         private void adminSidebar_Load(object sender, EventArgs e)

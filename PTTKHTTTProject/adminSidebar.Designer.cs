@@ -225,7 +225,6 @@
             Name = "adminSidebar";
             Size = new Size(200, 602);
             Load += adminSidebar_Load;
-            Click += btnTongQuan_Click_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
