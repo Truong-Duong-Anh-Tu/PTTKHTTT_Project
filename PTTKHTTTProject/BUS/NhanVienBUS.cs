@@ -22,5 +22,10 @@ namespace PTTKHTTTProject.BUS
             // (Tùy chọn) Thêm các bước kiểm tra logic nghiệp vụ ở đây trước khi gọi DAO
             return NhanVienDAO.AddNhanVien(maNV, tenNV, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
         }
+
+        public static bool DeleteNhanVien(string maNV)
+        {
+            return NhanVienDAO.DeleteNhanVien(maNV);
+        }
     }
 }

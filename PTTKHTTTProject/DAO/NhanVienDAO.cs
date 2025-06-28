@@ -51,5 +51,21 @@ namespace PTTKHTTTProject.DAO
             }
         }
 
+
+        public static bool DeleteNhanVien(string maNV)
+        {
+            try
+            {
+                var parameter = new SqlParameter("@MaNhanVien", SqlDbType.VarChar, 10) { Value = maNV };
+                // Sử dụng ExecuteScalarSP<int> để nhận về giá trị 1 hoặc 0 từ SP
+                int result = DataProvider.Instance.ExecuteScalarSP<int>("usp_DeleteNhanVien", parameter);
+                return result == 1;
+            }
+            catch (Exception)
+            {
+                // Nếu có lỗi xảy ra, trả về false
+                return false;
+            }
+        }
     }
 }
