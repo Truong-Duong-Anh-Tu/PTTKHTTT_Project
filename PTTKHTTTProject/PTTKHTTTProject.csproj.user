@@ -40,6 +40,9 @@
     <Compile Update="ucNotification.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UControl\adminSidebar.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UControl\adminTongQuan.cs">
       <SubType>UserControl</SubType>
     </Compile>

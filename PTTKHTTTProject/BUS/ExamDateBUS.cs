@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -13,11 +14,19 @@ namespace PTTKHTTTProject.BUS
         public static List<string> loadExamDate(string examtest)
         {
             List<string> examDateList = new List<string>();
-            DataTable dt = ExamDateDAO.getExamDate(examtest);
+            string examtype = examtest.Split(' ')[0];
+            DataTable dt = ExamDateDAO.getExamDate(examtype);
+
+            Debug.WriteLine(dt.Rows.Count);
 
             foreach (DataRow dr in dt.Rows)
             {
-                string temp = $"{dr["LT_MaLichThi"]}: {dr["LT_NgayThi"]} - {dr["LT_TGBatDau"]}";
+                string dateStr = dr.Field<DateTime>("LT_NgayThi").ToString("dd/MM/yyyy");
+
+                var timeSpan = dr.Field<TimeSpan>("LT_TGBatDau");
+                string timeStr = timeSpan.ToString(@"hh\:mm");
+
+                string temp = $"{dr["LT_MaLichThi"]} : {dateStr} - {timeStr}";
                 examDateList.Add(temp);
             }
 

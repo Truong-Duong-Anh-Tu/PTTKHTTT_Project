@@ -15,7 +15,7 @@ namespace PTTKHTTTProject.DAO
             var pExamtype = new SqlParameter("@examtest", SqlDbType.VarChar, 10)
             { Value = examtype.Trim() };
 
-            DataTable dt = DataProvider.Instance.ExecuteQuery("SELECT LT_MaLichThi, LT_NgayThi, LT_TGBatDau FROM LICHTHI WHERE LT_MaKyThi = @examtest");
+            DataTable dt = DataProvider.Instance.ExecuteQuery("SELECT LT_MaLichThi, LT_NgayThi, LT_TGBatDau FROM LICHTHI WHERE LT_MaKyThi = @examtest", pExamtype);
 
             return dt;
         }
