@@ -65,6 +65,7 @@
             cbxExamDate.Name = "cbxExamDate";
             cbxExamDate.Size = new Size(270, 31);
             cbxExamDate.TabIndex = 9;
+            cbxExamDate.SelectedIndexChanged += cbxExamDate_SelectedIndexChanged;
             // 
             // lblChonThiSinh
             // 

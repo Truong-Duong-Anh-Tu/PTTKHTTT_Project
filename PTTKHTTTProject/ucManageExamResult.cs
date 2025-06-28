@@ -8,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xaml;
 using PTTKHTTTProject.BUS;
 
 namespace PTTKHTTTProject
@@ -36,14 +37,25 @@ namespace PTTKHTTTProject
         private void cbxExamName_SelectedIndexChanged(object sender, EventArgs e)
         {
             loadCandicateAndPoint();
+            loadExamDate();
         }
 
         private void loadExamDate()
         {
             if (cbxExamName.SelectedIndex != -1)
             {
-                string examtype = $"{cbxExamName.SelectedItem}";
 
+                string examtype = $"{cbxExamName.SelectedItem}";
+                List<string> listexamdate = ExamDateBUS.loadExamDate(examtype);
+
+                if (listexamdate.Count > 0)
+                {
+                    cbxExamDate.DataSource = listexamdate;
+                }
+                else
+                {
+                    cbxExamDate.DataSource = null;
+                }
             }
         }
 
@@ -121,7 +133,6 @@ namespace PTTKHTTTProject
             {
                 bs_ResultExam.Filter = $"TS_SoBaoDanh LIKE '%{filter}%'";
             }
-
         }
 
         private void dtgvResult_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -132,7 +143,7 @@ namespace PTTKHTTTProject
                 using (var pen = new Pen(Color.LightGray))
                 {
                     // Vẽ đường ở đáy header cell
-                    e.Graphics.DrawLine(pen,
+                    e.Graphics!.DrawLine(pen,
                         e.CellBounds.Left,
                         e.CellBounds.Bottom - 1,
                         e.CellBounds.Right,
@@ -142,7 +153,7 @@ namespace PTTKHTTTProject
                 e.Handled = true;
             }
 
-            if (e.ColumnIndex != dtgvResult.Columns["btnAction"].Index || e.RowIndex < 0)
+            if (e.ColumnIndex != dtgvResult.Columns["btnAction"]!.Index || e.RowIndex < 0)
             {
                 return;
             }
@@ -151,8 +162,22 @@ namespace PTTKHTTTProject
             int iconW = 16, iconH = 16;
             int x = e.CellBounds.X + (e.CellBounds.Width - iconW) / 2;
             int y = e.CellBounds.Y + (e.CellBounds.Height - iconH) / 2;
-            e.Graphics.DrawImage(icon, x, y, iconW, iconH);
+            e.Graphics!.DrawImage(icon, x, y, iconW, iconH);
             e.Handled = true;
+        }
+
+        private void cbxExamDate_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string examdatetime = $"{cbxExamDate.SelectedItem}".Split(' ')[0];
+
+            if (string.IsNullOrEmpty(examdatetime))
+            {
+                bs_ResultExam.Filter = string.Empty;
+            }
+            else
+            {
+                bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}'";
+            }
         }
     }
 }
