@@ -21,7 +21,7 @@ namespace PTTKHTTTProject
 
         private void uc_KT_ManageRenewal_Load(object sender, EventArgs e)
         {
-            dtgvResult.DataSource = ManageRenewalBUS.loadRenewal();
+            dtgvResult.DataSource = ManageRenewalBUS.loadRenewal("");
             var btnCol = new DataGridViewButtonColumn
             {
                 Name = "btnAction",
@@ -30,6 +30,16 @@ namespace PTTKHTTTProject
                 UseColumnTextForButtonValue = true
             };
             dtgvResult.Columns.Add(btnCol);
+
+            dtgvResult.CellContentClick += (s, ev) =>
+            {
+                var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+                if (ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index && ev.RowIndex >= 0)
+                {
+                    fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID);
+                    previewForm.ShowDialog();
+                }
+            };
         }
 
         //private void pnlManageResult_Paint(object sender, PaintEventArgs e)

@@ -36,17 +36,17 @@ namespace PTTKHTTTProject.DAO
             }
         }
 
-        public static DataTable getReceiptInfo(string receiptId)
-        {
-            SqlParameter[] filter = new SqlParameter[]
-                {
-                    new SqlParameter("@search", SqlDbType.NVarChar, 50)
-                    {
-                        Value = receiptId.Trim()
-                    },
-                };
-            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptInfo", filter);
-            return dt;
-        }
+        //public static DataTable getReceiptInfo(string receiptId)
+        //{
+        //    SqlParameter[] filter = new SqlParameter[]
+        //        {
+        //            new SqlParameter("@search", SqlDbType.NVarChar, 50)
+        //            {
+        //                Value = receiptId.Trim()
+        //            },
+        //        };
+        //    DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptInfo", filter);
+        //    return dt;
+        //}
     }
 }

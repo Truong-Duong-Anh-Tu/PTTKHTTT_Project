@@ -45,13 +45,16 @@
             button1 = new Button();
             button2 = new Button();
             txbGhiChu = new TextBox();
+            label1 = new Label();
+            groupBox1 = new GroupBox();
+            groupBox1.SuspendLayout();
             SuspendLayout();
             // 
             // lblHoTen
             // 
             lblHoTen.AutoSize = true;
             lblHoTen.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblHoTen.Location = new Point(170, 71);
+            lblHoTen.Location = new Point(157, 62);
             lblHoTen.Name = "lblHoTen";
             lblHoTen.Size = new Size(63, 19);
             lblHoTen.TabIndex = 0;
@@ -61,7 +64,7 @@
             // 
             lblNoiDung.AutoSize = true;
             lblNoiDung.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblNoiDung.Location = new Point(132, 105);
+            lblNoiDung.Location = new Point(119, 96);
             lblNoiDung.Name = "lblNoiDung";
             lblNoiDung.Size = new Size(100, 19);
             lblNoiDung.TabIndex = 1;
@@ -71,7 +74,7 @@
             // 
             lblSoTienThu.AutoSize = true;
             lblSoTienThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblSoTienThu.Location = new Point(149, 140);
+            lblSoTienThu.Location = new Point(136, 131);
             lblSoTienThu.Name = "lblSoTienThu";
             lblSoTienThu.Size = new Size(84, 19);
             lblSoTienThu.TabIndex = 2;
@@ -81,7 +84,7 @@
             // 
             lblNgayThu.AutoSize = true;
             lblNgayThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblNgayThu.Location = new Point(159, 244);
+            lblNgayThu.Location = new Point(146, 235);
             lblNgayThu.Name = "lblNgayThu";
             lblNgayThu.Size = new Size(74, 19);
             lblNgayThu.TabIndex = 3;
@@ -91,7 +94,7 @@
             // 
             lblNguoiThu.AutoSize = true;
             lblNguoiThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblNguoiThu.Location = new Point(153, 278);
+            lblNguoiThu.Location = new Point(140, 269);
             lblNguoiThu.Name = "lblNguoiThu";
             lblNguoiThu.Size = new Size(80, 19);
             lblNguoiThu.TabIndex = 4;
@@ -101,7 +104,7 @@
             // 
             lblHinhThuc.AutoSize = true;
             lblHinhThuc.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblHinhThuc.Location = new Point(81, 311);
+            lblHinhThuc.Location = new Point(68, 302);
             lblHinhThuc.Name = "lblHinhThuc";
             lblHinhThuc.Size = new Size(152, 19);
             lblHinhThuc.TabIndex = 5;
@@ -111,7 +114,7 @@
             // 
             lblGhiChu.AutoSize = true;
             lblGhiChu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblGhiChu.Location = new Point(171, 344);
+            lblGhiChu.Location = new Point(158, 335);
             lblGhiChu.Name = "lblGhiChu";
             lblGhiChu.Size = new Size(62, 19);
             lblGhiChu.TabIndex = 6;
@@ -121,7 +124,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label8.Location = new Point(314, 194);
+            label8.Location = new Point(301, 185);
             label8.Name = "label8";
             label8.Size = new Size(185, 19);
             label8.TabIndex = 7;
@@ -132,7 +135,7 @@
             txbHoTen.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbHoTen.BorderStyle = BorderStyle.None;
             txbHoTen.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbHoTen.Location = new Point(281, 71);
+            txbHoTen.Location = new Point(268, 62);
             txbHoTen.Margin = new Padding(3, 2, 3, 2);
             txbHoTen.Name = "txbHoTen";
             txbHoTen.ReadOnly = true;
@@ -145,7 +148,7 @@
             txbNoiDung.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbNoiDung.BorderStyle = BorderStyle.None;
             txbNoiDung.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbNoiDung.Location = new Point(281, 105);
+            txbNoiDung.Location = new Point(268, 96);
             txbNoiDung.Margin = new Padding(3, 2, 3, 2);
             txbNoiDung.Name = "txbNoiDung";
             txbNoiDung.ReadOnly = true;
@@ -158,7 +161,7 @@
             txbSoTienThu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbSoTienThu.BorderStyle = BorderStyle.None;
             txbSoTienThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbSoTienThu.Location = new Point(281, 140);
+            txbSoTienThu.Location = new Point(268, 131);
             txbSoTienThu.Margin = new Padding(3, 2, 3, 2);
             txbSoTienThu.Name = "txbSoTienThu";
             txbSoTienThu.ReadOnly = true;
@@ -171,7 +174,7 @@
             txbNgayThu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbNgayThu.BorderStyle = BorderStyle.None;
             txbNgayThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbNgayThu.Location = new Point(281, 244);
+            txbNgayThu.Location = new Point(268, 235);
             txbNgayThu.Margin = new Padding(3, 2, 3, 2);
             txbNgayThu.Name = "txbNgayThu";
             txbNgayThu.ReadOnly = true;
@@ -184,7 +187,7 @@
             txbNguoiThu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbNguoiThu.BorderStyle = BorderStyle.None;
             txbNguoiThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbNguoiThu.Location = new Point(281, 278);
+            txbNguoiThu.Location = new Point(268, 269);
             txbNguoiThu.Margin = new Padding(3, 2, 3, 2);
             txbNguoiThu.Name = "txbNguoiThu";
             txbNguoiThu.ReadOnly = true;
@@ -197,7 +200,7 @@
             txbHinhThuc.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbHinhThuc.BorderStyle = BorderStyle.None;
             txbHinhThuc.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbHinhThuc.Location = new Point(281, 311);
+            txbHinhThuc.Location = new Point(268, 302);
             txbHinhThuc.Margin = new Padding(3, 2, 3, 2);
             txbHinhThuc.Name = "txbHinhThuc";
             txbHinhThuc.ReadOnly = true;
@@ -207,7 +210,7 @@
             // 
             // button1
             // 
-            button1.Location = new Point(713, 415);
+            button1.Location = new Point(700, 406);
             button1.Name = "button1";
             button1.Size = new Size(75, 23);
             button1.TabIndex = 32;
@@ -216,7 +219,7 @@
             // 
             // button2
             // 
-            button2.Location = new Point(602, 415);
+            button2.Location = new Point(589, 406);
             button2.Name = "button2";
             button2.Size = new Size(105, 23);
             button2.TabIndex = 33;
@@ -228,7 +231,7 @@
             txbGhiChu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbGhiChu.BorderStyle = BorderStyle.None;
             txbGhiChu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbGhiChu.Location = new Point(281, 344);
+            txbGhiChu.Location = new Point(268, 335);
             txbGhiChu.Margin = new Padding(3, 2, 3, 2);
             txbGhiChu.Name = "txbGhiChu";
             txbGhiChu.ReadOnly = true;
@@ -236,33 +239,54 @@
             txbGhiChu.TabIndex = 34;
             txbGhiChu.Text = "NODATA";
             // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            label1.Location = new Point(254, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(263, 19);
+            label1.TabIndex = 35;
+            label1.Text = "TẠO PHIẾU THU CHO PHIẾU ĐĂNG KÝ";
+            // 
+            // groupBox1
+            // 
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(txbGhiChu);
+            groupBox1.Controls.Add(lblHoTen);
+            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(lblNoiDung);
+            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(lblSoTienThu);
+            groupBox1.Controls.Add(txbHinhThuc);
+            groupBox1.Controls.Add(lblNgayThu);
+            groupBox1.Controls.Add(txbNguoiThu);
+            groupBox1.Controls.Add(lblNguoiThu);
+            groupBox1.Controls.Add(txbNgayThu);
+            groupBox1.Controls.Add(lblHinhThuc);
+            groupBox1.Controls.Add(txbSoTienThu);
+            groupBox1.Controls.Add(lblGhiChu);
+            groupBox1.Controls.Add(txbNoiDung);
+            groupBox1.Controls.Add(label8);
+            groupBox1.Controls.Add(txbHoTen);
+            groupBox1.Location = new Point(12, 9);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Size = new Size(776, 429);
+            groupBox1.TabIndex = 36;
+            groupBox1.TabStop = false;
+            // 
             // fKT_CreateReceipt_Preview
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(800, 450);
-            Controls.Add(txbGhiChu);
-            Controls.Add(button2);
-            Controls.Add(button1);
-            Controls.Add(txbHinhThuc);
-            Controls.Add(txbNguoiThu);
-            Controls.Add(txbNgayThu);
-            Controls.Add(txbSoTienThu);
-            Controls.Add(txbNoiDung);
-            Controls.Add(txbHoTen);
-            Controls.Add(label8);
-            Controls.Add(lblGhiChu);
-            Controls.Add(lblHinhThuc);
-            Controls.Add(lblNguoiThu);
-            Controls.Add(lblNgayThu);
-            Controls.Add(lblSoTienThu);
-            Controls.Add(lblNoiDung);
-            Controls.Add(lblHoTen);
+            Controls.Add(groupBox1);
             Name = "fKT_CreateReceipt_Preview";
             Text = "XEM TRƯỚC";
             Load += fKT_CreateReceipt_Preview_Load;
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
@@ -284,5 +308,7 @@
         private Button button1;
         private Button button2;
         private TextBox txbGhiChu;
+        private Label label1;
+        private GroupBox groupBox1;
     }
 }

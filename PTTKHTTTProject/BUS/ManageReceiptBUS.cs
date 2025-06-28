@@ -13,27 +13,9 @@ namespace PTTKHTTTProject.BUS
     {
         public static DataTable loadReceipt(string filterText)
         {
-            //if (string.IsNullOrEmpty(receiptType))
-            //{
-            //    Debug.WriteLine("Receipt type is null or empty, loading all receipts.");
-            //    return ManageReceiptDAO.getReceipt();
-            //}
-            //string type = receiptType.Split(' ')[0];
             DataTable dt = ManageReceiptDAO.getReceipt(filterText);
             return dt;
         }
-        //public static List<string> loadReceiptType()
-        //{
-        //    List<string> receiptList = new List<string>();
-        //    DataTable dt = ManageReceiptDAO.getReceiptType();
-        //    foreach (DataRow dr in dt.Rows)
-        //    {
-        //        string temp = dr["PDKDT_TinhTrangThanhToan"].ToString();
-        //        receiptList.Add(temp);
-        //    }
-        //    return receiptList;
-        //}
-
         public static Dictionary<string, string> getReceiptInfoPreview(string receiptId)
         {
             Dictionary<string, string> receiptPreview = new Dictionary<string, string>();

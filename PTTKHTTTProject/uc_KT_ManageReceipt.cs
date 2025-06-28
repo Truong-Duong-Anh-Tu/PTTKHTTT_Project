@@ -36,7 +36,7 @@ namespace PTTKHTTTProject
             //Use getReceiptInfoPreview
             dtgvResult.CellContentClick += (s, ev) =>
             {
-                var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["PDKDT_MaPhieu"].Value.ToString();
+                var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
                 if (ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index && ev.RowIndex >= 0)
                 {
                     fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedReceiptID);
