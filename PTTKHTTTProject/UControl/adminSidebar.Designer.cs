@@ -186,7 +186,7 @@
             btn_QuanLyLichNhanVien.Margin = new Padding(0, 3, 3, 3);
             btn_QuanLyLichNhanVien.Name = "btn_QuanLyLichNhanVien";
             btn_QuanLyLichNhanVien.Size = new Size(197, 49);
-            btn_QuanLyLichNhanVien.TabIndex = 3;
+            btn_QuanLyLichNhanVien.TabIndex = 4;
             btn_QuanLyLichNhanVien.Text = "Quản lý lịch nhân viên";
             btn_QuanLyLichNhanVien.UseVisualStyleBackColor = true;
             btn_QuanLyLichNhanVien.Click += btnTongQuan_Click_1;
@@ -200,7 +200,7 @@
             btnTongQuan.Location = new Point(3, 106);
             btnTongQuan.Name = "btnTongQuan";
             btnTongQuan.Size = new Size(194, 44);
-            btnTongQuan.TabIndex = 4;
+            btnTongQuan.TabIndex = 3;
             btnTongQuan.Text = "Tổng quan";
             btnTongQuan.UseVisualStyleBackColor = true;
             btnTongQuan.Click += btnTongQuan_Click_1;
