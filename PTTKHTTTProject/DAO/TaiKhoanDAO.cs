@@ -12,18 +12,30 @@ namespace PTTKHTTTProject.DAO
 {
     internal class TaiKhoanDAO
     {
-        public static string getAccount(string username)
+        public static string getAccount(string email)
         {
-            var pUser = new SqlParameter("@username", SqlDbType.VarChar, 10)
-            { Value = username.Trim() };
+            var pEmail = new SqlParameter("@email", SqlDbType.Char, 100)
+            { Value = email.Trim() };
             var pPass = new SqlParameter("@password", SqlDbType.VarChar, 100)
             { Direction = ParameterDirection.Output };
 
-            DataProvider.Instance.ExecuteNonQuerySP("usp_GetPasswordOfUsername", pUser, pPass);
+            DataProvider.Instance.ExecuteNonQuerySP("usp_GetPasswordOfUsername", pEmail, pPass);
 
             string storedHash = pPass.Value as string ?? string.Empty;
 
             return storedHash;
+        }
+
+        public static string getUsername(string email)
+        {
+            var pEmail = new SqlParameter("@email", SqlDbType.VarChar, 100)
+            { Value = email.Trim() };
+
+            object result = DataProvider.Instance.ExecuteScalar("SELECT NV_MaNhanVien FROM NHANVIEN WHERE NV_Email = @email", pEmail);
+
+            string? username = result != null && result != DBNull.Value ? result.ToString() : string.Empty;
+
+            return $"{username}";
         }
 
         public static string getRole(string username)

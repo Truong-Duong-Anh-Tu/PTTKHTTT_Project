@@ -91,8 +91,8 @@
             // 
             // ptbLogo
             // 
-            ptbLogo.Image = (Image)resources.GetObject("ptbLogo.Image");
-            ptbLogo.Location = new Point(91, 173);
+            ptbLogo.Image = Properties.Resources.logonew;
+            ptbLogo.Location = new Point(121, 188);
             ptbLogo.Name = "ptbLogo";
             ptbLogo.Size = new Size(100, 92);
             ptbLogo.SizeMode = PictureBoxSizeMode.Zoom;

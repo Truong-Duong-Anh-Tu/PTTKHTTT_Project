@@ -7,24 +7,93 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Drawing.Drawing2D;
+using PTTKHTTTProject.BUS;
+using PTTKHTTTProject.UControl;
 
 namespace PTTKHTTTProject
 {
     public partial class fKeToan : Form
     {
-        public fKeToan()
+        private UserControl activeControl;
+        private string username;
+
+        public fKeToan(string accessUser)
         {
             InitializeComponent();
+            username = accessUser.ToUpper();
+            activeControl = new UserControl();
+            CustomUC.openChildControl(pnlChildControl, activeControl, new ucInfo(username));
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void tlpMenuKeToan_Click_1(object sender, EventArgs e)
         {
+            var clicked = sender as Button;
+            if (clicked == null) return;
 
+            // 1. Reset tất cả về màu mặc định
+            foreach (var btn in tlpMenuKeToan.Controls.OfType<Button>())
+            {
+                btn.BackColor = SystemColors.Control;
+                btn.ForeColor = Color.Black;
+            }
+
+            // 2. Set màu cho nút được click
+            clicked.BackColor = Color.DeepSkyBlue;
+            clicked.ForeColor = Color.White;
+
+            if (clicked == btnTTCN)
+            {
+                lblOption.Text = "Thông tin cá nhân";
+                CustomUC.openChildControl(pnlChildControl, activeControl, new ucInfo(username));
+            }
+            if (clicked == btnQLPT)
+            {
+                lblOption.Text = "Quản lý phiếu thu";
+                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageReceipt());
+            }
+            if (clicked == btnQLPGH)
+            {
+                lblOption.Text = "Quản lý phiếu gia hạn";
+                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageRenewal());
+            }
+            if (clicked == btnKTThongBao)
+            {
+                lblOption.Text = "Thông báo";
+                CustomUC.openChildControl(pnlChildControl, activeControl, new ucNotification(username));
+            }
         }
 
-        private void labelTitle_Click(object sender, EventArgs e)
+        private void fKeToan_Load(object sender, EventArgs e)
         {
+            btnTTCN.BackColor = Color.DeepSkyBlue;
+            btnTTCN.ForeColor = Color.White;
 
+            int size = Math.Min(ptbAvatar.Width, ptbAvatar.Height);
+            ptbAvatar.Size = new Size(size, size);
+
+            GraphicsPath gp = new GraphicsPath();
+            gp.AddEllipse(0, 0, size, size);
+
+            ptbAvatar.Region = new Region(gp);
+
+            btnTTCN.FlatAppearance.BorderColor = SystemColors.Control;
+            btnQLPT.FlatAppearance.BorderColor = SystemColors.Control;
+            btnQLPGH.FlatAppearance.BorderColor = SystemColors.Control;
+            btnKTThongBao.FlatAppearance.BorderColor = SystemColors.Control;
+
+            Dictionary<string, string> info = InfoEmployeeBUS.getInfoOfUser(username);
+
+            string name = string.IsNullOrWhiteSpace(info["Hoten"]) ? "" : info["Hoten"].Trim().Split(' ').Last();
+            lblName_Role.Text = $"{name} - Nhân viên kế toán";
+        }
+
+        private void btnKTSignout_Click_1(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Cancel Confirmation", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
+            }
         }
     }
 }

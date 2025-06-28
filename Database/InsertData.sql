@@ -109,8 +109,12 @@ VALUES
 ('KT01', N'Kỳ thi tiếng Anh A2', 500000),
 ('KT02', N'Kỳ thi tiếng Anh B1', 700000),
 ('KT03', N'Kỳ thi Tin học văn phòng', 600000),
-('KT04', N'Kỳ thi năng lực công chức', 800000),
-('KT05', N'Kỳ thi tiếng Hàn TOPIK I', 900000);
+('KT04', N'Kỳ thi năng lực tiếng Nhật JLPT N5', 800000),
+('KT05', N'Kỳ thi năng lực tiếng Nhật JLPT N4', 800000),
+('KT06', N'Kỳ thi năng lực tiếng Nhật JLPT N3', 800000),
+('KT07', N'Kỳ thi năng lực tiếng Nhật JLPT N2', 800000),
+('KT08', N'Kỳ thi năng lực tiếng Nhật JLPT N1', 800000),
+('KT09', N'Kỳ thi tiếng Hàn TOPIK I', 900000);
 GO
 
 INSERT INTO PHONGTHI (PT_MaPhongThi, PT_HinhThuc, PT_SLThiSinhToiDa, PT_SLThiSinhToiTHieu, PT_SLNhanVienCoiThi) 
@@ -122,54 +126,45 @@ VALUES
 ('P005', N'Trác nghiệm-Tự luận', 35, 12, 2);
 GO
 
-INSERT INTO NHANVIEN (NV_MaNhanVien, NV_TenNhanVien, NV_NgaySinh, NV_GioiTinh, NV_Email, NV_SDT, NV_CCCD, NV_DiaChi, NV_ChucVu, NV_Luong, NV_MaPhongBan)
+INSERT INTO NHANVIEN (NV_MaNhanVien, NV_TenNhanVien, NV_NgaySinh, NV_GioiTinh, NV_Email, NV_SDT, NV_CCCD, NV_DiaChi, NV_ChucVu, NV_Luong, NV_MaPhongBan, NV_MatKhau)
 VALUES
-  ('NV001', N'Huỳnh Thị Trúc Phương', CONVERT(date, '01/01/1990', 103), N'Nữ',  'a7yw1@ttthi.vn', '0911111111', '012345678901', N'Hà Nội', N'Tiếp nhận', 8000000, 'PB001'),
-  ('NV002', N'Phạm Phương Dung', CONVERT(date, '02/02/1992', 103), N'Nữ',  'b2ewj@ttthi.vn', '0922222222', '012345678902', N'Hà Nội', N'Tiếp nhận', 8500000, 'PB001'),
-  ('NV003', N'Nguyễn Đình Thăng', CONVERT(date, '03/03/1991', 103), N'Nam', 'c3e2o@ttthi.vn','0933333333','012345678903', N'Hồ Chí Minh', N'Tiếp nhận', 8000000, 'PB001'),
-  ('NV004', N'Ngô Văn Sơn', CONVERT(date, '04/04/1993', 103), N'Nam', 'd49fi@ttthi.vn','0944444444','012345678904', N'Hà Nội', N'Tiếp nhận', 8200000, 'PB001'),
-  ('NV005', N'Đặng Thị Yến Nhi', CONVERT(date, '05/05/1989', 103), N'Nữ',  'e583i@ttthi.vn','0955555555','012345678905', N'Hải Phòng', N'Tiếp nhận', 8100000, 'PB001'),
+  ('NV001', N'Huỳnh Thị Trúc Phương', CONVERT(date, '01/01/1990', 103), N'Nữ',  'httphuong@ttthi.vn', '0911111111', '012345678901', N'Hà Nội', N'Tiếp nhận', 8000000, 'PB001', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV002', N'Phạm Phương Dung', CONVERT(date, '02/02/1992', 103), N'Nữ',  'ppdung@ttthi.vn', '0922222222', '012345678902', N'Hà Nội', N'Tiếp nhận', 8500000, 'PB001', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV003', N'Nguyễn Đình Thăng', CONVERT(date, '03/03/1991', 103), N'Nam', 'ndthang@ttthi.vn','0933333333','012345678903', N'Hồ Chí Minh', N'Tiếp nhận', 8000000, 'PB001', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV004', N'Ngô Văn Sơn', CONVERT(date, '04/04/1993', 103), N'Nam', 'nvson@ttthi.vn','0944444444','012345678904', N'Hà Nội', N'Tiếp nhận', 8200000, 'PB001', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV005', N'Đặng Thị Yến Nhi', CONVERT(date, '05/05/1989', 103), N'Nữ',  'dtynhi@ttthi.vn','0955555555','012345678905', N'Hải Phòng', N'Tiếp nhận', 8100000, 'PB001', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
 
-  ('NV006', N'Nguyễn Võ Ngọc Huyền', CONVERT(date, '06/06/1990', 103), N'Nữ',  'f6i3u@ttthi.vn','0966666666','012345678906', N'Huế', N'Kế toán', 9000000, 'PB002'),
-  ('NV007', N'Hoàng Xuân Phú', CONVERT(date, '07/07/1988', 103), N'Nam', 'g79ir@ttthi.vn','0977777777','012345678907', N'Đà Nẵng', N'Kế toán', 9200000, 'PB002'),
-  ('NV008', N'Trần Nguyễn Thu Trang', CONVERT(date, '08/08/1991', 103), N'Nữ',  'h83k2@ttthi.vn','0988888888','012345678908', N'Hà Nam', N'Kế toán', 8900000, 'PB002'),
-  ('NV009', N'Nguyễn Vinh Quang', CONVERT(date, '09/09/1987', 103), N'Nam', 'i99o2@ttthi.vn','0999999999','012345678909', N'Quảng Ninh', N'Kế toán', 8800000, 'PB002'),
-  ('NV010', N'Phan Lê Thuỳ Dương', CONVERT(date, '10/10/1992', 103), N'Nữ',  'j103r@ttthi.vn','0900000000','012345678910', N'Ninh Bình', N'Kế toán', 8700000, 'PB002'),
+  ('NV006', N'Nguyễn Võ Ngọc Huyền', CONVERT(date, '06/06/1990', 103), N'Nữ',  'nvnhuyen@ttthi.vn','0966666666','012345678906', N'Huế', N'Kế toán', 9000000, 'PB002', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV007', N'Hoàng Xuân Phú', CONVERT(date, '07/07/1988', 103), N'Nam', 'hxphu@ttthi.vn','0977777777','012345678907', N'Đà Nẵng', N'Kế toán', 9200000, 'PB002', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV008', N'Trần Nguyễn Thu Trang', CONVERT(date, '08/08/1991', 103), N'Nữ',  'tnttrang@ttthi.vn','0988888888','012345678908', N'Hà Nam', N'Kế toán', 8900000, 'PB002', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV009', N'Nguyễn Vinh Quang', CONVERT(date, '09/09/1987', 103), N'Nam', 'nvquang@ttthi.vn','0999999999','012345678909', N'Quảng Ninh', N'Kế toán', 8800000, 'PB002', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV010', N'Phan Lê Thuỳ Dương', CONVERT(date, '10/10/1992', 103), N'Nữ',  'pltduong@ttthi.vn','0900000000','012345678910', N'Ninh Bình', N'Kế toán', 8700000, 'PB002', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
 
-  ('NV011', N'Vũ Đình Lưỡng', CONVERT(date, '11/11/1993', 103), N'Nam', 'k123e@ttthi.vn','0912345678','012345678911', N'HCM', N'Nhập liệu', 7000000, 'PB003'),
-  ('NV012', N'Phạm Thị Hương Thảo', CONVERT(date, '12/12/1994', 103), N'Nữ', 'l12ee@ttthi.vn','0923456789','012345678912', N'HCM', N'Nhập liệu', 7100000, 'PB003'),
-  ('NV013', N'Lê Thanh Nhật', CONVERT(date, '13/01/1995', 103), N'Nam', 'mytu7@ttthi.vn','0934567890','012345678913', N'Cần Thơ', N'Nhập liệu', 7200000, 'PB003'),
-  ('NV014', N'Trần Nhật Thy', CONVERT(date, '14/02/1996', 103), N'Nữ',  'n142w@ttthi.vn','0945678901','012345678914', N'Cần Thơ', N'Nhập liệu', 7150000, 'PB003'),
-  ('NV015', N'Lê Đăng Quang', CONVERT(date, '15/03/1990', 103), N'Nam', 'o15az@ttthi.vn','0956789012','012345678915', N'Đắk Lắk', N'Nhập liệu', 7300000, 'PB003'),
+  ('NV011', N'Vũ Đình Lưỡng', CONVERT(date, '11/11/1993', 103), N'Nam', 'vdluong@ttthi.vn','0912345678','012345678911', N'HCM', N'Nhập liệu', 7000000, 'PB003', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV012', N'Phạm Thị Hương Thảo', CONVERT(date, '12/12/1994', 103), N'Nữ', 'ptpthao@ttthi.vn','0923456789','012345678912', N'HCM', N'Nhập liệu', 7100000, 'PB003', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV013', N'Lê Thanh Nhật', CONVERT(date, '13/01/1995', 103), N'Nam', 'ltnhat@ttthi.vn','0934567890','012345678913', N'Cần Thơ', N'Nhập liệu', 7200000, 'PB003', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV014', N'Trần Nhật Thy', CONVERT(date, '14/02/1996', 103), N'Nữ',  'tnthy@ttthi.vn','0945678901','012345678914', N'Cần Thơ', N'Nhập liệu', 7150000, 'PB003', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV015', N'Lê Đăng Quang', CONVERT(date, '15/03/1990', 103), N'Nam', 'ldquang@ttthi.vn','0956789012','012345678915', N'Đắk Lắk', N'Nhập liệu', 7300000, 'PB003', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
 
-  ('NV016', N'Phạm Huỳnh Ánh Nguyệt', CONVERT(date, '16/04/1985', 103), N'Nữ',  'p1dr6@ttthi.vn','0967890123','012345678916', N'Hà Nội', N'Quản trị hệ thống', 10000000, 'PB004'),
-  ('NV017', N'Nguyễn Đồng Thanh Hiệp', CONVERT(date, '17/05/1984', 103), N'Nam', 'q12r7@ttthi.vn','0978901234','012345678917', N'Hồ Chí Minh', N'Quản trị hệ thống', 10200000, 'PB004'),
+  ('NV016', N'Phạm Huỳnh Ánh Nguyệt', CONVERT(date, '16/04/1985', 103), N'Nữ',  'phanguyet@ttthi.vn','0967890123','012345678916', N'Hà Nội', N'Quản trị hệ thống', 10000000, 'PB004', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV017', N'Nguyễn Đồng Thanh Hiệp', CONVERT(date, '17/05/1984', 103), N'Nam', 'ndthiep@ttthi.vn','0978901234','012345678917', N'Hồ Chí Minh', N'Quản trị hệ thống', 10200000, 'PB004', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
 
-  ('NV018', N'Bùi Thị Ánh Vân', CONVERT(date, '18/06/1991', 103), N'Nữ',  'r34tr@ttthi.vn','0989012345','012345678918', N'Nam Định', N'Nhập liệu', 7400000, 'PB003'),
-  ('NV019', N'Lê Thanh Nhật', CONVERT(date, '19/07/1989', 103), N'Nam', 's192e@ttthi.vn','0990123456','012345678919', N'Hải Dương', N'Tiếp nhận', 8200000, 'PB001'),
-  ('NV020', N'Đỗ Thùy Dung', CONVERT(date, '20/08/1990', 103), N'Nữ',  't2th2@ttthi.vn','0901234567','012345678920', N'Hà Giang', N'Kế toán', 8600000, 'PB002'),
+  ('NV018', N'Bùi Thị Ánh Vân', CONVERT(date, '18/06/1991', 103), N'Nữ',  'btavan@ttthi.vn','0989012345','012345678918', N'Nam Định', N'Nhập liệu', 7400000, 'PB003', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
+  ('NV019', N'Lê Thanh Nhật', CONVERT(date, '19/07/1989', 103), N'Nam', 'ltnhat@ttthi.vn','0990123456','012345678919', N'Hải Dương', N'Tiếp nhận', 8200000, 'PB001', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV020', N'Đỗ Thùy Dung', CONVERT(date, '20/08/1990', 103), N'Nữ',  'dtdung@ttthi.vn','0901234567','012345678920', N'Hà Giang', N'Kế toán', 8600000, 'PB002', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'),
 
-  ('NV021', N'Nguyễn Văn An', CONVERT(date,'02/02/1987',103), N'Nam','u8u37@ttthi.vn', '0912345671','012345678921', N'Hà Nội', N'Coi thi', 7500000, 'PB005'),
-  ('NV022', N'Trần Thị Bích', CONVERT(date,'15/05/1988',103), N'Nữ','mxka2@ttthi.vn', '0912345672','012345678922', N'Hải Phòng', N'Coi thi', 7600000, 'PB005'),
-  ('NV023', N'Lê Thị Cẩm', CONVERT(date,'23/03/1990',103), N'Nữ','8u573@ttthi.vn', '0912345673','012345678923', N'Đà Nẵng', N'Coi thi', 7400000, 'PB005'),
-  ('NV024', N'Phạm Văn Dũng', CONVERT(date,'30/07/1989',103), N'Nam','4rt65@ttthi.vn', '0912345674','012345678924', N'Huế', N'Coi thi', 7700000, 'PB005'),
-  ('NV025', N'Hoàng Thị Hạnh', CONVERT(date,'11/11/1991',103), N'Nữ','4rt56@ttthi.vn', '0912345675','012345678925', N'Nghệ An', N'Coi thi', 7550000, 'PB005'),
-  ('NV026', N'Vũ Đức Anh', CONVERT(date,'05/09/1986',103), N'Nam','0oxpa@ttthi.vn', '0912345676','012345678926', N'Quảng Ninh', N'Coi thi', 7650000, 'PB005'),
-  ('NV027', N'Đặng Thị Mai', CONVERT(date,'19/12/1988',103), N'Nữ','3e5ea@ttthi.vn', '0912345677','012345678927', N'Nam Định', N'Coi thi', 7500000, 'PB005'),
-  ('NV028', N'Bùi Văn Hùng', CONVERT(date,'27/06/1992',103), N'Nam','9o0y6@ttthi.vn', '0912345678','012345678928', N'Quảng Trị', N'Coi thi', 7800000, 'PB005'),
-  ('NV029', N'Trịnh Thị Phương', CONVERT(date,'08/08/1987',103), N'Nữ','4r35t@ttthi.vn', '0912345679','012345678929', N'Hải Dương', N'Coi thi', 7450000, 'PB005'),
-  ('NV030', N'Phan Văn Sơn', CONVERT(date,'14/04/1990',103), N'Nam','4rt56@ttthi.vn', '0912345680','012345678930', N'Thái Bình', N'Coi thi', 7600000, 'PB005'),
-  ('NV031', N'Đỗ Thị Hoài', CONVERT(date,'22/02/1991',103), N'Nữ','4r52s@ttthi.vn', '0912345681','012345678931', N'Bắc Giang', N'Coi thi', 7550000, 'PB005'),
-  ('NV032', N'Lê Thị Thanh', CONVERT(date,'09/10/1989',103), N'Nữ','8i90o@ttthi.vn', '0912345682','012345678932', N'Hà Tĩnh',    N'Coi thi', 7700000, 'PB003');
-GO
-
-INSERT INTO TAIKHOAN (TK_TenDangNhap, TK_MatKhau)
-VALUES
-	('NV001', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'), --1234 - Tiếp nhận
-	('NV016', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'), --1234 - Quản trị hệ thống
-	('NV006', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'), --1234 - Kế toán
-	('NV011', '$2a$11$C8YcS5NffhMD4Bd3H0SGUeK.V9AI3K9XYu3qr4xIv8lx1USIQ8REK'), --1234 - Nhập liệu
-	('NV021', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'); --1234 - Coi thi
+  ('NV021', N'Nguyễn Văn An', CONVERT(date,'02/02/1987',103), N'Nam','nvan@ttthi.vn', '0912345671','012345678921', N'Hà Nội', N'Coi thi', 7500000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV022', N'Trần Thị Bích', CONVERT(date,'15/05/1988',103), N'Nữ','ttbich@ttthi.vn', '0912345672','012345678922', N'Hải Phòng', N'Coi thi', 7600000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV023', N'Lê Thị Cẩm', CONVERT(date,'23/03/1990',103), N'Nữ','ltcam@ttthi.vn', '0912345673','012345678923', N'Đà Nẵng', N'Coi thi', 7400000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV024', N'Phạm Văn Dũng', CONVERT(date,'30/07/1989',103), N'Nam','pvdung@ttthi.vn', '0912345674','012345678924', N'Huế', N'Coi thi', 7700000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV025', N'Hoàng Thị Hạnh', CONVERT(date,'11/11/1991',103), N'Nữ','hthanh@ttthi.vn', '0912345675','012345678925', N'Nghệ An', N'Coi thi', 7550000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV026', N'Vũ Đức Anh', CONVERT(date,'05/09/1986',103), N'Nam','vdanh@ttthi.vn', '0912345676','012345678926', N'Quảng Ninh', N'Coi thi', 7650000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV027', N'Đặng Thị Mai', CONVERT(date,'19/12/1988',103), N'Nữ','dtmai@ttthi.vn', '0912345677','012345678927', N'Nam Định', N'Coi thi', 7500000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV028', N'Bùi Văn Hùng', CONVERT(date,'27/06/1992',103), N'Nam','bvhung@ttthi.vn', '0912345678','012345678928', N'Quảng Trị', N'Coi thi', 7800000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV029', N'Trịnh Thị Phương', CONVERT(date,'08/08/1987',103), N'Nữ','ttphuong@ttthi.vn', '0912345679','012345678929', N'Hải Dương', N'Coi thi', 7450000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV030', N'Phan Văn Sơn', CONVERT(date,'14/04/1990',103), N'Nam','pvson@ttthi.vn', '0912345680','012345678930', N'Thái Bình', N'Coi thi', 7600000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV031', N'Đỗ Thị Hoài', CONVERT(date,'22/02/1991',103), N'Nữ','dthoai@ttthi.vn', '0912345681','012345678931', N'Bắc Giang', N'Coi thi', 7550000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a'),
+  ('NV032', N'Lê Thị Thanh', CONVERT(date,'09/10/1989',103), N'Nữ','ltthanh@ttthi.vn', '0912345682','012345678932', N'Hà Tĩnh', N'Coi thi', 7700000, 'PB005', '$2a$11$tufZ9fXXaVHHNKKuvC7ia.lWBAsmWjiLdZu0.LfElxG4Q1q0OtY1a');
 GO
 
 INSERT INTO THONGBAO (TB_MaThongBao, TB_MaNhanVienGui, TB_MaDoiTuongNhan, TB_ChuDe, TB_NoiDung, TB_ThoiGianGui) VALUES
@@ -183,4 +178,77 @@ INSERT INTO THONGBAO (TB_MaThongBao, TB_MaNhanVienGui, TB_MaDoiTuongNhan, TB_Chu
 ('67DF5E9C-2E3B-4D35-B154-933D1767E0DE', 'NV012', 'PB003', N'Phản hồi', N'Nhập liệu thông tin người này: \n a, \n b', '2025-03-12 15:30:00');
 GO
 
---select * from thongbao
+INSERT INTO LICHTHI
+  (LT_MaLichThi, LT_MaKyThi, LT_SLDangKy, LT_TrangThai, LT_TenKyThi, LT_NgayThi, LT_MaPhongThi, LT_TGBatDau, LT_TGKetThuc)
+VALUES
+  ('LT01', 'KT01', 20, N'Đã thi', N'Kỳ thi tiếng Anh A2',
+   '2025-06-20', 'P001', '08:00:00', '10:00:00'),
+  ('LT02', 'KT02', 18, N'Đã thi', N'Kỳ thi tiếng Anh B1',
+   '2025-06-21', 'P002', '13:00:00', '15:00:00'),
+  ('LT03', 'KT03', 25, N'Chưa thi', N'Kỳ thi tiếng Anh B2',
+   '2025-07-15', 'P003', '09:00:00', '11:30:00'),
+  ('LT04', 'KT04', 22, N'Chưa thi', N'Kỳ thi năng lực tiếng Nhật JLPT N5',
+   '2025-07-17', 'P004', '14:00:00', '17:00:00'),
+  ('LT05', 'KT09', 15, N'Chưa thi', N'Kỳ thi tiếng Hàn TOPIK I',
+   '2025-08-05', 'P005', '08:30:00', '10:30:00');
+GO
+
+INSERT INTO BAITHI
+  (BT_MaBaiThi, BT_MaLichThi, BT_SoBaoDanh, BT_ThoiGianLamBai, BT_DiemSo, BT_DonViCham)
+VALUES
+  -- Đợt thi LT01
+  ('BT0001', 'LT01', 'TS00001', '01:30:00',  7.5, 'DVCT01'),
+  ('BT0002', 'LT01', 'TS00002', '01:45:00',  8.2, 'DVCT02'),
+  ('BT0003', 'LT01', 'TS00003', '02:00:00',  6.9, 'DVCT01'),
+  ('BT0004', 'LT01', 'TS00004', '01:20:00',  9.0, 'DVCT02'),
+  ('BT0005', 'LT01', 'TS00005', '01:50:00',  5.5, 'DVCT01'),
+  ('BT0006', 'LT01', 'TS00006', '02:10:00',  8.7, 'DVCT02'),
+  ('BT0007', 'LT01', 'TS00007', '01:40:00',  7.8, 'DVCT01'),
+  ('BT0008', 'LT01', 'TS00008', '01:35:00',  6.3, 'DVCT02'),
+  ('BT0009', 'LT01', 'TS00009', '01:55:00',  9.5, 'DVCT01'),
+  ('BT0010', 'LT01', 'TS00010', '02:00:00', 10.0, 'DVCT02'),
+
+  -- Đợt thi LT02
+  ('BT0011', 'LT02', 'TS00011', '01:25:00',  8.0, 'DVCT01'),
+  ('BT0012', 'LT02', 'TS00012', '01:30:00',  7.2, 'DVCT02'),
+  ('BT0013', 'LT02', 'TS00013', '01:45:00',  6.8, 'DVCT01'),
+  ('BT0014', 'LT02', 'TS00014', '02:05:00',  9.1, 'DVCT02'),
+  ('BT0015', 'LT02', 'TS00015', '01:50:00',  5.9, 'DVCT01'),
+  ('BT0016', 'LT02', 'TS00016', '01:35:00',  8.4, 'DVCT02'),
+  ('BT0017', 'LT02', 'TS00017', '01:40:00',  7.6, 'DVCT01'),
+  ('BT0018', 'LT02', 'TS00018', '02:10:00',  6.5, 'DVCT02'),
+  ('BT0019', 'LT02', 'TS00019', '01:55:00',  9.3, 'DVCT01'),
+  ('BT0020', 'LT02', 'TS00020', '02:00:00', 10.0, 'DVCT02');
+GO
+
+INSERT INTO PHIEUDANGKYDUTHI 
+(PDKDT_MaPhieu, PDKDT_ThoiGianLap, PDKDT_DiaChiChuyenPhat, PDKDT_TrangThaiThanhToan, PDKDT_MaKhachHang, PDKDT_MaLichTHi, PDKDT_MaNhanVienLap)
+VALUES
+('PDK001', '2025-06-01', N'12 Nguyễn Văn Cừ, Hà Nội', N'Chưa thanh toán', 'KH00001', 'LT01', 'NV001'),
+('PDK002', '2025-06-02', N'45 Trần Phú, Hà Nội', N'Đã thanh toán', 'KH00002', 'LT01', 'NV002'),
+('PDK003', '2025-06-03', N'98 Lê Lợi, Đà Nẵng', N'Thanh toán gia hạn', 'KH00003', 'LT02', 'NV003'),
+('PDK004', '2025-06-03', N'22 Phan Đình Phùng, Huế', N'Đã thanh toán', 'KH00004', 'LT02', 'NV004'),
+('PDK005', '2025-06-04', N'36 Điện Biên Phủ, Hải Phòng', N'Chưa thanh toán', 'KH00005', 'LT03', 'NV005'),
+('PDK006', '2025-06-04', N'88 Nguyễn Huệ, Cần Thơ', N'Đã thanh toán', 'KH00006', 'LT03', 'NV001'),
+('PDK007', '2025-06-05', N'10 Trưng Nữ Vương, HCM', N'Thanh toán gia hạn', 'KH00007', 'LT04', 'NV002'),
+('PDK008', '2025-06-06', N'49 Pasteur, HCM', N'Chưa thanh toán', 'KH00008', 'LT04', 'NV003'),
+('PDK009', '2025-06-07', N'52 Lý Tự Trọng, Hà Nội', N'Đã thanh toán', 'KH00009', 'LT05', 'NV004'),
+('PDK010', '2025-06-07', N'33 Nguyễn Tri Phương, ĐN', N'Đã thanh toán', 'KH00010', 'LT05', 'NV005');
+GO
+
+INSERT INTO PHIEUDUTHI 
+(PDT_MaPhieu, PDT_MaPhieuDangKy, PDT_SoBaoDanh, PDT_MaLichThi, PDT_MaPhongThi)
+VALUES
+('PDT001', 'PDK001', 'TS00001', 'LT01', 'P001'),
+('PDT002', 'PDK002', 'TS00002', 'LT01', 'P001'),
+('PDT003', 'PDK003', 'TS00003', 'LT02', 'P002'),
+('PDT004', 'PDK004', 'TS00004', 'LT02', 'P002'),
+('PDT005', 'PDK005', 'TS00005', 'LT03', 'P003'),
+('PDT006', 'PDK006', 'TS00006', 'LT03', 'P003'),
+('PDT007', 'PDK007', 'TS00007', 'LT04', 'P004'),
+('PDT008', 'PDK008', 'TS00008', 'LT04', 'P004'),
+('PDT009', 'PDK009', 'TS00009', 'LT05', 'P005'),
+('PDT010', 'PDK010', 'TS00010', 'LT05', 'P005');
+GO
+
+--delete from BAITHI

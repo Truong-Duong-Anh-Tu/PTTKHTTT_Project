@@ -28,27 +28,28 @@
         /// </summary>
         private void InitializeComponent()
         {
+            DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
             pnlManageResult = new Panel();
+            cbxExamDate = new ComboBox();
+            lblChonThiSinh = new Label();
             lblChonLich = new Label();
             lblKyThi = new Label();
-            dtpExamDate = new DateTimePicker();
             lblSearchExam = new Label();
-            textBox1 = new TextBox();
+            tbxSearchCandidate = new TextBox();
             cbxExamName = new ComboBox();
             dtgvResult = new DataGridView();
-            lblChonThiSinh = new Label();
             pnlManageResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).BeginInit();
             SuspendLayout();
             // 
             // pnlManageResult
             // 
+            pnlManageResult.Controls.Add(cbxExamDate);
             pnlManageResult.Controls.Add(lblChonThiSinh);
             pnlManageResult.Controls.Add(lblChonLich);
             pnlManageResult.Controls.Add(lblKyThi);
-            pnlManageResult.Controls.Add(dtpExamDate);
             pnlManageResult.Controls.Add(lblSearchExam);
-            pnlManageResult.Controls.Add(textBox1);
+            pnlManageResult.Controls.Add(tbxSearchCandidate);
             pnlManageResult.Controls.Add(cbxExamName);
             pnlManageResult.Controls.Add(dtgvResult);
             pnlManageResult.Location = new Point(3, 3);
@@ -56,11 +57,30 @@
             pnlManageResult.Size = new Size(1015, 567);
             pnlManageResult.TabIndex = 0;
             // 
+            // cbxExamDate
+            // 
+            cbxExamDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            cbxExamDate.FormattingEnabled = true;
+            cbxExamDate.Location = new Point(367, 77);
+            cbxExamDate.Name = "cbxExamDate";
+            cbxExamDate.Size = new Size(270, 31);
+            cbxExamDate.TabIndex = 9;
+            // 
+            // lblChonThiSinh
+            // 
+            lblChonThiSinh.AutoSize = true;
+            lblChonThiSinh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblChonThiSinh.Location = new Point(853, 51);
+            lblChonThiSinh.Name = "lblChonThiSinh";
+            lblChonThiSinh.Size = new Size(141, 23);
+            lblChonThiSinh.TabIndex = 8;
+            lblChonThiSinh.Text = "Tìm kiếm thí sinh";
+            // 
             // lblChonLich
             // 
             lblChonLich.AutoSize = true;
             lblChonLich.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblChonLich.Location = new Point(237, 51);
+            lblChonLich.Location = new Point(356, 51);
             lblChonLich.Name = "lblChonLich";
             lblChonLich.Size = new Size(125, 23);
             lblChonLich.TabIndex = 7;
@@ -76,16 +96,6 @@
             lblKyThi.TabIndex = 6;
             lblKyThi.Text = "Chọn Kỳ Thi";
             // 
-            // dtpExamDate
-            // 
-            dtpExamDate.CalendarFont = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            dtpExamDate.CustomFormat = " dddd dd/MM/yyyy";
-            dtpExamDate.Format = DateTimePickerFormat.Custom;
-            dtpExamDate.Location = new Point(237, 81);
-            dtpExamDate.Name = "dtpExamDate";
-            dtpExamDate.Size = new Size(241, 27);
-            dtpExamDate.TabIndex = 5;
-            // 
             // lblSearchExam
             // 
             lblSearchExam.AutoSize = true;
@@ -96,14 +106,15 @@
             lblSearchExam.TabIndex = 4;
             lblSearchExam.Text = "Tìm kiếm lịch thi";
             // 
-            // textBox1
+            // tbxSearchCandidate
             // 
-            textBox1.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(742, 78);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Số báo danh thí sinh";
-            textBox1.Size = new Size(252, 30);
-            textBox1.TabIndex = 3;
+            tbxSearchCandidate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            tbxSearchCandidate.Location = new Point(742, 78);
+            tbxSearchCandidate.Name = "tbxSearchCandidate";
+            tbxSearchCandidate.PlaceholderText = "Số báo danh thí sinh";
+            tbxSearchCandidate.Size = new Size(252, 30);
+            tbxSearchCandidate.TabIndex = 3;
+            tbxSearchCandidate.TextChanged += tbxSearchCandidate_TextChanged;
             // 
             // cbxExamName
             // 
@@ -111,29 +122,42 @@
             cbxExamName.FormattingEnabled = true;
             cbxExamName.Location = new Point(22, 77);
             cbxExamName.Name = "cbxExamName";
-            cbxExamName.Size = new Size(198, 31);
+            cbxExamName.Size = new Size(328, 31);
             cbxExamName.TabIndex = 1;
+            cbxExamName.SelectedIndexChanged += cbxExamName_SelectedIndexChanged;
             // 
             // dtgvResult
             // 
+            dtgvResult.AllowUserToAddRows = false;
+            dtgvResult.AllowUserToDeleteRows = false;
+            dtgvResult.AllowUserToOrderColumns = true;
+            dtgvResult.AllowUserToResizeColumns = false;
+            dtgvResult.AllowUserToResizeRows = false;
+            dtgvResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvResult.BackgroundColor = SystemColors.ControlLightLight;
-            dtgvResult.BorderStyle = BorderStyle.None;
+            dtgvResult.CellBorderStyle = DataGridViewCellBorderStyle.None;
+            dtgvResult.ColumnHeadersBorderStyle = DataGridViewHeaderBorderStyle.Single;
+            dataGridViewCellStyle1.Alignment = DataGridViewContentAlignment.TopCenter;
+            dataGridViewCellStyle1.BackColor = SystemColors.Control;
+            dataGridViewCellStyle1.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle1.ForeColor = SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
+            dtgvResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dtgvResult.GridColor = SystemColors.Window;
             dtgvResult.Location = new Point(22, 136);
+            dtgvResult.MultiSelect = false;
             dtgvResult.Name = "dtgvResult";
+            dtgvResult.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
+            dtgvResult.RowHeadersVisible = false;
             dtgvResult.RowHeadersWidth = 51;
+            dtgvResult.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
             dtgvResult.Size = new Size(972, 410);
             dtgvResult.TabIndex = 0;
-            // 
-            // lblChonThiSinh
-            // 
-            lblChonThiSinh.AutoSize = true;
-            lblChonThiSinh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblChonThiSinh.Location = new Point(853, 51);
-            lblChonThiSinh.Name = "lblChonThiSinh";
-            lblChonThiSinh.Size = new Size(141, 23);
-            lblChonThiSinh.TabIndex = 8;
-            lblChonThiSinh.Text = "Tìm kiếm thí sinh";
+            dtgvResult.CellContentClick += dtgvResult_CellContentClick;
+            dtgvResult.CellPainting += dtgvResult_CellPainting;
             // 
             // ucManageExamResult
             // 
@@ -142,6 +166,7 @@
             Controls.Add(pnlManageResult);
             Name = "ucManageExamResult";
             Size = new Size(1021, 573);
+            Load += ucManageExamResult_Load;
             pnlManageResult.ResumeLayout(false);
             pnlManageResult.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).EndInit();
@@ -153,11 +178,11 @@
         private Panel pnlManageResult;
         private DataGridView dtgvResult;
         private ComboBox cbxExamName;
-        private TextBox textBox1;
+        private TextBox tbxSearchCandidate;
         private Label lblSearchExam;
         private Label lblKyThi;
-        private DateTimePicker dtpExamDate;
         private Label lblChonLich;
         private Label lblChonThiSinh;
+        private ComboBox cbxExamDate;
     }
 }
