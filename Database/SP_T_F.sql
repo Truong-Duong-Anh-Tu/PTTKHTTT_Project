@@ -322,6 +322,7 @@ BEGIN
 END;
 GO
 
+
 CREATE OR ALTER PROCEDURE usp_GetPhanCong
 AS
 BEGIN
@@ -330,5 +331,32 @@ BEGIN
 	FROM PHANCONG pc JOIN NHANVIEN nv ON nv.NV_MaNhanVien = pc.PC_MaNhanVien
 	JOIN LICHTHI lt ON lt.LT_MaLichThi = pc.PC_MaLichThi
 	JOIN KYTHI kt ON kt.KT_MaKyThi = lt.LT_MaKyThi
+END;
+GO
+
+CREATE OR ALTER PROCEDURE usp_DeleteNhanVien
+    @MaNhanVien VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        BEGIN TRANSACTION;
+
+        -- Xóa các bản ghi tham chiếu đến nhân viên này
+        DELETE FROM PHANCONG WHERE PC_MaNhanVien = @MaNhanVien;
+        DELETE FROM THONGBAO WHERE TB_MaNhanVienGui = @MaNhanVien;
+        DELETE FROM PHEUTHANHTOAN WHERE PTT_NhanVienLap = @MaNhanVien;
+        DELETE FROM PHIEUDANGKYDUTHI WHERE PDKDT_MaNhanVienLap = @MaNhanVien;
+
+        -- Cuối cùng, xóa nhân viên
+        DELETE FROM NHANVIEN WHERE NV_MaNhanVien = @MaNhanVien;
+
+        COMMIT TRANSACTION;
+        SELECT 1 AS Result; -- Trả về 1 nếu thành công
+    END TRY
+    BEGIN CATCH
+        ROLLBACK TRANSACTION;
+        SELECT 0 AS Result; -- Trả về 0 nếu có lỗi
+    END CATCH;
 END;
 GO

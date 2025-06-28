@@ -1,4 +1,4 @@
-using System.Data;
+﻿using System.Data;
 using PTTKHTTTProject.DAO;
 
 namespace PTTKHTTTProject.BUS
@@ -16,6 +16,16 @@ namespace PTTKHTTTProject.BUS
                 return GetAllNhanVien();
             
             return NhanVienDAO.SearchNhanVien(searchTerm);
+        }
+        public static bool AddNhanVien(string maNV, string tenNV, DateTime ngaySinh, string gioiTinh, string email, string sdt, string cccd, string diaChi, string chucVu, int luong, string maPhongBan)
+        {
+            // (Tùy chọn) Thêm các bước kiểm tra logic nghiệp vụ ở đây trước khi gọi DAO
+            return NhanVienDAO.AddNhanVien(maNV, tenNV, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
+        }
+
+        public static bool DeleteNhanVien(string maNV)
+        {
+            return NhanVienDAO.DeleteNhanVien(maNV);
         }
     }
 }

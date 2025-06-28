@@ -59,14 +59,9 @@ namespace PTTKHTTTProject.UControl
         {
             try
             {
-                // Lấy dữ liệu từ BUS
                 DataTable dtNhanVien = NhanVienBUS.GetAllNhanVien();
-
-                // Gán nguồn dữ liệu cho DataGridView
                 dataGridView1.DataSource = dtNhanVien;
-
-                // Format DataGridView
-                FormatDataGridView();
+                FormatDataGridView(); // Gọi hàm format sau khi gán DataSource
             }
             catch (Exception ex)
             {
@@ -74,6 +69,7 @@ namespace PTTKHTTTProject.UControl
                     "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
 
         private void SearchNhanVien(string searchTerm)
         {
@@ -100,29 +96,55 @@ namespace PTTKHTTTProject.UControl
 
         private void FormatDataGridView()
         {
-            // Thiết lập thuộc tính hiển thị cho DataGridView
+            // Xóa cột nút xóa cũ nếu tồn tại để tránh trùng lặp
+            if (dataGridView1.Columns.Contains("DeleteButton"))
+            {
+                dataGridView1.Columns.Remove("DeleteButton");
+            }
+
+            // Thiết lập thuộc tính hiển thị
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dataGridView1.AllowUserToAddRows = false;
             dataGridView1.AllowUserToDeleteRows = false;
             dataGridView1.ReadOnly = true;
             dataGridView1.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
 
-            // Định dạng hiển thị cho các cột
             if (dataGridView1.Columns.Count > 0)
             {
-                // Định dạng cột Ngày Sinh
                 if (dataGridView1.Columns.Contains("Ngày Sinh"))
                     dataGridView1.Columns["Ngày Sinh"].DefaultCellStyle.Format = "dd/MM/yyyy";
-
-                // Định dạng cột Lương
                 if (dataGridView1.Columns.Contains("Lương"))
                     dataGridView1.Columns["Lương"].DefaultCellStyle.Format = "N0";
             }
+
+            // Thêm cột nút Xóa
+            DataGridViewButtonColumn deleteButton = new DataGridViewButtonColumn();
+            deleteButton.Name = "DeleteButton";
+            deleteButton.HeaderText = "Hành động";
+            deleteButton.Text = "Xóa";
+            deleteButton.UseColumnTextForButtonValue = true;
+            deleteButton.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells; // Điều chỉnh độ rộng
+            dataGridView1.Columns.Add(deleteButton);
         }
 
         private void buttonThemNV_Click(object sender, EventArgs e)
         {
-            // TODO: Xử lý thêm nhân viên mới
+            // Tạo instance của form thêm nhân viên
+            fAdminThemNV formThemNV = new fAdminThemNV();
+
+            // Hiển thị form dưới dạng dialog
+            DialogResult result = formThemNV.ShowDialog();
+
+            // Nếu người dùng đóng form bằng nút "OK" hoặc đã thêm nhân viên thành công
+            if (result == DialogResult.OK)
+            {
+                // Cập nhật lại dữ liệu nhân viên để hiển thị nhân viên mới
+                LoadNhanVienData();
+
+                // Thông báo thành công
+                MessageBox.Show("Thêm nhân viên mới thành công!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void A(object sender, EventArgs e)
@@ -142,8 +164,35 @@ namespace PTTKHTTTProject.UControl
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // TODO: Xử lý khi click vào cell trong DataGridView
-            // Ví dụ: mở form chi tiết hoặc chỉnh sửa nhân viên
+            // Kiểm tra xem có phải cột nút "Xóa" được nhấn hay không
+            if (e.ColumnIndex == dataGridView1.Columns["DeleteButton"].Index && e.RowIndex >= 0)
+            {
+                // Lấy mã và tên nhân viên từ hàng được chọn
+                string maNV = dataGridView1.Rows[e.RowIndex].Cells["Mã NV"].Value.ToString();
+                string tenNV = dataGridView1.Rows[e.RowIndex].Cells["Họ Tên"].Value.ToString();
+
+                // Hiển thị hộp thoại xác nhận
+                DialogResult confirmResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa nhân viên '{tenNV}' (Mã: {maNV}) không?",
+                                               "Xác nhận xóa",
+                                               MessageBoxButtons.YesNo,
+                                               MessageBoxIcon.Warning);
+
+                if (confirmResult == DialogResult.Yes)
+                {
+                    // Gọi BUS để thực hiện xóa
+                    bool success = NhanVienBUS.DeleteNhanVien(maNV);
+
+                    if (success)
+                    {
+                        MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadNhanVienData(); // Tải lại dữ liệu để cập nhật danh sách
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa nhân viên thất bại! Nhân viên có thể đang được tham chiếu ở nơi khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
+                }
+            }
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
