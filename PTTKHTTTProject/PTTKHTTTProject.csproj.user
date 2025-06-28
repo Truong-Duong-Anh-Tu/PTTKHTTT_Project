@@ -49,6 +49,9 @@
     <Compile Update="UControl\adminSidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UControl\adminThemThongTinLichPhanCong.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UControl\adminTongQuan.cs">
       <SubType>UserControl</SubType>
     </Compile>
