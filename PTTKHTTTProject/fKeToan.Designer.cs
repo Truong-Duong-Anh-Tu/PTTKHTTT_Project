@@ -28,11 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
-            textBoxSearchPGH = new TextBox();
-            tblPGH = new DataGridView();
-            btnSearchPGH = new Button();
             tlpMenuKeToan = new TableLayoutPanel();
-            btnThongBao = new Button();
+            btnKTThongBao = new Button();
             btnQLPT = new Button();
             btnTTCN = new Button();
             btnQLPGH = new Button();
@@ -40,7 +37,7 @@
             ptbLogoHome = new PictureBox();
             lblNameHome = new Label();
             panel1 = new Panel();
-            button1 = new Button();
+            btnKTSignout = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
             btnSignOut = new Button();
@@ -49,7 +46,7 @@
             lblOption = new Label();
             ptbMenu = new PictureBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
-            ((System.ComponentModel.ISupportInitialize)tblPGH).BeginInit();
+            pnlChildControl = new Panel();
             tlpMenuKeToan.SuspendLayout();
             tlpLogoName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).BeginInit();
@@ -59,43 +56,17 @@
             ((System.ComponentModel.ISupportInitialize)ptbMenu).BeginInit();
             SuspendLayout();
             // 
-            // textBoxSearchPGH
-            // 
-            textBoxSearchPGH.Location = new Point(147, 71);
-            textBoxSearchPGH.Name = "textBoxSearchPGH";
-            textBoxSearchPGH.PlaceholderText = "Nhập Tên hoặc Mã thí sinh...";
-            textBoxSearchPGH.Size = new Size(591, 23);
-            textBoxSearchPGH.TabIndex = 3;
-            // 
-            // tblPGH
-            // 
-            tblPGH.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            tblPGH.Location = new Point(147, 100);
-            tblPGH.Name = "tblPGH";
-            tblPGH.Size = new Size(691, 360);
-            tblPGH.TabIndex = 2;
-            // 
-            // btnSearchPGH
-            // 
-            btnSearchPGH.Location = new Point(763, 70);
-            btnSearchPGH.Name = "btnSearchPGH";
-            btnSearchPGH.Size = new Size(75, 23);
-            btnSearchPGH.TabIndex = 0;
-            btnSearchPGH.Text = "Tìm";
-            btnSearchPGH.UseVisualStyleBackColor = true;
-            btnSearchPGH.Click += button1_Click;
-            // 
             // tlpMenuKeToan
             // 
             tlpMenuKeToan.BackColor = SystemColors.Control;
             tlpMenuKeToan.ColumnCount = 1;
             tlpMenuKeToan.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tlpMenuKeToan.Controls.Add(btnThongBao, 0, 5);
+            tlpMenuKeToan.Controls.Add(btnKTThongBao, 0, 5);
             tlpMenuKeToan.Controls.Add(btnQLPT, 0, 3);
             tlpMenuKeToan.Controls.Add(btnTTCN, 0, 2);
             tlpMenuKeToan.Controls.Add(btnQLPGH, 0, 4);
             tlpMenuKeToan.Controls.Add(tlpLogoName, 0, 0);
-            tlpMenuKeToan.Location = new Point(0, 0);
+            tlpMenuKeToan.Location = new Point(1, 0);
             tlpMenuKeToan.Name = "tlpMenuKeToan";
             tlpMenuKeToan.RowCount = 6;
             tlpMenuKeToan.RowStyles.Add(new RowStyle(SizeType.Percent, 70.103096F));
@@ -107,17 +78,18 @@
             tlpMenuKeToan.Size = new Size(136, 469);
             tlpMenuKeToan.TabIndex = 5;
             // 
-            // btnThongBao
+            // btnKTThongBao
             // 
-            btnThongBao.FlatStyle = FlatStyle.Flat;
-            btnThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnThongBao.Location = new Point(3, 209);
-            btnThongBao.Margin = new Padding(3, 2, 3, 2);
-            btnThongBao.Name = "btnThongBao";
-            btnThongBao.Size = new Size(130, 41);
-            btnThongBao.TabIndex = 4;
-            btnThongBao.Text = "Thông báo";
-            btnThongBao.UseVisualStyleBackColor = true;
+            btnKTThongBao.FlatStyle = FlatStyle.Flat;
+            btnKTThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnKTThongBao.Location = new Point(3, 209);
+            btnKTThongBao.Margin = new Padding(3, 2, 3, 2);
+            btnKTThongBao.Name = "btnKTThongBao";
+            btnKTThongBao.Size = new Size(130, 41);
+            btnKTThongBao.TabIndex = 4;
+            btnKTThongBao.Text = "Thông báo";
+            btnKTThongBao.UseVisualStyleBackColor = true;
+            btnKTThongBao.Click += tlpMenuKeToan_Click_1;
             // 
             // btnQLPT
             // 
@@ -130,6 +102,7 @@
             btnQLPT.TabIndex = 2;
             btnQLPT.Text = "Quản lý phiếu thu";
             btnQLPT.UseVisualStyleBackColor = true;
+            btnQLPT.Click += tlpMenuKeToan_Click_1;
             // 
             // btnTTCN
             // 
@@ -142,6 +115,7 @@
             btnTTCN.TabIndex = 1;
             btnTTCN.Text = "Thông tin cá nhân";
             btnTTCN.UseVisualStyleBackColor = true;
+            btnTTCN.Click += tlpMenuKeToan_Click_1;
             // 
             // btnQLPGH
             // 
@@ -154,6 +128,7 @@
             btnQLPGH.TabIndex = 2;
             btnQLPGH.Text = "Quản lý phiếu gia hạn";
             btnQLPGH.UseVisualStyleBackColor = true;
+            btnQLPGH.Click += tlpMenuKeToan_Click_1;
             // 
             // tlpLogoName
             // 
@@ -198,7 +173,7 @@
             panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ControlLight;
             panel1.BorderStyle = BorderStyle.Fixed3D;
-            panel1.Controls.Add(button1);
+            panel1.Controls.Add(btnKTSignout);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
             panel1.Controls.Add(btnSignOut);
@@ -212,17 +187,20 @@
             panel1.Size = new Size(904, 39);
             panel1.TabIndex = 6;
             // 
-            // button1
+            // btnKTSignout
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.BackColor = Color.DeepSkyBlue;
-            button1.Location = new Point(814, 7);
-            button1.Margin = new Padding(3, 2, 3, 2);
-            button1.Name = "button1";
-            button1.Size = new Size(76, 25);
-            button1.TabIndex = 7;
-            button1.Text = "Đăng xuất";
-            button1.UseVisualStyleBackColor = false;
+            btnKTSignout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnKTSignout.BackColor = Color.DeepSkyBlue;
+            btnKTSignout.FlatStyle = FlatStyle.Flat;
+            btnKTSignout.ForeColor = SystemColors.Control;
+            btnKTSignout.Location = new Point(814, 7);
+            btnKTSignout.Margin = new Padding(3, 2, 3, 2);
+            btnKTSignout.Name = "btnKTSignout";
+            btnKTSignout.Size = new Size(76, 25);
+            btnKTSignout.TabIndex = 8;
+            btnKTSignout.Text = "Đăng xuất";
+            btnKTSignout.UseVisualStyleBackColor = false;
+            btnKTSignout.Click += btnKTSignout_Click_1;
             // 
             // label1
             // 
@@ -304,19 +282,25 @@
             ptbMenu.TabIndex = 6;
             ptbMenu.TabStop = false;
             // 
+            // pnlChildControl
+            // 
+            pnlChildControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlChildControl.Location = new Point(140, 39);
+            pnlChildControl.Margin = new Padding(3, 2, 3, 2);
+            pnlChildControl.Name = "pnlChildControl";
+            pnlChildControl.Size = new Size(893, 430);
+            pnlChildControl.TabIndex = 7;
+            // 
             // fKeToan
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1034, 471);
+            Controls.Add(pnlChildControl);
             Controls.Add(tlpMenuKeToan);
             Controls.Add(panel1);
-            Controls.Add(btnSearchPGH);
-            Controls.Add(tblPGH);
-            Controls.Add(textBoxSearchPGH);
             Name = "fKeToan";
-            Text = "fKeToan";
-            ((System.ComponentModel.ISupportInitialize)tblPGH).EndInit();
+            Text = "KẾ TOÁN";
             tlpMenuKeToan.ResumeLayout(false);
             tlpLogoName.ResumeLayout(false);
             tlpLogoName.PerformLayout();
@@ -327,14 +311,9 @@
             ((System.ComponentModel.ISupportInitialize)ptbAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)ptbMenu).EndInit();
             ResumeLayout(false);
-            PerformLayout();
         }
 
         #endregion
-
-        private TextBox textBoxSearchPGH;
-        private DataGridView tblPGH;
-        private Button btnSearchPGH;
         private TableLayoutPanel tlpMenuKeToan;
         private Button btnQLPT;
         private TableLayoutPanel tlpLogoName;
@@ -350,8 +329,9 @@
         private PictureBox ptbMenu;
         private PictureBox pictureBox1;
         private Label label1;
-        private Button button1;
-        private Button btnThongBao;
+        private Button btnKTThongBao;
         private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Panel pnlChildControl;
+        private Button btnKTSignout;
     }
 }

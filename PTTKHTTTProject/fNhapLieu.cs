@@ -17,7 +17,7 @@ namespace PTTKHTTTProject
     {
         //private Form? activeForm;
         private UserControl activeControl;
-        private string username;
+        private string username; //ldquang@ttthi.vn
         public fNhapLieu(string accessUser)
         {
             InitializeComponent();

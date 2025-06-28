@@ -28,19 +28,18 @@ namespace PTTKHTTTProject
 
         private void btnSignIn_Click(object sender, EventArgs e)
         {
-            string username = tbxUsername.Text;
+            string email = tbxUsername.Text;
             string password = tbxPassword.Text;
 
-            if (string.IsNullOrWhiteSpace(username) || string.IsNullOrWhiteSpace(password))
+            if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
             {
                 MessageBox.Show("Please enter username and password.", "Missing Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
-            //Debug.WriteLine(BCrypt.Net.BCrypt.HashPassword(password.Trim()));
-
-            if (TaiKhoanBUS.DangNhap(username, password))
+            if (TaiKhoanBUS.checkSignIn(email, password))
             {
+                string username = TaiKhoanBUS.getUsername(email);
                 string role = TaiKhoanBUS.CheckRole(username);
 
                 if (role == "Nhập liệu")
@@ -59,7 +58,7 @@ namespace PTTKHTTTProject
                 }
                 else if (role == "Kế toán")
                 {
-                    fKeToan fkt = new fKeToan();
+                    fKeToan fkt = new fKeToan(username);
                     this.Hide();
                     fkt.ShowDialog();
                     this.Show();
@@ -80,13 +79,13 @@ namespace PTTKHTTTProject
                 }
                 else
                 {
-                    MessageBox.Show("Tai khoan chua co vai tro de dang nhap", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    MessageBox.Show("Tài khoản chưa có vai trò để đăng nhập", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                     return;
                 }
             }
             else
             {
-                MessageBox.Show("Ten dang nhap hoac mat khau sai.", "Wrong Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                MessageBox.Show("Tên đăng nhập hoặc mật khẩu sai.", "Wrong Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
         }

@@ -20,14 +20,10 @@ CREATE TABLE NHANVIEN (
   NV_DiaChi nvarchar(100),
   NV_ChucVu nvarchar(20),
   NV_Luong int,
-  NV_MaPhongBan varchar(10) NOT NULL
+  NV_MaPhongBan varchar(10) NOT NULL,
+  NV_MatKhau varchar(100)
 )
 GO
-
-CREATE TABLE TAIKHOAN (
-  TK_TenDangNhap varchar(10) PRIMARY KEY,
-  TK_MatKhau varchar(100),
-)
 
 CREATE TABLE PHONGBAN (
   PB_MaPhongBan varchar(10) PRIMARY KEY,
@@ -73,7 +69,7 @@ CREATE TABLE PHIEUDANGKYDUTHI (
   PDKDT_DiaChiChuyenPhat nvarchar(100),
   PDKDT_TrangThaiThanhToan nvarchar(20) CHECK (PDKDT_TrangThaiThanhToan IN (N'Chưa thanh toán', N'Thanh toán gia hạn', N'Đã thanh toán')),
   PDKDT_MaKhachHang varchar(10) NOT NULL,
-  PDKDT_MaLichTHi varchar(10) NOT NULL,
+  PDKDT_MaLichThi varchar(10) NOT NULL,
   PDKDT_MaNhanVienLap varchar(10) NOT NULL
 )
 GO
@@ -82,7 +78,7 @@ CREATE TABLE PHONGTHI (
   PT_MaPhongThi varchar(10) PRIMARY KEY,
   PT_HinhThuc nvarchar(30) CHECK (PT_HinhThuc IN (N'Tự luận', N'Trắc nghiệm', N'Trác nghiệm-Tự luận')),
   PT_SLThiSinhToiDa int,
-  PT_SLThiSinhToiTHieu int,
+  PT_SLThiSinhToiThieu int,
   PT_SLNhanVienCoiThi int,
 )
 GO
@@ -115,7 +111,7 @@ GO
 
 CREATE TABLE BAITHI (
   BT_MaBaiThi varchar(10) PRIMARY KEY,
-  BT_MaKyThi varchar(10) NOT NULL,
+  BT_MaLichThi varchar(10) NOT NULL,
   BT_SoBaoDanh varchar(10) NOT NULL,
   BT_ThoiGianLamBai time,
   BT_DiemSo float,
@@ -198,7 +194,7 @@ GO
 ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaKhachHang) REFERENCES KHACHHANG (KH_MaKhachHang)
 GO
 
-ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaLichTHi) REFERENCES LICHTHI (LT_MaLichThi)
+ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaLichThi) REFERENCES LICHTHI (LT_MaLichThi)
 GO
 
 ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaNhanVienLap) REFERENCES NHANVIEN (NV_MaNhanVien)
@@ -216,7 +212,7 @@ GO
 ALTER TABLE PHEUTHANHTOAN ADD FOREIGN KEY (PTT_NhanVienLap) REFERENCES NHANVIEN (NV_MaNhanVien)
 GO
 
-ALTER TABLE BAITHI ADD FOREIGN KEY (BT_MaKyThi) REFERENCES KYTHI (KT_MaKyThi)
+ALTER TABLE BAITHI ADD FOREIGN KEY (BT_MaLichThi) REFERENCES LICHTHI (LT_MaLichThi)
 GO
 
 ALTER TABLE BAITHI ADD FOREIGN KEY (BT_SoBaoDanh) REFERENCES THISINH (TS_SoBaoDanh)
@@ -250,9 +246,6 @@ ALTER TABLE PHANCONG ADD FOREIGN KEY (PC_MaLichThi) REFERENCES LICHTHI (LT_MaLic
 GO
 
 ALTER TABLE THONGBAO ADD FOREIGN KEY (TB_MaNhanVienGui) REFERENCES NHANVIEN (NV_MaNhanVien)
-GO
-
-ALTER TABLE TAIKHOAN ADD FOREIGN KEY (TK_TenDangNhap) REFERENCES NHANVIEN (NV_MaNhanVien)
 GO
 -- Xóa database:
 /*

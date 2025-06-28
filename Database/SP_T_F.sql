@@ -6,15 +6,15 @@ go
 
 --Kiểm tra tài khoản
 create or alter procedure usp_GetPasswordOfUsername
-	@username varchar(10),
+	@email varchar(100),
 	@password varchar(100) OUTPUT
 as
 begin
 	set NOCOUNT ON;
 	
-	select @password = TK_MatKhau
-	from TAIKHOAN
-	where TK_TenDangNhap = @username;
+	select @password = NV_MatKhau
+	from NHANVIEN
+	where NV_Email = @email;
 end;
 go
 
@@ -63,6 +63,85 @@ begin
 end
 go
 
+--Hiển thị thông tin kết quả thi của thí sinh dựa vào kỳ thi
+create or alter procedure usp_ThongTinKetQuaThi
+	@examtest varchar(10)
+as
+begin
+	set NOCOUNT ON;
+
+	select ts.TS_SoBaoDanh, ts.TS_HoTen, ts.TS_CCCD, ts.TS_NgaySinh, ts.TS_GioiTinh, bt.BT_DiemSo, lt.LT_NgayThi, lt.LT_TGBatDau, lt.LT_TGKetThuc
+	from BAITHI as bt join THISINH as ts on bt.BT_SoBaoDanh = ts.TS_SoBaoDanh
+					  join LICHTHI as lt on bt.BT_MaLichThi = lt.LT_MaLichThi
+	where lt.LT_MaKyThi = @examtest
+end
+go
+
+/*
+--Lấy danh sách lịch thi và giờ thi
+create or alter procedure usp_ThongTinKetQuaThiNew
+	@examdate varchar(10)
+as
+begin
+	set NOCOUNT ON;
+
+	select lt_
+end
+go
+
+--Them thong tin bai thi
+create or alter procedure usp_ThemBaiThi
+	@examcode varchar(10),
+	@examtest varchar(10),
+	@candidate varchar(10),
+	@examtime time,
+	@point float,
+	@examunit varchar(10)
+
+as
+begin
+	set NOCOUNT ON;
+
+	insert into BAITHI (BT_MaBaiThi, BT_MaKyThi, BT_SoBaoDanh, BT_ThoiGianLamBai, BT_DiemSo, BT_DonViCham)
+	values(@examcode, @examtest, @candidate, @examtime, @point, @examunit)
+end
+go
+
+--Cap nhat thong tin bai thi
+create or alter procedure usp_CapNhatBaiThi
+	@examcode varchar(10),
+	@examtest varchar(10),
+	@candidate varchar(10),
+	@examtime time,
+	@point float,
+	@examunit varchar(10)
+
+as
+begin
+	set NOCOUNT ON;
+
+	if not exists(select * from BAITHI where BT_MaBaiThi = @examcode)
+    begin
+        print(N'Bai Thi khong ton tai')
+        return
+    end
+
+	else
+    begin
+        update BAITHI
+        set BT_MaKyThi = coalesce(@examtest, BT_MaKyThi),
+            BT_SoBaoDanh = coalesce(@candidate, BT_SoBaoDanh),
+            BT_ThoiGianLamBai = coalesce(@examtime, BT_ThoiGianLamBai),
+            BT_DiemSo = coalesce(@point, BT_DiemSo), 
+            BT_DonViCham = coalesce(@examunit, BT_DonViCham)
+        where BT_MaBaiThi = @examcode;
+    end
+end
+go
+*/
+
+--Xoa bai thi
+
 --TRIGGER
 create or alter trigger utg_CheckDoiTuong
 on THONGBAO
@@ -79,6 +158,35 @@ begin
         RETURN;
 	end
 end
+go
+
+create or alter trigger utg_UpdateTrangThai
+on LICHTHI
+after insert, update
+as
+begin	
+	set nocount on;
+
+	update lt
+    set LT_TrangThai = N'Đã thi'
+    from LICHTHI lt
+    inner join inserted i
+        on lt.LT_MaLichThi = i.LT_MaLichThi
+    where
+        lt.LT_TrangThai = N'Chưa thi' -- chỉ cập nhật khi là "Chưa thi"
+        and (
+            -- ngày thi đã qua
+            lt.LT_NgayThi < convert(date, getdate())
+            or
+            -- hoặc là ngày thi hôm nay nhưng giờ kết thúc đã trễ hơn bây giờ
+            (
+                lt.LT_NgayThi = CONVERT(date, getdate())
+                AND
+                -- nối ngày + giờ kết thúc thành datetime để so sánh
+                cast(convert(varchar(10), lt.LT_NgayThi, 120) + ' ' + convert(varchar(8), lt.LT_TGKetThuc, 108) as datetime) < getdate()
+            )
+        );
+end;
 go
 
 --drop trigger utg_CheckDoiTuong;

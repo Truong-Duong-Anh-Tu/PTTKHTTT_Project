@@ -86,6 +86,9 @@ namespace PTTKHTTTProject.Properties {
         internal static System.Drawing.Bitmap calendar1 {
             get {
                 object obj = ResourceManager.GetObject("calendar1", resourceCulture);
+        internal static System.Drawing.Bitmap Edit {
+            get {
+                object obj = ResourceManager.GetObject("Edit", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }
@@ -103,9 +106,10 @@ namespace PTTKHTTTProject.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
-        internal static System.Drawing.Bitmap logo_1 {
+
+        internal static System.Drawing.Bitmap logonew {
             get {
-                object obj = ResourceManager.GetObject("logo_1", resourceCulture);
+                object obj = ResourceManager.GetObject("logonew", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

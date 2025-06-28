@@ -9,12 +9,12 @@ namespace PTTKHTTTProject.BUS
 {
     internal class TaiKhoanBUS
     {
-        public static bool DangNhap(string username, string password)
+        public static bool checkSignIn(string email, string password)
         {
-            username = username.Trim();
+            email = email.Trim();
             password = password.Trim();
 
-            string storedPassword = TaiKhoanDAO.getAccount(username);
+            string storedPassword = TaiKhoanDAO.getAccount(email);
 
             if (storedPassword == String.Empty)
             {
@@ -22,6 +22,13 @@ namespace PTTKHTTTProject.BUS
             }
 
             return BCrypt.Net.BCrypt.Verify(password, storedPassword);
+        }
+
+        public static string getUsername(string email)
+        {
+            string username = TaiKhoanDAO.getUsername(email);
+
+            return username;
         }
 
         public static string CheckRole(string username)

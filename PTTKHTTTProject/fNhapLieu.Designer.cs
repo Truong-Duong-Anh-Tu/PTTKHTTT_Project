@@ -56,7 +56,7 @@
             btnThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThongBao.Location = new Point(3, 218);
             btnThongBao.Name = "btnThongBao";
-            btnThongBao.Size = new Size(150, 55);
+            btnThongBao.Size = new Size(149, 55);
             btnThongBao.TabIndex = 2;
             btnThongBao.Text = "Thông báo";
             btnThongBao.UseVisualStyleBackColor = true;
@@ -66,9 +66,9 @@
             // 
             btnTTCN.FlatStyle = FlatStyle.Flat;
             btnTTCN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnTTCN.Location = new Point(3, 95);
+            btnTTCN.Location = new Point(3, 96);
             btnTTCN.Name = "btnTTCN";
-            btnTTCN.Size = new Size(150, 55);
+            btnTTCN.Size = new Size(149, 55);
             btnTTCN.TabIndex = 1;
             btnTTCN.Text = "Thông tin cá nhân";
             btnTTCN.UseVisualStyleBackColor = true;
@@ -77,8 +77,8 @@
             // ptbLogoHome
             // 
             ptbLogoHome.Anchor = AnchorStyles.None;
-            ptbLogoHome.Image = Properties.Resources.logo;
-            ptbLogoHome.Location = new Point(12, 4);
+            ptbLogoHome.Image = Properties.Resources.logonew;
+            ptbLogoHome.Location = new Point(11, 4);
             ptbLogoHome.Name = "ptbLogoHome";
             ptbLogoHome.Size = new Size(51, 51);
             ptbLogoHome.SizeMode = PictureBoxSizeMode.Zoom;
@@ -96,7 +96,7 @@
             tlpLogoName.Name = "tlpLogoName";
             tlpLogoName.RowCount = 1;
             tlpLogoName.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tlpLogoName.Size = new Size(150, 59);
+            tlpLogoName.Size = new Size(149, 59);
             tlpLogoName.TabIndex = 3;
             // 
             // lblNameHome
@@ -104,7 +104,7 @@
             lblNameHome.Anchor = AnchorStyles.None;
             lblNameHome.AutoSize = true;
             lblNameHome.Font = new Font("Yu Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNameHome.Location = new Point(85, 18);
+            lblNameHome.Location = new Point(84, 18);
             lblNameHome.Name = "lblNameHome";
             lblNameHome.Size = new Size(54, 23);
             lblNameHome.TabIndex = 1;
@@ -126,10 +126,10 @@
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 70.103096F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 29.8969078F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 62F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 137F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 272F));
-            tlpMenu.Size = new Size(156, 625);
+            tlpMenu.Size = new Size(155, 625);
             tlpMenu.TabIndex = 4;
             tlpMenu.Paint += tlpMenu_Paint;
             // 
@@ -137,9 +137,9 @@
             // 
             btnQLKQT.FlatStyle = FlatStyle.Flat;
             btnQLKQT.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            btnQLKQT.Location = new Point(3, 156);
+            btnQLKQT.Location = new Point(3, 157);
             btnQLKQT.Name = "btnQLKQT";
-            btnQLKQT.Size = new Size(150, 55);
+            btnQLKQT.Size = new Size(149, 55);
             btnQLKQT.TabIndex = 2;
             btnQLKQT.Text = "Quản lý kết quả thi";
             btnQLKQT.UseVisualStyleBackColor = true;
@@ -157,7 +157,7 @@
             panel1.Controls.Add(ptbMenu);
             panel1.Location = new Point(149, 0);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1032, 51);
+            panel1.Size = new Size(1033, 51);
             panel1.TabIndex = 5;
             // 
             // btnSignOut
@@ -200,7 +200,7 @@
             // 
             lblOption.AutoSize = true;
             lblOption.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblOption.Location = new Point(52, 17);
+            lblOption.Location = new Point(53, 17);
             lblOption.Name = "lblOption";
             lblOption.Size = new Size(135, 20);
             lblOption.TabIndex = 6;
@@ -210,9 +210,9 @@
             // 
             ptbMenu.BackColor = Color.DeepSkyBlue;
             ptbMenu.Image = Properties.Resources.Menu;
-            ptbMenu.Location = new Point(12, 12);
+            ptbMenu.Location = new Point(11, 12);
             ptbMenu.Name = "ptbMenu";
-            ptbMenu.Size = new Size(30, 30);
+            ptbMenu.Size = new Size(30, 29);
             ptbMenu.SizeMode = PictureBoxSizeMode.Zoom;
             ptbMenu.TabIndex = 6;
             ptbMenu.TabStop = false;
