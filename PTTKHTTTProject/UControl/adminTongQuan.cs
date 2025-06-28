@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using PTTKHTTTProject.BUS;  // Thêm namespace này
 
 namespace PTTKHTTTProject.UControl
 {
@@ -15,6 +16,30 @@ namespace PTTKHTTTProject.UControl
         public adminTongQuan()
         {
             InitializeComponent();
+            LoadKyThiData();  // Gọi phương thức tải dữ liệu kỳ thi
+        }
+
+        private void LoadKyThiData()
+        {
+            try
+            {
+                // Lấy tổng số kỳ thi từ BUS
+                int totalExams = KyThiBUS.GetTotalExamCount();
+
+                // Hiển thị tổng số kỳ thi trong control
+                labelNumberOfExamination.Text = totalExams.ToString();
+
+                // Lấy và hiển thị tổng số lịch thi còn lại
+                int remainingSchedules = KyThiBUS.GetRemainingScheduleCount();
+                labelNumberOfSchedule.Text = remainingSchedules.ToString();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Lỗi khi tải dữ liệu: {ex.Message}",
+                    "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                labelNumberOfExamination.Text = "0";
+                labelNumberOfSchedule.Text = "0";
+            }
         }
 
         private void label2_Click(object sender, EventArgs e)
