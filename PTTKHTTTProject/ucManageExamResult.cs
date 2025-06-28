@@ -66,6 +66,7 @@ namespace PTTKHTTTProject
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colFullname",
                 DataPropertyName = "TS_HoTen",
                 HeaderText = "Họ và tên",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
@@ -74,30 +75,35 @@ namespace PTTKHTTTProject
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colSBD",
                 DataPropertyName = "TS_SoBaoDanh",
                 HeaderText = "Số báo danh"
             });
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colCCCD",
                 DataPropertyName = "TS_CCCD",
                 HeaderText = "CCCD"
             });
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colBirthday",
                 DataPropertyName = "TS_NgaySinh",
                 HeaderText = "Ngày sinh"
             });
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colGender",
                 DataPropertyName = "TS_GioiTinh",
                 HeaderText = "Giới tính"
             });
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colScore",
                 DataPropertyName = "BT_DiemSo",
                 HeaderText = "Điểm số"
             });
@@ -119,6 +125,12 @@ namespace PTTKHTTTProject
         private void dtgvResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
             dtgvResult.ClearSelection();
+
+            if (e.RowIndex < 0 || e.ColumnIndex != dtgvResult.Columns["btnAction"].Index)
+                return;
+
+            string name = dtgvResult.Rows[e.RowIndex].Cells["colSBD"].Value.ToString();
+            MessageBox.Show($"Bạn vừa chọn sửa: {name}", "Thông báo");
         }
 
         private void tbxSearchCandidate_TextChanged(object sender, EventArgs e)
