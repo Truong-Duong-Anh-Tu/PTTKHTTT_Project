@@ -33,15 +33,12 @@
             label1 = new Label();
             dataGridView1 = new DataGridView();
             sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
-            panelTimKiem = new Panel();
             comboBoxTrangThai = new ComboBox();
-            labelTrangThai = new Label();
-            labelTimMaNV = new Label();
-            pictureBoxSearch = new PictureBox();
+            textBox1 = new TextBox();
+            pictureBox1 = new PictureBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
-            panelTimKiem.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
             // button1
@@ -56,10 +53,10 @@
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ButtonHighlight;
-            panel1.Controls.Add(labelTrangThai);
+            panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(pictureBox1);
+            panel1.Controls.Add(textBox1);
             panel1.Controls.Add(comboBoxTrangThai);
-            panel1.Controls.Add(panelTimKiem);
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(label1);
             panel1.Location = new Point(22, 61);
@@ -80,12 +77,12 @@
             // dataGridView1
             // 
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-            dataGridView1.BackgroundColor = SystemColors.Control;
+            dataGridView1.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(23, 55);
+            dataGridView1.Location = new Point(23, 65);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(941, 428);
+            dataGridView1.Size = new Size(941, 418);
             dataGridView1.TabIndex = 1;
             // 
             // sqlCommand1
@@ -93,61 +90,39 @@
             sqlCommand1.CommandTimeout = 30;
             sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
-            // panelTimKiem
-            // 
-            panelTimKiem.BorderStyle = BorderStyle.FixedSingle;
-            panelTimKiem.Controls.Add(pictureBoxSearch);
-            panelTimKiem.Controls.Add(labelTimMaNV);
-            panelTimKiem.Location = new Point(656, 9);
-            panelTimKiem.Name = "panelTimKiem";
-            panelTimKiem.Size = new Size(297, 32);
-            panelTimKiem.TabIndex = 2;
-            panelTimKiem.Paint += panelTimKiem_Paint;
-            // 
             // comboBoxTrangThai
             // 
             comboBoxTrangThai.FormattingEnabled = true;
-            comboBoxTrangThai.Location = new Point(396, 9);
+            comboBoxTrangThai.Location = new Point(372, 20);
             comboBoxTrangThai.Name = "comboBoxTrangThai";
             comboBoxTrangThai.Size = new Size(219, 28);
             comboBoxTrangThai.TabIndex = 3;
+            comboBoxTrangThai.Text = "Trạng thái";
             comboBoxTrangThai.SelectedIndexChanged += comboBoxTrangThai_SelectedIndexChanged;
             // 
-            // labelTrangThai
+            // textBox1
             // 
-            labelTrangThai.AutoSize = true;
-            labelTrangThai.Location = new Point(438, 12);
-            labelTrangThai.Name = "labelTrangThai";
-            labelTrangThai.Size = new Size(75, 20);
-            labelTrangThai.TabIndex = 4;
-            labelTrangThai.Text = "Trạng thái";
-            labelTrangThai.Click += labelTrangThai_Click;
+            textBox1.Location = new Point(676, 23);
+            textBox1.Name = "textBox1";
+            textBox1.Size = new Size(288, 27);
+            textBox1.TabIndex = 5;
+            textBox1.Text = "Tìm kiếm mã nhân viên";
             // 
-            // labelTimMaNV
+            // pictureBox1
             // 
-            labelTimMaNV.AutoSize = true;
-            labelTimMaNV.Location = new Point(69, 2);
-            labelTimMaNV.Name = "labelTimMaNV";
-            labelTimMaNV.Size = new Size(162, 20);
-            labelTimMaNV.TabIndex = 0;
-            labelTimMaNV.Text = "Tìm kiếm mã nhân viên";
-            labelTimMaNV.Click += labelTimMaNV_Click;
-            // 
-            // pictureBoxSearch
-            // 
-            pictureBoxSearch.Image = Properties.Resources.search;
-            pictureBoxSearch.Location = new Point(11, -1);
-            pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(40, 30);
-            pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxSearch.TabIndex = 1;
-            pictureBoxSearch.TabStop = false;
-            pictureBoxSearch.Click += pictureBoxSearch_Click;
+            pictureBox1.Image = Properties.Resources.search1;
+            pictureBox1.Location = new Point(629, 17);
+            pictureBox1.Name = "pictureBox1";
+            pictureBox1.Size = new Size(41, 39);
+            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox1.TabIndex = 6;
+            pictureBox1.TabStop = false;
             // 
             // adminQuanLyLichNV
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonHighlight;
             Controls.Add(panel1);
             Controls.Add(button1);
             Name = "adminQuanLyLichNV";
@@ -155,9 +130,7 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
-            panelTimKiem.ResumeLayout(false);
-            panelTimKiem.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);
         }
 
@@ -167,11 +140,9 @@
         private Panel panel1;
         private Label label1;
         private DataGridView dataGridView1;
-        private Panel panelTimKiem;
         private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
-        private Label labelTrangThai;
         private ComboBox comboBoxTrangThai;
-        private Label labelTimMaNV;
-        private PictureBox pictureBoxSearch;
+        private PictureBox pictureBox1;
+        private TextBox textBox1;
     }
 }
