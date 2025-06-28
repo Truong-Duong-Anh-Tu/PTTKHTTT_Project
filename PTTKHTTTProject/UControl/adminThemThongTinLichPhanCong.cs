@@ -34,5 +34,10 @@ namespace PTTKHTTTProject.UControl
                 }
             }
         }
+
+        private void dataGridViewNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

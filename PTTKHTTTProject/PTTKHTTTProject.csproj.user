@@ -4,6 +4,9 @@
     <Compile Update="fAdminThemLichPhanCong.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="fAdminThemNV.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UControl\adminChinhSuaLichNV.cs">
       <SubType>UserControl</SubType>
     </Compile>
