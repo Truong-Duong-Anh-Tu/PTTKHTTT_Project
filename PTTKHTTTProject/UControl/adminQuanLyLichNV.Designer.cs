@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            button1 = new Button();
+            buttonThemPhanCong = new Button();
             panel1 = new Panel();
             pictureBox1 = new PictureBox();
             textBox1 = new TextBox();
@@ -41,15 +41,16 @@
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             SuspendLayout();
             // 
-            // button1
+            // buttonThemPhanCong
             // 
-            button1.BackColor = Color.SkyBlue;
-            button1.Location = new Point(780, 15);
-            button1.Name = "button1";
-            button1.Size = new Size(222, 40);
-            button1.TabIndex = 0;
-            button1.Text = "Thêm phân công";
-            button1.UseVisualStyleBackColor = false;
+            buttonThemPhanCong.BackColor = Color.SkyBlue;
+            buttonThemPhanCong.Location = new Point(780, 15);
+            buttonThemPhanCong.Name = "buttonThemPhanCong";
+            buttonThemPhanCong.Size = new Size(222, 40);
+            buttonThemPhanCong.TabIndex = 0;
+            buttonThemPhanCong.Text = "Thêm phân công";
+            buttonThemPhanCong.UseVisualStyleBackColor = false;
+            buttonThemPhanCong.Click += buttonThemPhanCong_Click;
             // 
             // panel1
             // 
@@ -124,7 +125,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             Controls.Add(panel1);
-            Controls.Add(button1);
+            Controls.Add(buttonThemPhanCong);
             Name = "adminQuanLyLichNV";
             Size = new Size(1021, 573);
             panel1.ResumeLayout(false);
@@ -136,7 +137,7 @@
 
         #endregion
 
-        private Button button1;
+        private Button buttonThemPhanCong;
         private Panel panel1;
         private Label label1;
         private DataGridView dataGridView1;

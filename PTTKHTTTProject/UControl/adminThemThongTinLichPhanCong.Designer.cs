@@ -30,6 +30,12 @@
         {
             label1 = new Label();
             tableLayoutPanelThongTinLichPhanCong = new TableLayoutPanel();
+            textBoxTenNVCoiThi = new TextBox();
+            textBoxMaNVCoiThi = new TextBox();
+            textBoxTGKetThuc = new TextBox();
+            textBoxTGBatDau = new TextBox();
+            textBoxPhongThi = new TextBox();
+            textBoxNgayThi = new TextBox();
             label2 = new Label();
             labelMaNVCoithi = new Label();
             labelTGBatDau = new Label();
@@ -38,21 +44,15 @@
             labelPhongThi = new Label();
             labelTGKetThuc = new Label();
             textBoxKyThi = new TextBox();
-            textBoxNgayThi = new TextBox();
-            textBoxPhongThi = new TextBox();
-            textBoxTGBatDau = new TextBox();
-            textBoxTGKetThuc = new TextBox();
-            textBoxMaNVCoiThi = new TextBox();
-            textBoxTenNVCoiThi = new TextBox();
             comboBoxKyThi = new ComboBox();
-            pictureBox1 = new PictureBox();
+            pictureBoxThoat = new PictureBox();
             comboBoxLichThi = new ComboBox();
             dataGridView1 = new DataGridView();
             label3 = new Label();
             textBox1 = new TextBox();
             pictureBox2 = new PictureBox();
             tableLayoutPanelThongTinLichPhanCong.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
             SuspendLayout();
@@ -61,7 +61,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label1.Location = new Point(300, 15);
+            label1.Location = new Point(375, 15);
             label1.Name = "label1";
             label1.Size = new Size(278, 31);
             label1.TabIndex = 1;
@@ -99,6 +99,66 @@
             tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
             tableLayoutPanelThongTinLichPhanCong.Size = new Size(558, 351);
             tableLayoutPanelThongTinLichPhanCong.TabIndex = 5;
+            // 
+            // textBoxTenNVCoiThi
+            // 
+            textBoxTenNVCoiThi.Anchor = AnchorStyles.None;
+            textBoxTenNVCoiThi.BackColor = SystemColors.Control;
+            textBoxTenNVCoiThi.BorderStyle = BorderStyle.None;
+            textBoxTenNVCoiThi.Location = new Point(240, 318);
+            textBoxTenNVCoiThi.Name = "textBoxTenNVCoiThi";
+            textBoxTenNVCoiThi.Size = new Size(268, 20);
+            textBoxTenNVCoiThi.TabIndex = 20;
+            // 
+            // textBoxMaNVCoiThi
+            // 
+            textBoxMaNVCoiThi.Anchor = AnchorStyles.None;
+            textBoxMaNVCoiThi.BackColor = SystemColors.Control;
+            textBoxMaNVCoiThi.BorderStyle = BorderStyle.None;
+            textBoxMaNVCoiThi.Location = new Point(247, 270);
+            textBoxMaNVCoiThi.Name = "textBoxMaNVCoiThi";
+            textBoxMaNVCoiThi.Size = new Size(255, 20);
+            textBoxMaNVCoiThi.TabIndex = 19;
+            // 
+            // textBoxTGKetThuc
+            // 
+            textBoxTGKetThuc.Anchor = AnchorStyles.None;
+            textBoxTGKetThuc.BackColor = SystemColors.Control;
+            textBoxTGKetThuc.BorderStyle = BorderStyle.None;
+            textBoxTGKetThuc.Location = new Point(245, 220);
+            textBoxTGKetThuc.Name = "textBoxTGKetThuc";
+            textBoxTGKetThuc.Size = new Size(258, 20);
+            textBoxTGKetThuc.TabIndex = 18;
+            // 
+            // textBoxTGBatDau
+            // 
+            textBoxTGBatDau.Anchor = AnchorStyles.None;
+            textBoxTGBatDau.BackColor = SystemColors.Control;
+            textBoxTGBatDau.BorderStyle = BorderStyle.None;
+            textBoxTGBatDau.Location = new Point(236, 169);
+            textBoxTGBatDau.Name = "textBoxTGBatDau";
+            textBoxTGBatDau.Size = new Size(277, 20);
+            textBoxTGBatDau.TabIndex = 17;
+            // 
+            // textBoxPhongThi
+            // 
+            textBoxPhongThi.Anchor = AnchorStyles.None;
+            textBoxPhongThi.BackColor = SystemColors.Control;
+            textBoxPhongThi.BorderStyle = BorderStyle.None;
+            textBoxPhongThi.Location = new Point(246, 118);
+            textBoxPhongThi.Name = "textBoxPhongThi";
+            textBoxPhongThi.Size = new Size(257, 20);
+            textBoxPhongThi.TabIndex = 16;
+            // 
+            // textBoxNgayThi
+            // 
+            textBoxNgayThi.Anchor = AnchorStyles.None;
+            textBoxNgayThi.BackColor = SystemColors.Control;
+            textBoxNgayThi.BorderStyle = BorderStyle.None;
+            textBoxNgayThi.Location = new Point(262, 67);
+            textBoxNgayThi.Name = "textBoxNgayThi";
+            textBoxNgayThi.Size = new Size(225, 20);
+            textBoxNgayThi.TabIndex = 15;
             // 
             // label2
             // 
@@ -182,70 +242,10 @@
             textBoxKyThi.Anchor = AnchorStyles.None;
             textBoxKyThi.BackColor = SystemColors.Control;
             textBoxKyThi.BorderStyle = BorderStyle.None;
-            textBoxKyThi.Location = new Point(259, 12);
+            textBoxKyThi.Location = new Point(259, 16);
             textBoxKyThi.Name = "textBoxKyThi";
             textBoxKyThi.Size = new Size(231, 20);
             textBoxKyThi.TabIndex = 14;
-            // 
-            // textBoxNgayThi
-            // 
-            textBoxNgayThi.Anchor = AnchorStyles.None;
-            textBoxNgayThi.BackColor = SystemColors.Control;
-            textBoxNgayThi.BorderStyle = BorderStyle.None;
-            textBoxNgayThi.Location = new Point(262, 67);
-            textBoxNgayThi.Name = "textBoxNgayThi";
-            textBoxNgayThi.Size = new Size(225, 20);
-            textBoxNgayThi.TabIndex = 15;
-            // 
-            // textBoxPhongThi
-            // 
-            textBoxPhongThi.Anchor = AnchorStyles.None;
-            textBoxPhongThi.BackColor = SystemColors.Control;
-            textBoxPhongThi.BorderStyle = BorderStyle.None;
-            textBoxPhongThi.Location = new Point(246, 118);
-            textBoxPhongThi.Name = "textBoxPhongThi";
-            textBoxPhongThi.Size = new Size(257, 20);
-            textBoxPhongThi.TabIndex = 16;
-            // 
-            // textBoxTGBatDau
-            // 
-            textBoxTGBatDau.Anchor = AnchorStyles.None;
-            textBoxTGBatDau.BackColor = SystemColors.Control;
-            textBoxTGBatDau.BorderStyle = BorderStyle.None;
-            textBoxTGBatDau.Location = new Point(236, 169);
-            textBoxTGBatDau.Name = "textBoxTGBatDau";
-            textBoxTGBatDau.Size = new Size(277, 20);
-            textBoxTGBatDau.TabIndex = 17;
-            // 
-            // textBoxTGKetThuc
-            // 
-            textBoxTGKetThuc.Anchor = AnchorStyles.None;
-            textBoxTGKetThuc.BackColor = SystemColors.Control;
-            textBoxTGKetThuc.BorderStyle = BorderStyle.None;
-            textBoxTGKetThuc.Location = new Point(245, 220);
-            textBoxTGKetThuc.Name = "textBoxTGKetThuc";
-            textBoxTGKetThuc.Size = new Size(258, 20);
-            textBoxTGKetThuc.TabIndex = 18;
-            // 
-            // textBoxMaNVCoiThi
-            // 
-            textBoxMaNVCoiThi.Anchor = AnchorStyles.None;
-            textBoxMaNVCoiThi.BackColor = SystemColors.Control;
-            textBoxMaNVCoiThi.BorderStyle = BorderStyle.None;
-            textBoxMaNVCoiThi.Location = new Point(247, 270);
-            textBoxMaNVCoiThi.Name = "textBoxMaNVCoiThi";
-            textBoxMaNVCoiThi.Size = new Size(255, 20);
-            textBoxMaNVCoiThi.TabIndex = 19;
-            // 
-            // textBoxTenNVCoiThi
-            // 
-            textBoxTenNVCoiThi.Anchor = AnchorStyles.None;
-            textBoxTenNVCoiThi.BackColor = SystemColors.Control;
-            textBoxTenNVCoiThi.BorderStyle = BorderStyle.None;
-            textBoxTenNVCoiThi.Location = new Point(240, 318);
-            textBoxTenNVCoiThi.Name = "textBoxTenNVCoiThi";
-            textBoxTenNVCoiThi.Size = new Size(268, 20);
-            textBoxTenNVCoiThi.TabIndex = 20;
             // 
             // comboBoxKyThi
             // 
@@ -256,15 +256,16 @@
             comboBoxKyThi.TabIndex = 6;
             comboBoxKyThi.Text = "Chọn kỳ thi";
             // 
-            // pictureBox1
+            // pictureBoxThoat
             // 
-            pictureBox1.Image = Properties.Resources.exit;
-            pictureBox1.Location = new Point(40, 15);
-            pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(58, 51);
-            pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox1.TabIndex = 7;
-            pictureBox1.TabStop = false;
+            pictureBoxThoat.Image = Properties.Resources.exit;
+            pictureBoxThoat.Location = new Point(61, 15);
+            pictureBoxThoat.Name = "pictureBoxThoat";
+            pictureBoxThoat.Size = new Size(45, 49);
+            pictureBoxThoat.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBoxThoat.TabIndex = 7;
+            pictureBoxThoat.TabStop = false;
+            pictureBoxThoat.Click += pictureBoxThoat_Click;
             // 
             // comboBoxLichThi
             // 
@@ -322,7 +323,7 @@
             Controls.Add(label3);
             Controls.Add(dataGridView1);
             Controls.Add(comboBoxLichThi);
-            Controls.Add(pictureBox1);
+            Controls.Add(pictureBoxThoat);
             Controls.Add(comboBoxKyThi);
             Controls.Add(tableLayoutPanelThongTinLichPhanCong);
             Controls.Add(label1);
@@ -330,7 +331,7 @@
             Size = new Size(1001, 528);
             tableLayoutPanelThongTinLichPhanCong.ResumeLayout(false);
             tableLayoutPanelThongTinLichPhanCong.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
+            ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
             ResumeLayout(false);
@@ -356,7 +357,7 @@
         private TextBox textBoxKyThi;
         private TextBox textBoxTenNVCoiThi;
         private ComboBox comboBoxKyThi;
-        private PictureBox pictureBox1;
+        private PictureBox pictureBoxThoat;
         private ComboBox comboBoxLichThi;
         private DataGridView dataGridView1;
         private Label label3;

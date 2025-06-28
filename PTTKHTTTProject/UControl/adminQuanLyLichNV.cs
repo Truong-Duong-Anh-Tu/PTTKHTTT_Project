@@ -41,5 +41,11 @@ namespace PTTKHTTTProject.UControl
         {
 
         }
+
+        private void buttonThemPhanCong_Click(object sender, EventArgs e)
+        {
+            fAdminThemLichPhanCong fAdminThemLichPhanCong = new fAdminThemLichPhanCong();
+            fAdminThemLichPhanCong.ShowDialog();
+        }
     }
 }

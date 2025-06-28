@@ -21,5 +21,18 @@ namespace PTTKHTTTProject.UControl
         {
 
         }
+
+        private void pictureBoxThoat_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Cancel Confirmation", MessageBoxButtons.YesNo) == DialogResult.Yes)
+            {
+                // Tìm Form cha và đóng nó
+                Form? parentForm = this?.FindForm();
+                if (parentForm != null)
+                {
+                    parentForm.Close();
+                }
+            }
+        }
     }
 }
