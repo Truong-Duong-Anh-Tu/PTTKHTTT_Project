@@ -253,4 +253,9 @@ VALUES
 ('PDT010', 'PDK010', 'TS00010', 'LT05', 'P005');
 GO
 
+INSERT INTO PHANCONG
+(PC_MaNhanVien, PC_MaLichThi, PC_TrangThai)
+VALUES
+('NV021', 'LT03', N'Chưa diễn ra');
+
 --delete from BAITHI
