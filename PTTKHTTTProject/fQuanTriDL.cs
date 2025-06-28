@@ -79,7 +79,11 @@ namespace PTTKHTTTProject
             }
             else if(buttonText == "Quản lý nhân viên")
             {
-                
+
+                adminQuanLyNV adminQuanLyNV = new adminQuanLyNV();  
+                adminQuanLyNV.Dock = DockStyle.Fill;
+                panelMain.Controls.Add(adminQuanLyNV);
+
             }
             else if (buttonText == "Phát hành phiếu dự thi")
             {
