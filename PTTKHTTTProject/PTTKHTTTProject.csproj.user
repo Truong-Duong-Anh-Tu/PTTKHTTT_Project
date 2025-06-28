@@ -4,6 +4,9 @@
     <Compile Update="UControl\adminQuanLyLichNV.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UControl\adminQuanLyNV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UControl\adminSidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
