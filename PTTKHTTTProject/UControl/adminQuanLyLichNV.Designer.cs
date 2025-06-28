@@ -103,6 +103,7 @@
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(941, 418);
             dataGridView1.TabIndex = 1;
+            dataGridView1.CellContentClick += dataGridView1_CellContentClick;
             // 
             // label1
             // 
@@ -128,6 +129,7 @@
             Controls.Add(buttonThemPhanCong);
             Name = "adminQuanLyLichNV";
             Size = new Size(1021, 573);
+            Load += adminQuanLyLichNV_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();

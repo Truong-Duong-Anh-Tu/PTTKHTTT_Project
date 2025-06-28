@@ -28,44 +28,111 @@
         /// </summary>
         private void InitializeComponent()
         {
-            label1 = new Label();
+            labelTGKetThuc = new Label();
+            labelPhongThi = new Label();
+            labelNgayThi = new Label();
+            labelKyThi = new Label();
+            labelTGBatDau = new Label();
+            labelMaNVCoithi = new Label();
+            label2 = new Label();
             tableLayoutPanelThongTinLichPhanCong = new TableLayoutPanel();
             textBoxTenNVCoiThi = new TextBox();
             textBoxMaNVCoiThi = new TextBox();
             textBoxTGKetThuc = new TextBox();
             textBoxTGBatDau = new TextBox();
             textBoxPhongThi = new TextBox();
-            textBoxNgayThi = new TextBox();
-            label2 = new Label();
-            labelMaNVCoithi = new Label();
-            labelTGBatDau = new Label();
-            labelKyThi = new Label();
-            labelNgayThi = new Label();
-            labelPhongThi = new Label();
-            labelTGKetThuc = new Label();
             textBoxKyThi = new TextBox();
-            comboBoxKyThi = new ComboBox();
+            textBoxNgayThi = new TextBox();
             pictureBoxThoat = new PictureBox();
-            comboBoxLichThi = new ComboBox();
-            dataGridViewNhanVien = new DataGridView();
-            label3 = new Label();
-            textBox1 = new TextBox();
             pictureBox2 = new PictureBox();
+            textBox1 = new TextBox();
+            dataGridViewNhanVien = new DataGridView();
+            comboBoxLichThi = new ComboBox();
+            comboBoxKyThi = new ComboBox();
+            label1 = new Label();
+            label3 = new Label();
             tableLayoutPanelThongTinLichPhanCong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewNhanVien).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewNhanVien).BeginInit();
             SuspendLayout();
             // 
-            // label1
+            // labelTGKetThuc
             // 
-            label1.AutoSize = true;
-            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label1.Location = new Point(375, 15);
-            label1.Name = "label1";
-            label1.Size = new Size(278, 31);
-            label1.TabIndex = 1;
-            label1.Text = "THÊM LỊCH PHÂN CÔNG";
+            labelTGKetThuc.Anchor = AnchorStyles.None;
+            labelTGKetThuc.AutoSize = true;
+            labelTGKetThuc.Font = new Font("Segoe UI", 10F);
+            labelTGKetThuc.Location = new Point(20, 218);
+            labelTGKetThuc.Name = "labelTGKetThuc";
+            labelTGKetThuc.Size = new Size(152, 23);
+            labelTGKetThuc.TabIndex = 7;
+            labelTGKetThuc.Text = "Thời gian kết thúc:";
+            // 
+            // labelPhongThi
+            // 
+            labelPhongThi.Anchor = AnchorStyles.None;
+            labelPhongThi.AutoSize = true;
+            labelPhongThi.Font = new Font("Segoe UI", 10F);
+            labelPhongThi.Location = new Point(51, 116);
+            labelPhongThi.Name = "labelPhongThi";
+            labelPhongThi.Size = new Size(89, 23);
+            labelPhongThi.TabIndex = 3;
+            labelPhongThi.Text = "Phòng thi:";
+            // 
+            // labelNgayThi
+            // 
+            labelNgayThi.Anchor = AnchorStyles.None;
+            labelNgayThi.AutoSize = true;
+            labelNgayThi.Font = new Font("Segoe UI", 10F);
+            labelNgayThi.Location = new Point(56, 65);
+            labelNgayThi.Name = "labelNgayThi";
+            labelNgayThi.Size = new Size(79, 23);
+            labelNgayThi.TabIndex = 2;
+            labelNgayThi.Text = "Ngày thi:";
+            // 
+            // labelKyThi
+            // 
+            labelKyThi.Anchor = AnchorStyles.None;
+            labelKyThi.AutoSize = true;
+            labelKyThi.Font = new Font("Segoe UI", 10F);
+            labelKyThi.Location = new Point(68, 14);
+            labelKyThi.Name = "labelKyThi";
+            labelKyThi.Size = new Size(56, 23);
+            labelKyThi.TabIndex = 0;
+            labelKyThi.Text = "Kỳ thi:";
+            // 
+            // labelTGBatDau
+            // 
+            labelTGBatDau.Anchor = AnchorStyles.None;
+            labelTGBatDau.AutoSize = true;
+            labelTGBatDau.Font = new Font("Segoe UI", 10F);
+            labelTGBatDau.Location = new Point(21, 167);
+            labelTGBatDau.Name = "labelTGBatDau";
+            labelTGBatDau.Size = new Size(149, 23);
+            labelTGBatDau.TabIndex = 6;
+            labelTGBatDau.Text = "Thời gian bắt đầu:";
+            // 
+            // labelMaNVCoithi
+            // 
+            labelMaNVCoithi.Anchor = AnchorStyles.None;
+            labelMaNVCoithi.AutoSize = true;
+            labelMaNVCoithi.Font = new Font("Segoe UI", 10F);
+            labelMaNVCoithi.Location = new Point(11, 269);
+            labelMaNVCoithi.Name = "labelMaNVCoithi";
+            labelMaNVCoithi.Size = new Size(170, 23);
+            labelMaNVCoithi.TabIndex = 10;
+            labelMaNVCoithi.Text = "Mã nhân viên coi thi:";
+            // 
+            // label2
+            // 
+            label2.Anchor = AnchorStyles.None;
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 10F);
+            label2.Location = new Point(10, 316);
+            label2.Name = "label2";
+            label2.Size = new Size(172, 23);
+            label2.TabIndex = 12;
+            label2.Text = "Tên nhân viên coi thi:";
             // 
             // tableLayoutPanelThongTinLichPhanCong
             // 
@@ -150,93 +217,6 @@
             textBoxPhongThi.Size = new Size(257, 20);
             textBoxPhongThi.TabIndex = 16;
             // 
-            // textBoxNgayThi
-            // 
-            textBoxNgayThi.Anchor = AnchorStyles.None;
-            textBoxNgayThi.BackColor = SystemColors.Control;
-            textBoxNgayThi.BorderStyle = BorderStyle.None;
-            textBoxNgayThi.Location = new Point(262, 67);
-            textBoxNgayThi.Name = "textBoxNgayThi";
-            textBoxNgayThi.Size = new Size(225, 20);
-            textBoxNgayThi.TabIndex = 15;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.None;
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(10, 316);
-            label2.Name = "label2";
-            label2.Size = new Size(172, 23);
-            label2.TabIndex = 12;
-            label2.Text = "Tên nhân viên coi thi:";
-            // 
-            // labelMaNVCoithi
-            // 
-            labelMaNVCoithi.Anchor = AnchorStyles.None;
-            labelMaNVCoithi.AutoSize = true;
-            labelMaNVCoithi.Font = new Font("Segoe UI", 10F);
-            labelMaNVCoithi.Location = new Point(11, 269);
-            labelMaNVCoithi.Name = "labelMaNVCoithi";
-            labelMaNVCoithi.Size = new Size(170, 23);
-            labelMaNVCoithi.TabIndex = 10;
-            labelMaNVCoithi.Text = "Mã nhân viên coi thi:";
-            // 
-            // labelTGBatDau
-            // 
-            labelTGBatDau.Anchor = AnchorStyles.None;
-            labelTGBatDau.AutoSize = true;
-            labelTGBatDau.Font = new Font("Segoe UI", 10F);
-            labelTGBatDau.Location = new Point(21, 167);
-            labelTGBatDau.Name = "labelTGBatDau";
-            labelTGBatDau.Size = new Size(149, 23);
-            labelTGBatDau.TabIndex = 6;
-            labelTGBatDau.Text = "Thời gian bắt đầu:";
-            // 
-            // labelKyThi
-            // 
-            labelKyThi.Anchor = AnchorStyles.None;
-            labelKyThi.AutoSize = true;
-            labelKyThi.Font = new Font("Segoe UI", 10F);
-            labelKyThi.Location = new Point(68, 14);
-            labelKyThi.Name = "labelKyThi";
-            labelKyThi.Size = new Size(56, 23);
-            labelKyThi.TabIndex = 0;
-            labelKyThi.Text = "Kỳ thi:";
-            // 
-            // labelNgayThi
-            // 
-            labelNgayThi.Anchor = AnchorStyles.None;
-            labelNgayThi.AutoSize = true;
-            labelNgayThi.Font = new Font("Segoe UI", 10F);
-            labelNgayThi.Location = new Point(56, 65);
-            labelNgayThi.Name = "labelNgayThi";
-            labelNgayThi.Size = new Size(79, 23);
-            labelNgayThi.TabIndex = 2;
-            labelNgayThi.Text = "Ngày thi:";
-            // 
-            // labelPhongThi
-            // 
-            labelPhongThi.Anchor = AnchorStyles.None;
-            labelPhongThi.AutoSize = true;
-            labelPhongThi.Font = new Font("Segoe UI", 10F);
-            labelPhongThi.Location = new Point(51, 116);
-            labelPhongThi.Name = "labelPhongThi";
-            labelPhongThi.Size = new Size(89, 23);
-            labelPhongThi.TabIndex = 3;
-            labelPhongThi.Text = "Phòng thi:";
-            // 
-            // labelTGKetThuc
-            // 
-            labelTGKetThuc.Anchor = AnchorStyles.None;
-            labelTGKetThuc.AutoSize = true;
-            labelTGKetThuc.Font = new Font("Segoe UI", 10F);
-            labelTGKetThuc.Location = new Point(20, 218);
-            labelTGKetThuc.Name = "labelTGKetThuc";
-            labelTGKetThuc.Size = new Size(152, 23);
-            labelTGKetThuc.TabIndex = 7;
-            labelTGKetThuc.Text = "Thời gian kết thúc:";
-            // 
             // textBoxKyThi
             // 
             textBoxKyThi.Anchor = AnchorStyles.None;
@@ -247,14 +227,15 @@
             textBoxKyThi.Size = new Size(231, 20);
             textBoxKyThi.TabIndex = 14;
             // 
-            // comboBoxKyThi
+            // textBoxNgayThi
             // 
-            comboBoxKyThi.FormattingEnabled = true;
-            comboBoxKyThi.Location = new Point(31, 86);
-            comboBoxKyThi.Name = "comboBoxKyThi";
-            comboBoxKyThi.Size = new Size(243, 28);
-            comboBoxKyThi.TabIndex = 6;
-            comboBoxKyThi.Text = "Chọn kỳ thi";
+            textBoxNgayThi.Anchor = AnchorStyles.None;
+            textBoxNgayThi.BackColor = SystemColors.Control;
+            textBoxNgayThi.BorderStyle = BorderStyle.None;
+            textBoxNgayThi.Location = new Point(262, 67);
+            textBoxNgayThi.Name = "textBoxNgayThi";
+            textBoxNgayThi.Size = new Size(225, 20);
+            textBoxNgayThi.TabIndex = 15;
             // 
             // pictureBoxThoat
             // 
@@ -267,14 +248,23 @@
             pictureBoxThoat.TabStop = false;
             pictureBoxThoat.Click += pictureBoxThoat_Click;
             // 
-            // comboBoxLichThi
+            // pictureBox2
             // 
-            comboBoxLichThi.FormattingEnabled = true;
-            comboBoxLichThi.Location = new Point(322, 86);
-            comboBoxLichThi.Name = "comboBoxLichThi";
-            comboBoxLichThi.Size = new Size(256, 28);
-            comboBoxLichThi.TabIndex = 8;
-            comboBoxLichThi.Text = "Chọn lịch thi";
+            pictureBox2.Image = Properties.Resources.search2;
+            pictureBox2.Location = new Point(614, 133);
+            pictureBox2.Name = "pictureBox2";
+            pictureBox2.Size = new Size(39, 26);
+            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
+            pictureBox2.TabIndex = 13;
+            pictureBox2.TabStop = false;
+            // 
+            // textBox1
+            // 
+            textBox1.Location = new Point(659, 132);
+            textBox1.Name = "textBox1";
+            textBox1.PlaceholderText = "Tìm mã nhân viên";
+            textBox1.Size = new Size(309, 27);
+            textBox1.TabIndex = 12;
             // 
             // dataGridViewNhanVien
             // 
@@ -286,6 +276,34 @@
             dataGridViewNhanVien.TabIndex = 10;
             dataGridViewNhanVien.CellContentClick += dataGridViewNhanVien_CellContentClick;
             // 
+            // comboBoxLichThi
+            // 
+            comboBoxLichThi.FormattingEnabled = true;
+            comboBoxLichThi.Location = new Point(322, 86);
+            comboBoxLichThi.Name = "comboBoxLichThi";
+            comboBoxLichThi.Size = new Size(256, 28);
+            comboBoxLichThi.TabIndex = 8;
+            comboBoxLichThi.Text = "Chọn lịch thi";
+            // 
+            // comboBoxKyThi
+            // 
+            comboBoxKyThi.FormattingEnabled = true;
+            comboBoxKyThi.Location = new Point(31, 86);
+            comboBoxKyThi.Name = "comboBoxKyThi";
+            comboBoxKyThi.Size = new Size(243, 28);
+            comboBoxKyThi.TabIndex = 6;
+            comboBoxKyThi.Text = "Chọn kỳ thi";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            label1.Location = new Point(375, 15);
+            label1.Name = "label1";
+            label1.Size = new Size(278, 31);
+            label1.TabIndex = 1;
+            label1.Text = "THÊM LỊCH PHÂN CÔNG";
+            // 
             // label3
             // 
             label3.AutoSize = true;
@@ -295,24 +313,6 @@
             label3.Size = new Size(173, 23);
             label3.TabIndex = 11;
             label3.Text = "Danh sách nhân viên";
-            // 
-            // textBox1
-            // 
-            textBox1.Location = new Point(659, 132);
-            textBox1.Name = "textBox1";
-            textBox1.PlaceholderText = "Tìm mã nhân viên";
-            textBox1.Size = new Size(309, 27);
-            textBox1.TabIndex = 12;
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Image = Properties.Resources.search2;
-            pictureBox2.Location = new Point(614, 133);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(39, 26);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 13;
-            pictureBox2.TabStop = false;
             // 
             // adminThemThongTinLichPhanCong
             // 
@@ -332,36 +332,36 @@
             tableLayoutPanelThongTinLichPhanCong.ResumeLayout(false);
             tableLayoutPanelThongTinLichPhanCong.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewNhanVien).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewNhanVien).EndInit();
             ResumeLayout(false);
             PerformLayout();
         }
 
         #endregion
 
-        private Label label1;
+        private Label labelTGKetThuc;
+        private Label labelPhongThi;
+        private Label labelNgayThi;
+        private Label labelKyThi;
+        private Label labelTGBatDau;
+        private Label labelMaNVCoithi;
+        private Label label2;
         private TableLayoutPanel tableLayoutPanelThongTinLichPhanCong;
+        private TextBox textBoxTenNVCoiThi;
         private TextBox textBoxMaNVCoiThi;
         private TextBox textBoxTGKetThuc;
         private TextBox textBoxTGBatDau;
         private TextBox textBoxPhongThi;
         private TextBox textBoxNgayThi;
-        private Label label2;
-        private Label labelMaNVCoithi;
-        private Label labelTGBatDau;
-        private Label labelKyThi;
-        private Label labelNgayThi;
-        private Label labelPhongThi;
-        private Label labelTGKetThuc;
         private TextBox textBoxKyThi;
-        private TextBox textBoxTenNVCoiThi;
-        private ComboBox comboBoxKyThi;
         private PictureBox pictureBoxThoat;
-        private ComboBox comboBoxLichThi;
-        private DataGridView dataGridViewNhanVien;
-        private Label label3;
-        private TextBox textBox1;
         private PictureBox pictureBox2;
+        private TextBox textBox1;
+        private DataGridView dataGridViewNhanVien;
+        private ComboBox comboBoxLichThi;
+        private ComboBox comboBoxKyThi;
+        private Label label1;
+        private Label label3;
     }
 }

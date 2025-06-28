@@ -321,3 +321,14 @@ BEGIN
     ORDER BY NV_MaNhanVien DESC
 END;
 GO
+
+CREATE OR ALTER PROCEDURE usp_GetPhanCong
+AS
+BEGIN
+	SELECT kt.KT_TenKyThi, lt.LT_NgayThi, lt.LT_MaPhongThi, lt.LT_TGBatDau, 
+	lt.LT_TGKetThuc, nv.NV_MaNhanVien , nv.NV_TenNhanVien, pc.PC_TrangThai
+	FROM PHANCONG pc JOIN NHANVIEN nv ON nv.NV_MaNhanVien = pc.PC_MaNhanVien
+	JOIN LICHTHI lt ON lt.LT_MaLichThi = pc.PC_MaLichThi
+	JOIN KYTHI kt ON kt.KT_MaKyThi = lt.LT_MaKyThi
+END;
+GO
