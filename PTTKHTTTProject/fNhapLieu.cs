@@ -59,7 +59,7 @@ namespace PTTKHTTTProject
             {
                 lblOption.Text = "Quản lý kết quả thi";
                 //openChildForm(new fManageKQT());
-                CustomUC.openChildControl(pnlChildControl , activeControl, new ucManageExamResult());
+                CustomUC.openChildControl(pnlChildControl, activeControl, new ucManageExamResult());
             }
 
             if (clicked == btnThongBao)
@@ -84,8 +84,8 @@ namespace PTTKHTTTProject
             ptbAvatar.Region = new Region(gp);
 
             btnTTCN.FlatAppearance.BorderColor = SystemColors.Control;
-            btnQLKQT.FlatAppearance.BorderColor= SystemColors.Control;
-            btnThongBao.FlatAppearance.BorderColor= SystemColors.Control;
+            btnQLKQT.FlatAppearance.BorderColor = SystemColors.Control;
+            btnThongBao.FlatAppearance.BorderColor = SystemColors.Control;
 
             Dictionary<string, string> info = InfoEmployeeBUS.getInfoOfUser(username);
 
@@ -99,6 +99,11 @@ namespace PTTKHTTTProject
             {
                 this.Close();
             }
+        }
+
+        private void tlpMenu_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

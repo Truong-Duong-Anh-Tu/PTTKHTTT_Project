@@ -99,12 +99,14 @@
             // 
             // tbxFullMail
             // 
+            tbxFullMail.BackColor = Color.White;
             tbxFullMail.BorderStyle = BorderStyle.None;
             tbxFullMail.Location = new Point(312, 3);
             tbxFullMail.Name = "tbxFullMail";
             tbxFullMail.Size = new Size(491, 467);
             tbxFullMail.TabIndex = 1;
             tbxFullMail.Text = "";
+            tbxFullMail.TextChanged += tbxFullMail_TextChanged;
             // 
             // lvListMail
             // 
@@ -124,7 +126,7 @@
             Controls.Add(btnAddNoti);
             Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             Name = "ucNotification";
-            Size = new Size(1021, 573);
+            Size = new Size(1032, 575);
             pnlSelections.ResumeLayout(false);
             pnlMail.ResumeLayout(false);
             ResumeLayout(false);
