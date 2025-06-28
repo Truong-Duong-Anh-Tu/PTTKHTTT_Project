@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -11,29 +12,41 @@ namespace PTTKHTTTProject.DAO
 {
     internal class ManageReceiptDAO
     {
-        public static DataTable getReceipt(/*string receiptType*/)
+        public static DataTable getReceipt(string filterText)
         {
-            //// the @type parameter can be empty or null, which means we want to get all receipts
-            //// if receiptType is null or empty, we can pass null to the stored procedure
-            //DataTable table = new DataTable();
-            //if (string.IsNullOrEmpty(receiptType))
-            //{
-            //    // If receiptType is null or empty, we can return all receipts
-            //    return DataProvider.Instance.ExecuteQuerySP("usp_GetAllReceipts");
-            //}
+            if (string.IsNullOrEmpty(filterText))
+            {
+                // If filterText is null or empty, we can return all receipts
+                return DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptTable");
+            }
+            else
+            {
+                SqlParameter[] filter = new SqlParameter[]
+                {
+                    new SqlParameter("@search", SqlDbType.NVarChar, 50)
+                    {
+                        Value = filterText.Trim()
+                    },
+                }; 
+                // If filterText is provided, we can filter the receipts based on it. you can search @name or @sbd
+                //check if name and sbd are right
 
-            //var pReceiptType = new SqlParameter("@type", SqlDbType.NVarChar, 20)
-            //{ Value = receiptType.Trim() };
 
-            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptInfo");
-
-            return dt;
+                return DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptTable", filter);
+            }
         }
 
-        //public static DataTable getReceiptType()
-        //{
-        //    DataTable dt = DataProvider.Instance.ExecuteQuery("SELECT PDKDT_TinhTrangThanhToan FROM PHIEUDANGKYDUTHI");
-        //    return dt;
-        //}
+        public static DataTable getReceiptInfo(string receiptId)
+        {
+            SqlParameter[] filter = new SqlParameter[]
+                {
+                    new SqlParameter("@search", SqlDbType.NVarChar, 50)
+                    {
+                        Value = receiptId.Trim()
+                    },
+                };
+            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptInfo", filter);
+            return dt;
+        }
     }
 }

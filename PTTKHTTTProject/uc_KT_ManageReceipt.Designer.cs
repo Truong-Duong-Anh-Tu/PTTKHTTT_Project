@@ -57,6 +57,7 @@
             btnSearchReceipt.TabIndex = 5;
             btnSearchReceipt.Text = "Tìm";
             btnSearchReceipt.UseVisualStyleBackColor = true;
+            btnSearchReceipt.Click += btnSearchReceipt_Click;
             // 
             // lblSearchReceipt
             // 

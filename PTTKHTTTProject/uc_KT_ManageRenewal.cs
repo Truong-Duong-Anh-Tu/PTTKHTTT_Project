@@ -19,6 +19,19 @@ namespace PTTKHTTTProject
             InitializeComponent();
         }
 
+        private void uc_KT_ManageRenewal_Load(object sender, EventArgs e)
+        {
+            dtgvResult.DataSource = ManageRenewalBUS.loadRenewal();
+            var btnCol = new DataGridViewButtonColumn
+            {
+                Name = "btnAction",
+                HeaderText = "Hành động",
+                Text = "Tạo phiếu",
+                UseColumnTextForButtonValue = true
+            };
+            dtgvResult.Columns.Add(btnCol);
+        }
+
         //private void pnlManageResult_Paint(object sender, PaintEventArgs e)
         //{
 

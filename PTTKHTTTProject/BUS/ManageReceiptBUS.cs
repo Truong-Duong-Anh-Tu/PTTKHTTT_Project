@@ -11,7 +11,7 @@ namespace PTTKHTTTProject.BUS
 {
     internal class ManageReceiptBUS
     {
-        public static DataTable loadReceipt()
+        public static DataTable loadReceipt(string filterText)
         {
             //if (string.IsNullOrEmpty(receiptType))
             //{
@@ -19,7 +19,7 @@ namespace PTTKHTTTProject.BUS
             //    return ManageReceiptDAO.getReceipt();
             //}
             //string type = receiptType.Split(' ')[0];
-            DataTable dt = ManageReceiptDAO.getReceipt();
+            DataTable dt = ManageReceiptDAO.getReceipt(filterText);
             return dt;
         }
         //public static List<string> loadReceiptType()
@@ -33,5 +33,23 @@ namespace PTTKHTTTProject.BUS
         //    }
         //    return receiptList;
         //}
+
+        public static Dictionary<string, string> getReceiptInfoPreview(string receiptId)
+        {
+            Dictionary<string, string> receiptPreview = new Dictionary<string, string>();
+
+            DataTable dt = ManageReceiptDAO.getReceipt(receiptId.Trim());
+            var row = dt.Rows[0];
+
+            receiptPreview["HoTen"] = row["HoTen"].ToString() ?? "Unknown";
+            receiptPreview["KyThi"] = row["MaKyThi"].ToString() ?? "Unknown";
+            receiptPreview["SoTien"] = row["LePhi"].ToString() ?? "Unknown";
+            
+            //receiptPreview["SoBaoDanh"] = row["TS_SoBaoDanh"].ToString() ?? "Unknown";
+            //receiptPreview["MaPhieu"] = row["PDKDT_MaPhieu"].ToString() ?? "Unknown";
+            //receiptPreview["NgayLap"] = Convert.ToDateTime(row["PDKDT_NgayLap"]).ToString("dd/MM/yyyy") ?? "Unknown";
+            
+            return receiptPreview;
+        }
     }
 }

@@ -102,6 +102,7 @@
             Controls.Add(pnlManageResult);
             Name = "uc_KT_ManageRenewal";
             Size = new Size(893, 430);
+            Load += uc_KT_ManageRenewal_Load;
             pnlManageResult.ResumeLayout(false);
             pnlManageResult.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).EndInit();
