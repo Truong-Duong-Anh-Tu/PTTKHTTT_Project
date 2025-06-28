@@ -16,5 +16,30 @@ namespace PTTKHTTTProject.UControl
         {
             InitializeComponent();
         }
+
+        private void labelTrangThai_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void labelTimMaNV_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void comboBoxTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panelTimKiem_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBoxSearch_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
