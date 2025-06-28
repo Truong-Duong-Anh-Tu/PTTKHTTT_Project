@@ -70,7 +70,7 @@ as
 begin
 	set NOCOUNT ON;
 
-	select ts.TS_SoBaoDanh, ts.TS_HoTen, ts.TS_CCCD, ts.TS_NgaySinh, ts.TS_GioiTinh, bt.BT_DiemSo, lt.LT_NgayThi, lt.LT_TGBatDau, lt.LT_TGKetThuc
+	select ts.TS_SoBaoDanh, ts.TS_HoTen, ts.TS_CCCD, ts.TS_NgaySinh, ts.TS_GioiTinh, bt.BT_DiemSo, bt.BT_MaLichThi
 	from BAITHI as bt join THISINH as ts on bt.BT_SoBaoDanh = ts.TS_SoBaoDanh
 					  join LICHTHI as lt on bt.BT_MaLichThi = lt.LT_MaLichThi
 	where lt.LT_MaKyThi = @examtest

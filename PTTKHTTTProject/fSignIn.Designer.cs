@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(fSignIn));
             panel1 = new Panel();
             panel2 = new Panel();
             panel3 = new Panel();
@@ -46,7 +45,7 @@
             panel1.BackColor = Color.DeepSkyBlue;
             panel1.Location = new Point(0, -2);
             panel1.Name = "panel1";
-            panel1.Size = new Size(59, 453);
+            panel1.Size = new Size(60, 453);
             panel1.TabIndex = 0;
             // 
             // panel2
@@ -54,15 +53,15 @@
             panel2.BackColor = Color.DeepSkyBlue;
             panel2.Location = new Point(59, -2);
             panel2.Name = "panel2";
-            panel2.Size = new Size(354, 53);
+            panel2.Size = new Size(354, 60);
             panel2.TabIndex = 1;
             // 
             // panel3
             // 
             panel3.BackColor = Color.DeepSkyBlue;
-            panel3.Location = new Point(59, 401);
+            panel3.Location = new Point(59, 392);
             panel3.Name = "panel3";
-            panel3.Size = new Size(354, 50);
+            panel3.Size = new Size(354, 60);
             panel3.TabIndex = 2;
             // 
             // btnSignIn
@@ -94,7 +93,7 @@
             ptbLogo.Image = Properties.Resources.logonew;
             ptbLogo.Location = new Point(121, 188);
             ptbLogo.Name = "ptbLogo";
-            ptbLogo.Size = new Size(100, 92);
+            ptbLogo.Size = new Size(70, 66);
             ptbLogo.SizeMode = PictureBoxSizeMode.Zoom;
             ptbLogo.TabIndex = 7;
             ptbLogo.TabStop = false;
@@ -119,7 +118,6 @@
             tbxUsername.PlaceholderText = "Nhập tên đăng nhập";
             tbxUsername.Size = new Size(267, 31);
             tbxUsername.TabIndex = 9;
-            tbxUsername.TextAlign = HorizontalAlignment.Center;
             // 
             // tbxPassword
             // 
@@ -133,7 +131,6 @@
             tbxPassword.PlaceholderText = "Mật khẩu";
             tbxPassword.Size = new Size(267, 31);
             tbxPassword.TabIndex = 10;
-            tbxPassword.TextAlign = HorizontalAlignment.Center;
             tbxPassword.UseSystemPasswordChar = true;
             tbxPassword.TextChanged += tbxPassword_TextChanged;
             // 
