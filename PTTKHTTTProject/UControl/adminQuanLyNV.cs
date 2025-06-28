@@ -122,7 +122,22 @@ namespace PTTKHTTTProject.UControl
 
         private void buttonThemNV_Click(object sender, EventArgs e)
         {
-            // TODO: Xử lý thêm nhân viên mới
+            // Tạo instance của form thêm nhân viên
+            fAdminThemNV formThemNV = new fAdminThemNV();
+
+            // Hiển thị form dưới dạng dialog
+            DialogResult result = formThemNV.ShowDialog();
+
+            // Nếu người dùng đóng form bằng nút "OK" hoặc đã thêm nhân viên thành công
+            if (result == DialogResult.OK)
+            {
+                // Cập nhật lại dữ liệu nhân viên để hiển thị nhân viên mới
+                LoadNhanVienData();
+
+                // Thông báo thành công
+                MessageBox.Show("Thêm nhân viên mới thành công!", "Thông báo",
+                    MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void A(object sender, EventArgs e)
