@@ -203,6 +203,7 @@
             btnConfirm.TabIndex = 33;
             btnConfirm.Text = "Tạo phiếu thu";
             btnConfirm.UseVisualStyleBackColor = true;
+            btnConfirm.Click += btnConfirm_Click;
             // 
             // label1
             // 

@@ -193,6 +193,207 @@ go
 
 --Xoa bai thi
 
+
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+--CAC STORED PROCEDURE LIEN QUAN DEN KE TOAN
+
+--Lay thong tin danh sach phieu thu (dang ki, gia han, thanh cong) ket hop tim kiem (TAB QUAN LI PHIEU THU, MUC DANH SACH CHO TAO PHIEU THU)
+--drop procedure usp_GetReceiptTable
+create or alter procedure usp_GetReceiptTable
+	@search nvarchar(50) = NULL
+as
+begin
+	set NOCOUNT on;
+
+	select pdk.PDKDT_MaPhieu as MaPhieu, COALESCE(khtd.KHTD_HoTen, khdv.KHDV_TenDonVi) AS HoTen, pdk.PDKDT_MaKhachHang as MaKhachHang, lt.LT_TenKyThi as TenKyThi, kt.KT_LePhi as LePhi,  pdk.PDKDT_ThoiGianLap as NgayDangKy
+	from PHIEUDANGKYDUTHI as pdk
+	LEFT JOIN KHACHHANGHTUDO AS khtd ON pdk.PDKDT_MaKhachHang = khtd.KHTD_MaKhachHang
+    LEFT JOIN KHACHHANGDONVI AS khdv ON pdk.PDKDT_MaKhachHang = khdv.KHDV_MaKhachHang
+	join THISINH as ts on pdk.PDKDT_MaPhieu = ts.TS_MaPhieuDangKy
+	join LICHTHI as lt on pdk.PDKDT_MaLichThi = lt.LT_MaLichThi
+	join KYTHI as kt on lt.LT_MaKyThi = kt.KT_MaKyThi
+	join KHACHHANG as kh on pdk.PDKDT_MaKhachHang = kh.KH_MaKhachHang
+	WHERE (@search IS NULL 
+       OR ts.TS_HoTen LIKE '%' + @search + '%' 
+	   OR pdk.PDKDT_MaPhieu LIKE '%' + @search + '%')
+	AND NOT EXISTS (
+        SELECT 1 
+        FROM PHIEUTHANHTOAN ptt
+		WHERE ptt.PTT_MaPhieuDK = pdk.PDKDT_MaPhieu
+    )
+	order by pdk.PDKDT_ThoiGianLap
+end;
+go
+
+/*
+select * from PHIEUDANGKYDUTHI
+select * from PHIEUTHANHTOAN
+
+EXEC usp_GetReceiptTable @search = N'Ngọc';
+go
+EXEC usp_GetReceiptTable;
+go
+*/
+
+select 
+
+
+--Lay thong tin danh sach phieu yeu cau gia han ket hop tim kiem (PREVIEW PHIEU THU/PHIEU THANH TOAN)
+--drop procedure usp_GetRenewalRequestTable
+create or alter procedure usp_GetRenewalRequestTable
+	@search nvarchar(50) = NULL
+as
+begin
+	set NOCOUNT on;
+	select PDKDT_MaPhieu as MaPhieu, PDKDT_MaKhachHang as MaKH, KT_TenKyThi as TenKyThi, PDKDT_MaLichThi as MaLichThiMoi
+	from PHIEUDANGKYDUTHI
+	join THISINH on PDKDT_MaPhieu = TS_MaPhieuDangKy
+	join LICHTHI on PDKDT_MaLichThi = LT_MaLichThi
+	join KYTHI on LT_MaKyThi = KT_MaKyThi
+	WHERE (@search IS NULL 
+       OR TS_HoTen LIKE '%' + @search + '%' 
+       OR TS_SoBaoDanh LIKE '%' + @search + '%'
+	   OR PDKDT_MaPhieu LIKE '%' + @search + '%')
+	and PDKDT_TrangThaiThanhToan = N'Thanh toán gia hạn'
+	AND (
+            SELECT COUNT(*) 
+            FROM PHIEUGIAHAN
+            WHERE PGH_MaPhieuDK = PDKDT_MaPhieu
+        ) <= 2
+	order by PDKDT_ThoiGianLap
+end;
+go
+
+/*
+select * from PHIEUGIAHAN
+
+EXEC usp_GetRenewalRequestTable;
+go
+EXEC usp_GetRenewalRequestTable @search = N'Quyên';
+go
+*/
+
+
+
+--Them thong tin phieu thu vao bang PHIEUTHANHTOAN
+--drop procedure usp_InsertIntoPaycheckTable
+create or alter procedure usp_InsertIntoPaycheckTable
+	@maphieudk varchar(10),
+	@nvlap varchar(10),
+	@sotienbandau int,
+	@phtramgiam float,
+	@hinhthuc nvarchar(50),
+	@ghichu nvarchar(200)
+as
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @newMaPhieu varchar(10);
+    DECLARE @maxNumber int;
+	DECLARE @sotienthanhtoan int;
+	DECLARE @ngayin date = CAST(GETDATE() AS date);
+	DECLARE @thoihan date = DATEADD(month, 1, @ngayin);
+
+	SET @sotienthanhtoan = @sotienbandau*(1-@phtramgiam);
+
+    -- Tìm số thứ tự lớn nhất hiện tại trong PTT_MaPhieu
+    SELECT @maxNumber = ISNULL(MAX(CAST(SUBSTRING(PTT_MaPhieu, 4, 5) AS int)), 0)
+    FROM PHIEUTHANHTOAN;
+
+    -- Tăng số thứ tự lên 1 và định dạng thành PTTXXXXX
+    SET @newMaPhieu = 'PTT' + RIGHT('00000' + CAST(@maxNumber + 1 AS varchar(5)), 5);
+
+    -- Chèn dữ liệu vào bảng PHIEUTHANHTOAN
+    INSERT INTO PHIEUTHANHTOAN 
+        (PTT_MaPhieu, PTT_MaPhieuDK, PTT_NhanVienLap, PTT_NgayIn, PTT_SoTienBanDau, PTT_PhanTramGiam, PTT_SoTienThanhToan, PTT_HinhThucThanhToan, PTT_ThoiHan, PTT_GhiChu)
+    VALUES 
+        (@newMaPhieu, @maphieudk, @nvlap, @ngayin, @sotienbandau, @phtramgiam, @sotienthanhtoan, @hinhthuc, @thoihan, @ghichu);
+	UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = N'Chưa thanh toán' WHERE PDKDT_MaPhieu = @maphieudk;
+END;
+GO
+
+/*
+delete from PHIEUTHANHTOAN where PTT_MaPhieu = 'PTT00011';
+delete from PHIEUTHANHTOAN where PTT_MaPhieu = 'PTT00012';
+
+UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = N'Đã thanh toán' WHERE PDKDT_MaPhieu = 'PDKD0001';
+
+INSERT INTO PHIEUTHANHTOAN 
+  (PTT_MaPhieu, PTT_MaPhieuDK, PTT_NhanVienLap, PTT_NgayIn, 
+   PTT_SoTienBanDau, PTT_PhanTramGiam, PTT_SoTienThanhToan, 
+   PTT_HinhThucThanhToan, PTT_ThoiHan, PTT_GhiChu)
+VALUES
+  -- PDKD0001 (Áp dụng 10% giảm giá)
+  ('PTT00011','PDKD0001','NV002','2025-06-12',
+    18400000, 0.2, 14720000, N'Chuyển khoản',
+    '2025-07-12', N'Giảm 10% giá kỳ thi');
+
+select * from PHIEUTHANHTOAN
+select * from PHIEUDANGKYDUTHI where PDKDT_MaPhieu = 'PDKD0001'
+*/
+
+/*
+EXEC usp_InsertIntoPaycheckTable
+	@maphieudk = 'PDKD0001',
+	@nvlap = 'NV002',
+	@sotienbandau = 18400000,
+	@phtramgiam = 0.2,
+	@hinhthuc = N'Chuyển khoản',
+	@ghichu = N'Giảm 10% giá kỳ thi';
+go
+*/
+
+
+
+--Lay thong tin danh sach phieu thu (chua thanh toan, da thanh toan) (TAB QUAN LI PHIEU THU, MUC PHIEU THU DA TAO)
+--drop procedure usp_GetPaycheckTable
+create or alter procedure usp_GetPaycheckTable
+as
+begin
+	select PTT_MaPhieu as MaPhieuTT,
+	PTT_MaPhieuDK as MaPhieu,
+	PTT_SoTienBanDau as SoTienBanDau,
+	PTT_PhanTramGiam as PhanTramGiam,
+	PTT_SoTienThanhToan as SoTienThanhToan,
+	PTT_HinhThucThanhToan as HinhThuc,
+	PTT_ThoiHan as ThoiHan,
+	PDKDT_TrangThaiThanhToan as TrangThai
+	from PHIEUTHANHTOAN
+	join PHIEUDANGKYDUTHI on PDKDT_MaPhieu = PTT_MaPhieuDK
+	where PDKDT_TrangThaiThanhToan != N'Thanh toán gia hạn'
+end;
+go
+
+/*
+exec usp_GetPaycheckTable;
+go
+*/
+
+
+
+--Lay thong tin danh sach phieu gia han da tao (TAB QUAN LI PHIEU GIA HAN, MUC PHIEU GIA HAN DA TAO)
+--drop procedure usp_GetCreatedRenewals
+create or alter procedure usp_GetCreatedRenewals
+as
+begin
+	select *
+	from PHIEUGIAHAN
+	join PHIEUDANGKYDUTHI on PDKDT_MaPhieu = PGH_MaPhieuDK
+end;
+go
+
+
+
+---------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+
+
+
 --TRIGGER
 --Trigger kiểm tra mã người nhận trong THONGBAO có thuộc bảng NHANVIEN hoặc PHONGBAN không 
 create or alter trigger utg_CheckDoiTuong

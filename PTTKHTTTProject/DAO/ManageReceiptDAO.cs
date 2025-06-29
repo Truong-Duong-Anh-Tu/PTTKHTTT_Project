@@ -27,9 +27,62 @@ namespace PTTKHTTTProject.DAO
                     {
                         Value = filterText.Trim()
                     },
-                }; 
+                };
                 return DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptTable", filter);
             }
+        }
+
+
+        //Lay thong tin phieu thu da tao
+        public static DataTable getPaycheck()
+        {
+            //SqlParameter[] parameters = new SqlParameter[]
+            //{
+            //    new SqlParameter("@maphieu", SqlDbType.VarChar, 10) { Value = receiptId.Trim() }
+            //};
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetPaycheckTable");
+        }
+
+
+        //Them thong tin phieu thu vao bang PHIEUTHANHTOAN
+        public void insertIntoPaycheckTableDAO(string receiptId, string employeeId, decimal fee, string notes)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@nvlap", SqlDbType.VarChar, 10) { Value = employeeId },
+                new SqlParameter("@sotienbandau", SqlDbType.Int) { Value = fee},
+                new SqlParameter("@phtramgiam", SqlDbType.Float) { Value = 0 },
+                new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 50) { Value = "Tiền mặt" },
+                new SqlParameter("@ghichu", SqlDbType.NVarChar, 200) { Value = notes },
+            };
+            DataProvider.Instance.ExecuteNonQuerySP("usp_InsertIntoPaycheckTable", parameters);
+        }
+
+
+        //Cap nhat thong tin phieu thu dung phuong thuc chuyen khoan
+        public void updatePaycheckMethodDAO(string receiptId, string currentValue)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 50) { Value = currentValue },
+            };
+            string query = "UPDATE PHIEUTHANHTOAN SET PTT_HinhThucThanhToan = @hinhthuc WHERE PTT_MaPhieuDK = @maphieudk";
+            DataProvider.Instance.ExecuteQuery(query, parameters);
+        }
+
+
+        // Cap nhat thong tin phieu thu da thanh toan
+        public void updatePaycheckPaidDAO(string receiptId, string currentValue)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@trangthai", SqlDbType.NVarChar,20) { Value = currentValue },
+            };
+            string query = "UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = @trangthai WHERE PDKDT_MaPhieu = @maphieudk";
+            DataProvider.Instance.ExecuteQuery(query, parameters);
         }
     }
 }

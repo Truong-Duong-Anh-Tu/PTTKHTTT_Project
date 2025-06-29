@@ -22,30 +22,96 @@ namespace PTTKHTTTProject
             username = accessUser;
         }
 
-        private void uc_KT_ManageReceipt_Load(object sender, EventArgs e)
+        //Hanh dong tao phieu thu ap dung voi phieu dang ky ma chua duoc tao phieu thu
+        private DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn
         {
-            dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
-            var btnCol = new DataGridViewButtonColumn
-            {
-                Name = "btnAction",
-                HeaderText = "Hành động",
-                Text = "Tạo phiếu thu",
-                UseColumnTextForButtonValue = true
-            };
+            Name = "btnAction",
+            HeaderText = "Hành động",
+            Text = "Tạo phiếu thu",
+            UseColumnTextForButtonValue = true
+        };
+
+        //Checkbox chuyen khoan xac dinh phieu thu dung phuong thuc chuyen khoan hoac tien mat
+        private DataGridViewCheckBoxColumn cbxCol = new DataGridViewCheckBoxColumn
+        {
+            Name = "cbxPaymentMethod",
+            HeaderText = "Chuyển khoản",
+            TrueValue = "Chuyển khoản",
+            FalseValue = "Tiền mặt"
+        };
+        
+        //Checkbox xac dinh phieu thu da duoc thanh toan
+        private DataGridViewCheckBoxColumn cbxPaidCol = new DataGridViewCheckBoxColumn
+        {
+            Name = "cbxPaid",
+            HeaderText = "Đã thanh toán",
+            TrueValue = "True",
+            FalseValue = "False"
+        };
+
+        private void NotPaycheckTableConfig()
+        {
             dtgvResult.Columns.Add(btnCol);
 
-            //Clicking on button opens fKT_CreateReceipt_Preview form
-            //Use getReceiptInfoPreview
             dtgvResult.CellContentClick += (s, ev) =>
             {
-                var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
-                if (ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index && ev.RowIndex >= 0)
+                if (ev.RowIndex >= 0)
                 {
-                    fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedReceiptID, username);
-                    previewForm.ShowDialog();
+                    //Ma phieu dang ky
+                    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+
+                    // Handle button click for creating receipt
+                    if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
+                    {
+                        fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedReceiptID, username);
+                        previewForm.ShowDialog();
+                    }
+                    // Handle checkbox click for payment method
+                    else if (dtgvResult.Columns.Contains("cbxPaymentMethod") && ev.ColumnIndex == dtgvResult.Columns["cbxPaymentMethod"].Index)
+                    {
+                        var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaymentMethod"].Value;
+                        string currentValueString;
+                        if (currentValue == null)
+                        {
+                            currentValueString = "Tiền mặt";
+                        }
+                        else if (currentValue.ToString() == "True")
+                        {
+                            currentValueString = "Tiền mặt";
+                        }
+                        else
+                        {
+                            currentValueString = "Chuyển khoản";
+                        }
+                        ManageReceiptBUS.updatePaycheckMethod(selectedReceiptID, currentValueString);
+                    }
+                    else if (dtgvResult.Columns.Contains("cbxPaid") && ev.ColumnIndex == dtgvResult.Columns["cbxPaid"].Index)
+                    {
+                        var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaid"].Value;
+                        string currentValueString;
+                        if (currentValue == null)
+                        {
+                            currentValueString = "Chưa thanh toán";
+                        }
+                        else if (currentValue.ToString() == "True")
+                        {
+                            currentValueString = "Chưa thanh toán";
+                        }
+                        else
+                        {
+                            currentValueString = "Đã thanh toán";
+                        }
+                        ManageReceiptBUS.updatePaycheckPaid(selectedReceiptID, currentValueString);
+                    }
                 }
             };
+        }
 
+        private void uc_KT_ManageReceipt_Load(object sender, EventArgs e)
+        {
+            //dtgvResult = new DataGridView();
+            dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
+            NotPaycheckTableConfig();
         }
 
         private void dtgvResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -53,16 +119,95 @@ namespace PTTKHTTTProject
             dtgvResult.ClearSelection();
         }
 
+        private void removeColumnButton()
+        {
+            if (dtgvResult.Columns.Contains("btnAction"))
+            {
+                dtgvResult.Columns.Remove("btnAction");
+            }
+
+            if (dtgvResult.Columns.Contains("cbxPaid"))
+            {
+                dtgvResult.Columns.Remove("cbxPaid");
+            }
+            if (dtgvResult.Columns.Contains("cbxPaymentMethod"))
+            {
+                dtgvResult.Columns.Remove("cbxPaymentMethod");
+            }
+        }
+
+        private void checkboxConfig()
+        {
+            dtgvResult.Columns.Add(cbxCol);
+            foreach (DataGridViewRow row in dtgvResult.Rows)
+            {
+                if (row.Cells["HinhThuc"].Value != null && row.Cells["HinhThuc"].Value.ToString() == "Chuyển khoản")
+                {
+                    row.Cells["cbxPaymentMethod"].Value = true;
+                }
+                else
+                {
+                    row.Cells["cbxPaymentMethod"].Value = false;
+                }
+            }
+
+            dtgvResult.Columns.Add(cbxPaidCol);
+            foreach (DataGridViewRow row in dtgvResult.Rows)
+            {
+                if (row.Cells["TrangThai"].Value != null && row.Cells["TrangThai"].Value.ToString() == "Đã thanh toán")
+                {
+                    row.Cells["cbxPaid"].Value = true;
+                }
+                else
+                {
+                    row.Cells["cbxPaid"].Value = false;
+                }
+            }
+        }
+
         private void btnSearchReceipt_Click(object sender, EventArgs e)
         {
-            if(txbInput.Text != string.Empty)
+            removeColumnButton();
+            if (rbxNotCreatedPaycheck.Checked)
             {
-                string filter = txbInput.Text.Trim().ToLower();
-                dtgvResult.DataSource = ManageReceiptBUS.loadReceipt(filter);   
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageReceiptBUS.loadReceipt(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
+                }
             }
             else
             {
-                dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
+                dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck();
+                checkboxConfig();
+            }
+        }
+
+        private void rbxNotCreatedPaycheck_CheckedChanged(object sender, EventArgs e)
+        {
+            removeColumnButton();
+            if (rbxNotCreatedPaycheck.Checked)
+            {
+                // Load receipt data for not created paychecks
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageReceiptBUS.loadReceipt(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
+                }
+                dtgvResult.Columns.Add(btnCol);
+            }
+            else
+            {
+                dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck();
+                checkboxConfig();
             }
         }
     }

@@ -29,8 +29,9 @@
         private void InitializeComponent()
         {
             pnlManageResult = new Panel();
+            cbxCreatedPaycheck = new RadioButton();
+            rbxNotCreatedPaycheck = new RadioButton();
             label1 = new Label();
-            radioButton1 = new RadioButton();
             btnSearchReceipt = new Button();
             lblSearchReceipt = new Label();
             txbInput = new TextBox();
@@ -41,8 +42,9 @@
             // 
             // pnlManageResult
             // 
+            pnlManageResult.Controls.Add(cbxCreatedPaycheck);
+            pnlManageResult.Controls.Add(rbxNotCreatedPaycheck);
             pnlManageResult.Controls.Add(label1);
-            pnlManageResult.Controls.Add(radioButton1);
             pnlManageResult.Controls.Add(btnSearchReceipt);
             pnlManageResult.Controls.Add(lblSearchReceipt);
             pnlManageResult.Controls.Add(txbInput);
@@ -53,25 +55,37 @@
             pnlManageResult.Size = new Size(888, 425);
             pnlManageResult.TabIndex = 2;
             // 
+            // cbxCreatedPaycheck
+            // 
+            cbxCreatedPaycheck.AutoSize = true;
+            cbxCreatedPaycheck.Location = new Point(675, 29);
+            cbxCreatedPaycheck.Name = "cbxCreatedPaycheck";
+            cbxCreatedPaycheck.Size = new Size(113, 19);
+            cbxCreatedPaycheck.TabIndex = 33;
+            cbxCreatedPaycheck.Text = "Đã tạo phiếu thu";
+            cbxCreatedPaycheck.UseVisualStyleBackColor = true;
+            // 
+            // rbxNotCreatedPaycheck
+            // 
+            rbxNotCreatedPaycheck.AutoSize = true;
+            rbxNotCreatedPaycheck.Checked = true;
+            rbxNotCreatedPaycheck.Location = new Point(542, 29);
+            rbxNotCreatedPaycheck.Name = "rbxNotCreatedPaycheck";
+            rbxNotCreatedPaycheck.Size = new Size(127, 19);
+            rbxNotCreatedPaycheck.TabIndex = 32;
+            rbxNotCreatedPaycheck.TabStop = true;
+            rbxNotCreatedPaycheck.Text = "Chưa tạo phiếu thu";
+            rbxNotCreatedPaycheck.UseVisualStyleBackColor = true;
+            rbxNotCreatedPaycheck.CheckedChanged += rbxNotCreatedPaycheck_CheckedChanged;
+            // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(19, 40);
+            label1.Location = new Point(19, 33);
             label1.Name = "label1";
             label1.Size = new Size(120, 15);
             label1.TabIndex = 31;
             label1.Text = "Số yêu cầu chờ duyệt";
-            // 
-            // radioButton1
-            // 
-            radioButton1.AutoSize = true;
-            radioButton1.Location = new Point(676, 33);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(112, 19);
-            radioButton1.TabIndex = 30;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Phiếu thu đã tạo";
-            radioButton1.UseVisualStyleBackColor = true;
             // 
             // btnSearchReceipt
             // 
@@ -142,7 +156,8 @@
         private Label lblSearchReceipt;
         private TextBox txbInput;
         private DataGridView dtgvResult;
-        private RadioButton radioButton1;
         private Label label1;
+        private RadioButton cbxCreatedPaycheck;
+        private RadioButton rbxNotCreatedPaycheck;
     }
 }

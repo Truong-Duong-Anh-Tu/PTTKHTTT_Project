@@ -17,6 +17,12 @@ namespace PTTKHTTTProject.BUS
             return dt;
         }
 
+        public static DataTable loadPaycheck()
+        {
+            DataTable dt = ManageReceiptDAO.getPaycheck();
+            return dt;
+        }
+
         //Xem thong tin cua mot phieu thu cu the
         public static Dictionary<string, string> getReceiptInfoPreview(string receiptId)
         {
@@ -32,6 +38,50 @@ namespace PTTKHTTTProject.BUS
             receiptPreview["NgayThu"] = DateTime.Now.ToString("dd/MM/yyyy");
 
             return receiptPreview;
+        }
+
+        public static void insertIntoPaycheckTable(string receiptId, string employeeId, decimal fee, string notes)
+        {
+            try
+            {
+                ManageReceiptDAO dao = new ManageReceiptDAO();
+                dao.insertIntoPaycheckTableDAO(receiptId, employeeId, fee, notes);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error inserting into paycheck table: " + ex.Message);
+                throw;
+            }
+        }
+
+        //Cap nhat thong tin phieu thu dung phuong thuc chuyen khoan
+        public static void updatePaycheckMethod(string receiptId, string currentValue)
+        {
+            try
+            {
+                ManageReceiptDAO dao = new ManageReceiptDAO();
+                dao.updatePaycheckMethodDAO(receiptId, currentValue);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error updating paycheck method: " + ex.Message);
+                throw;
+            }
+        }
+
+        //Cap nhat thong tin phieu thu da duoc thanh toan
+        public static void updatePaycheckPaid(string receiptId, string currentValue)
+        {
+            try
+            {
+                ManageReceiptDAO dao = new ManageReceiptDAO();
+                dao.updatePaycheckPaidDAO(receiptId, currentValue);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error updating paycheck paid status: " + ex.Message);
+                throw;
+            }
         }
     }
 }

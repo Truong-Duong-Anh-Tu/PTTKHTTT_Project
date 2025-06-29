@@ -41,5 +41,20 @@ namespace PTTKHTTTProject
             //Close the form without saving
             this.Close();
         }
+
+        private void btnConfirm_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                // Assuming you have the necessary parameters to call this method
+                ManageReceiptBUS.insertIntoPaycheckTable(receiptID, username, int.Parse(txbSoTienThu.Text), txbGhiChu.Text);
+                MessageBox.Show("Phiếu thu đã được tạo thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                this.Close();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tạo phiếu thu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
     }
 }
