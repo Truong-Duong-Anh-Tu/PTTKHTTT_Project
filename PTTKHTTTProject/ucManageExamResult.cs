@@ -125,13 +125,18 @@ namespace PTTKHTTTProject
 
         private void dtgvResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dtgvResult.ClearSelection();
-
             if (e.RowIndex < 0 || e.ColumnIndex != dtgvResult.Columns["btnAction"]!.Index)
                 return;
 
-            string name = dtgvResult.Rows[e.RowIndex].Cells["colSBD"].Value!.ToString()!;
-            MessageBox.Show($"Bạn vừa chọn sửa: {name}", "Thông báo");
+            var row = dtgvResult.Rows[e.RowIndex];
+
+            string name = row.Cells["colFullname"].Value?.ToString() ?? "";
+            string sbd = row.Cells["colSBD"].Value?.ToString() ?? "";
+            string examtype = cbxExamName.SelectedItem?.ToString() ?? string.Empty;
+            string examdate = cbxExamDate.SelectedItem?.ToString() ?? string.Empty;
+
+            fUpdateResult fur = new fUpdateResult(examtype, examdate, sbd, name);
+            fur.ShowDialog();
         }
 
         private void tbxSearchCandidate_TextChanged(object sender, EventArgs e)
