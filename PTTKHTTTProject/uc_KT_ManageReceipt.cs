@@ -15,9 +15,11 @@ namespace PTTKHTTTProject
 {
     public partial class uc_KT_ManageReceipt : UserControl
     {
-        public uc_KT_ManageReceipt()
+        private string username;
+        public uc_KT_ManageReceipt(string accessUser)
         {
             InitializeComponent();
+            username = accessUser;
         }
 
         private void uc_KT_ManageReceipt_Load(object sender, EventArgs e)
@@ -39,7 +41,7 @@ namespace PTTKHTTTProject
                 var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
                 if (ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index && ev.RowIndex >= 0)
                 {
-                    fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedReceiptID);
+                    fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedReceiptID, username);
                     previewForm.ShowDialog();
                 }
             };

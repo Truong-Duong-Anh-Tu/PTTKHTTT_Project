@@ -16,6 +16,8 @@ namespace PTTKHTTTProject.BUS
             DataTable dt = ManageReceiptDAO.getReceipt(filterText);
             return dt;
         }
+
+        //Xem thong tin cua mot phieu thu cu the
         public static Dictionary<string, string> getReceiptInfoPreview(string receiptId)
         {
             Dictionary<string, string> receiptPreview = new Dictionary<string, string>();
@@ -24,13 +26,11 @@ namespace PTTKHTTTProject.BUS
             var row = dt.Rows[0];
 
             receiptPreview["HoTen"] = row["HoTen"].ToString() ?? "Unknown";
-            receiptPreview["KyThi"] = row["MaKyThi"].ToString() ?? "Unknown";
-            receiptPreview["SoTien"] = row["LePhi"].ToString() ?? "Unknown";
-            
-            //receiptPreview["SoBaoDanh"] = row["TS_SoBaoDanh"].ToString() ?? "Unknown";
-            //receiptPreview["MaPhieu"] = row["PDKDT_MaPhieu"].ToString() ?? "Unknown";
-            //receiptPreview["NgayLap"] = Convert.ToDateTime(row["PDKDT_NgayLap"]).ToString("dd/MM/yyyy") ?? "Unknown";
-            
+            receiptPreview["MaKH"] = row["MaKhachHang"].ToString() ?? "Unknown";
+            receiptPreview["NoiDung"] = "Thu lệ phí " + row["TenKyThi"].ToString() ?? "Unknown";
+            receiptPreview["SoTienThu"] = row["LePhi"].ToString() ?? "Unknown";
+            receiptPreview["NgayThu"] = DateTime.Now.ToString("dd/MM/yyyy");
+
             return receiptPreview;
         }
     }

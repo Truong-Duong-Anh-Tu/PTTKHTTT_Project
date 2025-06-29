@@ -14,19 +14,32 @@ namespace PTTKHTTTProject
     public partial class fKT_CreateReceipt_Preview : Form
     {
         private string receiptID;
-        public fKT_CreateReceipt_Preview(string inputReceiptID)
+        private string username;
+        public fKT_CreateReceipt_Preview(string inputReceiptID, string accessUser)
         {
             InitializeComponent();
             receiptID = inputReceiptID;
+            username = accessUser;
         }
 
         private void fKT_CreateReceipt_Preview_Load(object sender, EventArgs e)
         {
-            Dictionary<string, string> receiptInfo = ManageReceiptBUS.getReceiptInfoPreview(receiptID);
+            Dictionary<string, string> receiptPreview = ManageReceiptBUS.getReceiptInfoPreview(receiptID);
 
-            txbHoTen.Text = receiptInfo["HoTen"];
-            txbNoiDung.Text = receiptInfo["KyThi"];
-            txbSoTienThu.Text = receiptInfo["SoTien"];
+            txbHoTen.Text = receiptPreview["HoTen"];
+            txbMaKH.Text = receiptPreview["MaKH"];
+            txbNoiDung.Text = receiptPreview["NoiDung"];
+            txbSoTienThu.Text = receiptPreview["SoTienThu"];
+            txbNgayThu.Text = receiptPreview["NgayThu"];
+
+            Dictionary<string, string> temp = InfoEmployeeBUS.getInfoOfUser(username);
+            txbNguoiThu.Text = "Kế toán " + temp["Hoten"];
+        }
+
+        private void btnCancel_Click(object sender, EventArgs e)
+        {
+            //Close the form without saving
+            this.Close();
         }
     }
 }

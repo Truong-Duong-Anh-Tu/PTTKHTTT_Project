@@ -29,20 +29,20 @@
         private void InitializeComponent()
         {
             pnlManageResult = new Panel();
+            label1 = new Label();
+            radioButton1 = new RadioButton();
             btnSearchReceipt = new Button();
             lblSearchReceipt = new Label();
             txbInput = new TextBox();
             dtgvResult = new DataGridView();
-            lblCount = new TextBox();
-            textBox1 = new TextBox();
             pnlManageResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).BeginInit();
             SuspendLayout();
             // 
             // pnlManageResult
             // 
-            pnlManageResult.Controls.Add(textBox1);
-            pnlManageResult.Controls.Add(lblCount);
+            pnlManageResult.Controls.Add(label1);
+            pnlManageResult.Controls.Add(radioButton1);
             pnlManageResult.Controls.Add(btnSearchReceipt);
             pnlManageResult.Controls.Add(lblSearchReceipt);
             pnlManageResult.Controls.Add(txbInput);
@@ -52,6 +52,26 @@
             pnlManageResult.Name = "pnlManageResult";
             pnlManageResult.Size = new Size(888, 425);
             pnlManageResult.TabIndex = 2;
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(19, 40);
+            label1.Name = "label1";
+            label1.Size = new Size(120, 15);
+            label1.TabIndex = 31;
+            label1.Text = "Số yêu cầu chờ duyệt";
+            // 
+            // radioButton1
+            // 
+            radioButton1.AutoSize = true;
+            radioButton1.Location = new Point(676, 33);
+            radioButton1.Name = "radioButton1";
+            radioButton1.Size = new Size(112, 19);
+            radioButton1.TabIndex = 30;
+            radioButton1.TabStop = true;
+            radioButton1.Text = "Phiếu thu đã tạo";
+            radioButton1.UseVisualStyleBackColor = true;
             // 
             // btnSearchReceipt
             // 
@@ -101,32 +121,6 @@
             dtgvResult.TabIndex = 0;
             dtgvResult.CellContentClick += dtgvResult_CellContentClick;
             // 
-            // lblCount
-            // 
-            lblCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            lblCount.BorderStyle = BorderStyle.None;
-            lblCount.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCount.Location = new Point(19, 34);
-            lblCount.Margin = new Padding(3, 2, 3, 2);
-            lblCount.Name = "lblCount";
-            lblCount.ReadOnly = true;
-            lblCount.Size = new Size(141, 19);
-            lblCount.TabIndex = 28;
-            lblCount.Text = "Số yêu cầu chờ duyệt: ";
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(166, 34);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(141, 20);
-            textBox1.TabIndex = 29;
-            textBox1.Text = "NODATA";
-            // 
             // uc_KT_ManageReceipt
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -148,7 +142,7 @@
         private Label lblSearchReceipt;
         private TextBox txbInput;
         private DataGridView dtgvResult;
-        private TextBox lblCount;
-        private TextBox textBox1;
+        private RadioButton radioButton1;
+        private Label label1;
     }
 }

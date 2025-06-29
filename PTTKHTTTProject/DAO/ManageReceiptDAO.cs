@@ -28,25 +28,8 @@ namespace PTTKHTTTProject.DAO
                         Value = filterText.Trim()
                     },
                 }; 
-                // If filterText is provided, we can filter the receipts based on it. you can search @name or @sbd
-                //check if name and sbd are right
-
-
                 return DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptTable", filter);
             }
         }
-
-        //public static DataTable getReceiptInfo(string receiptId)
-        //{
-        //    SqlParameter[] filter = new SqlParameter[]
-        //        {
-        //            new SqlParameter("@search", SqlDbType.NVarChar, 50)
-        //            {
-        //                Value = receiptId.Trim()
-        //            },
-        //        };
-        //    DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptInfo", filter);
-        //    return dt;
-        //}
     }
 }

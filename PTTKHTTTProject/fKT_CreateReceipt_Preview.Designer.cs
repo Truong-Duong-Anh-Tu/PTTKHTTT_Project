@@ -33,7 +33,6 @@
             lblSoTienThu = new Label();
             lblNgayThu = new Label();
             lblNguoiThu = new Label();
-            lblHinhThuc = new Label();
             lblGhiChu = new Label();
             label8 = new Label();
             txbHoTen = new TextBox();
@@ -41,12 +40,13 @@
             txbSoTienThu = new TextBox();
             txbNgayThu = new TextBox();
             txbNguoiThu = new TextBox();
-            txbHinhThuc = new TextBox();
-            button1 = new Button();
-            button2 = new Button();
-            txbGhiChu = new TextBox();
+            btnCancel = new Button();
+            btnConfirm = new Button();
             label1 = new Label();
             groupBox1 = new GroupBox();
+            txbGhiChu = new RichTextBox();
+            txbMaKH = new TextBox();
+            lblMaKH = new Label();
             groupBox1.SuspendLayout();
             SuspendLayout();
             // 
@@ -54,17 +54,17 @@
             // 
             lblHoTen.AutoSize = true;
             lblHoTen.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblHoTen.Location = new Point(157, 62);
+            lblHoTen.Location = new Point(104, 62);
             lblHoTen.Name = "lblHoTen";
-            lblHoTen.Size = new Size(63, 19);
+            lblHoTen.Size = new Size(116, 19);
             lblHoTen.TabIndex = 0;
-            lblHoTen.Text = "Thí sinh:";
+            lblHoTen.Text = "Tên khách hàng:";
             // 
             // lblNoiDung
             // 
             lblNoiDung.AutoSize = true;
             lblNoiDung.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblNoiDung.Location = new Point(119, 96);
+            lblNoiDung.Location = new Point(120, 131);
             lblNoiDung.Name = "lblNoiDung";
             lblNoiDung.Size = new Size(100, 19);
             lblNoiDung.TabIndex = 1;
@@ -74,7 +74,7 @@
             // 
             lblSoTienThu.AutoSize = true;
             lblSoTienThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblSoTienThu.Location = new Point(136, 131);
+            lblSoTienThu.Location = new Point(136, 170);
             lblSoTienThu.Name = "lblSoTienThu";
             lblSoTienThu.Size = new Size(84, 19);
             lblSoTienThu.TabIndex = 2;
@@ -84,7 +84,7 @@
             // 
             lblNgayThu.AutoSize = true;
             lblNgayThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblNgayThu.Location = new Point(146, 235);
+            lblNgayThu.Location = new Point(146, 269);
             lblNgayThu.Name = "lblNgayThu";
             lblNgayThu.Size = new Size(74, 19);
             lblNgayThu.TabIndex = 3;
@@ -94,21 +94,11 @@
             // 
             lblNguoiThu.AutoSize = true;
             lblNguoiThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblNguoiThu.Location = new Point(140, 269);
+            lblNguoiThu.Location = new Point(140, 302);
             lblNguoiThu.Name = "lblNguoiThu";
             lblNguoiThu.Size = new Size(80, 19);
             lblNguoiThu.TabIndex = 4;
             lblNguoiThu.Text = "Người thu:";
-            // 
-            // lblHinhThuc
-            // 
-            lblHinhThuc.AutoSize = true;
-            lblHinhThuc.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblHinhThuc.Location = new Point(68, 302);
-            lblHinhThuc.Name = "lblHinhThuc";
-            lblHinhThuc.Size = new Size(152, 19);
-            lblHinhThuc.TabIndex = 5;
-            lblHinhThuc.Text = "Hình thức thanh toán:";
             // 
             // lblGhiChu
             // 
@@ -124,7 +114,7 @@
             // 
             label8.AutoSize = true;
             label8.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label8.Location = new Point(301, 185);
+            label8.Location = new Point(300, 214);
             label8.Name = "label8";
             label8.Size = new Size(185, 19);
             label8.TabIndex = 7;
@@ -148,7 +138,7 @@
             txbNoiDung.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbNoiDung.BorderStyle = BorderStyle.None;
             txbNoiDung.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbNoiDung.Location = new Point(268, 96);
+            txbNoiDung.Location = new Point(268, 131);
             txbNoiDung.Margin = new Padding(3, 2, 3, 2);
             txbNoiDung.Name = "txbNoiDung";
             txbNoiDung.ReadOnly = true;
@@ -161,7 +151,7 @@
             txbSoTienThu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbSoTienThu.BorderStyle = BorderStyle.None;
             txbSoTienThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbSoTienThu.Location = new Point(268, 131);
+            txbSoTienThu.Location = new Point(268, 170);
             txbSoTienThu.Margin = new Padding(3, 2, 3, 2);
             txbSoTienThu.Name = "txbSoTienThu";
             txbSoTienThu.ReadOnly = true;
@@ -174,7 +164,7 @@
             txbNgayThu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbNgayThu.BorderStyle = BorderStyle.None;
             txbNgayThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbNgayThu.Location = new Point(268, 235);
+            txbNgayThu.Location = new Point(268, 269);
             txbNgayThu.Margin = new Padding(3, 2, 3, 2);
             txbNgayThu.Name = "txbNgayThu";
             txbNgayThu.ReadOnly = true;
@@ -187,7 +177,7 @@
             txbNguoiThu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbNguoiThu.BorderStyle = BorderStyle.None;
             txbNguoiThu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbNguoiThu.Location = new Point(268, 269);
+            txbNguoiThu.Location = new Point(268, 302);
             txbNguoiThu.Margin = new Padding(3, 2, 3, 2);
             txbNguoiThu.Name = "txbNguoiThu";
             txbNguoiThu.ReadOnly = true;
@@ -195,49 +185,24 @@
             txbNguoiThu.TabIndex = 30;
             txbNguoiThu.Text = "NODATA";
             // 
-            // txbHinhThuc
+            // btnCancel
             // 
-            txbHinhThuc.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            txbHinhThuc.BorderStyle = BorderStyle.None;
-            txbHinhThuc.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbHinhThuc.Location = new Point(268, 302);
-            txbHinhThuc.Margin = new Padding(3, 2, 3, 2);
-            txbHinhThuc.Name = "txbHinhThuc";
-            txbHinhThuc.ReadOnly = true;
-            txbHinhThuc.Size = new Size(350, 19);
-            txbHinhThuc.TabIndex = 31;
-            txbHinhThuc.Text = "NODATA";
+            btnCancel.Location = new Point(700, 406);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(75, 23);
+            btnCancel.TabIndex = 32;
+            btnCancel.Text = "Hủy bỏ";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
-            // button1
+            // btnConfirm
             // 
-            button1.Location = new Point(700, 406);
-            button1.Name = "button1";
-            button1.Size = new Size(75, 23);
-            button1.TabIndex = 32;
-            button1.Text = "Hủy bỏ";
-            button1.UseVisualStyleBackColor = true;
-            // 
-            // button2
-            // 
-            button2.Location = new Point(589, 406);
-            button2.Name = "button2";
-            button2.Size = new Size(105, 23);
-            button2.TabIndex = 33;
-            button2.Text = "Tạo phiếu thu";
-            button2.UseVisualStyleBackColor = true;
-            // 
-            // txbGhiChu
-            // 
-            txbGhiChu.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            txbGhiChu.BorderStyle = BorderStyle.None;
-            txbGhiChu.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbGhiChu.Location = new Point(268, 335);
-            txbGhiChu.Margin = new Padding(3, 2, 3, 2);
-            txbGhiChu.Name = "txbGhiChu";
-            txbGhiChu.ReadOnly = true;
-            txbGhiChu.Size = new Size(350, 19);
-            txbGhiChu.TabIndex = 34;
-            txbGhiChu.Text = "NODATA";
+            btnConfirm.Location = new Point(589, 406);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.Size = new Size(105, 23);
+            btnConfirm.TabIndex = 33;
+            btnConfirm.Text = "Tạo phiếu thu";
+            btnConfirm.UseVisualStyleBackColor = true;
             // 
             // label1
             // 
@@ -251,19 +216,19 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(txbGhiChu);
+            groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(lblHoTen);
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(btnConfirm);
             groupBox1.Controls.Add(lblNoiDung);
-            groupBox1.Controls.Add(button1);
+            groupBox1.Controls.Add(btnCancel);
             groupBox1.Controls.Add(lblSoTienThu);
-            groupBox1.Controls.Add(txbHinhThuc);
+            groupBox1.Controls.Add(txbMaKH);
             groupBox1.Controls.Add(lblNgayThu);
             groupBox1.Controls.Add(txbNguoiThu);
             groupBox1.Controls.Add(lblNguoiThu);
             groupBox1.Controls.Add(txbNgayThu);
-            groupBox1.Controls.Add(lblHinhThuc);
+            groupBox1.Controls.Add(lblMaKH);
             groupBox1.Controls.Add(txbSoTienThu);
             groupBox1.Controls.Add(lblGhiChu);
             groupBox1.Controls.Add(txbNoiDung);
@@ -274,6 +239,37 @@
             groupBox1.Size = new Size(776, 429);
             groupBox1.TabIndex = 36;
             groupBox1.TabStop = false;
+            // 
+            // txbGhiChu
+            // 
+            txbGhiChu.Location = new Point(268, 335);
+            txbGhiChu.Name = "txbGhiChu";
+            txbGhiChu.Size = new Size(263, 88);
+            txbGhiChu.TabIndex = 36;
+            txbGhiChu.Text = "";
+            // 
+            // txbMaKH
+            // 
+            txbMaKH.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txbMaKH.BorderStyle = BorderStyle.None;
+            txbMaKH.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            txbMaKH.Location = new Point(268, 96);
+            txbMaKH.Margin = new Padding(3, 2, 3, 2);
+            txbMaKH.Name = "txbMaKH";
+            txbMaKH.ReadOnly = true;
+            txbMaKH.Size = new Size(350, 19);
+            txbMaKH.TabIndex = 31;
+            txbMaKH.Text = "NODATA";
+            // 
+            // lblMaKH
+            // 
+            lblMaKH.AutoSize = true;
+            lblMaKH.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
+            lblMaKH.Location = new Point(106, 96);
+            lblMaKH.Name = "lblMaKH";
+            lblMaKH.Size = new Size(114, 19);
+            lblMaKH.TabIndex = 5;
+            lblMaKH.Text = "Mã khách hàng:";
             // 
             // fKT_CreateReceipt_Preview
             // 
@@ -296,7 +292,6 @@
         private Label lblSoTienThu;
         private Label lblNgayThu;
         private Label lblNguoiThu;
-        private Label lblHinhThuc;
         private Label lblGhiChu;
         private Label label8;
         private TextBox txbHoTen;
@@ -304,11 +299,12 @@
         private TextBox txbSoTienThu;
         private TextBox txbNgayThu;
         private TextBox txbNguoiThu;
-        private TextBox txbHinhThuc;
-        private Button button1;
-        private Button button2;
-        private TextBox txbGhiChu;
+        private Button btnCancel;
+        private Button btnConfirm;
         private Label label1;
         private GroupBox groupBox1;
+        private TextBox txbMaKH;
+        private Label lblMaKH;
+        private RichTextBox txbGhiChu;
     }
 }
