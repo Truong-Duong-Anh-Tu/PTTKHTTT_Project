@@ -104,8 +104,9 @@ CREATE TABLE PHEUTHANHTOAN (
   PTT_SoTienBanDau int,
   PTT_PhanTramGiam float,
   PTT_SoTienThanhToan int,
-  PTT_HinhThucThanhToan nvarchar(50),
-  PTT_ThoiHan date
+  PTT_HinhThucThanhToan nvarchar(50) CHECK (PTT_HinhThucThanhToan IN (N'Tiền mặt', N'Chuyển khoản')),
+  PTT_ThoiHan date,
+  PTT_GhiChu nvarchar(200)
 )
 GO
 
@@ -124,8 +125,9 @@ CREATE TABLE PHIEUGIAHAN (
   PGH_MaPhieuDK varchar(10) NOT NULL,
   PGH_LyDoGiaHan nvarchar(100),
   PGH_SoTienThanhToan int,
-  PGH_HinhThucThanhToan nvarchar(20),
-  PGH_ThoiHan date
+  PGH_HinhThucThanhToan nvarchar(20), CHECK (PGH_HinhThucThanhToan IN (N'Tiền mặt', N'Chuyển khoản')),
+  PGH_ThoiHan date,
+  PGH_GhiChu nvarchar(200)
 )
 GO
 
