@@ -239,8 +239,6 @@ EXEC usp_GetReceiptTable;
 go
 */
 
-select 
-
 
 --Lay thong tin danh sach phieu yeu cau gia han ket hop tim kiem (PREVIEW PHIEU THU/PHIEU THANH TOAN)
 --drop procedure usp_GetRenewalRequestTable
