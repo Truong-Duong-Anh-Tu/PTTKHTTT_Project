@@ -134,8 +134,15 @@ namespace PTTKHTTTProject
             string sbd = row.Cells["colSBD"].Value?.ToString() ?? "";
             string examtype = cbxExamName.SelectedItem?.ToString() ?? string.Empty;
             string examdate = cbxExamDate.SelectedItem?.ToString() ?? string.Empty;
+            var tbl = bs_ResultExam.Current as DataRowView;
+            string codeexam = "";
+            if (tbl != null)
+            {
+                codeexam = tbl["BT_MaBaiThi"].ToString()!;
+            }    
+  
 
-            fUpdateResult fur = new fUpdateResult(examtype, examdate, sbd, name);
+            fUpdateResult fur = new fUpdateResult(codeexam, examtype, examdate, sbd, name);
             fur.ShowDialog();
         }
 

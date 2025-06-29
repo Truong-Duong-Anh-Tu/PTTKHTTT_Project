@@ -77,6 +77,57 @@ begin
 end
 go
 
+--Cập nhật thông tin về thời gian làm bài, điểm thi và đơn vi chấm thi vào bài thi
+create or alter procedure usp_CapNhatKetQuaThi
+	@mabaithi varchar(10),
+	@diemso float,
+	@thoigian time,
+	@donvicham varchar(10)
+as
+begin
+	set NOCOUNT ON;
+
+	if not exists( select 1 from BAITHI where BT_MaBaiThi = @mabaithi)
+	begin
+		print(N'Bài thi này không tồn tại.')
+		return
+	end
+	else
+	begin
+		update BAITHI
+		set BT_DiemSo = coalesce(@diemso, BT_DiemSo),
+		    BT_DonViCham = coalesce(@donvicham, BT_DonViCham),
+			BT_ThoiGianLamBai = coalesce(@thoigian, BT_ThoiGianLamBai)
+		where BT_MaBaiThi = @mabaithi
+	end
+end
+go
+
+
+--Xóa bài thi
+create or alter procedure usp_XoaBaiThi
+	@mabaithi varchar(10)
+as
+begin
+	set NOCOUNT ON;
+
+	if not exists( select 1 from BAITHI where BT_MaBaiThi = @mabaithi)
+	begin
+		print(N'Bài thi này không tồn tại.')
+		return
+	end
+	if exists( select 1 from CHUNGCHI where CC_MaBaiThi = @mabaithi)
+	begin
+		print(N'Bài thi đã được cấp chứng chỉ, hãy xóa chứng chỉ liên quan trước.')
+		return
+	end
+	else
+	begin
+		delete from BAITHI
+		where BT_MaBaiThi = @mabaithi
+	end
+end
+go
 /*
 --Lấy danh sách lịch thi và giờ thi
 create or alter procedure usp_ThongTinKetQuaThiNew
@@ -199,11 +250,12 @@ as
 begin
 	set nocount on;
 
-	insert into BAITHI (BT_MaBaiThi, BT_MaLichThi, BT_SoBaoDanh)
+	insert into BAITHI (BT_MaBaiThi, BT_MaLichThi, BT_SoBaoDanh, BT_ThoiGianLamBai)
     select
         left(replace(newid(), '-', ''), 10) AS MaBaiThi,
         i.PDT_MaLichThi,
-        i.PDT_SoBaoDanh
+        i.PDT_SoBaoDanh,
+		'00:00:00'
     from inserted as i
 	where not exists( select 1 from BAITHI as bt where i.PDT_MaLichThi = bt.BT_MaLichThi 
 											     and i.PDT_SoBaoDanh = bt.BT_SoBaoDanh);
@@ -232,6 +284,22 @@ begin
 end;
 go
 
+--Trigger tự động xóa bài thi khi xóa phiếu đăng ký
+create or alter trigger utg_DeleteBaiThi
+on PHIEUDUTHI
+after DELETE
+as
+begin
+	set nocount on;
+
+	delete b
+    from
+        BAITHI b
+        inner join deleted d
+            on b.BT_MaLichThi = d.PDT_MaLichThi
+           and b.BT_SoBaoDanh = d.PDT_SoBaoDanh
+end;
+go
 
 --Trigger tự động tạo chứng chỉ khi cập nhật điểm thi 
 create or alter trigger utg_CreateChungChi

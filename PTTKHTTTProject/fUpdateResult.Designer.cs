@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             pnlResultExamInfo = new Panel();
+            tbxPoint = new TextBox();
             dtpdoExamTime = new DateTimePicker();
             btnExit = new FontAwesome.Sharp.IconButton();
             btnDelete = new FontAwesome.Sharp.IconButton();
             btnUpdate = new FontAwesome.Sharp.IconButton();
-            tbxPoint = new RichTextBox();
             tbxDVCT = new TextBox();
             tbxSBD = new TextBox();
             tbxName = new TextBox();
@@ -52,11 +52,11 @@
             // 
             // pnlResultExamInfo
             // 
+            pnlResultExamInfo.Controls.Add(tbxPoint);
             pnlResultExamInfo.Controls.Add(dtpdoExamTime);
             pnlResultExamInfo.Controls.Add(btnExit);
             pnlResultExamInfo.Controls.Add(btnDelete);
             pnlResultExamInfo.Controls.Add(btnUpdate);
-            pnlResultExamInfo.Controls.Add(tbxPoint);
             pnlResultExamInfo.Controls.Add(tbxDVCT);
             pnlResultExamInfo.Controls.Add(tbxSBD);
             pnlResultExamInfo.Controls.Add(tbxName);
@@ -76,6 +76,18 @@
             pnlResultExamInfo.TabIndex = 0;
             pnlResultExamInfo.Paint += pnlResultExamInfo_Paint;
             // 
+            // tbxPoint
+            // 
+            tbxPoint.BackColor = SystemColors.Window;
+            tbxPoint.BorderStyle = BorderStyle.FixedSingle;
+            tbxPoint.Font = new Font("Malgun Gothic", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            tbxPoint.ForeColor = SystemColors.WindowText;
+            tbxPoint.Location = new Point(477, 160);
+            tbxPoint.Name = "tbxPoint";
+            tbxPoint.Size = new Size(78, 38);
+            tbxPoint.TabIndex = 18;
+            tbxPoint.TextAlign = HorizontalAlignment.Center;
+            // 
             // dtpdoExamTime
             // 
             dtpdoExamTime.Checked = false;
@@ -85,8 +97,9 @@
             dtpdoExamTime.Location = new Point(154, 237);
             dtpdoExamTime.Name = "dtpdoExamTime";
             dtpdoExamTime.ShowUpDown = true;
-            dtpdoExamTime.Size = new Size(229, 30);
+            dtpdoExamTime.Size = new Size(115, 30);
             dtpdoExamTime.TabIndex = 17;
+            dtpdoExamTime.Value = new DateTime(2025, 6, 29, 18, 39, 13, 0);
             // 
             // btnExit
             // 
@@ -145,59 +158,58 @@
             btnUpdate.Text = "Cập nhật";
             btnUpdate.TextAlign = ContentAlignment.MiddleRight;
             btnUpdate.UseVisualStyleBackColor = false;
-            // 
-            // tbxPoint
-            // 
-            tbxPoint.BorderStyle = BorderStyle.None;
-            tbxPoint.Font = new Font("Cambria Math", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tbxPoint.Location = new Point(466, 159);
-            tbxPoint.Name = "tbxPoint";
-            tbxPoint.Size = new Size(101, 96);
-            tbxPoint.TabIndex = 13;
-            tbxPoint.Text = "";
+            btnUpdate.Click += btnUpdate_Click;
             // 
             // tbxDVCT
             // 
-            tbxDVCT.BorderStyle = BorderStyle.None;
+            tbxDVCT.BorderStyle = BorderStyle.FixedSingle;
             tbxDVCT.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxDVCT.Location = new Point(154, 280);
             tbxDVCT.Name = "tbxDVCT";
-            tbxDVCT.Size = new Size(228, 23);
+            tbxDVCT.Size = new Size(265, 30);
             tbxDVCT.TabIndex = 12;
             // 
             // tbxSBD
             // 
+            tbxSBD.BackColor = SystemColors.Window;
             tbxSBD.BorderStyle = BorderStyle.None;
             tbxSBD.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxSBD.Location = new Point(154, 200);
             tbxSBD.Name = "tbxSBD";
-            tbxSBD.Size = new Size(228, 23);
+            tbxSBD.ReadOnly = true;
+            tbxSBD.Size = new Size(265, 23);
             tbxSBD.TabIndex = 11;
             // 
             // tbxName
             // 
+            tbxName.BackColor = SystemColors.Window;
             tbxName.BorderStyle = BorderStyle.None;
             tbxName.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxName.Location = new Point(154, 160);
             tbxName.Name = "tbxName";
-            tbxName.Size = new Size(229, 23);
+            tbxName.ReadOnly = true;
+            tbxName.Size = new Size(265, 23);
             tbxName.TabIndex = 10;
             // 
             // tbxExamDate
             // 
+            tbxExamDate.BackColor = SystemColors.Window;
             tbxExamDate.BorderStyle = BorderStyle.None;
             tbxExamDate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxExamDate.Location = new Point(125, 91);
             tbxExamDate.Name = "tbxExamDate";
+            tbxExamDate.ReadOnly = true;
             tbxExamDate.Size = new Size(430, 23);
             tbxExamDate.TabIndex = 9;
             // 
             // tbxExamType
             // 
+            tbxExamType.BackColor = SystemColors.Window;
             tbxExamType.BorderStyle = BorderStyle.None;
             tbxExamType.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxExamType.Location = new Point(125, 49);
             tbxExamType.Name = "tbxExamType";
+            tbxExamType.ReadOnly = true;
             tbxExamType.Size = new Size(430, 23);
             tbxExamType.TabIndex = 8;
             // 
@@ -292,6 +304,7 @@
             Name = "fUpdateResult";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Chỉnh sửa thông tin bài thi";
+            Load += fUpdateResult_Load;
             pnlResultExamInfo.ResumeLayout(false);
             pnlResultExamInfo.PerformLayout();
             ResumeLayout(false);
@@ -313,10 +326,10 @@
         private TextBox tbxName;
         private TextBox tbxExamDate;
         private TextBox tbxExamType;
-        private RichTextBox tbxPoint;
         private FontAwesome.Sharp.IconButton btnUpdate;
         private FontAwesome.Sharp.IconButton btnDelete;
         private FontAwesome.Sharp.IconButton btnExit;
         private DateTimePicker dtpdoExamTime;
+        private TextBox tbxPoint;
     }
 }
