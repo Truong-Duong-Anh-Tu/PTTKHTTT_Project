@@ -87,10 +87,10 @@ VALUES
 ('KT03', N'Kỳ thi Tin học văn phòng MOC', 600000),
 ('KT04', N'Kỳ thi tiếng Anh TOEIC', 800000),
 ('KT05', N'Kỳ thi tiếng Anh TOEFL', 800000),
-('KT06', N'Kỳ thi tiếng Anh SAT', 800000),
-('KT07', N'Kỳ thi tiếng Anh IELTS', 800000),
+('KT06', N'Kỳ thi tiếng Anh SAT', 900000),
+('KT07', N'Kỳ thi tiếng Anh IELTS', 1000000),
 ('KT08', N'Kỳ thi tiếng Anh PET', 800000),
-('KT09', N'Kỳ thi Tin học IC3', 900000);
+('KT09', N'Kỳ thi Tin học IC3', 650000);
 GO
 
 INSERT INTO PHONGTHI (PT_MaPhongThi, PT_HinhThuc, PT_SLThiSinhToiDa, PT_SLThiSinhToiThieu, PT_SLNhanVienCoiThi) 
@@ -201,6 +201,57 @@ VALUES
 
   ('PDKD0001', '2025-06-12', N'23/3B Hùng Vương, HCM', N'Đã thanh toán', 'KHDV001', 'LT04', 'NV002'),
   ('PDKD0002', '2025-06-13', N'13/9 Nam Kỳ Khởi Nghĩa, Hà Nội', N'Chưa thanh toán', 'KHDV002', 'LT06', 'NV002')
+GO
+
+INSERT INTO PHIEUTHANHTOAN 
+  (PTT_MaPhieu, PTT_MaPhieuDK, PTT_NhanVienLap, PTT_NgayIn, 
+   PTT_SoTienBanDau, PTT_PhanTramGiam, PTT_SoTienThanhToan, 
+   PTT_HinhThucThanhToan, PTT_ThoiHan, PTT_GhiChu)
+VALUES
+  -- PDK00001
+  ('PTT00001','PDK00001','NV001','2025-06-01',
+    500000, 0, 500000, N'Tiền mặt',
+    '2025-07-01', N''),
+  -- PDK00002
+  ('PTT00002','PDK00002','NV002','2025-06-02',
+    500000, 0, 500000, N'Tiền mặt',
+    '2025-07-02', N''),
+  -- PDK00003
+  ('PTT00003','PDK00003','NV003','2025-06-03',
+    700000, 0, 700000, N'Tiền mặt',
+    '2025-07-03', N''),
+  -- PDK00004
+  ('PTT00004','PDK00004','NV004','2025-06-03',
+    700000, 0, 700000, N'Tiền mặt',
+    '2025-07-03', N''),
+  -- PDK00005
+  ('PTT00005','PDK00005','NV005','2025-06-04',
+    600000, 0, 600000, N'Tiền mặt',
+    '2025-07-04', N''),
+  -- PDK00006
+  ('PTT00006','PDK00006','NV001','2025-06-04',
+    600000, 0, 600000, N'Tiền mặt',
+    '2025-07-04', N''),
+  -- PDK00007
+  ('PTT00007','PDK00007','NV002','2025-06-05',
+    800000, 0, 800000, N'Tiền mặt',
+    '2025-07-05', N''),
+  -- PDK00008
+  ('PTT00008','PDK00008','NV003','2025-06-06',
+    800000, 0, 800000, N'Tiền mặt',
+    '2025-07-06', N''),
+  -- PDK00009
+  ('PTT00009','PDK00009','NV004','2025-06-07',
+    900000, 0, 900000, N'Tiền mặt',
+    '2025-07-07', N''),
+  -- PDK00010
+  ('PTT00010','PDK00010','NV005','2025-06-07',
+    900000, 0, 900000, N'Tiền mặt',
+    '2025-07-07', N''),
+  -- PDKD0001 (Áp dụng 10% giảm giá)
+  ('PTT00011','PDKD0001','NV002','2025-06-12',
+    18400000, 0.2, 14720000, N'Chuyển khoản',
+    '2025-07-12', N'Giảm 10% giá kỳ thi');
 GO
 
 INSERT INTO THISINH (TS_SoBaoDanh, TS_MaPhieuDangKy, TS_HoTen, TS_NgaySinh, TS_GioiTinh, TS_Email, TS_SDT, TS_CCCD)
