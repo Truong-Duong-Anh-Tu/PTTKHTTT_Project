@@ -53,7 +53,7 @@ GO
 
 CREATE TABLE THISINH (
   TS_SoBaoDanh varchar(10) PRIMARY KEY NOT NULL,
-  TS_MaKhachHang varchar(10),
+  TS_MaPhieuDangKy varchar(10),
   TS_HoTen nvarchar(50),
   TS_NgaySinh date,
   TS_GioiTinh nvarchar(3) CHECK (TS_GioiTinh IN (N'Nam', N'Nữ')),
@@ -76,7 +76,7 @@ GO
 
 CREATE TABLE PHONGTHI (
   PT_MaPhongThi varchar(10) PRIMARY KEY,
-  PT_HinhThuc nvarchar(30) CHECK (PT_HinhThuc IN (N'Tự luận', N'Trắc nghiệm', N'Trác nghiệm-Tự luận')),
+  PT_HinhThuc nvarchar(30) CHECK (PT_HinhThuc IN (N'Tự luận', N'Trắc nghiệm', N'Trắc nghiệm-Tự luận')),
   PT_SLThiSinhToiDa int,
   PT_SLThiSinhToiThieu int,
   PT_SLNhanVienCoiThi int,
@@ -127,18 +127,17 @@ CREATE TABLE PHIEUGIAHAN (
   PGH_SoTienThanhToan int,
   PGH_HinhThucThanhToan nvarchar(20), CHECK (PGH_HinhThucThanhToan IN (N'Tiền mặt', N'Chuyển khoản')),
   PGH_ThoiHan date,
-  PGH_GhiChu nvarchar(200)
-)
-GO
+  PHG_TrangThai nvarchar(30) CHECK (PHG_TrangThai IN (N'Chưa thanh toán', N'Đã thanh toán')), --Trong trường hợp gia hạn thi trong trường hợp đặt biệt( có lý do chính đáng),																								
+)																							  --thì số tiền thanh toán là 0, hình thức thanh toán là null(bỏ trống) và trạng thái là đã thanh toán
+GO																							  --trường hợp khác thì số tiền thanh toán kế toán tự đặt, hình thức thanh toán mặc định là tiền mặt, trạng thái là chưa thanh toán
 
 CREATE TABLE CHUNGCHI (
-  CC_MaBaiThi varchar(10),
+  CC_MaBaiThi varchar(10) PRIMARY KEY,
   CC_MaKyThi varchar(10),
   CC_SoBaoDanh varchar(10),
   CC_NgayCap date,
   CC_ThoiHan date,
   CC_TrangThai nvarchar(20) CHECK (CC_TrangThai IN (N'Chưa nhận', N'Đã nhận'))
-  PRIMARY KEY (CC_MaBaiThi, CC_MaKyThi)
 )
 GO
 
@@ -154,7 +153,7 @@ CREATE TABLE PHIEUDUTHI (
   PDT_MaPhieuDangKy varchar(10) NOT NULL,
   PDT_SoBaoDanh varchar(10) NOT NULL,
   PDT_MaLichThi varchar(10) NOT NULL,
-  PDT_MaPhongThi varchar(10) NOT NULL
+  PDT_MaPhongThi varchar(10) NOT NULL,
 )
 GO
 
@@ -165,9 +164,10 @@ CREATE TABLE DONVICHAMTHI (
 GO
 
 CREATE TABLE PHANCONG (
-  PC_MaNhanVien varchar(10) PRIMARY KEY,
+  PC_MaNhanVien varchar(10),
   PC_MaLichThi varchar(10) NOT NULL,
   PC_TrangThai nvarchar(20) CHECK (PC_TrangThai IN( N'Chưa diễn ra', N'Hoàn thành'))
+  PRIMARY KEY (PC_MaNhanVien, PC_MaLichThi)
 )
 GO
 
@@ -190,7 +190,7 @@ GO
 ALTER TABLE KHACHHANGDONVI ADD FOREIGN KEY (KHDV_MaKhachHang) REFERENCES KHACHHANG (KH_MaKhachHang)
 GO
 
-ALTER TABLE THISINH ADD FOREIGN KEY (TS_MaKhachHang) REFERENCES KHACHHANG (KH_MaKhachHang)
+ALTER TABLE THISINH ADD FOREIGN KEY (TS_MaPhieuDangKy) REFERENCES PHIEUDANGKYDUTHI (PDKDT_MaPhieu)
 GO
 
 ALTER TABLE PHIEUDANGKYDUTHI ADD FOREIGN KEY (PDKDT_MaKhachHang) REFERENCES KHACHHANG (KH_MaKhachHang)

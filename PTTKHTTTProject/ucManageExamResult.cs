@@ -91,8 +91,9 @@ namespace PTTKHTTTProject
             {
                 Name = "colBirthday",
                 DataPropertyName = "TS_NgaySinh",
-                HeaderText = "Ngày sinh"
+                HeaderText = "Ngày sinh",
             });
+            dtgvResult.Columns["colBirthday"]!.DefaultCellStyle.Format = "dd/MM/yyyy";
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
@@ -126,10 +127,10 @@ namespace PTTKHTTTProject
         {
             dtgvResult.ClearSelection();
 
-            if (e.RowIndex < 0 || e.ColumnIndex != dtgvResult.Columns["btnAction"].Index)
+            if (e.RowIndex < 0 || e.ColumnIndex != dtgvResult.Columns["btnAction"]!.Index)
                 return;
 
-            string name = dtgvResult.Rows[e.RowIndex].Cells["colSBD"].Value.ToString();
+            string name = dtgvResult.Rows[e.RowIndex].Cells["colSBD"].Value!.ToString()!;
             MessageBox.Show($"Bạn vừa chọn sửa: {name}", "Thông báo");
         }
 

@@ -78,9 +78,9 @@
             // 
             ptbLogoHome.Anchor = AnchorStyles.None;
             ptbLogoHome.Image = Properties.Resources.logonew;
-            ptbLogoHome.Location = new Point(11, 4);
+            ptbLogoHome.Location = new Point(6, 5);
             ptbLogoHome.Name = "ptbLogoHome";
-            ptbLogoHome.Size = new Size(51, 51);
+            ptbLogoHome.Size = new Size(61, 61);
             ptbLogoHome.SizeMode = PictureBoxSizeMode.Zoom;
             ptbLogoHome.TabIndex = 1;
             ptbLogoHome.TabStop = false;
@@ -88,15 +88,15 @@
             // tlpLogoName
             // 
             tlpLogoName.ColumnCount = 2;
-            tlpLogoName.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
-            tlpLogoName.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpLogoName.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.99329F));
+            tlpLogoName.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.00671F));
             tlpLogoName.Controls.Add(ptbLogoHome, 0, 0);
             tlpLogoName.Controls.Add(lblNameHome, 1, 0);
             tlpLogoName.Location = new Point(3, 3);
             tlpLogoName.Name = "tlpLogoName";
             tlpLogoName.RowCount = 1;
             tlpLogoName.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tlpLogoName.Size = new Size(149, 59);
+            tlpLogoName.Size = new Size(149, 71);
             tlpLogoName.TabIndex = 3;
             // 
             // lblNameHome
@@ -104,7 +104,7 @@
             lblNameHome.Anchor = AnchorStyles.None;
             lblNameHome.AutoSize = true;
             lblNameHome.Font = new Font("Yu Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblNameHome.Location = new Point(84, 18);
+            lblNameHome.Location = new Point(84, 24);
             lblNameHome.Name = "lblNameHome";
             lblNameHome.Size = new Size(54, 23);
             lblNameHome.TabIndex = 1;
@@ -123,8 +123,8 @@
             tlpMenu.Location = new Point(1, 0);
             tlpMenu.Name = "tlpMenu";
             tlpMenu.RowCount = 6;
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 70.103096F));
-            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 29.8969078F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 82.7957F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 17.2043018F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
             tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 137F));
@@ -200,7 +200,7 @@
             // 
             lblOption.AutoSize = true;
             lblOption.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblOption.Location = new Point(53, 17);
+            lblOption.Location = new Point(53, 14);
             lblOption.Name = "lblOption";
             lblOption.Size = new Size(135, 20);
             lblOption.TabIndex = 6;
@@ -210,9 +210,9 @@
             // 
             ptbMenu.BackColor = Color.DeepSkyBlue;
             ptbMenu.Image = Properties.Resources.Menu;
-            ptbMenu.Location = new Point(11, 12);
+            ptbMenu.Location = new Point(11, 7);
             ptbMenu.Name = "ptbMenu";
-            ptbMenu.Size = new Size(30, 29);
+            ptbMenu.Size = new Size(36, 36);
             ptbMenu.SizeMode = PictureBoxSizeMode.Zoom;
             ptbMenu.TabIndex = 6;
             ptbMenu.TabStop = false;

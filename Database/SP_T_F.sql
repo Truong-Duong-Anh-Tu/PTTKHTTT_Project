@@ -70,7 +70,7 @@ as
 begin
 	set NOCOUNT ON;
 
-	select ts.TS_SoBaoDanh, ts.TS_HoTen, ts.TS_CCCD, ts.TS_NgaySinh, ts.TS_GioiTinh, bt.BT_DiemSo, bt.BT_MaLichThi
+	select ts.TS_SoBaoDanh, ts.TS_HoTen, ts.TS_CCCD, ts.TS_NgaySinh, ts.TS_GioiTinh, bt.BT_MaBaiThi, bt.BT_DiemSo, bt.BT_MaLichThi
 	from BAITHI as bt join THISINH as ts on bt.BT_SoBaoDanh = ts.TS_SoBaoDanh
 					  join LICHTHI as lt on bt.BT_MaLichThi = lt.LT_MaLichThi
 	where lt.LT_MaKyThi = @examtest
@@ -143,6 +143,7 @@ go
 --Xoa bai thi
 
 --TRIGGER
+--Trigger kiểm tra mã người nhận trong THONGBAO có thuộc bảng NHANVIEN hoặc PHONGBAN không 
 create or alter trigger utg_CheckDoiTuong
 on THONGBAO
 after INSERT, UPDATE
@@ -160,6 +161,7 @@ begin
 end
 go
 
+--Trigger tự động cập nhật trang thái lịch thi sau khi qua thời gian thi
 create or alter trigger utg_UpdateTrangThai
 on LICHTHI
 after insert, update
@@ -189,4 +191,66 @@ begin
 end;
 go
 
---drop trigger utg_CheckDoiTuong;
+--Trigger tự động tạo thông tin BAITHI khi tạo phiếu dự thi
+create or alter trigger utg_CreateBaiThi
+on PHIEUDUTHI
+after INSERT, UPDATE
+as
+begin
+	set nocount on;
+
+	insert into BAITHI (BT_MaBaiThi, BT_MaLichThi, BT_SoBaoDanh)
+    select
+        left(replace(newid(), '-', ''), 10) AS MaBaiThi,
+        i.PDT_MaLichThi,
+        i.PDT_SoBaoDanh
+    from inserted as i
+	where not exists( select 1 from BAITHI as bt where i.PDT_MaLichThi = bt.BT_MaLichThi 
+											     and i.PDT_SoBaoDanh = bt.BT_SoBaoDanh);
+/*
+	delete b
+    from
+        BAITHI b
+        inner join deleted d
+            on b.BT_MaLichThi = d.PDT_MaLichThi
+           and b.BT_SoBaoDanh = d.PDT_SoBaoDanh
+        inner join inserted i
+            ON i.PDT_MaPhieu = d.PDT_MaPhieu
+*/
+
+	update BAITHI
+	set BT_MaLichThi = i.PDT_MaLichThi
+	FROM 
+    BAITHI AS b
+    inner join deleted as d
+        on b.BT_SoBaoDanh = d.PDT_SoBaoDanh
+       and b.BT_MaLichThi = d.PDT_MaLichThi
+    inner join inserted as i
+        on i.PDT_SoBaoDanh = d.PDT_SoBaoDanh
+       and i.PDT_MaPhieu   = d.PDT_MaPhieu
+	where i.PDT_MaLichThi <> d.PDT_MaLichThi
+end;
+go
+
+
+--Trigger tự động tạo chứng chỉ khi cập nhật điểm thi 
+create or alter trigger utg_CreateChungChi
+on BAITHI
+after UPDATE
+as
+begin
+	set nocount on;
+
+	insert into CHUNGCHI(CC_MaBaiThi, CC_MaKyThi, CC_SoBaoDanh, CC_NgayCap, CC_ThoiHan, CC_TrangThai)
+	select i.BT_MaBaiThi, lt.LT_MaKyThi, i.BT_SoBaoDanh, cast(getdate() as date) as CC_NgayCap, dateadd(year, 2, cast(getdate() as date)) as CC_ThoiHan, N'Chưa nhận' as CC_TrangThai
+	from inserted as i inner join LICHTHI as lt on i.BT_MaLichThi = lt.LT_MaLichThi 
+					   left join deleted as d on d.BT_MaBaiThi = i.BT_MaBaiThi
+	where i.BT_DiemSo is not null and (d.BT_DiemSo is null or d.BT_DiemSo <> i.BT_DiemSo)  
+		  and not exists ( select 1 FROM CHUNGCHI c where c.CC_MaBaiThi = i.BT_MaBaiThi and c.CC_MaKyThi = lt.LT_MaKyThi);
+
+	delete c
+	from CHUNGCHI as c join deleted as d on c.CC_MaBaiThi = d.BT_MaBaiThi
+					   left join inserted as i on i.BT_MaBaiThi = d.BT_MaBaiThi
+	where d.BT_DiemSo is not null and i.BT_DiemSo is null;
+	
+end;
