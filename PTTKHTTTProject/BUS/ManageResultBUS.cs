@@ -23,9 +23,7 @@ namespace PTTKHTTTProject.BUS
 
         public static void updateInfomationOfResultExam(string examcode, string point, string dotime, string markunit)
         {
-            Debug.WriteLine($"Ma bai thi: {examcode}");
-
-            if (float.TryParse(point, NumberStyles.Float, CultureInfo.InvariantCulture, out float parsepoint))
+            if (decimal.TryParse(point, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal parsepoint))
             {
                 // result đã có giá trị
             }

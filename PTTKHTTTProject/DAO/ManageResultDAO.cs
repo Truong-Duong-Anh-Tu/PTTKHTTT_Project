@@ -22,7 +22,7 @@ namespace PTTKHTTTProject.DAO
             return dt;
         }
 
-        public static void updateInfomationIntoBAITHI(string examcode, float point, TimeOnly dotime, string markunit)
+        public static void updateInfomationIntoBAITHI(string examcode, decimal point, TimeOnly dotime, string markunit)
         {
             var pExamcode = new SqlParameter("@mabaithi", SqlDbType.VarChar, 10)
             { Value = examcode.Trim() };

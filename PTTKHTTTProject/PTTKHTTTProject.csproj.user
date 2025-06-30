@@ -37,6 +37,9 @@
     <Compile Update="fUpdateResult.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ucAssignment.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="ucInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>

@@ -139,24 +139,31 @@ namespace PTTKHTTTProject
             if (tbl != null)
             {
                 codeexam = tbl["BT_MaBaiThi"].ToString()!;
-            }    
-  
+            }
+
 
             fUpdateResult fur = new fUpdateResult(codeexam, examtype, examdate, sbd, name);
+            fur.FormClosed += Fur_FormClosed!;
             fur.ShowDialog();
+        }
+
+        private void Fur_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loadCandicateAndPoint();
         }
 
         private void tbxSearchCandidate_TextChanged(object sender, EventArgs e)
         {
             string filter = tbxSearchCandidate.Text.Trim().ToString();
+            string examdatetime = $"{cbxExamDate.SelectedItem}".Split(' ')[0];
 
             if (string.IsNullOrEmpty(filter))
             {
-                bs_ResultExam.Filter = string.Empty;
+                bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}'";
             }
             else
             {
-                bs_ResultExam.Filter = $"TS_SoBaoDanh LIKE '%{filter}%'";
+                bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}' AND TS_SoBaoDanh LIKE '%{filter}%'";
             }
         }
 

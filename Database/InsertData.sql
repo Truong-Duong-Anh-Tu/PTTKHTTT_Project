@@ -378,7 +378,23 @@ VALUES
   ('NV032', 'LT05', N'Chưa diễn ra');
 GO
 
+/*
 select * from PHIEUDUTHI
+
+INSERT INTO BAITHI(BT_MaBaiThi, BT_MaLichThi, BT_SoBaoDanh, BT_ThoiGianLamBai, BT_DiemSo, BT_DonViCham)
+VALUES
+  ('BTT00001', 'LT06', 'TSD00024', '00:00:00', 0, 'DVCT02'),
+  ('BTT00002', 'LT06', 'TSD00025', '00:00:00', 0, 'DVCT02'),
+  ('BTT00003', 'LT06', 'TSD00026', '00:00:00', 0, 'DVCT02'),
+  ('BTT00004', 'LT06', 'TSD00027', '00:00:00', 0, 'DVCT02'),
+  ('BTT00005', 'LT06', 'TSD00028', '00:00:00', 0, 'DVCT02'),
+  ('BTT00006', 'LT06', 'TSD00029', '00:00:00', 0, 'DVCT02'),
+  ('BTT00007', 'LT06', 'TSD00030', '00:00:00', 0, 'DVCT02');
+GO
+
+select * from BAITHI
+*/
+
 
 /*
 INSERT INTO BAITHI

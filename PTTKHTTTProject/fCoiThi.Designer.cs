@@ -28,12 +28,238 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "fCoiThi";
+            tlpMenu = new TableLayoutPanel();
+            btnTCLPC = new Button();
+            tlpLogoName = new TableLayoutPanel();
+            ptbLogoHome = new PictureBox();
+            lblNameHome = new Label();
+            btnTTCN = new Button();
+            btnThongBao = new Button();
+            pnlChildControl = new Panel();
+            panel1 = new Panel();
+            btnSignOut = new Button();
+            lblName_Role = new Label();
+            ptbAvatar = new PictureBox();
+            lblOption = new Label();
+            ptbMenu = new PictureBox();
+            tlpMenu.SuspendLayout();
+            tlpLogoName.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbLogoHome).BeginInit();
+            panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbAvatar).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)ptbMenu).BeginInit();
+            SuspendLayout();
+            // 
+            // tlpMenu
+            // 
+            tlpMenu.BackColor = SystemColors.Control;
+            tlpMenu.ColumnCount = 1;
+            tlpMenu.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
+            tlpMenu.Controls.Add(btnTCLPC, 0, 3);
+            tlpMenu.Controls.Add(tlpLogoName, 0, 0);
+            tlpMenu.Controls.Add(btnTTCN, 0, 2);
+            tlpMenu.Controls.Add(btnThongBao, 0, 4);
+            tlpMenu.Location = new Point(1, 0);
+            tlpMenu.Name = "tlpMenu";
+            tlpMenu.RowCount = 6;
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 82.7957F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Percent, 17.2043018F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 61F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 63F));
+            tlpMenu.RowStyles.Add(new RowStyle(SizeType.Absolute, 346F));
+            tlpMenu.Size = new Size(155, 625);
+            tlpMenu.TabIndex = 5;
+            // 
+            // btnTCLPC
+            // 
+            btnTCLPC.FlatStyle = FlatStyle.Flat;
+            btnTCLPC.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTCLPC.Location = new Point(3, 157);
+            btnTCLPC.Name = "btnTCLPC";
+            btnTCLPC.Size = new Size(149, 55);
+            btnTCLPC.TabIndex = 2;
+            btnTCLPC.Text = "Tra cứu lịch phân công";
+            btnTCLPC.UseVisualStyleBackColor = true;
+            btnTCLPC.Click += tlpMenu_Click;
+            // 
+            // tlpLogoName
+            // 
+            tlpLogoName.ColumnCount = 2;
+            tlpLogoName.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 48.99329F));
+            tlpLogoName.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 51.00671F));
+            tlpLogoName.Controls.Add(ptbLogoHome, 0, 0);
+            tlpLogoName.Controls.Add(lblNameHome, 1, 0);
+            tlpLogoName.Location = new Point(3, 3);
+            tlpLogoName.Name = "tlpLogoName";
+            tlpLogoName.RowCount = 1;
+            tlpLogoName.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
+            tlpLogoName.Size = new Size(149, 71);
+            tlpLogoName.TabIndex = 3;
+            // 
+            // ptbLogoHome
+            // 
+            ptbLogoHome.Anchor = AnchorStyles.None;
+            ptbLogoHome.Image = Properties.Resources.logonew;
+            ptbLogoHome.Location = new Point(6, 5);
+            ptbLogoHome.Name = "ptbLogoHome";
+            ptbLogoHome.Size = new Size(61, 61);
+            ptbLogoHome.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbLogoHome.TabIndex = 1;
+            ptbLogoHome.TabStop = false;
+            // 
+            // lblNameHome
+            // 
+            lblNameHome.Anchor = AnchorStyles.None;
+            lblNameHome.AutoSize = true;
+            lblNameHome.Font = new Font("Yu Gothic", 10.8F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblNameHome.Location = new Point(84, 24);
+            lblNameHome.Name = "lblNameHome";
+            lblNameHome.Size = new Size(54, 23);
+            lblNameHome.TabIndex = 1;
+            lblNameHome.Text = "ACCI";
+            // 
+            // btnTTCN
+            // 
+            btnTTCN.FlatStyle = FlatStyle.Flat;
+            btnTTCN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnTTCN.Location = new Point(3, 96);
+            btnTTCN.Name = "btnTTCN";
+            btnTTCN.Size = new Size(149, 55);
+            btnTTCN.TabIndex = 1;
+            btnTTCN.Text = "Thông tin cá nhân";
+            btnTTCN.UseVisualStyleBackColor = true;
+            btnTTCN.Click += tlpMenu_Click;
+            // 
+            // btnThongBao
+            // 
+            btnThongBao.FlatStyle = FlatStyle.Flat;
+            btnThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            btnThongBao.Location = new Point(3, 218);
+            btnThongBao.Name = "btnThongBao";
+            btnThongBao.Size = new Size(149, 55);
+            btnThongBao.TabIndex = 2;
+            btnThongBao.Text = "Thông báo";
+            btnThongBao.UseVisualStyleBackColor = true;
+            btnThongBao.Click += tlpMenu_Click;
+            // 
+            // pnlChildControl
+            // 
+            pnlChildControl.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            pnlChildControl.Location = new Point(160, 52);
+            pnlChildControl.Name = "pnlChildControl";
+            pnlChildControl.Size = new Size(1021, 573);
+            pnlChildControl.TabIndex = 7;
+            // 
+            // panel1
+            // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            panel1.BackColor = SystemColors.ControlLight;
+            panel1.BorderStyle = BorderStyle.Fixed3D;
+            panel1.Controls.Add(btnSignOut);
+            panel1.Controls.Add(lblName_Role);
+            panel1.Controls.Add(ptbAvatar);
+            panel1.Controls.Add(lblOption);
+            panel1.Controls.Add(ptbMenu);
+            panel1.Location = new Point(149, 0);
+            panel1.Name = "panel1";
+            panel1.Size = new Size(1033, 51);
+            panel1.TabIndex = 8;
+            // 
+            // btnSignOut
+            // 
+            btnSignOut.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSignOut.BackColor = Color.DeepSkyBlue;
+            btnSignOut.FlatStyle = FlatStyle.Flat;
+            btnSignOut.ForeColor = SystemColors.Control;
+            btnSignOut.Location = new Point(930, 9);
+            btnSignOut.Name = "btnSignOut";
+            btnSignOut.Size = new Size(87, 33);
+            btnSignOut.TabIndex = 6;
+            btnSignOut.Text = "Đăng xuất";
+            btnSignOut.UseVisualStyleBackColor = false;
+            btnSignOut.Click += btnSignOut_Click;
+            // 
+            // lblName_Role
+            // 
+            lblName_Role.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            lblName_Role.AutoSize = true;
+            lblName_Role.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblName_Role.Location = new Point(722, 17);
+            lblName_Role.Name = "lblName_Role";
+            lblName_Role.Size = new Size(117, 17);
+            lblName_Role.TabIndex = 6;
+            lblName_Role.Text = "<Name and Role>";
+            // 
+            // ptbAvatar
+            // 
+            ptbAvatar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            ptbAvatar.Image = Properties.Resources.avatar;
+            ptbAvatar.Location = new Point(679, 7);
+            ptbAvatar.Name = "ptbAvatar";
+            ptbAvatar.Size = new Size(37, 37);
+            ptbAvatar.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbAvatar.TabIndex = 6;
+            ptbAvatar.TabStop = false;
+            // 
+            // lblOption
+            // 
+            lblOption.AutoSize = true;
+            lblOption.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblOption.Location = new Point(53, 14);
+            lblOption.Name = "lblOption";
+            lblOption.Size = new Size(135, 20);
+            lblOption.TabIndex = 6;
+            lblOption.Text = "Thông tin cá nhân";
+            // 
+            // ptbMenu
+            // 
+            ptbMenu.BackColor = Color.DeepSkyBlue;
+            ptbMenu.Image = Properties.Resources.Menu;
+            ptbMenu.Location = new Point(11, 7);
+            ptbMenu.Name = "ptbMenu";
+            ptbMenu.Size = new Size(36, 36);
+            ptbMenu.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbMenu.TabIndex = 6;
+            ptbMenu.TabStop = false;
+            // 
+            // fCoiThi
+            // 
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(1182, 628);
+            Controls.Add(pnlChildControl);
+            Controls.Add(tlpMenu);
+            Controls.Add(panel1);
+            Name = "fCoiThi";
+            Text = "GIÁM THỊ COI THI";
+            Load += fCoiThi_Load;
+            tlpMenu.ResumeLayout(false);
+            tlpLogoName.ResumeLayout(false);
+            tlpLogoName.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbLogoHome).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbAvatar).EndInit();
+            ((System.ComponentModel.ISupportInitialize)ptbMenu).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private TableLayoutPanel tlpMenu;
+        private Button btnTCLPC;
+        private TableLayoutPanel tlpLogoName;
+        private PictureBox ptbLogoHome;
+        private Label lblNameHome;
+        private Button btnTTCN;
+        private Button btnThongBao;
+        private Panel pnlChildControl;
+        private Panel panel1;
+        private Button btnSignOut;
+        private Label lblName_Role;
+        private PictureBox ptbAvatar;
+        private Label lblOption;
+        private PictureBox ptbMenu;
     }
 }
