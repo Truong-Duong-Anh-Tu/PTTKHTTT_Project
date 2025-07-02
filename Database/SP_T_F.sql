@@ -444,6 +444,93 @@ go
 
 --drop trigger utg_CheckDoiTuong;
 
+
+--Trigger tự động tạo thông tin BAITHI khi tạo phiếu dự thi
+create or alter trigger utg_CreateBaiThi
+on PHIEUDUTHI
+after INSERT, UPDATE
+as
+begin
+	set nocount on;
+
+	insert into BAITHI (BT_MaBaiThi, BT_MaLichThi, BT_SoBaoDanh, BT_ThoiGianLamBai)
+    select
+        left(replace(newid(), '-', ''), 10) AS MaBaiThi,
+        i.PDT_MaLichThi,
+        i.PDT_SoBaoDanh,
+		'00:00:00'
+    from inserted as i
+	where not exists( select 1 from BAITHI as bt where i.PDT_MaLichThi = bt.BT_MaLichThi 
+											     and i.PDT_SoBaoDanh = bt.BT_SoBaoDanh);
+/*
+	delete b
+    from
+        BAITHI b
+        inner join deleted d
+            on b.BT_MaLichThi = d.PDT_MaLichThi
+           and b.BT_SoBaoDanh = d.PDT_SoBaoDanh
+        inner join inserted i
+            ON i.PDT_MaPhieu = d.PDT_MaPhieu
+*/
+
+	update BAITHI
+	set BT_MaLichThi = i.PDT_MaLichThi
+	FROM 
+    BAITHI AS b
+    inner join deleted as d
+        on b.BT_SoBaoDanh = d.PDT_SoBaoDanh
+       and b.BT_MaLichThi = d.PDT_MaLichThi
+    inner join inserted as i
+        on i.PDT_SoBaoDanh = d.PDT_SoBaoDanh
+       and i.PDT_MaPhieu   = d.PDT_MaPhieu
+	where i.PDT_MaLichThi <> d.PDT_MaLichThi
+end;
+go
+
+--Trigger tự động xóa bài thi khi xóa phiếu đăng ký
+create or alter trigger utg_DeleteBaiThi
+on PHIEUDUTHI
+after DELETE
+as
+begin
+	set nocount on;
+
+	delete b
+    from
+        BAITHI b
+        inner join deleted d
+            on b.BT_MaLichThi = d.PDT_MaLichThi
+           and b.BT_SoBaoDanh = d.PDT_SoBaoDanh
+end;
+go
+
+--Trigger tự động tạo chứng chỉ khi cập nhật điểm thi 
+create or alter trigger utg_CreateChungChi
+on BAITHI
+after UPDATE
+as
+begin
+	set nocount on;
+
+	insert into CHUNGCHI(CC_MaBaiThi, CC_MaKyThi, CC_SoBaoDanh, CC_NgayCap, CC_ThoiHan, CC_TrangThai)
+	select i.BT_MaBaiThi, lt.LT_MaKyThi, i.BT_SoBaoDanh, cast(getdate() as date) as CC_NgayCap, dateadd(year, 2, cast(getdate() as date)) as CC_ThoiHan, N'Chưa nhận' as CC_TrangThai
+	from inserted as i inner join LICHTHI as lt on i.BT_MaLichThi = lt.LT_MaLichThi 
+					   left join deleted as d on d.BT_MaBaiThi = i.BT_MaBaiThi
+	where i.BT_DiemSo is not null and (d.BT_DiemSo is null or d.BT_DiemSo <> i.BT_DiemSo)  
+		  and not exists ( select 1 FROM CHUNGCHI c where c.CC_MaBaiThi = i.BT_MaBaiThi and c.CC_MaKyThi = lt.LT_MaKyThi);
+
+	delete c
+	from CHUNGCHI as c join deleted as d on c.CC_MaBaiThi = d.BT_MaBaiThi
+					   left join inserted as i on i.BT_MaBaiThi = d.BT_MaBaiThi
+	where d.BT_DiemSo is not null and i.BT_DiemSo is null;
+	
+end;
+
+
+
+-------------------------------------------------------------------
+-- Phần của QUẢN TRỊ HỆ THỐNG
+GO
 CREATE OR ALTER PROCEDURE usp_GetAllNhanVien
 AS
 BEGIN
@@ -613,84 +700,5 @@ BEGIN
     END CATCH;
 END;
 GO
-
---Trigger tự động tạo thông tin BAITHI khi tạo phiếu dự thi
-create or alter trigger utg_CreateBaiThi
-on PHIEUDUTHI
-after INSERT, UPDATE
-as
-begin
-	set nocount on;
-
-	insert into BAITHI (BT_MaBaiThi, BT_MaLichThi, BT_SoBaoDanh, BT_ThoiGianLamBai)
-    select
-        left(replace(newid(), '-', ''), 10) AS MaBaiThi,
-        i.PDT_MaLichThi,
-        i.PDT_SoBaoDanh,
-		'00:00:00'
-    from inserted as i
-	where not exists( select 1 from BAITHI as bt where i.PDT_MaLichThi = bt.BT_MaLichThi 
-											     and i.PDT_SoBaoDanh = bt.BT_SoBaoDanh);
-/*
-	delete b
-    from
-        BAITHI b
-        inner join deleted d
-            on b.BT_MaLichThi = d.PDT_MaLichThi
-           and b.BT_SoBaoDanh = d.PDT_SoBaoDanh
-        inner join inserted i
-            ON i.PDT_MaPhieu = d.PDT_MaPhieu
-*/
-
-	update BAITHI
-	set BT_MaLichThi = i.PDT_MaLichThi
-	FROM 
-    BAITHI AS b
-    inner join deleted as d
-        on b.BT_SoBaoDanh = d.PDT_SoBaoDanh
-       and b.BT_MaLichThi = d.PDT_MaLichThi
-    inner join inserted as i
-        on i.PDT_SoBaoDanh = d.PDT_SoBaoDanh
-       and i.PDT_MaPhieu   = d.PDT_MaPhieu
-	where i.PDT_MaLichThi <> d.PDT_MaLichThi
-end;
-go
-
---Trigger tự động xóa bài thi khi xóa phiếu đăng ký
-create or alter trigger utg_DeleteBaiThi
-on PHIEUDUTHI
-after DELETE
-as
-begin
-	set nocount on;
-
-	delete b
-    from
-        BAITHI b
-        inner join deleted d
-            on b.BT_MaLichThi = d.PDT_MaLichThi
-           and b.BT_SoBaoDanh = d.PDT_SoBaoDanh
-end;
-go
-
---Trigger tự động tạo chứng chỉ khi cập nhật điểm thi 
-create or alter trigger utg_CreateChungChi
-on BAITHI
-after UPDATE
-as
-begin
-	set nocount on;
-
-	insert into CHUNGCHI(CC_MaBaiThi, CC_MaKyThi, CC_SoBaoDanh, CC_NgayCap, CC_ThoiHan, CC_TrangThai)
-	select i.BT_MaBaiThi, lt.LT_MaKyThi, i.BT_SoBaoDanh, cast(getdate() as date) as CC_NgayCap, dateadd(year, 2, cast(getdate() as date)) as CC_ThoiHan, N'Chưa nhận' as CC_TrangThai
-	from inserted as i inner join LICHTHI as lt on i.BT_MaLichThi = lt.LT_MaLichThi 
-					   left join deleted as d on d.BT_MaBaiThi = i.BT_MaBaiThi
-	where i.BT_DiemSo is not null and (d.BT_DiemSo is null or d.BT_DiemSo <> i.BT_DiemSo)  
-		  and not exists ( select 1 FROM CHUNGCHI c where c.CC_MaBaiThi = i.BT_MaBaiThi and c.CC_MaKyThi = lt.LT_MaKyThi);
-
-	delete c
-	from CHUNGCHI as c join deleted as d on c.CC_MaBaiThi = d.BT_MaBaiThi
-					   left join inserted as i on i.BT_MaBaiThi = d.BT_MaBaiThi
-	where d.BT_DiemSo is not null and i.BT_DiemSo is null;
-	
-end;
+-- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
+------------------------------------------------------
