@@ -95,5 +95,10 @@ namespace PTTKHTTTProject
                 this.Close();
             }
         }
+
+        private void pnlChildControl_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
     }
 }
