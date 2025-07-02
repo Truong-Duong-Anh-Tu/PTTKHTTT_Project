@@ -17,8 +17,6 @@ namespace PTTKHTTTProject.BUS
             string examtype = examtest.Split(' ')[0];
             DataTable dt = ExamDateDAO.getExamDate(examtype);
 
-            Debug.WriteLine(dt.Rows.Count);
-
             foreach (DataRow dr in dt.Rows)
             {
                 string dateStr = dr.Field<DateTime>("LT_NgayThi").ToString("dd/MM/yyyy");

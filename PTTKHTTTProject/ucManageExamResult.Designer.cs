@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             DataGridViewCellStyle dataGridViewCellStyle1 = new DataGridViewCellStyle();
+            DataGridViewCellStyle dataGridViewCellStyle2 = new DataGridViewCellStyle();
             pnlManageResult = new Panel();
             cbxExamDate = new ComboBox();
             lblChonThiSinh = new Label();
@@ -147,10 +148,19 @@
             dataGridViewCellStyle1.WrapMode = DataGridViewTriState.True;
             dtgvResult.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             dtgvResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle2.Alignment = DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle2.BackColor = SystemColors.Window;
+            dataGridViewCellStyle2.Font = new Font("Segoe UI", 9F);
+            dataGridViewCellStyle2.ForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.SelectionBackColor = SystemColors.Window;
+            dataGridViewCellStyle2.SelectionForeColor = SystemColors.ControlText;
+            dataGridViewCellStyle2.WrapMode = DataGridViewTriState.False;
+            dtgvResult.DefaultCellStyle = dataGridViewCellStyle2;
             dtgvResult.GridColor = SystemColors.Window;
             dtgvResult.Location = new Point(22, 136);
             dtgvResult.MultiSelect = false;
             dtgvResult.Name = "dtgvResult";
+            dtgvResult.ReadOnly = true;
             dtgvResult.RowHeadersBorderStyle = DataGridViewHeaderBorderStyle.None;
             dtgvResult.RowHeadersVisible = false;
             dtgvResult.RowHeadersWidth = 51;

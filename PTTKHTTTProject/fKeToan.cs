@@ -50,7 +50,7 @@ namespace PTTKHTTTProject
             if (clicked == btnQLPT)
             {
                 lblOption.Text = "Quản lý phiếu thu";
-                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageReceipt());
+                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageReceipt(username));
             }
             if (clicked == btnQLPGH)
             {

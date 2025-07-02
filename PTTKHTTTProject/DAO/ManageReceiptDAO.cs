@@ -1,6 +1,7 @@
 ﻿using Microsoft.Data.SqlClient;
 using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 using System.Data;
 using System.Linq;
 using System.Text;
@@ -11,29 +12,77 @@ namespace PTTKHTTTProject.DAO
 {
     internal class ManageReceiptDAO
     {
-        public static DataTable getReceipt(/*string receiptType*/)
+        public static DataTable getReceipt(string filterText)
         {
-            //// the @type parameter can be empty or null, which means we want to get all receipts
-            //// if receiptType is null or empty, we can pass null to the stored procedure
-            //DataTable table = new DataTable();
-            //if (string.IsNullOrEmpty(receiptType))
-            //{
-            //    // If receiptType is null or empty, we can return all receipts
-            //    return DataProvider.Instance.ExecuteQuerySP("usp_GetAllReceipts");
-            //}
-
-            //var pReceiptType = new SqlParameter("@type", SqlDbType.NVarChar, 20)
-            //{ Value = receiptType.Trim() };
-
-            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptInfo");
-
-            return dt;
+            if (string.IsNullOrEmpty(filterText))
+            {
+                // If filterText is null or empty, we can return all receipts
+                return DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptTable");
+            }
+            else
+            {
+                SqlParameter[] filter = new SqlParameter[]
+                {
+                    new SqlParameter("@search", SqlDbType.NVarChar, 50)
+                    {
+                        Value = filterText.Trim()
+                    },
+                };
+                return DataProvider.Instance.ExecuteQuerySP("usp_GetReceiptTable", filter);
+            }
         }
 
-        //public static DataTable getReceiptType()
-        //{
-        //    DataTable dt = DataProvider.Instance.ExecuteQuery("SELECT PDKDT_TinhTrangThanhToan FROM PHIEUDANGKYDUTHI");
-        //    return dt;
-        //}
+
+        //Lay thong tin phieu thu da tao
+        public static DataTable getPaycheck()
+        {
+            //SqlParameter[] parameters = new SqlParameter[]
+            //{
+            //    new SqlParameter("@maphieu", SqlDbType.VarChar, 10) { Value = receiptId.Trim() }
+            //};
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetPaycheckTable");
+        }
+
+
+        //Them thong tin phieu thu vao bang PHIEUTHANHTOAN
+        public void insertIntoPaycheckTableDAO(string receiptId, string employeeId, decimal fee, string notes)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@nvlap", SqlDbType.VarChar, 10) { Value = employeeId },
+                new SqlParameter("@sotienbandau", SqlDbType.Int) { Value = fee},
+                new SqlParameter("@phtramgiam", SqlDbType.Float) { Value = 0 },
+                new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 50) { Value = "Tiền mặt" },
+                new SqlParameter("@ghichu", SqlDbType.NVarChar, 200) { Value = notes },
+            };
+            DataProvider.Instance.ExecuteNonQuerySP("usp_InsertIntoPaycheckTable", parameters);
+        }
+
+
+        //Cap nhat thong tin phieu thu dung phuong thuc chuyen khoan
+        public void updatePaycheckMethodDAO(string receiptId, string currentValue)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 50) { Value = currentValue },
+            };
+            string query = "UPDATE PHIEUTHANHTOAN SET PTT_HinhThucThanhToan = @hinhthuc WHERE PTT_MaPhieuDK = @maphieudk";
+            DataProvider.Instance.ExecuteQuery(query, parameters);
+        }
+
+
+        // Cap nhat thong tin phieu thu da thanh toan
+        public void updatePaycheckPaidDAO(string receiptId, string currentValue)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@trangthai", SqlDbType.NVarChar,20) { Value = currentValue },
+            };
+            string query = "UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = @trangthai WHERE PDKDT_MaPhieu = @maphieudk";
+            DataProvider.Instance.ExecuteQuery(query, parameters);
+        }
     }
 }

@@ -66,6 +66,7 @@ namespace PTTKHTTTProject
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colFullname",
                 DataPropertyName = "TS_HoTen",
                 HeaderText = "Họ và tên",
                 AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
@@ -74,30 +75,36 @@ namespace PTTKHTTTProject
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colSBD",
                 DataPropertyName = "TS_SoBaoDanh",
                 HeaderText = "Số báo danh"
             });
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colCCCD",
                 DataPropertyName = "TS_CCCD",
                 HeaderText = "CCCD"
             });
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colBirthday",
                 DataPropertyName = "TS_NgaySinh",
-                HeaderText = "Ngày sinh"
+                HeaderText = "Ngày sinh",
             });
+            dtgvResult.Columns["colBirthday"]!.DefaultCellStyle.Format = "dd/MM/yyyy";
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colGender",
                 DataPropertyName = "TS_GioiTinh",
                 HeaderText = "Giới tính"
             });
 
             dtgvResult.Columns.Add(new DataGridViewTextBoxColumn()
             {
+                Name = "colScore",
                 DataPropertyName = "BT_DiemSo",
                 HeaderText = "Điểm số"
             });
@@ -118,20 +125,45 @@ namespace PTTKHTTTProject
 
         private void dtgvResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            dtgvResult.ClearSelection();
+            if (e.RowIndex < 0 || e.ColumnIndex != dtgvResult.Columns["btnAction"]!.Index)
+                return;
+
+            var row = dtgvResult.Rows[e.RowIndex];
+
+            string name = row.Cells["colFullname"].Value?.ToString() ?? "";
+            string sbd = row.Cells["colSBD"].Value?.ToString() ?? "";
+            string examtype = cbxExamName.SelectedItem?.ToString() ?? string.Empty;
+            string examdate = cbxExamDate.SelectedItem?.ToString() ?? string.Empty;
+            var tbl = bs_ResultExam.Current as DataRowView;
+            string codeexam = "";
+            if (tbl != null)
+            {
+                codeexam = tbl["BT_MaBaiThi"].ToString()!;
+            }
+
+
+            fUpdateResult fur = new fUpdateResult(codeexam, examtype, examdate, sbd, name);
+            fur.FormClosed += Fur_FormClosed!;
+            fur.ShowDialog();
+        }
+
+        private void Fur_FormClosed(object sender, FormClosedEventArgs e)
+        {
+            loadCandicateAndPoint();
         }
 
         private void tbxSearchCandidate_TextChanged(object sender, EventArgs e)
         {
             string filter = tbxSearchCandidate.Text.Trim().ToString();
+            string examdatetime = $"{cbxExamDate.SelectedItem}".Split(' ')[0];
 
             if (string.IsNullOrEmpty(filter))
             {
-                bs_ResultExam.Filter = string.Empty;
+                bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}'";
             }
             else
             {
-                bs_ResultExam.Filter = $"TS_SoBaoDanh LIKE '%{filter}%'";
+                bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}' AND TS_SoBaoDanh LIKE '%{filter}%'";
             }
         }
 

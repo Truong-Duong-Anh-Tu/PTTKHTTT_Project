@@ -72,7 +72,7 @@ namespace PTTKHTTTProject
                 }
                 else if (role == "Coi thi")
                 {
-                    fCoiThi fct = new fCoiThi();
+                    fCoiThi fct = new fCoiThi(username);
                     this.Hide();
                     fct.ShowDialog();
                     this.Show();

@@ -28,6 +28,15 @@
     <Compile Update="fKeToan.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="fKT_CreateReceipt_Preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fKT_CreateRenewal_Preview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fKT_Renewal_View.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="fNhapLieu.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -42,6 +51,12 @@
     </Compile>
     <Compile Update="fTiepNhan.cs">
       <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fUpdateResult.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="ucAssignment.cs">
+      <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ucInfo.cs">
       <SubType>UserControl</SubType>

@@ -15,7 +15,7 @@ namespace PTTKHTTTProject.BUS
         {
 
             List<string> examList = new List<string>();
-            DataTable dt = ExamTypeDAO.getExamType();
+            DataTable dt = ExamTypeDAO.GetAllExams();
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -24,6 +24,21 @@ namespace PTTKHTTTProject.BUS
             }
 
             return examList;
+        }
+
+        public static int GetTotalExamCount()
+        {
+            return ExamTypeDAO.GetTotalExamCount();
+        }
+
+        public static DataTable GetAllExams()
+        {
+            return ExamTypeDAO.GetAllExams();
+        }
+
+        public static int GetRemainingScheduleCount()
+        {
+            return ExamTypeDAO.GetRemainingScheduleCount();
         }
     }
 }

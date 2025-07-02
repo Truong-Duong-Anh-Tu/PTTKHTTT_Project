@@ -33,12 +33,16 @@
             lblSearchReceipt = new Label();
             txbInput = new TextBox();
             dtgvResult = new DataGridView();
+            lblCount = new TextBox();
+            textBox1 = new TextBox();
             pnlManageResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).BeginInit();
             SuspendLayout();
             // 
             // pnlManageResult
             // 
+            pnlManageResult.Controls.Add(textBox1);
+            pnlManageResult.Controls.Add(lblCount);
             pnlManageResult.Controls.Add(btnSearchReceipt);
             pnlManageResult.Controls.Add(lblSearchReceipt);
             pnlManageResult.Controls.Add(txbInput);
@@ -95,6 +99,32 @@
             dtgvResult.Size = new Size(850, 308);
             dtgvResult.TabIndex = 0;
             // 
+            // lblCount
+            // 
+            lblCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblCount.BorderStyle = BorderStyle.None;
+            lblCount.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            lblCount.Location = new Point(19, 34);
+            lblCount.Margin = new Padding(3, 2, 3, 2);
+            lblCount.Name = "lblCount";
+            lblCount.ReadOnly = true;
+            lblCount.Size = new Size(141, 19);
+            lblCount.TabIndex = 27;
+            lblCount.Text = "Số yêu cầu chờ duyệt: ";
+            // 
+            // textBox1
+            // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            textBox1.BorderStyle = BorderStyle.None;
+            textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            textBox1.Location = new Point(166, 34);
+            textBox1.Margin = new Padding(3, 2, 3, 2);
+            textBox1.Name = "textBox1";
+            textBox1.ReadOnly = true;
+            textBox1.Size = new Size(141, 20);
+            textBox1.TabIndex = 28;
+            textBox1.Text = "NODATA";
+            // 
             // uc_KT_ManageRenewal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -102,6 +132,7 @@
             Controls.Add(pnlManageResult);
             Name = "uc_KT_ManageRenewal";
             Size = new Size(893, 430);
+            Load += uc_KT_ManageRenewal_Load;
             pnlManageResult.ResumeLayout(false);
             pnlManageResult.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).EndInit();
@@ -115,5 +146,7 @@
         private TextBox txbInput;
         private DataGridView dtgvResult;
         private Button btnSearchReceipt;
+        private TextBox textBox1;
+        private TextBox lblCount;
     }
 }

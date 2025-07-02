@@ -115,7 +115,7 @@
             tbxUsername.Font = new Font("Segoe UI", 10.8F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxUsername.Location = new Point(474, 160);
             tbxUsername.Name = "tbxUsername";
-            tbxUsername.PlaceholderText = "Nhập tên đăng nhập";
+            tbxUsername.PlaceholderText = "Nhập email";
             tbxUsername.Size = new Size(267, 31);
             tbxUsername.TabIndex = 9;
             // 

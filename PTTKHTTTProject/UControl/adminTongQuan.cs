@@ -24,13 +24,13 @@ namespace PTTKHTTTProject.UControl
             try
             {
                 // Lấy tổng số kỳ thi từ BUS
-                int totalExams = KyThiBUS.GetTotalExamCount();
+                int totalExams = ExamTypeBUS.GetTotalExamCount();
 
                 // Hiển thị tổng số kỳ thi trong control
                 labelNumberOfExamination.Text = totalExams.ToString();
 
                 // Lấy và hiển thị tổng số lịch thi còn lại
-                int remainingSchedules = KyThiBUS.GetRemainingScheduleCount();
+                int remainingSchedules = ExamTypeBUS.GetRemainingScheduleCount();
                 labelNumberOfSchedule.Text = remainingSchedules.ToString();
             }
             catch (Exception ex)
