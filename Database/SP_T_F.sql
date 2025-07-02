@@ -193,9 +193,17 @@ go
 
 --Xoa bai thi
 
-
-
-
+--Xem lịch phân công
+create or alter procedure usp_XemLichPhanCong
+as
+begin
+	set nocount on;
+	select pc.PC_MaLichThi, kt.KT_TenKyThi, pc.PC_MaNhanVien, lt.LT_MaPhongThi, lt.LT_NgayThi, lt.LT_TGBatDau, pc.PC_TrangThai
+	from PHANCONG as pc join LICHTHI as lt on pc.PC_MaLichThi = lt.LT_MaLichThi
+						join KYTHI as kt on kt.KT_MaKyThi = lt.LT_MaKyThi
+end
+go
+ 
 
 ---------------------------------------------------------------------------------------------------------------------------------------------------------
 
