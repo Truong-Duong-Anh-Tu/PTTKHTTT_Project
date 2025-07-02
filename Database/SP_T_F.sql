@@ -694,3 +694,39 @@ begin
 	where d.BT_DiemSo is not null and i.BT_DiemSo is null;
 	
 end;
+
+--Tra cứu phiếu đăng ký (thông tin cơ bản)
+CREATE PROCEDURE TraCuuPhieuDangKyCoBan 
+    @MaPhieu VARCHAR(20)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+        -- Tên khách hàng: tùy loại
+        CASE 
+            WHEN KH.KH_LoaiKhachHang = N'Tự do' THEN KHTD.KHTD_HoTen
+            WHEN KH.KH_LoaiKhachHang = N'Đơn vị' THEN KHDV.KHDV_TenDonVi
+        END AS TenKhachHang,
+
+        KH.KH_Email,
+        KH.KH_SDT,
+        KH.KH_LoaiKhachHang,
+        PDK.PDKDT_ThoiGianLap,
+        KT.KT_TenKyThi,
+        LT.LT_NgayThi,
+        PDK.PDKDT_DiaChiChuyenPhat,
+        PDK.PDKDT_TrangThaiThanhToan,
+        NV.NV_TenNhanVien AS NhanVienTaoPhieu
+
+    FROM PHIEUDANGKYDUTHI PDK
+    INNER JOIN KHACHHANG KH ON PDK.PDKDT_MaKhachHang = KH.KH_MaKhachHang
+    LEFT JOIN KHACHHANGHTUDO KHTD ON KH.KH_MaKhachHang = KHTD.KHTD_MaKhachHang
+    LEFT JOIN KHACHHANGDONVI KHDV ON KH.KH_MaKhachHang = KHDV.KHDV_MaKhachHang
+    INNER JOIN LICHTHI LT ON PDK.PDKDT_MaLichThi = LT.LT_MaLichThi
+    INNER JOIN KYTHI KT ON LT.LT_MaKyThi = KT.KT_MaKyThi
+    INNER JOIN NHANVIEN NV ON PDK.PDKDT_MaNhanVienLap = NV.NV_MaNhanVien
+
+    WHERE PDK.PDKDT_MaPhieu = @MaPhieu
+END
+GO
