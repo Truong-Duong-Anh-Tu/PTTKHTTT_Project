@@ -43,7 +43,6 @@ namespace PTTKHTTTProject
         {
             // Kiểm tra thông tin nhập
             if (string.IsNullOrWhiteSpace(textBoxKyThi.Text) ||
-                string.IsNullOrWhiteSpace(textBoxNgayThi.Text) ||
                 string.IsNullOrWhiteSpace(textBoxPhongThi.Text) ||
                 string.IsNullOrWhiteSpace(textBoxTGBatDau.Text) ||
                 string.IsNullOrWhiteSpace(textBoxTGKetThuc.Text) ||
@@ -55,12 +54,8 @@ namespace PTTKHTTTProject
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin nhân viên.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (!DateTime.TryParse(textBoxNgayThi.Text, out DateTime ngaySinh))
-            {
-                MessageBox.Show("Định dạng ngày sinh không hợp lệ. Vui lòng nhập ngày hợp lệ.", "Sai định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            // Lấy ngày từ DateTimePicker
+            DateTime ngaySinh = dateTimePickerNgaySinh.Value;
 
             // Lấy dữ liệu từ các control với tên đúng từ file Designer
             string hoTen = textBoxKyThi.Text;
@@ -69,10 +64,14 @@ namespace PTTKHTTTProject
             string sdt = textBoxTGKetThuc.Text;
             string cccd = textBoxMaNVCoiThi.Text;
             string diaChi = textBoxTenNVCoiThi.Text;
-            string chucVu = comboBoxKyThi.SelectedItem.ToString();
-            string maPhongBan = comboBoxLichThi.SelectedValue.ToString();
-            int luong = 8000000; // Giá trị tạm thời, bạn nên thêm control để nhập lương
-
+            string chucVu = comboBoxKyThi.SelectedItem?.ToString() ?? string.Empty;
+            string maPhongBan = comboBoxLichThi.SelectedValue?.ToString() ?? string.Empty;
+            int luong = (int)numericUpDownLuong.Value;
+            if (luong <= 0)
+            {
+                MessageBox.Show("Lương phải lớn hơn 0.", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             // Tự động tạo Mã Nhân Viên mới
             string maNV;
             try
@@ -117,5 +116,15 @@ namespace PTTKHTTTProject
         private void comboBoxKyThi_SelectedIndexChanged(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
         private void comboBoxLichThi_SelectedIndexChanged(object sender, EventArgs e) { }
+
+        private void fAdminThemNV_Load(object sender, EventArgs e)
+        {
+
+        }
+
+        private void dateTimePickerNgaySinh_ValueChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
