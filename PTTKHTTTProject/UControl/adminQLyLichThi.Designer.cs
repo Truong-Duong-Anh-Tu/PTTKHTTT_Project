@@ -60,7 +60,7 @@
             // btnThem
             // 
             btnThem.BackColor = Color.SkyBlue;
-            btnThem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnThem.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
             btnThem.Location = new Point(902, 42);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(100, 30);
@@ -80,7 +80,7 @@
             // btnTimKiem
             // 
             btnTimKiem.BackColor = Color.SkyBlue;
-            btnTimKiem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnTimKiem.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
             btnTimKiem.Location = new Point(745, 42);
             btnTimKiem.Name = "btnTimKiem";
             btnTimKiem.Size = new Size(100, 30);
