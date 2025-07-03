@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PTTKHTTTProject.BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,15 +8,32 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PTTKHTTTProject.BUS;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace PTTKHTTTProject
 {
     public partial class fTiepNhan : Form
     {
-        public fTiepNhan()
+        private string _username;
+        private string _PDKUpdate;
+
+        public fTiepNhan(string username)
         {
             InitializeComponent();
+            _username = username;
+        }
+        private void fTiepNhan_Load_1(object sender, EventArgs e)
+        {
+            string? tenNhanVien = TiepNhan.LayTenNhanVien(_username);
+
+            if (!string.IsNullOrEmpty(tenNhanVien))
+            {
+                TiepNhan_TenNV.Text = $"Xin chào, {tenNhanVien}!";
+            }
+            else
+            {
+                TiepNhan_TenNV.Text = "...";
+            }
         }
 
         private void HideAllPanels()
@@ -54,26 +72,6 @@ namespace PTTKHTTTProject
             panelGiaHan.BringToFront();
         }
 
-        private void comboBox2_SelectedIndexChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton1_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void radioButton2_CheckedChanged(object sender, EventArgs e)
-        {
-
-        }
-
-        private void button6_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void btnAddPDK_Click(object sender, EventArgs e)
         {
             HideAllPanels();
@@ -86,11 +84,147 @@ namespace PTTKHTTTProject
             HideAllPanels();
             panelPDKUpdate.Visible = true;
             panelPDKUpdate.BringToFront();
+
+            GioiTinh_TSTD.DataSource = new List<string> { "Nam", "Nữ" };
+
+            DataTable dt = TiepNhan.TraCuuPhieuDangKy(_PDKUpdate);
+            DataTable dt_ts = TiepNhan.TraCuuThiSinh(_PDKUpdate);
+
+            PDKU_AD.Text = Convert.ToDateTime(dt.Rows[0]["PDKDT_ThoiGianLap"]).ToString("dd/MM/yyyy");
+            PDKU_DiaChi.Text = dt.Rows[0]["PDKDT_DiaChiChuyenPhat"].ToString();
+            PDKU_ED.Text = Convert.ToDateTime(dt.Rows[0]["LT_NgayThi"]).ToString("dd/MM/yyyy");
+            PDKU_Email.Text = dt.Rows[0]["KH_Email"].ToString();
+            PDKU_LoaiKH.Text = dt.Rows[0]["KH_LoaiKhachHang"].ToString();
+            PDKU_SDT.Text = dt.Rows[0]["KH_SDT"].ToString();
+            PDKU_TenKH.Text = dt.Rows[0]["TenKhachHang"].ToString();
+            PDKU_TenKT.Text = dt.Rows[0]["KT_TenKyThi"].ToString();
+            PDKU_TenNV.Text = dt.Rows[0]["NhanVienTaoPhieu"].ToString();
+
+            if (PDKU_LoaiKH.Text == "Tự do")
+            {
+                panelTSDVEdit.Visible = false;
+                panelTSTDEdit.Visible = true;
+                panelTSTDEdit.BringToFront();
+
+                PDKU_SBD_TD.Text = dt_ts.Rows[0]["TS_SoBaoDanh"].ToString();
+                PDKU_SDT_TD.Text = dt_ts.Rows[0]["TS_SDT"].ToString();
+                GioiTinh_TSTD.SelectedItem = dt_ts.Rows[0]["TS_GioiTinh"].ToString();
+                PDKU_Email_TD.Text = dt_ts.Rows[0]["TS_Email"].ToString();
+                PDKU_TenTS_TD.Text = dt_ts.Rows[0]["TS_HoTen"].ToString();
+                PDKU_DOB_TD.Value = Convert.ToDateTime(dt_ts.Rows[0]["TS_NgaySinh"]);
+                PDKU_CCCD_TD.Text = dt_ts.Rows[0]["TS_CCCD"].ToString();
+            }
+            else if (PDKU_LoaiKH.Text == "Đơn vị")
+            {
+                panelTSDVEdit.Visible = true;
+                panelTSTDEdit.Visible = false;
+                panelTSTDEdit.BringToFront();
+                PDKU_dgvDV.DataSource = dt_ts;
+
+                if (!PDKU_dgvDV.Columns.Contains("btnChiTiet"))
+                {
+                    DataGridViewButtonColumn btnChiTiet = new DataGridViewButtonColumn();
+                    btnChiTiet.Name = "btnChiTiet";
+                    btnChiTiet.HeaderText = "Chi tiết";
+                    btnChiTiet.Text = "Chi tiết";
+                    btnChiTiet.UseColumnTextForButtonValue = true;
+                    PDKU_dgvDV.Columns.Add(btnChiTiet);
+                    PDKU_dgvDV.CellClick -= dgvThiSinh_CellClick;
+                    PDKU_dgvDV.CellClick += dgvThiSinh_CellClick;
+                }
+            }
+        }
+
+        private void dgvThiSinh_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0 && e.ColumnIndex == PDKU_dgvDV.Columns["btnChiTiet"].Index)
+            {
+                // Lấy mã số báo danh của thí sinh ở dòng đang chọn
+                string soBaoDanh = PDKU_dgvDV.Rows[e.RowIndex].Cells["TS_SoBaoDanh"].Value.ToString();
+
+                // Mở form chỉnh sửa, truyền mã số báo danh sang
+                fSuaThiSinhDonVi formChiTiet = new fSuaThiSinhDonVi(soBaoDanh);
+
+                if (formChiTiet.ShowDialog() == DialogResult.OK)
+                {
+                    // Nếu người dùng đã lưu => reload lại danh sách
+                    DataTable dt = TiepNhan.TraCuuThiSinh(_PDKUpdate);
+
+                    PDKU_dgvDV.DataSource = dt;
+
+                    if (!PDKU_dgvDV.Columns.Contains("btnChiTiet"))
+                    {
+                        DataGridViewButtonColumn btnChiTiet = new DataGridViewButtonColumn();
+                        btnChiTiet.Name = "btnChiTiet";
+                        btnChiTiet.HeaderText = "Chi tiết";
+                        btnChiTiet.Text = "Chi tiết";
+                        btnChiTiet.UseColumnTextForButtonValue = true;
+                        PDKU_dgvDV.Columns.Add(btnChiTiet);
+                        PDKU_dgvDV.CellClick -= dgvThiSinh_CellClick;
+                        PDKU_dgvDV.CellClick += dgvThiSinh_CellClick;
+                    }
+                }
+            }
+        }
+
+        private void btnSave_TTTD_Click(object sender, EventArgs e)
+        {
+            string SBD = PDKU_SBD_TD.Text.Trim();
+            string hoTen = PDKU_TenTS_TD.Text.Trim();
+            DateTime ngaySinh = PDKU_DOB_TD.Value.Date;
+            string gioiTinh = GioiTinh_TSTD.SelectedItem.ToString();
+            string email = PDKU_Email_TD.Text.Trim();
+            string sdt = PDKU_SDT_TD.Text.Trim();
+            string cccd = PDKU_CCCD_TD.Text.Trim();
+
+            TiepNhan.CapNhatThiSinhTuDo(SBD, hoTen, ngaySinh, gioiTinh, email, sdt, cccd);
+
+            MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnSavePDK_Click(object sender, EventArgs e)
+        {
+            string MaPhieu = _PDKUpdate;
+
+            string TenKH = PDKU_TenKH.Text;
+            string LoaiKH = PDKU_LoaiKH.Text;
+            string SDT = PDKU_SDT.Text;
+            string Email = PDKU_Email.Text;
+            string DiaChi = PDKU_DiaChi.Text;
+
+            TiepNhan.CapNhatPhieuDangKy(MaPhieu, TenKH, LoaiKH, SDT, Email, DiaChi);
+
+            MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+
+        private void btnDelPDK_Click(object sender, EventArgs e)
+        {
+            string MaPhieu = _PDKUpdate;
+
+            var confirm = MessageBox.Show("Bạn có chắc chắn muốn xóa toàn bộ thông tin liên quan đến phiếu này?",
+                                          "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning);
+
+            if (confirm == DialogResult.Yes)
+            {
+                bool success = TiepNhan.XoaPhieuDangKy(MaPhieu);
+                if (success)
+                {
+                    MessageBox.Show("Đã xóa thành công!");
+                    HideAllPanels();
+                    panelPDK.Visible = true;
+                    panelPDK.BringToFront();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy phiếu hoặc lỗi khi xóa.");
+                }
+            }
         }
 
         private void PDKView_Search_Click(object sender, EventArgs e)
         {
             string MaPhieu = PDKView_SearchBox.Text.Trim();
+            _PDKUpdate = MaPhieu;
 
             if (string.IsNullOrWhiteSpace(MaPhieu))
             {
@@ -119,9 +253,9 @@ namespace PTTKHTTTProject
                     return;
                 }
 
-                PDKView_AD.Text = dt.Rows[0]["PDKDT_ThoiGianLap"].ToString();
+                PDKView_AD.Text = Convert.ToDateTime(dt.Rows[0]["PDKDT_ThoiGianLap"]).ToString("dd/MM/yyyy");
                 PDKView_DiaChi.Text = dt.Rows[0]["PDKDT_DiaChiChuyenPhat"].ToString();
-                PDKView_ED.Text = dt.Rows[0]["LT_NgayThi"].ToString();
+                PDKView_ED.Text = Convert.ToDateTime(dt.Rows[0]["LT_NgayThi"]).ToString("dd/MM/yyyy");
                 PDKView_EmailKH.Text = dt.Rows[0]["KH_Email"].ToString();
                 PDKView_KH.Text = dt.Rows[0]["TenKhachHang"].ToString();
                 PDKView_KyThi.Text = dt.Rows[0]["KT_TenKyThi"].ToString();
@@ -138,10 +272,10 @@ namespace PTTKHTTTProject
                     panelKHTuDo.BringToFront();
                     PDKView_SDBTD.Text = dt_ts.Rows[0]["TS_SoBaoDanh"].ToString();
                     PDKView_SDTTD.Text = dt_ts.Rows[0]["TS_SDT"].ToString();
-                    PDKView_SexTD.Text = dt_ts.Rows[0]["TS_GioiTinh"].ToString();
+                    PDKView_GioiTinhTD.Text = dt_ts.Rows[0]["TS_GioiTinh"].ToString();
                     PDKView_EmailTD.Text = dt_ts.Rows[0]["TS_Email"].ToString();
                     PDKView_NameTD.Text = dt_ts.Rows[0]["TS_HoTen"].ToString();
-                    PDKView_DOBTD.Text = dt_ts.Rows[0]["TS_NgaySinh"].ToString();
+                    PDKView_DOBTD.Text = Convert.ToDateTime(dt_ts.Rows[0]["TS_NgaySinh"]).ToString("dd/MM/yyyy");
                     PDKView_CCCDTD.Text = dt_ts.Rows[0]["TS_CCCD"].ToString();
                 }
                 else if (PDKView_LoaiKH.Text == "Đơn vị")
@@ -160,16 +294,17 @@ namespace PTTKHTTTProject
 
         private void PDKView_btnSearchDV_Click(object sender, EventArgs e)
         {
-            string HoTen = PDKView_SearchBoxDV.Text.Trim();
-            if (string.IsNullOrWhiteSpace(HoTen))
+            string tuKhoa = PDKView_SearchBoxDV.Text.Trim();
+            string maPhieu = PDKView_SearchBox.Text.Trim();
+            if (string.IsNullOrWhiteSpace(tuKhoa))
             {
                 MessageBox.Show("Vui lòng nhập họ và tên thí sinh.");
                 return;
             }
 
-            try 
+            try
             {
-                DataTable dt = TiepNhan.TimThiSinh(HoTen);
+                DataTable dt = TiepNhan.TimThiSinh(tuKhoa, maPhieu);
                 PDKView_dgvDV.DataSource = dt;
             }
             catch (Exception ex)
@@ -177,5 +312,28 @@ namespace PTTKHTTTProject
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
+
+        private void PDKU_btnSearchDV_Click(object sender, EventArgs e)
+        {
+            string tuKhoa = PDKU_SearchBoxDV.Text.Trim();
+            string maPhieu = _PDKUpdate;
+            if (string.IsNullOrWhiteSpace(tuKhoa))
+            {
+                MessageBox.Show("Vui lòng nhập họ và tên thí sinh.");
+                return;
+            }
+
+            try
+            {
+                DataTable dt = TiepNhan.TimThiSinh(tuKhoa, maPhieu);
+                PDKU_dgvDV.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi: " + ex.Message);
+            }
+        }
+
+        
     }
 }

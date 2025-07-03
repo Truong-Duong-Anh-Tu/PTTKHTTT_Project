@@ -704,7 +704,7 @@ begin
 end;
 
 --Tra cứu phiếu đăng ký (thông tin cơ bản)
-CREATE PROCEDURE TraCuuPhieuDangKyCoBan 
+CREATE PROCEDURE TraCuuPhieuDangKyCoBan
     @MaPhieu VARCHAR(20)
 AS
 BEGIN
@@ -737,4 +737,137 @@ BEGIN
 
     WHERE PDK.PDKDT_MaPhieu = @MaPhieu
 END
+GO
+
+--Cập nhật thông tin cơ bản của phiếu đăng ký
+CREATE PROCEDURE CapNhatPhieuDangKy
+    @MaPhieu VARCHAR(10),
+    @TenKH NVARCHAR(50),
+    @LoaiKH NVARCHAR(20),
+    @SDT CHAR(10),
+    @Email CHAR(100),
+    @DiaChi NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaKH VARCHAR(10);
+
+    -- 1. Lấy mã khách hàng từ phiếu
+    SELECT @MaKH = PDKDT_MaKhachHang
+    FROM PHIEUDANGKYDUTHI
+    WHERE PDKDT_MaPhieu = @MaPhieu;
+
+    IF @MaKH IS NULL
+        RETURN;
+
+    -- 2. Cập nhật tên khách hàng theo loại
+    IF @LoaiKH = N'Tự do'
+    BEGIN
+        UPDATE KHACHHANGHTUDO
+        SET KHTD_HoTen = @TenKH
+        WHERE KHTD_MaKhachHang = @MaKH;
+    END
+    ELSE IF @LoaiKH = N'Đơn vị'
+    BEGIN
+        UPDATE KHACHHANGDONVI
+        SET KHDV_TenDonVi = @TenKH
+        WHERE KHDV_MaKhachHang = @MaKH;
+    END
+
+    -- 3. Cập nhật SDT và Email
+    UPDATE KHACHHANG
+    SET KH_SDT = @SDT,
+        KH_Email = @Email
+    WHERE KH_MaKhachHang = @MaKH;
+
+    -- 4. Cập nhật địa chỉ chuyển phát
+    UPDATE PHIEUDANGKYDUTHI
+    SET PDKDT_DiaChiChuyenPhat = @DiaChi
+    WHERE PDKDT_MaPhieu = @MaPhieu;
+END
+GO
+
+--Xóa phiếu đăng ký
+CREATE PROCEDURE XoaPhieuDangKy
+    @maPhieu VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        -- 1. Xóa CHUNGCHI dựa trên các BT_MaBaiThi thuộc thí sinh đăng ký này
+        DELETE FROM CHUNGCHI
+        WHERE CC_MaBaiThi IN (
+            SELECT BT_MaBaiThi
+            FROM BAITHI
+            WHERE BT_SoBaoDanh IN (
+                SELECT TS_SoBaoDanh
+                FROM THISINH
+                WHERE TS_MaPhieuDangKy = @maPhieu
+            )
+        );
+
+        -- 2. Xóa BAITHI
+        DELETE FROM BAITHI
+        WHERE BT_SoBaoDanh IN (
+            SELECT TS_SoBaoDanh
+            FROM THISINH
+            WHERE TS_MaPhieuDangKy = @maPhieu
+        );
+
+        -- 3. Xóa PHIEUDUTHI
+        DELETE FROM PHIEUDUTHI
+        WHERE PDT_MaPhieuDangKy = @maPhieu;
+
+        -- 4. Xóa THISINH
+        DELETE FROM THISINH
+        WHERE TS_MaPhieuDangKy = @maPhieu;
+
+        -- 5. Xóa PHIEUTHANHTOAN
+        DELETE FROM PHIEUTHANHTOAN
+        WHERE PTT_MaPhieuDK = @maPhieu;
+
+        -- 6. Xóa PHIEUGIAHAN
+        DELETE FROM PHIEUGIAHAN
+        WHERE PGH_MaPhieuDK = @maPhieu;
+
+        -- 7. Xóa PHIEUDANGKYDUTHI (cuối cùng)
+        DELETE FROM PHIEUDANGKYDUTHI
+        WHERE PDKDT_MaPhieu = @maPhieu;
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END;
+GO
+
+--Xóa thí sinh đơn vị
+CREATE PROCEDURE XoaThiSinh
+    @sbd VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        -- 1. Xóa CHUNGCHI theo các mã bài thi của thí sinh
+        DELETE FROM CHUNGCHI
+        WHERE CC_MaBaiThi IN (
+            SELECT BT_MaBaiThi FROM BAITHI WHERE BT_SoBaoDanh = @sbd
+        );
+
+        -- 2. Xóa BAITHI
+        DELETE FROM BAITHI WHERE BT_SoBaoDanh = @sbd;
+
+        -- 3. Xóa PHIEUDUTHI
+        DELETE FROM PHIEUDUTHI WHERE PDT_SoBaoDanh = @sbd;
+
+        -- 4. Xóa THISINH
+        DELETE FROM THISINH WHERE TS_SoBaoDanh = @sbd;
+    END TRY
+    BEGIN CATCH
+        -- Nếu có lỗi thì raise lại lỗi
+        THROW;
+    END CATCH
+END;
 GO
