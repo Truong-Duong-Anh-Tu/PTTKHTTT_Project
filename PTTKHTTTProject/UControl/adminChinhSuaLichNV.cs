@@ -23,7 +23,7 @@ namespace PTTKHTTTProject.UControl
             lichPhanCong = row;
         }
 
-        private void adminChinhSuaLichNV_Load(object sender, EventArgs e)
+        private void adminChinhSuaLichNV_Load(object? sender, EventArgs e)
         {
             HienThiDuLieu();
             SetEditable(false); // Ban đầu ở chế độ chỉ xem

@@ -39,5 +39,30 @@ namespace PTTKHTTTProject.DAO
             int result = DataProvider.Instance.ExecuteScalarSP<int>("usp_DeletePhanCong", parameters);
             return result == 1;
         }
+
+        // Thêm vào cuối file, bên trong lớp EmployeeScheduleDAO
+        public static DataTable GetLichThiByKyThi(string maKyThi)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+        new SqlParameter("@MaKyThi", maKyThi)
+            };
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThiByKyThi", parameters);
+        }
+
+        public static DataTable GetAvailableNhanVien()
+        {
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetAvailableNhanVienForLichThi");
+        }
+
+        public static void AddPhanCong(string maLichThi, string maNhanVien)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+        new SqlParameter("@MaLichThi", maLichThi),
+        new SqlParameter("@MaNhanVien", maNhanVien)
+            };
+            DataProvider.Instance.ExecuteNonQuerySP("usp_AddPhanCong", parameters);
+        }
     }
 }

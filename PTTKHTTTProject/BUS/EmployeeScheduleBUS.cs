@@ -37,5 +37,17 @@ namespace PTTKHTTTProject.BUS
         {
             return EmployeeScheduleDAO.DeleteEmployeeSchedule(maLichThi, maNhanVien);
         }
+        public bool AddPhanCong(string maLichThi, string maNhanVien)
+        {
+            try
+            {
+                EmployeeScheduleDAO.AddPhanCong(maLichThi, maNhanVien);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
     }
 }

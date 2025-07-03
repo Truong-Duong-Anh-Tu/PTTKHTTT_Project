@@ -755,5 +755,50 @@ BEGIN
     END CATCH;
 END;
 GO
+
+GO
+-- Lấy danh sách lịch thi theo kỳ thi
+CREATE OR ALTER PROCEDURE usp_GetLichThiByKyThi
+    @MaKyThi VARCHAR(10)
+AS
+BEGIN
+    SELECT LT_MaLichThi, 
+           CONVERT(varchar, LT_NgayThi, 103) + ' - Ca lúc ' + CONVERT(varchar(5), LT_TGBatDau, 108) AS DisplayText,
+           LT_MaPhongThi,
+           LT_NgayThi,
+           LT_TGBatDau,
+           LT_TGKetThuc
+    FROM LICHTHI
+    WHERE LT_MaKyThi = @MaKyThi AND LT_TrangThai = N'Chưa thi';
+END;
+
+GO
+-- Lấy danh sách nhân viên coi thi chưa được phân công cho một lịch thi cụ thể
+CREATE OR ALTER PROCEDURE usp_GetAvailableNhanVienForLichThi
+AS
+BEGIN
+    SELECT NV_MaNhanVien AS N'Mã NV', NV_TenNhanVien AS N'Tên NV'
+    FROM NHANVIEN
+    WHERE NV_ChucVu = N'Coi thi';
+END;
+
+GO
+-- Thêm một phân công mới
+CREATE OR ALTER PROCEDURE usp_AddPhanCong
+    @MaLichThi VARCHAR(10),
+    @MaNhanVien VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    IF EXISTS (SELECT 1 FROM PHANCONG WHERE PC_MaLichThi = @MaLichThi AND PC_MaNhanVien = @MaNhanVien)
+    BEGIN
+        RAISERROR(N'Nhân viên này đã được phân công cho lịch thi này.', 16, 1);
+        RETURN;
+    END
+
+    INSERT INTO PHANCONG (PC_MaNhanVien, PC_MaLichThi, PC_TrangThai)
+    VALUES (@MaNhanVien, @MaLichThi, N'Chưa diễn ra');
+END;
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------

@@ -78,7 +78,7 @@ namespace PTTKHTTTProject.UControl
         }
 
         // PHƯƠNG THỨC VẼ LẠI TIÊU ĐỀ ĐÃ SỬA LỖI
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dataGridView1_CellPainting(object? sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex == -1 && dataGridView1.Columns.Contains("Sua") && dataGridView1.Columns.Contains("Xoa"))
             {
