@@ -147,11 +147,6 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
-        private void A(object sender, EventArgs e)
-        {
-            // Method từ code gốc
-        }
-
         private void label1_Click(object sender, EventArgs e)
         {
             // Method từ code gốc
