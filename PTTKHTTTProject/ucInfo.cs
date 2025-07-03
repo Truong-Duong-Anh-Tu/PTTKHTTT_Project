@@ -22,7 +22,7 @@ namespace PTTKHTTTProject
 
         private void ucInfo_Load(object sender, EventArgs e)
         {
-            Dictionary<string, string> info = InfoEmployeeBUS.getInfoOfUser(username);
+            Dictionary<string, string> info = NhanVienBUS.getInfoOfUser(username);
 
             tbxHoTen.Text = info["Hoten"];
             tbxChucVu.Text = info["ChucVu"];

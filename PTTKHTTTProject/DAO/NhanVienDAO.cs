@@ -67,5 +67,15 @@ namespace PTTKHTTTProject.DAO
                 return false;
             }
         }
+
+        public static DataTable getInfoEmployee(string username)
+        {
+            var pUser = new SqlParameter("@username", SqlDbType.VarChar, 10)
+            { Value = username.Trim() };
+
+            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_GetInfomationOfUser", pUser);
+
+            return dt;
+        }
     }
 }

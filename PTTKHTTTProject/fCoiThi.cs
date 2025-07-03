@@ -45,7 +45,7 @@ namespace PTTKHTTTProject
             btnTCLPC.FlatAppearance.BorderColor = SystemColors.Control;
             btnThongBao.FlatAppearance.BorderColor = SystemColors.Control;
 
-            Dictionary<string, string> info = InfoEmployeeBUS.getInfoOfUser(username);
+            Dictionary<string, string> info = NhanVienBUS.getInfoOfUser(username);
 
             string name = string.IsNullOrWhiteSpace(info["Hoten"]) ? "" : info["Hoten"].Trim().Split(' ').Last();
             lblName_Role.Text = $"{name} - Nhân viên coi thi";

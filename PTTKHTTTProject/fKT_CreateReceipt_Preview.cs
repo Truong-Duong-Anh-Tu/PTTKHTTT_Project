@@ -32,7 +32,7 @@ namespace PTTKHTTTProject
             txbSoTienThu.Text = receiptPreview["SoTienThu"];
             txbNgayThu.Text = receiptPreview["NgayThu"];
 
-            Dictionary<string, string> temp = InfoEmployeeBUS.getInfoOfUser(username);
+            Dictionary<string, string> temp = NhanVienBUS.getInfoOfUser(username);
             txbNguoiThu.Text = "Kế toán " + temp["Hoten"];
         }
 
