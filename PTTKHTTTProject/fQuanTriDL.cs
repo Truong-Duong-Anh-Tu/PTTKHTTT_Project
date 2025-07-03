@@ -1,14 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
-using PTTKHTTTProject.BUS;
-
 using PTTKHTTTProject.UControl;
 
 namespace PTTKHTTTProject
@@ -16,6 +7,7 @@ namespace PTTKHTTTProject
     public partial class fQuanTriDL : Form
     {
         private string loggedInUsername;
+
         public fQuanTriDL(string username)
         {
             InitializeComponent();
@@ -27,8 +19,6 @@ namespace PTTKHTTTProject
         private void LoadAdminSideBar()
         {
             adminSidebar sidebar = new adminSidebar();
-
-            // Lắng nghe các sự kiện:
             sidebar.SidebarButtonClicked += Sidebar_SidebarButtonClicked;
             sidebar.Dock = DockStyle.Fill;
             panelSidebar.Controls.Clear();
@@ -43,105 +33,56 @@ namespace PTTKHTTTProject
             tongQuanControl.Dock = DockStyle.Fill;
             panelMain.Controls.Add(tongQuanControl);
         }
+
         private void Sidebar_SidebarButtonClicked(object? sender, string buttonText)
         {
-            // Cập nhật text cho labelHeader
             labelHeader.Text = buttonText;
-
-            // Xóa control cũ trong panelMain
             panelMain.Controls.Clear();
 
-            // Bạn có thể thêm logic để hiển thị các UserControl khác nhau tại đây
-            // Ví dụ:
-            if (buttonText == "Thông báo")
-            {
-                ucNotification notificationControl = new ucNotification(this.loggedInUsername);
-                notificationControl.Dock = DockStyle.Fill;
-                panelMain.Controls.Add(notificationControl);
-            }
-            else if (buttonText == "Tổng quan")
-            {
-                ShowTongQuan();
-            }
-            else if (buttonText == "Quản lý lịch thi")
-            {
-                adminQLyLichThi adminQLyLichThi = new adminQLyLichThi();
-                adminQLyLichThi.Dock = DockStyle.Fill;
-                panelMain.Controls.Add(adminQLyLichThi);
-            }
-            else if (buttonText == "Quản lý kỳ thi")
-            {
+            UserControl? content = null;
 
-            }
-            else if (buttonText == "Quản lý lịch nhân viên")
+            switch (buttonText)
             {
-                adminQuanLyLichNV quanLyLichNVControl = new adminQuanLyLichNV();
-                quanLyLichNVControl.Dock = DockStyle.Fill;
-                panelMain.Controls.Add(quanLyLichNVControl);
+                case "Tổng quan":
+                    content = new adminTongQuan();
+                    break;
+                case "Quản lý lịch nhân viên":
+                    content = new adminQuanLyLichNV();
+                    break;
+                case "Quản lý nhân viên":
+                    content = new adminQuanLyNV();
+                    break;
+                case "Quản lý lịch thi":
+                    // Khởi tạo class, không phải biến
+                    content = new adminQlyLichThi();
+                    break;
+                case "Thông báo":
+                    content = new ucNotification(this.loggedInUsername);
+                    break;
             }
-            else if(buttonText == "Quản lý nhân viên")
+
+            if (content != null)
             {
-
-                adminQuanLyNV adminQuanLyNV = new adminQuanLyNV();  
-                adminQuanLyNV.Dock = DockStyle.Fill;
-                panelMain.Controls.Add(adminQuanLyNV);
-
-            }
-            else if (buttonText == "Phát hành phiếu dự thi")
-            {
-
-            }
-            else if (buttonText == "Quản lý phòng thi")
-            {
-
+                content.Dock = DockStyle.Fill;
+                panelMain.Controls.Add(content);
             }
         }
 
         private void Logout_Click(object sender, EventArgs e)
         {
-            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Cancel Confirmation", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Xác nhận", MessageBoxButtons.YesNo) == DialogResult.Yes)
             {
                 this.Close();
             }
         }
-        private void panelSidebar_Paint(object sender, PaintEventArgs e)
-        {
 
-        }
-
-        private void fQuanTriDL_Load(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelMain_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
-
-        private void pictureBox1_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelHeader_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void pictureAvatar_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void labelUsername_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void panelHeader_Paint(object sender, PaintEventArgs e)
-        {
-
-        }
+        // Các sự kiện trống
+        private void panelSidebar_Paint(object sender, PaintEventArgs e) { }
+        private void panelMain_Paint(object sender, PaintEventArgs e) { }
+        private void pictureBox1_Click(object sender, EventArgs e) { }
+        private void labelHeader_Click(object sender, EventArgs e) { }
+        private void pictureAvatar_Click(object sender, EventArgs e) { }
+        private void labelUsername_Click(object sender, EventArgs e) { }
+        private void fQuanTriDL_Load(object sender, EventArgs e) { }
     }
 }

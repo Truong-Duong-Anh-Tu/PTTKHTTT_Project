@@ -813,5 +813,25 @@ BEGIN
     VALUES (@MaNhanVien, @MaLichThi, N'Chưa diễn ra');
 END;
 GO
+GO
+CREATE OR ALTER PROCEDURE usp_GetLichThi
+AS
+BEGIN
+    SELECT 
+        lt.LT_MaLichThi AS N'Mã Lịch Thi',
+        kt.KT_TenKyThi AS N'Tên Kỳ Thi',
+        lt.LT_NgayThi AS N'Ngày Thi',
+        lt.LT_MaPhongThi AS N'Phòng Thi',
+        lt.LT_TGBatDau AS N'Giờ Bắt Đầu',
+        lt.LT_TGKetThuc AS N'Giờ Kết Thúc',
+        lt.LT_TrangThai AS N'Trạng Thái'
+    FROM 
+        LICHTHI lt
+    JOIN 
+        KYTHI kt ON lt.LT_MaKyThi = kt.KT_MaKyThi
+    ORDER BY 
+        lt.LT_NgayThi DESC;
+END;
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------
