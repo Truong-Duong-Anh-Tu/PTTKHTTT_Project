@@ -280,7 +280,7 @@
             dataGridViewKyThi.Location = new Point(28, 111);
             dataGridViewKyThi.Name = "dataGridViewKyThi";
             dataGridViewKyThi.RowHeadersWidth = 51;
-            dataGridViewKyThi.Size = new Size(368, 173);
+            dataGridViewKyThi.Size = new Size(356, 173);
             dataGridViewKyThi.TabIndex = 26;
             dataGridViewKyThi.CellContentClick += dataGridViewKyThi_CellContentClick;
             // 
@@ -310,7 +310,7 @@
             dataGridViewPhongTrong.Location = new Point(28, 337);
             dataGridViewPhongTrong.Name = "dataGridViewPhongTrong";
             dataGridViewPhongTrong.RowHeadersWidth = 51;
-            dataGridViewPhongTrong.Size = new Size(368, 183);
+            dataGridViewPhongTrong.Size = new Size(356, 183);
             dataGridViewPhongTrong.TabIndex = 29;
             // 
             // fAdminThemLichThi
@@ -328,6 +328,7 @@
             Controls.Add(labelThemLichThi);
             Controls.Add(tableLayoutPanelThongTinLichPhanCong);
             Name = "fAdminThemLichThi";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminThemLichThi";
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             tableLayoutPanelThongTinLichPhanCong.ResumeLayout(false);

@@ -134,6 +134,7 @@
             Controls.Add(panelMain);
             Controls.Add(panelSidebar);
             Name = "fQuanTriDL";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fQuanTriDL";
             Load += fQuanTriDL_Load;
             panelHeader.ResumeLayout(false);

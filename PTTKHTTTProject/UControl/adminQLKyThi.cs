@@ -1,0 +1,20 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace PTTKHTTTProject.UControl
+{
+    public partial class adminQLKyThi : UserControl
+    {
+        public adminQLKyThi()
+        {
+            InitializeComponent();
+        }
+    }
+}

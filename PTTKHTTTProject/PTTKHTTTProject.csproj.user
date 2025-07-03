@@ -16,7 +16,16 @@
     <Compile Update="fAdminChinhSuaNV.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="fAdminXemDSLichThi_PhongThi.cs">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Update="UControl\adminChinhSuaLichNV.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UControl\adminQLKyThi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Update="UControl\adminQLPhongThi.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UControl\adminQLyLichThi.cs">

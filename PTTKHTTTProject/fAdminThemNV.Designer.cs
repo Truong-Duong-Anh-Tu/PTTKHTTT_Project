@@ -58,10 +58,9 @@
             // comboBoxPhongBan
             // 
             comboBoxPhongBan.FormattingEnabled = true;
-            comboBoxPhongBan.Location = new Point(91, 181);
-            comboBoxPhongBan.Margin = new Padding(5, 5, 5, 5);
+            comboBoxPhongBan.Location = new Point(56, 113);
             comboBoxPhongBan.Name = "comboBoxPhongBan";
-            comboBoxPhongBan.Size = new Size(414, 40);
+            comboBoxPhongBan.Size = new Size(256, 28);
             comboBoxPhongBan.TabIndex = 18;
             comboBoxPhongBan.Text = "Chọn phòng ban";
             comboBoxPhongBan.SelectedIndexChanged += comboBoxLichThi_SelectedIndexChanged;
@@ -69,10 +68,9 @@
             // pictureBoxThoat
             // 
             pictureBoxThoat.Image = Properties.Resources.exit;
-            pictureBoxThoat.Location = new Point(91, 51);
-            pictureBoxThoat.Margin = new Padding(5, 5, 5, 5);
+            pictureBoxThoat.Location = new Point(56, 32);
             pictureBoxThoat.Name = "pictureBoxThoat";
-            pictureBoxThoat.Size = new Size(96, 50);
+            pictureBoxThoat.Size = new Size(59, 31);
             pictureBoxThoat.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBoxThoat.TabIndex = 17;
             pictureBoxThoat.TabStop = false;
@@ -81,10 +79,9 @@
             // comboBoxChucVu
             // 
             comboBoxChucVu.FormattingEnabled = true;
-            comboBoxChucVu.Location = new Point(91, 280);
-            comboBoxChucVu.Margin = new Padding(5, 5, 5, 5);
+            comboBoxChucVu.Location = new Point(56, 175);
             comboBoxChucVu.Name = "comboBoxChucVu";
-            comboBoxChucVu.Size = new Size(414, 40);
+            comboBoxChucVu.Size = new Size(256, 28);
             comboBoxChucVu.TabIndex = 16;
             comboBoxChucVu.Text = "Chọn chức vụ";
             comboBoxChucVu.SelectedIndexChanged += comboBoxKyThi_SelectedIndexChanged;
@@ -93,10 +90,9 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label1.Location = new Point(684, 51);
-            label1.Margin = new Padding(5, 0, 5, 0);
+            label1.Location = new Point(421, 32);
             label1.Name = "label1";
-            label1.Size = new Size(345, 50);
+            label1.Size = new Size(213, 31);
             label1.TabIndex = 14;
             label1.Text = "THÊM NHÂN VIÊN";
             label1.Click += label1_Click;
@@ -106,10 +102,9 @@
             textBoxDiaChi.Anchor = AnchorStyles.None;
             textBoxDiaChi.BackColor = SystemColors.Control;
             textBoxDiaChi.BorderStyle = BorderStyle.FixedSingle;
-            textBoxDiaChi.Location = new Point(407, 505);
-            textBoxDiaChi.Margin = new Padding(5, 5, 5, 5);
+            textBoxDiaChi.Location = new Point(250, 314);
             textBoxDiaChi.Name = "textBoxDiaChi";
-            textBoxDiaChi.Size = new Size(467, 39);
+            textBoxDiaChi.Size = new Size(288, 27);
             textBoxDiaChi.TabIndex = 20;
             // 
             // textBoxCCCD
@@ -117,10 +112,9 @@
             textBoxCCCD.Anchor = AnchorStyles.None;
             textBoxCCCD.BackColor = SystemColors.Control;
             textBoxCCCD.BorderStyle = BorderStyle.FixedSingle;
-            textBoxCCCD.Location = new Point(413, 419);
-            textBoxCCCD.Margin = new Padding(5, 5, 5, 5);
+            textBoxCCCD.Location = new Point(253, 261);
             textBoxCCCD.Name = "textBoxCCCD";
-            textBoxCCCD.Size = new Size(455, 39);
+            textBoxCCCD.Size = new Size(281, 27);
             textBoxCCCD.TabIndex = 19;
             // 
             // textBoxSDT
@@ -128,10 +122,9 @@
             textBoxSDT.Anchor = AnchorStyles.None;
             textBoxSDT.BackColor = SystemColors.Control;
             textBoxSDT.BorderStyle = BorderStyle.FixedSingle;
-            textBoxSDT.Location = new Point(413, 340);
-            textBoxSDT.Margin = new Padding(5, 5, 5, 5);
+            textBoxSDT.Location = new Point(254, 211);
             textBoxSDT.Name = "textBoxSDT";
-            textBoxSDT.Size = new Size(454, 39);
+            textBoxSDT.Size = new Size(280, 27);
             textBoxSDT.TabIndex = 18;
             // 
             // textBoxEmail
@@ -139,10 +132,9 @@
             textBoxEmail.Anchor = AnchorStyles.None;
             textBoxEmail.BackColor = SystemColors.Control;
             textBoxEmail.BorderStyle = BorderStyle.FixedSingle;
-            textBoxEmail.Location = new Point(416, 260);
-            textBoxEmail.Margin = new Padding(5, 5, 5, 5);
+            textBoxEmail.Location = new Point(255, 161);
             textBoxEmail.Name = "textBoxEmail";
-            textBoxEmail.Size = new Size(449, 39);
+            textBoxEmail.Size = new Size(277, 27);
             textBoxEmail.TabIndex = 17;
             // 
             // textBoxGioiTinh
@@ -150,10 +142,9 @@
             textBoxGioiTinh.Anchor = AnchorStyles.None;
             textBoxGioiTinh.BackColor = SystemColors.Control;
             textBoxGioiTinh.BorderStyle = BorderStyle.FixedSingle;
-            textBoxGioiTinh.Location = new Point(417, 180);
-            textBoxGioiTinh.Margin = new Padding(5, 5, 5, 5);
+            textBoxGioiTinh.Location = new Point(256, 111);
             textBoxGioiTinh.Name = "textBoxGioiTinh";
-            textBoxGioiTinh.Size = new Size(447, 39);
+            textBoxGioiTinh.Size = new Size(276, 27);
             textBoxGioiTinh.TabIndex = 16;
             // 
             // textBoxHoTen
@@ -161,10 +152,9 @@
             textBoxHoTen.Anchor = AnchorStyles.None;
             textBoxHoTen.BackColor = SystemColors.Control;
             textBoxHoTen.BorderStyle = BorderStyle.FixedSingle;
-            textBoxHoTen.Location = new Point(421, 20);
-            textBoxHoTen.Margin = new Padding(5, 5, 5, 5);
+            textBoxHoTen.Location = new Point(258, 11);
             textBoxHoTen.Name = "textBoxHoTen";
-            textBoxHoTen.Size = new Size(439, 39);
+            textBoxHoTen.Size = new Size(271, 27);
             textBoxHoTen.TabIndex = 14;
             // 
             // tableLayoutPanelThongTinLichPhanCong
@@ -188,30 +178,28 @@
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelGioiTinh, 0, 2);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelSDT, 0, 4);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(textBoxHoTen, 1, 0);
-            tableLayoutPanelThongTinLichPhanCong.Location = new Point(598, 122);
-            tableLayoutPanelThongTinLichPhanCong.Margin = new Padding(5, 5, 5, 5);
+            tableLayoutPanelThongTinLichPhanCong.Location = new Point(368, 76);
             tableLayoutPanelThongTinLichPhanCong.Name = "tableLayoutPanelThongTinLichPhanCong";
             tableLayoutPanelThongTinLichPhanCong.RowCount = 8;
-            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 78F));
-            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 93F));
-            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 13F));
-            tableLayoutPanelThongTinLichPhanCong.Size = new Size(954, 654);
+            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 49F));
+            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 58F));
+            tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            tableLayoutPanelThongTinLichPhanCong.Size = new Size(587, 409);
             tableLayoutPanelThongTinLichPhanCong.TabIndex = 15;
             // 
             // numericUpDownLuong
             // 
             numericUpDownLuong.Anchor = AnchorStyles.None;
-            numericUpDownLuong.Location = new Point(405, 593);
-            numericUpDownLuong.Margin = new Padding(5, 5, 5, 5);
+            numericUpDownLuong.Location = new Point(249, 369);
             numericUpDownLuong.Maximum = new decimal(new int[] { 500000000, 0, 0, 0 });
             numericUpDownLuong.Minimum = new decimal(new int[] { 5000000, 0, 0, 0 });
             numericUpDownLuong.Name = "numericUpDownLuong";
-            numericUpDownLuong.Size = new Size(470, 39);
+            numericUpDownLuong.Size = new Size(289, 27);
             numericUpDownLuong.TabIndex = 20;
             numericUpDownLuong.Value = new decimal(new int[] { 5000000, 0, 0, 0 });
             // 
@@ -220,10 +208,9 @@
             labelLuong.Anchor = AnchorStyles.None;
             labelLuong.AutoSize = true;
             labelLuong.Font = new Font("Segoe UI", 10F);
-            labelLuong.Location = new Point(114, 594);
-            labelLuong.Margin = new Padding(5, 0, 5, 0);
+            labelLuong.Location = new Point(69, 371);
             labelLuong.Name = "labelLuong";
-            labelLuong.Size = new Size(99, 37);
+            labelLuong.Size = new Size(62, 23);
             labelLuong.TabIndex = 21;
             labelLuong.Text = "Lương:";
             // 
@@ -232,10 +219,9 @@
             dateTimePickerNgaySinh.Anchor = AnchorStyles.None;
             dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
             dateTimePickerNgaySinh.Format = DateTimePickerFormat.Custom;
-            dateTimePickerNgaySinh.Location = new Point(423, 100);
-            dateTimePickerNgaySinh.Margin = new Padding(5, 5, 5, 5);
+            dateTimePickerNgaySinh.Location = new Point(259, 61);
             dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
-            dateTimePickerNgaySinh.Size = new Size(435, 39);
+            dateTimePickerNgaySinh.Size = new Size(269, 27);
             dateTimePickerNgaySinh.TabIndex = 20;
             dateTimePickerNgaySinh.ValueChanged += dateTimePickerNgaySinh_ValueChanged;
             // 
@@ -244,10 +230,9 @@
             labelDiaChi.Anchor = AnchorStyles.None;
             labelDiaChi.AutoSize = true;
             labelDiaChi.Font = new Font("Segoe UI", 10F);
-            labelDiaChi.Location = new Point(111, 506);
-            labelDiaChi.Margin = new Padding(5, 0, 5, 0);
+            labelDiaChi.Location = new Point(67, 316);
             labelDiaChi.Name = "labelDiaChi";
-            labelDiaChi.Size = new Size(104, 37);
+            labelDiaChi.Size = new Size(66, 23);
             labelDiaChi.TabIndex = 12;
             labelDiaChi.Text = "Địa chỉ:";
             labelDiaChi.Click += label2_Click;
@@ -257,10 +242,9 @@
             labelCCCD.Anchor = AnchorStyles.None;
             labelCCCD.AutoSize = true;
             labelCCCD.Font = new Font("Segoe UI", 10F);
-            labelCCCD.Location = new Point(118, 420);
-            labelCCCD.Margin = new Padding(5, 0, 5, 0);
+            labelCCCD.Location = new Point(71, 263);
             labelCCCD.Name = "labelCCCD";
-            labelCCCD.Size = new Size(91, 37);
+            labelCCCD.Size = new Size(59, 23);
             labelCCCD.TabIndex = 10;
             labelCCCD.Text = "CCCD:";
             // 
@@ -269,10 +253,9 @@
             labelEmail.Anchor = AnchorStyles.None;
             labelEmail.AutoSize = true;
             labelEmail.Font = new Font("Segoe UI", 10F);
-            labelEmail.Location = new Point(119, 261);
-            labelEmail.Margin = new Padding(5, 0, 5, 0);
+            labelEmail.Location = new Point(73, 163);
             labelEmail.Name = "labelEmail";
-            labelEmail.Size = new Size(88, 37);
+            labelEmail.Size = new Size(55, 23);
             labelEmail.TabIndex = 6;
             labelEmail.Text = "Email:";
             // 
@@ -281,10 +264,9 @@
             labelHoTen.Anchor = AnchorStyles.None;
             labelHoTen.AutoSize = true;
             labelHoTen.Font = new Font("Segoe UI", 10F);
-            labelHoTen.Location = new Point(112, 21);
-            labelHoTen.Margin = new Padding(5, 0, 5, 0);
+            labelHoTen.Location = new Point(67, 13);
             labelHoTen.Name = "labelHoTen";
-            labelHoTen.Size = new Size(103, 37);
+            labelHoTen.Size = new Size(66, 23);
             labelHoTen.TabIndex = 0;
             labelHoTen.Text = "Họ tên:";
             // 
@@ -293,10 +275,9 @@
             labelNgaySinh.Anchor = AnchorStyles.None;
             labelNgaySinh.AutoSize = true;
             labelNgaySinh.Font = new Font("Segoe UI", 10F);
-            labelNgaySinh.Location = new Point(93, 101);
-            labelNgaySinh.Margin = new Padding(5, 0, 5, 0);
+            labelNgaySinh.Location = new Point(55, 63);
             labelNgaySinh.Name = "labelNgaySinh";
-            labelNgaySinh.Size = new Size(141, 37);
+            labelNgaySinh.Size = new Size(90, 23);
             labelNgaySinh.TabIndex = 2;
             labelNgaySinh.Text = "Ngày sinh:";
             // 
@@ -305,10 +286,9 @@
             labelGioiTinh.Anchor = AnchorStyles.None;
             labelGioiTinh.AutoSize = true;
             labelGioiTinh.Font = new Font("Segoe UI", 10F);
-            labelGioiTinh.Location = new Point(101, 181);
-            labelGioiTinh.Margin = new Padding(5, 0, 5, 0);
+            labelGioiTinh.Location = new Point(61, 113);
             labelGioiTinh.Name = "labelGioiTinh";
-            labelGioiTinh.Size = new Size(125, 37);
+            labelGioiTinh.Size = new Size(79, 23);
             labelGioiTinh.TabIndex = 3;
             labelGioiTinh.Text = "Giới tính:";
             // 
@@ -317,19 +297,19 @@
             labelSDT.Anchor = AnchorStyles.None;
             labelSDT.AutoSize = true;
             labelSDT.Font = new Font("Segoe UI", 10F);
-            labelSDT.Location = new Point(73, 341);
-            labelSDT.Margin = new Padding(5, 0, 5, 0);
+            labelSDT.Location = new Point(43, 213);
             labelSDT.Name = "labelSDT";
-            labelSDT.Size = new Size(180, 37);
+            labelSDT.Size = new Size(115, 23);
             labelSDT.TabIndex = 7;
             labelSDT.Text = "Số điện thoại:";
             // 
             // button1
             // 
             button1.BackColor = Color.PaleTurquoise;
-            button1.Location = new Point(1357, 800);
+            button1.Location = new Point(835, 500);
+            button1.Margin = new Padding(2, 2, 2, 2);
             button1.Name = "button1";
-            button1.Size = new Size(254, 59);
+            button1.Size = new Size(156, 37);
             button1.TabIndex = 19;
             button1.Text = "Lưu thông tin";
             button1.UseVisualStyleBackColor = false;
@@ -337,18 +317,18 @@
             // 
             // fAdminThemNV
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(1677, 893);
+            ClientSize = new Size(1032, 558);
             Controls.Add(button1);
             Controls.Add(comboBoxPhongBan);
             Controls.Add(pictureBoxThoat);
             Controls.Add(comboBoxChucVu);
             Controls.Add(label1);
             Controls.Add(tableLayoutPanelThongTinLichPhanCong);
-            Margin = new Padding(5, 5, 5, 5);
             Name = "fAdminThemNV";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminThemNV";
             Load += fAdminThemNV_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();

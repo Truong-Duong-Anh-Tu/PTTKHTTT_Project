@@ -2,9 +2,9 @@
 
 namespace PTTKHTTTProject
 {
-    public partial class fAdminThemChinhSuaLichPhanCong : Form
+    public partial class fAdminThemLichPhanCong : Form
     {
-        public fAdminThemChinhSuaLichPhanCong()
+        public fAdminThemLichPhanCong()
         {
             InitializeComponent();
             this.Load += FAdminThemChinhSuaLichPhanCong_Load;

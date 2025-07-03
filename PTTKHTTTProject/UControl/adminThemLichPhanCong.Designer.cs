@@ -319,9 +319,9 @@
             // btnLuu
             // 
             btnLuu.BackColor = Color.SkyBlue;
-            btnLuu.Font = new Font("Segoe UI", 9F, FontStyle.Bold);
+            btnLuu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
             btnLuu.ForeColor = Color.Black;
-            btnLuu.Location = new Point(820, 494);
+            btnLuu.Location = new Point(820, 483);
             btnLuu.Name = "btnLuu";
             btnLuu.Size = new Size(163, 40);
             btnLuu.TabIndex = 14;

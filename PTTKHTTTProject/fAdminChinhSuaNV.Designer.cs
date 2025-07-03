@@ -37,7 +37,6 @@
             labelHienThiEmail = new Label();
             numericUpDownLuong = new NumericUpDown();
             labelLuong = new Label();
-            dateTimePickerNgaySinh = new DateTimePicker();
             labelDiaChi = new Label();
             labelCCCD = new Label();
             labelEmail = new Label();
@@ -46,6 +45,7 @@
             labelGioiTinh = new Label();
             labelSoDT = new Label();
             comboBoxGioiTinh = new ComboBox();
+            dateTimePickerNgaySinh = new DateTimePicker();
             labelHienThiHoTen = new Label();
             labelThongTinNV = new Label();
             label1 = new Label();
@@ -184,16 +184,6 @@
             labelLuong.TabIndex = 21;
             labelLuong.Text = "Lương:";
             // 
-            // dateTimePickerNgaySinh
-            // 
-            dateTimePickerNgaySinh.Anchor = AnchorStyles.None;
-            dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
-            dateTimePickerNgaySinh.Format = DateTimePickerFormat.Custom;
-            dateTimePickerNgaySinh.Location = new Point(276, 61);
-            dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
-            dateTimePickerNgaySinh.Size = new Size(236, 27);
-            dateTimePickerNgaySinh.TabIndex = 20;
-            // 
             // labelDiaChi
             // 
             labelDiaChi.Anchor = AnchorStyles.None;
@@ -281,6 +271,16 @@
             comboBoxGioiTinh.Size = new Size(229, 28);
             comboBoxGioiTinh.TabIndex = 22;
             comboBoxGioiTinh.Text = "Giới tính";
+            // 
+            // dateTimePickerNgaySinh
+            // 
+            dateTimePickerNgaySinh.Anchor = AnchorStyles.None;
+            dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
+            dateTimePickerNgaySinh.Format = DateTimePickerFormat.Custom;
+            dateTimePickerNgaySinh.Location = new Point(276, 61);
+            dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
+            dateTimePickerNgaySinh.Size = new Size(236, 27);
+            dateTimePickerNgaySinh.TabIndex = 20;
             // 
             // labelHienThiHoTen
             // 
@@ -413,6 +413,7 @@
             Controls.Add(pictureBoxThoat);
             Controls.Add(labelThemLichThi);
             Name = "fAdminChinhSuaNV";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fChinhSuaNhanVien";
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             tableLayoutPanelThongTinNV.ResumeLayout(false);

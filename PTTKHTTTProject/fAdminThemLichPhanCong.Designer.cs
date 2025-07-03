@@ -1,6 +1,6 @@
 ﻿namespace PTTKHTTTProject
 {
-    partial class fAdminThemChinhSuaLichPhanCong
+    partial class fAdminThemLichPhanCong
     {
         /// <summary>
         /// Required designer variable.
@@ -46,6 +46,7 @@
             ClientSize = new Size(1032, 558);
             Controls.Add(panelThemLichPhanCong);
             Name = "fAdminThemLichPhanCong";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminThemLichPhanCong";
             ResumeLayout(false);
         }

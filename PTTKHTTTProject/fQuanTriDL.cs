@@ -56,6 +56,15 @@ namespace PTTKHTTTProject
                     // Khởi tạo class, không phải biến
                     content = new adminQlyLichThi();
                     break;
+                case "Quản lý kỳ thi":
+                    content = new adminQLKyThi();
+                    break;
+                case "Quản lý phòng thi":
+                    content = new adminQLPhongThi();
+                    break;
+                case "Phát hành phiếu dự thi":
+                    //content = new adminPhatHanhPhieuDuThi();
+                    break;
                 case "Thông báo":
                     content = new ucNotification(this.loggedInUsername);
                     break;
