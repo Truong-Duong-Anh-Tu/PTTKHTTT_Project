@@ -21,6 +21,7 @@ namespace PTTKHTTTProject.UControl
         {
             InitializeComponent();
             employeeScheduleBUS = new EmployeeScheduleBUS();
+            originalDataTable = new DataTable();
         }
 
         private void labelTrangThai_Click(object sender, EventArgs e)
@@ -55,7 +56,7 @@ namespace PTTKHTTTProject.UControl
 
         private void buttonThemPhanCong_Click(object sender, EventArgs e)
         {
-            fAdminThemLichPhanCong fAdminThemLichPhanCong = new fAdminThemLichPhanCong();
+            fAdminThemChinhSuaLichPhanCong fAdminThemLichPhanCong = new fAdminThemChinhSuaLichPhanCong();
             fAdminThemLichPhanCong.ShowDialog();
         }
 
@@ -78,8 +79,11 @@ namespace PTTKHTTTProject.UControl
 
         private void FilterData()
         {
-            string trangThai = comboBoxTrangThai.SelectedItem.ToString();
-            string timKiem = textBox1.Text;
+            if (comboBoxTrangThai.SelectedItem == null || originalDataTable == null)
+                return;
+
+            string trangThai = comboBoxTrangThai.SelectedItem.ToString() ?? "";
+            string timKiem = textBox1.Text ?? "";
 
             DataView dv = new DataView(originalDataTable);
             string filter = "";

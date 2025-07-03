@@ -11,16 +11,16 @@ using PTTKHTTTProject.UControl;
 
 namespace PTTKHTTTProject
 {
-    public partial class fAdminThemLichPhanCong : Form
+    public partial class fAdminThemChinhSuaLichPhanCong : Form
     {
-        public fAdminThemLichPhanCong()
+        public fAdminThemChinhSuaLichPhanCong()
         {
             InitializeComponent();
         }
 
         private void panelThemLichPhanCong_Paint(object sender, PaintEventArgs e)
         {
-            adminThemThongTinLichPhanCong adminThemThongTinLichPhanCong = new adminThemThongTinLichPhanCong();
+            adminThemLichPhanCong adminThemThongTinLichPhanCong = new adminThemLichPhanCong();
             adminThemThongTinLichPhanCong.Dock = DockStyle.Fill;
             panelThemLichPhanCong.Controls.Add(adminThemThongTinLichPhanCong);
             adminThemThongTinLichPhanCong.BringToFront();

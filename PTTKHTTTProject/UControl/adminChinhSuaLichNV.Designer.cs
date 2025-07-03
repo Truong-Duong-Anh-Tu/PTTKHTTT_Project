@@ -58,7 +58,7 @@
             // 
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            label1.Location = new Point(319, 23);
+            label1.Location = new Point(330, 23);
             label1.Name = "label1";
             label1.Size = new Size(303, 31);
             label1.TabIndex = 0;
@@ -67,31 +67,31 @@
             // pictureBox1
             // 
             pictureBox1.Image = Properties.Resources.exit;
-            pictureBox1.Location = new Point(61, 13);
+            pictureBox1.Location = new Point(46, 13);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(58, 51);
+            pictureBox1.Size = new Size(37, 41);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 1;
             pictureBox1.TabStop = false;
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.BackColor = SystemColors.Control;
             panel1.Controls.Add(buttonLuuThongTin);
             panel1.Controls.Add(buttonChinhSuaThongTin);
             panel1.Controls.Add(tableLayoutPanelThongTinLichPhanCong);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(52, 84);
+            panel1.Location = new Point(18, 84);
             panel1.Name = "panel1";
-            panel1.Size = new Size(851, 414);
+            panel1.Size = new Size(885, 414);
             panel1.TabIndex = 2;
             // 
             // buttonLuuThongTin
             // 
             buttonLuuThongTin.BackColor = Color.SkyBlue;
-            buttonLuuThongTin.Location = new Point(689, 349);
+            buttonLuuThongTin.Location = new Point(692, 349);
             buttonLuuThongTin.Name = "buttonLuuThongTin";
-            buttonLuuThongTin.Size = new Size(146, 38);
+            buttonLuuThongTin.Size = new Size(172, 38);
             buttonLuuThongTin.TabIndex = 6;
             buttonLuuThongTin.Text = "Lưu thông tin";
             buttonLuuThongTin.UseVisualStyleBackColor = false;
@@ -100,19 +100,20 @@
             // buttonChinhSuaThongTin
             // 
             buttonChinhSuaThongTin.BackColor = Color.SkyBlue;
-            buttonChinhSuaThongTin.Location = new Point(689, 295);
+            buttonChinhSuaThongTin.Location = new Point(692, 287);
             buttonChinhSuaThongTin.Name = "buttonChinhSuaThongTin";
-            buttonChinhSuaThongTin.Size = new Size(146, 38);
+            buttonChinhSuaThongTin.Size = new Size(172, 38);
             buttonChinhSuaThongTin.TabIndex = 5;
             buttonChinhSuaThongTin.Text = "Chỉnh sửa thông tin";
             buttonChinhSuaThongTin.UseVisualStyleBackColor = false;
             // 
             // tableLayoutPanelThongTinLichPhanCong
             // 
+            tableLayoutPanelThongTinLichPhanCong.BackColor = SystemColors.ButtonHighlight;
             tableLayoutPanelThongTinLichPhanCong.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tableLayoutPanelThongTinLichPhanCong.ColumnCount = 2;
-            tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 29.0076332F));
-            tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 70.99236F));
+            tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 44.0273056F));
+            tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55.9726944F));
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelHienThiTenNVCoiThi, 1, 6);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(label2, 0, 6);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelHienThiNVcoiThi, 1, 5);
@@ -137,7 +138,7 @@
             tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 49F));
             tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
-            tableLayoutPanelThongTinLichPhanCong.Size = new Size(645, 332);
+            tableLayoutPanelThongTinLichPhanCong.Size = new Size(635, 332);
             tableLayoutPanelThongTinLichPhanCong.TabIndex = 4;
             // 
             // labelHienThiTenNVCoiThi
@@ -145,7 +146,7 @@
             labelHienThiTenNVCoiThi.Anchor = AnchorStyles.None;
             labelHienThiTenNVCoiThi.AutoSize = true;
             labelHienThiTenNVCoiThi.Font = new Font("Segoe UI", 10F);
-            labelHienThiTenNVCoiThi.Location = new Point(388, 299);
+            labelHienThiTenNVCoiThi.Location = new Point(429, 299);
             labelHienThiTenNVCoiThi.Name = "labelHienThiTenNVCoiThi";
             labelHienThiTenNVCoiThi.Size = new Size(55, 23);
             labelHienThiTenNVCoiThi.TabIndex = 13;
@@ -157,7 +158,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(8, 299);
+            label2.Location = new Point(54, 299);
             label2.Name = "label2";
             label2.Size = new Size(172, 23);
             label2.TabIndex = 12;
@@ -168,7 +169,7 @@
             labelHienThiNVcoiThi.Anchor = AnchorStyles.None;
             labelHienThiNVcoiThi.AutoSize = true;
             labelHienThiNVcoiThi.Font = new Font("Segoe UI", 10F);
-            labelHienThiNVcoiThi.Location = new Point(388, 252);
+            labelHienThiNVcoiThi.Location = new Point(429, 252);
             labelHienThiNVcoiThi.Name = "labelHienThiNVcoiThi";
             labelHienThiNVcoiThi.Size = new Size(55, 23);
             labelHienThiNVcoiThi.TabIndex = 11;
@@ -180,7 +181,7 @@
             labelMaNVCoithi.Anchor = AnchorStyles.None;
             labelMaNVCoithi.AutoSize = true;
             labelMaNVCoithi.Font = new Font("Segoe UI", 10F);
-            labelMaNVCoithi.Location = new Point(9, 252);
+            labelMaNVCoithi.Location = new Point(55, 252);
             labelMaNVCoithi.Name = "labelMaNVCoithi";
             labelMaNVCoithi.Size = new Size(170, 23);
             labelMaNVCoithi.TabIndex = 10;
@@ -191,7 +192,7 @@
             labelHienThiTGKetThuc.Anchor = AnchorStyles.None;
             labelHienThiTGKetThuc.AutoSize = true;
             labelHienThiTGKetThuc.Font = new Font("Segoe UI", 10F);
-            labelHienThiTGKetThuc.Location = new Point(388, 202);
+            labelHienThiTGKetThuc.Location = new Point(429, 202);
             labelHienThiTGKetThuc.Name = "labelHienThiTGKetThuc";
             labelHienThiTGKetThuc.Size = new Size(55, 23);
             labelHienThiTGKetThuc.TabIndex = 9;
@@ -203,7 +204,7 @@
             labelTGBatDau.Anchor = AnchorStyles.None;
             labelTGBatDau.AutoSize = true;
             labelTGBatDau.Font = new Font("Segoe UI", 10F);
-            labelTGBatDau.Location = new Point(19, 152);
+            labelTGBatDau.Location = new Point(65, 152);
             labelTGBatDau.Name = "labelTGBatDau";
             labelTGBatDau.Size = new Size(149, 23);
             labelTGBatDau.TabIndex = 6;
@@ -214,7 +215,7 @@
             labelHienThiPhongThi.Anchor = AnchorStyles.None;
             labelHienThiPhongThi.AutoSize = true;
             labelHienThiPhongThi.Font = new Font("Segoe UI", 10F);
-            labelHienThiPhongThi.Location = new Point(388, 103);
+            labelHienThiPhongThi.Location = new Point(429, 103);
             labelHienThiPhongThi.Name = "labelHienThiPhongThi";
             labelHienThiPhongThi.Size = new Size(55, 23);
             labelHienThiPhongThi.TabIndex = 5;
@@ -225,7 +226,7 @@
             labelHienThiNgayThi.Anchor = AnchorStyles.None;
             labelHienThiNgayThi.AutoSize = true;
             labelHienThiNgayThi.Font = new Font("Segoe UI", 10F);
-            labelHienThiNgayThi.Location = new Point(388, 56);
+            labelHienThiNgayThi.Location = new Point(429, 56);
             labelHienThiNgayThi.Name = "labelHienThiNgayThi";
             labelHienThiNgayThi.Size = new Size(55, 23);
             labelHienThiNgayThi.TabIndex = 4;
@@ -237,7 +238,7 @@
             labelKyThi.Anchor = AnchorStyles.None;
             labelKyThi.AutoSize = true;
             labelKyThi.Font = new Font("Segoe UI", 10F);
-            labelKyThi.Location = new Point(66, 11);
+            labelKyThi.Location = new Point(112, 11);
             labelKyThi.Name = "labelKyThi";
             labelKyThi.Size = new Size(56, 23);
             labelKyThi.TabIndex = 0;
@@ -249,7 +250,7 @@
             labelHienThiKyThi.Anchor = AnchorStyles.None;
             labelHienThiKyThi.AutoSize = true;
             labelHienThiKyThi.Font = new Font("Segoe UI", 10F);
-            labelHienThiKyThi.Location = new Point(388, 11);
+            labelHienThiKyThi.Location = new Point(429, 11);
             labelHienThiKyThi.Name = "labelHienThiKyThi";
             labelHienThiKyThi.Size = new Size(55, 23);
             labelHienThiKyThi.TabIndex = 1;
@@ -261,7 +262,7 @@
             labelNgayThi.Anchor = AnchorStyles.None;
             labelNgayThi.AutoSize = true;
             labelNgayThi.Font = new Font("Segoe UI", 10F);
-            labelNgayThi.Location = new Point(54, 56);
+            labelNgayThi.Location = new Point(100, 56);
             labelNgayThi.Name = "labelNgayThi";
             labelNgayThi.Size = new Size(79, 23);
             labelNgayThi.TabIndex = 2;
@@ -273,7 +274,7 @@
             labelPhongThi.Anchor = AnchorStyles.None;
             labelPhongThi.AutoSize = true;
             labelPhongThi.Font = new Font("Segoe UI", 10F);
-            labelPhongThi.Location = new Point(49, 103);
+            labelPhongThi.Location = new Point(95, 103);
             labelPhongThi.Name = "labelPhongThi";
             labelPhongThi.Size = new Size(89, 23);
             labelPhongThi.TabIndex = 3;
@@ -284,7 +285,7 @@
             labelTGKetThuc.Anchor = AnchorStyles.None;
             labelTGKetThuc.AutoSize = true;
             labelTGKetThuc.Font = new Font("Segoe UI", 10F);
-            labelTGKetThuc.Location = new Point(18, 202);
+            labelTGKetThuc.Location = new Point(64, 202);
             labelTGKetThuc.Name = "labelTGKetThuc";
             labelTGKetThuc.Size = new Size(152, 23);
             labelTGKetThuc.TabIndex = 7;
@@ -295,7 +296,7 @@
             labelHienThiTGBatDau.Anchor = AnchorStyles.None;
             labelHienThiTGBatDau.AutoSize = true;
             labelHienThiTGBatDau.Font = new Font("Segoe UI", 10F);
-            labelHienThiTGBatDau.Location = new Point(388, 152);
+            labelHienThiTGBatDau.Location = new Point(429, 152);
             labelHienThiTGBatDau.Name = "labelHienThiTGBatDau";
             labelHienThiTGBatDau.Size = new Size(55, 23);
             labelHienThiTGBatDau.TabIndex = 8;
@@ -316,6 +317,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonHighlight;
             Controls.Add(panel1);
             Controls.Add(pictureBox1);
             Controls.Add(label1);

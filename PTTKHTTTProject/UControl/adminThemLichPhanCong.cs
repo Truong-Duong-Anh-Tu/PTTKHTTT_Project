@@ -10,9 +10,9 @@ using System.Windows.Forms;
 
 namespace PTTKHTTTProject.UControl
 {
-    public partial class adminThemThongTinLichPhanCong : UserControl
+    public partial class adminThemLichPhanCong : UserControl
     {
-        public adminThemThongTinLichPhanCong()
+        public adminThemLichPhanCong()
         {
             InitializeComponent();
         }
@@ -36,6 +36,21 @@ namespace PTTKHTTTProject.UControl
         }
 
         private void dataGridViewNhanVien_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btnLuu_Click(object sender, EventArgs e)
         {
 
         }

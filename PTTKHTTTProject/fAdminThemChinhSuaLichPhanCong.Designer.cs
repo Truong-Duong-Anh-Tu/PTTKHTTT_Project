@@ -1,6 +1,6 @@
 ﻿namespace PTTKHTTTProject
 {
-    partial class fAdminThemLichPhanCong
+    partial class fAdminThemChinhSuaLichPhanCong
     {
         /// <summary>
         /// Required designer variable.
@@ -35,7 +35,7 @@
             // 
             panelThemLichPhanCong.Location = new Point(12, 12);
             panelThemLichPhanCong.Name = "panelThemLichPhanCong";
-            panelThemLichPhanCong.Size = new Size(1001, 528);
+            panelThemLichPhanCong.Size = new Size(1008, 534);
             panelThemLichPhanCong.TabIndex = 0;
             panelThemLichPhanCong.Paint += panelThemLichPhanCong_Paint;
             // 

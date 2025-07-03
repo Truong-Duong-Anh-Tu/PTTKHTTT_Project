@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Compile Update="fAdminThemLichPhanCong.cs">
+    <Compile Update="fAdminThemChinhSuaLichPhanCong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fAdminThemNV.cs">
@@ -70,7 +70,7 @@
     <Compile Update="UControl\adminSidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UControl\adminThemThongTinLichPhanCong.cs">
+    <Compile Update="UControl\adminThemLichPhanCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UControl\adminTongQuan.cs">

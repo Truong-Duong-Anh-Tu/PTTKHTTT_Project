@@ -23,7 +23,7 @@ namespace PTTKHTTTProject.UControl
         private void SetupSearchFunction()
         {
             // Sử dụng textBox1 đã có sẵn trong form thay vì tạo mới
-            textBox1.PlaceholderText = "Nhập mã số/tên nhân viên cần tìm kiếm...";
+            textBox1.PlaceholderText = "Tìm mã số/tên nhân viên";
 
             // Ngăn việc chọn tất cả văn bản khi nhấp vào
             textBox1.GotFocus += (sender, e) => {
