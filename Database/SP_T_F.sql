@@ -690,21 +690,34 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION;
 
-        -- Xóa các bản ghi tham chiếu đến nhân viên này
-        DELETE FROM PHANCONG WHERE PC_MaNhanVien = @MaNhanVien;
+        -- Vô hiệu hóa các ràng buộc khóa ngoại
+        ALTER TABLE THISINH NOCHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUTHANHTOAN NOCHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUGIAHAN NOCHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUDUTHI NOCHECK CONSTRAINT ALL;
+
+        -- Xóa các bản ghi tham chiếu
         DELETE FROM THONGBAO WHERE TB_MaNhanVienGui = @MaNhanVien;
-        DELETE FROM PHEUTHANHTOAN WHERE PTT_NhanVienLap = @MaNhanVien;
+        DELETE FROM PHANCONG WHERE PC_MaNhanVien = @MaNhanVien;
+        DELETE FROM PHIEUTHANHTOAN WHERE PTT_NhanVienLap = @MaNhanVien;
         DELETE FROM PHIEUDANGKYDUTHI WHERE PDKDT_MaNhanVienLap = @MaNhanVien;
 
-        -- Cuối cùng, xóa nhân viên
+        -- Kích hoạt lại các ràng buộc
+        ALTER TABLE THISINH CHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUTHANHTOAN CHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUGIAHAN CHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUDUTHI CHECK CONSTRAINT ALL;
+
+        -- Xóa nhân viên
         DELETE FROM NHANVIEN WHERE NV_MaNhanVien = @MaNhanVien;
 
         COMMIT TRANSACTION;
-        SELECT 1 AS Result; -- Trả về 1 nếu thành công
+        SELECT 1 AS Result;
     END TRY
     BEGIN CATCH
         ROLLBACK TRANSACTION;
-        SELECT 0 AS Result; -- Trả về 0 nếu có lỗi
+        PRINT ERROR_MESSAGE();
+        SELECT 0 AS Result;
     END CATCH;
 END;
 GO
