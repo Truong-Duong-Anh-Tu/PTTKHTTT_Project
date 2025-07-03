@@ -67,5 +67,19 @@ namespace PTTKHTTTProject.DAO
                 return false;
             }
         }
+
+        public static string GetTenNhanVien(string maNV)
+        {
+            try
+            {
+                var parameter = new SqlParameter("@MaNhanVien", SqlDbType.VarChar, 10) { Value = maNV };
+                string? tenNV = DataProvider.Instance.ExecuteScalarSP<string>("usp_GetTenNhanVien", parameter);
+                return tenNV ?? string.Empty;
+            }
+            catch (Exception)
+            {
+                return string.Empty;
+            }
+        }
     }
 }

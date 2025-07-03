@@ -666,8 +666,16 @@ GO
 CREATE OR ALTER PROCEDURE usp_GetPhanCong
 AS
 BEGIN
-	SELECT kt.KT_TenKyThi, lt.LT_NgayThi, lt.LT_MaPhongThi, lt.LT_TGBatDau, 
-	lt.LT_TGKetThuc, nv.NV_MaNhanVien , nv.NV_TenNhanVien, pc.PC_TrangThai
+	SELECT 
+        kt.KT_TenKyThi AS N'Tên Kỳ Thi', 
+        lt.LT_NgayThi AS N'Ngày Thi', 
+        lt.LT_MaPhongThi AS N'Phòng Thi', 
+        lt.LT_TGBatDau AS N'Giờ Bắt Đầu', 
+	    lt.LT_TGKetThuc AS N'Giờ Kết Thúc', 
+        nv.NV_MaNhanVien AS N'Mã Nhân Viên', 
+        nv.NV_TenNhanVien AS N'Tên Nhân Viên', 
+        pc.PC_TrangThai AS N'Trạng Thái',
+        lt.LT_MaLichThi -- Thêm cột này để dùng cho việc cập nhật
 	FROM PHANCONG pc JOIN NHANVIEN nv ON nv.NV_MaNhanVien = pc.PC_MaNhanVien
 	JOIN LICHTHI lt ON lt.LT_MaLichThi = pc.PC_MaLichThi
 	JOIN KYTHI kt ON kt.KT_MaKyThi = lt.LT_MaKyThi
@@ -698,6 +706,98 @@ BEGIN
         ROLLBACK TRANSACTION;
         SELECT 0 AS Result; -- Trả về 0 nếu có lỗi
     END CATCH;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE usp_UpdatePhanCong
+    @MaLichThi VARCHAR(10),
+    @MaNhanVienCu VARCHAR(10),
+    @MaNhanVienMoi VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        -- Cập nhật mã nhân viên trong bảng PHANCONG
+        UPDATE PHANCONG
+        SET PC_MaNhanVien = @MaNhanVienMoi
+        WHERE PC_MaLichThi = @MaLichThi AND PC_MaNhanVien = @MaNhanVienCu;
+
+        SELECT 1 AS Result; -- Trả về 1 nếu thành công
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Result; -- Trả về 0 nếu thất bại
+    END CATCH;
+END;
+GO
+
+CREATE OR ALTER PROCEDURE usp_GetTenNhanVien
+    @MaNhanVien VARCHAR(10)
+AS
+BEGIN
+    SELECT NV_TenNhanVien FROM NHANVIEN WHERE NV_MaNhanVien = @MaNhanVien;
+END;
+GO
+
+GO
+CREATE OR ALTER PROCEDURE usp_DeletePhanCong
+    @MaLichThi VARCHAR(10),
+    @MaNhanVien VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        DELETE FROM PHANCONG
+        WHERE PC_MaLichThi = @MaLichThi AND PC_MaNhanVien = @MaNhanVien;
+        SELECT 1 AS Result; -- Trả về 1 nếu thành công
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Result; -- Trả về 0 nếu thất bại
+    END CATCH;
+END;
+GO
+
+GO
+-- Lấy danh sách lịch thi theo kỳ thi
+CREATE OR ALTER PROCEDURE usp_GetLichThiByKyThi
+    @MaKyThi VARCHAR(10)
+AS
+BEGIN
+    SELECT LT_MaLichThi, 
+           CONVERT(varchar, LT_NgayThi, 103) + ' - Ca lúc ' + CONVERT(varchar(5), LT_TGBatDau, 108) AS DisplayText,
+           LT_MaPhongThi,
+           LT_NgayThi,
+           LT_TGBatDau,
+           LT_TGKetThuc
+    FROM LICHTHI
+    WHERE LT_MaKyThi = @MaKyThi AND LT_TrangThai = N'Chưa thi';
+END;
+
+GO
+-- Lấy danh sách nhân viên coi thi chưa được phân công cho một lịch thi cụ thể
+CREATE OR ALTER PROCEDURE usp_GetAvailableNhanVienForLichThi
+AS
+BEGIN
+    SELECT NV_MaNhanVien AS N'Mã NV', NV_TenNhanVien AS N'Tên NV'
+    FROM NHANVIEN
+    WHERE NV_ChucVu = N'Coi thi';
+END;
+
+GO
+-- Thêm một phân công mới
+CREATE OR ALTER PROCEDURE usp_AddPhanCong
+    @MaLichThi VARCHAR(10),
+    @MaNhanVien VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    IF EXISTS (SELECT 1 FROM PHANCONG WHERE PC_MaLichThi = @MaLichThi AND PC_MaNhanVien = @MaNhanVien)
+    BEGIN
+        RAISERROR(N'Nhân viên này đã được phân công cho lịch thi này.', 16, 1);
+        RETURN;
+    END
+
+    INSERT INTO PHANCONG (PC_MaNhanVien, PC_MaLichThi, PC_TrangThai)
+    VALUES (@MaNhanVien, @MaLichThi, N'Chưa diễn ra');
 END;
 GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
