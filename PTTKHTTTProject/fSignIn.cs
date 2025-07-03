@@ -37,10 +37,12 @@ namespace PTTKHTTTProject
                 return;
             }
 
-            if (TaiKhoanBUS.checkSignIn(email, password))
+            var bus = new TaiKhoanBUS(email, password);
+
+            if (bus.checkSignIn())
             {
-                string username = TaiKhoanBUS.getUsername(email);
-                string role = TaiKhoanBUS.CheckRole(username);
+                string username = bus.getUsername();
+                string role = bus.CheckRole(username);
 
                 if (role == "Nhập liệu")
                 {

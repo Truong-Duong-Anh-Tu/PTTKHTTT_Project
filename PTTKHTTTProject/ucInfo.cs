@@ -22,7 +22,8 @@ namespace PTTKHTTTProject
 
         private void ucInfo_Load(object sender, EventArgs e)
         {
-            Dictionary<string, string> info = NhanVienBUS.getInfoOfUser(username);
+            var bus = new NhanVienBUS(username);
+            Dictionary<string, string> info = bus.getInfoOfUser();
 
             tbxHoTen.Text = info["Hoten"];
             tbxChucVu.Text = info["ChucVu"];

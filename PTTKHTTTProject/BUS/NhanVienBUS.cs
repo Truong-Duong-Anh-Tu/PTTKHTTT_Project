@@ -5,6 +5,13 @@ namespace PTTKHTTTProject.BUS
 {
     public class NhanVienBUS
     {
+        private string _username;
+
+        public NhanVienBUS(string username)
+        {
+            _username = username.Trim();
+        }
+
         public static DataTable GetAllNhanVien()
         {
             return NhanVienDAO.GetAllNhanVien();
@@ -28,11 +35,11 @@ namespace PTTKHTTTProject.BUS
             return NhanVienDAO.DeleteNhanVien(maNV);
         }
 
-        public static Dictionary<string, string> getInfoOfUser(string username)
+        public Dictionary<string, string> getInfoOfUser()
         {
             Dictionary<string, string> info = new Dictionary<string, string>();
 
-            DataTable dt = NhanVienDAO.getInfoEmployee(username.Trim());
+            DataTable dt = NhanVienDAO.getInfoEmployee(_username);
             var row = dt.Rows[0];
 
             info["MaNV"] = row["NV_MaNhanVien"].ToString() ?? "Unknown";
