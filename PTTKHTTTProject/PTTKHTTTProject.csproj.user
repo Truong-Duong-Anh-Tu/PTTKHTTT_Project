@@ -7,6 +7,9 @@
     <Compile Update="fAdminThemNV.cs">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Update="ucManageExamResult.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UControl\adminChinhSuaLichNV.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -59,9 +62,6 @@
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ucInfo.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="ucManageExamResult.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="ucNotification.cs">

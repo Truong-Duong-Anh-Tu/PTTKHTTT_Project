@@ -99,7 +99,8 @@ VALUES
 ('P002', N'Trắc nghiệm', 25, 8, 2),
 ('P003', N'Trắc nghiệm-Tự luận', 40, 15, 3),
 ('P004', N'Trắc nghiệm', 30, 5, 2),
-('P005', N'Trắc nghiệm-Tự luận', 35, 12, 2);
+('P005', N'Trắc nghiệm-Tự luận', 35, 12, 2),
+('P006', N'Tự luận', 30, 12, 2);
 GO
 
 INSERT INTO NHANVIEN (NV_MaNhanVien, NV_TenNhanVien, NV_NgaySinh, NV_GioiTinh, NV_Email, NV_SDT, NV_CCCD, NV_DiaChi, NV_ChucVu, NV_Luong, NV_MaPhongBan, NV_MatKhau)

@@ -38,6 +38,7 @@ namespace PTTKHTTTProject
         {
             loadCandicateAndPoint();
             loadExamDate();
+            ApplyFilter();
         }
 
         private void loadExamDate()
@@ -154,17 +155,19 @@ namespace PTTKHTTTProject
 
         private void tbxSearchCandidate_TextChanged(object sender, EventArgs e)
         {
-            string filter = tbxSearchCandidate.Text.Trim().ToString();
-            string examdatetime = $"{cbxExamDate.SelectedItem}".Split(' ')[0];
+            //string filter = tbxSearchCandidate.Text.Trim().ToString();
+            //string examdatetime = $"{cbxExamDate.SelectedItem}".Split(' ')[0];
 
-            if (string.IsNullOrEmpty(filter))
-            {
-                bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}'";
-            }
-            else
-            {
-                bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}' AND TS_SoBaoDanh LIKE '%{filter}%'";
-            }
+            //if (string.IsNullOrEmpty(filter))
+            //{
+            //    bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}'";
+            //}
+            //else
+            //{
+            //    bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}' AND TS_SoBaoDanh LIKE '%{filter}%'";
+            //}
+
+            ApplyFilter();
         }
 
         private void dtgvResult_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
@@ -200,16 +203,41 @@ namespace PTTKHTTTProject
 
         private void cbxExamDate_SelectedIndexChanged(object sender, EventArgs e)
         {
-            string examdatetime = $"{cbxExamDate.SelectedItem}".Split(' ')[0];
+            //string examdatetime = $"{cbxExamDate.SelectedItem}".Split(' ')[0];
 
-            if (string.IsNullOrEmpty(examdatetime))
+            //if (string.IsNullOrEmpty(examdatetime))
+            //{
+            //    bs_ResultExam.Filter = string.Empty;
+            //}
+            //else
+            //{
+            //    bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}'";
+            //}
+
+            ApplyFilter();
+        }
+
+        private void ApplyFilter()
+        {
+            List<string> filters = new List<string>();
+
+            if (!string.IsNullOrWhiteSpace(tbxSearchCandidate.Text))
             {
-                bs_ResultExam.Filter = string.Empty;
+                string sbd = tbxSearchCandidate.Text.Replace("'", "''");
+                filters.Add($"TS_SoBaoDanh LIKE '%{sbd}%'");
             }
-            else
+
+            if (cbxExamDate.SelectedIndex > -1)
             {
-                bs_ResultExam.Filter = $"BT_MaLichThi = '{examdatetime}'";
+                string date = $"{cbxExamDate.SelectedItem}".Split(' ')[0]; ;
+                filters.Add($"BT_MaLichThi = '{date}'");
             }
+
+            string finalFilter = string.Join(" AND ", filters);
+            Debug.WriteLine(finalFilter);
+
+            if (bs_ResultExam.DataSource != null)
+                bs_ResultExam.Filter = finalFilter;
         }
     }
 }

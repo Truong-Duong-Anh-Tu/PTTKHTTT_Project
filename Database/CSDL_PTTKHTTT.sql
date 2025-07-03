@@ -79,7 +79,7 @@ CREATE TABLE PHONGTHI (
   PT_HinhThuc nvarchar(30) CHECK (PT_HinhThuc IN (N'Tự luận', N'Trắc nghiệm', N'Trắc nghiệm-Tự luận')),
   PT_SLThiSinhToiDa int,
   PT_SLThiSinhToiThieu int,
-  PT_SLNhanVienCoiThi int,
+  PT_SLNhanVienCoiThi int
 )
 GO
 
@@ -249,6 +249,9 @@ GO
 
 ALTER TABLE THONGBAO ADD FOREIGN KEY (TB_MaNhanVienGui) REFERENCES NHANVIEN (NV_MaNhanVien)
 GO
+
+
+
 -- Xóa database:
 /*
 use master;

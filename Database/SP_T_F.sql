@@ -702,6 +702,7 @@ begin
 	where d.BT_DiemSo is not null and i.BT_DiemSo is null;
 	
 end;
+go
 
 --Tra cứu phiếu đăng ký (thông tin cơ bản)
 CREATE PROCEDURE TraCuuPhieuDangKyCoBan 
