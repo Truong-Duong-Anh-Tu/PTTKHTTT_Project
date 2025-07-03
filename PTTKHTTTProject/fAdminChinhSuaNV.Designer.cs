@@ -94,7 +94,6 @@
             tableLayoutPanelThongTinNV.Controls.Add(labelHienThiEmail, 1, 3);
             tableLayoutPanelThongTinNV.Controls.Add(numericUpDownLuong, 1, 7);
             tableLayoutPanelThongTinNV.Controls.Add(labelLuong, 0, 7);
-            tableLayoutPanelThongTinNV.Controls.Add(dateTimePickerNgaySinh, 1, 1);
             tableLayoutPanelThongTinNV.Controls.Add(labelDiaChi, 0, 6);
             tableLayoutPanelThongTinNV.Controls.Add(labelCCCD, 0, 5);
             tableLayoutPanelThongTinNV.Controls.Add(labelEmail, 0, 3);
@@ -103,6 +102,7 @@
             tableLayoutPanelThongTinNV.Controls.Add(labelGioiTinh, 0, 2);
             tableLayoutPanelThongTinNV.Controls.Add(labelSoDT, 0, 4);
             tableLayoutPanelThongTinNV.Controls.Add(comboBoxGioiTinh, 1, 2);
+            tableLayoutPanelThongTinNV.Controls.Add(dateTimePickerNgaySinh, 1, 1);
             tableLayoutPanelThongTinNV.Controls.Add(labelHienThiHoTen, 1, 0);
             tableLayoutPanelThongTinNV.Location = new Point(43, 115);
             tableLayoutPanelThongTinNV.Name = "tableLayoutPanelThongTinNV";
@@ -165,11 +165,11 @@
             // numericUpDownLuong
             // 
             numericUpDownLuong.Anchor = AnchorStyles.None;
-            numericUpDownLuong.Location = new Point(249, 369);
+            numericUpDownLuong.Location = new Point(285, 369);
             numericUpDownLuong.Maximum = new decimal(new int[] { 500000000, 0, 0, 0 });
             numericUpDownLuong.Minimum = new decimal(new int[] { 5000000, 0, 0, 0 });
             numericUpDownLuong.Name = "numericUpDownLuong";
-            numericUpDownLuong.Size = new Size(289, 27);
+            numericUpDownLuong.Size = new Size(217, 27);
             numericUpDownLuong.TabIndex = 20;
             numericUpDownLuong.Value = new decimal(new int[] { 5000000, 0, 0, 0 });
             // 
@@ -189,9 +189,9 @@
             dateTimePickerNgaySinh.Anchor = AnchorStyles.None;
             dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
             dateTimePickerNgaySinh.Format = DateTimePickerFormat.Custom;
-            dateTimePickerNgaySinh.Location = new Point(259, 61);
+            dateTimePickerNgaySinh.Location = new Point(276, 61);
             dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
-            dateTimePickerNgaySinh.Size = new Size(269, 27);
+            dateTimePickerNgaySinh.Size = new Size(236, 27);
             dateTimePickerNgaySinh.TabIndex = 20;
             // 
             // labelDiaChi
@@ -276,9 +276,9 @@
             comboBoxGioiTinh.Anchor = AnchorStyles.Bottom;
             comboBoxGioiTinh.BackColor = SystemColors.Window;
             comboBoxGioiTinh.FormattingEnabled = true;
-            comboBoxGioiTinh.Location = new Point(256, 119);
+            comboBoxGioiTinh.Location = new Point(279, 119);
             comboBoxGioiTinh.Name = "comboBoxGioiTinh";
-            comboBoxGioiTinh.Size = new Size(275, 28);
+            comboBoxGioiTinh.Size = new Size(229, 28);
             comboBoxGioiTinh.TabIndex = 22;
             comboBoxGioiTinh.Text = "Giới tính";
             // 
@@ -325,9 +325,9 @@
             tableLayoutPanel1.Location = new Point(687, 115);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.Size = new Size(306, 113);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 51.42857F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 48.57143F));
+            tableLayoutPanel1.Size = new Size(306, 86);
             tableLayoutPanel1.TabIndex = 29;
             // 
             // labelHienThiPhongBan
@@ -335,7 +335,7 @@
             labelHienThiPhongBan.Anchor = AnchorStyles.None;
             labelHienThiPhongBan.AutoSize = true;
             labelHienThiPhongBan.Font = new Font("Segoe UI", 10F);
-            labelHienThiPhongBan.Location = new Point(188, 73);
+            labelHienThiPhongBan.Location = new Point(188, 53);
             labelHienThiPhongBan.Name = "labelHienThiPhongBan";
             labelHienThiPhongBan.Size = new Size(55, 23);
             labelHienThiPhongBan.TabIndex = 4;
@@ -346,7 +346,7 @@
             labelPhongBan.Anchor = AnchorStyles.None;
             labelPhongBan.AutoSize = true;
             labelPhongBan.Font = new Font("Segoe UI", 10F);
-            labelPhongBan.Location = new Point(13, 73);
+            labelPhongBan.Location = new Point(13, 53);
             labelPhongBan.Name = "labelPhongBan";
             labelPhongBan.Size = new Size(98, 23);
             labelPhongBan.TabIndex = 3;
@@ -357,7 +357,7 @@
             labelChucVu.Anchor = AnchorStyles.None;
             labelChucVu.AutoSize = true;
             labelChucVu.Font = new Font("Segoe UI", 10F);
-            labelChucVu.Location = new Point(24, 16);
+            labelChucVu.Location = new Point(24, 10);
             labelChucVu.Name = "labelChucVu";
             labelChucVu.Size = new Size(76, 23);
             labelChucVu.TabIndex = 1;
@@ -368,7 +368,7 @@
             labelHienThiChucVu.Anchor = AnchorStyles.None;
             labelHienThiChucVu.AutoSize = true;
             labelHienThiChucVu.Font = new Font("Segoe UI", 10F);
-            labelHienThiChucVu.Location = new Point(188, 16);
+            labelHienThiChucVu.Location = new Point(188, 10);
             labelHienThiChucVu.Name = "labelHienThiChucVu";
             labelHienThiChucVu.Size = new Size(55, 23);
             labelHienThiChucVu.TabIndex = 2;
@@ -398,7 +398,7 @@
             buttonLuuThongTin.Text = "Lưu thông tin";
             buttonLuuThongTin.UseVisualStyleBackColor = false;
             // 
-            // fChinhSuaNV
+            // fAdminChinhSuaNV
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
@@ -412,7 +412,7 @@
             Controls.Add(tableLayoutPanelThongTinNV);
             Controls.Add(pictureBoxThoat);
             Controls.Add(labelThemLichThi);
-            Name = "fChinhSuaNV";
+            Name = "fAdminChinhSuaNV";
             Text = "fChinhSuaNhanVien";
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             tableLayoutPanelThongTinNV.ResumeLayout(false);

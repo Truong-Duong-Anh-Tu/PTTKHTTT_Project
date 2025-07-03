@@ -165,7 +165,7 @@ namespace PTTKHTTTProject.UControl
 
         private void buttonThemPhanCong_Click(object? sender, EventArgs e)
         {
-            fAdminThemChinhSuaLichPhanCong f = new fAdminThemChinhSuaLichPhanCong();
+            fAdminThemLichPhanCong f = new fAdminThemLichPhanCong();
             f.ShowDialog();
             LoadData();
         }

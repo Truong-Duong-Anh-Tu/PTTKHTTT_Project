@@ -4,7 +4,7 @@
     <Compile Update="fAdminChinhSuaLichThi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fAdminThemChinhSuaLichPhanCong.cs">
+    <Compile Update="fAdminThemLichPhanCong.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fAdminThemLichThi.cs">

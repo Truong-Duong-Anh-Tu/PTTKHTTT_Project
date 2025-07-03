@@ -31,7 +31,6 @@
             label1 = new Label();
             pictureBoxThoat = new PictureBox();
             label2 = new Label();
-            sqlCommand1 = new Microsoft.Data.SqlClient.SqlCommand();
             tableLayoutPanelKyThi = new TableLayoutPanel();
             labelHienThiTenKyThi = new Label();
             labelTenKyThi = new Label();
@@ -39,9 +38,10 @@
             labelHienThiMaKT = new Label();
             labelLichThi = new Label();
             tableLayoutPanelThongTinNV = new TableLayoutPanel();
+            dateTimePickerTGKetThuc = new DateTimePicker();
+            labelTGKetThuc = new Label();
+            dateTimePicker1 = new DateTimePicker();
             labelHienThiPhongThi = new Label();
-            numericUpDownSLDangKy = new NumericUpDown();
-            labelLuong = new Label();
             dateTimePickerNgayThi = new DateTimePicker();
             labelPhongThi = new Label();
             labelMaLichThi = new Label();
@@ -50,9 +50,8 @@
             labelSoDT = new Label();
             comboBoxTrangThai = new ComboBox();
             labelHienThiMaLT = new Label();
-            dateTimePicker1 = new DateTimePicker();
-            labelTGKetThuc = new Label();
-            dateTimePickerTGKetThuc = new DateTimePicker();
+            labelLuong = new Label();
+            numericUpDownSLDangKy = new NumericUpDown();
             buttonChinhSuaThongTin = new Button();
             buttonLuuThongTin = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).BeginInit();
@@ -91,11 +90,6 @@
             label2.Size = new Size(164, 28);
             label2.TabIndex = 2;
             label2.Text = "Thông tin kỳ thi";
-            // 
-            // sqlCommand1
-            // 
-            sqlCommand1.CommandTimeout = 30;
-            sqlCommand1.EnableOptimizedParameterBinding = false;
             // 
             // tableLayoutPanelKyThi
             // 
@@ -201,6 +195,39 @@
             tableLayoutPanelThongTinNV.Size = new Size(587, 363);
             tableLayoutPanelThongTinNV.TabIndex = 32;
             // 
+            // dateTimePickerTGKetThuc
+            // 
+            dateTimePickerTGKetThuc.Anchor = AnchorStyles.None;
+            dateTimePickerTGKetThuc.CustomFormat = "HH:mm";
+            dateTimePickerTGKetThuc.Format = DateTimePickerFormat.Custom;
+            dateTimePickerTGKetThuc.Location = new Point(259, 261);
+            dateTimePickerTGKetThuc.Name = "dateTimePickerTGKetThuc";
+            dateTimePickerTGKetThuc.ShowUpDown = true;
+            dateTimePickerTGKetThuc.Size = new Size(269, 27);
+            dateTimePickerTGKetThuc.TabIndex = 30;
+            // 
+            // labelTGKetThuc
+            // 
+            labelTGKetThuc.Anchor = AnchorStyles.None;
+            labelTGKetThuc.AutoSize = true;
+            labelTGKetThuc.Font = new Font("Segoe UI", 10F);
+            labelTGKetThuc.Location = new Point(24, 263);
+            labelTGKetThuc.Name = "labelTGKetThuc";
+            labelTGKetThuc.Size = new Size(152, 23);
+            labelTGKetThuc.TabIndex = 29;
+            labelTGKetThuc.Text = "Thời gian kết thúc:";
+            // 
+            // dateTimePicker1
+            // 
+            dateTimePicker1.Anchor = AnchorStyles.None;
+            dateTimePicker1.CustomFormat = "HH:mm";
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.Location = new Point(259, 211);
+            dateTimePicker1.Name = "dateTimePicker1";
+            dateTimePicker1.ShowUpDown = true;
+            dateTimePicker1.Size = new Size(269, 27);
+            dateTimePicker1.TabIndex = 28;
+            // 
             // labelHienThiPhongThi
             // 
             labelHienThiPhongThi.Anchor = AnchorStyles.None;
@@ -211,27 +238,6 @@
             labelHienThiPhongThi.Size = new Size(55, 23);
             labelHienThiPhongThi.TabIndex = 24;
             labelHienThiPhongThi.Text = "label2";
-            // 
-            // numericUpDownSLDangKy
-            // 
-            numericUpDownSLDangKy.Anchor = AnchorStyles.None;
-            numericUpDownSLDangKy.Location = new Point(254, 317);
-            numericUpDownSLDangKy.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
-            numericUpDownSLDangKy.Name = "numericUpDownSLDangKy";
-            numericUpDownSLDangKy.Size = new Size(279, 27);
-            numericUpDownSLDangKy.TabIndex = 20;
-            numericUpDownSLDangKy.Value = new decimal(new int[] { 100, 0, 0, 0 });
-            // 
-            // labelLuong
-            // 
-            labelLuong.Anchor = AnchorStyles.None;
-            labelLuong.AutoSize = true;
-            labelLuong.Font = new Font("Segoe UI", 10F);
-            labelLuong.Location = new Point(15, 319);
-            labelLuong.Name = "labelLuong";
-            labelLuong.Size = new Size(171, 23);
-            labelLuong.TabIndex = 21;
-            labelLuong.Text = "Số lượng đã đăng ký:";
             // 
             // dateTimePickerNgayThi
             // 
@@ -320,38 +326,26 @@
             labelHienThiMaLT.TabIndex = 23;
             labelHienThiMaLT.Text = "label2";
             // 
-            // dateTimePicker1
+            // labelLuong
             // 
-            dateTimePicker1.Anchor = AnchorStyles.None;
-            dateTimePicker1.CustomFormat = "HH:mm";
-            dateTimePicker1.Format = DateTimePickerFormat.Custom;
-            dateTimePicker1.Location = new Point(259, 211);
-            dateTimePicker1.Name = "dateTimePicker1";
-            dateTimePicker1.ShowUpDown = true;
-            dateTimePicker1.Size = new Size(269, 27);
-            dateTimePicker1.TabIndex = 28;
+            labelLuong.Anchor = AnchorStyles.None;
+            labelLuong.AutoSize = true;
+            labelLuong.Font = new Font("Segoe UI", 10F);
+            labelLuong.Location = new Point(15, 319);
+            labelLuong.Name = "labelLuong";
+            labelLuong.Size = new Size(171, 23);
+            labelLuong.TabIndex = 21;
+            labelLuong.Text = "Số lượng đã đăng ký:";
             // 
-            // labelTGKetThuc
+            // numericUpDownSLDangKy
             // 
-            labelTGKetThuc.Anchor = AnchorStyles.None;
-            labelTGKetThuc.AutoSize = true;
-            labelTGKetThuc.Font = new Font("Segoe UI", 10F);
-            labelTGKetThuc.Location = new Point(24, 263);
-            labelTGKetThuc.Name = "labelTGKetThuc";
-            labelTGKetThuc.Size = new Size(152, 23);
-            labelTGKetThuc.TabIndex = 29;
-            labelTGKetThuc.Text = "Thời gian kết thúc:";
-            // 
-            // dateTimePickerTGKetThuc
-            // 
-            dateTimePickerTGKetThuc.Anchor = AnchorStyles.None;
-            dateTimePickerTGKetThuc.CustomFormat = "HH:mm";
-            dateTimePickerTGKetThuc.Format = DateTimePickerFormat.Custom;
-            dateTimePickerTGKetThuc.Location = new Point(259, 261);
-            dateTimePickerTGKetThuc.Name = "dateTimePickerTGKetThuc";
-            dateTimePickerTGKetThuc.ShowUpDown = true;
-            dateTimePickerTGKetThuc.Size = new Size(269, 27);
-            dateTimePickerTGKetThuc.TabIndex = 30;
+            numericUpDownSLDangKy.Anchor = AnchorStyles.None;
+            numericUpDownSLDangKy.Location = new Point(254, 317);
+            numericUpDownSLDangKy.Minimum = new decimal(new int[] { 10, 0, 0, 0 });
+            numericUpDownSLDangKy.Name = "numericUpDownSLDangKy";
+            numericUpDownSLDangKy.Size = new Size(279, 27);
+            numericUpDownSLDangKy.TabIndex = 20;
+            numericUpDownSLDangKy.Value = new decimal(new int[] { 100, 0, 0, 0 });
             // 
             // buttonChinhSuaThongTin
             // 
@@ -388,6 +382,7 @@
             Controls.Add(pictureBoxThoat);
             Controls.Add(label1);
             Name = "fAdminChinhSuaLichThi";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminChinhSuaLichThi";
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             tableLayoutPanelKyThi.ResumeLayout(false);
@@ -404,7 +399,6 @@
         private Label label1;
         private PictureBox pictureBoxThoat;
         private Label label2;
-        private Microsoft.Data.SqlClient.SqlCommand sqlCommand1;
         private TableLayoutPanel tableLayoutPanelKyThi;
         private Label labelHienThiTenKyThi;
         private Label labelTenKyThi;
