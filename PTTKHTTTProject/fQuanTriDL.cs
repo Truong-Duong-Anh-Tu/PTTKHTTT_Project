@@ -65,7 +65,9 @@ namespace PTTKHTTTProject
             }
             else if (buttonText == "Quản lý lịch thi")
             {
-
+                adminQLyLichThi adminQLyLichThi = new adminQLyLichThi();
+                adminQLyLichThi.Dock = DockStyle.Fill;
+                panelMain.Controls.Add(adminQLyLichThi);
             }
             else if (buttonText == "Quản lý kỳ thi")
             {
