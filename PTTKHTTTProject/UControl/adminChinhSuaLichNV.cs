@@ -116,5 +116,24 @@ namespace PTTKHTTTProject.UControl
                 MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+            // Đóng UserControl hiện tại
+            if (this.Parent is Panel parentPanel)
+            {
+                parentPanel.Controls.Remove(this);
+            }
+            else
+            {
+                // Nếu không phải là Panel, có thể là Form hoặc UserControl khác
+                this.Dispose();
+            }
+        }
+
+        private void textBoxMaNVCoiThi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
     }
 }
