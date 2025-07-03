@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.Drawing;
 using System.Windows.Forms;
@@ -23,7 +24,6 @@ namespace PTTKHTTTProject.UControl
             LoadData();
             SetupDataGridViewColumns();
             PopulateComboBox();
-            // Gán sự kiện vẽ lại ô
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
         }
 
@@ -77,31 +77,24 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
-        // PHƯƠNG THỨC VẼ LẠI TIÊU ĐỀ ĐÃ SỬA LỖI
-        private void dataGridView1_CellPainting(object? sender, DataGridViewCellPaintingEventArgs e)
+        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex == -1 && dataGridView1.Columns.Contains("Sua") && dataGridView1.Columns.Contains("Xoa"))
             {
                 int suaIndex = dataGridView1.Columns["Sua"].Index;
                 int xoaIndex = dataGridView1.Columns["Xoa"].Index;
-
                 if (e.ColumnIndex == suaIndex)
                 {
                     Rectangle rect1 = dataGridView1.GetCellDisplayRectangle(suaIndex, -1, true);
                     Rectangle rect2 = dataGridView1.GetCellDisplayRectangle(xoaIndex, -1, true);
-
-                    rect1.Width += rect2.Width - 1; // Gộp chiều rộng
-                    rect1.Height -= 1; // Giảm chiều cao để đường viền không bị đè
-
+                    rect1.Width += rect2.Width - 1;
+                    rect1.Height -= 1;
                     e.Graphics.FillRectangle(new SolidBrush(e.CellStyle.BackColor), rect1);
                     e.Graphics.DrawRectangle(SystemPens.ControlDark, rect1);
-
                     StringFormat format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
                     e.Graphics.DrawString("Hành động", e.CellStyle.Font, new SolidBrush(e.CellStyle.ForeColor), rect1, format);
-
                     e.Handled = true;
                 }
-                // Ngăn không cho cột thứ hai ("Xóa") tự vẽ tiêu đề của nó
                 else if (e.ColumnIndex == xoaIndex)
                 {
                     e.Handled = true;
@@ -130,29 +123,22 @@ namespace PTTKHTTTProject.UControl
             {
                 if (MessageBox.Show("Bạn có chắc chắn muốn xóa lịch phân công này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    // Lấy thông tin từ dòng được chọn
                     DataRowView row = (DataRowView)dataGridView1.Rows[e.RowIndex].DataBoundItem;
                     string? maLichThi = row["LT_MaLichThi"]?.ToString();
                     string? maNhanVien = row["Mã Nhân Viên"]?.ToString();
 
-                    // Kiểm tra dữ liệu hợp lệ trước khi xóa
                     if (!string.IsNullOrEmpty(maLichThi) && !string.IsNullOrEmpty(maNhanVien))
                     {
                         bool success = employeeScheduleBUS.DeleteEmployeeSchedule(maLichThi, maNhanVien);
-
                         if (success)
                         {
                             MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadData(); // Tải lại dữ liệu để cập nhật bảng
+                            LoadData();
                         }
                         else
                         {
                             MessageBox.Show("Xóa thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                         }
-                    }
-                    else
-                    {
-                        MessageBox.Show("Không thể xác định lịch phân công để xóa.", "Lỗi dữ liệu", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
@@ -160,21 +146,21 @@ namespace PTTKHTTTProject.UControl
 
         private void FilterData()
         {
-            if (comboBoxTrangThai.SelectedItem == null || originalDataTable == null) return;
-            string trangThai = comboBoxTrangThai.SelectedItem.ToString() ?? "";
-            string timKiem = textBox1.Text.Trim();
-            DataView dv = new DataView(originalDataTable);
-            string filter = "1=1";
-            if (trangThai != "Tất cả")
+            if (originalDataTable == null) return;
+            var filters = new List<string>();
+
+            if (comboBoxTrangThai.SelectedItem != null && comboBoxTrangThai.SelectedItem.ToString() != "Tất cả")
             {
-                filter += $" AND [Trạng Thái] = '{trangThai}'";
+                filters.Add(string.Format("[Trạng Thái] = '{0}'", comboBoxTrangThai.SelectedItem.ToString()));
             }
+
+            string timKiem = textBox1.Text.Trim().Replace("'", "''");
             if (!string.IsNullOrEmpty(timKiem))
             {
-                filter += $" AND ([Mã Nhân Viên] LIKE '%{timKiem}%' OR [Tên Nhân Viên] LIKE '%{timKiem}%')";
+                filters.Add(string.Format("([Mã Nhân Viên] LIKE '%{0}%' OR [Tên Nhân Viên] LIKE '%{0}%')", timKiem));
             }
-            dv.RowFilter = filter;
-            dataGridView1.DataSource = dv;
+
+            originalDataTable.DefaultView.RowFilter = string.Join(" AND ", filters);
         }
 
         private void comboBoxTrangThai_SelectedIndexChanged(object sender, EventArgs e)
@@ -182,7 +168,14 @@ namespace PTTKHTTTProject.UControl
             FilterData();
         }
 
+        // THAY ĐỔI Ở ĐÂY: Xóa logic khỏi sự kiện gõ phím
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+            // Không làm gì cả
+        }
+
+        // THAY ĐỔI Ở ĐÂY: Thêm sự kiện click cho nút kính lúp
+        private void pictureBoxSearch_Click(object sender, EventArgs e)
         {
             FilterData();
         }
