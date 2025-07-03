@@ -16,13 +16,11 @@ namespace PTTKHTTTProject.UControl
             InitializeComponent();
         }
 
-        private void adminThemLichPhanCong_Load(object sender, EventArgs e)
+        private void adminThemLichPhanCong_Load(object? sender, EventArgs e)
         {
             LoadNhanVien();
             LoadKyThi();
             ClearThongTin();
-            dataGridViewNhanVien.ReadOnly = true;
-            dataGridViewNhanVien.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
         }
 
         private void LoadKyThi()

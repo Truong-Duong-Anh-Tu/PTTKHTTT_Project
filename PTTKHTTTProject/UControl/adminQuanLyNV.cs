@@ -159,32 +159,36 @@ namespace PTTKHTTTProject.UControl
 
         private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Kiểm tra xem có phải cột nút "Xóa" được nhấn hay không
-            if (e.ColumnIndex == dataGridView1.Columns["DeleteButton"].Index && e.RowIndex >= 0)
+            // Bỏ qua nếu người dùng click vào header của bảng
+            if (e.RowIndex < 0) return;
+
+            // Chỉ xử lý khi người dùng click vào cột nút "DeleteButton"
+            if (dataGridView1.Columns.Contains("DeleteButton") && e.ColumnIndex == dataGridView1.Columns["DeleteButton"].Index)
             {
-                // Lấy mã và tên nhân viên từ hàng được chọn
+                // Lấy mã và tên nhân viên từ dòng được chọn
                 string maNV = dataGridView1.Rows[e.RowIndex].Cells["Mã NV"].Value.ToString();
                 string tenNV = dataGridView1.Rows[e.RowIndex].Cells["Họ Tên"].Value.ToString();
 
-                // Hiển thị hộp thoại xác nhận
-                DialogResult confirmResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa nhân viên '{tenNV}' (Mã: {maNV}) không?",
+                // Hiển thị hộp thoại xác nhận để đảm bảo an toàn
+                DialogResult confirmResult = MessageBox.Show($"Bạn có chắc chắn muốn xóa nhân viên '{tenNV}' (Mã: {maNV}) không? Hành động này không thể hoàn tác.",
                                                "Xác nhận xóa",
                                                MessageBoxButtons.YesNo,
                                                MessageBoxIcon.Warning);
 
                 if (confirmResult == DialogResult.Yes)
                 {
-                    // Gọi BUS để thực hiện xóa
+                    // Gọi lớp BUS để thực hiện việc xóa
                     bool success = NhanVienBUS.DeleteNhanVien(maNV);
 
                     if (success)
                     {
                         MessageBox.Show("Xóa nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                        LoadNhanVienData(); // Tải lại dữ liệu để cập nhật danh sách
+                        // Tải lại dữ liệu để cập nhật danh sách trên giao diện
+                        LoadNhanVienData();
                     }
                     else
                     {
-                        MessageBox.Show("Xóa nhân viên thất bại! Nhân viên có thể đang được tham chiếu ở nơi khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Xóa nhân viên thất bại! Có thể nhân viên này vẫn còn các ràng buộc dữ liệu phức tạp chưa được xử lý. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }

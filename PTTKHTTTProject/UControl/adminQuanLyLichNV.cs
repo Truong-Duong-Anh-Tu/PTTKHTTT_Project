@@ -19,7 +19,7 @@ namespace PTTKHTTTProject.UControl
             originalDataTable = new DataTable();
         }
 
-        private void adminQuanLyLichNV_Load(object sender, EventArgs e)
+        private void adminQuanLyLichNV_Load(object? sender, EventArgs e)
         {
             LoadData();
             SetupDataGridViewColumns();
@@ -39,30 +39,16 @@ namespace PTTKHTTTProject.UControl
             {
                 dataGridView1.Columns["Ngày Thi"].DefaultCellStyle.Format = "dd/MM/yyyy";
             }
-
+            if (dataGridView1.Columns.Contains("LT_MaLichThi"))
+            {
+                dataGridView1.Columns["LT_MaLichThi"].HeaderText = "Mã Lịch Thi";
+            }
             if (dataGridView1.Columns.Contains("Sua")) dataGridView1.Columns.Remove("Sua");
             if (dataGridView1.Columns.Contains("Xoa")) dataGridView1.Columns.Remove("Xoa");
 
-            DataGridViewButtonColumn btnSua = new DataGridViewButtonColumn
-            {
-                Name = "Sua",
-                HeaderText = "",
-                Text = "Sửa",
-                UseColumnTextForButtonValue = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
-                Width = 75
-            };
+            DataGridViewButtonColumn btnSua = new DataGridViewButtonColumn { Name = "Sua", HeaderText = "", Text = "Sửa", UseColumnTextForButtonValue = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, Width = 75, DefaultCellStyle = new DataGridViewCellStyle { BackColor = SystemColors.Control } };
             dataGridView1.Columns.Add(btnSua);
-
-            DataGridViewButtonColumn btnXoa = new DataGridViewButtonColumn
-            {
-                Name = "Xoa",
-                HeaderText = "",
-                Text = "Xóa",
-                UseColumnTextForButtonValue = true,
-                AutoSizeMode = DataGridViewAutoSizeColumnMode.None,
-                Width = 75
-            };
+            DataGridViewButtonColumn btnXoa = new DataGridViewButtonColumn { Name = "Xoa", HeaderText = "", Text = "Xóa", UseColumnTextForButtonValue = true, AutoSizeMode = DataGridViewAutoSizeColumnMode.None, Width = 75, DefaultCellStyle = new DataGridViewCellStyle { BackColor = SystemColors.Control } };
             dataGridView1.Columns.Add(btnXoa);
         }
 
@@ -77,7 +63,7 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
-        private void dataGridView1_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        private void dataGridView1_CellPainting(object? sender, DataGridViewCellPaintingEventArgs e)
         {
             if (e.RowIndex == -1 && dataGridView1.Columns.Contains("Sua") && dataGridView1.Columns.Contains("Xoa"))
             {
@@ -102,42 +88,41 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellContentClick(object? sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex < 0) return;
 
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Sua")
+            if (dataGridView1.Columns[e.ColumnIndex].Name == "Sua" && dataGridView1.Rows[e.RowIndex].DataBoundItem is DataRowView selectedRow)
             {
-                DataRowView selectedRow = (DataRowView)dataGridView1.Rows[e.RowIndex].DataBoundItem;
                 adminChinhSuaLichNV chinhSuaControl = new adminChinhSuaLichNV(selectedRow);
                 chinhSuaControl.Dock = DockStyle.Fill;
-                Panel? parentPanel = this.Parent as Panel;
-                if (parentPanel != null)
+                if (this.Parent is Panel parentPanel)
                 {
                     parentPanel.Controls.Clear();
                     parentPanel.Controls.Add(chinhSuaControl);
                 }
             }
-
-            if (dataGridView1.Columns[e.ColumnIndex].Name == "Xoa")
+            else if (dataGridView1.Columns[e.ColumnIndex].Name == "Xoa")
             {
                 if (MessageBox.Show("Bạn có chắc chắn muốn xóa lịch phân công này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Question) == DialogResult.Yes)
                 {
-                    DataRowView row = (DataRowView)dataGridView1.Rows[e.RowIndex].DataBoundItem;
-                    string? maLichThi = row["LT_MaLichThi"]?.ToString();
-                    string? maNhanVien = row["Mã Nhân Viên"]?.ToString();
-
-                    if (!string.IsNullOrEmpty(maLichThi) && !string.IsNullOrEmpty(maNhanVien))
+                    if (dataGridView1.Rows[e.RowIndex].DataBoundItem is DataRowView row)
                     {
-                        bool success = employeeScheduleBUS.DeleteEmployeeSchedule(maLichThi, maNhanVien);
-                        if (success)
+                        string? maLichThi = row["LT_MaLichThi"]?.ToString();
+                        string? maNhanVien = row["Mã Nhân Viên"]?.ToString();
+
+                        if (!string.IsNullOrEmpty(maLichThi) && !string.IsNullOrEmpty(maNhanVien))
                         {
-                            MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                            LoadData();
-                        }
-                        else
-                        {
-                            MessageBox.Show("Xóa thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            bool success = employeeScheduleBUS.DeleteEmployeeSchedule(maLichThi, maNhanVien);
+                            if (success)
+                            {
+                                MessageBox.Show("Xóa thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                                LoadData();
+                            }
+                            else
+                            {
+                                MessageBox.Show("Xóa thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                            }
                         }
                     }
                 }
@@ -151,7 +136,7 @@ namespace PTTKHTTTProject.UControl
 
             if (comboBoxTrangThai.SelectedItem != null && comboBoxTrangThai.SelectedItem.ToString() != "Tất cả")
             {
-                filters.Add(string.Format("[Trạng Thái] = '{0}'", comboBoxTrangThai.SelectedItem.ToString()));
+                filters.Add(string.Format("[Trạng Thái] = '{0}'", comboBoxTrangThai.SelectedItem));
             }
 
             string timKiem = textBox1.Text.Trim().Replace("'", "''");
@@ -163,27 +148,25 @@ namespace PTTKHTTTProject.UControl
             originalDataTable.DefaultView.RowFilter = string.Join(" AND ", filters);
         }
 
-        private void comboBoxTrangThai_SelectedIndexChanged(object sender, EventArgs e)
+        private void comboBoxTrangThai_SelectedIndexChanged(object? sender, EventArgs e)
         {
             FilterData();
         }
 
-        // THAY ĐỔI Ở ĐÂY: Xóa logic khỏi sự kiện gõ phím
-        private void textBox1_TextChanged(object sender, EventArgs e)
+        private void textBox1_TextChanged(object? sender, EventArgs e)
         {
-            // Không làm gì cả
+            // Logic đã được chuyển sang nút kính lúp
         }
 
-        // THAY ĐỔI Ở ĐÂY: Thêm sự kiện click cho nút kính lúp
-        private void pictureBoxSearch_Click(object sender, EventArgs e)
+        private void pictureBoxSearch_Click(object? sender, EventArgs e)
         {
             FilterData();
         }
 
-        private void buttonThemPhanCong_Click(object sender, EventArgs e)
+        private void buttonThemPhanCong_Click(object? sender, EventArgs e)
         {
-            fAdminThemChinhSuaLichPhanCong fAdminThemLichPhanCong = new fAdminThemChinhSuaLichPhanCong();
-            fAdminThemLichPhanCong.ShowDialog();
+            fAdminThemChinhSuaLichPhanCong f = new fAdminThemChinhSuaLichPhanCong();
+            f.ShowDialog();
             LoadData();
         }
     }

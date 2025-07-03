@@ -690,21 +690,34 @@ BEGIN
     BEGIN TRY
         BEGIN TRANSACTION;
 
-        -- Xóa các bản ghi tham chiếu đến nhân viên này
-        DELETE FROM PHANCONG WHERE PC_MaNhanVien = @MaNhanVien;
+        -- Vô hiệu hóa các ràng buộc khóa ngoại
+        ALTER TABLE THISINH NOCHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUTHANHTOAN NOCHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUGIAHAN NOCHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUDUTHI NOCHECK CONSTRAINT ALL;
+
+        -- Xóa các bản ghi tham chiếu
         DELETE FROM THONGBAO WHERE TB_MaNhanVienGui = @MaNhanVien;
-        DELETE FROM PHEUTHANHTOAN WHERE PTT_NhanVienLap = @MaNhanVien;
+        DELETE FROM PHANCONG WHERE PC_MaNhanVien = @MaNhanVien;
+        DELETE FROM PHIEUTHANHTOAN WHERE PTT_NhanVienLap = @MaNhanVien;
         DELETE FROM PHIEUDANGKYDUTHI WHERE PDKDT_MaNhanVienLap = @MaNhanVien;
 
-        -- Cuối cùng, xóa nhân viên
+        -- Kích hoạt lại các ràng buộc
+        ALTER TABLE THISINH CHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUTHANHTOAN CHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUGIAHAN CHECK CONSTRAINT ALL;
+        ALTER TABLE PHIEUDUTHI CHECK CONSTRAINT ALL;
+
+        -- Xóa nhân viên
         DELETE FROM NHANVIEN WHERE NV_MaNhanVien = @MaNhanVien;
 
         COMMIT TRANSACTION;
-        SELECT 1 AS Result; -- Trả về 1 nếu thành công
+        SELECT 1 AS Result;
     END TRY
     BEGIN CATCH
         ROLLBACK TRANSACTION;
-        SELECT 0 AS Result; -- Trả về 0 nếu có lỗi
+        PRINT ERROR_MESSAGE();
+        SELECT 0 AS Result;
     END CATCH;
 END;
 GO
@@ -798,6 +811,26 @@ BEGIN
 
     INSERT INTO PHANCONG (PC_MaNhanVien, PC_MaLichThi, PC_TrangThai)
     VALUES (@MaNhanVien, @MaLichThi, N'Chưa diễn ra');
+END;
+GO
+GO
+CREATE OR ALTER PROCEDURE usp_GetLichThi
+AS
+BEGIN
+    SELECT 
+        lt.LT_MaLichThi AS N'Mã Lịch Thi',
+        kt.KT_TenKyThi AS N'Tên Kỳ Thi',
+        lt.LT_NgayThi AS N'Ngày Thi',
+        lt.LT_MaPhongThi AS N'Phòng Thi',
+        lt.LT_TGBatDau AS N'Giờ Bắt Đầu',
+        lt.LT_TGKetThuc AS N'Giờ Kết Thúc',
+        lt.LT_TrangThai AS N'Trạng Thái'
+    FROM 
+        LICHTHI lt
+    JOIN 
+        KYTHI kt ON lt.LT_MaKyThi = kt.KT_MaKyThi
+    ORDER BY 
+        lt.LT_NgayThi DESC;
 END;
 GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG

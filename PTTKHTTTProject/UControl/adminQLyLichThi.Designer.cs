@@ -1,16 +1,9 @@
 ﻿namespace PTTKHTTTProject.UControl
 {
-    partial class adminQLyLichThi
+    partial class adminQlyLichThi
     {
-        /// <summary> 
-        /// Required designer variable.
-        /// </summary>
         private System.ComponentModel.IContainer components = null;
 
-        /// <summary> 
-        /// Clean up any resources being used.
-        /// </summary>
-        /// <param name="disposing">true if managed resources should be disposed; otherwise, false.</param>
         protected override void Dispose(bool disposing)
         {
             if (disposing && (components != null))
@@ -22,122 +15,94 @@
 
         #region Component Designer generated code
 
-        /// <summary> 
-        /// Required method for Designer support - do not modify 
-        /// the contents of this method with the code editor.
-        /// </summary>
         private void InitializeComponent()
         {
-            labelQuanLylichThi = new Label();
-            textBoxTimKiemLichThi = new TextBox();
-            pictureBoxSearch = new PictureBox();
-            comboBoxTrangThaiLichThi = new ComboBox();
-            dataGridViewDSLichThi = new DataGridView();
-            buttonThemLichThi = new Button();
-            panel1 = new Panel();
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDSLichThi).BeginInit();
-            panel1.SuspendLayout();
-            SuspendLayout();
+            this.label1 = new System.Windows.Forms.Label();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.btnThem = new System.Windows.Forms.Button();
+            this.txtTimKiem = new System.Windows.Forms.TextBox();
+            this.btnTimKiem = new System.Windows.Forms.Button();
+            this.panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
+            this.SuspendLayout();
             // 
-            // labelQuanLylichThi
+            // label1
             // 
-            labelQuanLylichThi.AutoSize = true;
-            labelQuanLylichThi.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            labelQuanLylichThi.Location = new Point(27, 19);
-            labelQuanLylichThi.Name = "labelQuanLylichThi";
-            labelQuanLylichThi.Size = new Size(251, 31);
-            labelQuanLylichThi.TabIndex = 0;
-            labelQuanLylichThi.Text = "DANH SÁCH LỊCH THI";
-            labelQuanLylichThi.Click += labelQuanLylichThi_Click;
-            // 
-            // textBoxTimKiemLichThi
-            // 
-            textBoxTimKiemLichThi.Location = new Point(591, 19);
-            textBoxTimKiemLichThi.Name = "textBoxTimKiemLichThi";
-            textBoxTimKiemLichThi.PlaceholderText = "Tìm lịch thi theo tên kỳ thi";
-            textBoxTimKiemLichThi.Size = new Size(320, 27);
-            textBoxTimKiemLichThi.TabIndex = 1;
-            // 
-            // pictureBoxSearch
-            // 
-            pictureBoxSearch.BackColor = SystemColors.Control;
-            pictureBoxSearch.Image = Properties.Resources.search;
-            pictureBoxSearch.Location = new Point(917, 19);
-            pictureBoxSearch.Name = "pictureBoxSearch";
-            pictureBoxSearch.Size = new Size(38, 29);
-            pictureBoxSearch.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBoxSearch.TabIndex = 2;
-            pictureBoxSearch.TabStop = false;
-            // 
-            // comboBoxTrangThaiLichThi
-            // 
-            comboBoxTrangThaiLichThi.FormattingEnabled = true;
-            comboBoxTrangThaiLichThi.Location = new Point(381, 19);
-            comboBoxTrangThaiLichThi.Name = "comboBoxTrangThaiLichThi";
-            comboBoxTrangThaiLichThi.Size = new Size(183, 28);
-            comboBoxTrangThaiLichThi.TabIndex = 3;
-            comboBoxTrangThaiLichThi.Text = "Trạng thái lịch thi";
-            // 
-            // dataGridViewDSLichThi
-            // 
-            dataGridViewDSLichThi.BackgroundColor = SystemColors.ButtonHighlight;
-            dataGridViewDSLichThi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDSLichThi.Location = new Point(27, 76);
-            dataGridViewDSLichThi.Name = "dataGridViewDSLichThi";
-            dataGridViewDSLichThi.RowHeadersWidth = 51;
-            dataGridViewDSLichThi.Size = new Size(928, 392);
-            dataGridViewDSLichThi.TabIndex = 4;
-            // 
-            // buttonThemLichThi
-            // 
-            buttonThemLichThi.BackColor = Color.SkyBlue;
-            buttonThemLichThi.Location = new Point(857, 14);
-            buttonThemLichThi.Name = "buttonThemLichThi";
-            buttonThemLichThi.Size = new Size(155, 42);
-            buttonThemLichThi.TabIndex = 5;
-            buttonThemLichThi.Text = "Thêm lịch thi";
-            buttonThemLichThi.UseVisualStyleBackColor = false;
-            buttonThemLichThi.Click += buttonThemLichThi_Click;
+            this.label1.AutoSize = true;
+            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold);
+            this.label1.Location = new System.Drawing.Point(23, 17);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(188, 31);
+            this.label1.Text = "QUẢN LÝ LỊCH THI";
             // 
             // panel1
             // 
-            panel1.BackColor = SystemColors.Control;
-            panel1.Controls.Add(dataGridViewDSLichThi);
-            panel1.Controls.Add(labelQuanLylichThi);
-            panel1.Controls.Add(pictureBoxSearch);
-            panel1.Controls.Add(comboBoxTrangThaiLichThi);
-            panel1.Controls.Add(textBoxTimKiemLichThi);
-            panel1.Location = new Point(32, 62);
-            panel1.Name = "panel1";
-            panel1.Size = new Size(980, 488);
-            panel1.TabIndex = 6;
+            this.panel1.BackColor = System.Drawing.SystemColors.Control;
+            this.panel1.Controls.Add(this.dataGridView1);
+            this.panel1.Location = new System.Drawing.Point(14, 61);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(980, 499);
+            this.panel1.TabIndex = 1;
             // 
-            // adminQLyLichThi
+            // dataGridView1
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
-            AutoScaleMode = AutoScaleMode.Font;
-            BackColor = SystemColors.ButtonHighlight;
-            Controls.Add(buttonThemLichThi);
-            Controls.Add(panel1);
-            Name = "adminQLyLichThi";
-            Size = new Size(1030, 571);
-            Load += adminQLyLichThi_Load;
-            ((System.ComponentModel.ISupportInitialize)pictureBoxSearch).EndInit();
-            ((System.ComponentModel.ISupportInitialize)dataGridViewDSLichThi).EndInit();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
-            ResumeLayout(false);
+            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Location = new System.Drawing.Point(10, 10);
+            this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.Size = new System.Drawing.Size(960, 480);
+            this.dataGridView1.TabIndex = 0;
+            //
+            // btnThem
+            //
+            this.btnThem.Location = new System.Drawing.Point(890, 20);
+            this.btnThem.Name = "btnThem";
+            this.btnThem.Size = new System.Drawing.Size(100, 30);
+            this.btnThem.Text = "Thêm";
+            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
+            //
+            // txtTimKiem
+            //
+            this.txtTimKiem.Location = new System.Drawing.Point(550, 23);
+            this.txtTimKiem.Name = "txtTimKiem";
+            this.txtTimKiem.Size = new System.Drawing.Size(220, 27);
+            //
+            // btnTimKiem
+            //
+            this.btnTimKiem.Location = new System.Drawing.Point(780, 20);
+            this.btnTimKiem.Name = "btnTimKiem";
+            this.btnTimKiem.Size = new System.Drawing.Size(100, 30);
+            this.btnTimKiem.Text = "Tìm kiếm";
+            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            // adminQlyLichThi
+            // 
+            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
+            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.Controls.Add(this.panel1);
+            this.Controls.Add(this.label1);
+            this.Controls.Add(this.btnThem);
+            this.Controls.Add(this.txtTimKiem);
+            this.Controls.Add(this.btnTimKiem);
+            this.Name = "adminQlyLichThi";
+            this.Size = new System.Drawing.Size(1021, 573);
+            this.Load += new System.EventHandler(this.adminQlyLichThi_Load);
+            this.panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
+            this.ResumeLayout(false);
+            this.PerformLayout();
         }
 
         #endregion
 
-        private Label labelQuanLylichThi;
-        private TextBox textBoxTimKiemLichThi;
-        private PictureBox pictureBoxSearch;
-        private ComboBox comboBoxTrangThaiLichThi;
-        private DataGridView dataGridViewDSLichThi;
-        private Button buttonThemLichThi;
-        private Panel panel1;
+        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Button btnThem;
+        private System.Windows.Forms.TextBox txtTimKiem;
+        private System.Windows.Forms.Button btnTimKiem;
     }
 }
