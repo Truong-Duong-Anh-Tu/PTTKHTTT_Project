@@ -16,7 +16,7 @@ namespace PTTKHTTTProject.UControl
             lichThiBUS = new LichThiBUS();
             originalDataTable = new DataTable();
             // Gán sự kiện CellFormatting
-            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+            this.dataGridViewDSLichThi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
         }
 
         private void adminQlyLichThi_Load(object? sender, EventArgs e)
@@ -29,7 +29,7 @@ namespace PTTKHTTTProject.UControl
             try
             {
                 originalDataTable = lichThiBUS.GetAllLichThi();
-                dataGridView1.DataSource = originalDataTable;
+                dataGridViewDSLichThi.DataSource = originalDataTable;
                 SetupDataGridView();
             }
             catch (Exception ex)
@@ -40,11 +40,11 @@ namespace PTTKHTTTProject.UControl
 
         private void SetupDataGridView()
         {
-            dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewDSLichThi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            if (dataGridView1.Columns.Contains("Ngày Thi"))
+            if (dataGridViewDSLichThi.Columns.Contains("Ngày Thi"))
             {
-                dataGridView1.Columns["Ngày Thi"].DefaultCellStyle.Format = "dd/MM/yyyy";
+                dataGridViewDSLichThi.Columns["Ngày Thi"].DefaultCellStyle.Format = "dd/MM/yyyy";
             }
         }
 
@@ -87,7 +87,13 @@ namespace PTTKHTTTProject.UControl
 
         private void btnThem_Click(object? sender, EventArgs e)
         {
-            MessageBox.Show("Chức năng Thêm Lịch thi chưa được cài đặt.", "Thông báo");
+            fAdminThemLichThi f = new fAdminThemLichThi();
+            f.ShowDialog();
+        }
+
+        private void dataGridViewDSLichThi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
         }
     }
 }

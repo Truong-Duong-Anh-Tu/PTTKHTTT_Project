@@ -17,90 +17,102 @@
 
         private void InitializeComponent()
         {
-            this.label1 = new System.Windows.Forms.Label();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.btnThem = new System.Windows.Forms.Button();
-            this.txtTimKiem = new System.Windows.Forms.TextBox();
-            this.btnTimKiem = new System.Windows.Forms.Button();
-            this.panel1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
-            this.SuspendLayout();
+            labelDSLichThi = new Label();
+            panelChuaDSLichThi = new Panel();
+            dataGridViewDSLichThi = new DataGridView();
+            btnThem = new Button();
+            txtTimKiem = new TextBox();
+            btnTimKiem = new Button();
+            panelChuaDSLichThi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDSLichThi).BeginInit();
+            SuspendLayout();
             // 
-            // label1
+            // labelDSLichThi
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 13.8F, System.Drawing.FontStyle.Bold);
-            this.label1.Location = new System.Drawing.Point(23, 17);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(188, 31);
-            this.label1.Text = "QUẢN LÝ LỊCH THI";
+            labelDSLichThi.AutoSize = true;
+            labelDSLichThi.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
+            labelDSLichThi.Location = new Point(23, 23);
+            labelDSLichThi.Name = "labelDSLichThi";
+            labelDSLichThi.Size = new Size(251, 31);
+            labelDSLichThi.TabIndex = 2;
+            labelDSLichThi.Text = "DANH SÁCH LỊCH THI";
             // 
-            // panel1
+            // panelChuaDSLichThi
             // 
-            this.panel1.BackColor = System.Drawing.SystemColors.Control;
-            this.panel1.Controls.Add(this.dataGridView1);
-            this.panel1.Location = new System.Drawing.Point(14, 61);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(980, 499);
-            this.panel1.TabIndex = 1;
+            panelChuaDSLichThi.BackColor = SystemColors.Control;
+            panelChuaDSLichThi.Controls.Add(dataGridViewDSLichThi);
+            panelChuaDSLichThi.Location = new Point(14, 89);
+            panelChuaDSLichThi.Name = "panelChuaDSLichThi";
+            panelChuaDSLichThi.Size = new Size(988, 471);
+            panelChuaDSLichThi.TabIndex = 1;
             // 
-            // dataGridView1
+            // dataGridViewDSLichThi
             // 
-            this.dataGridView1.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dataGridView1.Location = new System.Drawing.Point(10, 10);
-            this.dataGridView1.Name = "dataGridView1";
-            this.dataGridView1.RowHeadersWidth = 51;
-            this.dataGridView1.Size = new System.Drawing.Size(960, 480);
-            this.dataGridView1.TabIndex = 0;
-            //
+            dataGridViewDSLichThi.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewDSLichThi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDSLichThi.Location = new Point(22, 18);
+            dataGridViewDSLichThi.Name = "dataGridViewDSLichThi";
+            dataGridViewDSLichThi.RowHeadersWidth = 51;
+            dataGridViewDSLichThi.Size = new Size(938, 436);
+            dataGridViewDSLichThi.TabIndex = 0;
+            dataGridViewDSLichThi.CellContentClick += dataGridViewDSLichThi_CellContentClick;
+            // 
             // btnThem
-            //
-            this.btnThem.Location = new System.Drawing.Point(890, 20);
-            this.btnThem.Name = "btnThem";
-            this.btnThem.Size = new System.Drawing.Size(100, 30);
-            this.btnThem.Text = "Thêm";
-            this.btnThem.Click += new System.EventHandler(this.btnThem_Click);
-            //
+            // 
+            btnThem.BackColor = Color.SkyBlue;
+            btnThem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnThem.Location = new Point(902, 42);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(100, 30);
+            btnThem.TabIndex = 3;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
+            // 
             // txtTimKiem
-            //
-            this.txtTimKiem.Location = new System.Drawing.Point(550, 23);
-            this.txtTimKiem.Name = "txtTimKiem";
-            this.txtTimKiem.Size = new System.Drawing.Size(220, 27);
-            //
+            // 
+            txtTimKiem.Location = new Point(389, 45);
+            txtTimKiem.Name = "txtTimKiem";
+            txtTimKiem.PlaceholderText = "Tìm kiếm mã lịch thi / tên lịch thi";
+            txtTimKiem.Size = new Size(335, 27);
+            txtTimKiem.TabIndex = 4;
+            // 
             // btnTimKiem
-            //
-            this.btnTimKiem.Location = new System.Drawing.Point(780, 20);
-            this.btnTimKiem.Name = "btnTimKiem";
-            this.btnTimKiem.Size = new System.Drawing.Size(100, 30);
-            this.btnTimKiem.Text = "Tìm kiếm";
-            this.btnTimKiem.Click += new System.EventHandler(this.btnTimKiem_Click);
+            // 
+            btnTimKiem.BackColor = Color.SkyBlue;
+            btnTimKiem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
+            btnTimKiem.Location = new Point(745, 42);
+            btnTimKiem.Name = "btnTimKiem";
+            btnTimKiem.Size = new Size(100, 30);
+            btnTimKiem.TabIndex = 5;
+            btnTimKiem.Text = "Tìm kiếm";
+            btnTimKiem.UseVisualStyleBackColor = false;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // adminQlyLichThi
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 20F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.BackColor = System.Drawing.SystemColors.ButtonHighlight;
-            this.Controls.Add(this.panel1);
-            this.Controls.Add(this.label1);
-            this.Controls.Add(this.btnThem);
-            this.Controls.Add(this.txtTimKiem);
-            this.Controls.Add(this.btnTimKiem);
-            this.Name = "adminQlyLichThi";
-            this.Size = new System.Drawing.Size(1021, 573);
-            this.Load += new System.EventHandler(this.adminQlyLichThi_Load);
-            this.panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
-            this.ResumeLayout(false);
-            this.PerformLayout();
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.ButtonHighlight;
+            Controls.Add(panelChuaDSLichThi);
+            Controls.Add(labelDSLichThi);
+            Controls.Add(btnThem);
+            Controls.Add(txtTimKiem);
+            Controls.Add(btnTimKiem);
+            Name = "adminQlyLichThi";
+            Size = new Size(1021, 573);
+            Load += adminQlyLichThi_Load;
+            panelChuaDSLichThi.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDSLichThi).EndInit();
+            ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
 
-        private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.Label labelDSLichThi;
+        private System.Windows.Forms.Panel panelChuaDSLichThi;
+        private System.Windows.Forms.DataGridView dataGridViewDSLichThi;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Button btnTimKiem;
