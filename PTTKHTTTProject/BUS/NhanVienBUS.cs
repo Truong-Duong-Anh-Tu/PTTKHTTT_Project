@@ -27,5 +27,12 @@ namespace PTTKHTTTProject.BUS
         {
             return NhanVienDAO.DeleteNhanVien(maNV);
         }
+
+        public static string GetTenNhanVien(string maNV)
+        {
+            if (string.IsNullOrWhiteSpace(maNV))
+                return string.Empty;
+            return NhanVienDAO.GetTenNhanVien(maNV);
+        }
     }
 }
