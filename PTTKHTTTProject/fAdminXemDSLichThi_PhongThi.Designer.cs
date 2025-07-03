@@ -40,7 +40,7 @@
             // 
             labelPhongThi.AutoSize = true;
             labelPhongThi.Font = new Font("Segoe UI", 12F);
-            labelPhongThi.Location = new Point(196, 31);
+            labelPhongThi.Location = new Point(171, 31);
             labelPhongThi.Name = "labelPhongThi";
             labelPhongThi.Size = new Size(290, 28);
             labelPhongThi.TabIndex = 0;
@@ -51,7 +51,7 @@
             labelHienThiPhongThi.AutoSize = true;
             labelHienThiPhongThi.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             labelHienThiPhongThi.ForeColor = Color.IndianRed;
-            labelHienThiPhongThi.Location = new Point(492, 31);
+            labelHienThiPhongThi.Location = new Point(467, 31);
             labelHienThiPhongThi.Name = "labelHienThiPhongThi";
             labelHienThiPhongThi.Size = new Size(60, 28);
             labelHienThiPhongThi.TabIndex = 1;
@@ -63,13 +63,13 @@
             dataGridView1.Location = new Point(32, 85);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(710, 266);
+            dataGridView1.Size = new Size(639, 353);
             dataGridView1.TabIndex = 2;
             // 
             // pictureBoxThoat
             // 
             pictureBoxThoat.Image = Properties.Resources.exit;
-            pictureBoxThoat.Location = new Point(52, 31);
+            pictureBoxThoat.Location = new Point(32, 31);
             pictureBoxThoat.Name = "pictureBoxThoat";
             pictureBoxThoat.Size = new Size(65, 32);
             pictureBoxThoat.SizeMode = PictureBoxSizeMode.Zoom;
@@ -82,12 +82,13 @@
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
-            ClientSize = new Size(786, 377);
+            ClientSize = new Size(707, 463);
             Controls.Add(pictureBoxThoat);
             Controls.Add(dataGridView1);
             Controls.Add(labelHienThiPhongThi);
             Controls.Add(labelPhongThi);
             Name = "fAdminXemDSLichThi_PhongThi";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminXemDSLichThi_PhongThi";
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
