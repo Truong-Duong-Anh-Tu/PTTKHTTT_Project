@@ -20,17 +20,17 @@ namespace PTTKHTTTProject
             try
             {
                 // Tải dữ liệu cho ComboBox Phòng Ban từ CSDL
-                comboBoxLichThi.DataSource = NhanVienDAO.GetAllPhongBan();
-                comboBoxLichThi.DisplayMember = "PB_TenPhongBan";
-                comboBoxLichThi.ValueMember = "PB_MaPhongBan";
-                comboBoxLichThi.SelectedIndex = -1;
-                comboBoxLichThi.Text = "Chọn phòng ban";
+                comboBoxPhongBan.DataSource = NhanVienDAO.GetAllPhongBan();
+                comboBoxPhongBan.DisplayMember = "PB_TenPhongBan";
+                comboBoxPhongBan.ValueMember = "PB_MaPhongBan";
+                comboBoxPhongBan.SelectedIndex = -1;
+                comboBoxPhongBan.Text = "Chọn phòng ban";
 
                 // Tải dữ liệu cho ComboBox Chức Vụ (dữ liệu tĩnh)
                 string[] chucVuList = { "Tiếp nhận", "Kế toán", "Nhập liệu", "Quản trị hệ thống", "Coi thi" };
-                comboBoxKyThi.DataSource = chucVuList;
-                comboBoxKyThi.SelectedIndex = -1;
-                comboBoxKyThi.Text = "Chọn chức vụ";
+                comboBoxChucVu.DataSource = chucVuList;
+                comboBoxChucVu.SelectedIndex = -1;
+                comboBoxChucVu.Text = "Chọn chức vụ";
             }
             catch (Exception ex)
             {
@@ -42,14 +42,14 @@ namespace PTTKHTTTProject
         private void button1_Click(object sender, EventArgs e)
         {
             // Kiểm tra thông tin nhập
-            if (string.IsNullOrWhiteSpace(textBoxKyThi.Text) ||
-                string.IsNullOrWhiteSpace(textBoxPhongThi.Text) ||
-                string.IsNullOrWhiteSpace(textBoxTGBatDau.Text) ||
-                string.IsNullOrWhiteSpace(textBoxTGKetThuc.Text) ||
-                string.IsNullOrWhiteSpace(textBoxMaNVCoiThi.Text) ||
-                string.IsNullOrWhiteSpace(textBoxTenNVCoiThi.Text) ||
-                comboBoxKyThi.SelectedItem == null ||
-                comboBoxLichThi.SelectedValue == null)
+            if (string.IsNullOrWhiteSpace(textBoxHoTen.Text) ||
+                string.IsNullOrWhiteSpace(textBoxGioiTinh.Text) ||
+                string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
+                string.IsNullOrWhiteSpace(textBoxSDT.Text) ||
+                string.IsNullOrWhiteSpace(textBoxCCCD.Text) ||
+                string.IsNullOrWhiteSpace(textBoxDiaChi.Text) ||
+                comboBoxChucVu.SelectedItem == null ||
+                comboBoxPhongBan.SelectedValue == null)
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin nhân viên.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -58,14 +58,14 @@ namespace PTTKHTTTProject
             DateTime ngaySinh = dateTimePickerNgaySinh.Value;
 
             // Lấy dữ liệu từ các control với tên đúng từ file Designer
-            string hoTen = textBoxKyThi.Text;
-            string gioiTinh = textBoxPhongThi.Text;
-            string email = textBoxTGBatDau.Text;
-            string sdt = textBoxTGKetThuc.Text;
-            string cccd = textBoxMaNVCoiThi.Text;
-            string diaChi = textBoxTenNVCoiThi.Text;
-            string chucVu = comboBoxKyThi.SelectedItem?.ToString() ?? string.Empty;
-            string maPhongBan = comboBoxLichThi.SelectedValue?.ToString() ?? string.Empty;
+            string hoTen = textBoxHoTen.Text;
+            string gioiTinh = textBoxGioiTinh.Text;
+            string email = textBoxEmail.Text;
+            string sdt = textBoxSDT.Text;
+            string cccd = textBoxCCCD.Text;
+            string diaChi = textBoxDiaChi.Text;
+            string chucVu = comboBoxChucVu.SelectedItem?.ToString() ?? string.Empty;
+            string maPhongBan = comboBoxPhongBan.SelectedValue?.ToString() ?? string.Empty;
             int luong = (int)numericUpDownLuong.Value;
             if (luong <= 0)
             {
