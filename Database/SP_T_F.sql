@@ -504,6 +504,43 @@ BEGIN
 END;
 GO
 
+
+-- Chỉnh sửa nhân viên
+CREATE PROCEDURE usp_UpdateNhanVien
+    @MaNhanVien NVARCHAR(10),
+    @TenNhanVien NVARCHAR(100),
+    @NgaySinh DATE,
+    @GioiTinh NVARCHAR(10),
+    @Email NVARCHAR(100),
+    @SDT NVARCHAR(20),
+    @CCCD NVARCHAR(20),
+    @DiaChi NVARCHAR(200),
+    @ChucVu NVARCHAR(50),
+    @Luong INT,
+    @MaPhongBan NVARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    UPDATE NHANVIEN
+    SET
+        NV_TenNhanVien = @TenNhanVien,
+        NV_NgaySinh = @NgaySinh,
+        NV_GioiTinh = @GioiTinh,
+        NV_Email = @Email,
+        NV_SDT = @SDT,
+        NV_CCCD = @CCCD,
+        NV_DiaChi = @DiaChi,
+        NV_ChucVu = @ChucVu,
+        NV_Luong = @Luong,
+        NV_MaPhongBan = @MaPhongBan
+    WHERE NV_MaNhanVien = @MaNhanVien;
+
+    IF @@ROWCOUNT = 1
+        RETURN 1;
+    ELSE
+        RETURN 0;
+END
+GO
 --- Lấy tất cả phòng ban
 CREATE OR ALTER PROCEDURE usp_GetAllPhongBan
 AS
@@ -998,6 +1035,14 @@ BEGIN
         WHERE LT_NgayThi = @NgayThi
     );
 END
+GO
+
+CREATE OR ALTER PROCEDURE usp_GetPhongBanByTenPhongBan 
+	@TenPhongBan NVARCHAR(100)
+AS
+BEGIN
+	SELECT * FROM PHONGBAN pb WHERE pb.PB_TenPhongBan = @TenPhongBan;
+END;
 GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------

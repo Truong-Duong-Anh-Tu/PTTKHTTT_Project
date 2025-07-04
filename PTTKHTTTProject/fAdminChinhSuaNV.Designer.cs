@@ -31,10 +31,11 @@
             pictureBoxThoat = new PictureBox();
             labelThemLichThi = new Label();
             tableLayoutPanelThongTinNV = new TableLayoutPanel();
-            labelHienThiDiaChi = new Label();
-            labelHienThiCCCD = new Label();
-            labelHienThiSDT = new Label();
-            labelHienThiEmail = new Label();
+            textBoxHienThiDiaChi = new TextBox();
+            textBoxHienThiCCCD = new TextBox();
+            textBoxHienThiSDT = new TextBox();
+            textBoxHienThiHoTen = new TextBox();
+            textBoxHienThiEmail = new TextBox();
             numericUpDownLuong = new NumericUpDown();
             labelLuong = new Label();
             labelDiaChi = new Label();
@@ -44,16 +45,15 @@
             labelNgaySinh = new Label();
             labelGioiTinh = new Label();
             labelSoDT = new Label();
-            comboBoxGioiTinh = new ComboBox();
             dateTimePickerNgaySinh = new DateTimePicker();
-            labelHienThiHoTen = new Label();
+            comboBoxGioiTinh = new ComboBox();
             labelThongTinNV = new Label();
             label1 = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            labelHienThiPhongBan = new Label();
+            textBoxHienThiPhongBan = new TextBox();
+            comboBoxHienThiChucVu = new ComboBox();
             labelPhongBan = new Label();
             labelChucVu = new Label();
-            labelHienThiChucVu = new Label();
             buttonChinhSuaThongTin = new Button();
             buttonLuuThongTin = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).BeginInit();
@@ -85,13 +85,15 @@
             // 
             // tableLayoutPanelThongTinNV
             // 
+            tableLayoutPanelThongTinNV.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tableLayoutPanelThongTinNV.ColumnCount = 2;
             tableLayoutPanelThongTinNV.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.290844F));
             tableLayoutPanelThongTinNV.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65.70916F));
-            tableLayoutPanelThongTinNV.Controls.Add(labelHienThiDiaChi, 1, 6);
-            tableLayoutPanelThongTinNV.Controls.Add(labelHienThiCCCD, 1, 5);
-            tableLayoutPanelThongTinNV.Controls.Add(labelHienThiSDT, 1, 4);
-            tableLayoutPanelThongTinNV.Controls.Add(labelHienThiEmail, 1, 3);
+            tableLayoutPanelThongTinNV.Controls.Add(textBoxHienThiDiaChi, 1, 6);
+            tableLayoutPanelThongTinNV.Controls.Add(textBoxHienThiCCCD, 1, 5);
+            tableLayoutPanelThongTinNV.Controls.Add(textBoxHienThiSDT, 1, 4);
+            tableLayoutPanelThongTinNV.Controls.Add(textBoxHienThiHoTen, 1, 0);
+            tableLayoutPanelThongTinNV.Controls.Add(textBoxHienThiEmail, 1, 3);
             tableLayoutPanelThongTinNV.Controls.Add(numericUpDownLuong, 1, 7);
             tableLayoutPanelThongTinNV.Controls.Add(labelLuong, 0, 7);
             tableLayoutPanelThongTinNV.Controls.Add(labelDiaChi, 0, 6);
@@ -101,9 +103,8 @@
             tableLayoutPanelThongTinNV.Controls.Add(labelNgaySinh, 0, 1);
             tableLayoutPanelThongTinNV.Controls.Add(labelGioiTinh, 0, 2);
             tableLayoutPanelThongTinNV.Controls.Add(labelSoDT, 0, 4);
-            tableLayoutPanelThongTinNV.Controls.Add(comboBoxGioiTinh, 1, 2);
             tableLayoutPanelThongTinNV.Controls.Add(dateTimePickerNgaySinh, 1, 1);
-            tableLayoutPanelThongTinNV.Controls.Add(labelHienThiHoTen, 1, 0);
+            tableLayoutPanelThongTinNV.Controls.Add(comboBoxGioiTinh, 1, 2);
             tableLayoutPanelThongTinNV.Location = new Point(43, 115);
             tableLayoutPanelThongTinNV.Name = "tableLayoutPanelThongTinNV";
             tableLayoutPanelThongTinNV.RowCount = 8;
@@ -115,61 +116,69 @@
             tableLayoutPanelThongTinNV.RowStyles.Add(new RowStyle(SizeType.Absolute, 49F));
             tableLayoutPanelThongTinNV.RowStyles.Add(new RowStyle(SizeType.Absolute, 58F));
             tableLayoutPanelThongTinNV.RowStyles.Add(new RowStyle(SizeType.Absolute, 8F));
+            tableLayoutPanelThongTinNV.RowStyles.Add(new RowStyle(SizeType.Absolute, 20F));
             tableLayoutPanelThongTinNV.Size = new Size(587, 409);
             tableLayoutPanelThongTinNV.TabIndex = 26;
+            tableLayoutPanelThongTinNV.Paint += tableLayoutPanelThongTinNV_Paint;
             // 
-            // labelHienThiDiaChi
+            // textBoxHienThiDiaChi
             // 
-            labelHienThiDiaChi.Anchor = AnchorStyles.None;
-            labelHienThiDiaChi.AutoSize = true;
-            labelHienThiDiaChi.Font = new Font("Segoe UI", 10F);
-            labelHienThiDiaChi.Location = new Point(366, 316);
-            labelHienThiDiaChi.Name = "labelHienThiDiaChi";
-            labelHienThiDiaChi.Size = new Size(55, 23);
-            labelHienThiDiaChi.TabIndex = 27;
-            labelHienThiDiaChi.Text = "label2";
+            textBoxHienThiDiaChi.Anchor = AnchorStyles.None;
+            textBoxHienThiDiaChi.BackColor = SystemColors.MenuBar;
+            textBoxHienThiDiaChi.BorderStyle = BorderStyle.FixedSingle;
+            textBoxHienThiDiaChi.Location = new Point(266, 321);
+            textBoxHienThiDiaChi.Name = "textBoxHienThiDiaChi";
+            textBoxHienThiDiaChi.Size = new Size(256, 27);
+            textBoxHienThiDiaChi.TabIndex = 37;
             // 
-            // labelHienThiCCCD
+            // textBoxHienThiCCCD
             // 
-            labelHienThiCCCD.Anchor = AnchorStyles.None;
-            labelHienThiCCCD.AutoSize = true;
-            labelHienThiCCCD.Font = new Font("Segoe UI", 10F);
-            labelHienThiCCCD.Location = new Point(366, 263);
-            labelHienThiCCCD.Name = "labelHienThiCCCD";
-            labelHienThiCCCD.Size = new Size(55, 23);
-            labelHienThiCCCD.TabIndex = 26;
-            labelHienThiCCCD.Text = "label2";
+            textBoxHienThiCCCD.Anchor = AnchorStyles.None;
+            textBoxHienThiCCCD.BackColor = SystemColors.MenuBar;
+            textBoxHienThiCCCD.BorderStyle = BorderStyle.FixedSingle;
+            textBoxHienThiCCCD.Location = new Point(266, 267);
+            textBoxHienThiCCCD.Name = "textBoxHienThiCCCD";
+            textBoxHienThiCCCD.Size = new Size(256, 27);
+            textBoxHienThiCCCD.TabIndex = 36;
             // 
-            // labelHienThiSDT
+            // textBoxHienThiSDT
             // 
-            labelHienThiSDT.Anchor = AnchorStyles.None;
-            labelHienThiSDT.AutoSize = true;
-            labelHienThiSDT.Font = new Font("Segoe UI", 10F);
-            labelHienThiSDT.Location = new Point(366, 213);
-            labelHienThiSDT.Name = "labelHienThiSDT";
-            labelHienThiSDT.Size = new Size(55, 23);
-            labelHienThiSDT.TabIndex = 25;
-            labelHienThiSDT.Text = "label2";
+            textBoxHienThiSDT.Anchor = AnchorStyles.None;
+            textBoxHienThiSDT.BackColor = SystemColors.MenuBar;
+            textBoxHienThiSDT.BorderStyle = BorderStyle.FixedSingle;
+            textBoxHienThiSDT.Location = new Point(266, 216);
+            textBoxHienThiSDT.Name = "textBoxHienThiSDT";
+            textBoxHienThiSDT.Size = new Size(256, 27);
+            textBoxHienThiSDT.TabIndex = 35;
             // 
-            // labelHienThiEmail
+            // textBoxHienThiHoTen
             // 
-            labelHienThiEmail.Anchor = AnchorStyles.None;
-            labelHienThiEmail.AutoSize = true;
-            labelHienThiEmail.Font = new Font("Segoe UI", 10F);
-            labelHienThiEmail.Location = new Point(366, 163);
-            labelHienThiEmail.Name = "labelHienThiEmail";
-            labelHienThiEmail.Size = new Size(55, 23);
-            labelHienThiEmail.TabIndex = 24;
-            labelHienThiEmail.Text = "label2";
+            textBoxHienThiHoTen.Anchor = AnchorStyles.None;
+            textBoxHienThiHoTen.BackColor = SystemColors.MenuBar;
+            textBoxHienThiHoTen.BorderStyle = BorderStyle.FixedSingle;
+            textBoxHienThiHoTen.Location = new Point(266, 12);
+            textBoxHienThiHoTen.Name = "textBoxHienThiHoTen";
+            textBoxHienThiHoTen.Size = new Size(256, 27);
+            textBoxHienThiHoTen.TabIndex = 33;
+            // 
+            // textBoxHienThiEmail
+            // 
+            textBoxHienThiEmail.Anchor = AnchorStyles.None;
+            textBoxHienThiEmail.BackColor = SystemColors.Menu;
+            textBoxHienThiEmail.BorderStyle = BorderStyle.FixedSingle;
+            textBoxHienThiEmail.Location = new Point(266, 165);
+            textBoxHienThiEmail.Name = "textBoxHienThiEmail";
+            textBoxHienThiEmail.Size = new Size(256, 27);
+            textBoxHienThiEmail.TabIndex = 34;
             // 
             // numericUpDownLuong
             // 
             numericUpDownLuong.Anchor = AnchorStyles.None;
-            numericUpDownLuong.Location = new Point(285, 369);
+            numericUpDownLuong.Location = new Point(265, 373);
             numericUpDownLuong.Maximum = new decimal(new int[] { 500000000, 0, 0, 0 });
             numericUpDownLuong.Minimum = new decimal(new int[] { 5000000, 0, 0, 0 });
             numericUpDownLuong.Name = "numericUpDownLuong";
-            numericUpDownLuong.Size = new Size(217, 27);
+            numericUpDownLuong.Size = new Size(257, 27);
             numericUpDownLuong.TabIndex = 20;
             numericUpDownLuong.Value = new decimal(new int[] { 5000000, 0, 0, 0 });
             // 
@@ -178,7 +187,7 @@
             labelLuong.Anchor = AnchorStyles.None;
             labelLuong.AutoSize = true;
             labelLuong.Font = new Font("Segoe UI", 10F);
-            labelLuong.Location = new Point(69, 371);
+            labelLuong.Location = new Point(70, 375);
             labelLuong.Name = "labelLuong";
             labelLuong.Size = new Size(62, 23);
             labelLuong.TabIndex = 21;
@@ -189,7 +198,7 @@
             labelDiaChi.Anchor = AnchorStyles.None;
             labelDiaChi.AutoSize = true;
             labelDiaChi.Font = new Font("Segoe UI", 10F);
-            labelDiaChi.Location = new Point(67, 316);
+            labelDiaChi.Location = new Point(68, 323);
             labelDiaChi.Name = "labelDiaChi";
             labelDiaChi.Size = new Size(66, 23);
             labelDiaChi.TabIndex = 12;
@@ -200,7 +209,7 @@
             labelCCCD.Anchor = AnchorStyles.None;
             labelCCCD.AutoSize = true;
             labelCCCD.Font = new Font("Segoe UI", 10F);
-            labelCCCD.Location = new Point(71, 263);
+            labelCCCD.Location = new Point(71, 269);
             labelCCCD.Name = "labelCCCD";
             labelCCCD.Size = new Size(59, 23);
             labelCCCD.TabIndex = 10;
@@ -211,7 +220,7 @@
             labelEmail.Anchor = AnchorStyles.None;
             labelEmail.AutoSize = true;
             labelEmail.Font = new Font("Segoe UI", 10F);
-            labelEmail.Location = new Point(73, 163);
+            labelEmail.Location = new Point(73, 167);
             labelEmail.Name = "labelEmail";
             labelEmail.Size = new Size(55, 23);
             labelEmail.TabIndex = 6;
@@ -222,7 +231,7 @@
             labelHoTen.Anchor = AnchorStyles.None;
             labelHoTen.AutoSize = true;
             labelHoTen.Font = new Font("Segoe UI", 10F);
-            labelHoTen.Location = new Point(67, 13);
+            labelHoTen.Location = new Point(68, 14);
             labelHoTen.Name = "labelHoTen";
             labelHoTen.Size = new Size(66, 23);
             labelHoTen.TabIndex = 0;
@@ -233,7 +242,7 @@
             labelNgaySinh.Anchor = AnchorStyles.None;
             labelNgaySinh.AutoSize = true;
             labelNgaySinh.Font = new Font("Segoe UI", 10F);
-            labelNgaySinh.Location = new Point(55, 63);
+            labelNgaySinh.Location = new Point(56, 65);
             labelNgaySinh.Name = "labelNgaySinh";
             labelNgaySinh.Size = new Size(90, 23);
             labelNgaySinh.TabIndex = 2;
@@ -244,7 +253,7 @@
             labelGioiTinh.Anchor = AnchorStyles.None;
             labelGioiTinh.AutoSize = true;
             labelGioiTinh.Font = new Font("Segoe UI", 10F);
-            labelGioiTinh.Location = new Point(61, 113);
+            labelGioiTinh.Location = new Point(61, 116);
             labelGioiTinh.Name = "labelGioiTinh";
             labelGioiTinh.Size = new Size(79, 23);
             labelGioiTinh.TabIndex = 3;
@@ -255,43 +264,32 @@
             labelSoDT.Anchor = AnchorStyles.None;
             labelSoDT.AutoSize = true;
             labelSoDT.Font = new Font("Segoe UI", 10F);
-            labelSoDT.Location = new Point(43, 213);
+            labelSoDT.Location = new Point(43, 218);
             labelSoDT.Name = "labelSoDT";
             labelSoDT.Size = new Size(115, 23);
             labelSoDT.TabIndex = 7;
             labelSoDT.Text = "Số điện thoại:";
-            // 
-            // comboBoxGioiTinh
-            // 
-            comboBoxGioiTinh.Anchor = AnchorStyles.Bottom;
-            comboBoxGioiTinh.BackColor = SystemColors.Window;
-            comboBoxGioiTinh.FormattingEnabled = true;
-            comboBoxGioiTinh.Location = new Point(279, 119);
-            comboBoxGioiTinh.Name = "comboBoxGioiTinh";
-            comboBoxGioiTinh.Size = new Size(229, 28);
-            comboBoxGioiTinh.TabIndex = 22;
-            comboBoxGioiTinh.Text = "Giới tính";
             // 
             // dateTimePickerNgaySinh
             // 
             dateTimePickerNgaySinh.Anchor = AnchorStyles.None;
             dateTimePickerNgaySinh.CustomFormat = "dd/MM/yyyy";
             dateTimePickerNgaySinh.Format = DateTimePickerFormat.Custom;
-            dateTimePickerNgaySinh.Location = new Point(276, 61);
+            dateTimePickerNgaySinh.Location = new Point(264, 63);
             dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
-            dateTimePickerNgaySinh.Size = new Size(236, 27);
+            dateTimePickerNgaySinh.Size = new Size(259, 27);
             dateTimePickerNgaySinh.TabIndex = 20;
             // 
-            // labelHienThiHoTen
+            // comboBoxGioiTinh
             // 
-            labelHienThiHoTen.Anchor = AnchorStyles.None;
-            labelHienThiHoTen.AutoSize = true;
-            labelHienThiHoTen.Font = new Font("Segoe UI", 10F);
-            labelHienThiHoTen.Location = new Point(366, 13);
-            labelHienThiHoTen.Name = "labelHienThiHoTen";
-            labelHienThiHoTen.Size = new Size(55, 23);
-            labelHienThiHoTen.TabIndex = 23;
-            labelHienThiHoTen.Text = "label2";
+            comboBoxGioiTinh.Anchor = AnchorStyles.None;
+            comboBoxGioiTinh.BackColor = SystemColors.Window;
+            comboBoxGioiTinh.FormattingEnabled = true;
+            comboBoxGioiTinh.Location = new Point(264, 114);
+            comboBoxGioiTinh.Name = "comboBoxGioiTinh";
+            comboBoxGioiTinh.Size = new Size(260, 28);
+            comboBoxGioiTinh.TabIndex = 22;
+            comboBoxGioiTinh.Text = "Giới tính";
             // 
             // labelThongTinNV
             // 
@@ -315,38 +313,50 @@
             // 
             // tableLayoutPanel1
             // 
+            tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tableLayoutPanel1.ColumnCount = 2;
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 40.8496742F));
             tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 59.1503258F));
-            tableLayoutPanel1.Controls.Add(labelHienThiPhongBan, 1, 1);
+            tableLayoutPanel1.Controls.Add(textBoxHienThiPhongBan, 1, 1);
+            tableLayoutPanel1.Controls.Add(comboBoxHienThiChucVu, 1, 0);
             tableLayoutPanel1.Controls.Add(labelPhongBan, 0, 1);
             tableLayoutPanel1.Controls.Add(labelChucVu, 0, 0);
-            tableLayoutPanel1.Controls.Add(labelHienThiChucVu, 1, 0);
-            tableLayoutPanel1.Location = new Point(687, 115);
+            tableLayoutPanel1.Location = new Point(657, 115);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 2;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 51.42857F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 48.57143F));
-            tableLayoutPanel1.Size = new Size(306, 86);
+            tableLayoutPanel1.Size = new Size(361, 86);
             tableLayoutPanel1.TabIndex = 29;
             // 
-            // labelHienThiPhongBan
+            // textBoxHienThiPhongBan
             // 
-            labelHienThiPhongBan.Anchor = AnchorStyles.None;
-            labelHienThiPhongBan.AutoSize = true;
-            labelHienThiPhongBan.Font = new Font("Segoe UI", 10F);
-            labelHienThiPhongBan.Location = new Point(188, 53);
-            labelHienThiPhongBan.Name = "labelHienThiPhongBan";
-            labelHienThiPhongBan.Size = new Size(55, 23);
-            labelHienThiPhongBan.TabIndex = 4;
-            labelHienThiPhongBan.Text = "label2";
+            textBoxHienThiPhongBan.Anchor = AnchorStyles.None;
+            textBoxHienThiPhongBan.BackColor = SystemColors.MenuBar;
+            textBoxHienThiPhongBan.BorderStyle = BorderStyle.FixedSingle;
+            textBoxHienThiPhongBan.Location = new Point(168, 51);
+            textBoxHienThiPhongBan.Name = "textBoxHienThiPhongBan";
+            textBoxHienThiPhongBan.ReadOnly = true;
+            textBoxHienThiPhongBan.Size = new Size(171, 27);
+            textBoxHienThiPhongBan.TabIndex = 38;
+            textBoxHienThiPhongBan.TextAlign = HorizontalAlignment.Center;
+            // 
+            // comboBoxHienThiChucVu
+            // 
+            comboBoxHienThiChucVu.Anchor = AnchorStyles.None;
+            comboBoxHienThiChucVu.FormattingEnabled = true;
+            comboBoxHienThiChucVu.Location = new Point(169, 8);
+            comboBoxHienThiChucVu.Name = "comboBoxHienThiChucVu";
+            comboBoxHienThiChucVu.Size = new Size(170, 28);
+            comboBoxHienThiChucVu.TabIndex = 33;
+            comboBoxHienThiChucVu.SelectedIndexChanged += comboBoxHienThiChucVu_SelectedIndexChanged_1;
             // 
             // labelPhongBan
             // 
             labelPhongBan.Anchor = AnchorStyles.None;
             labelPhongBan.AutoSize = true;
             labelPhongBan.Font = new Font("Segoe UI", 10F);
-            labelPhongBan.Location = new Point(13, 53);
+            labelPhongBan.Location = new Point(25, 53);
             labelPhongBan.Name = "labelPhongBan";
             labelPhongBan.Size = new Size(98, 23);
             labelPhongBan.TabIndex = 3;
@@ -357,22 +367,11 @@
             labelChucVu.Anchor = AnchorStyles.None;
             labelChucVu.AutoSize = true;
             labelChucVu.Font = new Font("Segoe UI", 10F);
-            labelChucVu.Location = new Point(24, 10);
+            labelChucVu.Location = new Point(36, 10);
             labelChucVu.Name = "labelChucVu";
             labelChucVu.Size = new Size(76, 23);
             labelChucVu.TabIndex = 1;
             labelChucVu.Text = "Chức vụ:";
-            // 
-            // labelHienThiChucVu
-            // 
-            labelHienThiChucVu.Anchor = AnchorStyles.None;
-            labelHienThiChucVu.AutoSize = true;
-            labelHienThiChucVu.Font = new Font("Segoe UI", 10F);
-            labelHienThiChucVu.Location = new Point(188, 10);
-            labelHienThiChucVu.Name = "labelHienThiChucVu";
-            labelHienThiChucVu.Size = new Size(55, 23);
-            labelHienThiChucVu.TabIndex = 2;
-            labelHienThiChucVu.Text = "label2";
             // 
             // buttonChinhSuaThongTin
             // 
@@ -385,6 +384,7 @@
             buttonChinhSuaThongTin.TabIndex = 30;
             buttonChinhSuaThongTin.Text = "Chỉnh sửa thông tin";
             buttonChinhSuaThongTin.UseVisualStyleBackColor = false;
+            buttonChinhSuaThongTin.Click += buttonChinhSuaThongTin_Click_1;
             // 
             // buttonLuuThongTin
             // 
@@ -397,6 +397,7 @@
             buttonLuuThongTin.TabIndex = 31;
             buttonLuuThongTin.Text = "Lưu thông tin";
             buttonLuuThongTin.UseVisualStyleBackColor = false;
+            buttonLuuThongTin.Click += buttonLuuThongTin_Click;
             // 
             // fAdminChinhSuaNV
             // 
@@ -444,17 +445,18 @@
         private Label labelThongTinNV;
         private Label label1;
         private ComboBox comboBoxGioiTinh;
-        private Label labelHienThiDiaChi;
-        private Label labelHienThiCCCD;
-        private Label labelHienThiSDT;
-        private Label labelHienThiEmail;
-        private Label labelHienThiHoTen;
         private TableLayoutPanel tableLayoutPanel1;
         private Label labelHienThiPhongBan;
         private Label labelPhongBan;
         private Label labelChucVu;
-        private Label labelHienThiChucVu;
         private Button buttonChinhSuaThongTin;
         private Button buttonLuuThongTin;
+        private TextBox textBoxHienThiEmail;
+        private TextBox textBoxHienThiDiaChi;
+        private TextBox textBoxHienThiCCCD;
+        private TextBox textBoxHienThiSDT;
+        private TextBox textBoxHienThiHoTen;
+        private TextBox textBoxHienThiPhongBan;
+        private ComboBox comboBoxHienThiChucVu;
     }
 }

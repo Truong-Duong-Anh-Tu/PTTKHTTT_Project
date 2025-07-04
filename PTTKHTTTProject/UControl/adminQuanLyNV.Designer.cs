@@ -60,6 +60,7 @@
             dataGridView1.Size = new Size(944, 430);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellContentClick += dataGridView1_CellContentClick;
+            dataGridView1.CellPainting += dataGridView1_CellPainting_1;
             // 
             // panel1
             // 

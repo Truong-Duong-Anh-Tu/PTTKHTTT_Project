@@ -60,5 +60,12 @@ namespace PTTKHTTTProject.BUS
                 return string.Empty;
             return InfoEmployeeDAO.GetTenNhanVien(maNV);
         }
+
+        public static bool UpdateNhanVien(
+            string maNV, string tenNV, DateTime ngaySinh, string gioiTinh, string email,
+            string sdt, string cccd, string diaChi, string chucVu, int luong, string maPhongBan)
+        {
+            return InfoEmployeeDAO.UpdateNhanVien(maNV, tenNV, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
+        }
     }
 }

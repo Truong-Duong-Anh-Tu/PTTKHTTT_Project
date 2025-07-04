@@ -55,20 +55,15 @@ namespace PTTKHTTTProject.UControl
         {
             // Mã kỳ thi luôn ở chế độ chỉ đọc
             textBoxMaKyThi.ReadOnly = true;
-            textBoxMaKyThi.BackColor = SystemColors.Control;
-
             textBoxTenKyThi.ReadOnly = readOnly;
-            textBoxLePhi.ReadOnly = readOnly;
-
-            textBoxTenKyThi.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
-            textBoxLePhi.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
+            numericUpDownHienThiLePhi.ReadOnly = readOnly;
         }
 
         private void ClearTextBoxes()
         {
             textBoxMaKyThi.Text = "";
             textBoxTenKyThi.Text = "";
-            textBoxLePhi.Text = "";
+            numericUpDownHienThiLePhi.Text = "";
         }
 
         private void buttonTimKiem_Click(object sender, EventArgs e)
@@ -87,7 +82,10 @@ namespace PTTKHTTTProject.UControl
                 DataGridViewRow row = this.dataGridViewDSKythi.Rows[e.RowIndex];
                 textBoxMaKyThi.Text = row.Cells["KT_MaKyThi"].Value.ToString();
                 textBoxTenKyThi.Text = row.Cells["KT_TenKyThi"].Value.ToString();
-                textBoxLePhi.Text = row.Cells["LePhi"].Value.ToString();
+                if (decimal.TryParse(row.Cells["LePhi"].Value?.ToString(), out decimal lePhi))
+                    numericUpDownHienThiLePhi.Value = lePhi;
+                else
+                    numericUpDownHienThiLePhi.Value = numericUpDownHienThiLePhi.Minimum;
 
                 SetTextBoxesReadOnly(true);
                 buttonLuu.Enabled = false;
@@ -98,18 +96,17 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
-        // --- BẮT ĐẦU PHẦN CHỈNH SỬA ---
         private void buttonThemKyThi_Click(object sender, EventArgs e)
         {
             isAdding = true;
             ClearTextBoxes();
             textBoxMaKyThi.Text = "Tự động"; // Hiển thị chữ "Tự động"
+            numericUpDownHienThiLePhi.Value = numericUpDownHienThiLePhi.Minimum;
             SetTextBoxesReadOnly(false);
             buttonLuu.Enabled = true;
             buttonChinhSua.Enabled = false;
             buttonXoa.Enabled = false;
         }
-        // --- KẾT THÚC PHẦN CHỈNH SỬA ---
 
         private void buttonChinhSua_Click(object sender, EventArgs e)
         {
@@ -131,7 +128,7 @@ namespace PTTKHTTTProject.UControl
         {
             if (isAdding)
             {
-                if (ExamTypeBUS.AddKyThi(textBoxTenKyThi.Text, textBoxLePhi.Text))
+                if (ExamTypeBUS.AddKyThi(textBoxTenKyThi.Text, numericUpDownHienThiLePhi.Text))
                 {
                     MessageBox.Show("Thêm kỳ thi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -142,7 +139,7 @@ namespace PTTKHTTTProject.UControl
             }
             else
             {
-                if (ExamTypeBUS.UpdateKyThi(textBoxMaKyThi.Text, textBoxTenKyThi.Text, textBoxLePhi.Text))
+                if (ExamTypeBUS.UpdateKyThi(textBoxMaKyThi.Text, textBoxTenKyThi.Text, numericUpDownHienThiLePhi.Text))
                 {
                     MessageBox.Show("Cập nhật kỳ thi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -188,6 +185,11 @@ namespace PTTKHTTTProject.UControl
         private void adminQLKyThi_Load(object sender, EventArgs e)
         {
             // Để trống nếu không sử dụng
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

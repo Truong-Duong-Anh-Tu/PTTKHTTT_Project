@@ -35,7 +35,7 @@
             buttonLuu = new Button();
             labelThongTinChiTiet = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
-            textBoxLePhi = new TextBox();
+            numericUpDownHienThiLePhi = new NumericUpDown();
             textBoxTenKyThi = new TextBox();
             labelLePhi = new Label();
             labelTenKyThi = new Label();
@@ -47,6 +47,7 @@
             textBoxTimKiem = new TextBox();
             panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownHienThiLePhi).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDSKythi).BeginInit();
             SuspendLayout();
             // 
@@ -54,7 +55,7 @@
             // 
             labelDSKyThi.AutoSize = true;
             labelDSKyThi.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            labelDSKyThi.Location = new Point(396, 30);
+            labelDSKyThi.Location = new Point(397, 34);
             labelDSKyThi.Name = "labelDSKyThi";
             labelDSKyThi.Size = new Size(192, 31);
             labelDSKyThi.TabIndex = 3;
@@ -71,8 +72,9 @@
             panel2.Controls.Add(buttonChinhSua);
             panel2.Location = new Point(25, 107);
             panel2.Name = "panel2";
-            panel2.Size = new Size(425, 421);
+            panel2.Size = new Size(478, 421);
             panel2.TabIndex = 7;
+            panel2.Paint += panel2_Paint;
             // 
             // buttonXoa
             // 
@@ -122,9 +124,9 @@
             tableLayoutPanel1.BackColor = SystemColors.ButtonHighlight;
             tableLayoutPanel1.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tableLayoutPanel1.ColumnCount = 2;
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 33.42857F));
-            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 66.57143F));
-            tableLayoutPanel1.Controls.Add(textBoxLePhi, 1, 2);
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 21.5827332F));
+            tableLayoutPanel1.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 78.41727F));
+            tableLayoutPanel1.Controls.Add(numericUpDownHienThiLePhi, 1, 2);
             tableLayoutPanel1.Controls.Add(textBoxTenKyThi, 1, 1);
             tableLayoutPanel1.Controls.Add(labelLePhi, 0, 2);
             tableLayoutPanel1.Controls.Add(labelTenKyThi, 0, 1);
@@ -136,19 +138,20 @@
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
-            tableLayoutPanel1.Size = new Size(350, 187);
+            tableLayoutPanel1.Size = new Size(418, 187);
             tableLayoutPanel1.TabIndex = 1;
             // 
-            // textBoxLePhi
+            // numericUpDownHienThiLePhi
             // 
-            textBoxLePhi.Anchor = AnchorStyles.None;
-            textBoxLePhi.BackColor = SystemColors.MenuBar;
-            textBoxLePhi.BorderStyle = BorderStyle.None;
-            textBoxLePhi.Font = new Font("Segoe UI", 10F);
-            textBoxLePhi.Location = new Point(143, 145);
-            textBoxLePhi.Name = "textBoxLePhi";
-            textBoxLePhi.Size = new Size(180, 23);
-            textBoxLePhi.TabIndex = 7;
+            numericUpDownHienThiLePhi.Anchor = AnchorStyles.None;
+            numericUpDownHienThiLePhi.Increment = new decimal(new int[] { 50000, 0, 0, 0 });
+            numericUpDownHienThiLePhi.Location = new Point(134, 143);
+            numericUpDownHienThiLePhi.Maximum = new decimal(new int[] { 50000000, 0, 0, 0 });
+            numericUpDownHienThiLePhi.Minimum = new decimal(new int[] { 100000, 0, 0, 0 });
+            numericUpDownHienThiLePhi.Name = "numericUpDownHienThiLePhi";
+            numericUpDownHienThiLePhi.Size = new Size(239, 27);
+            numericUpDownHienThiLePhi.TabIndex = 7;
+            numericUpDownHienThiLePhi.Value = new decimal(new int[] { 100000, 0, 0, 0 });
             // 
             // textBoxTenKyThi
             // 
@@ -156,16 +159,16 @@
             textBoxTenKyThi.BackColor = SystemColors.MenuBar;
             textBoxTenKyThi.BorderStyle = BorderStyle.None;
             textBoxTenKyThi.Font = new Font("Segoe UI", 10F);
-            textBoxTenKyThi.Location = new Point(143, 83);
+            textBoxTenKyThi.Location = new Point(135, 83);
             textBoxTenKyThi.Name = "textBoxTenKyThi";
-            textBoxTenKyThi.Size = new Size(180, 23);
+            textBoxTenKyThi.Size = new Size(238, 23);
             textBoxTenKyThi.TabIndex = 6;
             // 
             // labelLePhi
             // 
             labelLePhi.Anchor = AnchorStyles.None;
             labelLePhi.AutoSize = true;
-            labelLePhi.Location = new Point(34, 146);
+            labelLePhi.Location = new Point(21, 146);
             labelLePhi.Name = "labelLePhi";
             labelLePhi.Size = new Size(49, 20);
             labelLePhi.TabIndex = 4;
@@ -175,7 +178,7 @@
             // 
             labelTenKyThi.Anchor = AnchorStyles.None;
             labelTenKyThi.AutoSize = true;
-            labelTenKyThi.Location = new Point(23, 85);
+            labelTenKyThi.Location = new Point(10, 85);
             labelTenKyThi.Name = "labelTenKyThi";
             labelTenKyThi.Size = new Size(71, 20);
             labelTenKyThi.TabIndex = 2;
@@ -185,7 +188,7 @@
             // 
             labelMaKyThi.Anchor = AnchorStyles.None;
             labelMaKyThi.AutoSize = true;
-            labelMaKyThi.Location = new Point(24, 22);
+            labelMaKyThi.Location = new Point(11, 22);
             labelMaKyThi.Name = "labelMaKyThi";
             labelMaKyThi.Size = new Size(69, 20);
             labelMaKyThi.TabIndex = 0;
@@ -197,9 +200,9 @@
             textBoxMaKyThi.BackColor = SystemColors.MenuBar;
             textBoxMaKyThi.BorderStyle = BorderStyle.None;
             textBoxMaKyThi.Font = new Font("Segoe UI", 10F);
-            textBoxMaKyThi.Location = new Point(143, 20);
+            textBoxMaKyThi.Location = new Point(133, 20);
             textBoxMaKyThi.Name = "textBoxMaKyThi";
-            textBoxMaKyThi.Size = new Size(180, 23);
+            textBoxMaKyThi.Size = new Size(241, 23);
             textBoxMaKyThi.TabIndex = 5;
             // 
             // buttonChinhSua
@@ -217,7 +220,7 @@
             // 
             dataGridViewDSKythi.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewDSKythi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDSKythi.Location = new Point(489, 146);
+            dataGridViewDSKythi.Location = new Point(519, 146);
             dataGridViewDSKythi.Name = "dataGridViewDSKythi";
             dataGridViewDSKythi.RowHeadersWidth = 51;
             dataGridViewDSKythi.Size = new Size(483, 382);
@@ -227,7 +230,7 @@
             // buttonTimKiem
             // 
             buttonTimKiem.BackColor = Color.SkyBlue;
-            buttonTimKiem.Location = new Point(878, 107);
+            buttonTimKiem.Location = new Point(908, 101);
             buttonTimKiem.Name = "buttonTimKiem";
             buttonTimKiem.Size = new Size(94, 33);
             buttonTimKiem.TabIndex = 5;
@@ -237,7 +240,7 @@
             // 
             // textBoxTimKiem
             // 
-            textBoxTimKiem.Location = new Point(610, 107);
+            textBoxTimKiem.Location = new Point(644, 107);
             textBoxTimKiem.Name = "textBoxTimKiem";
             textBoxTimKiem.PlaceholderText = "Tìm mã kỳ thi / tên kỳ thi";
             textBoxTimKiem.Size = new Size(247, 27);
@@ -260,6 +263,7 @@
             panel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
             tableLayoutPanel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)numericUpDownHienThiLePhi).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDSKythi).EndInit();
             ResumeLayout(false);
             PerformLayout();
@@ -282,8 +286,8 @@
         private Label labelMaKyThi;
         private Button buttonLuu;
         private Button buttonXoa;
-        private TextBox textBoxLePhi;
         private TextBox textBoxTenKyThi;
         private TextBox textBoxMaKyThi;
+        private NumericUpDown numericUpDownHienThiLePhi;
     }
 }

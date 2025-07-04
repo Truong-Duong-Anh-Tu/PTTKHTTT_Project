@@ -58,6 +58,37 @@ namespace PTTKHTTTProject.DAO
             }
         }
 
+        public static bool UpdateNhanVien(
+            string maNV, string tenNV, DateTime ngaySinh, string gioiTinh, string email,
+            string sdt, string cccd, string diaChi, string chucVu, int luong, string maPhongBan)
+        {
+            var parameters = new List<SqlParameter>
+            {
+                new SqlParameter("@MaNhanVien", maNV),
+                new SqlParameter("@TenNhanVien", tenNV),
+                new SqlParameter("@NgaySinh", ngaySinh),
+                new SqlParameter("@GioiTinh", gioiTinh),
+                new SqlParameter("@Email", email),
+                new SqlParameter("@SDT", sdt),
+                new SqlParameter("@CCCD", cccd),
+                new SqlParameter("@DiaChi", diaChi),
+                new SqlParameter("@ChucVu", chucVu),
+                new SqlParameter("@Luong", luong),
+                new SqlParameter("@MaPhongBan", maPhongBan)
+            };
+
+            // Thêm parameter để nhận giá trị RETURN
+            var returnParam = new SqlParameter("@ReturnVal", System.Data.SqlDbType.Int)
+            {
+                Direction = System.Data.ParameterDirection.ReturnValue
+            };
+            parameters.Add(returnParam);
+
+            DataProvider.Instance.ExecuteNonQuerySP("usp_UpdateNhanVien", parameters.ToArray());
+
+            int result = (int)returnParam.Value;
+            return result == 1;
+        }
         public static bool DeleteNhanVien(string maNV)
         {
             try
