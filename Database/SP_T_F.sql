@@ -691,13 +691,24 @@ BEGIN
         lt.LT_MaPhongThi AS N'Phòng Thi',
         lt.LT_TGBatDau AS N'Giờ Bắt Đầu',
         lt.LT_TGKetThuc AS N'Giờ Kết Thúc',
-        lt.LT_TrangThai AS N'Trạng Thái'
+        lt.LT_SLDangKy AS N'Số Lượng Đã Đăng Ký',
+        CASE 
+            -- Đang diễn ra
+            WHEN GETDATE() BETWEEN CAST(lt.LT_NgayThi AS DATETIME) + CAST(lt.LT_TGBatDau AS DATETIME) 
+                               AND CAST(lt.LT_NgayThi AS DATETIME) + CAST(lt.LT_TGKetThuc AS DATETIME) 
+            THEN N'Đang thi'
+            -- Đã kết thúc
+            WHEN GETDATE() > CAST(lt.LT_NgayThi AS DATETIME) + CAST(lt.LT_TGKetThuc AS DATETIME) 
+            THEN N'Đã thi'
+            -- Chưa diễn ra
+            ELSE N'Chưa thi'
+        END AS N'Trạng Thái'
     FROM 
         LICHTHI lt
     JOIN 
         KYTHI kt ON lt.LT_MaKyThi = kt.KT_MaKyThi
     ORDER BY 
-        lt.LT_NgayThi DESC;
+        lt.LT_NgayThi DESC, lt.LT_TGBatDau DESC;
 END;
 GO
 
@@ -881,6 +892,36 @@ BEGIN
     BEGIN CATCH
         THROW;
     END CATCH
+END
+GO
+
+-- Lấy mã lịch thi cuối cùng
+CREATE OR ALTER PROCEDURE usp_GetLastLichThiId
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT TOP 1 LT_MaLichThi
+    FROM LICHTHI
+    ORDER BY CAST(SUBSTRING(LT_MaLichThi, 3, LEN(LT_MaLichThi)) AS INT) DESC;
+END
+GO
+
+-- Thêm một lịch thi mới
+CREATE OR ALTER PROCEDURE usp_AddLichThi
+    @MaLichThi VARCHAR(10),
+    @MaKyThi VARCHAR(10),
+    @SLDangKy INT,
+    @TrangThai NVARCHAR(20),
+    @TenKyThi NVARCHAR(50),
+    @NgayThi DATE,
+    @MaPhongThi VARCHAR(10),
+    @TGBatDau TIME,
+    @TGKetThuc TIME
+AS
+BEGIN
+    SET NOCOUNT ON;
+    INSERT INTO LICHTHI (LT_MaLichThi, LT_MaKyThi, LT_SLDangKy, LT_TrangThai, LT_TenKyThi, LT_NgayThi, LT_MaPhongThi, LT_TGBatDau, LT_TGKetThuc)
+    VALUES (@MaLichThi, @MaKyThi, @SLDangKy, @TrangThai, @TenKyThi, @NgayThi, @MaPhongThi, @TGBatDau, @TGKetThuc);
 END
 GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG

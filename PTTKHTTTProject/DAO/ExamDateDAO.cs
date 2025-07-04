@@ -33,5 +33,27 @@ namespace PTTKHTTTProject.DAO
             };
             return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThiByPhongThi", parameters);
         }
+
+        public static string GetLastLichThiId()
+        {
+            return DataProvider.Instance.ExecuteScalarSP<string>("usp_GetLastLichThiId");
+        }
+
+        public static void AddLichThi(string maLichThi, string maKyThi, int slDangKy, string trangThai, string tenKyThi, DateTime ngayThi, string maPhongThi, TimeSpan tgBatDau, TimeSpan tgKetThuc)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaLichThi", maLichThi),
+                new SqlParameter("@MaKyThi", maKyThi),
+                new SqlParameter("@SLDangKy", slDangKy),
+                new SqlParameter("@TrangThai", trangThai),
+                new SqlParameter("@TenKyThi", tenKyThi),
+                new SqlParameter("@NgayThi", ngayThi),
+                new SqlParameter("@MaPhongThi", maPhongThi),
+                new SqlParameter("@TGBatDau", tgBatDau),
+                new SqlParameter("@TGKetThuc", tgKetThuc)
+            };
+            DataProvider.Instance.ExecuteNonQuerySP("usp_AddLichThi", parameters);
+        }
     }
 }

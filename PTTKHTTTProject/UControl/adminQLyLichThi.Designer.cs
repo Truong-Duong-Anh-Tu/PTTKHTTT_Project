@@ -17,6 +17,8 @@
 
         private void InitializeComponent()
         {
+            components = new System.ComponentModel.Container();
+            timerRefresh = new System.Windows.Forms.Timer(this.components);
             labelDSLichThi = new Label();
             panelChuaDSLichThi = new Panel();
             dataGridViewDSLichThi = new DataGridView();
@@ -104,6 +106,7 @@
             Load += adminQlyLichThi_Load;
             panelChuaDSLichThi.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dataGridViewDSLichThi).EndInit();
+            timerRefresh.Tick += new System.EventHandler(this.timerRefresh_Tick);
             ResumeLayout(false);
             PerformLayout();
         }
@@ -116,5 +119,6 @@
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtTimKiem;
         private System.Windows.Forms.Button btnTimKiem;
+        private System.Windows.Forms.Timer timerRefresh;
     }
 }
