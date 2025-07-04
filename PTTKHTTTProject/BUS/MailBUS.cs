@@ -111,41 +111,6 @@ namespace PTTKHTTTProject.BUS
             return DateTime.MinValue;
         }
 
-        public static List<string> LoadRecipients(string type)
-        {
-            List<string> recipients = new List<string>();
-
-            if (!string.IsNullOrEmpty(type) && type == "PhongBan")
-            {
-                DataTable dt2 = DepartmentDAO.GetAllPhongBan();
-
-                foreach (DataRow dr in dt2.Rows)
-                {
-                    string temp = $"{dr["PB_MaPhongBan"].ToString()} - {dr["PB_TenPhongBan"].ToString()}";
-                    recipients.Add(temp);
-                }
-            }
-
-            else if (!string.IsNullOrEmpty(type) && type == "NhanVien")
-            {
-
-                DataTable dt1 = MailDAO.GetRecipients();
-
-                foreach (DataRow dr in dt1.Rows)
-                {
-                    string temp = $"{dr["NV_MaNhanVien"].ToString()} - {dr["NV_TenNhanVien"].ToString()} - {dr["NV_ChucVu"].ToString()}";
-                    recipients.Add(temp);
-                }
-            }
-
-            else
-            {
-                return recipients;
-            } 
-                
-            return recipients;
-        }
-
         public static void sendNotification(string usender, string recipient, string subject, string body)
         {
             MailDAO.sendNotification(usender, recipient, subject, body);

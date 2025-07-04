@@ -78,16 +78,11 @@ namespace PTTKHTTTProject.DAO
             return dt;
         }
 
-        public static string getDepartment(string username)
+        public static DataTable GetRecipients()
         {
-            var pUser = new SqlParameter("@username", SqlDbType.VarChar, 10)
-            { Value = username.Trim() };
+            DataTable dt = DataProvider.Instance.ExecuteQuery("SELECT NV_MaNhanVien, NV_TenNhanVien, NV_ChucVu FROM NHANVIEN");
 
-            object result = DataProvider.Instance.ExecuteScalar("SELECT NV_MaPhongBan FROM NHANVIEN WHERE NV_MaNhanVien = @username", pUser);
-
-            string? department = result != null && result != DBNull.Value ? result.ToString() : string.Empty;
-
-            return $"{department}";
+            return dt;
         }
     }
 }

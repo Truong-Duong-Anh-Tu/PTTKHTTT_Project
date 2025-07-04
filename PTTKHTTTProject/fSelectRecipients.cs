@@ -21,8 +21,8 @@ namespace PTTKHTTTProject
         public fSelectRecipients()
         {
             InitializeComponent();
-            employees = MailBUS.LoadRecipients("NhanVien");
-            departments = MailBUS.LoadRecipients("PhongBan");
+            employees = NhanVienBUS.getAllRecipientEmployee();
+            departments = DepartmentBUS.getAllRecipientDepartment();
         }
 
         private void rbtxNhanVien_CheckedChanged(object sender, EventArgs e)

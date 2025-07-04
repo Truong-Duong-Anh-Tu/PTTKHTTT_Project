@@ -34,13 +34,6 @@ namespace PTTKHTTTProject.DAO
             return dt;
         }
 
-        public static DataTable GetRecipients()
-        {
-            DataTable dt = DataProvider.Instance.ExecuteQuery("SELECT NV_MaNhanVien, NV_TenNhanVien, NV_ChucVu FROM NHANVIEN");
-
-            return dt;
-        }
-
         public static void sendNotification(string usender, string recipient, string subject, string body)
         {
             var pSender = new SqlParameter("@sender", SqlDbType.VarChar, 10) { Value = usender.Trim() };

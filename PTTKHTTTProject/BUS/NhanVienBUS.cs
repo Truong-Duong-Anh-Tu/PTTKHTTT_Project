@@ -56,5 +56,20 @@ namespace PTTKHTTTProject.BUS
 
             return info;
         }
+
+        public static List<string> getAllRecipientEmployee()
+        {
+            List<string> recipients = new List<string>();
+
+            DataTable dt1 = NhanVienDAO.GetRecipients();
+
+            foreach (DataRow dr in dt1.Rows)
+            {
+                string temp = $"{dr["NV_MaNhanVien"].ToString()} - {dr["NV_TenNhanVien"].ToString()} - {dr["NV_ChucVu"].ToString()}";
+                recipients.Add(temp);
+            }
+
+            return recipients;
+        }
     }
 }
