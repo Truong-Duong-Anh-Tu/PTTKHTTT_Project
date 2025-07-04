@@ -150,6 +150,7 @@
             buttonXoa.TabIndex = 5;
             buttonXoa.Text = "Xóa";
             buttonXoa.UseVisualStyleBackColor = false;
+            buttonXoa.Click += buttonXoa_Click;
             // 
             // buttonChinhSua
             // 
@@ -161,6 +162,7 @@
             buttonChinhSua.TabIndex = 4;
             buttonChinhSua.Text = "Chỉnh sửa";
             buttonChinhSua.UseVisualStyleBackColor = false;
+            buttonChinhSua.Click += buttonChinhSua_Click;
             // 
             // buttonThem
             // 

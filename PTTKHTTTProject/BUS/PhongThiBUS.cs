@@ -34,5 +34,27 @@ namespace PTTKHTTTProject.BUS
 
             return PhongThiDAO.AddPhongThi(newMaPhong, hinhThuc, slToiDaInt, slToiThieuInt, slNhanVienInt);
         }
+
+        public static bool UpdatePhongThi(string maPhong, string hinhThuc, string slToiDa, string slToiThieu, string slNhanVien)
+        {
+            if (string.IsNullOrWhiteSpace(maPhong) || string.IsNullOrWhiteSpace(hinhThuc) ||
+                !int.TryParse(slToiDa, out int slToiDaInt) ||
+                !int.TryParse(slToiThieu, out int slToiThieuInt) ||
+                !int.TryParse(slNhanVien, out int slNhanVienInt))
+            {
+                return false;
+            }
+            return PhongThiDAO.UpdatePhongThi(maPhong, hinhThuc, slToiDaInt, slToiThieuInt, slNhanVienInt);
+        }
+
+        // PHƯƠNG THỨC MỚI: Xóa phòng thi
+        public static bool DeletePhongThi(string maPhong)
+        {
+            if (string.IsNullOrWhiteSpace(maPhong))
+            {
+                return false;
+            }
+            return PhongThiDAO.DeletePhongThi(maPhong);
+        }
     }
 }

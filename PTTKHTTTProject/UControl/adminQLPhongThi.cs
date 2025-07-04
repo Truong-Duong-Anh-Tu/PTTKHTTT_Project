@@ -14,8 +14,7 @@ namespace PTTKHTTTProject.UControl
             InitializeComponent();
             PopulateHinhThucThiComboBox();
             LoadPhongThiData();
-            SetTextBoxesReadOnly(true);
-            buttonLuuThongTin.Enabled = false;
+            SetUIState(false);
         }
 
         private void PopulateHinhThucThiComboBox()
@@ -42,22 +41,45 @@ namespace PTTKHTTTProject.UControl
 
         private void SetupDataGridView()
         {
+            // Tự động điều chỉnh độ rộng các cột
             dataGridView1.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Đặt lại tên cho các cột để hiển thị
+            if (dataGridView1.Columns["PT_MaPhongThi"] != null)
+                dataGridView1.Columns["PT_MaPhongThi"].HeaderText = "Mã Phòng";
+
+            if (dataGridView1.Columns["PT_HinhThuc"] != null)
+                dataGridView1.Columns["PT_HinhThuc"].HeaderText = "Hình Thức";
+
+            if (dataGridView1.Columns["PT_SLThiSinhToiDa"] != null)
+                dataGridView1.Columns["PT_SLThiSinhToiDa"].HeaderText = "SL Tối Đa";
+
+            if (dataGridView1.Columns["PT_SLThiSinhToiThieu"] != null)
+                dataGridView1.Columns["PT_SLThiSinhToiThieu"].HeaderText = "SL Tối Thiểu";
+
+            if (dataGridView1.Columns["PT_SLNhanVienCoiThi"] != null)
+                dataGridView1.Columns["PT_SLNhanVienCoiThi"].HeaderText = "SL Nhân Viên";
+        }
+
+        private void SetUIState(bool isEditingOrAdding)
+        {
+            SetTextBoxesReadOnly(!isEditingOrAdding);
+            buttonLuuThongTin.Enabled = isEditingOrAdding;
+            buttonThem.Enabled = !isEditingOrAdding;
+            buttonChinhSua.Enabled = !isEditingOrAdding;
+            buttonXoa.Enabled = !isEditingOrAdding;
         }
 
         private void SetTextBoxesReadOnly(bool readOnly)
         {
-            // Mã phòng thi luôn ở chế độ chỉ đọc
             textBoxMaPhongThi.ReadOnly = true;
             textBoxMaPhongThi.BackColor = SystemColors.Control;
 
-            // Bật/tắt các control khác
             comboBoxHinhThuc.Enabled = !readOnly;
             textBoxMaxThiSinh.ReadOnly = readOnly;
             textBoxMinThiSinh.ReadOnly = readOnly;
             textBoxSLNVCT.ReadOnly = readOnly;
 
-            // Đổi màu nền để người dùng dễ nhận biết
             textBoxMaxThiSinh.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
             textBoxMinThiSinh.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
             textBoxSLNVCT.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
@@ -65,7 +87,7 @@ namespace PTTKHTTTProject.UControl
 
         private void ClearTextBoxes()
         {
-            textBoxMaPhongThi.Text = "(Tự động)"; // Hiển thị thông báo
+            textBoxMaPhongThi.Text = isAdding ? "(Tự động)" : "";
             comboBoxHinhThuc.SelectedIndex = -1;
             textBoxMaxThiSinh.Text = "";
             textBoxMinThiSinh.Text = "";
@@ -76,11 +98,8 @@ namespace PTTKHTTTProject.UControl
         {
             if (e.RowIndex >= 0)
             {
-                SetTextBoxesReadOnly(true);
-                buttonLuuThongTin.Enabled = false;
-                buttonChinhSua.Enabled = true;
+                SetUIState(false);
                 isAdding = false;
-
                 try
                 {
                     DataGridViewRow row = this.dataGridView1.Rows[e.RowIndex];
@@ -100,29 +119,68 @@ namespace PTTKHTTTProject.UControl
         private void buttonThem_Click(object sender, EventArgs e)
         {
             isAdding = true;
+            SetUIState(true);
             ClearTextBoxes();
-            SetTextBoxesReadOnly(false);
-            buttonLuuThongTin.Enabled = true;
-            buttonChinhSua.Enabled = false;
+        }
+
+        private void buttonChinhSua_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxMaPhongThi.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một phòng thi để chỉnh sửa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            isAdding = false;
+            SetUIState(true);
         }
 
         private void buttonLuuThongTin_Click(object sender, EventArgs e)
         {
             if (isAdding)
             {
-                // Gọi phương thức AddPhongThi mới không cần mã phòng
                 if (PhongThiBUS.AddPhongThi(comboBoxHinhThuc.Text, textBoxMaxThiSinh.Text, textBoxMinThiSinh.Text, textBoxSLNVCT.Text))
                 {
                     MessageBox.Show("Thêm phòng thi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                    LoadPhongThiData();
-                    ClearTextBoxes();
-                    SetTextBoxesReadOnly(true);
-                    buttonLuuThongTin.Enabled = false;
-                    buttonChinhSua.Enabled = true;
                 }
                 else
                 {
-                    MessageBox.Show("Thêm phòng thi thất bại. Vui lòng kiểm tra lại dữ liệu đầu vào.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    MessageBox.Show("Thêm phòng thi thất bại. Vui lòng kiểm tra lại dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            else // Đang sửa
+            {
+                if (PhongThiBUS.UpdatePhongThi(textBoxMaPhongThi.Text, comboBoxHinhThuc.Text, textBoxMaxThiSinh.Text, textBoxMinThiSinh.Text, textBoxSLNVCT.Text))
+                {
+                    MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            LoadPhongThiData();
+            ClearTextBoxes();
+            SetUIState(false);
+        }
+
+        private void buttonXoa_Click(object sender, EventArgs e)
+        {
+            if (string.IsNullOrEmpty(textBoxMaPhongThi.Text))
+            {
+                MessageBox.Show("Vui lòng chọn một phòng thi để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
+            if (MessageBox.Show("Bạn có chắc chắn muốn xóa phòng thi này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+            {
+                if (PhongThiBUS.DeletePhongThi(textBoxMaPhongThi.Text))
+                {
+                    MessageBox.Show("Xóa phòng thi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    LoadPhongThiData();
+                    ClearTextBoxes();
+                }
+                else
+                {
+                    MessageBox.Show("Xóa thất bại. Có thể phòng thi này đang được sử dụng trong một lịch thi.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
         }

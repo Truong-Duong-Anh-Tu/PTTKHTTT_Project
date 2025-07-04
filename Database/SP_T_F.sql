@@ -959,5 +959,52 @@ BEGIN
     ORDER BY CAST(SUBSTRING(PT_MaPhongThi, 2, LEN(PT_MaPhongThi)) AS INT) DESC;
 END
 GO
+
+CREATE OR ALTER PROCEDURE usp_UpdatePhongThi
+    @PT_MaPhongThi VARCHAR(10),
+    @PT_HinhThuc NVARCHAR(50),
+    @PT_SLThiSinhToiDa INT,
+    @PT_SLThiSinhToiThieu INT,
+    @PT_SLNhanVienCoiThi INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        UPDATE PHONGTHI
+        SET 
+            PT_HinhThuc = @PT_HinhThuc,
+            PT_SLThiSinhToiDa = @PT_SLThiSinhToiDa,
+            PT_SLThiSinhToiThieu = @PT_SLThiSinhToiThieu,
+            PT_SLNhanVienCoiThi = @PT_SLNhanVienCoiThi
+        WHERE 
+            PT_MaPhongThi = @PT_MaPhongThi;
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_DeletePhongThi
+    @PT_MaPhongThi VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    -- Kiểm tra ràng buộc khóa ngoại trước khi xóa
+    IF EXISTS (SELECT 1 FROM LICHTHI WHERE LT_MaPhongThi = @PT_MaPhongThi)
+    BEGIN
+        RAISERROR('Không thể xóa phòng thi này vì đã có lịch thi liên quan.', 16, 1);
+        RETURN;
+    END
+
+    BEGIN TRY
+        DELETE FROM PHONGTHI
+        WHERE PT_MaPhongThi = @PT_MaPhongThi;
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------

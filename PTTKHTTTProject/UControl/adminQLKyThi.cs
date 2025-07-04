@@ -34,11 +34,24 @@ namespace PTTKHTTTProject.UControl
 
         private void SetupDataGridView()
         {
+            // Tự động điều chỉnh độ rộng các cột
             dataGridViewDSKythi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+
+            // Định dạng cột lệ phí để hiển thị theo kiểu tiền tệ
             if (dataGridViewDSKythi.Columns.Contains("LePhi"))
             {
                 dataGridViewDSKythi.Columns["LePhi"].DefaultCellStyle.Format = "N0";
             }
+
+            // Đặt lại tên cho các cột để hiển thị
+            if (dataGridViewDSKythi.Columns["KT_MaKyThi"] != null)
+                dataGridViewDSKythi.Columns["KT_MaKyThi"].HeaderText = "Mã Kỳ Thi";
+
+            if (dataGridViewDSKythi.Columns["KT_TenKyThi"] != null)
+                dataGridViewDSKythi.Columns["KT_TenKyThi"].HeaderText = "Tên Kỳ Thi";
+
+            if (dataGridViewDSKythi.Columns["LePhi"] != null)
+                dataGridViewDSKythi.Columns["LePhi"].HeaderText = "Lệ Phí";
         }
 
         private void SetTextBoxesReadOnly(bool readOnly)
