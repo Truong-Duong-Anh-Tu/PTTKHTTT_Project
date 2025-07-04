@@ -912,5 +912,52 @@ BEGIN
     SELECT * FROM PHONGTHI;
 END
 GO
+
+CREATE OR ALTER PROCEDURE usp_GetLichThiByPhongThi
+    @MaPhongThi VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT 
+        LT_MaLichThi AS 'Mã Lịch Thi',
+        KT_TenKyThi AS 'Tên Kỳ Thi',
+        LT_NgayThi AS 'Ngày Thi',
+        LT_TGBatDau AS 'Giờ Bắt Đầu',
+        LT_TGKetThuc AS 'Giờ Kết Thúc',
+        LT_TrangThai AS 'Trạng Thái'
+    FROM LICHTHI
+    JOIN KYTHI ON LICHTHI.LT_MaKyThi = KYTHI.KT_MaKyThi
+    WHERE LT_MaPhongThi = @MaPhongThi;
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_AddPhongThi
+    @PT_MaPhongThi VARCHAR(10),
+    @PT_HinhThuc NVARCHAR(50),
+    @PT_SLThiSinhToiDa INT,
+    @PT_SLThiSinhToiThieu INT,
+    @PT_SLNhanVienCoiThi INT
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        INSERT INTO PHONGTHI (PT_MaPhongThi, PT_HinhThuc, PT_SLThiSinhToiDa, PT_SLThiSinhToiThieu, PT_SLNhanVienCoiThi)
+        VALUES (@PT_MaPhongThi, @PT_HinhThuc, @PT_SLThiSinhToiDa, @PT_SLThiSinhToiThieu, @PT_SLNhanVienCoiThi);
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_GetLastPhongThiId
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT TOP 1 PT_MaPhongThi
+    FROM PHONGTHI
+    ORDER BY CAST(SUBSTRING(PT_MaPhongThi, 2, LEN(PT_MaPhongThi)) AS INT) DESC;
+END
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------

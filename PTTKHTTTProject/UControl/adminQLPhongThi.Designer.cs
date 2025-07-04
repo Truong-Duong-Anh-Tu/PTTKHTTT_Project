@@ -85,7 +85,7 @@
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(labelDSPhongThi);
             panel1.Location = new Point(24, 94);
-            panel1.Margin = new Padding(5, 5, 5, 5);
+            panel1.Margin = new Padding(5);
             panel1.Name = "panel1";
             panel1.Size = new Size(920, 766);
             panel1.TabIndex = 5;
@@ -94,7 +94,7 @@
             // 
             buttonXemLichThi.BackColor = Color.SkyBlue;
             buttonXemLichThi.Location = new Point(392, 674);
-            buttonXemLichThi.Margin = new Padding(5, 5, 5, 5);
+            buttonXemLichThi.Margin = new Padding(5);
             buttonXemLichThi.Name = "buttonXemLichThi";
             buttonXemLichThi.Size = new Size(488, 66);
             buttonXemLichThi.TabIndex = 2;
@@ -106,7 +106,7 @@
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(32, 96);
-            dataGridView1.Margin = new Padding(5, 5, 5, 5);
+            dataGridView1.Margin = new Padding(5);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
             dataGridView1.Size = new Size(847, 541);
@@ -123,7 +123,7 @@
             panel2.Controls.Add(tableLayoutPanel1);
             panel2.Controls.Add(labelChiTietPhongThi);
             panel2.Location = new Point(972, 94);
-            panel2.Margin = new Padding(5, 5, 5, 5);
+            panel2.Margin = new Padding(5);
             panel2.Name = "panel2";
             panel2.Size = new Size(660, 766);
             panel2.TabIndex = 6;
@@ -132,18 +132,19 @@
             // 
             buttonLuuThongTin.BackColor = Color.SkyBlue;
             buttonLuuThongTin.Location = new Point(291, 674);
-            buttonLuuThongTin.Margin = new Padding(5, 5, 5, 5);
+            buttonLuuThongTin.Margin = new Padding(5);
             buttonLuuThongTin.Name = "buttonLuuThongTin";
             buttonLuuThongTin.Size = new Size(336, 58);
             buttonLuuThongTin.TabIndex = 6;
             buttonLuuThongTin.Text = "Lưu thông tin";
             buttonLuuThongTin.UseVisualStyleBackColor = false;
+            buttonLuuThongTin.Click += buttonLuuThongTin_Click;
             // 
             // buttonXoa
             // 
             buttonXoa.BackColor = Color.SkyBlue;
             buttonXoa.Location = new Point(458, 579);
-            buttonXoa.Margin = new Padding(5, 5, 5, 5);
+            buttonXoa.Margin = new Padding(5);
             buttonXoa.Name = "buttonXoa";
             buttonXoa.Size = new Size(169, 58);
             buttonXoa.TabIndex = 5;
@@ -154,7 +155,7 @@
             // 
             buttonChinhSua.BackColor = Color.SkyBlue;
             buttonChinhSua.Location = new Point(221, 579);
-            buttonChinhSua.Margin = new Padding(5, 5, 5, 5);
+            buttonChinhSua.Margin = new Padding(5);
             buttonChinhSua.Name = "buttonChinhSua";
             buttonChinhSua.Size = new Size(193, 58);
             buttonChinhSua.TabIndex = 4;
@@ -165,12 +166,13 @@
             // 
             buttonThem.BackColor = Color.SkyBlue;
             buttonThem.Location = new Point(26, 579);
-            buttonThem.Margin = new Padding(5, 5, 5, 5);
+            buttonThem.Margin = new Padding(5);
             buttonThem.Name = "buttonThem";
             buttonThem.Size = new Size(169, 58);
             buttonThem.TabIndex = 3;
             buttonThem.Text = "Thêm";
             buttonThem.UseVisualStyleBackColor = false;
+            buttonThem.Click += buttonThem_Click;
             // 
             // tableLayoutPanel1
             // 
@@ -189,7 +191,7 @@
             tableLayoutPanel1.Controls.Add(textBoxMaPhongThi, 1, 0);
             tableLayoutPanel1.Controls.Add(comboBoxHinhThuc, 1, 1);
             tableLayoutPanel1.Location = new Point(31, 96);
-            tableLayoutPanel1.Margin = new Padding(5, 5, 5, 5);
+            tableLayoutPanel1.Margin = new Padding(5);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
@@ -205,7 +207,7 @@
             textBoxSLNVCT.Anchor = AnchorStyles.None;
             textBoxSLNVCT.BorderStyle = BorderStyle.FixedSingle;
             textBoxSLNVCT.Location = new Point(234, 354);
-            textBoxSLNVCT.Margin = new Padding(5, 5, 5, 5);
+            textBoxSLNVCT.Margin = new Padding(5);
             textBoxSLNVCT.Name = "textBoxSLNVCT";
             textBoxSLNVCT.Size = new Size(309, 39);
             textBoxSLNVCT.TabIndex = 13;
@@ -215,7 +217,7 @@
             textBoxMinThiSinh.Anchor = AnchorStyles.None;
             textBoxMinThiSinh.BorderStyle = BorderStyle.FixedSingle;
             textBoxMinThiSinh.Location = new Point(234, 260);
-            textBoxMinThiSinh.Margin = new Padding(5, 5, 5, 5);
+            textBoxMinThiSinh.Margin = new Padding(5);
             textBoxMinThiSinh.Name = "textBoxMinThiSinh";
             textBoxMinThiSinh.Size = new Size(309, 39);
             textBoxMinThiSinh.TabIndex = 12;
@@ -225,7 +227,7 @@
             textBoxMaxThiSinh.Anchor = AnchorStyles.None;
             textBoxMaxThiSinh.BorderStyle = BorderStyle.FixedSingle;
             textBoxMaxThiSinh.Location = new Point(234, 182);
-            textBoxMaxThiSinh.Margin = new Padding(5, 5, 5, 5);
+            textBoxMaxThiSinh.Margin = new Padding(5);
             textBoxMaxThiSinh.Name = "textBoxMaxThiSinh";
             textBoxMaxThiSinh.Size = new Size(309, 39);
             textBoxMaxThiSinh.TabIndex = 11;
@@ -293,7 +295,7 @@
             textBoxMaPhongThi.Anchor = AnchorStyles.None;
             textBoxMaPhongThi.BorderStyle = BorderStyle.FixedSingle;
             textBoxMaPhongThi.Location = new Point(234, 20);
-            textBoxMaPhongThi.Margin = new Padding(5, 5, 5, 5);
+            textBoxMaPhongThi.Margin = new Padding(5);
             textBoxMaPhongThi.Name = "textBoxMaPhongThi";
             textBoxMaPhongThi.Size = new Size(309, 39);
             textBoxMaPhongThi.TabIndex = 9;
@@ -303,7 +305,7 @@
             comboBoxHinhThuc.Anchor = AnchorStyles.None;
             comboBoxHinhThuc.FormattingEnabled = true;
             comboBoxHinhThuc.Location = new Point(240, 101);
-            comboBoxHinhThuc.Margin = new Padding(5, 5, 5, 5);
+            comboBoxHinhThuc.Margin = new Padding(5);
             comboBoxHinhThuc.Name = "comboBoxHinhThuc";
             comboBoxHinhThuc.Size = new Size(298, 40);
             comboBoxHinhThuc.TabIndex = 14;
@@ -326,7 +328,7 @@
             Controls.Add(panel2);
             Controls.Add(labelQLPhongThi);
             Controls.Add(panel1);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "adminQLPhongThi";
             Size = new Size(1659, 917);
             panel1.ResumeLayout(false);
