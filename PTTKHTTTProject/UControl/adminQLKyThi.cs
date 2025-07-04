@@ -18,6 +18,12 @@ namespace PTTKHTTTProject.UControl
             buttonLuu.Enabled = false;
         }
 
+        private void adminQLKyThi_Load(object sender, EventArgs e)
+        {
+            // Gán sự kiện TextChanged để tìm kiếm tự động
+            this.textBoxTimKiem.TextChanged += new System.EventHandler(this.textBoxTimKiem_TextChanged);
+        }
+
         private void LoadData()
         {
             try
@@ -71,13 +77,23 @@ namespace PTTKHTTTProject.UControl
             textBoxLePhi.Text = "";
         }
 
-        private void buttonTimKiem_Click(object sender, EventArgs e)
+        private void FilterData()
         {
             if (originalDataTable == null) return;
             string keyword = textBoxTimKiem.Text.Trim().Replace("'", "''");
             originalDataTable.DefaultView.RowFilter = string.IsNullOrEmpty(keyword)
                 ? string.Empty
                 : $"[KT_MaKyThi] LIKE '%{keyword}%' OR [KT_TenKyThi] LIKE '%{keyword}%'";
+        }
+
+        private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void buttonTimKiem_Click(object sender, EventArgs e)
+        {
+            FilterData();
         }
 
         private void dataGridViewDSKythi_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -98,18 +114,16 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
-        // --- BẮT ĐẦU PHẦN CHỈNH SỬA ---
         private void buttonThemKyThi_Click(object sender, EventArgs e)
         {
             isAdding = true;
             ClearTextBoxes();
-            textBoxMaKyThi.Text = "Tự động"; // Hiển thị chữ "Tự động"
+            textBoxMaKyThi.Text = "Tự động";
             SetTextBoxesReadOnly(false);
             buttonLuu.Enabled = true;
             buttonChinhSua.Enabled = false;
             buttonXoa.Enabled = false;
         }
-        // --- KẾT THÚC PHẦN CHỈNH SỬA ---
 
         private void buttonChinhSua_Click(object sender, EventArgs e)
         {
@@ -183,11 +197,6 @@ namespace PTTKHTTTProject.UControl
             {
                 MessageBox.Show("Vui lòng chọn một kỳ thi để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
-        }
-
-        private void adminQLKyThi_Load(object sender, EventArgs e)
-        {
-            // Để trống nếu không sử dụng
         }
     }
 }

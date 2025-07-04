@@ -25,6 +25,8 @@ namespace PTTKHTTTProject.UControl
             SetupDataGridViewColumns();
             PopulateComboBox();
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
+            // Gán sự kiện TextChanged cho textBox1
+            this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
         }
 
         private void LoadData()
@@ -155,7 +157,7 @@ namespace PTTKHTTTProject.UControl
 
         private void textBox1_TextChanged(object? sender, EventArgs e)
         {
-            // Logic đã được chuyển sang nút kính lúp
+            FilterData();
         }
 
         private void pictureBoxSearch_Click(object? sender, EventArgs e)
