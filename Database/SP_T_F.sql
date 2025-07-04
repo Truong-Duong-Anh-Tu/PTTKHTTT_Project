@@ -924,6 +924,33 @@ BEGIN
     VALUES (@MaLichThi, @MaKyThi, @SLDangKy, @TrangThai, @TenKyThi, @NgayThi, @MaPhongThi, @TGBatDau, @TGKetThuc);
 END
 GO
+
+-- Cập nhật thông tin Lịch thi
+CREATE OR ALTER PROCEDURE usp_UpdateLichThi
+    @MaLichThi VARCHAR(10),
+    @NgayThi DATE,
+    @SLDangKy INT,
+    @TGBatDau TIME,
+    @TGKetThuc TIME
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        UPDATE LICHTHI
+        SET 
+            LT_NgayThi = @NgayThi,
+            LT_SLDangKy = @SLDangKy,
+            LT_TGBatDau = @TGBatDau,
+            LT_TGKetThuc = @TGKetThuc
+        WHERE 
+            LT_MaLichThi = @MaLichThi;
+        SELECT 1 AS Result;
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Result;
+    END CATCH
+END
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------
 

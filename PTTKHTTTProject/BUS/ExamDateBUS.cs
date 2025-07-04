@@ -66,5 +66,14 @@ namespace PTTKHTTTProject.BUS
                 return false;
             }
         }
+
+        public static bool UpdateLichThi(string maLichThi, DateTime ngayThi, int slDangKy, TimeSpan tgBatDau, TimeSpan tgKetThuc)
+        {
+            if (string.IsNullOrWhiteSpace(maLichThi) || slDangKy < 0)
+            {
+                return false;
+            }
+            return ExamDateDAO.UpdateLichThi(maLichThi, ngayThi, slDangKy, tgBatDau, tgKetThuc);
+        }
     }
 }

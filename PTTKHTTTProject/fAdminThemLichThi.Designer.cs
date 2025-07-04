@@ -186,7 +186,7 @@
             // textBoxTenKyThi
             // 
             textBoxTenKyThi.Anchor = AnchorStyles.None;
-            textBoxTenKyThi.BackColor = SystemColors.Control;
+            textBoxTenKyThi.BackColor = SystemColors.ButtonHighlight;
             textBoxTenKyThi.BorderStyle = BorderStyle.FixedSingle;
             textBoxTenKyThi.Location = new Point(385, 20);
             textBoxTenKyThi.Margin = new Padding(5);
@@ -210,6 +210,7 @@
             textBoxTrangThai.Anchor = AnchorStyles.None;
             textBoxTrangThai.BackColor = SystemColors.Control;
             textBoxTrangThai.BorderStyle = BorderStyle.FixedSingle;
+            textBoxTrangThai.Enabled = false;
             textBoxTrangThai.Location = new Point(382, 190);
             textBoxTrangThai.Margin = new Padding(5);
             textBoxTrangThai.Name = "textBoxTrangThai";
@@ -221,7 +222,7 @@
             // textBoxSLDangKy
             // 
             textBoxSLDangKy.Anchor = AnchorStyles.None;
-            textBoxSLDangKy.BackColor = SystemColors.Control;
+            textBoxSLDangKy.BackColor = SystemColors.ButtonHighlight;
             textBoxSLDangKy.BorderStyle = BorderStyle.FixedSingle;
             textBoxSLDangKy.Location = new Point(379, 280);
             textBoxSLDangKy.Margin = new Padding(5);
@@ -233,7 +234,7 @@
             // textBoxHienThiPhongThi
             // 
             textBoxHienThiPhongThi.Anchor = AnchorStyles.None;
-            textBoxHienThiPhongThi.BackColor = SystemColors.Control;
+            textBoxHienThiPhongThi.BackColor = SystemColors.ButtonHighlight;
             textBoxHienThiPhongThi.BorderStyle = BorderStyle.FixedSingle;
             textBoxHienThiPhongThi.Location = new Point(379, 376);
             textBoxHienThiPhongThi.Margin = new Padding(5);

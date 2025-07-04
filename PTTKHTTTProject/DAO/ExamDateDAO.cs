@@ -55,5 +55,18 @@ namespace PTTKHTTTProject.DAO
             };
             DataProvider.Instance.ExecuteNonQuerySP("usp_AddLichThi", parameters);
         }
+
+        public static bool UpdateLichThi(string maLichThi, DateTime ngayThi, int slDangKy, TimeSpan tgBatDau, TimeSpan tgKetThuc)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaLichThi", maLichThi),
+                new SqlParameter("@NgayThi", ngayThi),
+                new SqlParameter("@SLDangKy", slDangKy),
+                new SqlParameter("@TGBatDau", tgBatDau),
+                new SqlParameter("@TGKetThuc", tgKetThuc)
+            };
+            return DataProvider.Instance.ExecuteScalarSP<int>("usp_UpdateLichThi", parameters) == 1;
+        }
     }
 }

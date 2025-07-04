@@ -62,8 +62,11 @@ namespace PTTKHTTTProject.UControl
 
         private void SetupDataGridView()
         {
-            dataGridViewDSLichThi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            // Xóa các button cũ để tránh trùng lặp
+            if (dataGridViewDSLichThi.Columns.Contains("EditButton"))
+                dataGridViewDSLichThi.Columns.Remove("EditButton");
 
+            dataGridViewDSLichThi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             if (dataGridViewDSLichThi.Columns.Contains("Ngày Thi"))
             {
                 dataGridViewDSLichThi.Columns["Ngày Thi"].DefaultCellStyle.Format = "dd/MM/yyyy";
@@ -72,6 +75,15 @@ namespace PTTKHTTTProject.UControl
             {
                 dataGridViewDSLichThi.Columns["Số Lượng Đã Đăng Ký"].HeaderText = "SL Đã Đăng Ký";
             }
+
+            // Thêm cột nút Sửa
+            DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
+            editButton.Name = "EditButton";
+            editButton.HeaderText = "Hành Động";
+            editButton.Text = "Sửa";
+            editButton.UseColumnTextForButtonValue = true;
+            editButton.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
+            dataGridViewDSLichThi.Columns.Add(editButton);
         }
 
         private void dataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
@@ -118,7 +130,19 @@ namespace PTTKHTTTProject.UControl
 
         private void dataGridViewDSLichThi_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            // Để trống nếu không sử dụng
+            if (e.RowIndex < 0) return;
+
+            // Kiểm tra nếu click vào cột nút "Sửa"
+            if (dataGridViewDSLichThi.Columns[e.ColumnIndex].Name == "EditButton")
+            {
+                DataRowView selectedRow = (DataRowView)dataGridViewDSLichThi.Rows[e.RowIndex].DataBoundItem;
+
+                fAdminChinhSuaLichThi editForm = new fAdminChinhSuaLichThi(selectedRow);
+                if (editForm.ShowDialog() == DialogResult.OK)
+                {
+                    LoadData(); // Tải lại dữ liệu sau khi sửa thành công
+                }
+            }
         }
     }
 }
