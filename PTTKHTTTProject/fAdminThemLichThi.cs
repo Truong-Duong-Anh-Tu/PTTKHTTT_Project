@@ -17,15 +17,8 @@ namespace PTTKHTTTProject
         private void fAdminThemLichThi_Load(object sender, EventArgs e)
         {
             LoadKyThiData();
-            LoadPhongThiTrongData();
-            // Đặt các control DateTimePicker chỉ hiển thị giờ
-            dateTimePickerTGBatDau.Format = DateTimePickerFormat.Custom;
-            dateTimePickerTGBatDau.CustomFormat = "HH:mm";
-            dateTimePickerTGBatDau.ShowUpDown = true;
-
-            dateTimePickerTGKetThuc.Format = DateTimePickerFormat.Custom;
-            dateTimePickerTGKetThuc.CustomFormat = "HH:mm";
-            dateTimePickerTGKetThuc.ShowUpDown = true;
+            // Tải danh sách phòng trống cho ngày hiện tại khi form được mở
+            LoadPhongThiTrongData(dateTimePickerNgayThi.Value);
         }
 
         private void LoadKyThiData()
@@ -43,23 +36,31 @@ namespace PTTKHTTTProject
             }
         }
 
-        private void LoadPhongThiTrongData()
+        // Sửa lại phương thức để nhận tham số ngày
+        private void LoadPhongThiTrongData(DateTime selectedDate)
         {
             try
             {
-                dataGridViewPhongTrong.DataSource = PhongThiBUS.GetAllPhongThi();
+                dataGridViewPhongTrong.DataSource = PhongThiBUS.GetAvailablePhongThiByDate(selectedDate);
                 dataGridViewPhongTrong.Columns["PT_MaPhongThi"].HeaderText = "Mã Phòng";
                 dataGridViewPhongTrong.Columns["PT_HinhThuc"].HeaderText = "Hình Thức";
-                // Ẩn các cột không cần thiết
                 dataGridViewPhongTrong.Columns["PT_SLThiSinhToiDa"].Visible = false;
                 dataGridViewPhongTrong.Columns["PT_SLThiSinhToiThieu"].Visible = false;
                 dataGridViewPhongTrong.Columns["PT_SLNhanVienCoiThi"].Visible = false;
-
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tải dữ liệu phòng thi: " + ex.Message);
             }
+        }
+
+        // Sự kiện khi thay đổi ngày thi
+        private void dateTimePickerNgayThi_ValueChanged(object sender, EventArgs e)
+        {
+            // Tải lại danh sách phòng thi trống mỗi khi ngày thay đổi
+            LoadPhongThiTrongData(dateTimePickerNgayThi.Value);
+            // Xóa lựa chọn phòng thi cũ để tránh nhầm lẫn
+            textBoxHienThiPhongThi.Text = "";
         }
 
         private void dataGridViewKyThi_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -89,13 +90,11 @@ namespace PTTKHTTTProject
                 return;
             }
 
-            // --- BẮT ĐẦU PHẦN THÊM MỚI ---
             if (!int.TryParse(textBoxSLDangKy.Text, out int slDangKy) || slDangKy < 0)
             {
                 MessageBox.Show("Số lượng đăng ký phải là một số nguyên không âm.", "Dữ liệu không hợp lệ", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            // --- KẾT THÚC PHẦN THÊM MỚI ---
 
             string tenKyThi = textBoxTenKyThi.Text;
             DateTime ngayThi = dateTimePickerNgayThi.Value;
@@ -109,7 +108,6 @@ namespace PTTKHTTTProject
                 return;
             }
 
-            // Cập nhật lời gọi hàm để bao gồm số lượng đăng ký
             bool result = ExamDateBUS.AddLichThi(selectedMaKyThi, tenKyThi, ngayThi, maPhongThi, thoiGianBatDau, thoiGianKetThuc, slDangKy);
 
             if (result)

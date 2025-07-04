@@ -984,6 +984,21 @@ BEGIN
     END CATCH
 END
 GO
+
+-- Lấy danh sách phòng thi trống theo ngày
+CREATE OR ALTER PROCEDURE usp_GetAvailablePhongThiByDate
+    @NgayThi DATE
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT * FROM PHONGTHI
+    WHERE PT_MaPhongThi NOT IN (
+        SELECT LT_MaPhongThi 
+        FROM LICHTHI 
+        WHERE LT_NgayThi = @NgayThi
+    );
+END
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------
 

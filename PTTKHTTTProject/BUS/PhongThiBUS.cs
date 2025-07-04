@@ -56,5 +56,10 @@ namespace PTTKHTTTProject.BUS
             }
             return PhongThiDAO.DeletePhongThi(maPhong);
         }
+
+        public static DataTable GetAvailablePhongThiByDate(DateTime ngayThi)
+        {
+            return PhongThiDAO.GetAvailablePhongThiByDate(ngayThi);
+        }
     }
 }

@@ -204,6 +204,8 @@
             dateTimePickerNgayThi.Name = "dateTimePickerNgayThi";
             dateTimePickerNgayThi.Size = new Size(435, 39);
             dateTimePickerNgayThi.TabIndex = 20;
+            dateTimePickerNgayThi.ValueChanged += new System.EventHandler(this.dateTimePickerNgayThi_ValueChanged); // <-- THÊM DÒNG NÀY
+
             // 
             // textBoxTrangThai
             // 

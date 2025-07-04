@@ -83,5 +83,15 @@ namespace PTTKHTTTProject.DAO
                 return false;
             }
         }
+
+        // Thêm vào cuối lớp PhongThiDAO
+        public static DataTable GetAvailablePhongThiByDate(DateTime ngayThi)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@NgayThi", ngayThi.Date)
+            };
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetAvailablePhongThiByDate", parameters);
+        }
     }
 }
