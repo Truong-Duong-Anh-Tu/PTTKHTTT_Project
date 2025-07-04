@@ -77,5 +77,17 @@ namespace PTTKHTTTProject.DAO
 
             return dt;
         }
+
+        public static string getDepartment(string username)
+        {
+            var pUser = new SqlParameter("@username", SqlDbType.VarChar, 10)
+            { Value = username.Trim() };
+
+            object result = DataProvider.Instance.ExecuteScalar("SELECT NV_MaPhongBan FROM NHANVIEN WHERE NV_MaNhanVien = @username", pUser);
+
+            string? department = result != null && result != DBNull.Value ? result.ToString() : string.Empty;
+
+            return $"{department}";
+        }
     }
 }
