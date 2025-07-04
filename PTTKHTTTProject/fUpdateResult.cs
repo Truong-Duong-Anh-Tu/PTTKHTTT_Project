@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -29,7 +30,13 @@ namespace PTTKHTTTProject
             examcode = codeexam;
         }
 
-        private void pnlResultExamInfo_Paint(object sender, PaintEventArgs e)
+        private void btnExit_Click(object sender, EventArgs e)
+        {
+            this.DialogResult = DialogResult.Cancel;
+            this.Close();
+        }
+
+        private void fUpdateResult_Load(object sender, EventArgs e)
         {
             List<string> temp = ManageResultBUS.loadTimePointAndMarkuint(examcode);
 
@@ -43,17 +50,6 @@ namespace PTTKHTTTProject
             tbxDVCT.Text = temp[2];
         }
 
-        private void btnExit_Click(object sender, EventArgs e)
-        {
-            this.DialogResult = DialogResult.Cancel;
-            this.Close();
-        }
-
-        private void fUpdateResult_Load(object sender, EventArgs e)
-        {
-            dtpdoExamTime.Value = DateTime.Today;
-        }
-
         private void btnUpdate_Click(object sender, EventArgs e)
         {
             try
@@ -62,7 +58,19 @@ namespace PTTKHTTTProject
                 string dtime = dtpdoExamTime.Text;
                 string markunit = tbxDVCT.Text;
 
-                ManageResultBUS.updateInfomationOfResultExam(examcode, point, dtime, markunit);
+                if (decimal.TryParse(point, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal parsepoint))
+                {
+                    // result đã có giá trị
+                }
+                else
+                {
+                    MessageBox.Show("Điểm số nhập không đúng định dạng", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                var bus = new ManageResultBUS(examcode, parsepoint, dtime, markunit);
+                bus.updateInfomationOfResultExam();
 
                 if (MessageBox.Show("Đã cập nhật thành công", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
                 {

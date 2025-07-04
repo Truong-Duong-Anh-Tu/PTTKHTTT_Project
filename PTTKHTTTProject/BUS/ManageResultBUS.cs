@@ -12,6 +12,19 @@ namespace PTTKHTTTProject.BUS
 {
     internal class ManageResultBUS
     {
+        private string _examcode;
+        private decimal _point;
+        private string _dtime;
+        private string _markunit;
+
+        public ManageResultBUS(string examcode, decimal point, string dtime, string markunit)
+        {
+            _examcode = examcode;
+            _point = point;
+            _dtime = dtime;
+            _markunit = markunit;
+        }
+
         public static DataTable loadCandidateAndPoint(string examtest)
         {
             string examtype = examtest.Split(' ')[0];
@@ -21,21 +34,11 @@ namespace PTTKHTTTProject.BUS
             return dt;
         }
 
-        public static void updateInfomationOfResultExam(string examcode, string point, string dotime, string markunit)
+        public void updateInfomationOfResultExam()
         {
-            if (decimal.TryParse(point, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal parsepoint))
-            {
-                // result đã có giá trị
-            }
-            else
-            {
-                MessageBox.Show("Điểm số nhập không đúng định dạng", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            TimeOnly parsetime = TimeOnly.Parse(_dtime);
 
-            TimeOnly parsetime = TimeOnly.Parse(dotime);
-
-            ManageResultDAO.updateInfomationIntoBAITHI(examcode, parsepoint, parsetime, markunit);
+            ManageResultDAO.updateInfomationIntoBAITHI(_examcode, _point, parsetime, _markunit);
         }
 
         public static void deleteAExam(string examcode)
