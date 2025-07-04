@@ -1,17 +1,23 @@
 ﻿using System.Data;
-using PTTKHTTTProject.DAO;
+using Microsoft.Data.SqlClient;
 
 namespace PTTKHTTTProject.DAO
 {
     public class LichThiDAO
     {
-        /// <summary>
-        /// Gọi Stored Procedure usp_GetLichThi để lấy toàn bộ danh sách lịch thi.
-        /// </summary>
-        /// <returns>Một DataTable chứa danh sách lịch thi.</returns>
         public static DataTable GetAllLichThi()
         {
             return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThi");
+        }
+
+        // PHƯƠNG THỨC MỚI
+        public static DataTable GetLichThiByPhongThi(string maPhongThi)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaPhongThi", maPhongThi)
+            };
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThiByPhongThi", parameters);
         }
     }
 }

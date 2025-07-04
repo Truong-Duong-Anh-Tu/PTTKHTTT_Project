@@ -813,7 +813,7 @@ BEGIN
     VALUES (@MaNhanVien, @MaLichThi, N'Chưa diễn ra');
 END;
 GO
-GO
+
 CREATE OR ALTER PROCEDURE usp_GetLichThi
 AS
 BEGIN
@@ -832,6 +832,85 @@ BEGIN
     ORDER BY 
         lt.LT_NgayThi DESC;
 END;
+GO
+
+CREATE OR ALTER PROCEDURE usp_UpdateKyThi
+    @MaKyThi VARCHAR(10),
+    @TenKyThi NVARCHAR(100),
+    @LePhi MONEY
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        UPDATE KYTHI
+        SET
+            KT_TenKyThi = @TenKyThi,
+            KT_LePhi = @LePhi
+        WHERE
+            KT_MaKyThi = @MaKyThi;
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_AddKyThi
+    @MaKyThi VARCHAR(10),
+    @TenKyThi NVARCHAR(100),
+    @LePhi MONEY
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        INSERT INTO KYTHI (KT_MaKyThi, KT_TenKyThi, KT_LePhi)
+        VALUES (@MaKyThi, @TenKyThi, @LePhi);
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_DeleteKyThi
+    @MaKyThi VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    BEGIN TRY
+        -- Chỉ xóa nếu không có lịch thi nào liên quan để đảm bảo toàn vẹn dữ liệu
+        IF NOT EXISTS (SELECT 1 FROM LICHTHI WHERE LT_MaKyThi = @MaKyThi)
+        BEGIN
+            DELETE FROM KYTHI
+            WHERE KT_MaKyThi = @MaKyThi;
+        END
+        ELSE
+        BEGIN
+            RAISERROR('Không thể xóa kỳ thi này vì đã có lịch thi liên quan.', 16, 1);
+        END
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_GetLastKyThiId
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT TOP 1 KT_MaKyThi
+    FROM KYTHI
+    ORDER BY CAST(SUBSTRING(KT_MaKyThi, 3, LEN(KT_MaKyThi)) AS INT) DESC;
+END
+GO
+
+CREATE OR ALTER PROCEDURE usp_GetAllPhongThi
+AS
+BEGIN
+     SET NOCOUNT ON;
+    SELECT * FROM PHONGTHI;
+END
 GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------
