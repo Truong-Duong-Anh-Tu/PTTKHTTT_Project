@@ -26,14 +26,16 @@ namespace PTTKHTTTProject.UControl
             textBox1.PlaceholderText = "Tìm mã số/tên nhân viên";
 
             // Ngăn việc chọn tất cả văn bản khi nhấp vào
-            textBox1.GotFocus += (sender, e) => {
+            textBox1.GotFocus += (sender, e) =>
+            {
                 // Đặt điểm chèn văn bản vào cuối dòng thay vì chọn tất cả
                 textBox1.SelectionStart = textBox1.Text.Length;
                 textBox1.SelectionLength = 0;
             };
 
             // Thêm sự kiện tìm kiếm khi nhấn Enter
-            textBox1.KeyDown += (sender, e) => {
+            textBox1.KeyDown += (sender, e) =>
+            {
                 if (e.KeyCode == Keys.Enter)
                 {
                     SearchNhanVien(textBox1.Text);
@@ -42,14 +44,16 @@ namespace PTTKHTTTProject.UControl
             };
 
             // Thêm sự kiện tìm kiếm khi thay đổi text (tìm kiếm tức thì)
-            textBox1.TextChanged += (sender, e) => {
+            textBox1.TextChanged += (sender, e) =>
+            {
                 SearchNhanVien(textBox1.Text);
             };
 
             // Nếu có pictureBoxSearch trong form, kết nối nút tìm kiếm
             if (Controls.Find("pictureBoxSearch", true).FirstOrDefault() is PictureBox pictureBoxSearch)
             {
-                pictureBoxSearch.Click += (sender, e) => {
+                pictureBoxSearch.Click += (sender, e) =>
+                {
                     SearchNhanVien(textBox1.Text);
                 };
             }
@@ -59,7 +63,7 @@ namespace PTTKHTTTProject.UControl
         {
             try
             {
-                DataTable dtNhanVien = NhanVienBUS.GetAllNhanVien();
+                DataTable dtNhanVien = InfoEmployeeBUS.GetAllNhanVien();
                 dataGridView1.DataSource = dtNhanVien;
                 FormatDataGridView(); // Gọi hàm format sau khi gán DataSource
             }
@@ -83,7 +87,7 @@ namespace PTTKHTTTProject.UControl
                 else
                 {
                     // Khi có từ khóa, gọi phương thức tìm kiếm
-                    dataGridView1.DataSource = NhanVienBUS.SearchNhanVien(searchTerm);
+                    dataGridView1.DataSource = InfoEmployeeBUS.SearchNhanVien(searchTerm);
                     FormatDataGridView();
                 }
             }
@@ -178,7 +182,7 @@ namespace PTTKHTTTProject.UControl
                 if (confirmResult == DialogResult.Yes)
                 {
                     // Gọi lớp BUS để thực hiện việc xóa
-                    bool success = NhanVienBUS.DeleteNhanVien(maNV);
+                    bool success = InfoEmployeeBUS.DeleteNhanVien(maNV);
 
                     if (success)
                     {
@@ -195,6 +199,11 @@ namespace PTTKHTTTProject.UControl
         }
 
         private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void adminQuanLyNV_Load(object sender, EventArgs e)
         {
 
         }

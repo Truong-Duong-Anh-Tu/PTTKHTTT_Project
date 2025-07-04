@@ -196,5 +196,10 @@ namespace PTTKHTTTProject.UControl
             fAdminXemDSLichThi_PhongThi f = new fAdminXemDSLichThi_PhongThi(selectedMaPhongThi);
             f.ShowDialog();
         }
+
+        private void adminQLPhongThi_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

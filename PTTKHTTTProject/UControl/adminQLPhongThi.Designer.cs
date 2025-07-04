@@ -60,10 +60,9 @@
             // 
             labelDSPhongThi.AutoSize = true;
             labelDSPhongThi.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            labelDSPhongThi.Location = new Point(275, 24);
-            labelDSPhongThi.Margin = new Padding(5, 0, 5, 0);
+            labelDSPhongThi.Location = new Point(169, 15);
             labelDSPhongThi.Name = "labelDSPhongThi";
-            labelDSPhongThi.Size = new Size(329, 45);
+            labelDSPhongThi.Size = new Size(208, 28);
             labelDSPhongThi.TabIndex = 0;
             labelDSPhongThi.Text = "Danh sách phòng thi";
             // 
@@ -71,10 +70,9 @@
             // 
             labelQLPhongThi.AutoSize = true;
             labelQLPhongThi.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            labelQLPhongThi.Location = new Point(618, 16);
-            labelQLPhongThi.Margin = new Padding(5, 0, 5, 0);
+            labelQLPhongThi.Location = new Point(380, 10);
             labelQLPhongThi.Name = "labelQLPhongThi";
-            labelQLPhongThi.Size = new Size(397, 50);
+            labelQLPhongThi.Size = new Size(246, 31);
             labelQLPhongThi.TabIndex = 4;
             labelQLPhongThi.Text = "QUẢN LÝ PHÒNG THI";
             // 
@@ -84,19 +82,17 @@
             panel1.Controls.Add(buttonXemLichThi);
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(labelDSPhongThi);
-            panel1.Location = new Point(24, 94);
-            panel1.Margin = new Padding(5);
+            panel1.Location = new Point(15, 59);
             panel1.Name = "panel1";
-            panel1.Size = new Size(920, 766);
+            panel1.Size = new Size(566, 479);
             panel1.TabIndex = 5;
             // 
             // buttonXemLichThi
             // 
             buttonXemLichThi.BackColor = Color.SkyBlue;
-            buttonXemLichThi.Location = new Point(392, 674);
-            buttonXemLichThi.Margin = new Padding(5);
+            buttonXemLichThi.Location = new Point(241, 421);
             buttonXemLichThi.Name = "buttonXemLichThi";
-            buttonXemLichThi.Size = new Size(488, 66);
+            buttonXemLichThi.Size = new Size(300, 41);
             buttonXemLichThi.TabIndex = 2;
             buttonXemLichThi.Text = "Xem danh sách lịch thi của phòng thi";
             buttonXemLichThi.UseVisualStyleBackColor = false;
@@ -105,11 +101,10 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(32, 96);
-            dataGridView1.Margin = new Padding(5);
+            dataGridView1.Location = new Point(20, 60);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(847, 541);
+            dataGridView1.Size = new Size(521, 338);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -122,19 +117,17 @@
             panel2.Controls.Add(buttonThem);
             panel2.Controls.Add(tableLayoutPanel1);
             panel2.Controls.Add(labelChiTietPhongThi);
-            panel2.Location = new Point(972, 94);
-            panel2.Margin = new Padding(5);
+            panel2.Location = new Point(598, 59);
             panel2.Name = "panel2";
-            panel2.Size = new Size(660, 766);
+            panel2.Size = new Size(406, 479);
             panel2.TabIndex = 6;
             // 
             // buttonLuuThongTin
             // 
             buttonLuuThongTin.BackColor = Color.SkyBlue;
-            buttonLuuThongTin.Location = new Point(291, 674);
-            buttonLuuThongTin.Margin = new Padding(5);
+            buttonLuuThongTin.Location = new Point(179, 421);
             buttonLuuThongTin.Name = "buttonLuuThongTin";
-            buttonLuuThongTin.Size = new Size(336, 58);
+            buttonLuuThongTin.Size = new Size(207, 36);
             buttonLuuThongTin.TabIndex = 6;
             buttonLuuThongTin.Text = "Lưu thông tin";
             buttonLuuThongTin.UseVisualStyleBackColor = false;
@@ -143,10 +136,9 @@
             // buttonXoa
             // 
             buttonXoa.BackColor = Color.SkyBlue;
-            buttonXoa.Location = new Point(458, 579);
-            buttonXoa.Margin = new Padding(5);
+            buttonXoa.Location = new Point(282, 362);
             buttonXoa.Name = "buttonXoa";
-            buttonXoa.Size = new Size(169, 58);
+            buttonXoa.Size = new Size(104, 36);
             buttonXoa.TabIndex = 5;
             buttonXoa.Text = "Xóa";
             buttonXoa.UseVisualStyleBackColor = false;
@@ -155,10 +147,9 @@
             // buttonChinhSua
             // 
             buttonChinhSua.BackColor = Color.SkyBlue;
-            buttonChinhSua.Location = new Point(221, 579);
-            buttonChinhSua.Margin = new Padding(5);
+            buttonChinhSua.Location = new Point(136, 362);
             buttonChinhSua.Name = "buttonChinhSua";
-            buttonChinhSua.Size = new Size(193, 58);
+            buttonChinhSua.Size = new Size(119, 36);
             buttonChinhSua.TabIndex = 4;
             buttonChinhSua.Text = "Chỉnh sửa";
             buttonChinhSua.UseVisualStyleBackColor = false;
@@ -167,10 +158,9 @@
             // buttonThem
             // 
             buttonThem.BackColor = Color.SkyBlue;
-            buttonThem.Location = new Point(26, 579);
-            buttonThem.Margin = new Padding(5);
+            buttonThem.Location = new Point(16, 362);
             buttonThem.Name = "buttonThem";
-            buttonThem.Size = new Size(169, 58);
+            buttonThem.Size = new Size(104, 36);
             buttonThem.TabIndex = 3;
             buttonThem.Text = "Thêm";
             buttonThem.UseVisualStyleBackColor = false;
@@ -192,56 +182,51 @@
             tableLayoutPanel1.Controls.Add(labelMaxThiSinh, 0, 2);
             tableLayoutPanel1.Controls.Add(textBoxMaPhongThi, 1, 0);
             tableLayoutPanel1.Controls.Add(comboBoxHinhThuc, 1, 1);
-            tableLayoutPanel1.Location = new Point(31, 96);
-            tableLayoutPanel1.Margin = new Padding(5);
+            tableLayoutPanel1.Location = new Point(19, 60);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 5;
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 83F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 77F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 80F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 70F));
-            tableLayoutPanel1.Size = new Size(596, 427);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 52F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 48F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 44F));
+            tableLayoutPanel1.Size = new Size(367, 267);
             tableLayoutPanel1.TabIndex = 2;
             // 
             // textBoxSLNVCT
             // 
             textBoxSLNVCT.Anchor = AnchorStyles.None;
             textBoxSLNVCT.BorderStyle = BorderStyle.FixedSingle;
-            textBoxSLNVCT.Location = new Point(234, 354);
-            textBoxSLNVCT.Margin = new Padding(5);
+            textBoxSLNVCT.Location = new Point(144, 220);
             textBoxSLNVCT.Name = "textBoxSLNVCT";
-            textBoxSLNVCT.Size = new Size(309, 39);
+            textBoxSLNVCT.Size = new Size(191, 27);
             textBoxSLNVCT.TabIndex = 13;
             // 
             // textBoxMinThiSinh
             // 
             textBoxMinThiSinh.Anchor = AnchorStyles.None;
             textBoxMinThiSinh.BorderStyle = BorderStyle.FixedSingle;
-            textBoxMinThiSinh.Location = new Point(234, 260);
-            textBoxMinThiSinh.Margin = new Padding(5);
+            textBoxMinThiSinh.Location = new Point(144, 161);
             textBoxMinThiSinh.Name = "textBoxMinThiSinh";
-            textBoxMinThiSinh.Size = new Size(309, 39);
+            textBoxMinThiSinh.Size = new Size(191, 27);
             textBoxMinThiSinh.TabIndex = 12;
             // 
             // textBoxMaxThiSinh
             // 
             textBoxMaxThiSinh.Anchor = AnchorStyles.None;
             textBoxMaxThiSinh.BorderStyle = BorderStyle.FixedSingle;
-            textBoxMaxThiSinh.Location = new Point(234, 182);
-            textBoxMaxThiSinh.Margin = new Padding(5);
+            textBoxMaxThiSinh.Location = new Point(144, 112);
             textBoxMaxThiSinh.Name = "textBoxMaxThiSinh";
-            textBoxMaxThiSinh.Size = new Size(309, 39);
+            textBoxMaxThiSinh.Size = new Size(191, 27);
             textBoxMaxThiSinh.TabIndex = 11;
             // 
             // labelSoLuongNVCT
             // 
             labelSoLuongNVCT.Anchor = AnchorStyles.None;
             labelSoLuongNVCT.AutoSize = true;
-            labelSoLuongNVCT.Location = new Point(5, 341);
-            labelSoLuongNVCT.Margin = new Padding(5, 0, 5, 0);
+            labelSoLuongNVCT.Location = new Point(3, 213);
             labelSoLuongNVCT.Name = "labelSoLuongNVCT";
-            labelSoLuongNVCT.Size = new Size(171, 64);
+            labelSoLuongNVCT.Size = new Size(105, 40);
             labelSoLuongNVCT.TabIndex = 8;
             labelSoLuongNVCT.Text = "Số lượng nhân viên coi thi";
             labelSoLuongNVCT.TextAlign = ContentAlignment.MiddleCenter;
@@ -250,10 +235,9 @@
             // 
             labelMinThiSinh.Anchor = AnchorStyles.None;
             labelMinThiSinh.AutoSize = true;
-            labelMinThiSinh.Location = new Point(13, 248);
-            labelMinThiSinh.Margin = new Padding(5, 0, 5, 0);
+            labelMinThiSinh.Location = new Point(9, 155);
             labelMinThiSinh.Name = "labelMinThiSinh";
-            labelMinThiSinh.Size = new Size(155, 64);
+            labelMinThiSinh.Size = new Size(94, 40);
             labelMinThiSinh.TabIndex = 6;
             labelMinThiSinh.Text = "Số lượng thí sinh tối thiểu";
             labelMinThiSinh.TextAlign = ContentAlignment.MiddleCenter;
@@ -262,10 +246,9 @@
             // 
             labelHinhThuc.Anchor = AnchorStyles.None;
             labelHinhThuc.AutoSize = true;
-            labelHinhThuc.Location = new Point(31, 105);
-            labelHinhThuc.Margin = new Padding(5, 0, 5, 0);
+            labelHinhThuc.Location = new Point(19, 66);
             labelHinhThuc.Name = "labelHinhThuc";
-            labelHinhThuc.Size = new Size(119, 32);
+            labelHinhThuc.Size = new Size(73, 20);
             labelHinhThuc.TabIndex = 2;
             labelHinhThuc.Text = "Hình thức";
             // 
@@ -273,10 +256,9 @@
             // 
             labelMaPhongThi.Anchor = AnchorStyles.None;
             labelMaPhongThi.AutoSize = true;
-            labelMaPhongThi.Location = new Point(11, 24);
-            labelMaPhongThi.Margin = new Padding(5, 0, 5, 0);
+            labelMaPhongThi.Location = new Point(7, 15);
             labelMaPhongThi.Name = "labelMaPhongThi";
-            labelMaPhongThi.Size = new Size(160, 32);
+            labelMaPhongThi.Size = new Size(98, 20);
             labelMaPhongThi.TabIndex = 0;
             labelMaPhongThi.Text = "Mã phòng thi";
             // 
@@ -284,10 +266,9 @@
             // 
             labelMaxThiSinh.Anchor = AnchorStyles.None;
             labelMaxThiSinh.AutoSize = true;
-            labelMaxThiSinh.Location = new Point(18, 169);
-            labelMaxThiSinh.Margin = new Padding(5, 0, 5, 0);
+            labelMaxThiSinh.Location = new Point(11, 106);
             labelMaxThiSinh.Name = "labelMaxThiSinh";
-            labelMaxThiSinh.Size = new Size(145, 64);
+            labelMaxThiSinh.Size = new Size(90, 40);
             labelMaxThiSinh.TabIndex = 4;
             labelMaxThiSinh.Text = "Số lượng thí sinh tối đa";
             labelMaxThiSinh.TextAlign = ContentAlignment.MiddleCenter;
@@ -296,43 +277,40 @@
             // 
             textBoxMaPhongThi.Anchor = AnchorStyles.None;
             textBoxMaPhongThi.BorderStyle = BorderStyle.FixedSingle;
-            textBoxMaPhongThi.Location = new Point(234, 20);
-            textBoxMaPhongThi.Margin = new Padding(5);
+            textBoxMaPhongThi.Location = new Point(144, 11);
             textBoxMaPhongThi.Name = "textBoxMaPhongThi";
-            textBoxMaPhongThi.Size = new Size(309, 39);
+            textBoxMaPhongThi.Size = new Size(191, 27);
             textBoxMaPhongThi.TabIndex = 9;
             // 
             // comboBoxHinhThuc
             // 
             comboBoxHinhThuc.Anchor = AnchorStyles.None;
             comboBoxHinhThuc.FormattingEnabled = true;
-            comboBoxHinhThuc.Location = new Point(240, 101);
-            comboBoxHinhThuc.Margin = new Padding(5);
+            comboBoxHinhThuc.Location = new Point(147, 62);
             comboBoxHinhThuc.Name = "comboBoxHinhThuc";
-            comboBoxHinhThuc.Size = new Size(298, 40);
+            comboBoxHinhThuc.Size = new Size(185, 28);
             comboBoxHinhThuc.TabIndex = 14;
             // 
             // labelChiTietPhongThi
             // 
             labelChiTietPhongThi.AutoSize = true;
             labelChiTietPhongThi.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            labelChiTietPhongThi.Location = new Point(172, 24);
-            labelChiTietPhongThi.Margin = new Padding(5, 0, 5, 0);
+            labelChiTietPhongThi.Location = new Point(106, 15);
             labelChiTietPhongThi.Name = "labelChiTietPhongThi";
-            labelChiTietPhongThi.Size = new Size(283, 45);
+            labelChiTietPhongThi.Size = new Size(179, 28);
             labelChiTietPhongThi.TabIndex = 0;
             labelChiTietPhongThi.Text = "Chi tiết phòng thi";
             // 
             // adminQLPhongThi
             // 
-            AutoScaleDimensions = new SizeF(13F, 32F);
+            AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(panel2);
             Controls.Add(labelQLPhongThi);
             Controls.Add(panel1);
-            Margin = new Padding(5);
             Name = "adminQLPhongThi";
-            Size = new Size(1659, 917);
+            Size = new Size(1021, 573);
+            Load += adminQLPhongThi_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

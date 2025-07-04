@@ -67,7 +67,7 @@ namespace PTTKHTTTProject.UControl
                 return;
             }
 
-            string tenNVMoi = NhanVienBUS.GetTenNhanVien(maNVMoi);
+            string tenNVMoi = InfoEmployeeBUS.GetTenNhanVien(maNVMoi);
             if (string.IsNullOrEmpty(tenNVMoi))
             {
                 MessageBox.Show("Mã nhân viên mới không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
@@ -104,6 +104,16 @@ namespace PTTKHTTTProject.UControl
         }
 
         private void textBoxMaNVCoiThi_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void adminChinhSuaLichNV_Load_1(object sender, EventArgs e)
         {
 
         }

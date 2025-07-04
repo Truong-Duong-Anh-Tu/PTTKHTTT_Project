@@ -20,7 +20,7 @@ namespace PTTKHTTTProject
             try
             {
                 // Tải dữ liệu cho ComboBox Phòng Ban từ CSDL
-                comboBoxPhongBan.DataSource = NhanVienDAO.GetAllPhongBan();
+                comboBoxPhongBan.DataSource = PhongBanBUS.GetAllPhongBan();
                 comboBoxPhongBan.DisplayMember = "PB_TenPhongBan";
                 comboBoxPhongBan.ValueMember = "PB_MaPhongBan";
                 comboBoxPhongBan.SelectedIndex = -1;
@@ -92,7 +92,7 @@ namespace PTTKHTTTProject
 
 
             // Gọi BUS để thực hiện thêm nhân viên
-            bool success = NhanVienBUS.AddNhanVien(maNV, hoTen, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
+            bool success = InfoEmployeeBUS.AddNhanVien(maNV, hoTen, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
 
             if (success)
             {

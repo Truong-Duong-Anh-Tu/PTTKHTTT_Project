@@ -74,6 +74,7 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(885, 414);
             panel1.TabIndex = 2;
+            panel1.Paint += panel1_Paint;
             // 
             // buttonLuuThongTin
             // 
@@ -306,6 +307,7 @@
             Controls.Add(label1);
             Name = "adminChinhSuaLichNV";
             Size = new Size(927, 519);
+            Load += adminChinhSuaLichNV_Load_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();

@@ -186,5 +186,10 @@ namespace PTTKHTTTProject.UControl
                 MessageBox.Show("Vui lòng chọn một kỳ thi để xóa.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
+
+        private void adminQLKyThi_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

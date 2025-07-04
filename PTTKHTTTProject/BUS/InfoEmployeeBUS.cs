@@ -31,5 +31,34 @@ namespace PTTKHTTTProject.BUS
 
             return info;
         }
+        public static DataTable GetAllNhanVien()
+        {
+            return InfoEmployeeDAO.GetAllNhanVien();
+        }
+
+        public static DataTable SearchNhanVien(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return GetAllNhanVien();
+
+            return InfoEmployeeDAO.SearchNhanVien(searchTerm);
+        }
+        public static bool AddNhanVien(string maNV, string tenNV, DateTime ngaySinh, string gioiTinh, string email, string sdt, string cccd, string diaChi, string chucVu, int luong, string maPhongBan)
+        {
+            // (Tùy chọn) Thêm các bước kiểm tra logic nghiệp vụ ở đây trước khi gọi DAO
+            return InfoEmployeeDAO.AddNhanVien(maNV, tenNV, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
+        }
+
+        public static bool DeleteNhanVien(string maNV)
+        {
+            return InfoEmployeeDAO.DeleteNhanVien(maNV);
+        }
+
+        public static string GetTenNhanVien(string maNV)
+        {
+            if (string.IsNullOrWhiteSpace(maNV))
+                return string.Empty;
+            return InfoEmployeeDAO.GetTenNhanVien(maNV);
+        }
     }
 }
