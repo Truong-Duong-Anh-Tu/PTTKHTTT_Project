@@ -19,10 +19,11 @@ namespace PTTKHTTTProject.UControl
             lichPhanCong = row;
         }
 
-        private void adminChinhSuaLichNV_Load(object? sender, EventArgs e)
+        // Đã gộp code từ hàm adminChinhSuaLichNV_Load vào đây
+        private void adminChinhSuaLichNV_Load_1(object sender, EventArgs e)
         {
             HienThiDuLieu();
-            SetEditable(false);
+            SetEditable(false); // Bắt đầu ở trạng thái chỉ đọc
         }
 
         private void HienThiDuLieu()
@@ -35,8 +36,17 @@ namespace PTTKHTTTProject.UControl
                     labelHienThiNgayThi.Text = ngayThi.ToString("dd/MM/yyyy");
                 }
                 labelHienThiPhongThi.Text = lichPhanCong["Phòng Thi"]?.ToString() ?? "N/A";
-                labelHienThiTGBatDau.Text = lichPhanCong["Giờ Bắt Đầu"]?.ToString() ?? "N/A";
-                labelHienThiTGKetThuc.Text = lichPhanCong["Giờ Kết Thúc"]?.ToString() ?? "N/A";
+
+                // Hiển thị thời gian bắt đầu và kết thúc
+                if (lichPhanCong["Giờ Bắt Đầu"] is TimeSpan gioBatDau)
+                {
+                    labelHienThiTGBatDau.Text = gioBatDau.ToString(@"hh\:mm");
+                }
+                if (lichPhanCong["Giờ Kết Thúc"] is TimeSpan gioKetThuc)
+                {
+                    labelHienThiTGKetThuc.Text = gioKetThuc.ToString(@"hh\:mm");
+                }
+
                 textBoxMaNVCoiThi.Text = lichPhanCong["Mã Nhân Viên"]?.ToString() ?? "N/A";
                 textBoxTenNVCoiThi.Text = lichPhanCong["Tên Nhân Viên"]?.ToString() ?? "N/A";
             }
@@ -45,6 +55,8 @@ namespace PTTKHTTTProject.UControl
         private void SetEditable(bool isEditable)
         {
             textBoxMaNVCoiThi.ReadOnly = !isEditable;
+            // Thay đổi màu nền để người dùng biết ô có thể chỉnh sửa
+            textBoxMaNVCoiThi.BackColor = isEditable ? SystemColors.Window : SystemColors.Control;
             buttonLuuThongTin.Enabled = isEditable;
             buttonChinhSuaThongTin.Enabled = !isEditable;
         }
@@ -52,6 +64,7 @@ namespace PTTKHTTTProject.UControl
         private void buttonChinhSuaThongTin_Click(object? sender, EventArgs e)
         {
             SetEditable(true);
+            textBoxMaNVCoiThi.Focus(); // Tự động focus vào ô Mã Nhân Viên
         }
 
         private void buttonLuuThongTin_Click(object? sender, EventArgs e)
@@ -67,10 +80,11 @@ namespace PTTKHTTTProject.UControl
                 return;
             }
 
+            // Kiểm tra xem nhân viên mới có tồn tại không
             string tenNVMoi = InfoEmployeeBUS.GetTenNhanVien(maNVMoi);
             if (string.IsNullOrEmpty(tenNVMoi))
             {
-                MessageBox.Show("Mã nhân viên mới không tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Mã nhân viên mới không tồn tại. Vui lòng kiểm tra lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -78,44 +92,51 @@ namespace PTTKHTTTProject.UControl
             if (bus.UpdateEmployeeSchedule(maLichThi, maNVCU, maNVMoi))
             {
                 MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Cập nhật lại dữ liệu trên DataRowView để giao diện được đồng bộ
                 lichPhanCong.Row["Mã Nhân Viên"] = maNVMoi;
                 lichPhanCong.Row["Tên Nhân Viên"] = tenNVMoi;
-                HienThiDuLieu();
-                SetEditable(false);
+                HienThiDuLieu(); // Hiển thị lại dữ liệu đã cập nhật
+                SetEditable(false); // Chuyển về trạng thái chỉ đọc
             }
             else
             {
-                MessageBox.Show("Cập nhật thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Cập nhật thất bại. Vui lòng thử lại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
 
         private void pictureBox1_Click(object sender, EventArgs e)
         {
-            // Đóng UserControl hiện tại
+            // Tìm UserControl cha (adminQuanLyLichNV) và quay lại
             if (this.Parent is Panel parentPanel)
             {
-                parentPanel.Controls.Remove(this);
-            }
-            else
-            {
-                // Nếu không phải là Panel, có thể là Form hoặc UserControl khác
-                this.Dispose();
+                parentPanel.Controls.Clear();
+                adminQuanLyLichNV qlLichNV = new adminQuanLyLichNV();
+                qlLichNV.Dock = DockStyle.Fill;
+                parentPanel.Controls.Add(qlLichNV);
             }
         }
 
+        // Bổ sung chức năng: Tự động hiển thị tên nhân viên khi nhập mã
         private void textBoxMaNVCoiThi_TextChanged(object sender, EventArgs e)
         {
-
+            if (!textBoxMaNVCoiThi.ReadOnly) // Chỉ thực hiện khi đang ở chế độ chỉnh sửa
+            {
+                string maNVMoi = textBoxMaNVCoiThi.Text.Trim();
+                if (!string.IsNullOrEmpty(maNVMoi))
+                {
+                    string tenNVMoi = InfoEmployeeBUS.GetTenNhanVien(maNVMoi);
+                    textBoxTenNVCoiThi.Text = string.IsNullOrEmpty(tenNVMoi) ? "Không tìm thấy" : tenNVMoi;
+                }
+                else
+                {
+                    textBoxTenNVCoiThi.Text = "";
+                }
+            }
         }
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-
-        }
-
-        private void adminChinhSuaLichNV_Load_1(object sender, EventArgs e)
-        {
-
+            // Method này có thể để trống
         }
     }
 }
