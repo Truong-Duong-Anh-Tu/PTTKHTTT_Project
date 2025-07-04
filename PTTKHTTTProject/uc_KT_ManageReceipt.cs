@@ -87,6 +87,13 @@ namespace PTTKHTTTProject
                     }
                     else if (dtgvResult.Columns.Contains("cbxPaid") && ev.ColumnIndex == dtgvResult.Columns["cbxPaid"].Index)
                     {
+                        //Nếu trạng thái là "Thanh toán gia hạn" thì không cho phép thay đổi trạng thái thanh toán
+                        if (dtgvResult.Rows[ev.RowIndex].Cells["TrangThai"].Value.ToString() == "Thanh toán gia hạn")
+                        {
+                            dtgvResult.Rows[ev.RowIndex].Cells["cbxPaid"].ReadOnly = true;
+                            return;
+                        }
+
                         var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaid"].Value;
                         string currentValueString;
                         if (currentValue == null)
@@ -159,9 +166,13 @@ namespace PTTKHTTTProject
                 {
                     row.Cells["cbxPaid"].Value = true;
                 }
-                else
+                else if(row.Cells["TrangThai"].Value != null && row.Cells["TrangThai"].Value.ToString() == "Chưa thanh toán")
                 {
                     row.Cells["cbxPaid"].Value = false;
+                }
+                else
+                {
+                    row.Cells["cbxPaid"].ReadOnly = true;
                 }
             }
         }
