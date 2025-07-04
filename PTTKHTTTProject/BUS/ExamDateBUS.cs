@@ -75,5 +75,15 @@ namespace PTTKHTTTProject.BUS
             }
             return ExamDateDAO.UpdateLichThi(maLichThi, ngayThi, slDangKy, tgBatDau, tgKetThuc);
         }
+
+        // Thêm vào cuối file BUS/ExamDateBUS.cs
+        public static bool DeleteLichThi(string maLichThi)
+        {
+            if (string.IsNullOrWhiteSpace(maLichThi))
+            {
+                return false;
+            }
+            return ExamDateDAO.DeleteLichThi(maLichThi);
+        }
     }
 }

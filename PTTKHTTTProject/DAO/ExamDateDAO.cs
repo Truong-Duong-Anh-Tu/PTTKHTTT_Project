@@ -68,5 +68,23 @@ namespace PTTKHTTTProject.DAO
             };
             return DataProvider.Instance.ExecuteScalarSP<int>("usp_UpdateLichThi", parameters) == 1;
         }
+
+        // Thêm vào cuối file DAO/ExamDateDAO.cs
+        public static bool DeleteLichThi(string maLichThi)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaLichThi", maLichThi)
+            };
+            // Do stored procedure có RAISERROR, chúng ta cần bắt lỗi
+            try
+            {
+                return DataProvider.Instance.ExecuteScalarSP<int>("usp_DeleteLichThi", parameters) == 1;
+            }
+            catch (SqlException)
+            {
+                return false;
+            }
+        }
     }
 }

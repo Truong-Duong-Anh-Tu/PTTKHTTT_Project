@@ -951,6 +951,39 @@ BEGIN
     END CATCH
 END
 GO
+
+-- Xóa Lịch Thi
+CREATE OR ALTER PROCEDURE usp_DeleteLichThi
+    @MaLichThi VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    
+    -- Kiểm tra xem có bản ghi nào trong PHIEUDANGKYDUTHI tham chiếu đến lịch thi này không
+    IF EXISTS (SELECT 1 FROM PHIEUDANGKYDUTHI WHERE PDKDT_MaLichThi = @MaLichThi)
+    BEGIN
+        RAISERROR('Không thể xóa lịch thi này vì đã có thí sinh đăng ký.', 16, 1);
+        SELECT 0 AS Result;
+        RETURN;
+    END
+
+    -- Kiểm tra xem có bản ghi nào trong PHANCONG tham chiếu đến lịch thi này không
+    IF EXISTS (SELECT 1 FROM PHANCONG WHERE PC_MaLichThi = @MaLichThi)
+    BEGIN
+        RAISERROR('Không thể xóa lịch thi này vì đã được phân công cho nhân viên.', 16, 1);
+        SELECT 0 AS Result;
+        RETURN;
+    END
+
+    BEGIN TRY
+        DELETE FROM LICHTHI WHERE LT_MaLichThi = @MaLichThi;
+        SELECT 1 AS Result;
+    END TRY
+    BEGIN CATCH
+        SELECT 0 AS Result;
+    END CATCH
+END
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------
 

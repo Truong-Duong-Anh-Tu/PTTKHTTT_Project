@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Data;
+using System.Drawing;
 using System.Windows.Forms;
 using PTTKHTTTProject.BUS;
 
@@ -16,12 +17,8 @@ namespace PTTKHTTTProject.UControl
             lichThiBUS = new ExamDateBUS();
             originalDataTable = new DataTable();
             this.dataGridViewDSLichThi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
-
-            // --- BẮT ĐẦU PHẦN THÊM MỚI ---
-            // Khởi tạo và bắt đầu Timer
-            timerRefresh.Interval = 30000; // Cập nhật sau mỗi 30 giây
-            timerRefresh.Start();
-            // --- KẾT THÚC PHẦN THÊM MỚI ---
+            this.timerRefresh.Interval = 30000;
+            this.timerRefresh.Start();
         }
 
         private void adminQlyLichThi_Load(object? sender, EventArgs e)
@@ -33,18 +30,13 @@ namespace PTTKHTTTProject.UControl
         {
             try
             {
-                // Lưu lại bộ lọc hiện tại (nếu có)
                 string currentFilter = originalDataTable.DefaultView.RowFilter;
-
                 originalDataTable = ExamDateBUS.GetAllLichThi();
                 dataGridViewDSLichThi.DataSource = originalDataTable;
-
-                // Áp dụng lại bộ lọc sau khi tải dữ liệu mới
                 if (!string.IsNullOrEmpty(currentFilter))
                 {
                     originalDataTable.DefaultView.RowFilter = currentFilter;
                 }
-
                 SetupDataGridView();
             }
             catch (Exception ex)
@@ -53,18 +45,17 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
-        // --- BẮT ĐẦU PHẦN THÊM MỚI ---
         private void timerRefresh_Tick(object sender, EventArgs e)
         {
-            LoadData(); // Tải lại dữ liệu để cập nhật trạng thái
+            LoadData();
         }
-        // --- KẾT THÚC PHẦN THÊM MỚI ---
 
         private void SetupDataGridView()
         {
-            // Xóa các button cũ để tránh trùng lặp
-            if (dataGridViewDSLichThi.Columns.Contains("EditButton"))
-                dataGridViewDSLichThi.Columns.Remove("EditButton");
+            if (dataGridViewDSLichThi.Columns.Contains("Sua"))
+                dataGridViewDSLichThi.Columns.Remove("Sua");
+            if (dataGridViewDSLichThi.Columns.Contains("Xoa"))
+                dataGridViewDSLichThi.Columns.Remove("Xoa");
 
             dataGridViewDSLichThi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             if (dataGridViewDSLichThi.Columns.Contains("Ngày Thi"))
@@ -76,14 +67,27 @@ namespace PTTKHTTTProject.UControl
                 dataGridViewDSLichThi.Columns["Số Lượng Đã Đăng Ký"].HeaderText = "SL Đã Đăng Ký";
             }
 
-            // Thêm cột nút Sửa
-            DataGridViewButtonColumn editButton = new DataGridViewButtonColumn();
-            editButton.Name = "EditButton";
-            editButton.HeaderText = "Hành Động";
-            editButton.Text = "Sửa";
-            editButton.UseColumnTextForButtonValue = true;
-            editButton.AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells;
-            dataGridViewDSLichThi.Columns.Add(editButton);
+            DataGridViewButtonColumn btnSua = new DataGridViewButtonColumn
+            {
+                Name = "Sua",
+                HeaderText = "",
+                Text = "Sửa",
+                UseColumnTextForButtonValue = true,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DefaultCellStyle = new DataGridViewCellStyle { BackColor = Color.White }
+            };
+            dataGridViewDSLichThi.Columns.Add(btnSua);
+
+            DataGridViewButtonColumn btnXoa = new DataGridViewButtonColumn
+            {
+                Name = "Xoa",
+                HeaderText = "",
+                Text = "Xóa",
+                UseColumnTextForButtonValue = true,
+                AutoSizeMode = DataGridViewAutoSizeColumnMode.AllCells,
+                DefaultCellStyle = new DataGridViewCellStyle { BackColor = Color.White }
+            };
+            dataGridViewDSLichThi.Columns.Add(btnXoa);
         }
 
         private void dataGridView1_CellFormatting(object? sender, DataGridViewCellFormattingEventArgs e)
@@ -95,12 +99,7 @@ namespace PTTKHTTTProject.UControl
                 string colName = dgv.Columns[e.ColumnIndex].Name;
                 if (colName == "Giờ Bắt Đầu" || colName == "Giờ Kết Thúc")
                 {
-                    if (e.Value == null || e.Value == DBNull.Value)
-                    {
-                        e.Value = "";
-                        e.FormattingApplied = true;
-                    }
-                    else if (e.Value is TimeSpan ts)
+                    if (e.Value is TimeSpan ts)
                     {
                         e.Value = ts.ToString(@"hh\:mm");
                         e.FormattingApplied = true;
@@ -109,11 +108,43 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
+        private void dataGridViewDSLichThi_CellPainting(object sender, DataGridViewCellPaintingEventArgs e)
+        {
+            if (e.RowIndex == -1 && dataGridViewDSLichThi.Columns.Contains("Sua") && dataGridViewDSLichThi.Columns.Contains("Xoa"))
+            {
+                int suaIndex = dataGridViewDSLichThi.Columns["Sua"].Index;
+                int xoaIndex = dataGridViewDSLichThi.Columns["Xoa"].Index;
+
+                if (e.ColumnIndex == suaIndex)
+                {
+                    Rectangle rect1 = dataGridViewDSLichThi.GetCellDisplayRectangle(suaIndex, -1, true);
+                    Rectangle rect2 = dataGridViewDSLichThi.GetCellDisplayRectangle(xoaIndex, -1, true);
+
+                    rect1.Width += rect2.Width - 1;
+                    rect1.Height -= 1;
+
+                    // --- BẮT ĐẦU PHẦN CHỈNH SỬA ---
+                    // Thay đổi màu nền ở đây để khớp với header mặc định
+                    e.Graphics.FillRectangle(new SolidBrush(dataGridViewDSLichThi.ColumnHeadersDefaultCellStyle.BackColor), rect1);
+                    // --- KẾT THÚC PHẦN CHỈNH SỬA ---
+
+                    e.Graphics.DrawRectangle(SystemPens.ControlDark, rect1);
+
+                    StringFormat format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+                    e.Graphics.DrawString("Hành động", e.CellStyle.Font, new SolidBrush(e.CellStyle.ForeColor), rect1, format);
+                    e.Handled = true;
+                }
+                else if (e.ColumnIndex == xoaIndex)
+                {
+                    e.Handled = true;
+                }
+            }
+        }
+
         private void btnTimKiem_Click(object? sender, EventArgs e)
         {
             if (originalDataTable == null) return;
             string keyword = txtTimKiem.Text.Trim().Replace("'", "''");
-
             originalDataTable.DefaultView.RowFilter = string.IsNullOrEmpty(keyword)
                 ? string.Empty
                 : string.Format("[Mã Lịch Thi] LIKE '%{0}%' OR [Tên Kỳ Thi] LIKE '%{0}%' OR [Phòng Thi] LIKE '%{0}%'", keyword);
@@ -132,15 +163,31 @@ namespace PTTKHTTTProject.UControl
         {
             if (e.RowIndex < 0) return;
 
-            // Kiểm tra nếu click vào cột nút "Sửa"
-            if (dataGridViewDSLichThi.Columns[e.ColumnIndex].Name == "EditButton")
-            {
-                DataRowView selectedRow = (DataRowView)dataGridViewDSLichThi.Rows[e.RowIndex].DataBoundItem;
+            DataRowView selectedRow = (DataRowView)dataGridViewDSLichThi.Rows[e.RowIndex].DataBoundItem;
+            string maLichThi = selectedRow["Mã Lịch Thi"].ToString();
 
+            if (dataGridViewDSLichThi.Columns[e.ColumnIndex].Name == "Sua")
+            {
                 fAdminChinhSuaLichThi editForm = new fAdminChinhSuaLichThi(selectedRow);
                 if (editForm.ShowDialog() == DialogResult.OK)
                 {
-                    LoadData(); // Tải lại dữ liệu sau khi sửa thành công
+                    LoadData();
+                }
+            }
+            else if (dataGridViewDSLichThi.Columns[e.ColumnIndex].Name == "Xoa")
+            {
+                if (MessageBox.Show($"Bạn có chắc chắn muốn xóa lịch thi [{maLichThi}] không? Hành động này không thể hoàn tác.", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
+                {
+                    bool result = ExamDateBUS.DeleteLichThi(maLichThi);
+                    if (result)
+                    {
+                        MessageBox.Show("Xóa lịch thi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                        LoadData();
+                    }
+                    else
+                    {
+                        MessageBox.Show("Xóa lịch thi thất bại. Vui lòng đảm bảo lịch thi không có thí sinh đăng ký hoặc được phân công coi thi.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    }
                 }
             }
         }
