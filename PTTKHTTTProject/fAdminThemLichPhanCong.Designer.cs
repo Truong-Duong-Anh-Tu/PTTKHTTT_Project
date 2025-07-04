@@ -48,6 +48,7 @@
             Name = "fAdminThemLichPhanCong";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminThemLichPhanCong";
+            Load += fAdminThemLichPhanCong_Load;
             ResumeLayout(false);
         }
 

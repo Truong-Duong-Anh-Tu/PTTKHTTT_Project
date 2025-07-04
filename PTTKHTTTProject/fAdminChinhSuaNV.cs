@@ -22,5 +22,10 @@ namespace PTTKHTTTProject
         {
             this.Close();
         }
+
+        private void fAdminChinhSuaNV_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

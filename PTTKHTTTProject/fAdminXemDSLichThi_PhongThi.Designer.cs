@@ -90,6 +90,7 @@
             Name = "fAdminXemDSLichThi_PhongThi";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminXemDSLichThi_PhongThi";
+            Load += fAdminXemDSLichThi_PhongThi_Load_1;
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             ResumeLayout(false);

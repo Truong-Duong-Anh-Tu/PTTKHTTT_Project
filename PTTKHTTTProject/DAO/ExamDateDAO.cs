@@ -19,5 +19,19 @@ namespace PTTKHTTTProject.DAO
 
             return dt;
         }
+
+        public static DataTable GetAllLichThi()
+        {
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThi");
+        }
+
+        public static DataTable GetLichThiByPhongThi(string maPhongThi)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaPhongThi", maPhongThi)
+            };
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThiByPhongThi", parameters);
+        }
     }
 }

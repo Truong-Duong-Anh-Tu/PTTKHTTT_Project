@@ -30,5 +30,14 @@ namespace PTTKHTTTProject.BUS
 
             return examDateList;
         }
+
+        public static DataTable GetAllLichThi()
+        {
+            return ExamDateDAO.GetAllLichThi();
+        }
+        public static DataTable GetLichThiByPhongThi(string maPhongThi)
+        {
+            return ExamDateDAO.GetLichThiByPhongThi(maPhongThi);
+        }
     }
 }

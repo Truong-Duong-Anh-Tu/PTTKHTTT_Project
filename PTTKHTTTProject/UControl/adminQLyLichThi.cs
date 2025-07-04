@@ -7,13 +7,13 @@ namespace PTTKHTTTProject.UControl
 {
     public partial class adminQlyLichThi : UserControl
     {
-        private readonly LichThiBUS lichThiBUS;
+        private readonly ExamDateBUS lichThiBUS;
         private DataTable originalDataTable;
 
         public adminQlyLichThi()
         {
             InitializeComponent();
-            lichThiBUS = new LichThiBUS();
+            lichThiBUS = new ExamDateBUS();
             originalDataTable = new DataTable();
             // Gán sự kiện CellFormatting
             this.dataGridViewDSLichThi.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
@@ -28,7 +28,7 @@ namespace PTTKHTTTProject.UControl
         {
             try
             {
-                originalDataTable = lichThiBUS.GetAllLichThi();
+                originalDataTable = ExamDateBUS.GetAllLichThi();
                 dataGridViewDSLichThi.DataSource = originalDataTable;
                 SetupDataGridView();
             }

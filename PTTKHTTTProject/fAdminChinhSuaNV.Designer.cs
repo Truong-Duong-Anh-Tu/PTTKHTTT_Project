@@ -415,6 +415,7 @@
             Name = "fAdminChinhSuaNV";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fChinhSuaNhanVien";
+            Load += fAdminChinhSuaNV_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             tableLayoutPanelThongTinNV.ResumeLayout(false);
             tableLayoutPanelThongTinNV.PerformLayout();

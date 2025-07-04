@@ -384,6 +384,7 @@
             Name = "fAdminChinhSuaLichThi";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminChinhSuaLichThi";
+            Load += fAdminChinhSuaLichThi_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             tableLayoutPanelKyThi.ResumeLayout(false);
             tableLayoutPanelKyThi.PerformLayout();

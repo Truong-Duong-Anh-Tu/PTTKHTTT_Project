@@ -330,6 +330,7 @@
             Name = "fAdminThemLichThi";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminThemLichThi";
+            Load += fAdminThemLichThi_Load;
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).EndInit();
             tableLayoutPanelThongTinLichPhanCong.ResumeLayout(false);
             tableLayoutPanelThongTinLichPhanCong.PerformLayout();

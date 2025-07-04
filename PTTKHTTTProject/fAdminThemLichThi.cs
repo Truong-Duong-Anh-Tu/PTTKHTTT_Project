@@ -31,5 +31,10 @@ namespace PTTKHTTTProject
         {
             this.Close();
         }
+
+        private void fAdminThemLichThi_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }

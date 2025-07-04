@@ -134,7 +134,7 @@ namespace PTTKHTTTProject.UControl
         {
             if (isAdding)
             {
-                if (KyThiBUS.AddKyThi(textBoxTenKyThi.Text, textBoxLePhi.Text))
+                if (ExamTypeBUS.AddKyThi(textBoxTenKyThi.Text, textBoxLePhi.Text))
                 {
                     MessageBox.Show("Thêm kỳ thi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -145,7 +145,7 @@ namespace PTTKHTTTProject.UControl
             }
             else
             {
-                if (KyThiBUS.UpdateKyThi(textBoxMaKyThi.Text, textBoxTenKyThi.Text, textBoxLePhi.Text))
+                if (ExamTypeBUS.UpdateKyThi(textBoxMaKyThi.Text, textBoxTenKyThi.Text, textBoxLePhi.Text))
                 {
                     MessageBox.Show("Cập nhật kỳ thi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                 }
@@ -169,7 +169,7 @@ namespace PTTKHTTTProject.UControl
             {
                 if (MessageBox.Show("Bạn có chắc chắn muốn xóa kỳ thi này?", "Xác nhận xóa", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.Yes)
                 {
-                    if (KyThiBUS.DeleteKyThi(textBoxMaKyThi.Text))
+                    if (ExamTypeBUS.DeleteKyThi(textBoxMaKyThi.Text))
                     {
                         MessageBox.Show("Xóa kỳ thi thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
                         LoadData();

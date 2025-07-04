@@ -8,13 +8,13 @@ namespace PTTKHTTTProject
     public partial class fAdminXemDSLichThi_PhongThi : Form
     {
         private readonly string maPhongThi;
-        private readonly LichThiBUS lichThiBUS;
+        private readonly ExamDateBUS lichThiBUS;
 
         public fAdminXemDSLichThi_PhongThi(string maPhongThi)
         {
             InitializeComponent();
             this.maPhongThi = maPhongThi;
-            this.lichThiBUS = new LichThiBUS();
+            this.lichThiBUS = new ExamDateBUS();
             this.Load += new System.EventHandler(this.fAdminXemDSLichThi_PhongThi_Load);
         }
 
@@ -28,7 +28,7 @@ namespace PTTKHTTTProject
         {
             try
             {
-                dataGridView1.DataSource = lichThiBUS.GetLichThiByPhongThi(this.maPhongThi);
+                dataGridView1.DataSource = ExamDateBUS.GetLichThiByPhongThi(this.maPhongThi);
                 SetupDataGridView();
             }
             catch (Exception ex)
@@ -54,6 +54,11 @@ namespace PTTKHTTTProject
         private void pictureBoxThoat_Click(object sender, EventArgs e)
         {
             this.Close();
+        }
+
+        private void fAdminXemDSLichThi_PhongThi_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

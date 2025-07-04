@@ -22,5 +22,10 @@ namespace PTTKHTTTProject
         {
             // Không cần làm gì ở đây
         }
+
+        private void fAdminThemLichPhanCong_Load(object sender, EventArgs e)
+        {
+
+        }
     }
 }
