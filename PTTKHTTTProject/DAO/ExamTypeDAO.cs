@@ -29,7 +29,8 @@ namespace PTTKHTTTProject.DAO
         {
             try
             {
-                string query = "SELECT * FROM KYTHI";
+                // Thay đổi SELECT * thành SELECT tường minh và đặt bí danh cho cột lệ phí
+                string query = "SELECT KT_MaKyThi, KT_TenKyThi, KT_LePhi AS LePhi FROM KYTHI";
                 return DataProvider.Instance.ExecuteQuery(query);
             }
             catch (Exception ex)

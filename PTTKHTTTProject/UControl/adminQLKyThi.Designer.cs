@@ -35,16 +35,16 @@
             buttonLuu = new Button();
             labelThongTinChiTiet = new Label();
             tableLayoutPanel1 = new TableLayoutPanel();
+            textBoxLePhi = new TextBox();
+            textBoxTenKyThi = new TextBox();
             labelLePhi = new Label();
             labelTenKyThi = new Label();
             labelMaKyThi = new Label();
+            textBoxMaKyThi = new TextBox();
             buttonChinhSua = new Button();
             dataGridViewDSKythi = new DataGridView();
             buttonTimKiem = new Button();
             textBoxTimKiem = new TextBox();
-            textBoxMaKyThi = new TextBox();
-            textBoxTenKyThi = new TextBox();
-            textBoxLePhi = new TextBox();
             panel2.SuspendLayout();
             tableLayoutPanel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDSKythi).BeginInit();
@@ -54,9 +54,10 @@
             // 
             labelDSKyThi.AutoSize = true;
             labelDSKyThi.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            labelDSKyThi.Location = new Point(396, 30);
+            labelDSKyThi.Location = new Point(644, 48);
+            labelDSKyThi.Margin = new Padding(5, 0, 5, 0);
             labelDSKyThi.Name = "labelDSKyThi";
-            labelDSKyThi.Size = new Size(192, 31);
+            labelDSKyThi.Size = new Size(309, 50);
             labelDSKyThi.TabIndex = 3;
             labelDSKyThi.Text = "QUẢN LÝ KỲ THI";
             // 
@@ -69,17 +70,19 @@
             panel2.Controls.Add(labelThongTinChiTiet);
             panel2.Controls.Add(tableLayoutPanel1);
             panel2.Controls.Add(buttonChinhSua);
-            panel2.Location = new Point(25, 107);
+            panel2.Location = new Point(41, 171);
+            panel2.Margin = new Padding(5, 5, 5, 5);
             panel2.Name = "panel2";
-            panel2.Size = new Size(425, 421);
+            panel2.Size = new Size(691, 674);
             panel2.TabIndex = 7;
             // 
             // button1
             // 
             button1.BackColor = Color.SkyBlue;
-            button1.Location = new Point(292, 285);
+            button1.Location = new Point(474, 456);
+            button1.Margin = new Padding(5, 5, 5, 5);
             button1.Name = "button1";
-            button1.Size = new Size(99, 37);
+            button1.Size = new Size(161, 59);
             button1.TabIndex = 6;
             button1.Text = "Xóa";
             button1.UseVisualStyleBackColor = false;
@@ -87,9 +90,10 @@
             // buttonThemKyThi
             // 
             buttonThemKyThi.BackColor = Color.SkyBlue;
-            buttonThemKyThi.Location = new Point(41, 285);
+            buttonThemKyThi.Location = new Point(67, 456);
+            buttonThemKyThi.Margin = new Padding(5, 5, 5, 5);
             buttonThemKyThi.Name = "buttonThemKyThi";
-            buttonThemKyThi.Size = new Size(94, 36);
+            buttonThemKyThi.Size = new Size(153, 58);
             buttonThemKyThi.TabIndex = 5;
             buttonThemKyThi.Text = "Thêm";
             buttonThemKyThi.UseVisualStyleBackColor = false;
@@ -97,9 +101,10 @@
             // buttonLuu
             // 
             buttonLuu.BackColor = Color.SkyBlue;
-            buttonLuu.Location = new Point(41, 346);
+            buttonLuu.Location = new Point(67, 554);
+            buttonLuu.Margin = new Padding(5, 5, 5, 5);
             buttonLuu.Name = "buttonLuu";
-            buttonLuu.Size = new Size(350, 37);
+            buttonLuu.Size = new Size(569, 59);
             buttonLuu.TabIndex = 3;
             buttonLuu.Text = "Lưu thông tin";
             buttonLuu.UseVisualStyleBackColor = false;
@@ -108,9 +113,10 @@
             // 
             labelThongTinChiTiet.AutoSize = true;
             labelThongTinChiTiet.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
-            labelThongTinChiTiet.Location = new Point(16, 27);
+            labelThongTinChiTiet.Location = new Point(26, 43);
+            labelThongTinChiTiet.Margin = new Padding(5, 0, 5, 0);
             labelThongTinChiTiet.Name = "labelThongTinChiTiet";
-            labelThongTinChiTiet.Size = new Size(200, 23);
+            labelThongTinChiTiet.Size = new Size(327, 38);
             labelThongTinChiTiet.TabIndex = 2;
             labelThongTinChiTiet.Text = "Thông tin chi tiết kỳ thi";
             // 
@@ -127,22 +133,48 @@
             tableLayoutPanel1.Controls.Add(labelTenKyThi, 0, 1);
             tableLayoutPanel1.Controls.Add(labelMaKyThi, 0, 0);
             tableLayoutPanel1.Controls.Add(textBoxMaKyThi, 1, 0);
-            tableLayoutPanel1.Location = new Point(41, 65);
+            tableLayoutPanel1.Location = new Point(67, 104);
+            tableLayoutPanel1.Margin = new Padding(5, 5, 5, 5);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
-            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 59F));
-            tableLayoutPanel1.Size = new Size(350, 187);
+            tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Absolute, 94F));
+            tableLayoutPanel1.Size = new Size(569, 299);
             tableLayoutPanel1.TabIndex = 1;
+            // 
+            // textBoxLePhi
+            // 
+            textBoxLePhi.Anchor = AnchorStyles.None;
+            textBoxLePhi.BackColor = SystemColors.MenuBar;
+            textBoxLePhi.BorderStyle = BorderStyle.None;
+            textBoxLePhi.Font = new Font("Segoe UI", 10F);
+            textBoxLePhi.Location = new Point(233, 232);
+            textBoxLePhi.Margin = new Padding(5, 5, 5, 5);
+            textBoxLePhi.Name = "textBoxLePhi";
+            textBoxLePhi.Size = new Size(292, 36);
+            textBoxLePhi.TabIndex = 7;
+            // 
+            // textBoxTenKyThi
+            // 
+            textBoxTenKyThi.Anchor = AnchorStyles.None;
+            textBoxTenKyThi.BackColor = SystemColors.MenuBar;
+            textBoxTenKyThi.BorderStyle = BorderStyle.None;
+            textBoxTenKyThi.Font = new Font("Segoe UI", 10F);
+            textBoxTenKyThi.Location = new Point(233, 134);
+            textBoxTenKyThi.Margin = new Padding(5, 5, 5, 5);
+            textBoxTenKyThi.Name = "textBoxTenKyThi";
+            textBoxTenKyThi.Size = new Size(292, 36);
+            textBoxTenKyThi.TabIndex = 6;
             // 
             // labelLePhi
             // 
             labelLePhi.Anchor = AnchorStyles.None;
             labelLePhi.AutoSize = true;
-            labelLePhi.Location = new Point(34, 146);
+            labelLePhi.Location = new Point(56, 234);
+            labelLePhi.Margin = new Padding(5, 0, 5, 0);
             labelLePhi.Name = "labelLePhi";
-            labelLePhi.Size = new Size(49, 20);
+            labelLePhi.Size = new Size(79, 32);
             labelLePhi.TabIndex = 4;
             labelLePhi.Text = "Lệ phí";
             // 
@@ -150,9 +182,10 @@
             // 
             labelTenKyThi.Anchor = AnchorStyles.None;
             labelTenKyThi.AutoSize = true;
-            labelTenKyThi.Location = new Point(23, 85);
+            labelTenKyThi.Location = new Point(36, 136);
+            labelTenKyThi.Margin = new Padding(5, 0, 5, 0);
             labelTenKyThi.Name = "labelTenKyThi";
-            labelTenKyThi.Size = new Size(71, 20);
+            labelTenKyThi.Size = new Size(118, 32);
             labelTenKyThi.TabIndex = 2;
             labelTenKyThi.Text = "Tên kỳ thi";
             // 
@@ -160,18 +193,32 @@
             // 
             labelMaKyThi.Anchor = AnchorStyles.None;
             labelMaKyThi.AutoSize = true;
-            labelMaKyThi.Location = new Point(24, 22);
+            labelMaKyThi.Location = new Point(38, 35);
+            labelMaKyThi.Margin = new Padding(5, 0, 5, 0);
             labelMaKyThi.Name = "labelMaKyThi";
-            labelMaKyThi.Size = new Size(69, 20);
+            labelMaKyThi.Size = new Size(114, 32);
             labelMaKyThi.TabIndex = 0;
             labelMaKyThi.Text = "Mã kỳ thi";
+            // 
+            // textBoxMaKyThi
+            // 
+            textBoxMaKyThi.Anchor = AnchorStyles.None;
+            textBoxMaKyThi.BackColor = SystemColors.MenuBar;
+            textBoxMaKyThi.BorderStyle = BorderStyle.None;
+            textBoxMaKyThi.Font = new Font("Segoe UI", 10F);
+            textBoxMaKyThi.Location = new Point(233, 33);
+            textBoxMaKyThi.Margin = new Padding(5, 5, 5, 5);
+            textBoxMaKyThi.Name = "textBoxMaKyThi";
+            textBoxMaKyThi.Size = new Size(292, 36);
+            textBoxMaKyThi.TabIndex = 5;
             // 
             // buttonChinhSua
             // 
             buttonChinhSua.BackColor = Color.SkyBlue;
-            buttonChinhSua.Location = new Point(152, 285);
+            buttonChinhSua.Location = new Point(247, 456);
+            buttonChinhSua.Margin = new Padding(5, 5, 5, 5);
             buttonChinhSua.Name = "buttonChinhSua";
-            buttonChinhSua.Size = new Size(121, 37);
+            buttonChinhSua.Size = new Size(197, 59);
             buttonChinhSua.TabIndex = 0;
             buttonChinhSua.Text = "Chỉnh sửa";
             buttonChinhSua.UseVisualStyleBackColor = false;
@@ -180,66 +227,38 @@
             // 
             dataGridViewDSKythi.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewDSKythi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewDSKythi.Location = new Point(489, 146);
+            dataGridViewDSKythi.Location = new Point(795, 234);
+            dataGridViewDSKythi.Margin = new Padding(5, 5, 5, 5);
             dataGridViewDSKythi.Name = "dataGridViewDSKythi";
             dataGridViewDSKythi.RowHeadersWidth = 51;
-            dataGridViewDSKythi.Size = new Size(483, 382);
+            dataGridViewDSKythi.Size = new Size(785, 611);
             dataGridViewDSKythi.TabIndex = 6;
+            dataGridViewDSKythi.CellClick += dataGridViewDSKythi_CellClick;
             // 
             // buttonTimKiem
             // 
             buttonTimKiem.BackColor = Color.SkyBlue;
-            buttonTimKiem.Location = new Point(878, 107);
+            buttonTimKiem.Location = new Point(1427, 171);
+            buttonTimKiem.Margin = new Padding(5, 5, 5, 5);
             buttonTimKiem.Name = "buttonTimKiem";
-            buttonTimKiem.Size = new Size(94, 33);
+            buttonTimKiem.Size = new Size(153, 53);
             buttonTimKiem.TabIndex = 5;
             buttonTimKiem.Text = "Tìm kiếm";
             buttonTimKiem.UseVisualStyleBackColor = false;
+            buttonTimKiem.Click += buttonTimKiem_Click;
             // 
             // textBoxTimKiem
             // 
-            textBoxTimKiem.Location = new Point(610, 107);
+            textBoxTimKiem.Location = new Point(991, 171);
+            textBoxTimKiem.Margin = new Padding(5, 5, 5, 5);
             textBoxTimKiem.Name = "textBoxTimKiem";
             textBoxTimKiem.PlaceholderText = "Tìm mã kỳ thi / tên kỳ thi";
-            textBoxTimKiem.Size = new Size(247, 27);
+            textBoxTimKiem.Size = new Size(399, 39);
             textBoxTimKiem.TabIndex = 4;
-            // 
-            // textBoxMaKyThi
-            // 
-            textBoxMaKyThi.Anchor = AnchorStyles.None;
-            textBoxMaKyThi.BackColor = SystemColors.MenuBar;
-            textBoxMaKyThi.BorderStyle = BorderStyle.None;
-            textBoxMaKyThi.Font = new Font("Segoe UI", 10F);
-            textBoxMaKyThi.Location = new Point(143, 20);
-            textBoxMaKyThi.Name = "textBoxMaKyThi";
-            textBoxMaKyThi.Size = new Size(180, 23);
-            textBoxMaKyThi.TabIndex = 5;
-            // 
-            // textBoxTenKyThi
-            // 
-            textBoxTenKyThi.Anchor = AnchorStyles.None;
-            textBoxTenKyThi.BackColor = SystemColors.MenuBar;
-            textBoxTenKyThi.BorderStyle = BorderStyle.None;
-            textBoxTenKyThi.Font = new Font("Segoe UI", 10F);
-            textBoxTenKyThi.Location = new Point(143, 83);
-            textBoxTenKyThi.Name = "textBoxTenKyThi";
-            textBoxTenKyThi.Size = new Size(180, 23);
-            textBoxTenKyThi.TabIndex = 6;
-            // 
-            // textBoxLePhi
-            // 
-            textBoxLePhi.Anchor = AnchorStyles.None;
-            textBoxLePhi.BackColor = SystemColors.MenuBar;
-            textBoxLePhi.BorderStyle = BorderStyle.None;
-            textBoxLePhi.Font = new Font("Segoe UI", 10F);
-            textBoxLePhi.Location = new Point(143, 145);
-            textBoxLePhi.Name = "textBoxLePhi";
-            textBoxLePhi.Size = new Size(180, 23);
-            textBoxLePhi.TabIndex = 7;
             // 
             // adminQLKyThi
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(13F, 32F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             Controls.Add(panel2);
@@ -247,8 +266,9 @@
             Controls.Add(dataGridViewDSKythi);
             Controls.Add(textBoxTimKiem);
             Controls.Add(buttonTimKiem);
+            Margin = new Padding(5, 5, 5, 5);
             Name = "adminQLKyThi";
-            Size = new Size(1021, 573);
+            Size = new Size(1659, 917);
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             tableLayoutPanel1.ResumeLayout(false);
