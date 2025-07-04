@@ -143,32 +143,25 @@
             textBox2 = new TextBox();
             label17 = new Label();
             panelPDKAdd = new Panel();
-            button13 = new Button();
-            panelTSTDAdd = new Panel();
-            comboBox3 = new ComboBox();
-            textBox17 = new TextBox();
-            textBox16 = new TextBox();
-            textBox15 = new TextBox();
-            textBox14 = new TextBox();
-            textBox13 = new TextBox();
-            label51 = new Label();
-            label52 = new Label();
-            label53 = new Label();
-            label54 = new Label();
-            label56 = new Label();
-            label57 = new Label();
-            label58 = new Label();
+            panelTSDVAdd = new Panel();
+            PDKAdd_dgvTSDV = new DataGridView();
+            PDKAdd_ThemTSDV = new Button();
+            label50 = new Label();
+            PDKAdd_XacNhan = new Button();
             panel1 = new Panel();
-            label99 = new Label();
-            label42 = new Label();
-            comboBox6 = new ComboBox();
-            comboBox5 = new ComboBox();
-            comboBox4 = new ComboBox();
-            textBox21 = new TextBox();
-            textBox20 = new TextBox();
-            textBox19 = new TextBox();
+            PDKAdd_GioThi = new ComboBox();
+            PDKAdd_btnTuDo = new RadioButton();
+            label70 = new Label();
+            PDKAdd_TenNV = new Label();
+            PDKAdd_btnDonVi = new RadioButton();
+            PDKAdd_NgayLapPhieu = new Label();
+            PDKAdd_NgayThi = new ComboBox();
+            PDKAdd_TenKyThi = new ComboBox();
+            PDKAdd_DiaChi = new TextBox();
+            PDKAdd_SDT = new TextBox();
+            PDKAdd_Email = new TextBox();
             label55 = new Label();
-            textBox18 = new TextBox();
+            PDKAdd_TenKH = new TextBox();
             label40 = new Label();
             label41 = new Label();
             label43 = new Label();
@@ -178,10 +171,20 @@
             label47 = new Label();
             label48 = new Label();
             label49 = new Label();
-            panelTSDVAdd = new Panel();
-            dataGridView2 = new DataGridView();
-            button9 = new Button();
-            label50 = new Label();
+            panelTSTDAdd = new Panel();
+            PDKAdd_DOB_TD = new DateTimePicker();
+            PDKAdd_GioiTinhTD = new ComboBox();
+            PDKAdd_CCCD_TD = new TextBox();
+            PDKAdd_SDT_TD = new TextBox();
+            PDKAdd_Email_TD = new TextBox();
+            PDKAdd_TenTSTD = new TextBox();
+            label51 = new Label();
+            label52 = new Label();
+            label53 = new Label();
+            label54 = new Label();
+            label56 = new Label();
+            label57 = new Label();
+            label58 = new Label();
             panelPDKUpdate = new Panel();
             btnDelPDK = new Button();
             btnSavePDK = new Button();
@@ -248,10 +251,10 @@
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panelPDKAdd.SuspendLayout();
-            panelTSTDAdd.SuspendLayout();
-            panel1.SuspendLayout();
             panelTSDVAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)PDKAdd_dgvTSDV).BeginInit();
+            panel1.SuspendLayout();
+            panelTSTDAdd.SuspendLayout();
             panelPDKUpdate.SuspendLayout();
             panelTSTDEdit.SuspendLayout();
             panel12.SuspendLayout();
@@ -1495,171 +1498,82 @@
             // 
             // panelPDKAdd
             // 
-            panelPDKAdd.Controls.Add(button13);
-            panelPDKAdd.Controls.Add(panelTSTDAdd);
-            panelPDKAdd.Controls.Add(panel1);
             panelPDKAdd.Controls.Add(panelTSDVAdd);
+            panelPDKAdd.Controls.Add(PDKAdd_XacNhan);
+            panelPDKAdd.Controls.Add(panel1);
+            panelPDKAdd.Controls.Add(panelTSTDAdd);
             panelPDKAdd.Dock = DockStyle.Fill;
-            panelPDKAdd.Location = new Point(0, 0);
+            panelPDKAdd.Location = new Point(194, 62);
             panelPDKAdd.Name = "panelPDKAdd";
-            panelPDKAdd.Size = new Size(1477, 785);
+            panelPDKAdd.Size = new Size(1283, 723);
             panelPDKAdd.TabIndex = 10;
             // 
-            // button13
+            // panelTSDVAdd
             // 
-            button13.Font = new Font("Segoe UI", 10F);
-            button13.Location = new Point(1038, 636);
-            button13.Name = "button13";
-            button13.Size = new Size(210, 38);
-            button13.TabIndex = 14;
-            button13.Text = "Tạo phiếu đăng ký";
-            button13.UseVisualStyleBackColor = true;
+            panelTSDVAdd.Controls.Add(PDKAdd_dgvTSDV);
+            panelTSDVAdd.Controls.Add(PDKAdd_ThemTSDV);
+            panelTSDVAdd.Controls.Add(label50);
+            panelTSDVAdd.Location = new Point(17, 341);
+            panelTSDVAdd.Name = "panelTSDVAdd";
+            panelTSDVAdd.Size = new Size(1232, 320);
+            panelTSDVAdd.TabIndex = 12;
             // 
-            // panelTSTDAdd
+            // PDKAdd_dgvTSDV
             // 
-            panelTSTDAdd.Controls.Add(comboBox3);
-            panelTSTDAdd.Controls.Add(textBox17);
-            panelTSTDAdd.Controls.Add(textBox16);
-            panelTSTDAdd.Controls.Add(textBox15);
-            panelTSTDAdd.Controls.Add(textBox14);
-            panelTSTDAdd.Controls.Add(textBox13);
-            panelTSTDAdd.Controls.Add(label51);
-            panelTSTDAdd.Controls.Add(label52);
-            panelTSTDAdd.Controls.Add(label53);
-            panelTSTDAdd.Controls.Add(label54);
-            panelTSTDAdd.Controls.Add(label56);
-            panelTSTDAdd.Controls.Add(label57);
-            panelTSTDAdd.Controls.Add(label58);
-            panelTSTDAdd.Location = new Point(16, 311);
-            panelTSTDAdd.Name = "panelTSTDAdd";
-            panelTSTDAdd.Size = new Size(739, 225);
-            panelTSTDAdd.TabIndex = 13;
+            PDKAdd_dgvTSDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PDKAdd_dgvTSDV.Location = new Point(13, 59);
+            PDKAdd_dgvTSDV.Name = "PDKAdd_dgvTSDV";
+            PDKAdd_dgvTSDV.RowHeadersWidth = 62;
+            PDKAdd_dgvTSDV.Size = new Size(1207, 249);
+            PDKAdd_dgvTSDV.TabIndex = 12;
             // 
-            // comboBox3
+            // PDKAdd_ThemTSDV
             // 
-            comboBox3.FormattingEnabled = true;
-            comboBox3.Location = new Point(122, 123);
-            comboBox3.Name = "comboBox3";
-            comboBox3.Size = new Size(182, 33);
-            comboBox3.TabIndex = 21;
+            PDKAdd_ThemTSDV.Location = new Point(1080, 14);
+            PDKAdd_ThemTSDV.Name = "PDKAdd_ThemTSDV";
+            PDKAdd_ThemTSDV.Size = new Size(140, 34);
+            PDKAdd_ThemTSDV.TabIndex = 11;
+            PDKAdd_ThemTSDV.Text = "Thêm thí sinh";
+            PDKAdd_ThemTSDV.UseVisualStyleBackColor = true;
+            PDKAdd_ThemTSDV.Click += PDKAdd_ThemTSDV_Click;
             // 
-            // textBox17
+            // label50
             // 
-            textBox17.Location = new Point(436, 175);
-            textBox17.Name = "textBox17";
-            textBox17.Size = new Size(219, 31);
-            textBox17.TabIndex = 20;
+            label50.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label50.AutoSize = true;
+            label50.Font = new Font("Segoe UI", 10F);
+            label50.Location = new Point(13, 18);
+            label50.Name = "label50";
+            label50.Size = new Size(221, 28);
+            label50.TabIndex = 9;
+            label50.Text = "Thông tin thí sinh dự thi";
             // 
-            // textBox16
+            // PDKAdd_XacNhan
             // 
-            textBox16.Location = new Point(475, 123);
-            textBox16.Name = "textBox16";
-            textBox16.Size = new Size(219, 31);
-            textBox16.TabIndex = 19;
-            // 
-            // textBox15
-            // 
-            textBox15.Location = new Point(504, 69);
-            textBox15.Name = "textBox15";
-            textBox15.Size = new Size(219, 31);
-            textBox15.TabIndex = 18;
-            // 
-            // textBox14
-            // 
-            textBox14.Location = new Point(96, 173);
-            textBox14.Name = "textBox14";
-            textBox14.Size = new Size(256, 31);
-            textBox14.TabIndex = 17;
-            // 
-            // textBox13
-            // 
-            textBox13.Location = new Point(133, 68);
-            textBox13.Name = "textBox13";
-            textBox13.Size = new Size(219, 31);
-            textBox13.TabIndex = 16;
-            // 
-            // label51
-            // 
-            label51.AutoSize = true;
-            label51.Font = new Font("Segoe UI", 10F);
-            label51.Location = new Point(366, 175);
-            label51.Name = "label51";
-            label51.Size = new Size(64, 28);
-            label51.TabIndex = 15;
-            label51.Text = "CCCD:";
-            // 
-            // label52
-            // 
-            label52.AutoSize = true;
-            label52.Font = new Font("Segoe UI", 10F);
-            label52.Location = new Point(27, 69);
-            label52.Name = "label52";
-            label52.Size = new Size(100, 28);
-            label52.TabIndex = 12;
-            label52.Text = "Họ và tên:";
-            // 
-            // label53
-            // 
-            label53.AutoSize = true;
-            label53.Font = new Font("Segoe UI", 10F);
-            label53.Location = new Point(366, 123);
-            label53.Name = "label53";
-            label53.Size = new Size(103, 28);
-            label53.TabIndex = 14;
-            label53.Text = "Ngày sinh:";
-            // 
-            // label54
-            // 
-            label54.AutoSize = true;
-            label54.Font = new Font("Segoe UI", 10F);
-            label54.Location = new Point(26, 123);
-            label54.Name = "label54";
-            label54.Size = new Size(91, 28);
-            label54.TabIndex = 13;
-            label54.Text = "Giới tính:";
-            // 
-            // label56
-            // 
-            label56.AutoSize = true;
-            label56.Font = new Font("Segoe UI", 10F);
-            label56.Location = new Point(27, 175);
-            label56.Name = "label56";
-            label56.Size = new Size(63, 28);
-            label56.TabIndex = 12;
-            label56.Text = "Email:";
-            // 
-            // label57
-            // 
-            label57.AutoSize = true;
-            label57.Font = new Font("Segoe UI", 10F);
-            label57.Location = new Point(366, 69);
-            label57.Name = "label57";
-            label57.Size = new Size(132, 28);
-            label57.TabIndex = 11;
-            label57.Text = "Số điện thoại:";
-            // 
-            // label58
-            // 
-            label58.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label58.AutoSize = true;
-            label58.Location = new Point(268, 5);
-            label58.Name = "label58";
-            label58.Size = new Size(202, 25);
-            label58.TabIndex = 8;
-            label58.Text = "Thông tin thí sinh dự thi";
+            PDKAdd_XacNhan.Font = new Font("Segoe UI", 10F);
+            PDKAdd_XacNhan.Location = new Point(1038, 673);
+            PDKAdd_XacNhan.Name = "PDKAdd_XacNhan";
+            PDKAdd_XacNhan.Size = new Size(210, 38);
+            PDKAdd_XacNhan.TabIndex = 14;
+            PDKAdd_XacNhan.Text = "Tạo phiếu đăng ký";
+            PDKAdd_XacNhan.UseVisualStyleBackColor = true;
+            PDKAdd_XacNhan.Click += PDKAdd_XacNhan_Click;
             // 
             // panel1
             // 
-            panel1.Controls.Add(label99);
-            panel1.Controls.Add(label42);
-            panel1.Controls.Add(comboBox6);
-            panel1.Controls.Add(comboBox5);
-            panel1.Controls.Add(comboBox4);
-            panel1.Controls.Add(textBox21);
-            panel1.Controls.Add(textBox20);
-            panel1.Controls.Add(textBox19);
+            panel1.Controls.Add(PDKAdd_GioThi);
+            panel1.Controls.Add(PDKAdd_btnTuDo);
+            panel1.Controls.Add(label70);
+            panel1.Controls.Add(PDKAdd_TenNV);
+            panel1.Controls.Add(PDKAdd_btnDonVi);
+            panel1.Controls.Add(PDKAdd_NgayLapPhieu);
+            panel1.Controls.Add(PDKAdd_NgayThi);
+            panel1.Controls.Add(PDKAdd_TenKyThi);
+            panel1.Controls.Add(PDKAdd_DiaChi);
+            panel1.Controls.Add(PDKAdd_SDT);
+            panel1.Controls.Add(PDKAdd_Email);
             panel1.Controls.Add(label55);
-            panel1.Controls.Add(textBox18);
+            panel1.Controls.Add(PDKAdd_TenKH);
             panel1.Controls.Add(label40);
             panel1.Controls.Add(label41);
             panel1.Controls.Add(label43);
@@ -1671,71 +1585,107 @@
             panel1.Controls.Add(label49);
             panel1.Location = new Point(17, 30);
             panel1.Name = "panel1";
-            panel1.Size = new Size(1232, 246);
+            panel1.Size = new Size(1232, 281);
             panel1.TabIndex = 7;
             // 
-            // label99
+            // PDKAdd_GioThi
             // 
-            label99.AutoSize = true;
-            label99.Location = new Point(1021, 66);
-            label99.Name = "label99";
-            label99.Size = new Size(69, 25);
-            label99.TabIndex = 25;
-            label99.Text = "label99";
+            PDKAdd_GioThi.FormattingEnabled = true;
+            PDKAdd_GioThi.Location = new Point(946, 107);
+            PDKAdd_GioThi.Name = "PDKAdd_GioThi";
+            PDKAdd_GioThi.Size = new Size(253, 33);
+            PDKAdd_GioThi.TabIndex = 29;
             // 
-            // label42
+            // PDKAdd_btnTuDo
             // 
-            label42.AutoSize = true;
-            label42.Location = new Point(669, 194);
-            label42.Name = "label42";
-            label42.Size = new Size(69, 25);
-            label42.TabIndex = 24;
-            label42.Text = "label42";
+            PDKAdd_btnTuDo.AutoSize = true;
+            PDKAdd_btnTuDo.Location = new Point(350, 110);
+            PDKAdd_btnTuDo.Name = "PDKAdd_btnTuDo";
+            PDKAdd_btnTuDo.Size = new Size(84, 29);
+            PDKAdd_btnTuDo.TabIndex = 27;
+            PDKAdd_btnTuDo.TabStop = true;
+            PDKAdd_btnTuDo.Text = "Tự do";
+            PDKAdd_btnTuDo.UseVisualStyleBackColor = true;
+            PDKAdd_btnTuDo.CheckedChanged += PDKAdd_btnTuDo_CheckedChanged;
             // 
-            // comboBox6
+            // label70
             // 
-            comboBox6.FormattingEnabled = true;
-            comboBox6.Location = new Point(611, 107);
-            comboBox6.Name = "comboBox6";
-            comboBox6.Size = new Size(241, 33);
-            comboBox6.TabIndex = 23;
+            label70.AutoSize = true;
+            label70.Font = new Font("Segoe UI", 10F);
+            label70.Location = new Point(815, 108);
+            label70.Name = "label70";
+            label70.Size = new Size(125, 28);
+            label70.TabIndex = 28;
+            label70.Text = "Thời gian thi:";
             // 
-            // comboBox5
+            // PDKAdd_TenNV
             // 
-            comboBox5.FormattingEnabled = true;
-            comboBox5.Location = new Point(611, 63);
-            comboBox5.Name = "comboBox5";
-            comboBox5.Size = new Size(241, 33);
-            comboBox5.TabIndex = 22;
+            PDKAdd_TenNV.AutoSize = true;
+            PDKAdd_TenNV.Location = new Point(1021, 66);
+            PDKAdd_TenNV.Name = "PDKAdd_TenNV";
+            PDKAdd_TenNV.Size = new Size(24, 25);
+            PDKAdd_TenNV.TabIndex = 25;
+            PDKAdd_TenNV.Text = "...";
             // 
-            // comboBox4
+            // PDKAdd_btnDonVi
             // 
-            comboBox4.FormattingEnabled = true;
-            comboBox4.Location = new Point(196, 105);
-            comboBox4.Name = "comboBox4";
-            comboBox4.Size = new Size(182, 33);
-            comboBox4.TabIndex = 21;
+            PDKAdd_btnDonVi.AutoSize = true;
+            PDKAdd_btnDonVi.Location = new Point(214, 107);
+            PDKAdd_btnDonVi.Name = "PDKAdd_btnDonVi";
+            PDKAdd_btnDonVi.Size = new Size(89, 29);
+            PDKAdd_btnDonVi.TabIndex = 26;
+            PDKAdd_btnDonVi.TabStop = true;
+            PDKAdd_btnDonVi.Text = "Đơn vị";
+            PDKAdd_btnDonVi.UseVisualStyleBackColor = true;
+            PDKAdd_btnDonVi.CheckedChanged += PDKAdd_btnDonVi_CheckedChanged;
             // 
-            // textBox21
+            // PDKAdd_NgayLapPhieu
             // 
-            textBox21.Location = new Point(700, 147);
-            textBox21.Name = "textBox21";
-            textBox21.Size = new Size(272, 31);
-            textBox21.TabIndex = 20;
+            PDKAdd_NgayLapPhieu.AutoSize = true;
+            PDKAdd_NgayLapPhieu.Location = new Point(669, 194);
+            PDKAdd_NgayLapPhieu.Name = "PDKAdd_NgayLapPhieu";
+            PDKAdd_NgayLapPhieu.Size = new Size(24, 25);
+            PDKAdd_NgayLapPhieu.TabIndex = 24;
+            PDKAdd_NgayLapPhieu.Text = "...";
             // 
-            // textBox20
+            // PDKAdd_NgayThi
             // 
-            textBox20.Location = new Point(164, 189);
-            textBox20.Name = "textBox20";
-            textBox20.Size = new Size(272, 31);
-            textBox20.TabIndex = 19;
+            PDKAdd_NgayThi.FormattingEnabled = true;
+            PDKAdd_NgayThi.Location = new Point(611, 107);
+            PDKAdd_NgayThi.Name = "PDKAdd_NgayThi";
+            PDKAdd_NgayThi.Size = new Size(169, 33);
+            PDKAdd_NgayThi.TabIndex = 23;
+            PDKAdd_NgayThi.SelectedIndexChanged += PDKAdd_NgayThi_SelectedIndexChanged;
             // 
-            // textBox19
+            // PDKAdd_TenKyThi
             // 
-            textBox19.Location = new Point(95, 147);
-            textBox19.Name = "textBox19";
-            textBox19.Size = new Size(272, 31);
-            textBox19.TabIndex = 18;
+            PDKAdd_TenKyThi.FormattingEnabled = true;
+            PDKAdd_TenKyThi.Location = new Point(611, 63);
+            PDKAdd_TenKyThi.Name = "PDKAdd_TenKyThi";
+            PDKAdd_TenKyThi.Size = new Size(241, 33);
+            PDKAdd_TenKyThi.TabIndex = 22;
+            PDKAdd_TenKyThi.SelectedIndexChanged += PDKAdd_TenKyThi_SelectedIndexChanged;
+            // 
+            // PDKAdd_DiaChi
+            // 
+            PDKAdd_DiaChi.Location = new Point(700, 147);
+            PDKAdd_DiaChi.Name = "PDKAdd_DiaChi";
+            PDKAdd_DiaChi.Size = new Size(499, 31);
+            PDKAdd_DiaChi.TabIndex = 20;
+            // 
+            // PDKAdd_SDT
+            // 
+            PDKAdd_SDT.Location = new Point(164, 189);
+            PDKAdd_SDT.Name = "PDKAdd_SDT";
+            PDKAdd_SDT.Size = new Size(272, 31);
+            PDKAdd_SDT.TabIndex = 19;
+            // 
+            // PDKAdd_Email
+            // 
+            PDKAdd_Email.Location = new Point(95, 147);
+            PDKAdd_Email.Name = "PDKAdd_Email";
+            PDKAdd_Email.Size = new Size(341, 31);
+            PDKAdd_Email.TabIndex = 18;
             // 
             // label55
             // 
@@ -1747,12 +1697,12 @@
             label55.TabIndex = 17;
             label55.Text = "Loại khách hàng:";
             // 
-            // textBox18
+            // PDKAdd_TenKH
             // 
-            textBox18.Location = new Point(176, 63);
-            textBox18.Name = "textBox18";
-            textBox18.Size = new Size(272, 31);
-            textBox18.TabIndex = 16;
+            PDKAdd_TenKH.Location = new Point(176, 63);
+            PDKAdd_TenKH.Name = "PDKAdd_TenKH";
+            PDKAdd_TenKH.Size = new Size(260, 31);
+            PDKAdd_TenKH.TabIndex = 16;
             // 
             // label40
             // 
@@ -1845,44 +1795,140 @@
             label49.TabIndex = 9;
             label49.Text = "Email:";
             // 
-            // panelTSDVAdd
+            // panelTSTDAdd
             // 
-            panelTSDVAdd.Controls.Add(dataGridView2);
-            panelTSDVAdd.Controls.Add(button9);
-            panelTSDVAdd.Controls.Add(label50);
-            panelTSDVAdd.Location = new Point(17, 314);
-            panelTSDVAdd.Name = "panelTSDVAdd";
-            panelTSDVAdd.Size = new Size(1232, 294);
-            panelTSDVAdd.TabIndex = 12;
+            panelTSTDAdd.Controls.Add(PDKAdd_DOB_TD);
+            panelTSTDAdd.Controls.Add(PDKAdd_GioiTinhTD);
+            panelTSTDAdd.Controls.Add(PDKAdd_CCCD_TD);
+            panelTSTDAdd.Controls.Add(PDKAdd_SDT_TD);
+            panelTSTDAdd.Controls.Add(PDKAdd_Email_TD);
+            panelTSTDAdd.Controls.Add(PDKAdd_TenTSTD);
+            panelTSTDAdd.Controls.Add(label51);
+            panelTSTDAdd.Controls.Add(label52);
+            panelTSTDAdd.Controls.Add(label53);
+            panelTSTDAdd.Controls.Add(label54);
+            panelTSTDAdd.Controls.Add(label56);
+            panelTSTDAdd.Controls.Add(label57);
+            panelTSTDAdd.Controls.Add(label58);
+            panelTSTDAdd.Location = new Point(12, 342);
+            panelTSTDAdd.Name = "panelTSTDAdd";
+            panelTSTDAdd.Size = new Size(843, 286);
+            panelTSTDAdd.TabIndex = 13;
             // 
-            // dataGridView2
+            // PDKAdd_DOB_TD
             // 
-            dataGridView2.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView2.Location = new Point(13, 59);
-            dataGridView2.Name = "dataGridView2";
-            dataGridView2.RowHeadersWidth = 62;
-            dataGridView2.Size = new Size(1207, 225);
-            dataGridView2.TabIndex = 12;
+            PDKAdd_DOB_TD.CustomFormat = "dd/MM/yyyy";
+            PDKAdd_DOB_TD.Format = DateTimePickerFormat.Custom;
+            PDKAdd_DOB_TD.Location = new Point(475, 121);
+            PDKAdd_DOB_TD.Name = "PDKAdd_DOB_TD";
+            PDKAdd_DOB_TD.Size = new Size(248, 31);
+            PDKAdd_DOB_TD.TabIndex = 22;
             // 
-            // button9
+            // PDKAdd_GioiTinhTD
             // 
-            button9.Location = new Point(1080, 14);
-            button9.Name = "button9";
-            button9.Size = new Size(140, 34);
-            button9.TabIndex = 11;
-            button9.Text = "Thêm thí sinh";
-            button9.UseVisualStyleBackColor = true;
+            PDKAdd_GioiTinhTD.FormattingEnabled = true;
+            PDKAdd_GioiTinhTD.Location = new Point(122, 123);
+            PDKAdd_GioiTinhTD.Name = "PDKAdd_GioiTinhTD";
+            PDKAdd_GioiTinhTD.Size = new Size(230, 33);
+            PDKAdd_GioiTinhTD.TabIndex = 21;
             // 
-            // label50
+            // PDKAdd_CCCD_TD
             // 
-            label50.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label50.AutoSize = true;
-            label50.Font = new Font("Segoe UI", 10F);
-            label50.Location = new Point(13, 18);
-            label50.Name = "label50";
-            label50.Size = new Size(221, 28);
-            label50.TabIndex = 9;
-            label50.Text = "Thông tin thí sinh dự thi";
+            PDKAdd_CCCD_TD.Location = new Point(436, 175);
+            PDKAdd_CCCD_TD.Name = "PDKAdd_CCCD_TD";
+            PDKAdd_CCCD_TD.Size = new Size(287, 31);
+            PDKAdd_CCCD_TD.TabIndex = 20;
+            // 
+            // PDKAdd_SDT_TD
+            // 
+            PDKAdd_SDT_TD.Location = new Point(504, 69);
+            PDKAdd_SDT_TD.Name = "PDKAdd_SDT_TD";
+            PDKAdd_SDT_TD.Size = new Size(219, 31);
+            PDKAdd_SDT_TD.TabIndex = 18;
+            // 
+            // PDKAdd_Email_TD
+            // 
+            PDKAdd_Email_TD.Location = new Point(96, 173);
+            PDKAdd_Email_TD.Name = "PDKAdd_Email_TD";
+            PDKAdd_Email_TD.Size = new Size(256, 31);
+            PDKAdd_Email_TD.TabIndex = 17;
+            // 
+            // PDKAdd_TenTSTD
+            // 
+            PDKAdd_TenTSTD.Location = new Point(133, 68);
+            PDKAdd_TenTSTD.Name = "PDKAdd_TenTSTD";
+            PDKAdd_TenTSTD.Size = new Size(219, 31);
+            PDKAdd_TenTSTD.TabIndex = 16;
+            // 
+            // label51
+            // 
+            label51.AutoSize = true;
+            label51.Font = new Font("Segoe UI", 10F);
+            label51.Location = new Point(366, 175);
+            label51.Name = "label51";
+            label51.Size = new Size(64, 28);
+            label51.TabIndex = 15;
+            label51.Text = "CCCD:";
+            // 
+            // label52
+            // 
+            label52.AutoSize = true;
+            label52.Font = new Font("Segoe UI", 10F);
+            label52.Location = new Point(27, 69);
+            label52.Name = "label52";
+            label52.Size = new Size(100, 28);
+            label52.TabIndex = 12;
+            label52.Text = "Họ và tên:";
+            // 
+            // label53
+            // 
+            label53.AutoSize = true;
+            label53.Font = new Font("Segoe UI", 10F);
+            label53.Location = new Point(366, 123);
+            label53.Name = "label53";
+            label53.Size = new Size(103, 28);
+            label53.TabIndex = 14;
+            label53.Text = "Ngày sinh:";
+            // 
+            // label54
+            // 
+            label54.AutoSize = true;
+            label54.Font = new Font("Segoe UI", 10F);
+            label54.Location = new Point(26, 123);
+            label54.Name = "label54";
+            label54.Size = new Size(91, 28);
+            label54.TabIndex = 13;
+            label54.Text = "Giới tính:";
+            // 
+            // label56
+            // 
+            label56.AutoSize = true;
+            label56.Font = new Font("Segoe UI", 10F);
+            label56.Location = new Point(27, 175);
+            label56.Name = "label56";
+            label56.Size = new Size(63, 28);
+            label56.TabIndex = 12;
+            label56.Text = "Email:";
+            // 
+            // label57
+            // 
+            label57.AutoSize = true;
+            label57.Font = new Font("Segoe UI", 10F);
+            label57.Location = new Point(366, 69);
+            label57.Name = "label57";
+            label57.Size = new Size(132, 28);
+            label57.TabIndex = 11;
+            label57.Text = "Số điện thoại:";
+            // 
+            // label58
+            // 
+            label58.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label58.AutoSize = true;
+            label58.Location = new Point(268, 5);
+            label58.Name = "label58";
+            label58.Size = new Size(202, 25);
+            label58.TabIndex = 8;
+            label58.Text = "Thông tin thí sinh dự thi";
             // 
             // panelPDKUpdate
             // 
@@ -1892,9 +1938,9 @@
             panelPDKUpdate.Controls.Add(panel12);
             panelPDKUpdate.Controls.Add(panelTSDVEdit);
             panelPDKUpdate.Dock = DockStyle.Fill;
-            panelPDKUpdate.Location = new Point(194, 62);
+            panelPDKUpdate.Location = new Point(0, 0);
             panelPDKUpdate.Name = "panelPDKUpdate";
-            panelPDKUpdate.Size = new Size(1283, 723);
+            panelPDKUpdate.Size = new Size(1477, 785);
             panelPDKUpdate.TabIndex = 15;
             // 
             // btnDelPDK
@@ -1974,9 +2020,9 @@
             PDKU_SBD_TD.AutoSize = true;
             PDKU_SBD_TD.Location = new Point(156, 72);
             PDKU_SBD_TD.Name = "PDKU_SBD_TD";
-            PDKU_SBD_TD.Size = new Size(69, 25);
+            PDKU_SBD_TD.Size = new Size(24, 25);
             PDKU_SBD_TD.TabIndex = 21;
-            PDKU_SBD_TD.Text = "label98";
+            PDKU_SBD_TD.Text = "...";
             // 
             // PDKU_CCCD_TD
             // 
@@ -2118,9 +2164,9 @@
             PDKU_LoaiKH.AutoSize = true;
             PDKU_LoaiKH.Location = new Point(1106, 69);
             PDKU_LoaiKH.Name = "PDKU_LoaiKH";
-            PDKU_LoaiKH.Size = new Size(69, 25);
+            PDKU_LoaiKH.Size = new Size(24, 25);
             PDKU_LoaiKH.TabIndex = 27;
-            PDKU_LoaiKH.Text = "label80";
+            PDKU_LoaiKH.Text = "...";
             // 
             // label1
             // 
@@ -2137,36 +2183,36 @@
             PDKU_TenNV.AutoSize = true;
             PDKU_TenNV.Location = new Point(651, 197);
             PDKU_TenNV.Name = "PDKU_TenNV";
-            PDKU_TenNV.Size = new Size(69, 25);
+            PDKU_TenNV.Size = new Size(24, 25);
             PDKU_TenNV.TabIndex = 25;
-            PDKU_TenNV.Text = "label97";
+            PDKU_TenNV.Text = "...";
             // 
             // PDKU_ED
             // 
             PDKU_ED.AutoSize = true;
             PDKU_ED.Location = new Point(607, 109);
             PDKU_ED.Name = "PDKU_ED";
-            PDKU_ED.Size = new Size(69, 25);
+            PDKU_ED.Size = new Size(24, 25);
             PDKU_ED.TabIndex = 24;
-            PDKU_ED.Text = "label96";
+            PDKU_ED.Text = "...";
             // 
             // PDKU_TenKT
             // 
             PDKU_TenKT.AutoSize = true;
             PDKU_TenKT.Location = new Point(615, 66);
             PDKU_TenKT.Name = "PDKU_TenKT";
-            PDKU_TenKT.Size = new Size(69, 25);
+            PDKU_TenKT.Size = new Size(24, 25);
             PDKU_TenKT.TabIndex = 23;
-            PDKU_TenKT.Text = "label95";
+            PDKU_TenKT.Text = "...";
             // 
             // PDKU_AD
             // 
             PDKU_AD.AutoSize = true;
             PDKU_AD.Location = new Point(181, 197);
             PDKU_AD.Name = "PDKU_AD";
-            PDKU_AD.Size = new Size(69, 25);
+            PDKU_AD.Size = new Size(24, 25);
             PDKU_AD.TabIndex = 22;
-            PDKU_AD.Text = "label70";
+            PDKU_AD.Text = "...";
             // 
             // PDKU_DiaChi
             // 
@@ -2341,13 +2387,13 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1477, 785);
-            Controls.Add(panelPDKUpdate);
+            Controls.Add(panelPDKAdd);
             Controls.Add(panel2);
             Controls.Add(tlpMenuTiepNhan);
-            Controls.Add(panelPDKAdd);
             Controls.Add(panelXLCC);
             Controls.Add(panelGiaHan);
             Controls.Add(panelPDK);
+            Controls.Add(panelPDKUpdate);
             Name = "fTiepNhan";
             Text = "fTiepNhan";
             Load += fTiepNhan_Load_1;
@@ -2383,13 +2429,13 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panelPDKAdd.ResumeLayout(false);
-            panelTSTDAdd.ResumeLayout(false);
-            panelTSTDAdd.PerformLayout();
-            panel1.ResumeLayout(false);
-            panel1.PerformLayout();
             panelTSDVAdd.ResumeLayout(false);
             panelTSDVAdd.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView2).EndInit();
+            ((System.ComponentModel.ISupportInitialize)PDKAdd_dgvTSDV).EndInit();
+            panel1.ResumeLayout(false);
+            panel1.PerformLayout();
+            panelTSTDAdd.ResumeLayout(false);
+            panelTSTDAdd.PerformLayout();
             panelPDKUpdate.ResumeLayout(false);
             panelTSTDEdit.ResumeLayout(false);
             panelTSTDEdit.PerformLayout();
@@ -2488,8 +2534,8 @@
         private Label label39;
         private Panel panelPDKAdd;
         private Panel panelTSDVAdd;
-        private DataGridView dataGridView2;
-        private Button button9;
+        private DataGridView PDKAdd_dgvTSDV;
+        private Button PDKAdd_ThemTSDV;
         private Label label50;
         private Panel panel1;
         private Label label40;
@@ -2509,7 +2555,7 @@
         private Label label56;
         private Label label57;
         private Label label58;
-        private Button button13;
+        private Button PDKAdd_XacNhan;
         private Panel panelPDKUpdate;
         private Button btnDelPDK;
         private Button btnSavePDK;
@@ -2567,14 +2613,13 @@
         private TextBox PDKU_Email_TD;
         private TextBox PDKU_TenTS_TD;
         private Label PDKU_TenNV;
-        private ComboBox comboBox3;
-        private TextBox textBox17;
-        private TextBox textBox16;
-        private TextBox textBox15;
-        private TextBox textBox14;
-        private TextBox textBox13;
+        private ComboBox PDKAdd_GioiTinhTD;
+        private TextBox PDKAdd_CCCD_TD;
+        private TextBox PDKAdd_SDT_TD;
+        private TextBox PDKAdd_Email_TD;
+        private TextBox PDKAdd_TenTSTD;
         private Label label55;
-        private TextBox textBox18;
+        private TextBox PDKAdd_TenKH;
         private Label label108;
         private Label label107;
         private Label label106;
@@ -2584,14 +2629,13 @@
         private Label label102;
         private Label label101;
         private Label label100;
-        private Label label99;
-        private Label label42;
-        private ComboBox comboBox6;
-        private ComboBox comboBox5;
-        private ComboBox comboBox4;
-        private TextBox textBox21;
-        private TextBox textBox20;
-        private TextBox textBox19;
+        private Label PDKAdd_TenNV;
+        private Label PDKAdd_NgayLapPhieu;
+        private ComboBox PDKAdd_NgayThi;
+        private ComboBox PDKAdd_TenKyThi;
+        private TextBox PDKAdd_DiaChi;
+        private TextBox PDKAdd_SDT;
+        private TextBox PDKAdd_Email;
         private Label label110;
         private Label label109;
         private Label PDKView_LoaiKH;
@@ -2603,5 +2647,10 @@
         private DateTimePicker PDKU_DOB_TD;
         private Button btnXoaTD;
         private Button btnSave_TTTD;
+        private RadioButton PDKAdd_btnTuDo;
+        private RadioButton PDKAdd_btnDonVi;
+        private DateTimePicker PDKAdd_DOB_TD;
+        private ComboBox PDKAdd_GioThi;
+        private Label label70;
     }
 }

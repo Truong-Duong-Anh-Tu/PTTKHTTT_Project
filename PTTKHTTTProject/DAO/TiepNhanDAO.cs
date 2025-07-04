@@ -114,5 +114,61 @@ namespace PTTKHTTTProject.DAO
             return result?.ToString();
         }
 
+        public static DataTable LayDanhSachKyThi()
+        {
+            return DataProvider.Instance.ExecuteQuery("SELECT KT_MaKyThi, KT_TenKyThi FROM KYTHI");
+        }
+
+        public static DataTable LayNgayThiTheoKyThi(string maKyThi)
+        {
+            string query = "SELECT DISTINCT LT_NgayThi FROM LICHTHI WHERE LT_MaKyThi = @maKyThi";
+            return DataProvider.Instance.ExecuteQuery(query, new SqlParameter("@maKyThi", maKyThi));
+        }
+
+        public static DataTable LayThoiGianTheoNgayThi(string maKyThi, DateTime ngayThi)
+        {
+            string query = @"
+                   SELECT 
+                   LT_MaLichThi,
+                   CONVERT(varchar(5), LT_TGBatDau, 108) + ' - ' + CONVERT(varchar(5), LT_TGKetThuc, 108) AS ThoiGianThi
+                   FROM LICHTHI
+                   WHERE LT_MaKyThi = @maKyThi AND LT_NgayThi = @ngayThi";
+
+            return DataProvider.Instance.ExecuteQuery(query,
+                new SqlParameter("@maKyThi", maKyThi),
+                new SqlParameter("@ngayThi", ngayThi));
+        }
+
+
+        public static string ThemPhieuDangKy(
+            DateTime ngayLap, string diaChi, string maLichThi, string maNV,
+            string loaiKH, string emailKH, string sdtKH, string tenKH, DataTable dsThiSinh)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+        new SqlParameter("@NgayLap", ngayLap),
+        new SqlParameter("@DiaChi", diaChi),
+        new SqlParameter("@MaLichThi", maLichThi),
+        new SqlParameter("@MaNhanVien", maNV),
+        new SqlParameter("@LoaiKhachHang", loaiKH),
+        new SqlParameter("@Email", emailKH),
+        new SqlParameter("@SDT", sdtKH),
+        new SqlParameter("@TenKhachHang", tenKH),
+        new SqlParameter("@DanhSachThiSinh", SqlDbType.Structured)
+        {
+            TypeName = "ThiSinhTableType", Value = dsThiSinh
+        }
+            };
+
+            DataTable result = DataProvider.Instance.ExecuteQuery("EXEC ThemPhieuDangKyVaThiSinh @NgayLap, @DiaChi, @MaLichThi, @MaNhanVien, @LoaiKhachHang, @Email, @SDT, @TenKhachHang, @DanhSachThiSinh", parameters);
+
+            if (result.Rows.Count > 0)
+            {
+                return result.Rows[0]["MaPhieuMoi"].ToString();
+            }
+
+            return null;
+        }
+
     }
 }

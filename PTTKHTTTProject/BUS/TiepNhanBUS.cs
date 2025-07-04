@@ -46,5 +46,29 @@ namespace PTTKHTTTProject.BUS
             return TiepNhanDAO.LayTenNhanVienTheoEmail(email);
         }
 
+        public static DataTable GetDanhSachKyThi()
+        {
+            return TiepNhanDAO.LayDanhSachKyThi();
+        }
+
+        public static DataTable GetNgayThi(string maKyThi)
+        {
+            return TiepNhanDAO.LayNgayThiTheoKyThi(maKyThi);
+        }
+
+        public static DataTable GetThoiGianThi(string maKyThi, DateTime ngayThi)
+        {
+            return TiepNhanDAO.LayThoiGianTheoNgayThi(maKyThi, ngayThi);
+        }
+
+        public static string ThemPhieuDangKy(
+                DateTime ngayLap, string diaChi, string maLichThi, string maNV,
+                string loaiKH, string emailKH, string sdtKH, string tenKH, DataTable dsThiSinh)
+        {
+            return TiepNhanDAO.ThemPhieuDangKy(
+                ngayLap, diaChi, maLichThi, maNV, loaiKH, emailKH, sdtKH, tenKH, dsThiSinh
+            );
+        }
+
     }
 }

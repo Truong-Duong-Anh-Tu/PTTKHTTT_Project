@@ -8,6 +8,8 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static PTTKHTTTProject.BUS.TiepNhan;
+using PTTKHTTTProject.DTO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace PTTKHTTTProject
@@ -16,7 +18,7 @@ namespace PTTKHTTTProject
     {
         private string _username;
         private string _PDKUpdate;
-
+        private string _MaLichThiAdd;
         public fTiepNhan(string username)
         {
             InitializeComponent();
@@ -72,13 +74,219 @@ namespace PTTKHTTTProject
             panelGiaHan.BringToFront();
         }
 
+        // Giao diện thêm phiếu đăng ký
         private void btnAddPDK_Click(object sender, EventArgs e)
         {
             HideAllPanels();
             panelPDKAdd.Visible = true;
             panelPDKAdd.BringToFront();
+
+            string? tenNhanVien = TiepNhan.LayTenNhanVien(_username);
+
+            if (!string.IsNullOrEmpty(tenNhanVien))
+            {
+                PDKAdd_TenNV.Text = $"{tenNhanVien}";
+            }
+            else
+            {
+                PDKAdd_TenNV.Text = "...";
+            }
+            PDKAdd_NgayLapPhieu.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            PDKAdd_TenKyThi.DataSource = TiepNhan.GetDanhSachKyThi();
+            PDKAdd_TenKyThi.DisplayMember = "KT_TenKyThi"; // Cột để hiển thị
+            PDKAdd_TenKyThi.ValueMember = "KT_MaKyThi";
+
+            PDKAdd_NgayThi.DataSource = null;
+            PDKAdd_GioThi.DataSource = null;
+            PDKAdd_NgayThi.Enabled = false;
+            PDKAdd_GioThi.Enabled = false;
         }
 
+        private void PDKAdd_TenKyThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PDKAdd_TenKyThi.SelectedValue != null)
+            {
+                string maKyThi = PDKAdd_TenKyThi.SelectedValue.ToString();
+                DataTable dtNgayThi = TiepNhan.GetNgayThi(maKyThi); // SELECT DISTINCT LT_NgayThi
+
+                PDKAdd_NgayThi.DisplayMember = "LT_NgayThi";
+                PDKAdd_NgayThi.ValueMember = "LT_NgayThi";
+                PDKAdd_NgayThi.DataSource = dtNgayThi;
+
+                PDKAdd_NgayThi.Enabled = true;
+                PDKAdd_GioThi.Enabled = false;
+                PDKAdd_GioThi.DataSource = null;
+            }
+        }
+
+        private void PDKAdd_NgayThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (PDKAdd_TenKyThi.SelectedValue != null && PDKAdd_NgayThi.SelectedValue != null)
+            {
+                string maKyThi = PDKAdd_TenKyThi.SelectedValue.ToString();
+                DateTime ngayThi = Convert.ToDateTime(PDKAdd_NgayThi.SelectedValue);
+
+                DataTable dtGioThi = TiepNhan.GetThoiGianThi(maKyThi, ngayThi); // trả về LT_MaLichThi + ThoiGianThi
+
+                PDKAdd_GioThi.DisplayMember = "ThoiGianThi"; // ví dụ: 08:00 - 09:30
+                PDKAdd_GioThi.ValueMember = "LT_MaLichThi";  // chính là mã lịch thi cần tìm
+                PDKAdd_GioThi.DataSource = dtGioThi;
+
+                PDKAdd_GioThi.Enabled = true;
+            }
+        }
+
+        private void PDKAdd_btnDonVi_CheckedChanged(object sender, EventArgs e)
+        {
+            panelTSTDAdd.Visible = false;
+            panelTSDVAdd.Visible = true;
+            panelTSDVAdd.BringToFront();
+        }
+
+        private void PDKAdd_btnTuDo_CheckedChanged(object sender, EventArgs e)
+        {
+            panelTSTDAdd.Visible = true;
+            panelTSDVAdd.Visible = false;
+            panelTSTDAdd.BringToFront();
+
+            PDKAdd_GioiTinhTD.DataSource = new List<string> { "Nam", "Nữ" };
+        }
+
+        private void PDKAdd_XacNhan_Click(object sender, EventArgs e)
+        {
+            DateTime ngayLap = DateTime.Now.Date; // Lấy ngày hiện tại (bỏ thời gian)
+            string diaChi = PDKAdd_DiaChi.Text.Trim();
+            string maLichThi = PDKAdd_GioThi.SelectedValue.ToString();
+            string maNV = _username; // lấy từ người đăng nhập
+
+            string loaiKH = PDKAdd_btnTuDo.Checked ? "Tự do" : "Đơn vị";
+            string emailKH = PDKAdd_Email.Text.Trim();
+            string sdtKH = PDKAdd_SDT.Text.Trim();
+            string tenKH = PDKAdd_TenKH.Text.Trim();
+
+            // Chuẩn bị DataTable không có cột SoBaoDanh (vì đã tạo tự động ở procedure)
+            DataTable danhSachThiSinh = new DataTable();
+            danhSachThiSinh.Columns.Add("HoTen", typeof(string));
+            danhSachThiSinh.Columns.Add("NgaySinh", typeof(DateTime));
+            danhSachThiSinh.Columns.Add("GioiTinh", typeof(string));
+            danhSachThiSinh.Columns.Add("Email", typeof(string));
+            danhSachThiSinh.Columns.Add("SDT", typeof(string));
+            danhSachThiSinh.Columns.Add("CCCD", typeof(string));
+
+            if (loaiKH == "Tự do")
+            {
+                // Thêm 1 thí sinh tự do từ textbox
+                danhSachThiSinh.Rows.Add(
+                    PDKAdd_TenTSTD.Text.Trim(),
+                    PDKAdd_DOB_TD.Value.Date,
+                    PDKAdd_GioiTinhTD.Text,
+                    PDKAdd_Email_TD.Text.Trim(),
+                    PDKAdd_SDT_TD.Text.Trim(),
+                    PDKAdd_CCCD_TD.Text.Trim()
+                );
+            }
+            else
+            {
+                // Thêm các thí sinh đơn vị từ DataGridView
+                foreach (DataGridViewRow row in PDKAdd_dgvTSDV.Rows)
+                {
+                    if (row.IsNewRow) continue;
+                    danhSachThiSinh.Rows.Add(
+                        row.Cells["HoTen"].Value?.ToString(),
+                        Convert.ToDateTime(row.Cells["NgaySinh"].Value),
+                        row.Cells["GioiTinh"].Value?.ToString(),
+                        row.Cells["Email"].Value?.ToString(),
+                        row.Cells["SDT"].Value?.ToString(),
+                        row.Cells["CCCD"].Value?.ToString()
+                    );
+                }
+            }
+
+            // Gọi hàm BUS để thêm phiếu đăng ký
+            try
+            {
+                string maPhieuMoi = TiepNhan.ThemPhieuDangKy(
+                    ngayLap, diaChi, maLichThi, maNV,
+                    loaiKH, emailKH, sdtKH, tenKH, danhSachThiSinh
+                );
+
+                MessageBox.Show($"Thêm phiếu đăng ký thành công!\nMã phiếu: {maPhieuMoi}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                ResetFormTiepNhan(); // ← reset lại form
+
+                panelPDKAdd.Visible = false;
+                panelPDK.Visible = true;
+                panelPDK.BringToFront();
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thêm phiếu đăng ký: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        // Hàm reset panel Thêm phiếu đăng ký
+        void ResetFormTiepNhan()
+        {
+            // Reset textbox
+            PDKAdd_DiaChi.Clear();
+            PDKAdd_Email.Clear();
+            PDKAdd_SDT.Clear();
+            PDKAdd_TenKH.Clear();
+            PDKAdd_Email_TD.Clear();
+            PDKAdd_SDT_TD.Clear();
+            PDKAdd_TenTSTD.Clear();
+            PDKAdd_CCCD_TD.Clear();
+
+            // Reset datetime
+            PDKAdd_DOB_TD.Value = DateTime.Today;
+
+            // Reset combobox
+            PDKAdd_TenKyThi.SelectedIndex = -1;
+            PDKAdd_NgayThi.SelectedIndex = -1;
+            PDKAdd_GioThi.DataSource = null;
+            PDKAdd_GioThi.Enabled = false;
+
+            // Reset radio
+            PDKAdd_btnTuDo.Checked = false;
+            PDKAdd_btnDonVi.Checked = false;
+
+            // Reset panel visibility
+            panelTSTDAdd.Visible = false;
+            panelTSDVAdd.Visible = false;
+
+            // Reset DataGridView
+            if (PDKAdd_dgvTSDV.DataSource != null)
+                ((DataTable)PDKAdd_dgvTSDV.DataSource).Clear();
+        }
+
+
+        private void PDKAdd_ThemTSDV_Click(object sender, EventArgs e)
+        {
+            fThemThiSinhDonVi formThem = new fThemThiSinhDonVi();
+
+            if (formThem.ShowDialog() == DialogResult.OK && formThem.ThiSinhMoi != null)
+            {
+                ThiSinhDonViDTO ts = formThem.ThiSinhMoi;
+
+                // Nếu DataGridView chưa có nguồn, tạo DataTable trước
+                if (PDKAdd_dgvTSDV.DataSource == null)
+                {
+                    DataTable table = new DataTable();
+                    table.Columns.Add("HoTen", typeof(string));
+                    table.Columns.Add("NgaySinh", typeof(DateTime));
+                    table.Columns.Add("GioiTinh", typeof(string));
+                    table.Columns.Add("Email", typeof(string));
+                    table.Columns.Add("SDT", typeof(string));
+                    table.Columns.Add("CCCD", typeof(string));
+                    PDKAdd_dgvTSDV.DataSource = table;
+                }
+
+                // Thêm dòng mới
+                DataTable dt = (DataTable)PDKAdd_dgvTSDV.DataSource;
+                dt.Rows.Add(ts.HoTen, ts.NgaySinh.Date, ts.GioiTinh, ts.Email, ts.SDT, ts.CCCD);
+            }
+        }
+
+        // Giao diện chỉnh sửa phiếu đăng ký
         private void btnUpdatePDK_Click(object sender, EventArgs e)
         {
             HideAllPanels();
@@ -221,6 +429,7 @@ namespace PTTKHTTTProject
             }
         }
 
+        // Giao diện xem phiếu đăng ký
         private void PDKView_Search_Click(object sender, EventArgs e)
         {
             string MaPhieu = PDKView_SearchBox.Text.Trim();
@@ -334,6 +543,6 @@ namespace PTTKHTTTProject
             }
         }
 
-        
+       
     }
 }

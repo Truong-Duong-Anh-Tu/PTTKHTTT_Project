@@ -702,6 +702,7 @@ begin
 	where d.BT_DiemSo is not null and i.BT_DiemSo is null;
 	
 end;
+go
 
 --Tra cứu phiếu đăng ký (thông tin cơ bản)
 CREATE PROCEDURE TraCuuPhieuDangKyCoBan
@@ -870,4 +871,126 @@ BEGIN
         THROW;
     END CATCH
 END;
+GO
+
+--Thêm phiếu đăng ký
+CREATE PROCEDURE ThemPhieuDangKyVaThiSinh
+    @NgayLap DATE,
+    @DiaChi NVARCHAR(100),
+    @MaLichThi VARCHAR(10),
+    @MaNhanVien VARCHAR(10),
+    @LoaiKhachHang NVARCHAR(20),         -- 'Tự do' hoặc 'Đơn vị'
+    @Email CHAR(100),
+    @SDT CHAR(10),
+    @TenKhachHang NVARCHAR(100),
+    @DanhSachThiSinh ThiSinhTableType READONLY
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaKhachHang VARCHAR(10)
+    DECLARE @MaPhieu VARCHAR(10)
+    DECLARE @SoLuongDangKyMoi INT = (SELECT COUNT(*) FROM @DanhSachThiSinh)
+    DECLARE @SoLuongDangKyHienTai INT
+    DECLARE @SoLuongToiDa INT
+
+    -- 1. Kiểm tra khách hàng đã tồn tại
+    SELECT @MaKhachHang = KH_MaKhachHang
+    FROM KHACHHANG
+    WHERE KH_Email = @Email AND KH_SDT = @SDT AND KH_LoaiKhachHang = @LoaiKhachHang
+
+    -- 2. Nếu chưa tồn tại -> Tạo mới
+    IF @MaKhachHang IS NULL
+    BEGIN
+        IF @LoaiKhachHang = N'Đơn vị'
+        BEGIN
+            SET @MaKhachHang = 'KHDV' + RIGHT('0000' + CAST(
+                ISNULL((SELECT COUNT(*) + 1 FROM KHACHHANG WHERE KH_MaKhachHang LIKE 'KHDV%'), 1) AS VARCHAR), 4)
+            INSERT INTO KHACHHANG VALUES (@MaKhachHang, @LoaiKhachHang, @Email, @SDT)
+            INSERT INTO KHACHHANGDONVI VALUES (@MaKhachHang, @TenKhachHang)
+        END
+        ELSE
+        BEGIN
+            SET @MaKhachHang = 'KHTD' + RIGHT('0000' + CAST(
+                ISNULL((SELECT COUNT(*) + 1 FROM KHACHHANG WHERE KH_MaKhachHang LIKE 'KHTD%'), 1) AS VARCHAR), 4)
+            INSERT INTO KHACHHANG VALUES (@MaKhachHang, @LoaiKhachHang, @Email, @SDT)
+            INSERT INTO KHACHHANGHTUDO VALUES (@MaKhachHang, @TenKhachHang)
+        END
+    END
+
+    -- 3. Kiểm tra số lượng đăng ký hiện tại và giới hạn phòng
+    SELECT 
+        @SoLuongDangKyHienTai = ISNULL(LT_SLDangKy, 0),
+        @SoLuongToiDa = PT.PT_SLThiSinhToiDa
+    FROM LICHTHI LT
+    JOIN PHONGTHI PT ON LT.LT_MaPhongThi = PT.PT_MaPhongThi
+    WHERE LT.LT_MaLichThi = @MaLichThi
+
+    IF @SoLuongDangKyHienTai + @SoLuongDangKyMoi > @SoLuongToiDa
+    BEGIN
+        RAISERROR(N'Số lượng thí sinh vượt quá sức chứa phòng thi.', 16, 1)
+        RETURN
+    END
+
+    -- 4. Tạo mã phiếu đăng ký duy nhất bằng MAX
+    DECLARE @PrefixPhieu VARCHAR(10) = CASE 
+        WHEN @LoaiKhachHang = N'Đơn vị' THEN 'PDKDV' 
+        ELSE 'PDKTD' 
+    END
+
+    DECLARE @NextIndexPhieu INT
+    SELECT @NextIndexPhieu = ISNULL(MAX(CAST(SUBSTRING(PDKDT_MaPhieu, LEN(@PrefixPhieu) + 1, 4) AS INT)), 0) + 1
+    FROM PHIEUDANGKYDUTHI
+    WHERE PDKDT_MaPhieu LIKE @PrefixPhieu + '%'
+
+    SET @MaPhieu = @PrefixPhieu + RIGHT('0000' + CAST(@NextIndexPhieu AS VARCHAR), 4)
+
+    -- 5. Thêm phiếu đăng ký
+    INSERT INTO PHIEUDANGKYDUTHI
+    VALUES (@MaPhieu, @NgayLap, @DiaChi, N'Chưa thanh toán', @MaKhachHang, @MaLichThi, @MaNhanVien)
+
+    -- 6. Tạo số báo danh duy nhất
+    DECLARE @PrefixSBD VARCHAR(10) = CASE 
+        WHEN @LoaiKhachHang = N'Đơn vị' THEN 'TSDV' 
+        ELSE 'TSTD' 
+    END
+
+    DECLARE @SoThuTuSBD INT
+    SELECT @SoThuTuSBD = ISNULL(MAX(CAST(SUBSTRING(TS_SoBaoDanh, LEN(@PrefixSBD) + 1, 4) AS INT)), 0)
+    FROM THISINH
+    WHERE TS_SoBaoDanh LIKE @PrefixSBD + '%'
+
+    -- 7. Duyệt danh sách thí sinh và thêm vào bảng THISINH
+    DECLARE ts_cursor CURSOR FOR
+        SELECT HoTen, NgaySinh, GioiTinh, Email, SDT, CCCD
+        FROM @DanhSachThiSinh
+
+    DECLARE @HoTen NVARCHAR(50), @NgaySinh DATE, @GioiTinh NVARCHAR(3), @EmailTS CHAR(100), @SDTTS CHAR(10), @CCCD CHAR(12)
+    DECLARE @sbd VARCHAR(10)
+
+    OPEN ts_cursor
+    FETCH NEXT FROM ts_cursor INTO @HoTen, @NgaySinh, @GioiTinh, @EmailTS, @SDTTS, @CCCD
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        SET @SoThuTuSBD = @SoThuTuSBD + 1
+        SET @sbd = @PrefixSBD + RIGHT('0000' + CAST(@SoThuTuSBD AS VARCHAR), 4)
+
+        INSERT INTO THISINH
+        VALUES (@sbd, @MaPhieu, @HoTen, @NgaySinh, @GioiTinh, @EmailTS, @SDTTS, @CCCD)
+
+        FETCH NEXT FROM ts_cursor INTO @HoTen, @NgaySinh, @GioiTinh, @EmailTS, @SDTTS, @CCCD
+    END
+
+    CLOSE ts_cursor
+    DEALLOCATE ts_cursor
+
+    -- 8. Cập nhật lại số lượng đăng ký của lịch thi
+    UPDATE LICHTHI
+    SET LT_SLDangKy = LT_SLDangKy + @SoLuongDangKyMoi
+    WHERE LT_MaLichThi = @MaLichThi
+
+    -- 9. Trả về mã phiếu mới
+    SELECT @MaPhieu AS MaPhieuMoi
+END
 GO
