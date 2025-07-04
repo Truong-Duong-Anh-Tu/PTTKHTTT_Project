@@ -10,7 +10,6 @@ namespace PTTKHTTTProject.DAO
             return DataProvider.Instance.ExecuteQuerySP("usp_GetAllPhongThi");
         }
 
-        // PHƯƠNG THỨC MỚI
         public static bool AddPhongThi(string maPhong, string hinhThuc, int slToiDa, int slToiThieu, int slNhanVien)
         {
             try

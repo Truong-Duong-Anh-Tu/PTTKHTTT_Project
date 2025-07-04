@@ -99,7 +99,8 @@ VALUES
 ('P002', N'Trắc nghiệm', 25, 8, 2),
 ('P003', N'Trắc nghiệm-Tự luận', 40, 15, 3),
 ('P004', N'Trắc nghiệm', 30, 5, 2),
-('P005', N'Trắc nghiệm-Tự luận', 35, 12, 2);
+('P005', N'Trắc nghiệm-Tự luận', 35, 12, 2),
+('P006', N'Tự luận', 40, 10, 2);
 GO
 
 INSERT INTO NHANVIEN (NV_MaNhanVien, NV_TenNhanVien, NV_NgaySinh, NV_GioiTinh, NV_Email, NV_SDT, NV_CCCD, NV_DiaChi, NV_ChucVu, NV_Luong, NV_MaPhongBan, NV_MatKhau)
@@ -171,7 +172,7 @@ VALUES
   ('LT06', 'KT01', 17, N'Chưa thi', N'Kỳ thi tiếng Anh A2',
    '2025-08-20', 'P001', '08:00:00', '10:00:00'),
   ('LT07', 'KT05', 17, N'Đã thi', N'Kỳ thi tiếng Anh TOEFL',
-   '2025-06-20', 'P001', '08:00:00', '10:00:00');
+   '2025-06-20', 'P006', '08:00:00', '10:00:00');
 GO
 
 INSERT INTO PHIEUDANGKYDUTHI 
@@ -426,9 +427,26 @@ VALUES
 GO
 */
 
-INSERT INTO PHANCONG
-(PC_MaNhanVien, PC_MaLichThi, PC_TrangThai)
-VALUES
-('NV021', 'LT03', N'Chưa diễn ra');
 
---delete from BAITHI
+/*
+-- Xóa các bảng phụ thuộc trước
+DELETE FROM PHANCONG;
+DELETE FROM PHIEUDUTHI;
+DELETE FROM PHIEUTHANHTOAN;
+DELETE FROM THISINH;
+DELETE FROM PHIEUGIAHAN;
+DELETE FROM PHIEUDANGKYDUTHI;
+DELETE FROM THONGBAO;
+DELETE FROM LICHTHI;
+
+-- Xóa các bảng gốc (ít phụ thuộc hơn)
+DELETE FROM NHANVIEN;
+DELETE FROM PHONGBAN;
+DELETE FROM KHACHHANGHTUDO;
+DELETE FROM KHACHHANGDONVI;
+DELETE FROM KHACHHANG;
+DELETE FROM KYTHI;
+DELETE FROM DONVICHAMTHI;
+DELETE FROM PHONGTHI;
+GO
+*/
