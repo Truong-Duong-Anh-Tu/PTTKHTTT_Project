@@ -43,9 +43,18 @@ namespace PTTKHTTTProject.UControl
 
         private void SetTextBoxesReadOnly(bool readOnly)
         {
-            textBoxMaKyThi.ReadOnly = true; // Mã kỳ thi luôn ở chế độ chỉ đọc
+            // Mã kỳ thi luôn ở chế độ chỉ đọc, không thay đổi
+            textBoxMaKyThi.ReadOnly = true;
+
+            // Cập nhật trạng thái ReadOnly cho các ô khác
             textBoxTenKyThi.ReadOnly = readOnly;
             textBoxLePhi.ReadOnly = readOnly;
+
+            // Thay đổi màu nền dựa trên trạng thái ReadOnly
+            // Nếu không phải chỉ đọc (tức là có thể sửa), nền sẽ là màu trắng.
+            // Nếu là chỉ đọc, nền sẽ là màu của control mặc định (thường là xám).
+            textBoxTenKyThi.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
+            textBoxLePhi.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
         }
 
         private void ClearTextBoxes()
