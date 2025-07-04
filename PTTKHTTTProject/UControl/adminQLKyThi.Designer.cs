@@ -30,7 +30,7 @@
         {
             labelDSKyThi = new Label();
             panel2 = new Panel();
-            button1 = new Button();
+            buttonXoa = new Button();
             buttonThemKyThi = new Button();
             buttonLuu = new Button();
             labelThongTinChiTiet = new Label();
@@ -64,50 +64,53 @@
             // panel2
             // 
             panel2.BackColor = SystemColors.ButtonFace;
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(buttonXoa);
             panel2.Controls.Add(buttonThemKyThi);
             panel2.Controls.Add(buttonLuu);
             panel2.Controls.Add(labelThongTinChiTiet);
             panel2.Controls.Add(tableLayoutPanel1);
             panel2.Controls.Add(buttonChinhSua);
             panel2.Location = new Point(41, 171);
-            panel2.Margin = new Padding(5, 5, 5, 5);
+            panel2.Margin = new Padding(5);
             panel2.Name = "panel2";
             panel2.Size = new Size(691, 674);
             panel2.TabIndex = 7;
             // 
-            // button1
+            // buttonXoa
             // 
-            button1.BackColor = Color.SkyBlue;
-            button1.Location = new Point(474, 456);
-            button1.Margin = new Padding(5, 5, 5, 5);
-            button1.Name = "button1";
-            button1.Size = new Size(161, 59);
-            button1.TabIndex = 6;
-            button1.Text = "Xóa";
-            button1.UseVisualStyleBackColor = false;
+            buttonXoa.BackColor = Color.SkyBlue;
+            buttonXoa.Location = new Point(474, 456);
+            buttonXoa.Margin = new Padding(5);
+            buttonXoa.Name = "buttonXoa";
+            buttonXoa.Size = new Size(161, 59);
+            buttonXoa.TabIndex = 6;
+            buttonXoa.Text = "Xóa";
+            buttonXoa.UseVisualStyleBackColor = false;
+            buttonXoa.Click += buttonXoa_Click;
             // 
             // buttonThemKyThi
             // 
             buttonThemKyThi.BackColor = Color.SkyBlue;
             buttonThemKyThi.Location = new Point(67, 456);
-            buttonThemKyThi.Margin = new Padding(5, 5, 5, 5);
+            buttonThemKyThi.Margin = new Padding(5);
             buttonThemKyThi.Name = "buttonThemKyThi";
             buttonThemKyThi.Size = new Size(153, 58);
             buttonThemKyThi.TabIndex = 5;
             buttonThemKyThi.Text = "Thêm";
             buttonThemKyThi.UseVisualStyleBackColor = false;
+            buttonThemKyThi.Click += buttonThemKyThi_Click;
             // 
             // buttonLuu
             // 
             buttonLuu.BackColor = Color.SkyBlue;
             buttonLuu.Location = new Point(67, 554);
-            buttonLuu.Margin = new Padding(5, 5, 5, 5);
+            buttonLuu.Margin = new Padding(5);
             buttonLuu.Name = "buttonLuu";
             buttonLuu.Size = new Size(569, 59);
             buttonLuu.TabIndex = 3;
             buttonLuu.Text = "Lưu thông tin";
             buttonLuu.UseVisualStyleBackColor = false;
+            buttonLuu.Click += buttonLuu_Click;
             // 
             // labelThongTinChiTiet
             // 
@@ -134,7 +137,7 @@
             tableLayoutPanel1.Controls.Add(labelMaKyThi, 0, 0);
             tableLayoutPanel1.Controls.Add(textBoxMaKyThi, 1, 0);
             tableLayoutPanel1.Location = new Point(67, 104);
-            tableLayoutPanel1.Margin = new Padding(5, 5, 5, 5);
+            tableLayoutPanel1.Margin = new Padding(5);
             tableLayoutPanel1.Name = "tableLayoutPanel1";
             tableLayoutPanel1.RowCount = 3;
             tableLayoutPanel1.RowStyles.Add(new RowStyle(SizeType.Percent, 50F));
@@ -150,7 +153,7 @@
             textBoxLePhi.BorderStyle = BorderStyle.None;
             textBoxLePhi.Font = new Font("Segoe UI", 10F);
             textBoxLePhi.Location = new Point(233, 232);
-            textBoxLePhi.Margin = new Padding(5, 5, 5, 5);
+            textBoxLePhi.Margin = new Padding(5);
             textBoxLePhi.Name = "textBoxLePhi";
             textBoxLePhi.Size = new Size(292, 36);
             textBoxLePhi.TabIndex = 7;
@@ -162,7 +165,7 @@
             textBoxTenKyThi.BorderStyle = BorderStyle.None;
             textBoxTenKyThi.Font = new Font("Segoe UI", 10F);
             textBoxTenKyThi.Location = new Point(233, 134);
-            textBoxTenKyThi.Margin = new Padding(5, 5, 5, 5);
+            textBoxTenKyThi.Margin = new Padding(5);
             textBoxTenKyThi.Name = "textBoxTenKyThi";
             textBoxTenKyThi.Size = new Size(292, 36);
             textBoxTenKyThi.TabIndex = 6;
@@ -207,7 +210,7 @@
             textBoxMaKyThi.BorderStyle = BorderStyle.None;
             textBoxMaKyThi.Font = new Font("Segoe UI", 10F);
             textBoxMaKyThi.Location = new Point(233, 33);
-            textBoxMaKyThi.Margin = new Padding(5, 5, 5, 5);
+            textBoxMaKyThi.Margin = new Padding(5);
             textBoxMaKyThi.Name = "textBoxMaKyThi";
             textBoxMaKyThi.Size = new Size(292, 36);
             textBoxMaKyThi.TabIndex = 5;
@@ -216,19 +219,20 @@
             // 
             buttonChinhSua.BackColor = Color.SkyBlue;
             buttonChinhSua.Location = new Point(247, 456);
-            buttonChinhSua.Margin = new Padding(5, 5, 5, 5);
+            buttonChinhSua.Margin = new Padding(5);
             buttonChinhSua.Name = "buttonChinhSua";
             buttonChinhSua.Size = new Size(197, 59);
             buttonChinhSua.TabIndex = 0;
             buttonChinhSua.Text = "Chỉnh sửa";
             buttonChinhSua.UseVisualStyleBackColor = false;
+            buttonChinhSua.Click += buttonChinhSua_Click;
             // 
             // dataGridViewDSKythi
             // 
             dataGridViewDSKythi.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewDSKythi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDSKythi.Location = new Point(795, 234);
-            dataGridViewDSKythi.Margin = new Padding(5, 5, 5, 5);
+            dataGridViewDSKythi.Margin = new Padding(5);
             dataGridViewDSKythi.Name = "dataGridViewDSKythi";
             dataGridViewDSKythi.RowHeadersWidth = 51;
             dataGridViewDSKythi.Size = new Size(785, 611);
@@ -239,7 +243,7 @@
             // 
             buttonTimKiem.BackColor = Color.SkyBlue;
             buttonTimKiem.Location = new Point(1427, 171);
-            buttonTimKiem.Margin = new Padding(5, 5, 5, 5);
+            buttonTimKiem.Margin = new Padding(5);
             buttonTimKiem.Name = "buttonTimKiem";
             buttonTimKiem.Size = new Size(153, 53);
             buttonTimKiem.TabIndex = 5;
@@ -250,7 +254,7 @@
             // textBoxTimKiem
             // 
             textBoxTimKiem.Location = new Point(991, 171);
-            textBoxTimKiem.Margin = new Padding(5, 5, 5, 5);
+            textBoxTimKiem.Margin = new Padding(5);
             textBoxTimKiem.Name = "textBoxTimKiem";
             textBoxTimKiem.PlaceholderText = "Tìm mã kỳ thi / tên kỳ thi";
             textBoxTimKiem.Size = new Size(399, 39);
@@ -266,7 +270,7 @@
             Controls.Add(dataGridViewDSKythi);
             Controls.Add(textBoxTimKiem);
             Controls.Add(buttonTimKiem);
-            Margin = new Padding(5, 5, 5, 5);
+            Margin = new Padding(5);
             Name = "adminQLKyThi";
             Size = new Size(1659, 917);
             panel2.ResumeLayout(false);
@@ -294,7 +298,7 @@
         private Label labelTenKyThi;
         private Label labelMaKyThi;
         private Button buttonLuu;
-        private Button button1;
+        private Button buttonXoa;
         private TextBox textBoxLePhi;
         private TextBox textBoxTenKyThi;
         private TextBox textBoxMaKyThi;
