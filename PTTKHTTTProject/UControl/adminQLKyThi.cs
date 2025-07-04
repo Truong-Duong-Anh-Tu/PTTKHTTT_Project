@@ -34,16 +34,13 @@ namespace PTTKHTTTProject.UControl
 
         private void SetupDataGridView()
         {
-            // Tự động điều chỉnh độ rộng các cột
             dataGridViewDSKythi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
 
-            // Định dạng cột lệ phí để hiển thị theo kiểu tiền tệ
             if (dataGridViewDSKythi.Columns.Contains("LePhi"))
             {
                 dataGridViewDSKythi.Columns["LePhi"].DefaultCellStyle.Format = "N0";
             }
 
-            // Đặt lại tên cho các cột để hiển thị
             if (dataGridViewDSKythi.Columns["KT_MaKyThi"] != null)
                 dataGridViewDSKythi.Columns["KT_MaKyThi"].HeaderText = "Mã Kỳ Thi";
 
@@ -56,16 +53,13 @@ namespace PTTKHTTTProject.UControl
 
         private void SetTextBoxesReadOnly(bool readOnly)
         {
-            // Mã kỳ thi luôn ở chế độ chỉ đọc, không thay đổi
+            // Mã kỳ thi luôn ở chế độ chỉ đọc
             textBoxMaKyThi.ReadOnly = true;
+            textBoxMaKyThi.BackColor = SystemColors.Control;
 
-            // Cập nhật trạng thái ReadOnly cho các ô khác
             textBoxTenKyThi.ReadOnly = readOnly;
             textBoxLePhi.ReadOnly = readOnly;
 
-            // Thay đổi màu nền dựa trên trạng thái ReadOnly
-            // Nếu không phải chỉ đọc (tức là có thể sửa), nền sẽ là màu trắng.
-            // Nếu là chỉ đọc, nền sẽ là màu của control mặc định (thường là xám).
             textBoxTenKyThi.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
             textBoxLePhi.BackColor = readOnly ? SystemColors.Control : SystemColors.Window;
         }
@@ -104,15 +98,18 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
+        // --- BẮT ĐẦU PHẦN CHỈNH SỬA ---
         private void buttonThemKyThi_Click(object sender, EventArgs e)
         {
             isAdding = true;
             ClearTextBoxes();
+            textBoxMaKyThi.Text = "Tự động"; // Hiển thị chữ "Tự động"
             SetTextBoxesReadOnly(false);
             buttonLuu.Enabled = true;
             buttonChinhSua.Enabled = false;
             buttonXoa.Enabled = false;
         }
+        // --- KẾT THÚC PHẦN CHỈNH SỬA ---
 
         private void buttonChinhSua_Click(object sender, EventArgs e)
         {
@@ -156,6 +153,7 @@ namespace PTTKHTTTProject.UControl
             }
 
             LoadData();
+            ClearTextBoxes();
             SetTextBoxesReadOnly(true);
             buttonLuu.Enabled = false;
             buttonChinhSua.Enabled = true;
@@ -189,7 +187,7 @@ namespace PTTKHTTTProject.UControl
 
         private void adminQLKyThi_Load(object sender, EventArgs e)
         {
-
+            // Để trống nếu không sử dụng
         }
     }
 }
