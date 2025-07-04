@@ -24,8 +24,11 @@ namespace PTTKHTTTProject.UControl
             LoadData();
             SetupDataGridViewColumns();
             PopulateComboBox();
+
+            // Thêm dòng này để đăng ký sự kiện
+            this.dataGridView1.CellFormatting += new System.Windows.Forms.DataGridViewCellFormattingEventHandler(this.dataGridView1_CellFormatting);
+
             this.dataGridView1.CellPainting += new System.Windows.Forms.DataGridViewCellPaintingEventHandler(this.dataGridView1_CellPainting);
-            // Gán sự kiện TextChanged cho textBox1
             this.textBox1.TextChanged += new System.EventHandler(this.textBox1_TextChanged);
         }
 
@@ -170,6 +173,21 @@ namespace PTTKHTTTProject.UControl
             fAdminThemLichPhanCong f = new fAdminThemLichPhanCong();
             f.ShowDialog();
             LoadData();
+        }
+
+        private void dataGridView1_CellFormatting(object sender, DataGridViewCellFormattingEventArgs e)
+        {
+            // Kiểm tra xem đây có phải là cột "Giờ Bắt Đầu" hoặc "Giờ Kết Thúc" không
+            string colName = dataGridView1.Columns[e.ColumnIndex].Name;
+            if (colName == "Giờ Bắt Đầu" || colName == "Giờ Kết Thúc")
+            {
+                // Nếu giá trị là một TimeSpan, định dạng lại nó thành "HH:mm"
+                if (e.Value is TimeSpan ts)
+                {
+                    e.Value = ts.ToString(@"hh\:mm");
+                    e.FormattingApplied = true;
+                }
+            }
         }
     }
 }

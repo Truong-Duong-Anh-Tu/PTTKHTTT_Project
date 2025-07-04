@@ -204,8 +204,7 @@
             dateTimePickerNgayThi.Name = "dateTimePickerNgayThi";
             dateTimePickerNgayThi.Size = new Size(435, 39);
             dateTimePickerNgayThi.TabIndex = 20;
-            dateTimePickerNgayThi.ValueChanged += new System.EventHandler(this.dateTimePickerNgayThi_ValueChanged); // <-- THÊM DÒNG NÀY
-
+            dateTimePickerNgayThi.ValueChanged += dateTimePickerNgayThi_ValueChanged;
             // 
             // textBoxTrangThai
             // 
@@ -332,7 +331,7 @@
             dataGridViewPhongTrong.Margin = new Padding(5);
             dataGridViewPhongTrong.Name = "dataGridViewPhongTrong";
             dataGridViewPhongTrong.RowHeadersWidth = 51;
-            dataGridViewPhongTrong.Size = new Size(578, 293);
+            dataGridViewPhongTrong.Size = new Size(578, 277);
             dataGridViewPhongTrong.TabIndex = 29;
             dataGridViewPhongTrong.CellClick += dataGridViewPhongTrong_CellClick;
             // 

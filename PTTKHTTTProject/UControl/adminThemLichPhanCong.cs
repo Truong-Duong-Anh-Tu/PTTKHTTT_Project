@@ -42,8 +42,16 @@ namespace PTTKHTTTProject.UControl
             textBoxKyThi.Text = "";
             textBoxNgayThi.Text = "";
             textBoxPhongThi.Text = "";
-            dateTimePicker1.Value = DateTime.Now;
-            dateTimePicker2.Value = DateTime.Now;
+
+            // Vô hiệu hóa và làm trống ô chọn giờ
+            dateTimePicker1.Enabled = false;
+            dateTimePicker1.Format = DateTimePickerFormat.Custom;
+            dateTimePicker1.CustomFormat = " ";
+
+            dateTimePicker2.Enabled = false;
+            dateTimePicker2.Format = DateTimePickerFormat.Custom;
+            dateTimePicker2.CustomFormat = " ";
+
             textBoxMaNVCoiThi.Text = "";
             textBoxTenNVCoiThi.Text = "";
             comboBoxLichThi.DataSource = null;
@@ -72,8 +80,26 @@ namespace PTTKHTTTProject.UControl
                 textBoxKyThi.Text = comboBoxKyThi.Text.Split(new[] { " - " }, StringSplitOptions.None)[0].Trim();
                 textBoxNgayThi.Text = ((DateTime)selectedRow["LT_NgayThi"]).ToString("dd/MM/yyyy");
                 textBoxPhongThi.Text = selectedRow["LT_MaPhongThi"].ToString();
+
+                // Kích hoạt, định dạng và gán giá trị cho ô thời gian bắt đầu
+                dateTimePicker1.Enabled = true;
+                dateTimePicker1.Format = DateTimePickerFormat.Custom;
+                dateTimePicker1.CustomFormat = "HH:mm";
                 dateTimePicker1.Value = DateTime.Today + (TimeSpan)selectedRow["LT_TGBatDau"];
+
+                // Kích hoạt, định dạng và gán giá trị cho ô thời gian kết thúc
+                dateTimePicker2.Enabled = true;
+                dateTimePicker2.Format = DateTimePickerFormat.Custom;
+                dateTimePicker2.CustomFormat = "HH:mm";
                 dateTimePicker2.Value = DateTime.Today + (TimeSpan)selectedRow["LT_TGKetThuc"];
+            }
+            else
+            {
+                // Nếu không có lịch thi nào được chọn, hãy vô hiệu hóa lại
+                dateTimePicker1.Enabled = false;
+                dateTimePicker1.CustomFormat = " ";
+                dateTimePicker2.Enabled = false;
+                dateTimePicker2.CustomFormat = " ";
             }
         }
 
@@ -133,5 +159,6 @@ namespace PTTKHTTTProject.UControl
         {
             this.FindForm()?.Close();
         }
+
     }
 }
