@@ -175,7 +175,7 @@ namespace PTTKHTTTProject.UControl
                     }
                     else
                     {
-                        MessageBox.Show("Xóa kỳ thi thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                        MessageBox.Show("Xóa kỳ thi thất bại do đã có lịch thi được tạo cho kỳ thi này.", "Lỗi ràng buộc", MessageBoxButtons.OK, MessageBoxIcon.Error);
                     }
                 }
             }
