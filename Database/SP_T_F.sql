@@ -221,13 +221,14 @@ begin
 	from PHIEUDANGKYDUTHI as pdk
 	LEFT JOIN KHACHHANGHTUDO AS khtd ON pdk.PDKDT_MaKhachHang = khtd.KHTD_MaKhachHang
     LEFT JOIN KHACHHANGDONVI AS khdv ON pdk.PDKDT_MaKhachHang = khdv.KHDV_MaKhachHang
-	join THISINH as ts on pdk.PDKDT_MaPhieu = ts.TS_MaPhieuDangKy
 	join LICHTHI as lt on pdk.PDKDT_MaLichThi = lt.LT_MaLichThi
 	join KYTHI as kt on lt.LT_MaKyThi = kt.KT_MaKyThi
 	join KHACHHANG as kh on pdk.PDKDT_MaKhachHang = kh.KH_MaKhachHang
 	WHERE (@search IS NULL 
-       OR ts.TS_HoTen LIKE '%' + @search + '%' 
-	   OR pdk.PDKDT_MaPhieu LIKE '%' + @search + '%')
+       OR khtd.KHTD_HoTen LIKE '%' + @search + '%' 
+	   OR khdv.KHDV_TenDonVi LIKE '%' + @search + '%' 
+	   OR pdk.PDKDT_MaPhieu LIKE '%' + @search + '%'
+	   OR pdk.PDKDT_MaKhachHang LIKE '%' + @search + '%')
 	AND NOT EXISTS (
         SELECT 1 
         FROM PHIEUTHANHTOAN ptt
@@ -248,21 +249,21 @@ go
 */
 
 
---Lay thong tin danh sach phieu yeu cau gia han ket hop tim kiem (PREVIEW PHIEU THU/PHIEU THANH TOAN)
+--Lay thong tin danh sach phieu yeu cau gia han ket hop tim kiem (TAB QUAN LI PHIEU GIA HAN, MUC DANH SACH YEU CAU GIA HAN)
 --drop procedure usp_GetRenewalRequestTable
 create or alter procedure usp_GetRenewalRequestTable
 	@search nvarchar(50) = NULL
 as
 begin
 	set NOCOUNT on;
-	select PDKDT_MaPhieu as MaPhieu, PDKDT_MaKhachHang as MaKH, KT_TenKyThi as TenKyThi, PDKDT_MaLichThi as MaLichThiMoi
+	select PDKDT_MaPhieu as MaPhieu, COALESCE(KHTD_HoTen, KHDV_TenDonVi) AS HoTen, PDKDT_MaKhachHang as MaKH, KT_TenKyThi as TenKyThi, PDKDT_MaLichThi as MaLichThiMoi
 	from PHIEUDANGKYDUTHI
-	join THISINH on PDKDT_MaPhieu = TS_MaPhieuDangKy
+	LEFT JOIN KHACHHANGHTUDO ON PDKDT_MaKhachHang = KHTD_MaKhachHang
+    LEFT JOIN KHACHHANGDONVI ON PDKDT_MaKhachHang = KHDV_MaKhachHang
+	--join THISINH on PDKDT_MaPhieu = TS_MaPhieuDangKy
 	join LICHTHI on PDKDT_MaLichThi = LT_MaLichThi
 	join KYTHI on LT_MaKyThi = KT_MaKyThi
 	WHERE (@search IS NULL 
-       OR TS_HoTen LIKE '%' + @search + '%' 
-       OR TS_SoBaoDanh LIKE '%' + @search + '%'
 	   OR PDKDT_MaPhieu LIKE '%' + @search + '%')
 	and PDKDT_TrangThaiThanhToan = N'Thanh toán gia hạn'
 	AND (
@@ -355,22 +356,81 @@ go
 
 
 
+--Them thong tin phieu thu vao bang PHIEUTHANHTOAN
+--drop procedure usp_InsertIntoCreatedRenewalsTable
+create or alter procedure usp_InsertIntoCreatedRenewalsTable
+	@maphieudk varchar(10),
+	@lydo nvarchar(100),
+	@sotienthanhtoan int,
+	@hinhthuc nvarchar(20)
+as
+begin
+	DECLARE @newMaPGH varchar(10);
+    DECLARE @maxNumber int;
+	DECLARE @today date = CAST(GETDATE() AS date);
+	DECLARE @thoihan date = DATEADD(month, 1, @today);
+
+    -- Tìm số thứ tự lớn nhất hiện tại trong PTT_MaPhieu
+    SELECT @maxNumber = ISNULL(MAX(CAST(SUBSTRING(PGH_MaPhieu, 4, 5) AS int)), 0)
+    FROM PHIEUGIAHAN;
+
+    -- Tăng số thứ tự lên 1 và định dạng thành PTTXXXXX
+    SET @newMaPGH = 'GH' + RIGHT('00000' + CAST(@maxNumber + 1 AS varchar(5)), 5);
+
+	INSERT INTO PHIEUGIAHAN
+        (PGH_MaPhieu, PGH_MaPhieuDK, PGH_LyDoGiaHan, PGH_SoTienThanhToan, PGH_HinhThucThanhToan, PGH_ThoiHan, PHG_TrangThai)
+    VALUES 
+        (@newMaPGH, @maphieudk, @lydo, @sotienthanhtoan, @hinhthuc, @thoihan, N'Chưa thanh toán');
+	UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = N'Thanh toán gia hạn' WHERE PDKDT_MaPhieu = @maphieudk;
+end;
+go
+
+/*
+delete from PHIEUGIAHAN where PGH_MaPhieu = 'GH00001';
+delete from PHIEUGIAHAN where PGH_MaPhieu = 'GH00002';
+UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = N'Đã thanh toán' WHERE PDKDT_MaPhieu = 'PDK00013';
+
+
+UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = N'Thanh toán gia hạn' WHERE PDKDT_MaPhieu = 'PDK00013';
+
+INSERT INTO PHIEUGIAHAN(PGH_MaPhieu, PGH_MaPhieuDK, PGH_LyDoGiaHan, PGH_SoTienThanhToan, PGH_HinhThucThanhToan, PGH_ThoiHan, PHG_TrangThai)
+VALUES 
+  ('GH00001', 'PDK00013', N'Muốn hoãn ngày thi khác cho phong thủy', 90000, N'Tiền mặt', '2025-07-15', N'Chưa thanh toán')
+
+select * from PHIEUGIAHAN
+select * from PHIEUDANGKYDUTHI where PDKDT_MaPhieu = 'PDK00013'
+*/
+
+/*
+EXEC usp_InsertIntoCreatedRenewalsTable
+	@maphieudk = 'PDK00013',
+	@lydo = N'Muốn hoãn ngày thi khác cho phong thủy',
+	@sotienthanhtoan = 90000,
+	@hinhthuc = N'Tiền mặt'
+go
+*/
+
+
+
 --Lay thong tin danh sach phieu thu (chua thanh toan, da thanh toan) (TAB QUAN LI PHIEU THU, MUC PHIEU THU DA TAO)
 --drop procedure usp_GetPaycheckTable
 create or alter procedure usp_GetPaycheckTable
+	@search nvarchar(50) = NULL
 as
 begin
 	select PTT_MaPhieu as MaPhieuTT,
 	PTT_MaPhieuDK as MaPhieu,
-	PTT_SoTienBanDau as SoTienBanDau,
-	PTT_PhanTramGiam as PhanTramGiam,
+	--PTT_SoTienBanDau as SoTienBanDau,
+	--PTT_PhanTramGiam as PhanTramGiam,
 	PTT_SoTienThanhToan as SoTienThanhToan,
 	PTT_HinhThucThanhToan as HinhThuc,
 	PTT_ThoiHan as ThoiHan,
 	PDKDT_TrangThaiThanhToan as TrangThai
 	from PHIEUTHANHTOAN
 	join PHIEUDANGKYDUTHI on PDKDT_MaPhieu = PTT_MaPhieuDK
-	where PDKDT_TrangThaiThanhToan != N'Thanh toán gia hạn'
+	--where PDKDT_TrangThaiThanhToan != N'Thanh toán gia hạn'
+	and (@search IS NULL 
+	   OR PDKDT_MaPhieu LIKE '%' + @search + '%')
 end;
 go
 
@@ -384,11 +444,14 @@ go
 --Lay thong tin danh sach phieu gia han da tao (TAB QUAN LI PHIEU GIA HAN, MUC PHIEU GIA HAN DA TAO)
 --drop procedure usp_GetCreatedRenewals
 create or alter procedure usp_GetCreatedRenewals
+	@search nvarchar(50) = NULL
 as
 begin
-	select *
+	select PGH_MaPhieu as MaPhieu, PGH_MaPhieuDK as MaPhieuDK, PGH_LyDoGiaHan as LyDo, PGH_SoTienThanhToan as SoTienThanhToan, PGH_HinhThucThanhToan as HinhThuc, PGH_ThoiHan as ThoiHan, PHG_TrangThai as TrangThai
 	from PHIEUGIAHAN
 	join PHIEUDANGKYDUTHI on PDKDT_MaPhieu = PGH_MaPhieuDK
+	WHERE (@search IS NULL 
+	   OR PDKDT_MaPhieu LIKE '%' + @search + '%')
 end;
 go
 

@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +17,12 @@ namespace PTTKHTTTProject.BUS
             return dt;
         }
 
+        public static DataTable loadCreatedRenewal(string filterText)
+        {
+            DataTable dt = ManageRenewalDAO.getCreatedRenewal(filterText);
+            return dt;
+        }
+
         public static Dictionary<string, string> getRenewalInfoPreview(string receiptId)
         {
             Dictionary<string, string> renewalPreview = new Dictionary<string, string>();
@@ -25,7 +32,7 @@ namespace PTTKHTTTProject.BUS
 
             renewalPreview["HoTen"] = row["HoTen"].ToString() ?? "Unknown";
             renewalPreview["KyThi"] = row["TenKyThi"].ToString() ?? "Unknown";
-            renewalPreview["SoBaoDanh"] = row["SoBaoDanh"].ToString() ?? "Unknown";
+            //renewalPreview["MaKH"] = row["MaKH"].ToString() ?? "Unknown";
 
             //renewalPreview["SoTien"] = row["LePhi"].ToString() ?? "Unknown";
 
@@ -34,6 +41,50 @@ namespace PTTKHTTTProject.BUS
             //receiptPreview["NgayLap"] = Convert.ToDateTime(row["PDKDT_NgayLap"]).ToString("dd/MM/yyyy") ?? "Unknown";
 
             return renewalPreview;
+        }
+
+        public static void insertIntoCreatedRenewalsTable(string receiptId, string reason, decimal fee)
+        {
+            try
+            {
+                ManageRenewalDAO dao = new ManageRenewalDAO();
+                dao.insertIntoCreatedRenewalsTableDAO(receiptId, reason, fee);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error inserting into created renewals table: " + ex.Message);
+                throw;
+            }
+        }
+
+        //Cap nhat thong tin phieu gia han dung phuong thuc chuyen khoan
+        public static void updateCreatedRenewalMethod(string receiptId, string currentValue)
+        {
+            try
+            {
+                ManageRenewalDAO dao = new ManageRenewalDAO();
+                dao.updateCreatedRenewalMethodDAO(receiptId, currentValue);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error updating created renewal method: " + ex.Message);
+                throw;
+            }
+        }
+
+        //Cap nhat thong tin phieu gia han da duoc thanh toan
+        public static void updateCreatedRenewalPaid(string receiptId, string currentValue)
+        {
+            try
+            {
+                ManageRenewalDAO dao = new ManageRenewalDAO();
+                dao.updateCreatedRenewalPaidDAO(receiptId, currentValue);
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine("Error updating created renewal paid status: " + ex.Message);
+                throw;
+            }
         }
     }
 }

@@ -29,21 +29,25 @@
         private void InitializeComponent()
         {
             pnlManageResult = new Panel();
-            btnSearchReceipt = new Button();
+            cbxCreatedPaycheck = new RadioButton();
+            rbxPendingRenewal = new RadioButton();
+            lblCount = new Label();
+            txbCount = new TextBox();
+            btnSearchRenewal = new Button();
             lblSearchReceipt = new Label();
             txbInput = new TextBox();
             dtgvResult = new DataGridView();
-            lblCount = new TextBox();
-            textBox1 = new TextBox();
             pnlManageResult.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgvResult).BeginInit();
             SuspendLayout();
             // 
             // pnlManageResult
             // 
-            pnlManageResult.Controls.Add(textBox1);
+            pnlManageResult.Controls.Add(cbxCreatedPaycheck);
+            pnlManageResult.Controls.Add(rbxPendingRenewal);
             pnlManageResult.Controls.Add(lblCount);
-            pnlManageResult.Controls.Add(btnSearchReceipt);
+            pnlManageResult.Controls.Add(txbCount);
+            pnlManageResult.Controls.Add(btnSearchRenewal);
             pnlManageResult.Controls.Add(lblSearchReceipt);
             pnlManageResult.Controls.Add(txbInput);
             pnlManageResult.Controls.Add(dtgvResult);
@@ -53,14 +57,60 @@
             pnlManageResult.Size = new Size(888, 425);
             pnlManageResult.TabIndex = 1;
             // 
-            // btnSearchReceipt
+            // cbxCreatedPaycheck
             // 
-            btnSearchReceipt.Location = new Point(794, 57);
-            btnSearchReceipt.Name = "btnSearchReceipt";
-            btnSearchReceipt.Size = new Size(75, 26);
-            btnSearchReceipt.TabIndex = 5;
-            btnSearchReceipt.Text = "Tìm";
-            btnSearchReceipt.UseVisualStyleBackColor = true;
+            cbxCreatedPaycheck.AutoSize = true;
+            cbxCreatedPaycheck.Location = new Point(654, 29);
+            cbxCreatedPaycheck.Name = "cbxCreatedPaycheck";
+            cbxCreatedPaycheck.Size = new Size(134, 19);
+            cbxCreatedPaycheck.TabIndex = 34;
+            cbxCreatedPaycheck.Text = "Đã tạo phiếu gia hạn";
+            cbxCreatedPaycheck.UseVisualStyleBackColor = true;
+            // 
+            // rbxPendingRenewal
+            // 
+            rbxPendingRenewal.AutoSize = true;
+            rbxPendingRenewal.Checked = true;
+            rbxPendingRenewal.Location = new Point(542, 29);
+            rbxPendingRenewal.Name = "rbxPendingRenewal";
+            rbxPendingRenewal.Size = new Size(108, 19);
+            rbxPendingRenewal.TabIndex = 33;
+            rbxPendingRenewal.TabStop = true;
+            rbxPendingRenewal.Text = "Yêu cầu gia hạn";
+            rbxPendingRenewal.UseVisualStyleBackColor = true;
+            rbxPendingRenewal.CheckedChanged += rbxPendingRenewal_CheckedChanged;
+            // 
+            // lblCount
+            // 
+            lblCount.AutoSize = true;
+            lblCount.Location = new Point(19, 33);
+            lblCount.Name = "lblCount";
+            lblCount.Size = new Size(123, 15);
+            lblCount.TabIndex = 32;
+            lblCount.Text = "Số yêu cầu chờ duyệt:";
+            // 
+            // txbCount
+            // 
+            txbCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txbCount.BorderStyle = BorderStyle.None;
+            txbCount.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txbCount.Location = new Point(145, 29);
+            txbCount.Margin = new Padding(3, 2, 3, 2);
+            txbCount.Name = "txbCount";
+            txbCount.ReadOnly = true;
+            txbCount.Size = new Size(141, 20);
+            txbCount.TabIndex = 28;
+            txbCount.Text = "NODATA";
+            // 
+            // btnSearchRenewal
+            // 
+            btnSearchRenewal.Location = new Point(794, 57);
+            btnSearchRenewal.Name = "btnSearchRenewal";
+            btnSearchRenewal.Size = new Size(75, 26);
+            btnSearchRenewal.TabIndex = 5;
+            btnSearchRenewal.Text = "Tìm";
+            btnSearchRenewal.UseVisualStyleBackColor = true;
+            btnSearchRenewal.Click += btnSearchRenewal_Click;
             // 
             // lblSearchReceipt
             // 
@@ -99,32 +149,6 @@
             dtgvResult.Size = new Size(850, 308);
             dtgvResult.TabIndex = 0;
             // 
-            // lblCount
-            // 
-            lblCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            lblCount.BorderStyle = BorderStyle.None;
-            lblCount.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblCount.Location = new Point(19, 34);
-            lblCount.Margin = new Padding(3, 2, 3, 2);
-            lblCount.Name = "lblCount";
-            lblCount.ReadOnly = true;
-            lblCount.Size = new Size(141, 19);
-            lblCount.TabIndex = 27;
-            lblCount.Text = "Số yêu cầu chờ duyệt: ";
-            // 
-            // textBox1
-            // 
-            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            textBox1.BorderStyle = BorderStyle.None;
-            textBox1.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            textBox1.Location = new Point(166, 34);
-            textBox1.Margin = new Padding(3, 2, 3, 2);
-            textBox1.Name = "textBox1";
-            textBox1.ReadOnly = true;
-            textBox1.Size = new Size(141, 20);
-            textBox1.TabIndex = 28;
-            textBox1.Text = "NODATA";
-            // 
             // uc_KT_ManageRenewal
             // 
             AutoScaleDimensions = new SizeF(7F, 15F);
@@ -145,8 +169,10 @@
         private Label lblSearchReceipt;
         private TextBox txbInput;
         private DataGridView dtgvResult;
-        private Button btnSearchReceipt;
-        private TextBox textBox1;
-        private TextBox lblCount;
+        private Button btnSearchRenewal;
+        private TextBox txbCount;
+        private Label lblCount;
+        private RadioButton rbxPendingRenewal;
+        private RadioButton cbxCreatedPaycheck;
     }
 }

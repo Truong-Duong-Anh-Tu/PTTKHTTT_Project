@@ -112,6 +112,7 @@ namespace PTTKHTTTProject
             //dtgvResult = new DataGridView();
             dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
             NotPaycheckTableConfig();
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
         }
 
         private void dtgvResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -179,12 +180,23 @@ namespace PTTKHTTTProject
                 {
                     dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
                 }
+                dtgvResult.Columns.Add(btnCol);
             }
             else
             {
-                dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck();
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck("");
+                }
+                //dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck();
                 checkboxConfig();
             }
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
         }
 
         private void rbxNotCreatedPaycheck_CheckedChanged(object sender, EventArgs e)
@@ -203,12 +215,23 @@ namespace PTTKHTTTProject
                     dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
                 }
                 dtgvResult.Columns.Add(btnCol);
+                lblCount.Text = "Số yêu cầu chờ duyệt:";
             }
             else
             {
-                dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck();
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck("");
+                }
+                lblCount.Text = "Số phiếu thu đã tạo:";
                 checkboxConfig();
             }
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
         }
     }
 }

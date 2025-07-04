@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PTTKHTTTProject.BUS;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -8,7 +9,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
-using PTTKHTTTProject.BUS;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PTTKHTTTProject
 {
@@ -19,32 +20,218 @@ namespace PTTKHTTTProject
             InitializeComponent();
         }
 
-        private void uc_KT_ManageRenewal_Load(object sender, EventArgs e)
+        private DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn
         {
-            dtgvResult.DataSource = ManageRenewalBUS.loadRenewal("");
-            var btnCol = new DataGridViewButtonColumn
-            {
-                Name = "btnAction",
-                HeaderText = "Hành động",
-                Text = "Tạo phiếu",
-                UseColumnTextForButtonValue = true
-            };
+            Name = "btnAction",
+            HeaderText = "Hành động",
+            Text = "Tạo phiếu",
+            UseColumnTextForButtonValue = true
+        };
+
+        //Checkbox chuyen khoan xac dinh phieu gia han dung phuong thuc chuyen khoan hoac tien mat
+        private DataGridViewCheckBoxColumn cbxCol = new DataGridViewCheckBoxColumn
+        {
+            Name = "cbxPaymentMethod",
+            HeaderText = "Chuyển khoản",
+            TrueValue = "Chuyển khoản",
+            FalseValue = "Tiền mặt"
+        };
+
+        //Checkbox xac dinh phieu gia han da duoc thanh toan
+        private DataGridViewCheckBoxColumn cbxPaidCol = new DataGridViewCheckBoxColumn
+        {
+            Name = "cbxPaid",
+            HeaderText = "Đã thanh toán",
+            TrueValue = "True",
+            FalseValue = "False"
+        };
+
+        private void NotCreatedRenewalsConfig()
+        {
             dtgvResult.Columns.Add(btnCol);
+
+            //dtgvResult.CellContentClick += (s, ev) =>
+            //{
+            //    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+            //    if (ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index && ev.RowIndex >= 0)
+            //    {
+            //        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID);
+            //        previewForm.ShowDialog();
+            //    }
+            //};
 
             dtgvResult.CellContentClick += (s, ev) =>
             {
-                var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
-                if (ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index && ev.RowIndex >= 0)
+                if (ev.RowIndex >= 0)
                 {
-                    fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID);
-                    previewForm.ShowDialog();
+                    //Ma phieu dang ky
+                    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuDK"].Value.ToString();
+
+                    // Handle button click for creating renewal based on request
+                    if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
+                    {
+                        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID);
+                        previewForm.ShowDialog();
+                    }
+                    // Handle checkbox click for payment method
+                    else if (dtgvResult.Columns.Contains("cbxPaymentMethod") && ev.ColumnIndex == dtgvResult.Columns["cbxPaymentMethod"].Index)
+                    {
+                        var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaymentMethod"].Value;
+                        string currentValueString;
+                        if (currentValue == null)
+                        {
+                            currentValueString = "Tiền mặt";
+                        }
+                        else if (currentValue.ToString() == "True")
+                        {
+                            currentValueString = "Tiền mặt";
+                        }
+                        else
+                        {
+                            currentValueString = "Chuyển khoản";
+                        }
+                        ManageRenewalBUS.updateCreatedRenewalMethod(selectedReceiptID, currentValueString);
+                    }
+                    else if (dtgvResult.Columns.Contains("cbxPaid") && ev.ColumnIndex == dtgvResult.Columns["cbxPaid"].Index)
+                    {
+                        var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaid"].Value;
+                        string currentValueString;
+                        if (currentValue == null)
+                        {
+                            currentValueString = "Chưa thanh toán";
+                        }
+                        else if (currentValue.ToString() == "True")
+                        {
+                            currentValueString = "Chưa thanh toán";
+                        }
+                        else
+                        {
+                            currentValueString = "Đã thanh toán";
+                        }
+                        ManageRenewalBUS.updateCreatedRenewalPaid(selectedReceiptID, currentValueString);
+                    }
                 }
             };
         }
 
-        //private void pnlManageResult_Paint(object sender, PaintEventArgs e)
-        //{
+        private void uc_KT_ManageRenewal_Load(object sender, EventArgs e)
+        {
+            dtgvResult.DataSource = ManageRenewalBUS.loadRenewal("");
+            NotCreatedRenewalsConfig();
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
+        }
 
-        //}
+        private void removeColumnButton()
+        {
+            if (dtgvResult.Columns.Contains("btnAction"))
+            {
+                dtgvResult.Columns.Remove("btnAction");
+            }
+
+            if (dtgvResult.Columns.Contains("cbxPaid"))
+            {
+                dtgvResult.Columns.Remove("cbxPaid");
+            }
+            if (dtgvResult.Columns.Contains("cbxPaymentMethod"))
+            {
+                dtgvResult.Columns.Remove("cbxPaymentMethod");
+            }
+        }
+
+        private void checkboxConfig()
+        {
+            dtgvResult.Columns.Add(cbxCol);
+            foreach (DataGridViewRow row in dtgvResult.Rows)
+            {
+                if (row.Cells["HinhThuc"].Value != null && row.Cells["HinhThuc"].Value.ToString() == "Chuyển khoản")
+                {
+                    row.Cells["cbxPaymentMethod"].Value = true;
+                }
+                else
+                {
+                    row.Cells["cbxPaymentMethod"].Value = false;
+                }
+            }
+
+            dtgvResult.Columns.Add(cbxPaidCol);
+            foreach (DataGridViewRow row in dtgvResult.Rows)
+            {
+                if (row.Cells["TrangThai"].Value != null && row.Cells["TrangThai"].Value.ToString() == "Đã thanh toán")
+                {
+                    row.Cells["cbxPaid"].Value = true;
+                }
+                else
+                {
+                    row.Cells["cbxPaid"].Value = false;
+                }
+            }
+        }
+
+        private void btnSearchRenewal_Click(object sender, EventArgs e)
+        {
+            removeColumnButton();
+            if (rbxPendingRenewal.Checked)
+            {
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageRenewalBUS.loadRenewal(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageRenewalBUS.loadRenewal("");
+                }
+                dtgvResult.Columns.Add(btnCol);
+            }
+            else
+            {
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageRenewalBUS.loadCreatedRenewal(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageRenewalBUS.loadCreatedRenewal("");
+                }
+                checkboxConfig();
+            }
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
+        }
+
+        private void rbxPendingRenewal_CheckedChanged(object sender, EventArgs e)
+        {
+            removeColumnButton();
+            if (rbxPendingRenewal.Checked)
+            {
+                // Load receipt data for not created paychecks
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageRenewalBUS.loadRenewal(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageRenewalBUS.loadRenewal("");
+                }
+                dtgvResult.Columns.Add(btnCol);
+                lblCount.Text = "Số yêu cầu chờ duyệt:";
+            }
+            else
+            {
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageRenewalBUS.loadCreatedRenewal(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageRenewalBUS.loadCreatedRenewal("");
+                }
+                lblCount.Text = "Số phiếu thu đã tạo:";
+                checkboxConfig();
+            }
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
+        }
     }
 }

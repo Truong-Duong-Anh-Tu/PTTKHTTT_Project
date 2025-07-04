@@ -34,13 +34,24 @@ namespace PTTKHTTTProject.DAO
 
 
         //Lay thong tin phieu thu da tao
-        public static DataTable getPaycheck()
+        public static DataTable getPaycheck(string filterText)
         {
-            //SqlParameter[] parameters = new SqlParameter[]
-            //{
-            //    new SqlParameter("@maphieu", SqlDbType.VarChar, 10) { Value = receiptId.Trim() }
-            //};
-            return DataProvider.Instance.ExecuteQuerySP("usp_GetPaycheckTable");
+            if (string.IsNullOrEmpty(filterText))
+            {
+                // If filterText is null or empty, we can return all paychecks
+                return DataProvider.Instance.ExecuteQuerySP("usp_GetPaycheckTable");
+            }
+            else
+            {
+                SqlParameter[] filter = new SqlParameter[]
+                {
+                    new SqlParameter("@search", SqlDbType.NVarChar, 50)
+                    {
+                        Value = filterText.Trim()
+                    },
+                };
+                return DataProvider.Instance.ExecuteQuerySP("usp_GetPaycheckTable", filter);
+            }
         }
 
 

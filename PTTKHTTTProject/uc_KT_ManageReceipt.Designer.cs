@@ -29,9 +29,10 @@
         private void InitializeComponent()
         {
             pnlManageResult = new Panel();
-            cbxCreatedPaycheck = new RadioButton();
+            txbCount = new TextBox();
+            rbxCreatedPaycheck = new RadioButton();
             rbxNotCreatedPaycheck = new RadioButton();
-            label1 = new Label();
+            lblCount = new Label();
             btnSearchReceipt = new Button();
             lblSearchReceipt = new Label();
             txbInput = new TextBox();
@@ -42,9 +43,10 @@
             // 
             // pnlManageResult
             // 
-            pnlManageResult.Controls.Add(cbxCreatedPaycheck);
+            pnlManageResult.Controls.Add(txbCount);
+            pnlManageResult.Controls.Add(rbxCreatedPaycheck);
             pnlManageResult.Controls.Add(rbxNotCreatedPaycheck);
-            pnlManageResult.Controls.Add(label1);
+            pnlManageResult.Controls.Add(lblCount);
             pnlManageResult.Controls.Add(btnSearchReceipt);
             pnlManageResult.Controls.Add(lblSearchReceipt);
             pnlManageResult.Controls.Add(txbInput);
@@ -55,15 +57,28 @@
             pnlManageResult.Size = new Size(888, 425);
             pnlManageResult.TabIndex = 2;
             // 
-            // cbxCreatedPaycheck
+            // txbCount
             // 
-            cbxCreatedPaycheck.AutoSize = true;
-            cbxCreatedPaycheck.Location = new Point(675, 29);
-            cbxCreatedPaycheck.Name = "cbxCreatedPaycheck";
-            cbxCreatedPaycheck.Size = new Size(113, 19);
-            cbxCreatedPaycheck.TabIndex = 33;
-            cbxCreatedPaycheck.Text = "Đã tạo phiếu thu";
-            cbxCreatedPaycheck.UseVisualStyleBackColor = true;
+            txbCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            txbCount.BorderStyle = BorderStyle.None;
+            txbCount.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            txbCount.Location = new Point(145, 29);
+            txbCount.Margin = new Padding(3, 2, 3, 2);
+            txbCount.Name = "txbCount";
+            txbCount.ReadOnly = true;
+            txbCount.Size = new Size(141, 20);
+            txbCount.TabIndex = 34;
+            txbCount.Text = "NODATA";
+            // 
+            // rbxCreatedPaycheck
+            // 
+            rbxCreatedPaycheck.AutoSize = true;
+            rbxCreatedPaycheck.Location = new Point(675, 29);
+            rbxCreatedPaycheck.Name = "rbxCreatedPaycheck";
+            rbxCreatedPaycheck.Size = new Size(113, 19);
+            rbxCreatedPaycheck.TabIndex = 33;
+            rbxCreatedPaycheck.Text = "Đã tạo phiếu thu";
+            rbxCreatedPaycheck.UseVisualStyleBackColor = true;
             // 
             // rbxNotCreatedPaycheck
             // 
@@ -78,14 +93,14 @@
             rbxNotCreatedPaycheck.UseVisualStyleBackColor = true;
             rbxNotCreatedPaycheck.CheckedChanged += rbxNotCreatedPaycheck_CheckedChanged;
             // 
-            // label1
+            // lblCount
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(19, 33);
-            label1.Name = "label1";
-            label1.Size = new Size(120, 15);
-            label1.TabIndex = 31;
-            label1.Text = "Số yêu cầu chờ duyệt";
+            lblCount.AutoSize = true;
+            lblCount.Location = new Point(19, 33);
+            lblCount.Name = "lblCount";
+            lblCount.Size = new Size(123, 15);
+            lblCount.TabIndex = 31;
+            lblCount.Text = "Số yêu cầu chờ duyệt:";
             // 
             // btnSearchReceipt
             // 
@@ -113,7 +128,7 @@
             txbInput.Location = new Point(19, 57);
             txbInput.Margin = new Padding(3, 2, 3, 2);
             txbInput.Name = "txbInput";
-            txbInput.PlaceholderText = "Nhập Tên hoặc Mã khách hàng";
+            txbInput.PlaceholderText = "Nhập Tên, Mã phiếu đăng ký hoặc Mã khách hàng";
             txbInput.Size = new Size(769, 26);
             txbInput.TabIndex = 3;
             // 
@@ -156,8 +171,9 @@
         private Label lblSearchReceipt;
         private TextBox txbInput;
         private DataGridView dtgvResult;
-        private Label label1;
-        private RadioButton cbxCreatedPaycheck;
+        private Label lblCount;
+        private RadioButton rbxCreatedPaycheck;
         private RadioButton rbxNotCreatedPaycheck;
+        private TextBox txbCount;
     }
 }
