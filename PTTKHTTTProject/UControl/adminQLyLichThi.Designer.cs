@@ -24,7 +24,6 @@
             dataGridViewDSLichThi = new DataGridView();
             btnThem = new Button();
             txtTimKiem = new TextBox();
-            btnTimKiem = new Button();
             panelChuaDSLichThi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridViewDSLichThi).BeginInit();
             SuspendLayout();
@@ -82,25 +81,12 @@
             // 
             // txtTimKiem
             // 
-            txtTimKiem.Location = new Point(632, 72);
+            txtTimKiem.Location = new Point(850, 72);
             txtTimKiem.Margin = new Padding(5);
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.PlaceholderText = "Tìm kiếm mã lịch thi / tên lịch thi";
-            txtTimKiem.Size = new Size(542, 39);
+            txtTimKiem.Size = new Size(606, 39);
             txtTimKiem.TabIndex = 4;
-            // 
-            // btnTimKiem
-            // 
-            btnTimKiem.BackColor = Color.SkyBlue;
-            btnTimKiem.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
-            btnTimKiem.Location = new Point(1211, 67);
-            btnTimKiem.Margin = new Padding(5);
-            btnTimKiem.Name = "btnTimKiem";
-            btnTimKiem.Size = new Size(162, 48);
-            btnTimKiem.TabIndex = 5;
-            btnTimKiem.Text = "Tìm kiếm";
-            btnTimKiem.UseVisualStyleBackColor = false;
-            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // adminQlyLichThi
             // 
@@ -111,7 +97,6 @@
             Controls.Add(labelDSLichThi);
             Controls.Add(btnThem);
             Controls.Add(txtTimKiem);
-            Controls.Add(btnTimKiem);
             Margin = new Padding(5);
             Name = "adminQlyLichThi";
             Size = new Size(1659, 917);
@@ -129,7 +114,6 @@
         private System.Windows.Forms.DataGridView dataGridViewDSLichThi;
         private System.Windows.Forms.Button btnThem;
         private System.Windows.Forms.TextBox txtTimKiem;
-        private System.Windows.Forms.Button btnTimKiem;
         private System.Windows.Forms.Timer timerRefresh;
     }
 }

@@ -24,6 +24,8 @@ namespace PTTKHTTTProject.UControl
         private void adminQlyLichThi_Load(object? sender, EventArgs e)
         {
             LoadData();
+            // Gán sự kiện TextChanged cho txtTimKiem
+            this.txtTimKiem.TextChanged += new System.EventHandler(this.txtTimKiem_TextChanged);
         }
 
         private void LoadData()
@@ -123,11 +125,7 @@ namespace PTTKHTTTProject.UControl
                     rect1.Width += rect2.Width - 1;
                     rect1.Height -= 1;
 
-                    // --- BẮT ĐẦU PHẦN CHỈNH SỬA ---
-                    // Thay đổi màu nền ở đây để khớp với header mặc định
                     e.Graphics.FillRectangle(new SolidBrush(dataGridViewDSLichThi.ColumnHeadersDefaultCellStyle.BackColor), rect1);
-                    // --- KẾT THÚC PHẦN CHỈNH SỬA ---
-
                     e.Graphics.DrawRectangle(SystemPens.ControlDark, rect1);
 
                     StringFormat format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
@@ -141,13 +139,23 @@ namespace PTTKHTTTProject.UControl
             }
         }
 
-        private void btnTimKiem_Click(object? sender, EventArgs e)
+        private void FilterData()
         {
             if (originalDataTable == null) return;
             string keyword = txtTimKiem.Text.Trim().Replace("'", "''");
             originalDataTable.DefaultView.RowFilter = string.IsNullOrEmpty(keyword)
                 ? string.Empty
                 : string.Format("[Mã Lịch Thi] LIKE '%{0}%' OR [Tên Kỳ Thi] LIKE '%{0}%' OR [Phòng Thi] LIKE '%{0}%'", keyword);
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void btnTimKiem_Click(object? sender, EventArgs e)
+        {
+            FilterData();
         }
 
         private void btnThem_Click(object? sender, EventArgs e)

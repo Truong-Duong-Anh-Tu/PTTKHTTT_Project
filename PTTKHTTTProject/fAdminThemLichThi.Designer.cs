@@ -318,7 +318,7 @@
             dataGridViewPhongTrong.Location = new Point(71, 337);
             dataGridViewPhongTrong.Name = "dataGridViewPhongTrong";
             dataGridViewPhongTrong.RowHeadersWidth = 51;
-            dataGridViewPhongTrong.Size = new Size(356, 183);
+            dataGridViewPhongTrong.Size = new Size(578, 277);
             dataGridViewPhongTrong.TabIndex = 29;
             dataGridViewPhongTrong.CellClick += dataGridViewPhongTrong_CellClick;
             // 
