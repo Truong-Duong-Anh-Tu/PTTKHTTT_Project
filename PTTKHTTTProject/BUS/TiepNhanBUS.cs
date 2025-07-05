@@ -70,5 +70,14 @@ namespace PTTKHTTTProject.BUS
             );
         }
 
+        public static DataTable LayThongTinPhieu(string maPhieu)
+        {
+            return TiepNhanDAO.LayThongTinPhieuDangKy(maPhieu);
+        }
+
+        public static void GiaHanPhieuDangKy(string maPhieu, string maLichThiMoi)
+        {
+            TiepNhanDAO.GiaHanPhieuDangKy(maPhieu, maLichThiMoi);
+        }
     }
 }

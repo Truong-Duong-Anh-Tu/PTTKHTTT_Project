@@ -170,5 +170,21 @@ namespace PTTKHTTTProject.DAO
             return null;
         }
 
+        public static DataTable LayThongTinPhieuDangKy(string maPhieu)
+        {
+            return DataProvider.Instance.ExecuteQuerySP(
+                "TraCuuThongTinPhieuDangKyCanGiaHan",
+                new SqlParameter("@MaPhieu", SqlDbType.VarChar, 10) { Value = maPhieu }
+            );
+        }
+
+        public static void GiaHanPhieuDangKy(string maPhieu, string maLichThiMoi)
+        {
+            DataProvider.Instance.ExecuteNonQuerySP(
+                "GiaHanPhieuDangKy",
+                new SqlParameter("@MaPhieu", SqlDbType.VarChar, 10) { Value = maPhieu },
+                new SqlParameter("@MaLichThiMoi", SqlDbType.VarChar, 10) { Value = maLichThiMoi }
+            );
+        }
     }
 }

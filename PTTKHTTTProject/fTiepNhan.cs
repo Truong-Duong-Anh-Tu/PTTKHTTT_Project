@@ -1,4 +1,6 @@
-﻿using PTTKHTTTProject.BUS;
+﻿using Microsoft.Data.SqlClient;
+using PTTKHTTTProject.BUS;
+using PTTKHTTTProject.DTO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -9,7 +11,6 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using static PTTKHTTTProject.BUS.TiepNhan;
-using PTTKHTTTProject.DTO;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
 namespace PTTKHTTTProject
@@ -67,11 +68,121 @@ namespace PTTKHTTTProject
             panelXLCC.BringToFront();
         }
 
+        // Giao diện xử lý gia hạn
         private void btnCapNhatGiaHan_Click(object sender, EventArgs e)
         {
             HideAllPanels();
             panelGiaHan.Visible = true;
             panelGiaHan.BringToFront();
+
+            GiaHan_ChonKyThi.DataSource = TiepNhan.GetDanhSachKyThi();
+            GiaHan_ChonKyThi.DisplayMember = "KT_TenKyThi"; // Cột để hiển thị
+            GiaHan_ChonKyThi.ValueMember = "KT_MaKyThi";
+        }
+
+        private void GiaHan_ChonKyThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (GiaHan_ChonKyThi.SelectedValue != null)
+            {
+                string maKyThi = GiaHan_ChonKyThi.SelectedValue.ToString();
+                DataTable dtNgayThi = TiepNhan.GetNgayThi(maKyThi); // SELECT DISTINCT LT_NgayThi
+
+                GiaHan_ChonNgayThi.DisplayMember = "LT_NgayThi";
+                GiaHan_ChonNgayThi.ValueMember = "LT_NgayThi";
+                GiaHan_ChonNgayThi.DataSource = dtNgayThi;
+
+                GiaHan_ChonNgayThi.Enabled = true;
+                GiaHan_ChonGioThi.Enabled = false;
+                GiaHan_ChonGioThi.DataSource = null;
+            }
+        }
+
+        private void GiaHan_ChonNgayThi_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (GiaHan_ChonKyThi.SelectedValue != null && GiaHan_ChonNgayThi.SelectedValue != null)
+            {
+                string maKyThi = GiaHan_ChonKyThi.SelectedValue.ToString();
+                DateTime ngayThi = Convert.ToDateTime(GiaHan_ChonNgayThi.SelectedValue);
+
+                DataTable dtGioThi = TiepNhan.GetThoiGianThi(maKyThi, ngayThi); // trả về LT_MaLichThi + ThoiGianThi
+
+                GiaHan_ChonGioThi.DisplayMember = "ThoiGianThi"; // ví dụ: 08:00 - 09:30
+                GiaHan_ChonGioThi.ValueMember = "LT_MaLichThi";  // chính là mã lịch thi cần tìm
+                GiaHan_ChonGioThi.DataSource = dtGioThi;
+
+                GiaHan_ChonGioThi.Enabled = true;
+            }
+        }
+
+        private void LoadThongTinPhieuDangKy(string maPhieu)
+        {
+            try
+            {
+                DataTable dt = TiepNhan.LayThongTinPhieu(maPhieu);
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+
+                    GiaHan_MaHK.Text = row["KH_MaKhachHang"].ToString();
+                    GiaHan_TenKH.Text = row["TenKhachHang"].ToString();
+                    GiaHan_LoaiKH.Text = row["KH_LoaiKhachHang"].ToString();
+                    GiaHan_SDT.Text = row["KH_SDT"].ToString();
+                    GiaHan_Email.Text = row["KH_Email"].ToString();
+
+                    GiaHan_MaPhieu.Text = row["PDKDT_MaPhieu"].ToString();
+                    GiaHan__NgayLapPhieu.Text = Convert.ToDateTime(row["PDKDT_ThoiGianLap"]).ToString("dd/MM/yyyy");
+                    GiaHan_SLThiSinh.Text = row["SoLuongThiSinh"].ToString();
+                    GiaHan_TenNV.Text = row["NhanVienLap"].ToString();
+                    GiaHan_DiaChi.Text = row["PDKDT_DiaChiChuyenPhat"].ToString();
+                    GiaHan_TrangThaiTT.Text = row["PDKDT_TrangThaiThanhToan"].ToString();
+
+                    GiaHan_TenKT.Text = row["LT_TenKyThi"].ToString();
+                    GiaHan_NgayThi.Text = Convert.ToDateTime(row["LT_NgayThi"]).ToString("dd/MM/yyyy");
+                    GiaHan_GioThi.Text = row["GioThi"].ToString();
+                    GiaHan_SoTS_LichThi.Text = row["SoLuongDangKyLichThi"].ToString();
+                    GiaHan_MaPThi.Text = row["LT_MaPhongThi"].ToString();
+                }
+                else
+                {
+                    MessageBox.Show("Không tìm thấy phiếu đăng ký.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tra cứu: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void GiaHan_btnPDKSearch_Click(object sender, EventArgs e)
+        {
+            string maPhieu = GiaHan_MaPhieuSearch.Text.Trim();
+
+            LoadThongTinPhieuDangKy(maPhieu);
+        }
+
+        private void GiaHan_btnGiaHan_Click(object sender, EventArgs e)
+        {
+            string maPhieu = GiaHan_MaPhieuSearch.Text.Trim();
+            string maLichThiMoi = GiaHan_ChonGioThi.SelectedValue.ToString();
+
+            try
+            {
+                TiepNhan.GiaHanPhieuDangKy(maPhieu, maLichThiMoi);
+
+                MessageBox.Show("Gia hạn phiếu thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                // 👉 Gọi lại hàm load thông tin
+                LoadThongTinPhieuDangKy(maPhieu);
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show("Lỗi từ SQL Server:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi hệ thống:\n" + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Giao diện thêm phiếu đăng ký
@@ -542,7 +653,6 @@ namespace PTTKHTTTProject
                 MessageBox.Show("Lỗi: " + ex.Message);
             }
         }
-
-       
+ 
     }
 }

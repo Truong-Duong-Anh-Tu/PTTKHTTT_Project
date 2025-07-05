@@ -110,37 +110,54 @@
             label15 = new Label();
             panelGiaHan = new Panel();
             panel7 = new Panel();
-            dataGridView4 = new DataGridView();
+            GiaHan_MaPThi = new Label();
+            GiaHan_SoTS_LichThi = new Label();
+            GiaHan_GioThi = new Label();
+            GiaHan_NgayThi = new Label();
+            GiaHan_TenKT = new Label();
+            label85 = new Label();
+            label84 = new Label();
+            label83 = new Label();
+            label82 = new Label();
+            label80 = new Label();
+            label81 = new Label();
+            panel3 = new Panel();
+            GiaHan_ChonGioThi = new ComboBox();
+            GiaHan_ChonNgayThi = new ComboBox();
+            GiaHan_ChonKyThi = new ComboBox();
             label78 = new Label();
-            button10 = new Button();
-            panel6 = new Panel();
-            label110 = new Label();
-            label109 = new Label();
-            label108 = new Label();
-            label30 = new Label();
-            label107 = new Label();
-            label19 = new Label();
+            label42 = new Label();
+            label26 = new Label();
             label106 = new Label();
+            GiaHan_btnGiaHan = new Button();
+            panel6 = new Panel();
+            GiaHan_SLThiSinh = new Label();
+            label86 = new Label();
+            GiaHan_TenNV = new Label();
+            GiaHan_TrangThaiTT = new Label();
+            GiaHan_DiaChi = new Label();
+            label30 = new Label();
+            GiaHan__NgayLapPhieu = new Label();
+            label19 = new Label();
             label29 = new Label();
-            label105 = new Label();
+            GiaHan_MaPhieu = new Label();
             label25 = new Label();
             label28 = new Label();
-            label26 = new Label();
             label27 = new Label();
             panel5 = new Panel();
-            label104 = new Label();
-            label103 = new Label();
-            label102 = new Label();
-            label101 = new Label();
-            label100 = new Label();
+            GiaHan_Email = new Label();
+            GiaHan_SDT = new Label();
+            GiaHan_LoaiKH = new Label();
+            GiaHan_TenKH = new Label();
+            GiaHan_MaHK = new Label();
             label24 = new Label();
             label18 = new Label();
             label20 = new Label();
             label21 = new Label();
             label23 = new Label();
             label22 = new Label();
-            button8 = new Button();
-            textBox2 = new TextBox();
+            GiaHan_btnPDKSearch = new Button();
+            GiaHan_MaPhieuSearch = new TextBox();
             label17 = new Label();
             panelPDKAdd = new Panel();
             panelTSDVAdd = new Panel();
@@ -247,7 +264,7 @@
             ((System.ComponentModel.ISupportInitialize)GridviewXLCC).BeginInit();
             panelGiaHan.SuspendLayout();
             panel7.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).BeginInit();
+            panel3.SuspendLayout();
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panelPDKAdd.SuspendLayout();
@@ -1160,331 +1177,520 @@
             // panelGiaHan
             // 
             panelGiaHan.Controls.Add(panel7);
-            panelGiaHan.Controls.Add(button10);
+            panelGiaHan.Controls.Add(panel3);
+            panelGiaHan.Controls.Add(GiaHan_btnGiaHan);
             panelGiaHan.Controls.Add(panel6);
             panelGiaHan.Controls.Add(panel5);
-            panelGiaHan.Controls.Add(button8);
-            panelGiaHan.Controls.Add(textBox2);
+            panelGiaHan.Controls.Add(GiaHan_btnPDKSearch);
+            panelGiaHan.Controls.Add(GiaHan_MaPhieuSearch);
             panelGiaHan.Controls.Add(label17);
             panelGiaHan.Dock = DockStyle.Fill;
-            panelGiaHan.Location = new Point(0, 0);
+            panelGiaHan.Location = new Point(194, 62);
             panelGiaHan.Name = "panelGiaHan";
-            panelGiaHan.Size = new Size(1477, 785);
+            panelGiaHan.Size = new Size(1283, 723);
             panelGiaHan.TabIndex = 8;
             // 
             // panel7
             // 
-            panel7.Controls.Add(dataGridView4);
-            panel7.Controls.Add(label78);
-            panel7.Location = new Point(43, 503);
+            panel7.Controls.Add(GiaHan_MaPThi);
+            panel7.Controls.Add(GiaHan_SoTS_LichThi);
+            panel7.Controls.Add(GiaHan_GioThi);
+            panel7.Controls.Add(GiaHan_NgayThi);
+            panel7.Controls.Add(GiaHan_TenKT);
+            panel7.Controls.Add(label85);
+            panel7.Controls.Add(label84);
+            panel7.Controls.Add(label83);
+            panel7.Controls.Add(label82);
+            panel7.Controls.Add(label80);
+            panel7.Controls.Add(label81);
+            panel7.Location = new Point(39, 470);
             panel7.Name = "panel7";
-            panel7.Size = new Size(932, 193);
-            panel7.TabIndex = 7;
+            panel7.Size = new Size(648, 209);
+            panel7.TabIndex = 32;
             // 
-            // dataGridView4
+            // GiaHan_MaPThi
             // 
-            dataGridView4.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView4.Location = new Point(8, 43);
-            dataGridView4.Name = "dataGridView4";
-            dataGridView4.RowHeadersWidth = 62;
-            dataGridView4.Size = new Size(911, 144);
-            dataGridView4.TabIndex = 1;
+            GiaHan_MaPThi.AutoSize = true;
+            GiaHan_MaPThi.Location = new Point(511, 100);
+            GiaHan_MaPThi.Name = "GiaHan_MaPThi";
+            GiaHan_MaPThi.Size = new Size(24, 25);
+            GiaHan_MaPThi.TabIndex = 42;
+            GiaHan_MaPThi.Text = "...";
+            // 
+            // GiaHan_SoTS_LichThi
+            // 
+            GiaHan_SoTS_LichThi.AutoSize = true;
+            GiaHan_SoTS_LichThi.Location = new Point(530, 50);
+            GiaHan_SoTS_LichThi.Name = "GiaHan_SoTS_LichThi";
+            GiaHan_SoTS_LichThi.Size = new Size(24, 25);
+            GiaHan_SoTS_LichThi.TabIndex = 41;
+            GiaHan_SoTS_LichThi.Text = "...";
+            // 
+            // GiaHan_GioThi
+            // 
+            GiaHan_GioThi.AutoSize = true;
+            GiaHan_GioThi.Location = new Point(118, 150);
+            GiaHan_GioThi.Name = "GiaHan_GioThi";
+            GiaHan_GioThi.Size = new Size(24, 25);
+            GiaHan_GioThi.TabIndex = 40;
+            GiaHan_GioThi.Text = "...";
+            // 
+            // GiaHan_NgayThi
+            // 
+            GiaHan_NgayThi.AutoSize = true;
+            GiaHan_NgayThi.Location = new Point(131, 100);
+            GiaHan_NgayThi.Name = "GiaHan_NgayThi";
+            GiaHan_NgayThi.Size = new Size(24, 25);
+            GiaHan_NgayThi.TabIndex = 39;
+            GiaHan_NgayThi.Text = "...";
+            // 
+            // GiaHan_TenKT
+            // 
+            GiaHan_TenKT.AutoSize = true;
+            GiaHan_TenKT.Location = new Point(131, 50);
+            GiaHan_TenKT.Name = "GiaHan_TenKT";
+            GiaHan_TenKT.Size = new Size(24, 25);
+            GiaHan_TenKT.TabIndex = 38;
+            GiaHan_TenKT.Text = "...";
+            // 
+            // label85
+            // 
+            label85.AutoSize = true;
+            label85.Font = new Font("Segoe UI", 10F);
+            label85.Location = new Point(360, 100);
+            label85.Name = "label85";
+            label85.Size = new Size(135, 28);
+            label85.TabIndex = 37;
+            label85.Text = "Mã phòng thi:";
+            // 
+            // label84
+            // 
+            label84.AutoSize = true;
+            label84.Font = new Font("Segoe UI", 10F);
+            label84.Location = new Point(360, 50);
+            label84.Name = "label84";
+            label84.Size = new Size(164, 28);
+            label84.TabIndex = 36;
+            label84.Text = "Số lượng thí sinh:";
+            // 
+            // label83
+            // 
+            label83.AutoSize = true;
+            label83.Font = new Font("Segoe UI", 10F);
+            label83.Location = new Point(27, 50);
+            label83.Name = "label83";
+            label83.Size = new Size(98, 28);
+            label83.TabIndex = 35;
+            label83.Text = "Tên kỳ thi:";
+            // 
+            // label82
+            // 
+            label82.AutoSize = true;
+            label82.Font = new Font("Segoe UI", 10F);
+            label82.Location = new Point(27, 100);
+            label82.Name = "label82";
+            label82.Size = new Size(91, 28);
+            label82.TabIndex = 34;
+            label82.Text = "Ngày thi:";
+            // 
+            // label80
+            // 
+            label80.AutoSize = true;
+            label80.Font = new Font("Segoe UI", 10F);
+            label80.Location = new Point(27, 150);
+            label80.Name = "label80";
+            label80.Size = new Size(75, 28);
+            label80.TabIndex = 33;
+            label80.Text = "Giờ thi:";
+            // 
+            // label81
+            // 
+            label81.Dock = DockStyle.Top;
+            label81.Font = new Font("Segoe UI", 12F);
+            label81.Location = new Point(0, 0);
+            label81.Name = "label81";
+            label81.Size = new Size(648, 38);
+            label81.TabIndex = 0;
+            label81.Text = "Thông tin lịch thi đã đăng ký";
+            // 
+            // panel3
+            // 
+            panel3.Controls.Add(GiaHan_ChonGioThi);
+            panel3.Controls.Add(GiaHan_ChonNgayThi);
+            panel3.Controls.Add(GiaHan_ChonKyThi);
+            panel3.Controls.Add(label78);
+            panel3.Controls.Add(label42);
+            panel3.Controls.Add(label26);
+            panel3.Controls.Add(label106);
+            panel3.Location = new Point(737, 470);
+            panel3.Name = "panel3";
+            panel3.Size = new Size(511, 209);
+            panel3.TabIndex = 31;
+            // 
+            // GiaHan_ChonGioThi
+            // 
+            GiaHan_ChonGioThi.FormattingEnabled = true;
+            GiaHan_ChonGioThi.Location = new Point(136, 150);
+            GiaHan_ChonGioThi.Name = "GiaHan_ChonGioThi";
+            GiaHan_ChonGioThi.Size = new Size(298, 33);
+            GiaHan_ChonGioThi.TabIndex = 35;
+            // 
+            // GiaHan_ChonNgayThi
+            // 
+            GiaHan_ChonNgayThi.FormattingEnabled = true;
+            GiaHan_ChonNgayThi.Location = new Point(136, 100);
+            GiaHan_ChonNgayThi.Name = "GiaHan_ChonNgayThi";
+            GiaHan_ChonNgayThi.Size = new Size(298, 33);
+            GiaHan_ChonNgayThi.TabIndex = 34;
+            GiaHan_ChonNgayThi.SelectedIndexChanged += GiaHan_ChonNgayThi_SelectedIndexChanged;
+            // 
+            // GiaHan_ChonKyThi
+            // 
+            GiaHan_ChonKyThi.FormattingEnabled = true;
+            GiaHan_ChonKyThi.Location = new Point(136, 50);
+            GiaHan_ChonKyThi.Name = "GiaHan_ChonKyThi";
+            GiaHan_ChonKyThi.Size = new Size(298, 33);
+            GiaHan_ChonKyThi.TabIndex = 33;
+            GiaHan_ChonKyThi.SelectedIndexChanged += GiaHan_ChonKyThi_SelectedIndexChanged;
             // 
             // label78
             // 
             label78.AutoSize = true;
-            label78.Location = new Point(8, 11);
+            label78.Font = new Font("Segoe UI", 10F);
+            label78.Location = new Point(27, 150);
             label78.Name = "label78";
-            label78.Size = new Size(241, 25);
-            label78.TabIndex = 0;
-            label78.Text = "Vui lòng chọn lịch thi gia hạn";
+            label78.Size = new Size(75, 28);
+            label78.TabIndex = 32;
+            label78.Text = "Giờ thi:";
             // 
-            // button10
+            // label42
             // 
-            button10.BackColor = SystemColors.ActiveCaption;
-            button10.Font = new Font("Segoe UI", 10F);
-            button10.Location = new Point(997, 514);
-            button10.Name = "button10";
-            button10.Size = new Size(251, 53);
-            button10.TabIndex = 6;
-            button10.Text = "Cập nhật lịch thi gia hạn";
-            button10.UseVisualStyleBackColor = false;
+            label42.AutoSize = true;
+            label42.Font = new Font("Segoe UI", 10F);
+            label42.Location = new Point(27, 100);
+            label42.Name = "label42";
+            label42.Size = new Size(91, 28);
+            label42.TabIndex = 31;
+            label42.Text = "Ngày thi:";
             // 
-            // panel6
+            // label26
             // 
-            panel6.Controls.Add(label110);
-            panel6.Controls.Add(label109);
-            panel6.Controls.Add(label108);
-            panel6.Controls.Add(label30);
-            panel6.Controls.Add(label107);
-            panel6.Controls.Add(label19);
-            panel6.Controls.Add(label106);
-            panel6.Controls.Add(label29);
-            panel6.Controls.Add(label105);
-            panel6.Controls.Add(label25);
-            panel6.Controls.Add(label28);
-            panel6.Controls.Add(label26);
-            panel6.Controls.Add(label27);
-            panel6.Location = new Point(600, 138);
-            panel6.Name = "panel6";
-            panel6.Size = new Size(648, 347);
-            panel6.TabIndex = 4;
-            // 
-            // label110
-            // 
-            label110.AutoSize = true;
-            label110.Location = new Point(244, 304);
-            label110.Name = "label110";
-            label110.Size = new Size(79, 25);
-            label110.TabIndex = 34;
-            label110.Text = "label110";
-            // 
-            // label109
-            // 
-            label109.AutoSize = true;
-            label109.Location = new Point(221, 257);
-            label109.Name = "label109";
-            label109.Size = new Size(79, 25);
-            label109.TabIndex = 33;
-            label109.Text = "label109";
-            // 
-            // label108
-            // 
-            label108.AutoSize = true;
-            label108.Location = new Point(208, 210);
-            label108.Name = "label108";
-            label108.Size = new Size(79, 25);
-            label108.TabIndex = 32;
-            label108.Text = "label108";
-            // 
-            // label30
-            // 
-            label30.AutoSize = true;
-            label30.Location = new Point(32, 304);
-            label30.Name = "label30";
-            label30.Size = new Size(200, 25);
-            label30.TabIndex = 10;
-            label30.Text = "Mã nhân viên lập phiếu:";
-            // 
-            // label107
-            // 
-            label107.AutoSize = true;
-            label107.Location = new Point(162, 162);
-            label107.Name = "label107";
-            label107.Size = new Size(79, 25);
-            label107.TabIndex = 31;
-            label107.Text = "label107";
-            // 
-            // label19
-            // 
-            label19.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label19.AutoSize = true;
-            label19.Font = new Font("Segoe UI", 12F);
-            label19.Location = new Point(173, 12);
-            label19.Name = "label19";
-            label19.Size = new Size(278, 32);
-            label19.TabIndex = 6;
-            label19.Text = "Thông tin phiếu đăng ký";
+            label26.Dock = DockStyle.Top;
+            label26.Font = new Font("Segoe UI", 12F);
+            label26.Location = new Point(0, 0);
+            label26.Name = "label26";
+            label26.Size = new Size(511, 42);
+            label26.TabIndex = 6;
+            label26.Text = "Vui lòng chọn lịch thi gia hạn";
             // 
             // label106
             // 
             label106.AutoSize = true;
-            label106.Location = new Point(182, 116);
+            label106.Font = new Font("Segoe UI", 10F);
+            label106.Location = new Point(27, 50);
             label106.Name = "label106";
-            label106.Size = new Size(79, 25);
+            label106.Size = new Size(98, 28);
             label106.TabIndex = 30;
-            label106.Text = "label106";
+            label106.Text = "Tên kỳ thi:";
+            // 
+            // GiaHan_btnGiaHan
+            // 
+            GiaHan_btnGiaHan.BackColor = SystemColors.ActiveCaption;
+            GiaHan_btnGiaHan.Font = new Font("Segoe UI", 10F);
+            GiaHan_btnGiaHan.Location = new Point(997, 61);
+            GiaHan_btnGiaHan.Name = "GiaHan_btnGiaHan";
+            GiaHan_btnGiaHan.Size = new Size(251, 53);
+            GiaHan_btnGiaHan.TabIndex = 6;
+            GiaHan_btnGiaHan.Text = "Cập nhật lịch thi gia hạn";
+            GiaHan_btnGiaHan.UseVisualStyleBackColor = false;
+            GiaHan_btnGiaHan.Click += GiaHan_btnGiaHan_Click;
+            // 
+            // panel6
+            // 
+            panel6.Controls.Add(GiaHan_SLThiSinh);
+            panel6.Controls.Add(label86);
+            panel6.Controls.Add(GiaHan_TenNV);
+            panel6.Controls.Add(GiaHan_TrangThaiTT);
+            panel6.Controls.Add(GiaHan_DiaChi);
+            panel6.Controls.Add(label30);
+            panel6.Controls.Add(GiaHan__NgayLapPhieu);
+            panel6.Controls.Add(label19);
+            panel6.Controls.Add(label29);
+            panel6.Controls.Add(GiaHan_MaPhieu);
+            panel6.Controls.Add(label25);
+            panel6.Controls.Add(label28);
+            panel6.Controls.Add(label27);
+            panel6.Location = new Point(39, 131);
+            panel6.Name = "panel6";
+            panel6.Size = new Size(648, 323);
+            panel6.TabIndex = 4;
+            // 
+            // GiaHan_SLThiSinh
+            // 
+            GiaHan_SLThiSinh.AutoSize = true;
+            GiaHan_SLThiSinh.Location = new Point(530, 66);
+            GiaHan_SLThiSinh.Name = "GiaHan_SLThiSinh";
+            GiaHan_SLThiSinh.Size = new Size(24, 25);
+            GiaHan_SLThiSinh.TabIndex = 36;
+            GiaHan_SLThiSinh.Text = "...";
+            // 
+            // label86
+            // 
+            label86.AutoSize = true;
+            label86.Font = new Font("Segoe UI", 10F);
+            label86.Location = new Point(360, 63);
+            label86.Name = "label86";
+            label86.Size = new Size(164, 28);
+            label86.TabIndex = 35;
+            label86.Text = "Số lượng thí sinh:";
+            // 
+            // GiaHan_TenNV
+            // 
+            GiaHan_TenNV.AutoSize = true;
+            GiaHan_TenNV.Location = new Point(227, 268);
+            GiaHan_TenNV.Name = "GiaHan_TenNV";
+            GiaHan_TenNV.Size = new Size(24, 25);
+            GiaHan_TenNV.TabIndex = 34;
+            GiaHan_TenNV.Text = "...";
+            // 
+            // GiaHan_TrangThaiTT
+            // 
+            GiaHan_TrangThaiTT.AutoSize = true;
+            GiaHan_TrangThaiTT.Location = new Point(235, 220);
+            GiaHan_TrangThaiTT.Name = "GiaHan_TrangThaiTT";
+            GiaHan_TrangThaiTT.Size = new Size(24, 25);
+            GiaHan_TrangThaiTT.TabIndex = 33;
+            GiaHan_TrangThaiTT.Text = "...";
+            // 
+            // GiaHan_DiaChi
+            // 
+            GiaHan_DiaChi.AutoSize = true;
+            GiaHan_DiaChi.Location = new Point(224, 167);
+            GiaHan_DiaChi.Name = "GiaHan_DiaChi";
+            GiaHan_DiaChi.Size = new Size(24, 25);
+            GiaHan_DiaChi.TabIndex = 32;
+            GiaHan_DiaChi.Text = "...";
+            // 
+            // label30
+            // 
+            label30.AutoSize = true;
+            label30.Font = new Font("Segoe UI", 10F);
+            label30.Location = new Point(31, 265);
+            label30.Name = "label30";
+            label30.Size = new Size(190, 28);
+            label30.TabIndex = 10;
+            label30.Text = "Nhân viên lập phiếu:";
+            // 
+            // GiaHan__NgayLapPhieu
+            // 
+            GiaHan__NgayLapPhieu.AutoSize = true;
+            GiaHan__NgayLapPhieu.Location = new Point(160, 117);
+            GiaHan__NgayLapPhieu.Name = "GiaHan__NgayLapPhieu";
+            GiaHan__NgayLapPhieu.Size = new Size(24, 25);
+            GiaHan__NgayLapPhieu.TabIndex = 31;
+            GiaHan__NgayLapPhieu.Text = "...";
+            // 
+            // label19
+            // 
+            label19.Dock = DockStyle.Top;
+            label19.Font = new Font("Segoe UI", 12F);
+            label19.Location = new Point(0, 0);
+            label19.Name = "label19";
+            label19.Size = new Size(648, 32);
+            label19.TabIndex = 6;
+            label19.Text = "Thông tin phiếu đăng ký";
+            label19.TextAlign = ContentAlignment.TopCenter;
             // 
             // label29
             // 
             label29.AutoSize = true;
-            label29.Location = new Point(31, 257);
+            label29.Font = new Font("Segoe UI", 10F);
+            label29.Location = new Point(31, 217);
             label29.Name = "label29";
-            label29.Size = new Size(184, 25);
+            label29.Size = new Size(202, 28);
             label29.TabIndex = 9;
             label29.Text = "Trạng thái thanh toán:";
             // 
-            // label105
+            // GiaHan_MaPhieu
             // 
-            label105.AutoSize = true;
-            label105.Location = new Point(136, 66);
-            label105.Name = "label105";
-            label105.Size = new Size(79, 25);
-            label105.TabIndex = 29;
-            label105.Text = "label105";
+            GiaHan_MaPhieu.AutoSize = true;
+            GiaHan_MaPhieu.Location = new Point(135, 66);
+            GiaHan_MaPhieu.Name = "GiaHan_MaPhieu";
+            GiaHan_MaPhieu.Size = new Size(24, 25);
+            GiaHan_MaPhieu.TabIndex = 29;
+            GiaHan_MaPhieu.Text = "...";
             // 
             // label25
             // 
             label25.AutoSize = true;
-            label25.Location = new Point(31, 66);
+            label25.Font = new Font("Segoe UI", 10F);
+            label25.Location = new Point(31, 63);
             label25.Name = "label25";
-            label25.Size = new Size(90, 25);
+            label25.Size = new Size(98, 28);
             label25.TabIndex = 5;
             label25.Text = "Mã phiếu:";
             // 
             // label28
             // 
             label28.AutoSize = true;
-            label28.Location = new Point(31, 210);
+            label28.Font = new Font("Segoe UI", 10F);
+            label28.Location = new Point(31, 164);
             label28.Name = "label28";
-            label28.Size = new Size(171, 25);
+            label28.Size = new Size(187, 28);
             label28.TabIndex = 8;
             label28.Text = "Địa chỉ chuyển phát:";
-            // 
-            // label26
-            // 
-            label26.AutoSize = true;
-            label26.Location = new Point(32, 115);
-            label26.Name = "label26";
-            label26.Size = new Size(137, 25);
-            label26.TabIndex = 6;
-            label26.Text = "Mã khách hàng:";
             // 
             // label27
             // 
             label27.AutoSize = true;
-            label27.Location = new Point(31, 162);
+            label27.Font = new Font("Segoe UI", 10F);
+            label27.Location = new Point(31, 114);
             label27.Name = "label27";
-            label27.Size = new Size(118, 25);
+            label27.Size = new Size(129, 28);
             label27.TabIndex = 7;
             label27.Text = "Thời gian lập:";
             // 
             // panel5
             // 
-            panel5.Controls.Add(label104);
-            panel5.Controls.Add(label103);
-            panel5.Controls.Add(label102);
-            panel5.Controls.Add(label101);
-            panel5.Controls.Add(label100);
+            panel5.Controls.Add(GiaHan_Email);
+            panel5.Controls.Add(GiaHan_SDT);
+            panel5.Controls.Add(GiaHan_LoaiKH);
+            panel5.Controls.Add(GiaHan_TenKH);
+            panel5.Controls.Add(GiaHan_MaHK);
             panel5.Controls.Add(label24);
             panel5.Controls.Add(label18);
             panel5.Controls.Add(label20);
             panel5.Controls.Add(label21);
             panel5.Controls.Add(label23);
             panel5.Controls.Add(label22);
-            panel5.Location = new Point(41, 138);
+            panel5.Location = new Point(737, 131);
             panel5.Name = "panel5";
-            panel5.Size = new Size(511, 347);
+            panel5.Size = new Size(511, 323);
             panel5.TabIndex = 3;
             // 
-            // label104
+            // GiaHan_Email
             // 
-            label104.AutoSize = true;
-            label104.Location = new Point(128, 280);
-            label104.Name = "label104";
-            label104.Size = new Size(79, 25);
-            label104.TabIndex = 28;
-            label104.Text = "label104";
+            GiaHan_Email.AutoSize = true;
+            GiaHan_Email.Location = new Point(105, 268);
+            GiaHan_Email.Name = "GiaHan_Email";
+            GiaHan_Email.Size = new Size(24, 25);
+            GiaHan_Email.TabIndex = 28;
+            GiaHan_Email.Text = "...";
             // 
-            // label103
+            // GiaHan_SDT
             // 
-            label103.AutoSize = true;
-            label103.Location = new Point(116, 224);
-            label103.Name = "label103";
-            label103.Size = new Size(79, 25);
-            label103.TabIndex = 27;
-            label103.Text = "label103";
+            GiaHan_SDT.AutoSize = true;
+            GiaHan_SDT.Location = new Point(172, 220);
+            GiaHan_SDT.Name = "GiaHan_SDT";
+            GiaHan_SDT.Size = new Size(24, 25);
+            GiaHan_SDT.TabIndex = 27;
+            GiaHan_SDT.Text = "...";
             // 
-            // label102
+            // GiaHan_LoaiKH
             // 
-            label102.AutoSize = true;
-            label102.Location = new Point(92, 175);
-            label102.Name = "label102";
-            label102.Size = new Size(79, 25);
-            label102.TabIndex = 26;
-            label102.Text = "label102";
+            GiaHan_LoaiKH.AutoSize = true;
+            GiaHan_LoaiKH.Location = new Point(196, 167);
+            GiaHan_LoaiKH.Name = "GiaHan_LoaiKH";
+            GiaHan_LoaiKH.Size = new Size(24, 25);
+            GiaHan_LoaiKH.TabIndex = 26;
+            GiaHan_LoaiKH.Text = "...";
             // 
-            // label101
+            // GiaHan_TenKH
             // 
-            label101.AutoSize = true;
-            label101.Location = new Point(188, 123);
-            label101.Name = "label101";
-            label101.Size = new Size(79, 25);
-            label101.TabIndex = 25;
-            label101.Text = "label101";
+            GiaHan_TenKH.AutoSize = true;
+            GiaHan_TenKH.Location = new Point(184, 117);
+            GiaHan_TenKH.Name = "GiaHan_TenKH";
+            GiaHan_TenKH.Size = new Size(24, 25);
+            GiaHan_TenKH.TabIndex = 25;
+            GiaHan_TenKH.Text = "...";
             // 
-            // label100
+            // GiaHan_MaHK
             // 
-            label100.AutoSize = true;
-            label100.Location = new Point(213, 70);
-            label100.Name = "label100";
-            label100.Size = new Size(79, 25);
-            label100.TabIndex = 12;
-            label100.Text = "label100";
+            GiaHan_MaHK.AutoSize = true;
+            GiaHan_MaHK.Location = new Point(184, 66);
+            GiaHan_MaHK.Name = "GiaHan_MaHK";
+            GiaHan_MaHK.Size = new Size(24, 25);
+            GiaHan_MaHK.TabIndex = 12;
+            GiaHan_MaHK.Text = "...";
             // 
             // label24
             // 
             label24.AutoSize = true;
-            label24.Location = new Point(27, 279);
+            label24.Font = new Font("Segoe UI", 10F);
+            label24.Location = new Point(27, 265);
             label24.Name = "label24";
-            label24.Size = new Size(93, 25);
+            label24.Size = new Size(63, 28);
             label24.TabIndex = 11;
-            label24.Text = "Phòng thi:";
+            label24.Text = "Email:";
             // 
             // label18
             // 
-            label18.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label18.AutoSize = true;
+            label18.Dock = DockStyle.Top;
             label18.Font = new Font("Segoe UI", 12F);
-            label18.Location = new Point(123, 12);
+            label18.Location = new Point(0, 0);
             label18.Name = "label18";
-            label18.Size = new Size(256, 32);
+            label18.Size = new Size(511, 32);
             label18.TabIndex = 5;
-            label18.Text = "Thông tin phiếu dự thi";
+            label18.Text = "Thông tin khách hàng";
+            label18.TextAlign = ContentAlignment.TopCenter;
             // 
             // label20
             // 
             label20.AutoSize = true;
-            label20.Location = new Point(27, 70);
+            label20.Font = new Font("Segoe UI", 10F);
+            label20.Location = new Point(26, 63);
             label20.Name = "label20";
-            label20.Size = new Size(180, 25);
+            label20.Size = new Size(149, 28);
             label20.TabIndex = 7;
-            label20.Text = "Số báo danh thí sinh:";
+            label20.Text = "Mã khách hàng:";
             // 
             // label21
             // 
             label21.AutoSize = true;
-            label21.Location = new Point(27, 123);
+            label21.Font = new Font("Segoe UI", 10F);
+            label21.Location = new Point(26, 114);
             label21.Name = "label21";
-            label21.Size = new Size(155, 25);
+            label21.Size = new Size(150, 28);
             label21.TabIndex = 8;
-            label21.Text = "Họ và tên thí sinh:";
+            label21.Text = "Tên khách hàng:";
             // 
             // label23
             // 
             label23.AutoSize = true;
-            label23.Location = new Point(27, 224);
+            label23.Font = new Font("Segoe UI", 10F);
+            label23.Location = new Point(27, 216);
             label23.Name = "label23";
-            label23.Size = new Size(83, 25);
+            label23.Size = new Size(132, 28);
             label23.TabIndex = 10;
-            label23.Text = "Ngày thi:";
+            label23.Text = "Số điện thoại:";
             // 
             // label22
             // 
             label22.AutoSize = true;
-            label22.Location = new Point(27, 175);
+            label22.Font = new Font("Segoe UI", 10F);
+            label22.Location = new Point(27, 164);
             label22.Name = "label22";
-            label22.Size = new Size(59, 25);
+            label22.Size = new Size(157, 28);
             label22.TabIndex = 9;
-            label22.Text = "Kỳ thi:";
+            label22.Text = "Loại khách hàng:";
             // 
-            // button8
+            // GiaHan_btnPDKSearch
             // 
-            button8.Location = new Point(379, 73);
-            button8.Name = "button8";
-            button8.Size = new Size(112, 34);
-            button8.TabIndex = 2;
-            button8.Text = "Tìm kiếm";
-            button8.UseVisualStyleBackColor = true;
+            GiaHan_btnPDKSearch.Location = new Point(379, 73);
+            GiaHan_btnPDKSearch.Name = "GiaHan_btnPDKSearch";
+            GiaHan_btnPDKSearch.Size = new Size(112, 34);
+            GiaHan_btnPDKSearch.TabIndex = 2;
+            GiaHan_btnPDKSearch.Text = "Tìm kiếm";
+            GiaHan_btnPDKSearch.UseVisualStyleBackColor = true;
+            GiaHan_btnPDKSearch.Click += GiaHan_btnPDKSearch_Click;
             // 
-            // textBox2
+            // GiaHan_MaPhieuSearch
             // 
-            textBox2.Font = new Font("Segoe UI", 10F);
-            textBox2.Location = new Point(39, 73);
-            textBox2.Name = "textBox2";
-            textBox2.Size = new Size(318, 34);
-            textBox2.TabIndex = 1;
-            textBox2.Text = "Số báo danh của thí sinh";
+            GiaHan_MaPhieuSearch.Font = new Font("Segoe UI", 10F);
+            GiaHan_MaPhieuSearch.Location = new Point(39, 73);
+            GiaHan_MaPhieuSearch.Name = "GiaHan_MaPhieuSearch";
+            GiaHan_MaPhieuSearch.Size = new Size(318, 34);
+            GiaHan_MaPhieuSearch.TabIndex = 1;
             // 
             // label17
             // 
@@ -1492,9 +1698,9 @@
             label17.Font = new Font("Segoe UI", 12F);
             label17.Location = new Point(39, 26);
             label17.Name = "label17";
-            label17.Size = new Size(199, 32);
+            label17.Size = new Size(226, 32);
             label17.TabIndex = 0;
-            label17.Text = "Tìm kiếm thí sinh";
+            label17.Text = "Tìm kiếm mã phiếu:";
             // 
             // panelPDKAdd
             // 
@@ -1503,9 +1709,9 @@
             panelPDKAdd.Controls.Add(panel1);
             panelPDKAdd.Controls.Add(panelTSTDAdd);
             panelPDKAdd.Dock = DockStyle.Fill;
-            panelPDKAdd.Location = new Point(194, 62);
+            panelPDKAdd.Location = new Point(0, 0);
             panelPDKAdd.Name = "panelPDKAdd";
-            panelPDKAdd.Size = new Size(1283, 723);
+            panelPDKAdd.Size = new Size(1477, 785);
             panelPDKAdd.TabIndex = 10;
             // 
             // panelTSDVAdd
@@ -2387,13 +2593,13 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1477, 785);
-            Controls.Add(panelPDKAdd);
+            Controls.Add(panelGiaHan);
             Controls.Add(panel2);
             Controls.Add(tlpMenuTiepNhan);
-            Controls.Add(panelXLCC);
-            Controls.Add(panelGiaHan);
             Controls.Add(panelPDK);
             Controls.Add(panelPDKUpdate);
+            Controls.Add(panelPDKAdd);
+            Controls.Add(panelXLCC);
             Name = "fTiepNhan";
             Text = "fTiepNhan";
             Load += fTiepNhan_Load_1;
@@ -2423,7 +2629,8 @@
             panelGiaHan.PerformLayout();
             panel7.ResumeLayout(false);
             panel7.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dataGridView4).EndInit();
+            panel3.ResumeLayout(false);
+            panel3.PerformLayout();
             panel6.ResumeLayout(false);
             panel6.PerformLayout();
             panel5.ResumeLayout(false);
@@ -2497,25 +2704,16 @@
         private Label label16;
         private Label label17;
         private Panel panel6;
-        private Panel panel5;
-        private Button button8;
-        private TextBox textBox2;
-        private Label label24;
-        private Label label23;
-        private Label label22;
-        private Label label21;
+        private Button GiaHan_btnPDKSearch;
+        private TextBox GiaHan_MaPhieuSearch;
         private Label label19;
-        private Label label18;
-        private Label label20;
         private Label label30;
         private Label label29;
         private Label label25;
         private Label label28;
-        private Label label26;
         private Label label27;
-        private Button button10;
+        private Button GiaHan_btnGiaHan;
         private Button button11;
-        private Panel panel7;
         private Label label34;
         private Label label33;
         private Label label32;
@@ -2581,8 +2779,6 @@
         private Label label75;
         private Label label76;
         private Label label77;
-        private DataGridView dataGridView4;
-        private Label label78;
         private Label PDKView_ED;
         private Label PDKView_NV;
         private Label PDKView_TTTT;
@@ -2620,15 +2816,10 @@
         private TextBox PDKAdd_TenTSTD;
         private Label label55;
         private TextBox PDKAdd_TenKH;
-        private Label label108;
-        private Label label107;
+        private Label GiaHan_DiaChi;
+        private Label GiaHan__NgayLapPhieu;
         private Label label106;
-        private Label label105;
-        private Label label104;
-        private Label label103;
-        private Label label102;
-        private Label label101;
-        private Label label100;
+        private Label GiaHan_MaPhieu;
         private Label PDKAdd_TenNV;
         private Label PDKAdd_NgayLapPhieu;
         private ComboBox PDKAdd_NgayThi;
@@ -2636,8 +2827,8 @@
         private TextBox PDKAdd_DiaChi;
         private TextBox PDKAdd_SDT;
         private TextBox PDKAdd_Email;
-        private Label label110;
-        private Label label109;
+        private Label GiaHan_TenNV;
+        private Label GiaHan_TrangThaiTT;
         private Label PDKView_LoaiKH;
         private Label label79;
         private Label PDKU_LoaiKH;
@@ -2652,5 +2843,38 @@
         private DateTimePicker PDKAdd_DOB_TD;
         private ComboBox PDKAdd_GioThi;
         private Label label70;
+        private Panel panel5;
+        private Label GiaHan_Email;
+        private Label GiaHan_SDT;
+        private Label GiaHan_LoaiKH;
+        private Label GiaHan_TenKH;
+        private Label GiaHan_MaHK;
+        private Label label24;
+        private Label label18;
+        private Label label20;
+        private Label label21;
+        private Label label23;
+        private Label label22;
+        private Label label26;
+        private Panel panel7;
+        private Panel panel3;
+        private Label label78;
+        private Label label42;
+        private Label label81;
+        private Label label80;
+        private Label label83;
+        private Label label82;
+        private Label label85;
+        private Label label84;
+        private Label GiaHan_SLThiSinh;
+        private Label label86;
+        private Label GiaHan_MaPThi;
+        private Label GiaHan_SoTS_LichThi;
+        private Label GiaHan_GioThi;
+        private Label GiaHan_NgayThi;
+        private Label GiaHan_TenKT;
+        private ComboBox GiaHan_ChonGioThi;
+        private ComboBox GiaHan_ChonNgayThi;
+        private ComboBox GiaHan_ChonKyThi;
     }
 }
