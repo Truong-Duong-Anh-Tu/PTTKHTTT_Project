@@ -49,6 +49,10 @@ namespace PTTKHTTTProject.BUS
                 return false;
             }
         }
+        public void UpdateAllExamStatus()
+        {
+            EmployeeScheduleDAO.UpdateAllExamStatus();
+        }
         public bool KiemTraNhanVienDaDuocPhanCong(string maLichThi, string maNhanVien)
         {
             DataTable dtPhanCong = EmployeeScheduleDAO.getEmployeeSchedule();

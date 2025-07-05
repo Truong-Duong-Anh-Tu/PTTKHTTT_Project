@@ -315,10 +315,10 @@
             // dataGridViewPhongTrong
             // 
             dataGridViewPhongTrong.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridViewPhongTrong.Location = new Point(71, 337);
+            dataGridViewPhongTrong.Location = new Point(89, 339);
             dataGridViewPhongTrong.Name = "dataGridViewPhongTrong";
             dataGridViewPhongTrong.RowHeadersWidth = 51;
-            dataGridViewPhongTrong.Size = new Size(578, 277);
+            dataGridViewPhongTrong.Size = new Size(323, 226);
             dataGridViewPhongTrong.TabIndex = 29;
             dataGridViewPhongTrong.CellClick += dataGridViewPhongTrong_CellClick;
             // 

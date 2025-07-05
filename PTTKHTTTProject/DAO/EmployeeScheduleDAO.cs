@@ -49,7 +49,17 @@ namespace PTTKHTTTProject.DAO
             };
             return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThiByKyThi", parameters);
         }
-
+        public static void UpdateAllExamStatus()
+        {
+            try
+            {
+                DataProvider.Instance.ExecuteNonQuerySP("usp_UpdateAllExamStatus");
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("Lỗi khi cập nhật trạng thái lịch thi: " + ex.Message);
+            }
+        }
 
 
         public static void AddPhanCong(string maLichThi, string maNhanVien)

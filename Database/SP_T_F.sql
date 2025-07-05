@@ -1051,13 +1051,32 @@ BEGIN
     );
 END
 GO
-
+-- Lấy phòng ban theo tên phòng ban
 CREATE OR ALTER PROCEDURE usp_GetPhongBanByTenPhongBan 
 	@TenPhongBan NVARCHAR(100)
 AS
 BEGIN
 	SELECT * FROM PHONGBAN pb WHERE pb.PB_TenPhongBan = @TenPhongBan;
 END;
+GO
+
+-- Cập nhật tất cả các phân công sau khi qua ngày
+CREATE OR ALTER PROCEDURE usp_UpdateAllExamStatus
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Lấy thời gian hiện tại
+    DECLARE @Now DATETIME = GETDATE();
+
+    -- Cập nhật trạng thái trong bảng PHANCONG
+    -- Đồng bộ trạng thái từ LICHTHI
+    UPDATE PC
+    SET PC_TrangThai = N'Hoàn thành'
+    FROM PHANCONG AS PC
+    JOIN LICHTHI AS LT ON PC.PC_MaLichThi = LT.LT_MaLichThi
+    WHERE (CAST(LT.LT_NgayThi AS DATETIME) + CAST(LT.LT_TGKetThuc AS DATETIME)) < @Now;
+END
 GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------

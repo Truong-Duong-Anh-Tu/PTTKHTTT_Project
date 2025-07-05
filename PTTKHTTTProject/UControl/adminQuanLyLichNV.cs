@@ -21,6 +21,7 @@ namespace PTTKHTTTProject.UControl
 
         private void adminQuanLyLichNV_Load(object? sender, EventArgs e)
         {
+            employeeScheduleBUS.UpdateAllExamStatus();
             LoadData();
             SetupDataGridViewColumns();
             PopulateComboBox();
