@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            comboBoxPhongBan = new ComboBox();
             pictureBoxThoat = new PictureBox();
             comboBoxChucVu = new ComboBox();
             label1 = new Label();
@@ -36,9 +35,9 @@
             textBoxCCCD = new TextBox();
             textBoxSDT = new TextBox();
             textBoxEmail = new TextBox();
-            textBoxGioiTinh = new TextBox();
             textBoxHoTen = new TextBox();
             tableLayoutPanelThongTinLichPhanCong = new TableLayoutPanel();
+            comboBoxGioiTinh = new ComboBox();
             numericUpDownLuong = new NumericUpDown();
             labelLuong = new Label();
             dateTimePickerNgaySinh = new DateTimePicker();
@@ -50,20 +49,11 @@
             labelGioiTinh = new Label();
             labelSDT = new Label();
             button1 = new Button();
+            textBoxPhongBan = new TextBox();
             ((System.ComponentModel.ISupportInitialize)pictureBoxThoat).BeginInit();
             tableLayoutPanelThongTinLichPhanCong.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)numericUpDownLuong).BeginInit();
             SuspendLayout();
-            // 
-            // comboBoxPhongBan
-            // 
-            comboBoxPhongBan.FormattingEnabled = true;
-            comboBoxPhongBan.Location = new Point(56, 113);
-            comboBoxPhongBan.Name = "comboBoxPhongBan";
-            comboBoxPhongBan.Size = new Size(256, 28);
-            comboBoxPhongBan.TabIndex = 18;
-            comboBoxPhongBan.Text = "Chọn phòng ban";
-            comboBoxPhongBan.SelectedIndexChanged += comboBoxLichThi_SelectedIndexChanged;
             // 
             // pictureBoxThoat
             // 
@@ -79,12 +69,12 @@
             // comboBoxChucVu
             // 
             comboBoxChucVu.FormattingEnabled = true;
-            comboBoxChucVu.Location = new Point(56, 175);
+            comboBoxChucVu.Location = new Point(56, 109);
             comboBoxChucVu.Name = "comboBoxChucVu";
             comboBoxChucVu.Size = new Size(256, 28);
             comboBoxChucVu.TabIndex = 16;
             comboBoxChucVu.Text = "Chọn chức vụ";
-            comboBoxChucVu.SelectedIndexChanged += comboBoxKyThi_SelectedIndexChanged;
+            comboBoxChucVu.SelectedIndexChanged += comboBoxChucVu_SelectedIndexChanged;
             // 
             // label1
             // 
@@ -137,16 +127,6 @@
             textBoxEmail.Size = new Size(277, 27);
             textBoxEmail.TabIndex = 17;
             // 
-            // textBoxGioiTinh
-            // 
-            textBoxGioiTinh.Anchor = AnchorStyles.None;
-            textBoxGioiTinh.BackColor = SystemColors.Control;
-            textBoxGioiTinh.BorderStyle = BorderStyle.FixedSingle;
-            textBoxGioiTinh.Location = new Point(256, 111);
-            textBoxGioiTinh.Name = "textBoxGioiTinh";
-            textBoxGioiTinh.Size = new Size(276, 27);
-            textBoxGioiTinh.TabIndex = 16;
-            // 
             // textBoxHoTen
             // 
             textBoxHoTen.Anchor = AnchorStyles.None;
@@ -162,6 +142,7 @@
             tableLayoutPanelThongTinLichPhanCong.ColumnCount = 2;
             tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 34.290844F));
             tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 65.70916F));
+            tableLayoutPanelThongTinLichPhanCong.Controls.Add(comboBoxGioiTinh, 1, 2);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(numericUpDownLuong, 1, 7);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelLuong, 0, 7);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(dateTimePickerNgaySinh, 1, 1);
@@ -169,7 +150,6 @@
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(textBoxCCCD, 1, 5);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(textBoxSDT, 1, 4);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(textBoxEmail, 1, 3);
-            tableLayoutPanelThongTinLichPhanCong.Controls.Add(textBoxGioiTinh, 1, 2);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelDiaChi, 0, 6);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelCCCD, 0, 5);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelEmail, 0, 3);
@@ -192,9 +172,19 @@
             tableLayoutPanelThongTinLichPhanCong.Size = new Size(587, 409);
             tableLayoutPanelThongTinLichPhanCong.TabIndex = 15;
             // 
+            // comboBoxGioiTinh
+            // 
+            comboBoxGioiTinh.Anchor = AnchorStyles.None;
+            comboBoxGioiTinh.FormattingEnabled = true;
+            comboBoxGioiTinh.Location = new Point(259, 111);
+            comboBoxGioiTinh.Name = "comboBoxGioiTinh";
+            comboBoxGioiTinh.Size = new Size(269, 28);
+            comboBoxGioiTinh.TabIndex = 21;
+            // 
             // numericUpDownLuong
             // 
             numericUpDownLuong.Anchor = AnchorStyles.None;
+            numericUpDownLuong.Increment = new decimal(new int[] { 1000000, 0, 0, 0 });
             numericUpDownLuong.Location = new Point(249, 369);
             numericUpDownLuong.Maximum = new decimal(new int[] { 500000000, 0, 0, 0 });
             numericUpDownLuong.Minimum = new decimal(new int[] { 5000000, 0, 0, 0 });
@@ -223,6 +213,7 @@
             dateTimePickerNgaySinh.Name = "dateTimePickerNgaySinh";
             dateTimePickerNgaySinh.Size = new Size(269, 27);
             dateTimePickerNgaySinh.TabIndex = 20;
+            dateTimePickerNgaySinh.Value = new DateTime(2025, 1, 1, 0, 0, 0, 0);
             dateTimePickerNgaySinh.ValueChanged += dateTimePickerNgaySinh_ValueChanged;
             // 
             // labelDiaChi
@@ -307,7 +298,7 @@
             // 
             button1.BackColor = Color.PaleTurquoise;
             button1.Location = new Point(835, 500);
-            button1.Margin = new Padding(2, 2, 2, 2);
+            button1.Margin = new Padding(2);
             button1.Name = "button1";
             button1.Size = new Size(156, 37);
             button1.TabIndex = 19;
@@ -315,14 +306,25 @@
             button1.UseVisualStyleBackColor = false;
             button1.Click += button1_Click;
             // 
+            // textBoxPhongBan
+            // 
+            textBoxPhongBan.BackColor = SystemColors.MenuBar;
+            textBoxPhongBan.BorderStyle = BorderStyle.FixedSingle;
+            textBoxPhongBan.Location = new Point(56, 185);
+            textBoxPhongBan.Name = "textBoxPhongBan";
+            textBoxPhongBan.PlaceholderText = "Tên phòng ban";
+            textBoxPhongBan.ReadOnly = true;
+            textBoxPhongBan.Size = new Size(257, 27);
+            textBoxPhongBan.TabIndex = 20;
+            // 
             // fAdminThemNV
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.ButtonHighlight;
             ClientSize = new Size(1032, 558);
+            Controls.Add(textBoxPhongBan);
             Controls.Add(button1);
-            Controls.Add(comboBoxPhongBan);
             Controls.Add(pictureBoxThoat);
             Controls.Add(comboBoxChucVu);
             Controls.Add(label1);
@@ -340,7 +342,6 @@
         }
 
         #endregion
-        private ComboBox comboBoxPhongBan;
         private PictureBox pictureBoxThoat;
         private ComboBox comboBoxChucVu;
         private Label label1;
@@ -348,7 +349,6 @@
         private TextBox textBoxCCCD;
         private TextBox textBoxSDT;
         private TextBox textBoxEmail;
-        private TextBox textBoxGioiTinh;
         private TextBox textBoxHoTen;
         private TableLayoutPanel tableLayoutPanelThongTinLichPhanCong;
         private Label labelDiaChi;
@@ -362,5 +362,7 @@
         private DateTimePicker dateTimePickerNgaySinh;
         private NumericUpDown numericUpDownLuong;
         private Label labelLuong;
+        private TextBox textBoxPhongBan;
+        private ComboBox comboBoxGioiTinh;
     }
 }

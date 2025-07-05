@@ -49,5 +49,14 @@ namespace PTTKHTTTProject.BUS
                 return false;
             }
         }
+        public bool KiemTraNhanVienDaDuocPhanCong(string maLichThi, string maNhanVien)
+        {
+            DataTable dtPhanCong = EmployeeScheduleDAO.getEmployeeSchedule();
+            bool daTonTai = dtPhanCong.AsEnumerable()
+                                      .Any(row => row.Field<string>("LT_MaLichThi") == maLichThi &&
+                                                   row.Field<string>("Mã Nhân Viên") == maNhanVien);
+
+            return daTonTai;
+        }
     }
 }

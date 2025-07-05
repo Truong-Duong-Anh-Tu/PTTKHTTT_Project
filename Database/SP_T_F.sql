@@ -450,6 +450,14 @@ CREATE OR ALTER PROCEDURE usp_AddNhanVien
     @MaPhongBan NVARCHAR(10)
 AS
 BEGIN
+    IF DATEDIFF(YEAR, @NgaySinh, GETDATE()) < 18
+        OR (DATEDIFF(YEAR, @NgaySinh, GETDATE()) = 18 AND DATEADD(YEAR, 18, @NgaySinh) > GETDATE())
+    BEGIN
+        -- Nếu không đủ tuổi, báo lỗi và dừng lại ngay lập tức
+        RAISERROR(N'Nhân viên phải đủ 18 tuổi trở lên!', 16, 1);
+        RETURN;
+    END
+
     BEGIN TRY
         BEGIN TRANSACTION
             -- Kiểm tra xem nhân viên đã tồn tại chưa
@@ -506,7 +514,7 @@ GO
 
 
 -- Chỉnh sửa nhân viên
-CREATE PROCEDURE usp_UpdateNhanVien
+CREATE OR ALTER PROCEDURE usp_UpdateNhanVien
     @MaNhanVien NVARCHAR(10),
     @TenNhanVien NVARCHAR(100),
     @NgaySinh DATE,
@@ -521,6 +529,13 @@ CREATE PROCEDURE usp_UpdateNhanVien
 AS
 BEGIN
     SET NOCOUNT ON;
+    IF DATEDIFF(YEAR, @NgaySinh, GETDATE()) < 18
+        OR (DATEDIFF(YEAR, @NgaySinh, GETDATE()) = 18 AND DATEADD(YEAR, 18, @NgaySinh) > GETDATE())
+    BEGIN
+        -- Nếu không đủ tuổi, báo lỗi và dừng lại
+        RAISERROR(N'Nhân viên phải đủ 18 tuổi trở lên!', 16, 1);
+        RETURN -1; -- Trả về một mã lỗi riêng biệt
+    END
     UPDATE NHANVIEN
     SET
         NV_TenNhanVien = @TenNhanVien,
@@ -536,9 +551,9 @@ BEGIN
     WHERE NV_MaNhanVien = @MaNhanVien;
 
     IF @@ROWCOUNT = 1
-        RETURN 1;
+        RETURN 1; -- Thành công
     ELSE
-        RETURN 0;
+        RETURN 0; -- Thất bại (không tìm thấy mã NV)
 END
 GO
 --- Lấy tất cả phòng ban
@@ -1057,6 +1072,7 @@ GO
 
 
 --TRIGGER
+
 --Trigger kiểm tra mã người nhận trong THONGBAO có thuộc bảng NHANVIEN hoặc PHONGBAN không 
 create or alter trigger utg_CheckDoiTuong
 on THONGBAO

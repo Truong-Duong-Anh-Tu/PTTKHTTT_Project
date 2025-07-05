@@ -50,10 +50,7 @@ namespace PTTKHTTTProject.DAO
             return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThiByKyThi", parameters);
         }
 
-        public static DataTable GetAvailableNhanVien()
-        {
-            return DataProvider.Instance.ExecuteQuerySP("usp_GetAvailableNhanVienForLichThi");
-        }
+
 
         public static void AddPhanCong(string maLichThi, string maNhanVien)
         {

@@ -32,7 +32,7 @@ namespace PTTKHTTTProject.UControl
 
         private void LoadNhanVien()
         {
-            dtNhanVien = EmployeeScheduleDAO.GetAvailableNhanVien();
+            dtNhanVien = InfoEmployeeBUS.GetAvailableNhanVien();
             dataGridViewNhanVien.DataSource = dtNhanVien;
             dataGridViewNhanVien.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
         }

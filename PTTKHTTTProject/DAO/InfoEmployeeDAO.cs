@@ -118,5 +118,9 @@ namespace PTTKHTTTProject.DAO
                 return string.Empty;
             }
         }
+        public static DataTable GetAvailableNhanVien()
+        {
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetAvailableNhanVienForLichThi");
+        }
     }
 }

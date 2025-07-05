@@ -19,6 +19,8 @@
             label1 = new Label();
             pictureBox1 = new PictureBox();
             panel1 = new Panel();
+            dataGridViewDSNVCoiThi = new DataGridView();
+            labelDSNhanVienCoiThi = new Label();
             buttonLuuThongTin = new Button();
             buttonChinhSuaThongTin = new Button();
             tableLayoutPanelThongTinLichPhanCong = new TableLayoutPanel();
@@ -39,6 +41,7 @@
             label3 = new Label();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panel1.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDSNVCoiThi).BeginInit();
             tableLayoutPanelThongTinLichPhanCong.SuspendLayout();
             SuspendLayout();
             // 
@@ -66,20 +69,45 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.Control;
+            panel1.Controls.Add(dataGridViewDSNVCoiThi);
+            panel1.Controls.Add(labelDSNhanVienCoiThi);
             panel1.Controls.Add(buttonLuuThongTin);
             panel1.Controls.Add(buttonChinhSuaThongTin);
             panel1.Controls.Add(tableLayoutPanelThongTinLichPhanCong);
             panel1.Controls.Add(label3);
-            panel1.Location = new Point(18, 84);
+            panel1.Location = new Point(27, 76);
             panel1.Name = "panel1";
-            panel1.Size = new Size(885, 414);
+            panel1.Size = new Size(972, 472);
             panel1.TabIndex = 2;
             panel1.Paint += panel1_Paint;
+            // 
+            // dataGridViewDSNVCoiThi
+            // 
+            dataGridViewDSNVCoiThi.BackgroundColor = SystemColors.ButtonHighlight;
+            dataGridViewDSNVCoiThi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewDSNVCoiThi.GridColor = Color.White;
+            dataGridViewDSNVCoiThi.Location = new Point(550, 71);
+            dataGridViewDSNVCoiThi.Name = "dataGridViewDSNVCoiThi";
+            dataGridViewDSNVCoiThi.RowHeadersWidth = 51;
+            dataGridViewDSNVCoiThi.Size = new Size(398, 323);
+            dataGridViewDSNVCoiThi.TabIndex = 8;
+            dataGridViewDSNVCoiThi.CellClick += dataGridViewDSNVCoiThi_CellClick;
+            dataGridViewDSNVCoiThi.CellContentClick += dataGridViewDSNVCoiThi_CellContentClick;
+            // 
+            // labelDSNhanVienCoiThi
+            // 
+            labelDSNhanVienCoiThi.AutoSize = true;
+            labelDSNhanVienCoiThi.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
+            labelDSNhanVienCoiThi.Location = new Point(603, 28);
+            labelDSNhanVienCoiThi.Name = "labelDSNhanVienCoiThi";
+            labelDSNhanVienCoiThi.Size = new Size(253, 25);
+            labelDSNhanVienCoiThi.TabIndex = 7;
+            labelDSNhanVienCoiThi.Text = "Danh sách nhân viên coi thi";
             // 
             // buttonLuuThongTin
             // 
             buttonLuuThongTin.BackColor = Color.SkyBlue;
-            buttonLuuThongTin.Location = new Point(692, 349);
+            buttonLuuThongTin.Location = new Point(776, 420);
             buttonLuuThongTin.Name = "buttonLuuThongTin";
             buttonLuuThongTin.Size = new Size(172, 38);
             buttonLuuThongTin.TabIndex = 6;
@@ -90,7 +118,7 @@
             // buttonChinhSuaThongTin
             // 
             buttonChinhSuaThongTin.BackColor = Color.SkyBlue;
-            buttonChinhSuaThongTin.Location = new Point(692, 287);
+            buttonChinhSuaThongTin.Location = new Point(565, 420);
             buttonChinhSuaThongTin.Name = "buttonChinhSuaThongTin";
             buttonChinhSuaThongTin.Size = new Size(172, 38);
             buttonChinhSuaThongTin.TabIndex = 5;
@@ -103,8 +131,8 @@
             tableLayoutPanelThongTinLichPhanCong.BackColor = SystemColors.ButtonHighlight;
             tableLayoutPanelThongTinLichPhanCong.CellBorderStyle = TableLayoutPanelCellBorderStyle.Single;
             tableLayoutPanelThongTinLichPhanCong.ColumnCount = 2;
-            tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 44.0273056F));
-            tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 55.9726944F));
+            tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 38.46154F));
+            tableLayoutPanelThongTinLichPhanCong.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 61.53846F));
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(label2, 0, 6);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelMaNVCoithi, 0, 5);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelTGBatDau, 0, 3);
@@ -119,7 +147,7 @@
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(labelHienThiTGKetThuc, 1, 4);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(textBoxMaNVCoiThi, 1, 5);
             tableLayoutPanelThongTinLichPhanCong.Controls.Add(textBoxTenNVCoiThi, 1, 6);
-            tableLayoutPanelThongTinLichPhanCong.Location = new Point(28, 50);
+            tableLayoutPanelThongTinLichPhanCong.Location = new Point(40, 71);
             tableLayoutPanelThongTinLichPhanCong.Name = "tableLayoutPanelThongTinLichPhanCong";
             tableLayoutPanelThongTinLichPhanCong.RowCount = 7;
             tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 43F));
@@ -129,7 +157,7 @@
             tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 49F));
             tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 50F));
             tableLayoutPanelThongTinLichPhanCong.RowStyles.Add(new RowStyle(SizeType.Absolute, 21F));
-            tableLayoutPanelThongTinLichPhanCong.Size = new Size(635, 337);
+            tableLayoutPanelThongTinLichPhanCong.Size = new Size(469, 338);
             tableLayoutPanelThongTinLichPhanCong.TabIndex = 4;
             // 
             // label2
@@ -137,7 +165,7 @@
             label2.Anchor = AnchorStyles.None;
             label2.AutoSize = true;
             label2.Font = new Font("Segoe UI", 10F);
-            label2.Location = new Point(54, 301);
+            label2.Location = new Point(4, 302);
             label2.Name = "label2";
             label2.Size = new Size(172, 23);
             label2.TabIndex = 0;
@@ -148,7 +176,7 @@
             labelMaNVCoithi.Anchor = AnchorStyles.None;
             labelMaNVCoithi.AutoSize = true;
             labelMaNVCoithi.Font = new Font("Segoe UI", 10F);
-            labelMaNVCoithi.Location = new Point(55, 252);
+            labelMaNVCoithi.Location = new Point(5, 252);
             labelMaNVCoithi.Name = "labelMaNVCoithi";
             labelMaNVCoithi.Size = new Size(170, 23);
             labelMaNVCoithi.TabIndex = 1;
@@ -159,7 +187,7 @@
             labelTGBatDau.Anchor = AnchorStyles.None;
             labelTGBatDau.AutoSize = true;
             labelTGBatDau.Font = new Font("Segoe UI", 10F);
-            labelTGBatDau.Location = new Point(65, 152);
+            labelTGBatDau.Location = new Point(16, 152);
             labelTGBatDau.Name = "labelTGBatDau";
             labelTGBatDau.Size = new Size(149, 23);
             labelTGBatDau.TabIndex = 2;
@@ -170,7 +198,7 @@
             labelKyThi.Anchor = AnchorStyles.None;
             labelKyThi.AutoSize = true;
             labelKyThi.Font = new Font("Segoe UI", 10F);
-            labelKyThi.Location = new Point(112, 11);
+            labelKyThi.Location = new Point(62, 11);
             labelKyThi.Name = "labelKyThi";
             labelKyThi.Size = new Size(56, 23);
             labelKyThi.TabIndex = 3;
@@ -181,7 +209,7 @@
             labelNgayThi.Anchor = AnchorStyles.None;
             labelNgayThi.AutoSize = true;
             labelNgayThi.Font = new Font("Segoe UI", 10F);
-            labelNgayThi.Location = new Point(100, 56);
+            labelNgayThi.Location = new Point(51, 56);
             labelNgayThi.Name = "labelNgayThi";
             labelNgayThi.Size = new Size(79, 23);
             labelNgayThi.TabIndex = 4;
@@ -192,7 +220,7 @@
             labelPhongThi.Anchor = AnchorStyles.None;
             labelPhongThi.AutoSize = true;
             labelPhongThi.Font = new Font("Segoe UI", 10F);
-            labelPhongThi.Location = new Point(95, 103);
+            labelPhongThi.Location = new Point(46, 103);
             labelPhongThi.Name = "labelPhongThi";
             labelPhongThi.Size = new Size(89, 23);
             labelPhongThi.TabIndex = 5;
@@ -203,7 +231,7 @@
             labelTGKetThuc.Anchor = AnchorStyles.None;
             labelTGKetThuc.AutoSize = true;
             labelTGKetThuc.Font = new Font("Segoe UI", 10F);
-            labelTGKetThuc.Location = new Point(64, 202);
+            labelTGKetThuc.Location = new Point(14, 202);
             labelTGKetThuc.Name = "labelTGKetThuc";
             labelTGKetThuc.Size = new Size(152, 23);
             labelTGKetThuc.TabIndex = 6;
@@ -214,7 +242,7 @@
             labelHienThiKyThi.Anchor = AnchorStyles.None;
             labelHienThiKyThi.AutoSize = true;
             labelHienThiKyThi.Font = new Font("Segoe UI", 10F);
-            labelHienThiKyThi.Location = new Point(429, 11);
+            labelHienThiKyThi.Location = new Point(297, 11);
             labelHienThiKyThi.Name = "labelHienThiKyThi";
             labelHienThiKyThi.Size = new Size(55, 23);
             labelHienThiKyThi.TabIndex = 7;
@@ -225,7 +253,7 @@
             labelHienThiNgayThi.Anchor = AnchorStyles.None;
             labelHienThiNgayThi.AutoSize = true;
             labelHienThiNgayThi.Font = new Font("Segoe UI", 10F);
-            labelHienThiNgayThi.Location = new Point(429, 56);
+            labelHienThiNgayThi.Location = new Point(297, 56);
             labelHienThiNgayThi.Name = "labelHienThiNgayThi";
             labelHienThiNgayThi.Size = new Size(55, 23);
             labelHienThiNgayThi.TabIndex = 8;
@@ -236,7 +264,7 @@
             labelHienThiPhongThi.Anchor = AnchorStyles.None;
             labelHienThiPhongThi.AutoSize = true;
             labelHienThiPhongThi.Font = new Font("Segoe UI", 10F);
-            labelHienThiPhongThi.Location = new Point(429, 103);
+            labelHienThiPhongThi.Location = new Point(297, 103);
             labelHienThiPhongThi.Name = "labelHienThiPhongThi";
             labelHienThiPhongThi.Size = new Size(55, 23);
             labelHienThiPhongThi.TabIndex = 9;
@@ -247,7 +275,7 @@
             labelHienThiTGBatDau.Anchor = AnchorStyles.None;
             labelHienThiTGBatDau.AutoSize = true;
             labelHienThiTGBatDau.Font = new Font("Segoe UI", 10F);
-            labelHienThiTGBatDau.Location = new Point(429, 152);
+            labelHienThiTGBatDau.Location = new Point(297, 152);
             labelHienThiTGBatDau.Name = "labelHienThiTGBatDau";
             labelHienThiTGBatDau.Size = new Size(55, 23);
             labelHienThiTGBatDau.TabIndex = 10;
@@ -258,7 +286,7 @@
             labelHienThiTGKetThuc.Anchor = AnchorStyles.None;
             labelHienThiTGKetThuc.AutoSize = true;
             labelHienThiTGKetThuc.Font = new Font("Segoe UI", 10F);
-            labelHienThiTGKetThuc.Location = new Point(429, 202);
+            labelHienThiTGKetThuc.Location = new Point(297, 202);
             labelHienThiTGKetThuc.Name = "labelHienThiTGKetThuc";
             labelHienThiTGKetThuc.Size = new Size(55, 23);
             labelHienThiTGKetThuc.TabIndex = 11;
@@ -267,10 +295,12 @@
             // textBoxMaNVCoiThi
             // 
             textBoxMaNVCoiThi.Anchor = AnchorStyles.None;
+            textBoxMaNVCoiThi.BackColor = SystemColors.Control;
+            textBoxMaNVCoiThi.BorderStyle = BorderStyle.FixedSingle;
             textBoxMaNVCoiThi.Font = new Font("Segoe UI", 10F);
-            textBoxMaNVCoiThi.Location = new Point(319, 249);
+            textBoxMaNVCoiThi.Location = new Point(222, 249);
             textBoxMaNVCoiThi.Name = "textBoxMaNVCoiThi";
-            textBoxMaNVCoiThi.Size = new Size(275, 30);
+            textBoxMaNVCoiThi.Size = new Size(204, 30);
             textBoxMaNVCoiThi.TabIndex = 13;
             textBoxMaNVCoiThi.TextChanged += textBoxMaNVCoiThi_TextChanged;
             // 
@@ -280,10 +310,10 @@
             textBoxTenNVCoiThi.BackColor = SystemColors.ButtonHighlight;
             textBoxTenNVCoiThi.BorderStyle = BorderStyle.None;
             textBoxTenNVCoiThi.Font = new Font("Segoe UI", 10F);
-            textBoxTenNVCoiThi.Location = new Point(283, 301);
+            textBoxTenNVCoiThi.Location = new Point(222, 302);
             textBoxTenNVCoiThi.Name = "textBoxTenNVCoiThi";
             textBoxTenNVCoiThi.ReadOnly = true;
-            textBoxTenNVCoiThi.Size = new Size(348, 23);
+            textBoxTenNVCoiThi.Size = new Size(204, 23);
             textBoxTenNVCoiThi.TabIndex = 14;
             textBoxTenNVCoiThi.TextAlign = HorizontalAlignment.Center;
             // 
@@ -291,7 +321,7 @@
             // 
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            label3.Location = new Point(9, 12);
+            label3.Location = new Point(40, 28);
             label3.Name = "label3";
             label3.Size = new Size(234, 25);
             label3.TabIndex = 3;
@@ -306,11 +336,12 @@
             Controls.Add(pictureBox1);
             Controls.Add(label1);
             Name = "adminChinhSuaLichNV";
-            Size = new Size(927, 519);
+            Size = new Size(1041, 576);
             Load += adminChinhSuaLichNV_Load_1;
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dataGridViewDSNVCoiThi).EndInit();
             tableLayoutPanelThongTinLichPhanCong.ResumeLayout(false);
             tableLayoutPanelThongTinLichPhanCong.PerformLayout();
             ResumeLayout(false);
@@ -339,5 +370,7 @@
         private System.Windows.Forms.TextBox textBoxMaNVCoiThi;
         private System.Windows.Forms.TextBox textBoxTenNVCoiThi;
         private System.Windows.Forms.Label label3;
+        private DataGridView dataGridViewDSNVCoiThi;
+        private Label labelDSNhanVienCoiThi;
     }
 }

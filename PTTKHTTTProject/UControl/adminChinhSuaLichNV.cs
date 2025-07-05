@@ -24,6 +24,7 @@ namespace PTTKHTTTProject.UControl
         {
             HienThiDuLieu();
             SetEditable(false); // Bắt đầu ở trạng thái chỉ đọc
+            this.dataGridViewDSNVCoiThi.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridViewDSNVCoiThi_CellClick);
         }
 
         private void HienThiDuLieu()
@@ -65,6 +66,23 @@ namespace PTTKHTTTProject.UControl
         {
             SetEditable(true);
             textBoxMaNVCoiThi.Focus(); // Tự động focus vào ô Mã Nhân Viên
+            LoadNhanVienCoiThi();
+        }
+        private void LoadNhanVienCoiThi()
+        {
+            try
+            {
+                // Gọi qua BUS để lấy danh sách nhân viên có chức vụ "Coi thi"
+                DataTable dtCoiThi = InfoEmployeeBUS.GetAvailableNhanVien();
+
+                // Gán DataSource cho DataGridView mới
+                dataGridViewDSNVCoiThi.DataSource = dtCoiThi;
+                dataGridViewDSNVCoiThi.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi tải danh sách nhân viên coi thi: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         private void buttonLuuThongTin_Click(object? sender, EventArgs e)
@@ -89,6 +107,11 @@ namespace PTTKHTTTProject.UControl
             }
 
             EmployeeScheduleBUS bus = new EmployeeScheduleBUS();
+            if (bus.KiemTraNhanVienDaDuocPhanCong(maLichThi, maNVMoi))
+            {
+                MessageBox.Show("Nhân viên này đã được phân công cho lịch thi này. Vui lòng chọn nhân viên khác.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
             if (bus.UpdateEmployeeSchedule(maLichThi, maNVCU, maNVMoi))
             {
                 MessageBox.Show("Cập nhật thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
@@ -136,7 +159,22 @@ namespace PTTKHTTTProject.UControl
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
-            // Method này có thể để trống
+
+        }
+
+        private void dataGridViewDSNVCoiThi_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dataGridViewDSNVCoiThi_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.RowIndex >= 0)
+            {
+                DataGridViewRow row = dataGridViewDSNVCoiThi.Rows[e.RowIndex];
+                textBoxMaNVCoiThi.Text = row.Cells["Mã NV"].Value?.ToString();
+                textBoxTenNVCoiThi.Text = row.Cells["Tên NV"].Value?.ToString();
+            }
         }
     }
 }

@@ -100,8 +100,6 @@ namespace PTTKHTTTProject
                 dateTimePickerNgaySinh.Value = DateTime.Parse(info["NSinh"]);
                 comboBoxGioiTinh.Text = info["GTinh"];
                 numericUpDownLuong.Value = decimal.Parse(info["Luong"]);
-
-                // SỬA LẠI: Chọn đúng chức vụ, phòng ban sẽ tự nhảy theo
                 comboBoxHienThiChucVu.SelectedItem = info["ChucVu"];
             }
             catch (Exception ex)
@@ -144,7 +142,28 @@ namespace PTTKHTTTProject
                 }
             }
         }
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
 
+        private bool IsValidPhone(string phone)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{10}$");
+        }
+
+        private bool IsValidCCCD(string cccd)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(cccd, @"^\d{12}$");
+        }
         private void buttonLuuThongTin_Click(object sender, EventArgs e)
         {
             string maNV = maNhanVien;
@@ -170,18 +189,49 @@ namespace PTTKHTTTProject
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin hợp lệ.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            bool success = InfoEmployeeBUS.UpdateNhanVien(maNV, tenNV, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
-
-            if (success)
+            // Kiểm tra định dạng email
+            if (!IsValidEmail(email))
             {
-                MessageBox.Show("Cập nhật nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng định dạng email.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            // Kiểm tra số điện thoại 10 số
+            if (!IsValidPhone(sdt))
             {
-                MessageBox.Show("Cập nhật nhân viên thất bại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Số điện thoại phải gồm đúng 10 chữ số.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Kiểm tra CCCD 12 số
+            if (!IsValidCCCD(cccd))
+            {
+                MessageBox.Show("CCCD phải gồm đúng 12 chữ số.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+            try
+            {
+                bool success = InfoEmployeeBUS.UpdateNhanVien(maNV, tenNV, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
+
+                if (success)
+                {
+                    MessageBox.Show("Cập nhật nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else
+                {
+                    MessageBox.Show("Cập nhật nhân viên thất bại. Vui lòng kiểm tra ngày sinh của nhân viên (nhân viên phải trên 18 tuổi)", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật thông tin nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            finally
+            {
+                // Đóng chế độ chỉnh sửa
+                SetFieldsReadOnly(true);
             }
         }
     }

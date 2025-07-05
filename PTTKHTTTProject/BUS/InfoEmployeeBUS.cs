@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Linq;
+using System.Net.NetworkInformation;
 using System.Text;
 using System.Threading.Tasks;
 using PTTKHTTTProject.DAO;
@@ -66,6 +67,11 @@ namespace PTTKHTTTProject.BUS
             string sdt, string cccd, string diaChi, string chucVu, int luong, string maPhongBan)
         {
             return InfoEmployeeDAO.UpdateNhanVien(maNV, tenNV, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
+        }
+
+        public static DataTable GetAvailableNhanVien()
+        {
+            return InfoEmployeeDAO.GetAvailableNhanVien();
         }
     }
 }
