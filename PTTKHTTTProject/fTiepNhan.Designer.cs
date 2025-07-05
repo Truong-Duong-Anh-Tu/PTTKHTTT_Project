@@ -50,6 +50,11 @@
             label4 = new Label();
             pictureBox4 = new PictureBox();
             panelPDK = new Panel();
+            panelKHDonVi = new Panel();
+            PDKView_dgvDV = new DataGridView();
+            PDKView_btnSearchDV = new Button();
+            PDKView_SearchBoxDV = new TextBox();
+            label39 = new Label();
             panelKHTuDo = new Panel();
             PDKView_CCCDTD = new Label();
             PDKView_DOBTD = new Label();
@@ -92,11 +97,6 @@
             btnAddPDK = new Button();
             PDKView_SearchBox = new TextBox();
             PDKView_Search = new Button();
-            panelKHDonVi = new Panel();
-            PDKView_dgvDV = new DataGridView();
-            PDKView_btnSearchDV = new Button();
-            PDKView_SearchBoxDV = new TextBox();
-            label39 = new Label();
             panelXLCC = new Panel();
             button11 = new Button();
             label16 = new Label();
@@ -160,6 +160,7 @@
             GiaHan_MaPhieuSearch = new TextBox();
             label17 = new Label();
             panelPDKAdd = new Panel();
+            PDKView_Return_1 = new Button();
             panelTSDVAdd = new Panel();
             PDKAdd_dgvTSDV = new DataGridView();
             PDKAdd_ThemTSDV = new Button();
@@ -203,6 +204,12 @@
             label57 = new Label();
             label58 = new Label();
             panelPDKUpdate = new Panel();
+            panelTSDVEdit = new Panel();
+            PDKU_btnSearchDV = new Button();
+            PDKU_SearchBoxDV = new TextBox();
+            PDKU_dgvDV = new DataGridView();
+            label59 = new Label();
+            PDKView_Return = new Button();
             btnDelPDK = new Button();
             btnSavePDK = new Button();
             panelTSTDEdit = new Panel();
@@ -242,11 +249,6 @@
             label75 = new Label();
             label76 = new Label();
             label77 = new Label();
-            panelTSDVEdit = new Panel();
-            PDKU_btnSearchDV = new Button();
-            PDKU_SearchBoxDV = new TextBox();
-            PDKU_dgvDV = new DataGridView();
-            label59 = new Label();
             tlpMenuTiepNhan.SuspendLayout();
             tlpLogoName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).BeginInit();
@@ -256,10 +258,10 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panelPDK.SuspendLayout();
-            panelKHTuDo.SuspendLayout();
-            panel4.SuspendLayout();
             panelKHDonVi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PDKView_dgvDV).BeginInit();
+            panelKHTuDo.SuspendLayout();
+            panel4.SuspendLayout();
             panelXLCC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)GridviewXLCC).BeginInit();
             panelGiaHan.SuspendLayout();
@@ -273,10 +275,10 @@
             panel1.SuspendLayout();
             panelTSTDAdd.SuspendLayout();
             panelPDKUpdate.SuspendLayout();
-            panelTSTDEdit.SuspendLayout();
-            panel12.SuspendLayout();
             panelTSDVEdit.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).BeginInit();
+            panelTSTDEdit.SuspendLayout();
+            panel12.SuspendLayout();
             SuspendLayout();
             // 
             // tlpMenuTiepNhan
@@ -562,18 +564,65 @@
             // 
             // panelPDK
             // 
+            panelPDK.Controls.Add(panelKHDonVi);
             panelPDK.Controls.Add(panelKHTuDo);
             panelPDK.Controls.Add(btnUpdatePDK);
             panelPDK.Controls.Add(panel4);
             panelPDK.Controls.Add(btnAddPDK);
             panelPDK.Controls.Add(PDKView_SearchBox);
             panelPDK.Controls.Add(PDKView_Search);
-            panelPDK.Controls.Add(panelKHDonVi);
             panelPDK.Dock = DockStyle.Fill;
-            panelPDK.Location = new Point(0, 0);
+            panelPDK.Location = new Point(194, 62);
             panelPDK.Name = "panelPDK";
-            panelPDK.Size = new Size(1477, 785);
+            panelPDK.Size = new Size(1283, 723);
             panelPDK.TabIndex = 10;
+            // 
+            // panelKHDonVi
+            // 
+            panelKHDonVi.Controls.Add(PDKView_dgvDV);
+            panelKHDonVi.Controls.Add(PDKView_btnSearchDV);
+            panelKHDonVi.Controls.Add(PDKView_SearchBoxDV);
+            panelKHDonVi.Controls.Add(label39);
+            panelKHDonVi.Location = new Point(16, 348);
+            panelKHDonVi.Name = "panelKHDonVi";
+            panelKHDonVi.Size = new Size(1232, 328);
+            panelKHDonVi.TabIndex = 11;
+            // 
+            // PDKView_dgvDV
+            // 
+            PDKView_dgvDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PDKView_dgvDV.Location = new Point(13, 59);
+            PDKView_dgvDV.Name = "PDKView_dgvDV";
+            PDKView_dgvDV.RowHeadersWidth = 62;
+            PDKView_dgvDV.Size = new Size(1207, 266);
+            PDKView_dgvDV.TabIndex = 12;
+            // 
+            // PDKView_btnSearchDV
+            // 
+            PDKView_btnSearchDV.Location = new Point(632, 13);
+            PDKView_btnSearchDV.Name = "PDKView_btnSearchDV";
+            PDKView_btnSearchDV.Size = new Size(185, 34);
+            PDKView_btnSearchDV.TabIndex = 11;
+            PDKView_btnSearchDV.Text = "Tìm kiếm tên thí sinh";
+            PDKView_btnSearchDV.UseVisualStyleBackColor = true;
+            PDKView_btnSearchDV.Click += PDKView_btnSearchDV_Click;
+            // 
+            // PDKView_SearchBoxDV
+            // 
+            PDKView_SearchBoxDV.Location = new Point(294, 14);
+            PDKView_SearchBoxDV.Name = "PDKView_SearchBoxDV";
+            PDKView_SearchBoxDV.Size = new Size(328, 31);
+            PDKView_SearchBoxDV.TabIndex = 10;
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.Font = new Font("Segoe UI", 12F);
+            label39.Location = new Point(13, 12);
+            label39.Name = "label39";
+            label39.Size = new Size(274, 32);
+            label39.TabIndex = 9;
+            label39.Text = "Thông tin thí sinh dự thi";
             // 
             // panelKHTuDo
             // 
@@ -732,20 +781,21 @@
             // 
             // label6
             // 
-            label6.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label6.AutoSize = true;
-            label6.Location = new Point(268, 5);
+            label6.Dock = DockStyle.Top;
+            label6.Font = new Font("Segoe UI", 12F);
+            label6.Location = new Point(0, 0);
             label6.Name = "label6";
-            label6.Size = new Size(202, 25);
+            label6.Size = new Size(739, 41);
             label6.TabIndex = 8;
             label6.Text = "Thông tin thí sinh dự thi";
+            label6.TextAlign = ContentAlignment.TopCenter;
             // 
             // btnUpdatePDK
             // 
             btnUpdatePDK.Font = new Font("Segoe UI", 10F);
-            btnUpdatePDK.Location = new Point(1055, 23);
+            btnUpdatePDK.Location = new Point(1055, 17);
             btnUpdatePDK.Name = "btnUpdatePDK";
-            btnUpdatePDK.Size = new Size(193, 39);
+            btnUpdatePDK.Size = new Size(193, 53);
             btnUpdatePDK.TabIndex = 16;
             btnUpdatePDK.Text = "Chỉnh sửa thông tin";
             btnUpdatePDK.UseVisualStyleBackColor = true;
@@ -941,11 +991,11 @@
             // 
             // label7
             // 
-            label7.AutoSize = true;
+            label7.Dock = DockStyle.Top;
             label7.Font = new Font("Segoe UI", 12F);
-            label7.Location = new Point(461, 12);
+            label7.Location = new Point(0, 0);
             label7.Name = "label7";
-            label7.Size = new Size(278, 32);
+            label7.Size = new Size(1232, 32);
             label7.TabIndex = 9;
             label7.Text = "Thông tin phiếu đăng ký";
             label7.TextAlign = ContentAlignment.TopCenter;
@@ -1007,54 +1057,6 @@
             PDKView_Search.Text = "Tìm kiếm qua mã phiếu";
             PDKView_Search.UseVisualStyleBackColor = true;
             PDKView_Search.Click += PDKView_Search_Click;
-            // 
-            // panelKHDonVi
-            // 
-            panelKHDonVi.Controls.Add(PDKView_dgvDV);
-            panelKHDonVi.Controls.Add(PDKView_btnSearchDV);
-            panelKHDonVi.Controls.Add(PDKView_SearchBoxDV);
-            panelKHDonVi.Controls.Add(label39);
-            panelKHDonVi.Location = new Point(16, 348);
-            panelKHDonVi.Name = "panelKHDonVi";
-            panelKHDonVi.Size = new Size(1232, 328);
-            panelKHDonVi.TabIndex = 11;
-            // 
-            // PDKView_dgvDV
-            // 
-            PDKView_dgvDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            PDKView_dgvDV.Location = new Point(13, 59);
-            PDKView_dgvDV.Name = "PDKView_dgvDV";
-            PDKView_dgvDV.RowHeadersWidth = 62;
-            PDKView_dgvDV.Size = new Size(1207, 266);
-            PDKView_dgvDV.TabIndex = 12;
-            // 
-            // PDKView_btnSearchDV
-            // 
-            PDKView_btnSearchDV.Location = new Point(628, 16);
-            PDKView_btnSearchDV.Name = "PDKView_btnSearchDV";
-            PDKView_btnSearchDV.Size = new Size(185, 34);
-            PDKView_btnSearchDV.TabIndex = 11;
-            PDKView_btnSearchDV.Text = "Tìm kiếm tên thí sinh";
-            PDKView_btnSearchDV.UseVisualStyleBackColor = true;
-            PDKView_btnSearchDV.Click += PDKView_btnSearchDV_Click;
-            // 
-            // PDKView_SearchBoxDV
-            // 
-            PDKView_SearchBoxDV.Location = new Point(277, 18);
-            PDKView_SearchBoxDV.Name = "PDKView_SearchBoxDV";
-            PDKView_SearchBoxDV.Size = new Size(328, 31);
-            PDKView_SearchBoxDV.TabIndex = 10;
-            // 
-            // label39
-            // 
-            label39.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label39.AutoSize = true;
-            label39.Font = new Font("Segoe UI", 10F);
-            label39.Location = new Point(13, 18);
-            label39.Name = "label39";
-            label39.Size = new Size(221, 28);
-            label39.TabIndex = 9;
-            label39.Text = "Thông tin thí sinh dự thi";
             // 
             // panelXLCC
             // 
@@ -1185,9 +1187,9 @@
             panelGiaHan.Controls.Add(GiaHan_MaPhieuSearch);
             panelGiaHan.Controls.Add(label17);
             panelGiaHan.Dock = DockStyle.Fill;
-            panelGiaHan.Location = new Point(194, 62);
+            panelGiaHan.Location = new Point(0, 0);
             panelGiaHan.Name = "panelGiaHan";
-            panelGiaHan.Size = new Size(1283, 723);
+            panelGiaHan.Size = new Size(1477, 785);
             panelGiaHan.TabIndex = 8;
             // 
             // panel7
@@ -1704,6 +1706,7 @@
             // 
             // panelPDKAdd
             // 
+            panelPDKAdd.Controls.Add(PDKView_Return_1);
             panelPDKAdd.Controls.Add(panelTSDVAdd);
             panelPDKAdd.Controls.Add(PDKAdd_XacNhan);
             panelPDKAdd.Controls.Add(panel1);
@@ -1713,6 +1716,17 @@
             panelPDKAdd.Name = "panelPDKAdd";
             panelPDKAdd.Size = new Size(1477, 785);
             panelPDKAdd.TabIndex = 10;
+            // 
+            // PDKView_Return_1
+            // 
+            PDKView_Return_1.Font = new Font("Segoe UI", 10F);
+            PDKView_Return_1.Location = new Point(896, 673);
+            PDKView_Return_1.Name = "PDKView_Return_1";
+            PDKView_Return_1.Size = new Size(136, 38);
+            PDKView_Return_1.TabIndex = 15;
+            PDKView_Return_1.Text = "Quay lại";
+            PDKView_Return_1.UseVisualStyleBackColor = true;
+            PDKView_Return_1.Click += PDKView_Return_Click;
             // 
             // panelTSDVAdd
             // 
@@ -1747,10 +1761,10 @@
             // 
             label50.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             label50.AutoSize = true;
-            label50.Font = new Font("Segoe UI", 10F);
+            label50.Font = new Font("Segoe UI", 12F);
             label50.Location = new Point(13, 18);
             label50.Name = "label50";
-            label50.Size = new Size(221, 28);
+            label50.Size = new Size(274, 32);
             label50.TabIndex = 9;
             label50.Text = "Thông tin thí sinh dự thi";
             // 
@@ -1962,11 +1976,11 @@
             // 
             // label46
             // 
-            label46.AutoSize = true;
+            label46.Dock = DockStyle.Top;
             label46.Font = new Font("Segoe UI", 12F);
-            label46.Location = new Point(461, 12);
+            label46.Location = new Point(0, 0);
             label46.Name = "label46";
-            label46.Size = new Size(278, 32);
+            label46.Size = new Size(1232, 32);
             label46.TabIndex = 9;
             label46.Text = "Thông tin phiếu đăng ký";
             label46.TextAlign = ContentAlignment.TopCenter;
@@ -2128,26 +2142,87 @@
             // 
             // label58
             // 
-            label58.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label58.AutoSize = true;
-            label58.Location = new Point(268, 5);
+            label58.Dock = DockStyle.Top;
+            label58.Font = new Font("Segoe UI", 12F);
+            label58.Location = new Point(0, 0);
             label58.Name = "label58";
-            label58.Size = new Size(202, 25);
+            label58.Size = new Size(843, 37);
             label58.TabIndex = 8;
             label58.Text = "Thông tin thí sinh dự thi";
+            label58.TextAlign = ContentAlignment.TopCenter;
             // 
             // panelPDKUpdate
             // 
+            panelPDKUpdate.Controls.Add(panelTSDVEdit);
+            panelPDKUpdate.Controls.Add(PDKView_Return);
             panelPDKUpdate.Controls.Add(btnDelPDK);
             panelPDKUpdate.Controls.Add(btnSavePDK);
             panelPDKUpdate.Controls.Add(panelTSTDEdit);
             panelPDKUpdate.Controls.Add(panel12);
-            panelPDKUpdate.Controls.Add(panelTSDVEdit);
             panelPDKUpdate.Dock = DockStyle.Fill;
             panelPDKUpdate.Location = new Point(0, 0);
             panelPDKUpdate.Name = "panelPDKUpdate";
             panelPDKUpdate.Size = new Size(1477, 785);
             panelPDKUpdate.TabIndex = 15;
+            // 
+            // panelTSDVEdit
+            // 
+            panelTSDVEdit.Controls.Add(PDKU_btnSearchDV);
+            panelTSDVEdit.Controls.Add(PDKU_SearchBoxDV);
+            panelTSDVEdit.Controls.Add(PDKU_dgvDV);
+            panelTSDVEdit.Controls.Add(label59);
+            panelTSDVEdit.Location = new Point(17, 314);
+            panelTSDVEdit.Name = "panelTSDVEdit";
+            panelTSDVEdit.Size = new Size(1232, 294);
+            panelTSDVEdit.TabIndex = 12;
+            // 
+            // PDKU_btnSearchDV
+            // 
+            PDKU_btnSearchDV.Location = new Point(631, 18);
+            PDKU_btnSearchDV.Name = "PDKU_btnSearchDV";
+            PDKU_btnSearchDV.Size = new Size(179, 34);
+            PDKU_btnSearchDV.TabIndex = 14;
+            PDKU_btnSearchDV.Text = "Tìm họ tên thí sinh";
+            PDKU_btnSearchDV.UseVisualStyleBackColor = true;
+            PDKU_btnSearchDV.Click += PDKU_btnSearchDV_Click;
+            // 
+            // PDKU_SearchBoxDV
+            // 
+            PDKU_SearchBoxDV.Location = new Point(299, 18);
+            PDKU_SearchBoxDV.Name = "PDKU_SearchBoxDV";
+            PDKU_SearchBoxDV.Size = new Size(317, 31);
+            PDKU_SearchBoxDV.TabIndex = 13;
+            // 
+            // PDKU_dgvDV
+            // 
+            PDKU_dgvDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PDKU_dgvDV.Location = new Point(13, 59);
+            PDKU_dgvDV.Name = "PDKU_dgvDV";
+            PDKU_dgvDV.RowHeadersWidth = 62;
+            PDKU_dgvDV.Size = new Size(1207, 225);
+            PDKU_dgvDV.TabIndex = 12;
+            // 
+            // label59
+            // 
+            label59.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label59.AutoSize = true;
+            label59.Font = new Font("Segoe UI", 12F);
+            label59.Location = new Point(13, 18);
+            label59.Name = "label59";
+            label59.Size = new Size(274, 32);
+            label59.TabIndex = 9;
+            label59.Text = "Thông tin thí sinh dự thi";
+            // 
+            // PDKView_Return
+            // 
+            PDKView_Return.Font = new Font("Segoe UI", 10F);
+            PDKView_Return.Location = new Point(702, 636);
+            PDKView_Return.Name = "PDKView_Return";
+            PDKView_Return.Size = new Size(112, 38);
+            PDKView_Return.TabIndex = 16;
+            PDKView_Return.Text = "Quay lại";
+            PDKView_Return.UseVisualStyleBackColor = true;
+            PDKView_Return.Click += PDKView_Return_Click;
             // 
             // btnDelPDK
             // 
@@ -2330,14 +2405,14 @@
             // 
             // label67
             // 
-            label67.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label67.AutoSize = true;
+            label67.Dock = DockStyle.Top;
             label67.Font = new Font("Segoe UI", 12F);
-            label67.Location = new Point(208, 8);
+            label67.Location = new Point(0, 0);
             label67.Name = "label67";
-            label67.Size = new Size(274, 32);
+            label67.Size = new Size(739, 32);
             label67.TabIndex = 8;
             label67.Text = "Thông tin thí sinh dự thi";
+            label67.TextAlign = ContentAlignment.TopCenter;
             // 
             // panel12
             // 
@@ -2500,12 +2575,11 @@
             // 
             // label74
             // 
-            label74.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label74.AutoSize = true;
+            label74.Dock = DockStyle.Top;
             label74.Font = new Font("Segoe UI", 12F);
-            label74.Location = new Point(461, 12);
+            label74.Location = new Point(0, 0);
             label74.Name = "label74";
-            label74.Size = new Size(278, 32);
+            label74.Size = new Size(1232, 32);
             label74.TabIndex = 9;
             label74.Text = "Thông tin phiếu đăng ký";
             label74.TextAlign = ContentAlignment.TopCenter;
@@ -2540,66 +2614,18 @@
             label77.TabIndex = 9;
             label77.Text = "Email:";
             // 
-            // panelTSDVEdit
-            // 
-            panelTSDVEdit.Controls.Add(PDKU_btnSearchDV);
-            panelTSDVEdit.Controls.Add(PDKU_SearchBoxDV);
-            panelTSDVEdit.Controls.Add(PDKU_dgvDV);
-            panelTSDVEdit.Controls.Add(label59);
-            panelTSDVEdit.Location = new Point(17, 314);
-            panelTSDVEdit.Name = "panelTSDVEdit";
-            panelTSDVEdit.Size = new Size(1232, 294);
-            panelTSDVEdit.TabIndex = 12;
-            // 
-            // PDKU_btnSearchDV
-            // 
-            PDKU_btnSearchDV.Location = new Point(572, 15);
-            PDKU_btnSearchDV.Name = "PDKU_btnSearchDV";
-            PDKU_btnSearchDV.Size = new Size(179, 34);
-            PDKU_btnSearchDV.TabIndex = 14;
-            PDKU_btnSearchDV.Text = "Tìm họ tên thí sinh";
-            PDKU_btnSearchDV.UseVisualStyleBackColor = true;
-            PDKU_btnSearchDV.Click += PDKU_btnSearchDV_Click;
-            // 
-            // PDKU_SearchBoxDV
-            // 
-            PDKU_SearchBoxDV.Location = new Point(241, 18);
-            PDKU_SearchBoxDV.Name = "PDKU_SearchBoxDV";
-            PDKU_SearchBoxDV.Size = new Size(317, 31);
-            PDKU_SearchBoxDV.TabIndex = 13;
-            // 
-            // PDKU_dgvDV
-            // 
-            PDKU_dgvDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            PDKU_dgvDV.Location = new Point(13, 59);
-            PDKU_dgvDV.Name = "PDKU_dgvDV";
-            PDKU_dgvDV.RowHeadersWidth = 62;
-            PDKU_dgvDV.Size = new Size(1207, 225);
-            PDKU_dgvDV.TabIndex = 12;
-            // 
-            // label59
-            // 
-            label59.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label59.AutoSize = true;
-            label59.Font = new Font("Segoe UI", 10F);
-            label59.Location = new Point(13, 18);
-            label59.Name = "label59";
-            label59.Size = new Size(221, 28);
-            label59.TabIndex = 9;
-            label59.Text = "Thông tin thí sinh dự thi";
-            // 
             // fTiepNhan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1477, 785);
-            Controls.Add(panelGiaHan);
+            Controls.Add(panelPDK);
             Controls.Add(panel2);
             Controls.Add(tlpMenuTiepNhan);
-            Controls.Add(panelPDK);
             Controls.Add(panelPDKUpdate);
             Controls.Add(panelPDKAdd);
             Controls.Add(panelXLCC);
+            Controls.Add(panelGiaHan);
             Name = "fTiepNhan";
             Text = "fTiepNhan";
             Load += fTiepNhan_Load_1;
@@ -2615,13 +2641,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panelPDK.ResumeLayout(false);
             panelPDK.PerformLayout();
+            panelKHDonVi.ResumeLayout(false);
+            panelKHDonVi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PDKView_dgvDV).EndInit();
             panelKHTuDo.ResumeLayout(false);
             panelKHTuDo.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
-            panelKHDonVi.ResumeLayout(false);
-            panelKHDonVi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PDKView_dgvDV).EndInit();
             panelXLCC.ResumeLayout(false);
             panelXLCC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)GridviewXLCC).EndInit();
@@ -2644,13 +2670,13 @@
             panelTSTDAdd.ResumeLayout(false);
             panelTSTDAdd.PerformLayout();
             panelPDKUpdate.ResumeLayout(false);
+            panelTSDVEdit.ResumeLayout(false);
+            panelTSDVEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).EndInit();
             panelTSTDEdit.ResumeLayout(false);
             panelTSTDEdit.PerformLayout();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
-            panelTSDVEdit.ResumeLayout(false);
-            panelTSDVEdit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).EndInit();
             ResumeLayout(false);
         }
 
@@ -2876,5 +2902,7 @@
         private ComboBox GiaHan_ChonGioThi;
         private ComboBox GiaHan_ChonNgayThi;
         private ComboBox GiaHan_ChonKyThi;
+        private Button PDKView_Return;
+        private Button PDKView_Return_1;
     }
 }
