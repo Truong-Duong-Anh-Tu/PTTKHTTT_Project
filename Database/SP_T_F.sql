@@ -1078,7 +1078,7 @@ BEGIN
     WHERE (CAST(LT.LT_NgayThi AS DATETIME) + CAST(LT.LT_TGKetThuc AS DATETIME)) < @Now;
 END
 GO
-
+-- Lấy phân công giới hạn dựa vào số lượng người coi thi ở phòng thi
 CREATE OR ALTER PROCEDURE usp_CheckPhanCongLimit
     @MaLichThi VARCHAR(10)
 AS
@@ -1109,6 +1109,143 @@ BEGIN
     END
 END
 GO
+
+-- Lấy toàn bộ phiếu dự thi:
+CREATE OR ALTER PROCEDURE usp_GetAllPhieuDuThi
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+        pdt.PDT_MaPhieu AS N'Mã Phiếu Dự Thi',
+        ts.TS_HoTen AS N'Họ Tên Thí Sinh',
+        ts.TS_SoBaoDanh AS N'Số Báo Danh',
+        kt.KT_TenKyThi AS N'Tên Kỳ Thi',
+        lt.LT_NgayThi AS N'Ngày Thi',
+        lt.LT_TGBatDau AS N'Giờ Bắt Đầu',
+        lt.LT_TGKetThuc AS N'Giờ Kết Thúc',
+        pdt.PDT_MaPhongThi AS N'Phòng Thi'
+    FROM
+        PHIEUDUTHI AS pdt
+    JOIN
+        THISINH AS ts ON pdt.PDT_SoBaoDanh = ts.TS_SoBaoDanh
+    JOIN
+        LICHTHI AS lt ON pdt.PDT_MaLichThi = lt.LT_MaLichThi
+    JOIN
+        KYTHI AS kt ON lt.LT_MaKyThi = kt.KT_MaKyThi
+    ORDER BY
+        lt.LT_NgayThi DESC, pdt.PDT_MaPhieu DESC;
+END
+GO
+-- Lấy danh sách phiếu đăng ký có lịch thi đã diễn ra trong vòng 3 tuần gần nhất, đã thanh toán, và chưa có phiếu dự thi được tạo
+CREATE OR ALTER PROCEDURE usp_LayPhieuDangKyThiTrong3TuanSau
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Lấy ngày hiện tại
+    DECLARE @NgayHienTai DATE = GETDATE();
+
+    SELECT pdk.PDKDT_MaPhieu AS N'Mã Phiếu Đăng Ký', ts.TS_HoTen AS 'Họ tên thí sinh', lt.LT_TenKyThi AS N'Tên Kỳ Thi', lt.LT_NgayThi AS N'Ngày Thi', 
+	lt.LT_TGBatDau AS N'Giờ Bắt Đầu', pdk.PDKDT_TrangThaiThanhToan AS N'Trạng Thái Thanh Toán'
+    FROM PHIEUDANGKYDUTHI pdk JOIN LICHTHI lt ON pdk.PDKDT_MaLichThi = lt.LT_MaLichThi
+    RIGHT JOIN THISINH ts ON ts.TS_MaPhieuDangKy = pdk.PDKDT_MaPhieu
+    WHERE
+        -- Điều kiện: 
+		-- Lịch thi phải nằm trong khoảng từ hôm nay đến 3 tuần sau
+		-- Trạng thái thì đã thanh toán
+		-- Và chưa có phiếu đăng ký
+       (lt.LT_NgayThi > @NgayHienTai ) AND (pdk.PDKDT_TrangThaiThanhToan = N'Đã thanh toán')
+	   AND NOT EXISTS (
+            SELECT 1 
+            FROM PHIEUDUTHI pdt 
+            WHERE pdt.PDT_MaPhieuDangKy = pdk.PDKDT_MaPhieu AND pdt.PDT_MaLichThi = pdk.PDKDT_MaLichThi
+        )
+    ORDER BY
+        lt.LT_NgayThi ASC, lt.LT_TGBatDau ASC; -- Sắp xếp theo ngày thi gần nhất lên đầu
+END
+GO
+
+-- Lập phiếu dự thi tự động khi gần đến 2 tuần trước khi thi
+-- Lập phiếu dự thi tự động và trả về danh sách mã phiếu đã tạo
+CREATE OR ALTER PROCEDURE usp_TuDongLapPhieuDuThi
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Bảng tạm để lưu các ID của phiếu dự thi mới được tạo
+    DECLARE @NewlyCreatedIDs TABLE (MaPhieu VARCHAR(10));
+
+    -- Bảng tạm để lưu các phiếu đăng ký đủ điều kiện
+    DECLARE @PhieuDuThiCanTao TABLE (
+        PDKDT_MaPhieu VARCHAR(10) PRIMARY KEY,
+        TS_SoBaoDanh VARCHAR(10),
+        LT_MaLichThi VARCHAR(10),
+        PT_MaPhongThi VARCHAR(10)
+    );
+
+    -- 1. Lấy danh sách tất cả các phiếu đăng ký đủ điều kiện
+    INSERT INTO @PhieuDuThiCanTao (PDKDT_MaPhieu, TS_SoBaoDanh, LT_MaLichThi, PT_MaPhongThi)
+    SELECT 
+        pdk.PDKDT_MaPhieu,
+        ts.TS_SoBaoDanh,
+        pdk.PDKDT_MaLichThi,
+        lt.LT_MaPhongThi
+    FROM PHIEUDANGKYDUTHI pdk JOIN LICHTHI lt ON pdk.PDKDT_MaLichThi = lt.LT_MaLichThi
+    JOIN THISINH ts ON ts.TS_MaPhieuDangKy = pdk.PDKDT_MaPhieu
+    WHERE 
+        (lt.LT_NgayThi BETWEEN GETDATE() AND DATEADD(WEEK, +2, GETDATE()))
+        AND (pdk.PDKDT_TrangThaiThanhToan = N'Đã thanh toán')
+        AND NOT EXISTS (
+            SELECT 1 
+            FROM PHIEUDUTHI pdt 
+            WHERE pdt.PDT_MaPhieuDangKy = pdk.PDKDT_MaPhieu AND pdt.PDT_MaLichThi = pdk.PDKDT_MaLichThi
+        );
+
+    -- 2. XỬ LÝ PHIẾU CHO KHÁCH HÀNG CÁ NHÂN (PDK -> PDT)
+    DECLARE @MaxID_PDT INT;
+    SELECT @MaxID_PDT = ISNULL(MAX(CAST(SUBSTRING(PDT_MaPhieu, 4, LEN(PDT_MaPhieu)) AS INT)), 0)
+    FROM PHIEUDUTHI WITH (TABLOCKX, HOLDLOCK)
+    WHERE PDT_MaPhieu LIKE 'PDT%' AND PDT_MaPhieu NOT LIKE 'PDTD%';
+
+    INSERT INTO PHIEUDUTHI (PDT_MaPhieu, PDT_MaPhieuDangKy, PDT_SoBaoDanh, PDT_MaLichThi, PDT_MaPhongThi)
+    OUTPUT inserted.PDT_MaPhieu INTO @NewlyCreatedIDs
+    SELECT 
+        'PDT' + FORMAT(ROW_NUMBER() OVER (ORDER BY PDKDT_MaPhieu) + @MaxID_PDT, '000'),
+        PDKDT_MaPhieu,
+        TS_SoBaoDanh,
+        LT_MaLichThi,
+        PT_MaPhongThi
+    FROM 
+        @PhieuDuThiCanTao
+    WHERE 
+        PDKDT_MaPhieu LIKE 'PDK%' AND PDKDT_MaPhieu NOT LIKE 'PDKD%';
+
+    -- 3. XỬ LÝ PHIẾU CHO KHÁCH HÀNG ĐƠN VỊ (PDKD -> PDTD)
+    DECLARE @MaxID_PDTD INT;
+    SELECT @MaxID_PDTD = ISNULL(MAX(CAST(SUBSTRING(PDT_MaPhieu, 5, LEN(PDT_MaPhieu)) AS INT)), 0)
+    FROM PHIEUDUTHI WITH (TABLOCKX, HOLDLOCK)
+    WHERE PDT_MaPhieu LIKE 'PDTD%';
+
+    INSERT INTO PHIEUDUTHI (PDT_MaPhieu, PDT_MaPhieuDangKy, PDT_SoBaoDanh, PDT_MaLichThi, PDT_MaPhongThi)
+    OUTPUT inserted.PDT_MaPhieu INTO @NewlyCreatedIDs
+    SELECT 
+        'PDTD' + FORMAT(ROW_NUMBER() OVER (ORDER BY PDKDT_MaPhieu) + @MaxID_PDTD, '00000'),
+        PDKDT_MaPhieu,
+        TS_SoBaoDanh,
+        LT_MaLichThi,
+        PT_MaPhongThi
+    FROM 
+        @PhieuDuThiCanTao
+    WHERE 
+        PDKDT_MaPhieu LIKE 'PDKD%';
+
+    -- 4. Trả về danh sách tất cả các mã phiếu vừa được tạo
+    SELECT MaPhieu FROM @NewlyCreatedIDs;
+
+    PRINT N'Đã hoàn tất việc tạo phiếu dự thi tự động.';
+END
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------
 
@@ -1122,7 +1259,6 @@ GO
 
 
 --TRIGGER
-
 --Trigger kiểm tra mã người nhận trong THONGBAO có thuộc bảng NHANVIEN hoặc PHONGBAN không 
 create or alter trigger utg_CheckDoiTuong
 on THONGBAO

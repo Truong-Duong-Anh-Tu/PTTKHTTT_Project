@@ -22,6 +22,9 @@
     <Compile Update="UControl\adminChinhSuaLichNV.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="UControl\adminPhatHanhPhieuDuThi.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
     <Compile Update="UControl\adminQLKyThi.cs">
       <SubType>UserControl</SubType>
     </Compile>

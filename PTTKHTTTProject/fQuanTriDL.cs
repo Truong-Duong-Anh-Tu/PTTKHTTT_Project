@@ -63,7 +63,7 @@ namespace PTTKHTTTProject
                     content = new adminQLPhongThi();
                     break;
                 case "Phát hành phiếu dự thi":
-                    //content = new adminPhatHanhPhieuDuThi();
+                    content = new adminPhatHanhPhieuDuThi();
                     break;
                 case "Thông báo":
                     content = new ucNotification(this.loggedInUsername);
