@@ -66,10 +66,17 @@ namespace PTTKHTTTProject.DAO
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-        new SqlParameter("@MaLichThi", maLichThi),
-        new SqlParameter("@MaNhanVien", maNhanVien)
+                new SqlParameter("@MaLichThi", maLichThi),
+                new SqlParameter("@MaNhanVien", maNhanVien)
             };
             DataProvider.Instance.ExecuteNonQuerySP("usp_AddPhanCong", parameters);
         }
+        public static bool IsPhanCongLimitReached(string maLichThi)
+        {
+            SqlParameter param = new SqlParameter("@MaLichThi", maLichThi);
+            // ExecuteScalarSP<bool> sẽ tự động chuyển đổi kết quả BIT từ SQL thành boolean
+            return DataProvider.Instance.ExecuteScalarSP<bool>("usp_CheckPhanCongLimit", param);
+        }
+
     }
 }

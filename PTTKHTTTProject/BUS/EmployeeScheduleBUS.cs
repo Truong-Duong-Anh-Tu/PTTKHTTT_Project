@@ -62,5 +62,14 @@ namespace PTTKHTTTProject.BUS
 
             return daTonTai;
         }
+
+        public bool IsPhanCongLimitReached(string maLichThi)
+        {
+            if (string.IsNullOrEmpty(maLichThi))
+            {
+                return true; // Coi như đã đầy nếu không có mã lịch thi
+            }
+            return EmployeeScheduleDAO.IsPhanCongLimitReached(maLichThi);
+        }
     }
 }

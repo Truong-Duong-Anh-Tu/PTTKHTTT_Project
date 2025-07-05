@@ -1078,6 +1078,37 @@ BEGIN
     WHERE (CAST(LT.LT_NgayThi AS DATETIME) + CAST(LT.LT_TGKetThuc AS DATETIME)) < @Now;
 END
 GO
+
+CREATE OR ALTER PROCEDURE usp_CheckPhanCongLimit
+    @MaLichThi VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @SoLuongDaPhanCong INT;
+    DECLARE @SoLuongYeuCau INT;
+    DECLARE @MaPhongThi VARCHAR(10);
+
+    -- Lấy mã phòng thi từ lịch thi
+    SELECT @MaPhongThi = LT_MaPhongThi FROM LICHTHI WHERE LT_MaLichThi = @MaLichThi;
+
+    -- Lấy số lượng nhân viên yêu cầu từ phòng thi
+    SELECT @SoLuongYeuCau = PT_SLNhanVienCoiThi FROM PHONGTHI WHERE PT_MaPhongThi = @MaPhongThi;
+
+    -- Đếm số lượng nhân viên đã được phân công cho lịch thi này
+    SELECT @SoLuongDaPhanCong = COUNT(*) FROM PHANCONG WHERE PC_MaLichThi = @MaLichThi;
+
+    -- So sánh và trả về kết quả
+    IF @SoLuongDaPhanCong >= @SoLuongYeuCau
+    BEGIN
+        SELECT CAST(1 AS BIT) AS IsLimitReached; -- Đã đủ hoặc vượt giới hạn
+    END
+    ELSE
+    BEGIN
+        SELECT CAST(0 AS BIT) AS IsLimitReached; -- Vẫn còn chỗ
+    END
+END
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------
 

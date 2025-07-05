@@ -101,7 +101,11 @@ namespace PTTKHTTTProject
             string maPhongThi = textBoxHienThiPhongThi.Text;
             TimeSpan thoiGianBatDau = dateTimePickerTGBatDau.Value.TimeOfDay;
             TimeSpan thoiGianKetThuc = dateTimePickerTGKetThuc.Value.TimeOfDay;
-
+            if ((ngayThi.Date - DateTime.Today).TotalDays < 30)
+            {
+                MessageBox.Show("Ngày thi phải được lên lịch trước ít nhất 30 ngày so với ngày hiện tại.", "Lỗi logic", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (thoiGianKetThuc <= thoiGianBatDau)
             {
                 MessageBox.Show("Thời gian kết thúc phải sau thời gian bắt đầu.", "Lỗi logic", MessageBoxButtons.OK, MessageBoxIcon.Warning);

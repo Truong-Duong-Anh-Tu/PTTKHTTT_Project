@@ -57,6 +57,11 @@ namespace PTTKHTTTProject
             TimeSpan tgBatDau = dateTimePickerTGBatDau.Value.TimeOfDay;
             TimeSpan tgKetThuc = dateTimePickerTGKetThuc.Value.TimeOfDay;
 
+            if ((ngayThi.Date - DateTime.Today).TotalDays < 30)
+            {
+                MessageBox.Show("Ngày thi phải được lên lịch trước ít nhất 30 ngày so với ngày hiện tại.", "Lỗi logic", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             if (tgKetThuc <= tgBatDau)
             {
                 MessageBox.Show("Thời gian kết thúc phải sau thời gian bắt đầu.", "Lỗi logic", MessageBoxButtons.OK, MessageBoxIcon.Warning);

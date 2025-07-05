@@ -143,6 +143,11 @@ namespace PTTKHTTTProject.UControl
             if (maLichThi == null) return;
 
             EmployeeScheduleBUS bus = new EmployeeScheduleBUS();
+            if (bus.IsPhanCongLimitReached(maLichThi))
+            {
+                MessageBox.Show("Lịch thi này đã đủ số lượng nhân viên coi thi. Không thể thêm.", "Đã Đạt Giới Hạn", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             try
             {
                 bus.AddPhanCong(maLichThi, maNhanVien);
