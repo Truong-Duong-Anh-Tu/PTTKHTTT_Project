@@ -22,7 +22,7 @@ namespace PTTKHTTTProject
             bs_ResultExam = new BindingSource();
         }
 
-        public void loadCandicateAndPoint()
+        private void loadCandicateAndPoint()
         {
             if (cbxExamName.SelectedIndex != -1)
             {
