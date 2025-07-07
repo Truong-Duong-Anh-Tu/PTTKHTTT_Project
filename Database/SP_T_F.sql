@@ -1058,7 +1058,19 @@ BEGIN
         @SoLuongDangKyHienTai INT,
         @SoLuongToiDa INT,
         @TenKyThiCu NVARCHAR(100),
-        @TenKyThiMoi NVARCHAR(100);
+        @TenKyThiMoi NVARCHAR(100),
+        @SoLanGiaHan INT;
+
+    -- 0. Kiểm tra số lần gia hạn
+    SELECT @SoLanGiaHan = COUNT(*) 
+    FROM PHIEUGIAHAN 
+    WHERE PGH_MaPhieuDK = @MaPhieu;
+
+    IF @SoLanGiaHan >= 2
+    BEGIN
+        RAISERROR(N'Phiếu này đã được gia hạn tối đa 2 lần.', 16, 1);
+        RETURN;
+    END
 
     -- 1. Lấy trạng thái phiếu và mã lịch thi hiện tại
     SELECT 
@@ -1150,6 +1162,5 @@ BEGIN
         WHERE LT_MaLichThi = @MaLichThiCu;
     COMMIT;
 
-    PRINT N'Gia hạn phiếu thành công.';
 END
 GO
