@@ -18,13 +18,13 @@ namespace PTTKHTTTProject.BUS
             _username = accessUser;
         }
 
-        public List<Dictionary<string, string>> getListMailReceive()
+        public List<Dictionary<string, string>> loadListMailReceive()
         {
             List<Dictionary<string, string>> listMail = new List<Dictionary<string, string>>();
 
             string department = TaiKhoanDAO.getRole(_username);
 
-            DataTable dt = MailDAO.LoadReceiveMail(_username.Trim(), department.Trim());
+            DataTable dt = MailDAO.getReceiveMail(_username.Trim(), department.Trim());
 
             foreach (DataRow dr in dt.Rows)
             {
@@ -58,11 +58,11 @@ namespace PTTKHTTTProject.BUS
             return listMail;    
         }
 
-        public List<Dictionary<string, string>> getListMailSend()
+        public List<Dictionary<string, string>> loadListMailSend()
         {
             List<Dictionary<string, string>> listMail = new List<Dictionary<string, string>>();
 
-            DataTable dt = MailDAO.LoadSendMail(_username.Trim());
+            DataTable dt = MailDAO.getSendMail(_username.Trim());
             string rolesender = TaiKhoanDAO.getRole(_username.Trim());
 
             foreach (DataRow dr in dt.Rows)

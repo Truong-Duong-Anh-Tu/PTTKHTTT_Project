@@ -49,7 +49,7 @@ namespace PTTKHTTTProject
 
                 var bus = new MailBUS(username);
 
-                List<Dictionary<string, string>> listMail = bus.getListMailReceive();
+                List<Dictionary<string, string>> listMail = bus.loadListMailReceive();
 
                 foreach (var mail in listMail)
                 {
@@ -68,7 +68,7 @@ namespace PTTKHTTTProject
 
             }
 
-            else if (clicked == btnMailSended)
+            else if (clicked == btnMailSent)
             {
                 tbxFullMail.Clear();
                 lvListMail.Items.Clear();
@@ -79,7 +79,7 @@ namespace PTTKHTTTProject
                 lvListMail.Columns.Add("Chủ đề", 197, HorizontalAlignment.Left);
 
                 var bus = new MailBUS(username);
-                List<Dictionary<string, string>> listMail = bus.getListMailSend();
+                List<Dictionary<string, string>> listMail = bus.loadListMailSend();
 
                 foreach (var mail in listMail)
                 {

@@ -30,7 +30,7 @@
         {
             btnAddNoti = new FontAwesome.Sharp.IconButton();
             pnlSelections = new Panel();
-            btnMailSended = new Button();
+            btnMailSent = new Button();
             btnMailReceived = new Button();
             pnlMail = new Panel();
             tbxFullMail = new RichTextBox();
@@ -46,10 +46,10 @@
             btnAddNoti.IconColor = Color.Black;
             btnAddNoti.IconFont = FontAwesome.Sharp.IconFont.Auto;
             btnAddNoti.IconSize = 40;
-            btnAddNoti.ImageAlign = ContentAlignment.TopLeft;
-            btnAddNoti.Location = new Point(38, 25);
+            btnAddNoti.ImageAlign = ContentAlignment.BottomLeft;
+            btnAddNoti.Location = new Point(36, 25);
             btnAddNoti.Name = "btnAddNoti";
-            btnAddNoti.Size = new Size(259, 49);
+            btnAddNoti.Size = new Size(259, 53);
             btnAddNoti.TabIndex = 3;
             btnAddNoti.Text = "Soạn thông báo";
             btnAddNoti.UseVisualStyleBackColor = true;
@@ -57,24 +57,24 @@
             // 
             // pnlSelections
             // 
-            pnlSelections.Controls.Add(btnMailSended);
+            pnlSelections.Controls.Add(btnMailSent);
             pnlSelections.Controls.Add(btnMailReceived);
             pnlSelections.Location = new Point(38, 97);
             pnlSelections.Name = "pnlSelections";
             pnlSelections.Size = new Size(166, 473);
             pnlSelections.TabIndex = 4;
             // 
-            // btnMailSended
+            // btnMailSent
             // 
-            btnMailSended.FlatStyle = FlatStyle.Flat;
-            btnMailSended.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            btnMailSended.Location = new Point(0, 68);
-            btnMailSended.Name = "btnMailSended";
-            btnMailSended.Size = new Size(166, 58);
-            btnMailSended.TabIndex = 2;
-            btnMailSended.Text = "Thư đã gửi";
-            btnMailSended.UseVisualStyleBackColor = true;
-            btnMailSended.Click += pnlSelections_Click;
+            btnMailSent.FlatStyle = FlatStyle.Flat;
+            btnMailSent.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            btnMailSent.Location = new Point(0, 68);
+            btnMailSent.Name = "btnMailSent";
+            btnMailSent.Size = new Size(166, 58);
+            btnMailSent.TabIndex = 2;
+            btnMailSent.Text = "Thư đã gửi";
+            btnMailSent.UseVisualStyleBackColor = true;
+            btnMailSent.Click += pnlSelections_Click;
             // 
             // btnMailReceived
             // 
@@ -136,7 +136,7 @@
 
         private FontAwesome.Sharp.IconButton btnAddNoti;
         private Panel pnlSelections;
-        private Button btnMailSended;
+        private Button btnMailSent;
         private Button btnMailReceived;
         private Panel pnlMail;
         private RichTextBox tbxFullMail;

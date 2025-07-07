@@ -11,7 +11,7 @@ namespace PTTKHTTTProject.DAO
 {
     internal class MailDAO
     {
-        public static DataTable LoadReceiveMail(string username, string department)
+        public static DataTable getReceiveMail(string username, string department)
         {
             var pUser = new SqlParameter("@username", SqlDbType.VarChar, 10)
             { Value = username.Trim() };
@@ -24,7 +24,7 @@ namespace PTTKHTTTProject.DAO
             return dt;
         }
 
-        public static DataTable LoadSendMail(string username)
+        public static DataTable getSendMail(string username)
         {
             var pUser = new SqlParameter("@username", SqlDbType.VarChar, 10)
             { Value = username.Trim() };
