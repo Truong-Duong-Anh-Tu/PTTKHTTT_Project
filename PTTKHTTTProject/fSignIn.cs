@@ -53,7 +53,7 @@ namespace PTTKHTTTProject
                 }
                 else if (role == "Tiếp nhận")
                 {
-                    fTiepNhan ftn = new fTiepNhan();
+                    fTiepNhan ftn = new fTiepNhan(username);
                     this.Hide();
                     ftn.ShowDialog();
                     this.Show();

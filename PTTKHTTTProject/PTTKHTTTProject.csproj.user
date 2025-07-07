@@ -9,6 +9,11 @@
     </Compile>
     <Compile Update="ucManageExamResult.cs">
       <SubType>UserControl</SubType>
+    <Compile Update="fSuaThiSinhDonVi.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Update="fThemThiSinhDonVi.cs">
+      <SubType>Form</SubType>
     </Compile>
     <Compile Update="UControl\adminChinhSuaLichNV.cs">
       <SubType>UserControl</SubType>

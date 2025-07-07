@@ -181,6 +181,17 @@ CREATE TABLE THONGBAO (
 )
 GO
 
+--Bảng thêm thí sinh
+CREATE TYPE ThiSinhTableType AS TABLE
+(
+    HoTen NVARCHAR(50),
+    NgaySinh DATE,
+    GioiTinh NVARCHAR(3) CHECK (GioiTinh IN (N'Nam', N'Nữ')),
+    Email CHAR(100),
+    SDT CHAR(10),
+    CCCD CHAR(12)
+)
+
 ALTER TABLE NHANVIEN ADD FOREIGN KEY (NV_MaPhongBan) REFERENCES PHONGBAN (PB_MaPhongBan)
 GO
 
@@ -254,6 +265,11 @@ GO
 
 -- Xóa database:
 /*
+ALTER DATABASE DB_TRUNGTAMTHI SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
 use master;
+go
+
 drop database DB_TRUNGTAMTHI;
 */

@@ -768,7 +768,7 @@ end;
 go
 
 --Tra cứu phiếu đăng ký (thông tin cơ bản)
-CREATE PROCEDURE TraCuuPhieuDangKyCoBan 
+CREATE PROCEDURE TraCuuPhieuDangKyCoBan
     @MaPhieu VARCHAR(20)
 AS
 BEGIN
@@ -800,5 +800,430 @@ BEGIN
     INNER JOIN NHANVIEN NV ON PDK.PDKDT_MaNhanVienLap = NV.NV_MaNhanVien
 
     WHERE PDK.PDKDT_MaPhieu = @MaPhieu
+END
+GO
+
+--Cập nhật thông tin cơ bản của phiếu đăng ký
+CREATE PROCEDURE CapNhatPhieuDangKy
+    @MaPhieu VARCHAR(10),
+    @TenKH NVARCHAR(50),
+    @LoaiKH NVARCHAR(20),
+    @SDT CHAR(10),
+    @Email CHAR(100),
+    @DiaChi NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaKH VARCHAR(10);
+
+    -- 1. Lấy mã khách hàng từ phiếu
+    SELECT @MaKH = PDKDT_MaKhachHang
+    FROM PHIEUDANGKYDUTHI
+    WHERE PDKDT_MaPhieu = @MaPhieu;
+
+    IF @MaKH IS NULL
+        RETURN;
+
+    -- 2. Cập nhật tên khách hàng theo loại
+    IF @LoaiKH = N'Tự do'
+    BEGIN
+        UPDATE KHACHHANGHTUDO
+        SET KHTD_HoTen = @TenKH
+        WHERE KHTD_MaKhachHang = @MaKH;
+    END
+    ELSE IF @LoaiKH = N'Đơn vị'
+    BEGIN
+        UPDATE KHACHHANGDONVI
+        SET KHDV_TenDonVi = @TenKH
+        WHERE KHDV_MaKhachHang = @MaKH;
+    END
+
+    -- 3. Cập nhật SDT và Email
+    UPDATE KHACHHANG
+    SET KH_SDT = @SDT,
+        KH_Email = @Email
+    WHERE KH_MaKhachHang = @MaKH;
+
+    -- 4. Cập nhật địa chỉ chuyển phát
+    UPDATE PHIEUDANGKYDUTHI
+    SET PDKDT_DiaChiChuyenPhat = @DiaChi
+    WHERE PDKDT_MaPhieu = @MaPhieu;
+END
+GO
+
+--Xóa phiếu đăng ký
+CREATE PROCEDURE XoaPhieuDangKy
+    @maPhieu VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        -- 1. Xóa CHUNGCHI dựa trên các BT_MaBaiThi thuộc thí sinh đăng ký này
+        DELETE FROM CHUNGCHI
+        WHERE CC_MaBaiThi IN (
+            SELECT BT_MaBaiThi
+            FROM BAITHI
+            WHERE BT_SoBaoDanh IN (
+                SELECT TS_SoBaoDanh
+                FROM THISINH
+                WHERE TS_MaPhieuDangKy = @maPhieu
+            )
+        );
+
+        -- 2. Xóa BAITHI
+        DELETE FROM BAITHI
+        WHERE BT_SoBaoDanh IN (
+            SELECT TS_SoBaoDanh
+            FROM THISINH
+            WHERE TS_MaPhieuDangKy = @maPhieu
+        );
+
+        -- 3. Xóa PHIEUDUTHI
+        DELETE FROM PHIEUDUTHI
+        WHERE PDT_MaPhieuDangKy = @maPhieu;
+
+        -- 4. Xóa THISINH
+        DELETE FROM THISINH
+        WHERE TS_MaPhieuDangKy = @maPhieu;
+
+        -- 5. Xóa PHIEUTHANHTOAN
+        DELETE FROM PHIEUTHANHTOAN
+        WHERE PTT_MaPhieuDK = @maPhieu;
+
+        -- 6. Xóa PHIEUGIAHAN
+        DELETE FROM PHIEUGIAHAN
+        WHERE PGH_MaPhieuDK = @maPhieu;
+
+        -- 7. Xóa PHIEUDANGKYDUTHI (cuối cùng)
+        DELETE FROM PHIEUDANGKYDUTHI
+        WHERE PDKDT_MaPhieu = @maPhieu;
+    END TRY
+    BEGIN CATCH
+        THROW;
+    END CATCH
+END;
+GO
+
+--Xóa thí sinh đơn vị
+CREATE PROCEDURE XoaThiSinh
+    @sbd VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    BEGIN TRY
+        -- 1. Xóa CHUNGCHI theo các mã bài thi của thí sinh
+        DELETE FROM CHUNGCHI
+        WHERE CC_MaBaiThi IN (
+            SELECT BT_MaBaiThi FROM BAITHI WHERE BT_SoBaoDanh = @sbd
+        );
+
+        -- 2. Xóa BAITHI
+        DELETE FROM BAITHI WHERE BT_SoBaoDanh = @sbd;
+
+        -- 3. Xóa PHIEUDUTHI
+        DELETE FROM PHIEUDUTHI WHERE PDT_SoBaoDanh = @sbd;
+
+        -- 4. Xóa THISINH
+        DELETE FROM THISINH WHERE TS_SoBaoDanh = @sbd;
+    END TRY
+    BEGIN CATCH
+        -- Nếu có lỗi thì raise lại lỗi
+        THROW;
+    END CATCH
+END;
+GO
+
+--Thêm phiếu đăng ký
+CREATE PROCEDURE ThemPhieuDangKyVaThiSinh
+    @NgayLap DATE,
+    @DiaChi NVARCHAR(100),
+    @MaLichThi VARCHAR(10),
+    @MaNhanVien VARCHAR(10),
+    @LoaiKhachHang NVARCHAR(20),         -- 'Tự do' hoặc 'Đơn vị'
+    @Email CHAR(100),
+    @SDT CHAR(10),
+    @TenKhachHang NVARCHAR(100),
+    @DanhSachThiSinh ThiSinhTableType READONLY
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE @MaKhachHang VARCHAR(10)
+    DECLARE @MaPhieu VARCHAR(10)
+    DECLARE @SoLuongDangKyMoi INT = (SELECT COUNT(*) FROM @DanhSachThiSinh)
+    DECLARE @SoLuongDangKyHienTai INT
+    DECLARE @SoLuongToiDa INT
+
+    -- 1. Kiểm tra khách hàng đã tồn tại
+    SELECT @MaKhachHang = KH_MaKhachHang
+    FROM KHACHHANG
+    WHERE KH_Email = @Email AND KH_SDT = @SDT AND KH_LoaiKhachHang = @LoaiKhachHang
+
+    -- 2. Nếu chưa tồn tại -> Tạo mới
+    IF @MaKhachHang IS NULL
+    BEGIN
+        IF @LoaiKhachHang = N'Đơn vị'
+        BEGIN
+            SET @MaKhachHang = 'KHDV' + RIGHT('0000' + CAST(
+                ISNULL((SELECT COUNT(*) + 1 FROM KHACHHANG WHERE KH_MaKhachHang LIKE 'KHDV%'), 1) AS VARCHAR), 4)
+            INSERT INTO KHACHHANG VALUES (@MaKhachHang, @LoaiKhachHang, @Email, @SDT)
+            INSERT INTO KHACHHANGDONVI VALUES (@MaKhachHang, @TenKhachHang)
+        END
+        ELSE
+        BEGIN
+            SET @MaKhachHang = 'KHTD' + RIGHT('0000' + CAST(
+                ISNULL((SELECT COUNT(*) + 1 FROM KHACHHANG WHERE KH_MaKhachHang LIKE 'KHTD%'), 1) AS VARCHAR), 4)
+            INSERT INTO KHACHHANG VALUES (@MaKhachHang, @LoaiKhachHang, @Email, @SDT)
+            INSERT INTO KHACHHANGHTUDO VALUES (@MaKhachHang, @TenKhachHang)
+        END
+    END
+
+    -- 3. Kiểm tra số lượng đăng ký hiện tại và giới hạn phòng
+    SELECT 
+        @SoLuongDangKyHienTai = ISNULL(LT_SLDangKy, 0),
+        @SoLuongToiDa = PT.PT_SLThiSinhToiDa
+    FROM LICHTHI LT
+    JOIN PHONGTHI PT ON LT.LT_MaPhongThi = PT.PT_MaPhongThi
+    WHERE LT.LT_MaLichThi = @MaLichThi
+
+    IF @SoLuongDangKyHienTai + @SoLuongDangKyMoi > @SoLuongToiDa
+    BEGIN
+        RAISERROR(N'Số lượng thí sinh vượt quá sức chứa phòng thi.', 16, 1)
+        RETURN
+    END
+
+    -- 4. Tạo mã phiếu đăng ký duy nhất bằng MAX
+    DECLARE @PrefixPhieu VARCHAR(10) = CASE 
+        WHEN @LoaiKhachHang = N'Đơn vị' THEN 'PDKDV' 
+        ELSE 'PDKTD' 
+    END
+
+    DECLARE @NextIndexPhieu INT
+    SELECT @NextIndexPhieu = ISNULL(MAX(CAST(SUBSTRING(PDKDT_MaPhieu, LEN(@PrefixPhieu) + 1, 4) AS INT)), 0) + 1
+    FROM PHIEUDANGKYDUTHI
+    WHERE PDKDT_MaPhieu LIKE @PrefixPhieu + '%'
+
+    SET @MaPhieu = @PrefixPhieu + RIGHT('0000' + CAST(@NextIndexPhieu AS VARCHAR), 4)
+
+    -- 5. Thêm phiếu đăng ký
+    INSERT INTO PHIEUDANGKYDUTHI
+    VALUES (@MaPhieu, @NgayLap, @DiaChi, N'Chưa thanh toán', @MaKhachHang, @MaLichThi, @MaNhanVien)
+
+    -- 6. Tạo số báo danh duy nhất
+    DECLARE @PrefixSBD VARCHAR(10) = CASE 
+        WHEN @LoaiKhachHang = N'Đơn vị' THEN 'TSDV' 
+        ELSE 'TSTD' 
+    END
+
+    DECLARE @SoThuTuSBD INT
+    SELECT @SoThuTuSBD = ISNULL(MAX(CAST(SUBSTRING(TS_SoBaoDanh, LEN(@PrefixSBD) + 1, 4) AS INT)), 0)
+    FROM THISINH
+    WHERE TS_SoBaoDanh LIKE @PrefixSBD + '%'
+
+    -- 7. Duyệt danh sách thí sinh và thêm vào bảng THISINH
+    DECLARE ts_cursor CURSOR FOR
+        SELECT HoTen, NgaySinh, GioiTinh, Email, SDT, CCCD
+        FROM @DanhSachThiSinh
+
+    DECLARE @HoTen NVARCHAR(50), @NgaySinh DATE, @GioiTinh NVARCHAR(3), @EmailTS CHAR(100), @SDTTS CHAR(10), @CCCD CHAR(12)
+    DECLARE @sbd VARCHAR(10)
+
+    OPEN ts_cursor
+    FETCH NEXT FROM ts_cursor INTO @HoTen, @NgaySinh, @GioiTinh, @EmailTS, @SDTTS, @CCCD
+
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        SET @SoThuTuSBD = @SoThuTuSBD + 1
+        SET @sbd = @PrefixSBD + RIGHT('0000' + CAST(@SoThuTuSBD AS VARCHAR), 4)
+
+        INSERT INTO THISINH
+        VALUES (@sbd, @MaPhieu, @HoTen, @NgaySinh, @GioiTinh, @EmailTS, @SDTTS, @CCCD)
+
+        FETCH NEXT FROM ts_cursor INTO @HoTen, @NgaySinh, @GioiTinh, @EmailTS, @SDTTS, @CCCD
+    END
+
+    CLOSE ts_cursor
+    DEALLOCATE ts_cursor
+
+    -- 8. Cập nhật lại số lượng đăng ký của lịch thi
+    UPDATE LICHTHI
+    SET LT_SLDangKy = LT_SLDangKy + @SoLuongDangKyMoi
+    WHERE LT_MaLichThi = @MaLichThi
+
+    -- 9. Trả về mã phiếu mới
+    SELECT @MaPhieu AS MaPhieuMoi
+END
+GO
+
+--Tìm kiếm phiếu đăng ký để gia hạn
+CREATE PROCEDURE TraCuuThongTinPhieuDangKyCanGiaHan
+    @MaPhieu VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        -- Thông tin khách hàng
+        KH.KH_MaKhachHang,
+        ISNULL(KTD.KHTD_HoTen, KDV.KHDV_TenDonVi) AS TenKhachHang,
+        KH.KH_LoaiKhachHang,
+        KH.KH_SDT,
+        KH.KH_Email,
+
+        -- Thông tin phiếu
+        PDK.PDKDT_MaPhieu,
+        PDK.PDKDT_ThoiGianLap,
+        (SELECT COUNT(*) FROM THISINH WHERE TS_MaPhieuDangKy = PDK.PDKDT_MaPhieu) AS SoLuongThiSinh,
+        NV.NV_TenNhanVien AS NhanVienLap,
+        PDK.PDKDT_DiaChiChuyenPhat,
+        PDK.PDKDT_TrangThaiThanhToan,
+
+        -- Thông tin lịch thi
+        LT.LT_TenKyThi,
+        LT.LT_NgayThi,
+        CASE 
+            WHEN LT.LT_TGBatDau IS NOT NULL 
+             AND LT.LT_TGKetThuc IS NOT NULL
+            THEN  CONVERT(VARCHAR(5), LT.LT_TGBatDau, 108) 
+                  + ' - ' + 
+                  CONVERT(VARCHAR(5), LT.LT_TGKetThuc, 108)
+            ELSE NULL
+        END AS GioThi,
+        LT.LT_SLDangKy AS SoLuongDangKyLichThi,
+        LT.LT_MaPhongThi
+
+    FROM PHIEUDANGKYDUTHI PDK
+    JOIN KHACHHANG KH ON PDK.PDKDT_MaKhachHang = KH.KH_MaKhachHang
+    LEFT JOIN KHACHHANGHTUDO KTD ON KH.KH_MaKhachHang = KTD.KHTD_MaKhachHang
+    LEFT JOIN KHACHHANGDONVI KDV ON KH.KH_MaKhachHang = KDV.KHDV_MaKhachHang
+    JOIN NHANVIEN NV ON PDK.PDKDT_MaNhanVienLap = NV.NV_MaNhanVien
+    JOIN LICHTHI LT ON PDK.PDKDT_MaLichThi = LT.LT_MaLichThi
+
+    WHERE PDK.PDKDT_MaPhieu = @MaPhieu
+END
+GO
+
+--Cập nhật lịch thi cho phiếu đăng ký
+CREATE OR ALTER PROCEDURE GiaHanPhieuDangKy
+    @MaPhieu VARCHAR(10),
+    @MaLichThiMoi VARCHAR(10)
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    DECLARE 
+        @TrangThaiHienTai NVARCHAR(30),
+        @MaLichThiCu VARCHAR(10),
+        @SoLuongTrongPhieu INT,
+        @SoLuongDangKyHienTai INT,
+        @SoLuongToiDa INT,
+        @TenKyThiCu NVARCHAR(100),
+        @TenKyThiMoi NVARCHAR(100),
+        @SoLanGiaHan INT;
+
+    -- 0. Kiểm tra số lần gia hạn
+    SELECT @SoLanGiaHan = COUNT(*) 
+    FROM PHIEUGIAHAN 
+    WHERE PGH_MaPhieuDK = @MaPhieu;
+
+    IF @SoLanGiaHan >= 2
+    BEGIN
+        RAISERROR(N'Phiếu này đã được gia hạn tối đa 2 lần.', 16, 1);
+        RETURN;
+    END
+
+    -- 1. Lấy trạng thái phiếu và mã lịch thi hiện tại
+    SELECT 
+        @TrangThaiHienTai = PDKDT_TrangThaiThanhToan,
+        @MaLichThiCu = PDKDT_MaLichThi
+    FROM PHIEUDANGKYDUTHI
+    WHERE PDKDT_MaPhieu = @MaPhieu;
+
+    -- 2. Kiểm tra tồn tại phiếu
+    IF @TrangThaiHienTai IS NULL
+    BEGIN
+        RAISERROR(N'Không tìm thấy phiếu đăng ký.', 16, 1);
+        RETURN;
+    END
+
+    -- 3. Kiểm tra trạng thái có phải "Đã thanh toán" không
+    IF @TrangThaiHienTai != N'Đã thanh toán'
+    BEGIN
+        RAISERROR(N'Chỉ có thể gia hạn phiếu đã thanh toán.', 16, 1);
+        RETURN;
+    END
+
+    -- 4. Không được gia hạn sang lịch thi cũ (trùng)
+    IF @MaLichThiCu = @MaLichThiMoi
+    BEGIN
+        RAISERROR(N'Lịch thi mới không được trùng với lịch thi cũ.', 16, 1);
+        RETURN;
+    END
+
+    -- 4.5. Kiểm tra trùng tên kỳ thi giữa lịch cũ và lịch mới
+    SELECT @TenKyThiCu = LT_TenKyThi FROM LICHTHI WHERE LT_MaLichThi = @MaLichThiCu;
+    SELECT @TenKyThiMoi = LT_TenKyThi FROM LICHTHI WHERE LT_MaLichThi = @MaLichThiMoi;
+
+    IF @TenKyThiCu IS NULL OR @TenKyThiMoi IS NULL
+    BEGIN
+        RAISERROR(N'Không tìm thấy thông tin kỳ thi.', 16, 1);
+        RETURN;
+    END
+
+    IF @TenKyThiCu != @TenKyThiMoi
+    BEGIN
+        RAISERROR(N'Chỉ có thể gia hạn sang lịch thi thuộc cùng một kỳ thi.', 16, 1);
+        RETURN;
+    END
+
+    -- 5. Đếm số lượng thí sinh trong phiếu đăng ký
+    SELECT @SoLuongTrongPhieu = COUNT(*)
+    FROM THISINH
+    WHERE TS_MaPhieuDangKy = @MaPhieu;
+
+    -- 6. Lấy số lượng đã đăng ký và số lượng tối đa từ lịch thi mới
+    SELECT 
+        @SoLuongDangKyHienTai = ISNULL(LT_SLDangKy, 0),
+        @SoLuongToiDa = PT_SLThiSinhToiDa
+    FROM LICHTHI LT
+    JOIN PHONGTHI PT ON LT.LT_MaPhongThi = PT.PT_MaPhongThi
+    WHERE LT.LT_MaLichThi = @MaLichThiMoi;
+
+    IF @SoLuongDangKyHienTai IS NULL
+    BEGIN
+        RAISERROR(N'Lịch thi mới không tồn tại.', 16, 1);
+        RETURN;
+    END
+
+    -- 7. Kiểm tra ràng buộc số lượng
+    IF (@SoLuongTrongPhieu + @SoLuongDangKyHienTai) > @SoLuongToiDa
+    BEGIN
+        RAISERROR(N'Không thể gia hạn vì phòng thi đã đạt giới hạn thí sinh.', 16, 1);
+        RETURN;
+    END
+
+    -- 8. Tiến hành cập nhật
+    BEGIN TRANSACTION;
+        -- Cập nhật mã lịch thi mới và trạng thái phiếu
+        UPDATE PHIEUDANGKYDUTHI
+        SET 
+            PDKDT_MaLichThi = @MaLichThiMoi,
+            PDKDT_TrangThaiThanhToan = N'Thanh toán gia hạn'
+        WHERE PDKDT_MaPhieu = @MaPhieu;
+
+        -- Cập nhật LT_SLDangKy trong bảng lịch thi mới
+        UPDATE LICHTHI
+        SET LT_SLDangKy = LT_SLDangKy + @SoLuongTrongPhieu
+        WHERE LT_MaLichThi = @MaLichThiMoi;
+
+        -- Trừ lại số lượng ở lịch thi cũ
+        UPDATE LICHTHI
+        SET LT_SLDangKy = LT_SLDangKy - @SoLuongTrongPhieu
+        WHERE LT_MaLichThi = @MaLichThiCu;
+    COMMIT;
+
 END
 GO
