@@ -768,7 +768,7 @@ end;
 go
 
 --Tra cứu phiếu đăng ký (thông tin cơ bản)
-CREATE PROCEDURE TraCuuPhieuDangKyCoBan
+CREATE OR ALTER PROCEDURE TraCuuPhieuDangKyCoBan
     @MaPhieu VARCHAR(20)
 AS
 BEGIN
@@ -804,7 +804,7 @@ END
 GO
 
 --Cập nhật thông tin cơ bản của phiếu đăng ký
-CREATE PROCEDURE CapNhatPhieuDangKy
+CREATE OR ALTER PROCEDURE CapNhatPhieuDangKy
     @MaPhieu VARCHAR(10),
     @TenKH NVARCHAR(50),
     @LoaiKH NVARCHAR(20),
@@ -853,7 +853,7 @@ END
 GO
 
 --Xóa phiếu đăng ký
-CREATE PROCEDURE XoaPhieuDangKy
+CREATE OR ALTER PROCEDURE XoaPhieuDangKy
     @maPhieu VARCHAR(10)
 AS
 BEGIN
@@ -907,7 +907,7 @@ END;
 GO
 
 --Xóa thí sinh đơn vị
-CREATE PROCEDURE XoaThiSinh
+CREATE OR ALTER PROCEDURE XoaThiSinh
     @sbd VARCHAR(10)
 AS
 BEGIN
@@ -937,7 +937,7 @@ END;
 GO
 
 --Thêm phiếu đăng ký
-CREATE PROCEDURE ThemPhieuDangKyVaThiSinh
+CREATE OR ALTER PROCEDURE ThemPhieuDangKyVaThiSinh
     @NgayLap DATE,
     @DiaChi NVARCHAR(100),
     @MaLichThi VARCHAR(10),
@@ -1059,7 +1059,7 @@ END
 GO
 
 --Tìm kiếm phiếu đăng ký để gia hạn
-CREATE PROCEDURE TraCuuThongTinPhieuDangKyCanGiaHan
+CREATE OR ALTER PROCEDURE TraCuuThongTinPhieuDangKyCanGiaHan
     @MaPhieu VARCHAR(10)
 AS
 BEGIN
