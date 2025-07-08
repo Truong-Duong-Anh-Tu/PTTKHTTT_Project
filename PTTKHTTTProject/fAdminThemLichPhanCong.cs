@@ -1,13 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-using PTTKHTTTProject.UControl;
+﻿using PTTKHTTTProject.UControl;
 
 namespace PTTKHTTTProject
 {
@@ -16,14 +7,25 @@ namespace PTTKHTTTProject
         public fAdminThemLichPhanCong()
         {
             InitializeComponent();
+            this.Load += FAdminThemChinhSuaLichPhanCong_Load;
+        }
+
+        private void FAdminThemChinhSuaLichPhanCong_Load(object? sender, EventArgs e)
+        {
+            // Thêm UserControl vào panel khi form được tải
+            adminThemLichPhanCong themLichPhanCongControl = new adminThemLichPhanCong();
+            themLichPhanCongControl.Dock = DockStyle.Fill;
+            panelThemLichPhanCong.Controls.Add(themLichPhanCongControl);
         }
 
         private void panelThemLichPhanCong_Paint(object sender, PaintEventArgs e)
         {
-            adminThemThongTinLichPhanCong adminThemThongTinLichPhanCong = new adminThemThongTinLichPhanCong();
-            adminThemThongTinLichPhanCong.Dock = DockStyle.Fill;
-            panelThemLichPhanCong.Controls.Add(adminThemThongTinLichPhanCong);
-            adminThemThongTinLichPhanCong.BringToFront();
+            // Không cần làm gì ở đây
+        }
+
+        private void fAdminThemLichPhanCong_Load(object sender, EventArgs e)
+        {
+
         }
     }
 }

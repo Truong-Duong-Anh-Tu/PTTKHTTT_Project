@@ -8,6 +8,14 @@ namespace PTTKHTTTProject
 {
     public partial class fAdminThemNV : Form
     {
+        private readonly Dictionary<string, string> chucVuToPhongBan = new()
+        {
+            { "Coi thi", "Phòng Giám thị" },
+            { "Tiếp nhận", "Phòng Tiếp nhận" },
+            { "Kế toán", "Phòng Kế toán" },
+            { "Nhập liệu", "Phòng Nhập liệu" },
+            { "Quản trị hệ thống", "Phòng Quản trị hệ thống" }
+        };
         public fAdminThemNV()
         {
             InitializeComponent();
@@ -18,19 +26,16 @@ namespace PTTKHTTTProject
         private void LoadComboBoxData()
         {
             try
-            {
-                // Tải dữ liệu cho ComboBox Phòng Ban từ CSDL
-                comboBoxLichThi.DataSource = NhanVienDAO.GetAllPhongBan();
-                comboBoxLichThi.DisplayMember = "PB_TenPhongBan";
-                comboBoxLichThi.ValueMember = "PB_MaPhongBan";
-                comboBoxLichThi.SelectedIndex = -1;
-                comboBoxLichThi.Text = "Chọn phòng ban";
-
+            { 
                 // Tải dữ liệu cho ComboBox Chức Vụ (dữ liệu tĩnh)
                 string[] chucVuList = { "Tiếp nhận", "Kế toán", "Nhập liệu", "Quản trị hệ thống", "Coi thi" };
-                comboBoxKyThi.DataSource = chucVuList;
-                comboBoxKyThi.SelectedIndex = -1;
-                comboBoxKyThi.Text = "Chọn chức vụ";
+                comboBoxChucVu.DataSource = chucVuList;
+                comboBoxChucVu.SelectedIndex = -1;
+                comboBoxChucVu.Text = "Chọn chức vụ";
+                string[] gioiTinhList = { "Nam", "Nữ" };
+                comboBoxGioiTinh.DataSource = gioiTinhList;
+                comboBoxGioiTinh.SelectedIndex = -1;
+                comboBoxGioiTinh.Text = "Chọn giới tính";
             }
             catch (Exception ex)
             {
@@ -42,37 +47,37 @@ namespace PTTKHTTTProject
         private void button1_Click(object sender, EventArgs e)
         {
             // Kiểm tra thông tin nhập
-            if (string.IsNullOrWhiteSpace(textBoxKyThi.Text) ||
-                string.IsNullOrWhiteSpace(textBoxNgayThi.Text) ||
-                string.IsNullOrWhiteSpace(textBoxPhongThi.Text) ||
-                string.IsNullOrWhiteSpace(textBoxTGBatDau.Text) ||
-                string.IsNullOrWhiteSpace(textBoxTGKetThuc.Text) ||
-                string.IsNullOrWhiteSpace(textBoxMaNVCoiThi.Text) ||
-                string.IsNullOrWhiteSpace(textBoxTenNVCoiThi.Text) ||
-                comboBoxKyThi.SelectedItem == null ||
-                comboBoxLichThi.SelectedValue == null)
+            if (string.IsNullOrWhiteSpace(textBoxHoTen.Text) ||
+                string.IsNullOrWhiteSpace(textBoxEmail.Text) ||
+                string.IsNullOrWhiteSpace(textBoxSDT.Text) ||
+                string.IsNullOrWhiteSpace(textBoxCCCD.Text) ||
+                string.IsNullOrWhiteSpace(textBoxDiaChi.Text) ||
+                comboBoxChucVu.SelectedItem == null ||
+                comboBoxGioiTinh.SelectedItem == null ||
+                string.IsNullOrWhiteSpace(textBoxPhongBan.Text))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin nhân viên.", "Thiếu thông tin", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-
-            if (!DateTime.TryParse(textBoxNgayThi.Text, out DateTime ngaySinh))
-            {
-                MessageBox.Show("Định dạng ngày sinh không hợp lệ. Vui lòng nhập ngày hợp lệ.", "Sai định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            // Lấy ngày từ DateTimePicker
+            DateTime ngaySinh = dateTimePickerNgaySinh.Value;
 
             // Lấy dữ liệu từ các control với tên đúng từ file Designer
-            string hoTen = textBoxKyThi.Text;
-            string gioiTinh = textBoxPhongThi.Text;
-            string email = textBoxTGBatDau.Text;
-            string sdt = textBoxTGKetThuc.Text;
-            string cccd = textBoxMaNVCoiThi.Text;
-            string diaChi = textBoxTenNVCoiThi.Text;
-            string chucVu = comboBoxKyThi.SelectedItem.ToString();
-            string maPhongBan = comboBoxLichThi.SelectedValue.ToString();
-            int luong = 8000000; // Giá trị tạm thời, bạn nên thêm control để nhập lương
-
+            string hoTen = textBoxHoTen.Text;
+            string gioiTinh = comboBoxGioiTinh.SelectedItem?.ToString() ?? string.Empty;
+            string email = textBoxEmail.Text;
+            string sdt = textBoxSDT.Text;
+            string cccd = textBoxCCCD.Text;
+            string diaChi = textBoxDiaChi.Text;
+            string chucVu = comboBoxChucVu.SelectedItem?.ToString() ?? string.Empty;
+            string tenPhongBan = textBoxPhongBan.Text;
+            string maPhongBan = PhongBanBUS.GetMaPhongBanByTen(tenPhongBan);
+            int luong = (int)numericUpDownLuong.Value;
+            if (luong <= 0)
+            {
+                MessageBox.Show("Lương phải lớn hơn 0.", "Lỗi nhập liệu", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
             // Tự động tạo Mã Nhân Viên mới
             string maNV;
             try
@@ -90,23 +95,70 @@ namespace PTTKHTTTProject
                 MessageBox.Show("Không thể tạo mã nhân viên mới: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-
-
-            // Gọi BUS để thực hiện thêm nhân viên
-            bool success = NhanVienBUS.AddNhanVien(maNV, hoTen, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
-
-            if (success)
+            // Kiểm tra định dạng email
+            if (!IsValidEmail(email))
             {
-                MessageBox.Show("Thêm nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                this.DialogResult = DialogResult.OK;
-                this.Close();
+                MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng định dạng email.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
             }
-            else
+
+            // Kiểm tra số điện thoại 10 số
+            if (!IsValidPhone(sdt))
             {
-                MessageBox.Show("Thêm nhân viên thất bại. Mã nhân viên có thể đã tồn tại hoặc có lỗi xảy ra.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Số điện thoại phải gồm đúng 10 chữ số.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // Kiểm tra CCCD 12 số
+            if (!IsValidCCCD(cccd))
+            {
+                MessageBox.Show("CCCD phải gồm đúng 12 chữ số.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                // Gọi BUS để thực hiện thêm nhân viên
+                bool success = InfoEmployeeBUS.AddNhanVien(maNV, hoTen, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
+
+                if (success)
+                {
+                    MessageBox.Show("Thêm nhân viên thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                    this.DialogResult = DialogResult.OK;
+                    this.Close();
+                }
+                else // Thêm khối else để xử lý thất bại
+                {
+                    MessageBox.Show("Thêm nhân viên thất bại. Vui lòng kiểm tra lại thông tin (nhân viên phải đủ 18 tuổi).", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi thêm nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+        private bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
             }
         }
 
+        private bool IsValidPhone(string phone)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{10}$");
+        }
+
+        private bool IsValidCCCD(string cccd)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(cccd, @"^\d{12}$");
+        }
         private void pictureBoxThoat_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -114,8 +166,21 @@ namespace PTTKHTTTProject
 
         // Các sự kiện khác (để trống nếu không sử dụng)
         private void label1_Click(object sender, EventArgs e) { }
-        private void comboBoxKyThi_SelectedIndexChanged(object sender, EventArgs e) { }
         private void label2_Click(object sender, EventArgs e) { }
-        private void comboBoxLichThi_SelectedIndexChanged(object sender, EventArgs e) { }
+        private void fAdminThemNV_Load(object sender, EventArgs e) { }
+
+        private void dateTimePickerNgaySinh_ValueChanged(object sender, EventArgs e) { }
+
+        private void comboBoxChucVu_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if (comboBoxChucVu.SelectedItem is string chucVu && chucVuToPhongBan.TryGetValue(chucVu, out var phongBan))
+            {
+                textBoxPhongBan.Text = phongBan;
+            }
+            else
+            {
+                textBoxPhongBan.Text = "";
+            }
+        }
     }
 }

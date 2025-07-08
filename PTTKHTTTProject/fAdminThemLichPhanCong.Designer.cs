@@ -35,7 +35,7 @@
             // 
             panelThemLichPhanCong.Location = new Point(12, 12);
             panelThemLichPhanCong.Name = "panelThemLichPhanCong";
-            panelThemLichPhanCong.Size = new Size(1001, 528);
+            panelThemLichPhanCong.Size = new Size(1008, 534);
             panelThemLichPhanCong.TabIndex = 0;
             panelThemLichPhanCong.Paint += panelThemLichPhanCong_Paint;
             // 
@@ -46,7 +46,9 @@
             ClientSize = new Size(1032, 558);
             Controls.Add(panelThemLichPhanCong);
             Name = "fAdminThemLichPhanCong";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "fAdminThemLichPhanCong";
+            Load += fAdminThemLichPhanCong_Load;
             ResumeLayout(false);
         }
 

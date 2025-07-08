@@ -30,5 +30,60 @@ namespace PTTKHTTTProject.BUS
 
             return examDateList;
         }
+
+        public static DataTable GetAllLichThi()
+        {
+            return ExamDateDAO.GetAllLichThi();
+        }
+        public static DataTable GetLichThiByPhongThi(string maPhongThi)
+        {
+            return ExamDateDAO.GetLichThiByPhongThi(maPhongThi);
+        }
+
+        public static bool AddLichThi(string maKyThi, string tenKyThi, DateTime ngayThi, string maPhongThi, TimeSpan tgBatDau, TimeSpan tgKetThuc, int slDangKy)
+        {
+            if (string.IsNullOrWhiteSpace(maKyThi) || string.IsNullOrWhiteSpace(tenKyThi) || string.IsNullOrWhiteSpace(maPhongThi))
+            {
+                return false;
+            }
+
+            try
+            {
+                string lastId = ExamDateDAO.GetLastLichThiId();
+                int newIdNumber = 1;
+                if (!string.IsNullOrEmpty(lastId) && lastId.StartsWith("LT") && int.TryParse(lastId.AsSpan(2), out int lastIdNumber))
+                {
+                    newIdNumber = lastIdNumber + 1;
+                }
+                string newMaLichThi = "LT" + newIdNumber.ToString("D2");
+
+                // Truyền slDangKy xuống DAO
+                ExamDateDAO.AddLichThi(newMaLichThi, maKyThi, slDangKy, "Chưa thi", tenKyThi, ngayThi, maPhongThi, tgBatDau, tgKetThuc);
+                return true;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool UpdateLichThi(string maLichThi, DateTime ngayThi, int slDangKy, TimeSpan tgBatDau, TimeSpan tgKetThuc)
+        {
+            if (string.IsNullOrWhiteSpace(maLichThi) || slDangKy < 0)
+            {
+                return false;
+            }
+            return ExamDateDAO.UpdateLichThi(maLichThi, ngayThi, slDangKy, tgBatDau, tgKetThuc);
+        }
+
+        // Thêm vào cuối file BUS/ExamDateBUS.cs
+        public static bool DeleteLichThi(string maLichThi)
+        {
+            if (string.IsNullOrWhiteSpace(maLichThi))
+            {
+                return false;
+            }
+            return ExamDateDAO.DeleteLichThi(maLichThi);
+        }
     }
 }

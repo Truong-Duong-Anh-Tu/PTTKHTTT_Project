@@ -11,62 +11,65 @@ namespace PTTKHTTTProject.BUS
 {
     internal class EmployeeScheduleBUS
     {
-        private string FormatTimeValue(object timeObject)
-        {
-            // Nếu đối tượng là null hoặc DBNull, trả về chuỗi rỗng
-            if (timeObject == null || timeObject == DBNull.Value)
-            {
-                return "";
-            }
-
-            // Sử dụng TryParse để tránh lỗi crash chương trình
-            if (DateTime.TryParse(timeObject.ToString(), out DateTime result))
-            {
-                // Nếu parse thành công, trả về chuỗi đã định dạng
-                return result.ToString("HH:mm");
-            }
-
-            // Nếu không thể parse, trả về chuỗi rỗng
-            return "";
-        }
-
+        /// <summary>
+        /// Lấy và trả về DataTable chứa lịch phân công đã được định dạng bởi Stored Procedure.
+        /// </summary>
+        /// <returns>DataTable chứa lịch phân công.</returns>
         public DataTable loadEmployeeSchedule()
         {
-            // 1. Lấy DataTable gốc từ DAO
-            DataTable originalDt = EmployeeScheduleDAO.getEmployeeSchedule();
+            return EmployeeScheduleDAO.getEmployeeSchedule();
+        }
 
-            // 2. Tạo một DataTable mới để chứa dữ liệu đã định dạng
-            DataTable formattedDt = new DataTable();
+        /// <summary>
+        /// Cập nhật nhân viên coi thi cho một lịch thi cụ thể.
+        /// </summary>
+        /// <param name="maLichThi">Mã của lịch thi cần cập nhật.</param>
+        /// <param name="maNVCU">Mã của nhân viên cũ.</param>
+        /// <param name="maNVMoi">Mã của nhân viên mới.</param>
+        /// <returns>True nếu cập nhật thành công, False nếu thất bại.</returns>
+        public bool UpdateEmployeeSchedule(string maLichThi, string maNVCU, string maNVMoi)
+        {
+            // (Tùy chọn) Thêm logic kiểm tra nghiệp vụ ở đây
+            return EmployeeScheduleDAO.UpdateEmployeeSchedule(maLichThi, maNVCU, maNVMoi);
+        }
 
-            // 3. Định nghĩa các cột trong DataTable mới với tên bạn muốn hiển thị
-            formattedDt.Columns.Add("Tên Kỳ Thi", typeof(string));
-            formattedDt.Columns.Add("Ngày Thi", typeof(string));
-            formattedDt.Columns.Add("Phòng Thi", typeof(string));
-            formattedDt.Columns.Add("Giờ Bắt Đầu", typeof(string));
-            formattedDt.Columns.Add("Giờ Kết Thúc", typeof(string));
-            formattedDt.Columns.Add("Mã Nhân Viên", typeof(string));
-            formattedDt.Columns.Add("Tên Nhân Viên", typeof(string));
-            formattedDt.Columns.Add("Trạng Thái", typeof(string));
-
-            // 4. Lặp qua từng dòng, định dạng và thêm vào DataTable mới
-            foreach (DataRow row in originalDt.Rows)
+        public bool DeleteEmployeeSchedule(string maLichThi, string maNhanVien)
+        {
+            return EmployeeScheduleDAO.DeleteEmployeeSchedule(maLichThi, maNhanVien);
+        }
+        public bool AddPhanCong(string maLichThi, string maNhanVien)
+        {
+            try
             {
-                formattedDt.Rows.Add(
-                    row["KT_TenKyThi"],
-                    row["LT_NgayThi"] != DBNull.Value ? ((DateTime)row["LT_NgayThi"]).ToString("dd/MM/yyyy") : "",
-                    row["LT_MaPhongThi"],
-                    // Gọi hàm hỗ trợ để định dạng giờ bắt đầu
-                    FormatTimeValue(row["LT_TGBatDau"]),
-                    // Gọi hàm hỗ trợ để định dạng giờ kết thúc
-                    FormatTimeValue(row["LT_TGKetThuc"]),
-                    row["NV_MaNhanVien"],
-                    row["NV_TenNhanVien"],
-                    row["PC_TrangThai"]
-                );
+                EmployeeScheduleDAO.AddPhanCong(maLichThi, maNhanVien);
+                return true;
             }
+            catch
+            {
+                return false;
+            }
+        }
+        public void UpdateAllExamStatus()
+        {
+            EmployeeScheduleDAO.UpdateAllExamStatus();
+        }
+        public bool KiemTraNhanVienDaDuocPhanCong(string maLichThi, string maNhanVien)
+        {
+            DataTable dtPhanCong = EmployeeScheduleDAO.getEmployeeSchedule();
+            bool daTonTai = dtPhanCong.AsEnumerable()
+                                      .Any(row => row.Field<string>("LT_MaLichThi") == maLichThi &&
+                                                   row.Field<string>("Mã Nhân Viên") == maNhanVien);
 
-            // 5. Trả về DataTable mới đã được định dạng
-            return formattedDt;
+            return daTonTai;
+        }
+
+        public bool IsPhanCongLimitReached(string maLichThi)
+        {
+            if (string.IsNullOrEmpty(maLichThi))
+            {
+                return true; // Coi như đã đầy nếu không có mã lịch thi
+            }
+            return EmployeeScheduleDAO.IsPhanCongLimitReached(maLichThi);
         }
     }
 }
