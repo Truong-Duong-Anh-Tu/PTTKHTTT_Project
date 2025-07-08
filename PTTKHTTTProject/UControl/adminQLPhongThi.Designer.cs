@@ -31,6 +31,7 @@
             labelDSPhongThi = new Label();
             labelQLPhongThi = new Label();
             panel1 = new Panel();
+            textBoxTimKiem = new TextBox();
             buttonXemLichThi = new Button();
             dataGridView1 = new DataGridView();
             panel2 = new Panel();
@@ -50,7 +51,6 @@
             textBoxMaPhongThi = new TextBox();
             comboBoxHinhThuc = new ComboBox();
             labelChiTietPhongThi = new Label();
-            textBoxTimKiem = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -88,6 +88,15 @@
             panel1.Name = "panel1";
             panel1.Size = new Size(566, 479);
             panel1.TabIndex = 5;
+            // 
+            // textBoxTimKiem
+            // 
+            textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
+            textBoxTimKiem.Location = new Point(255, 60);
+            textBoxTimKiem.Name = "textBoxTimKiem";
+            textBoxTimKiem.PlaceholderText = "Tìm kiếm mã phòng thi / hình thức";
+            textBoxTimKiem.Size = new Size(286, 27);
+            textBoxTimKiem.TabIndex = 3;
             // 
             // buttonXemLichThi
             // 
@@ -303,15 +312,6 @@
             labelChiTietPhongThi.TabIndex = 0;
             labelChiTietPhongThi.Text = "Chi tiết phòng thi";
             // 
-            // textBoxTimKiem
-            // 
-            textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
-            textBoxTimKiem.Location = new Point(255, 60);
-            textBoxTimKiem.Name = "textBoxTimKiem";
-            textBoxTimKiem.PlaceholderText = "Tìm kiếm mã phòng thi / hình thức";
-            textBoxTimKiem.Size = new Size(286, 27);
-            textBoxTimKiem.TabIndex = 3;
-            // 
             // adminQLPhongThi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -321,7 +321,6 @@
             Controls.Add(panel1);
             Name = "adminQLPhongThi";
             Size = new Size(1021, 573);
-            Load += adminQLPhongThi_Load;
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).EndInit();

@@ -1121,7 +1121,7 @@ BEGIN
         ts.TS_HoTen AS N'Họ Tên Thí Sinh',
         ts.TS_SoBaoDanh AS N'Số Báo Danh',
         kt.KT_TenKyThi AS N'Tên Kỳ Thi',
-        lt.LT_NgayThi AS N'Ngày Thi',
+        CONVERT(varchar(10), lt.LT_NgayThi, 103) AS N'Ngày Thi',
         lt.LT_TGBatDau AS N'Giờ Bắt Đầu',
         lt.LT_TGKetThuc AS N'Giờ Kết Thúc',
         pdt.PDT_MaPhongThi AS N'Phòng Thi'
@@ -1137,8 +1137,66 @@ BEGIN
         lt.LT_NgayThi DESC, pdt.PDT_MaPhieu DESC;
 END
 GO
--- Lấy danh sách phiếu đăng ký có lịch thi đã diễn ra trong vòng 3 tuần gần nhất, đã thanh toán, và chưa có phiếu dự thi được tạo
-CREATE OR ALTER PROCEDURE usp_LayPhieuDangKyThiTrong3TuanSau
+
+-- Lấy phiếu dự thi
+CREATE OR ALTER PROCEDURE usp_GetAllPhieuDuThi
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT
+        pdt.PDT_MaPhieu AS N'Mã Phiếu Dự Thi',
+        ts.TS_HoTen AS N'Họ Tên Thí Sinh',
+        ts.TS_SoBaoDanh AS N'Số Báo Danh',
+        kt.KT_TenKyThi AS N'Tên Kỳ Thi',
+        CONVERT(varchar(10), lt.LT_NgayThi, 103) AS N'Ngày Thi',
+        lt.LT_TGBatDau AS N'Giờ Bắt Đầu',
+        lt.LT_TGKetThuc AS N'Giờ Kết Thúc',
+        pdt.PDT_MaPhongThi AS N'Phòng Thi'
+    FROM
+        PHIEUDUTHI AS pdt
+    JOIN
+        THISINH AS ts ON pdt.PDT_SoBaoDanh = ts.TS_SoBaoDanh
+    JOIN
+        LICHTHI AS lt ON pdt.PDT_MaLichThi = lt.LT_MaLichThi
+    JOIN
+        KYTHI AS kt ON lt.LT_MaKyThi = kt.KT_MaKyThi
+    ORDER BY
+        lt.LT_NgayThi DESC, pdt.PDT_MaPhieu DESC;
+END
+GO
+-- Lấy danh sách phiếu dự thi mới tạo (vừa tạo so với hiện tại khoảng 2 tuần)
+-- Lấy phiếu dự thi
+CREATE OR ALTER PROCEDURE usp_GetPhieuDuThi2Tuan
+AS
+BEGIN
+    SET NOCOUNT ON;
+	DECLARE @NgayHienTai DATE = GETDATE()
+    SELECT
+        pdt.PDT_MaPhieu AS N'Mã Phiếu Dự Thi',
+        ts.TS_HoTen AS N'Họ Tên Thí Sinh',
+        ts.TS_SoBaoDanh AS N'Số Báo Danh',
+        kt.KT_TenKyThi AS N'Tên Kỳ Thi',
+        CONVERT(varchar(10), lt.LT_NgayThi, 103) AS N'Ngày Thi',
+        lt.LT_TGBatDau AS N'Giờ Bắt Đầu',
+        lt.LT_TGKetThuc AS N'Giờ Kết Thúc',
+        pdt.PDT_MaPhongThi AS N'Phòng Thi'
+    FROM
+        PHIEUDUTHI AS pdt
+    JOIN
+        THISINH AS ts ON pdt.PDT_SoBaoDanh = ts.TS_SoBaoDanh
+    JOIN
+        LICHTHI AS lt ON pdt.PDT_MaLichThi = lt.LT_MaLichThi
+    JOIN
+        KYTHI AS kt ON lt.LT_MaKyThi = kt.KT_MaKyThi
+	WHERE lt.LT_NgayThi BETWEEN DATEADD(WEEK, -2, @NgayHienTai) AND DATEADD(WEEK, +2, @NgayHienTai)
+	ORDER BY
+        lt.LT_NgayThi DESC, pdt.PDT_MaPhieu DESC;
+END
+GO
+
+-- Lấy danh sách phiếu đăng ký có lịch thi đã diễn ra trong vòng 2 tuần gần nhất, đã thanh toán, và chưa có phiếu dự thi được tạo
+CREATE OR ALTER PROCEDURE usp_LayPhieuDangKyThiTrong2TuanSau
 AS
 BEGIN
     SET NOCOUNT ON;
@@ -1146,16 +1204,45 @@ BEGIN
     -- Lấy ngày hiện tại
     DECLARE @NgayHienTai DATE = GETDATE();
 
-    SELECT pdk.PDKDT_MaPhieu AS N'Mã Phiếu Đăng Ký', ts.TS_HoTen AS 'Họ tên thí sinh', lt.LT_TenKyThi AS N'Tên Kỳ Thi', lt.LT_NgayThi AS N'Ngày Thi', 
+    SELECT pdk.PDKDT_MaPhieu AS N'Mã Phiếu Đăng Ký', ts.TS_HoTen AS 'Họ tên thí sinh', lt.LT_TenKyThi AS N'Tên Kỳ Thi', CONVERT(varchar(10), lt.LT_NgayThi, 103) AS N'Ngày Thi', 
 	lt.LT_TGBatDau AS N'Giờ Bắt Đầu', pdk.PDKDT_TrangThaiThanhToan AS N'Trạng Thái Thanh Toán'
     FROM PHIEUDANGKYDUTHI pdk JOIN LICHTHI lt ON pdk.PDKDT_MaLichThi = lt.LT_MaLichThi
     RIGHT JOIN THISINH ts ON ts.TS_MaPhieuDangKy = pdk.PDKDT_MaPhieu
     WHERE
         -- Điều kiện: 
-		-- Lịch thi phải nằm trong khoảng từ hôm nay đến 3 tuần sau
+		-- Lịch thi phải nằm trong khoảng từ hôm nay đến 2 tuần sau
 		-- Trạng thái thì đã thanh toán
 		-- Và chưa có phiếu đăng ký
-       (lt.LT_NgayThi > @NgayHienTai ) AND (pdk.PDKDT_TrangThaiThanhToan = N'Đã thanh toán')
+       (lt.LT_NgayThi BETWEEN @NgayHienTai AND DATEADD(WEEK, +2, @NgayHienTai)) AND (pdk.PDKDT_TrangThaiThanhToan = N'Đã thanh toán')
+	   AND NOT EXISTS (
+            SELECT 1 
+            FROM PHIEUDUTHI pdt 
+            WHERE pdt.PDT_MaPhieuDangKy = pdk.PDKDT_MaPhieu AND pdt.PDT_MaLichThi = pdk.PDKDT_MaLichThi
+        )
+    ORDER BY
+        lt.LT_NgayThi ASC, lt.LT_TGBatDau ASC; -- Sắp xếp theo ngày thi gần nhất lên đầu
+END
+GO
+
+-- Lấy những phiếu đăng ký còn lại (sau 2 tuần so với hiện tại)
+CREATE OR ALTER PROCEDURE usp_LayPhieuDangKyThiConLai
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    -- Lấy ngày hiện tại
+    DECLARE @NgayHienTai DATE = GETDATE();
+
+    SELECT pdk.PDKDT_MaPhieu AS N'Mã Phiếu Đăng Ký', ts.TS_HoTen AS 'Họ tên thí sinh', lt.LT_TenKyThi AS N'Tên Kỳ Thi', CONVERT(varchar(10), lt.LT_NgayThi, 103) AS N'Ngày Thi', 
+	lt.LT_TGBatDau AS N'Giờ Bắt Đầu', pdk.PDKDT_TrangThaiThanhToan AS N'Trạng Thái Thanh Toán'
+    FROM PHIEUDANGKYDUTHI pdk JOIN LICHTHI lt ON pdk.PDKDT_MaLichThi = lt.LT_MaLichThi
+    RIGHT JOIN THISINH ts ON ts.TS_MaPhieuDangKy = pdk.PDKDT_MaPhieu
+    WHERE
+        -- Điều kiện: 
+		-- Lịch thi phải nằm trong khoảng từ hôm nay đến 2 tuần sau
+		-- Trạng thái thì đã thanh toán
+		-- Và chưa có phiếu đăng ký
+       (lt.LT_NgayThi > DATEADD(WEEK, +2, @NgayHienTai)) AND (pdk.PDKDT_TrangThaiThanhToan = N'Đã thanh toán')
 	   AND NOT EXISTS (
             SELECT 1 
             FROM PHIEUDUTHI pdt 
@@ -1178,13 +1265,12 @@ BEGIN
 
     -- Bảng tạm để lưu các phiếu đăng ký đủ điều kiện
     DECLARE @PhieuDuThiCanTao TABLE (
-        PDKDT_MaPhieu VARCHAR(10) PRIMARY KEY,
+        PDKDT_MaPhieu VARCHAR(10),
         TS_SoBaoDanh VARCHAR(10),
         LT_MaLichThi VARCHAR(10),
         PT_MaPhongThi VARCHAR(10)
     );
 
-    -- 1. Lấy danh sách tất cả các phiếu đăng ký đủ điều kiện
     INSERT INTO @PhieuDuThiCanTao (PDKDT_MaPhieu, TS_SoBaoDanh, LT_MaLichThi, PT_MaPhongThi)
     SELECT 
         pdk.PDKDT_MaPhieu,
@@ -1202,7 +1288,6 @@ BEGIN
             WHERE pdt.PDT_MaPhieuDangKy = pdk.PDKDT_MaPhieu AND pdt.PDT_MaLichThi = pdk.PDKDT_MaLichThi
         );
 
-    -- 2. XỬ LÝ PHIẾU CHO KHÁCH HÀNG CÁ NHÂN (PDK -> PDT)
     DECLARE @MaxID_PDT INT;
     SELECT @MaxID_PDT = ISNULL(MAX(CAST(SUBSTRING(PDT_MaPhieu, 4, LEN(PDT_MaPhieu)) AS INT)), 0)
     FROM PHIEUDUTHI WITH (TABLOCKX, HOLDLOCK)
@@ -1247,6 +1332,7 @@ BEGIN
 END
 GO
 
+-- Tìm kiếm phòng thi dựa trên mã phòng thi hoặc hình thức thi
 CREATE OR ALTER PROCEDURE usp_SearchPhongThi
     @SearchTerm NVARCHAR(100)
 AS
@@ -1255,6 +1341,34 @@ BEGIN
     SELECT *
     FROM PHONGTHI
     WHERE PT_MaPhongThi LIKE '%' + @SearchTerm + '%' OR PT_HinhThuc LIKE '%' + @SearchTerm + '%';
+END
+GO
+
+-- Tìm kiếm phiếu dự thi dựa trên 
+CREATE OR ALTER PROCEDURE usp_SearchPhieuDuThi
+    @SearchTerm NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT
+        pdt.PDT_MaPhieu AS N'Mã Phiếu Dự Thi',
+        ts.TS_HoTen AS N'Họ Tên Thí Sinh',
+        ts.TS_SoBaoDanh AS N'Số Báo Danh',
+        kt.KT_TenKyThi AS N'Tên Kỳ Thi',
+        lt.LT_NgayThi AS N'Ngày Thi',
+        lt.LT_TGBatDau AS N'Giờ Bắt Đầu',
+        lt.LT_TGKetThuc AS N'Giờ Kết Thúc',
+        pdt.PDT_MaPhongThi AS N'Phòng Thi'
+    FROM
+        PHIEUDUTHI AS pdt
+    JOIN
+        THISINH AS ts ON pdt.PDT_SoBaoDanh = ts.TS_SoBaoDanh
+    JOIN
+        LICHTHI AS lt ON pdt.PDT_MaLichThi = lt.LT_MaLichThi
+    JOIN
+        KYTHI AS kt ON lt.LT_MaKyThi = kt.KT_MaKyThi
+    WHERE pdt.PDT_MaPhieu LIKE '%' + @SearchTerm + '%' OR ts.TS_HoTen LIKE '%' + @SearchTerm + '%' OR ts.TS_SoBaoDanh LIKE '%' + @SearchTerm + '%'
+		  OR kt.KT_TenKyThi LIKE '%' + @SearchTerm + '%';
 END
 GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG

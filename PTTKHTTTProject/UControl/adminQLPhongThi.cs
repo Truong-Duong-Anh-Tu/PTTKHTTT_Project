@@ -138,13 +138,13 @@ namespace PTTKHTTTProject.UControl
 
         private void buttonLuuThongTin_Click(object sender, EventArgs e)
         {
-            if(string.IsNullOrEmpty(comboBoxHinhThuc.Text) || string.IsNullOrEmpty(textBoxMaxThiSinh.Text) ||
+            if (string.IsNullOrEmpty(comboBoxHinhThuc.Text) || string.IsNullOrEmpty(textBoxMaxThiSinh.Text) ||
                 string.IsNullOrEmpty(textBoxMinThiSinh.Text) || string.IsNullOrEmpty(textBoxSLNVCT.Text))
             {
                 MessageBox.Show("Vui lòng điền đầy đủ thông tin trước khi lưu.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
-            if(int.TryParse(textBoxMaxThiSinh.Text, out int max) && int.TryParse(textBoxMinThiSinh.Text, out int min) && max < min)
+            if (int.TryParse(textBoxMaxThiSinh.Text, out int max) && int.TryParse(textBoxMinThiSinh.Text, out int min) && max < min)
             {
                 MessageBox.Show("Số lượng thí sinh tối đa không thể nhỏ hơn số lượng tối thiểu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
@@ -239,10 +239,6 @@ namespace PTTKHTTTProject.UControl
         private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
         {
             FilterData();
-        }
-        private void adminQLPhongThi_Load(object sender, EventArgs e)
-        {
-
         }
     }
 }

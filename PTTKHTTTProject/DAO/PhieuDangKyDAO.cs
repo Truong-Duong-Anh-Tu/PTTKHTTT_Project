@@ -9,9 +9,14 @@ namespace PTTKHTTTProject.DAO
 {
     internal class PhieuDangKyDAO
     {
-        public static DataTable LayDSPhieuDangKy3Tuan()
+        public static DataTable LayDSPhieuDangKy2Tuan()
         {
-            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_LayPhieuDangKyThiTrong3TuanSau");
+            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_LayPhieuDangKyThiTrong2TuanSau");
+            return dt;
+        }
+        public static DataTable LayDSPhieuDangKyConLai()
+        {
+            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_LayPhieuDangKyThiConLai");
             return dt;
         }
     }

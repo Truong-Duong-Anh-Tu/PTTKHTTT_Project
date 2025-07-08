@@ -11,11 +11,19 @@ namespace PTTKHTTTProject.BUS
     {
         public static DataTable getAllPhieuDuThi()
         {
-            return PhieuDuThiDAO.getAllhieuDuThi();
+            return PhieuDuThiDAO.getAllPhieuDuThi();
+        }
+        public static DataTable getPhieuDuThi2Tuan()
+        {
+            return PhieuDuThiDAO.getPhieuDuThi2Tuan();
         }
         public static DataTable TuDongLapPhieuDuThi()
         {
             return PhieuDuThiDAO.TuDongLapPhieuDuThi();
+        }
+        public static DataTable SearchPhieuDuThi(string searchTerm)
+        {
+            return PhieuDuThiDAO.SearchPhieuDuThi(searchTerm);
         }
     }
 }

@@ -10,9 +10,14 @@ namespace PTTKHTTTProject.BUS
 {
     internal class PhieuDangKyBUS
     {
-        public static DataTable LayDSPhieuDangKy3Tuan()
+        public static DataTable LayDSPhieuDangKy2Tuan()
         {
-            DataTable dt = PhieuDangKyDAO.LayDSPhieuDangKy3Tuan();
+            DataTable dt = PhieuDangKyDAO.LayDSPhieuDangKy2Tuan();
+            return dt;
+        }
+        public static DataTable LayDSPhieuDangKyConLai()
+        {
+            DataTable dt = PhieuDangKyDAO.LayDSPhieuDangKyConLai();
             return dt;
         }
     }

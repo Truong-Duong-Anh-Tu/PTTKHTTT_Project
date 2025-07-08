@@ -1,4 +1,5 @@
 ﻿using PTTKHTTTProject.BUS;
+using PTTKHTTTProject.DAO;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,9 +15,11 @@ namespace PTTKHTTTProject.UControl
     public partial class adminPhatHanhPhieuDuThi : UserControl
     {
         private List<string> newlyCreatedIDs;
+        private bool isShowingDSMoiPhatHanh = false;
         public adminPhatHanhPhieuDuThi()
         {
             InitializeComponent();
+            this.textBoxTimKiem.TextChanged += new System.EventHandler(this.textBoxTimKiem_TextChanged);
         }
 
         private void adminPhatHanhPhieuDuThi_Load(object sender, EventArgs e)
@@ -28,64 +31,120 @@ namespace PTTKHTTTProject.UControl
         {
             try
             {
-                // 1. Tự động tạo phiếu và lưu danh sách mã mới vào biến của lớp
-                DataTable dtNewIDs = PhieuDuThiBUS.TuDongLapPhieuDuThi();
-                this.newlyCreatedIDs = dtNewIDs.AsEnumerable().Select(row => row.Field<string>("MaPhieu")).ToList();
-
-                // 2. Tải dữ liệu cho cả hai bảng
-                DataTable dtPhieuDK = PhieuDangKyBUS.LayDSPhieuDangKy3Tuan();
+                radioButtonDSCho2Tuan.Checked = true;
+                DataTable dtPhieuDK = PhieuDangKyBUS.LayDSPhieuDangKy2Tuan();
                 dataGridViewDSCho.DataSource = dtPhieuDK;
                 dataGridViewDSCho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
-                dataGridViewDSCho.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridViewLichSuPhatHanh.Font, FontStyle.Bold);
+                dataGridViewDSCho.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridViewDSCho.Font, FontStyle.Bold);
 
                 DataTable dtLichSu = PhieuDuThiBUS.getAllPhieuDuThi();
-                // Gán DataSource sẽ tự động kích hoạt sự kiện DataBindingComplete, sau đó việc tô màu sẽ diễn ra
+                originalDataTable = dtLichSu;
                 dataGridViewLichSuPhatHanh.DataSource = dtLichSu;
                 dataGridViewLichSuPhatHanh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
                 dataGridViewLichSuPhatHanh.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridViewLichSuPhatHanh.Font, FontStyle.Bold);
-
-                if (newlyCreatedIDs.Any())
-                {
-                    MessageBox.Show($"Đã tự động tạo thành công {newlyCreatedIDs.Count} phiếu dự thi mới.", "Hoàn tất", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                }
             }
             catch (Exception ex)
             {
                 MessageBox.Show("Lỗi khi tải lịch sử phát hành: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
         }
-
-        // Sự kiện này sẽ được gọi sau khi gán DataSource cho dataGridViewLichSuPhatHanh
-        private void dataGridViewLichSuPhatHanh_DataBindingComplete(object sender, DataGridViewBindingCompleteEventArgs e)
+        private DataTable originalDataTable;
+        private void FilterData()
         {
-            // Gọi hàm tô màu tại đây để đảm bảo grid đã sẵn sàng
-            HighlightNewRows(this.newlyCreatedIDs);
-        }
+            if (originalDataTable == null) return;
 
-        private void HighlightNewRows(List<string> newIDs)
-        {
-            // Đặt lại màu nền cho tất cả các dòng về mặc định
-            foreach (DataGridViewRow row in dataGridViewLichSuPhatHanh.Rows)
+            string searchTerm = textBoxTimKiem.Text.Trim();
+
+            if (string.IsNullOrEmpty(searchTerm))
             {
-                row.DefaultCellStyle.BackColor = Color.White;
+                // Nếu không có từ khóa, hiển thị lại toàn bộ dữ liệu
+                dataGridViewLichSuPhatHanh.DataSource = originalDataTable;
             }
-
-            if (newIDs == null || !newIDs.Any()) return;
-
-            // Lặp qua DataGridView để tìm và tô màu các dòng mới
-            foreach (DataGridViewRow row in dataGridViewLichSuPhatHanh.Rows)
+            else
             {
-                // Đảm bảo cell và giá trị của nó không null
-                if (row.Cells["Mã Phiếu Dự Thi"]?.Value != null)
+                // Nếu có từ khóa, gọi phương thức tìm kiếm và cập nhật DataGridView
+                try
                 {
-                    string currentID = row.Cells["Mã Phiếu Dự Thi"].Value.ToString();
-                    if (newIDs.Contains(currentID))
-                    {
-                        // Tô màu xanh nhạt cho dòng mới để dễ nhận biết
-                        row.DefaultCellStyle.BackColor = Color.LightCyan;
-                    }
+                    DataTable filteredData = PhieuDuThiBUS.SearchPhieuDuThi(searchTerm);
+                    dataGridViewLichSuPhatHanh.DataSource = filteredData;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 }
             }
+        }
+
+        private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
+
+        private void radioButtonDSCho2Tuan_CheckedChanged(object sender, EventArgs e)
+        {
+            if (radioButtonDSCho2Tuan.Checked)
+            {
+                DataTable dtPhieuDK = PhieuDangKyBUS.LayDSPhieuDangKy2Tuan();
+                dataGridViewDSCho.DataSource = dtPhieuDK;
+                dataGridViewDSCho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewDSCho.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridViewDSCho.Font, FontStyle.Bold);
+            }
+        }
+        private void radioButtonDSCho_CheckedChanged(object sender, EventArgs e)
+        {
+            // Hiển thị danh sách chờ còn lại
+            DataTable dtConLai = PhieuDangKyBUS.LayDSPhieuDangKyConLai();
+            dataGridViewDSCho.DataSource = dtConLai;
+            dataGridViewDSCho.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewDSCho.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridViewDSCho.Font, FontStyle.Bold);
+        }
+
+        private void buttonDSChoMoiPhatHanh_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                if (!isShowingDSMoiPhatHanh)
+                {
+                    // Hiển thị danh sách toàn bộ phiếu dự thi
+                    DataTable dtLichSu = PhieuDuThiBUS.getAllPhieuDuThi();
+                    dataGridViewLichSuPhatHanh.DataSource = dtLichSu;
+                    buttonDSChoMoiPhatHanh.Text = "Hiển thị danh sách mới phát hành (*)";
+                    isShowingDSMoiPhatHanh = true;
+                }
+                else
+                {
+                    // Hiển thị danh sách mới phát hành
+                    DataTable dtLSDuThi2Tuan = PhieuDuThiBUS.getPhieuDuThi2Tuan();
+                    dataGridViewLichSuPhatHanh.DataSource = dtLSDuThi2Tuan;
+                    buttonDSChoMoiPhatHanh.Text = "Hiển thị toàn bộ phiếu dự thi";
+                    isShowingDSMoiPhatHanh = false;
+                }
+                dataGridViewLichSuPhatHanh.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+                dataGridViewLichSuPhatHanh.ColumnHeadersDefaultCellStyle.Font = new Font(dataGridViewDSCho.Font, FontStyle.Bold);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi chuyển đổi danh sách: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        private void btnPhatHanh_Click(object sender, EventArgs e)
+        {
+            // Tự động tạo phiếu và lưu danh sách mã mới vào biến của lớp
+            DataTable dtNewIDs = PhieuDuThiBUS.TuDongLapPhieuDuThi();
+            this.newlyCreatedIDs = dtNewIDs != null
+                ? dtNewIDs.AsEnumerable().Select(row => row.Field<string>("MaPhieu")).ToList()
+                : new List<string>();
+
+            if (newlyCreatedIDs.Any())
+            {
+                MessageBox.Show($"Đã tự động tạo thành công {newlyCreatedIDs.Count} phiếu dự thi mới.", "Hoàn tất", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            else
+            {
+                MessageBox.Show("Không có phiếu dự thi mới được tạo.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
+            LoadData();
         }
     }
 }
