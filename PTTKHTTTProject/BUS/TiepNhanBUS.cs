@@ -79,5 +79,21 @@ namespace PTTKHTTTProject.BUS
         {
             TiepNhanDAO.GiaHanPhieuDangKy(maPhieu, maLichThiMoi);
         }
+
+        public static DataTable TimChungChi(string maKyThi, string tuKhoa, string loaiKH)
+        {
+            return TiepNhanDAO.TimChungChi(maKyThi, tuKhoa, loaiKH);
+        }
+
+        public static void CapNhatDanhSachTrangThaiDaNhan(List<string> danhSachMaBaiThi)
+        {
+            if (danhSachMaBaiThi == null || danhSachMaBaiThi.Count == 0)
+                throw new ArgumentException("Danh sách mã bài thi không hợp lệ.");
+
+            foreach (var ma in danhSachMaBaiThi.Distinct())
+            {
+                TiepNhanDAO.CapNhatTrangThaiDaNhan(ma);
+            }
+        }
     }
 }

@@ -38,17 +38,10 @@
             btnCapNhatGiaHan = new Button();
             btnThongBao = new Button();
             panel2 = new Panel();
-            button1 = new Button();
+            lblOption = new Label();
+            btn_signOut = new Button();
             TiepNhan_TenNV = new Label();
             pictureBox1 = new PictureBox();
-            button2 = new Button();
-            label2 = new Label();
-            pictureBox2 = new PictureBox();
-            button3 = new Button();
-            label3 = new Label();
-            pictureBox3 = new PictureBox();
-            label4 = new Label();
-            pictureBox4 = new PictureBox();
             panelPDK = new Panel();
             panelKHDonVi = new Panel();
             PDKView_dgvDV = new DataGridView();
@@ -98,15 +91,14 @@
             PDKView_SearchBox = new TextBox();
             PDKView_Search = new Button();
             panelXLCC = new Panel();
-            button11 = new Button();
             label16 = new Label();
-            GridviewXLCC = new DataGridView();
-            button7 = new Button();
-            textBox1 = new TextBox();
-            button6 = new Button();
-            radioButton2 = new RadioButton();
-            radioButton1 = new RadioButton();
-            comboBox2 = new ComboBox();
+            CC_dgv = new DataGridView();
+            CC_XacNhan = new Button();
+            CC_SearchBox = new TextBox();
+            CC_btnSearch = new Button();
+            CC_btnDonVi = new RadioButton();
+            CC_btnTuDo = new RadioButton();
+            CC_cbKyThi = new ComboBox();
             label15 = new Label();
             panelGiaHan = new Panel();
             panel7 = new Panel();
@@ -249,21 +241,22 @@
             label75 = new Label();
             label76 = new Label();
             label77 = new Label();
+            backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
+            panelNotifi = new Panel();
+            panelInfo = new Panel();
+            ptbMenu = new PictureBox();
             tlpMenuTiepNhan.SuspendLayout();
             tlpLogoName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).BeginInit();
             panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).BeginInit();
             panelPDK.SuspendLayout();
             panelKHDonVi.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)PDKView_dgvDV).BeginInit();
             panelKHTuDo.SuspendLayout();
             panel4.SuspendLayout();
             panelXLCC.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)GridviewXLCC).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)CC_dgv).BeginInit();
             panelGiaHan.SuspendLayout();
             panel7.SuspendLayout();
             panel3.SuspendLayout();
@@ -279,6 +272,7 @@
             ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).BeginInit();
             panelTSTDEdit.SuspendLayout();
             panel12.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbMenu).BeginInit();
             SuspendLayout();
             // 
             // tlpMenuTiepNhan
@@ -331,6 +325,7 @@
             btnTTCN.TabIndex = 1;
             btnTTCN.Text = "Thông tin cá nhân";
             btnTTCN.UseVisualStyleBackColor = true;
+            btnTTCN.Click += btnTTCN_Click;
             // 
             // btnXLCC
             // 
@@ -363,7 +358,7 @@
             // ptbLogoHome
             // 
             ptbLogoHome.Anchor = AnchorStyles.None;
-            ptbLogoHome.Image = Properties.Resources.logo;
+            ptbLogoHome.Image = Properties.Resources.logonew;
             ptbLogoHome.Location = new Point(14, 3);
             ptbLogoHome.Margin = new Padding(4, 3, 4, 3);
             ptbLogoHome.Name = "ptbLogoHome";
@@ -408,22 +403,17 @@
             btnThongBao.TabIndex = 9;
             btnThongBao.Text = "Thông báo";
             btnThongBao.UseVisualStyleBackColor = true;
+            btnThongBao.Click += btnThongBao_Click;
             // 
             // panel2
             // 
             panel2.BackColor = SystemColors.ControlLight;
             panel2.BorderStyle = BorderStyle.Fixed3D;
-            panel2.Controls.Add(button1);
+            panel2.Controls.Add(ptbMenu);
+            panel2.Controls.Add(lblOption);
+            panel2.Controls.Add(btn_signOut);
             panel2.Controls.Add(TiepNhan_TenNV);
             panel2.Controls.Add(pictureBox1);
-            panel2.Controls.Add(button2);
-            panel2.Controls.Add(label2);
-            panel2.Controls.Add(pictureBox2);
-            panel2.Controls.Add(button3);
-            panel2.Controls.Add(label3);
-            panel2.Controls.Add(pictureBox3);
-            panel2.Controls.Add(label4);
-            panel2.Controls.Add(pictureBox4);
             panel2.Dock = DockStyle.Top;
             panel2.Location = new Point(194, 0);
             panel2.Margin = new Padding(4, 3, 4, 3);
@@ -431,27 +421,39 @@
             panel2.Size = new Size(1283, 62);
             panel2.TabIndex = 8;
             // 
-            // button1
+            // lblOption
             // 
-            button1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button1.BackColor = Color.DeepSkyBlue;
-            button1.Location = new Point(1137, 10);
-            button1.Margin = new Padding(4, 3, 4, 3);
-            button1.Name = "button1";
-            button1.Size = new Size(109, 42);
-            button1.TabIndex = 9;
-            button1.Text = "Đăng xuất";
-            button1.UseVisualStyleBackColor = false;
+            lblOption.AutoSize = true;
+            lblOption.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblOption.Location = new Point(70, 18);
+            lblOption.Margin = new Padding(4, 0, 4, 0);
+            lblOption.Name = "lblOption";
+            lblOption.Size = new Size(167, 25);
+            lblOption.TabIndex = 11;
+            lblOption.Text = "Thông tin cá nhân";
+            // 
+            // btn_signOut
+            // 
+            btn_signOut.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btn_signOut.BackColor = Color.DeepSkyBlue;
+            btn_signOut.Location = new Point(1137, 10);
+            btn_signOut.Margin = new Padding(4, 3, 4, 3);
+            btn_signOut.Name = "btn_signOut";
+            btn_signOut.Size = new Size(109, 42);
+            btn_signOut.TabIndex = 9;
+            btn_signOut.Text = "Đăng xuất";
+            btn_signOut.UseVisualStyleBackColor = false;
+            btn_signOut.Click += btn_signOut_Click;
             // 
             // TiepNhan_TenNV
             // 
             TiepNhan_TenNV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             TiepNhan_TenNV.AutoSize = true;
-            TiepNhan_TenNV.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            TiepNhan_TenNV.Location = new Point(774, 18);
+            TiepNhan_TenNV.Font = new Font("Cambria", 10F);
+            TiepNhan_TenNV.Location = new Point(790, 20);
             TiepNhan_TenNV.Margin = new Padding(4, 0, 4, 0);
             TiepNhan_TenNV.Name = "TiepNhan_TenNV";
-            TiepNhan_TenNV.Size = new Size(147, 21);
+            TiepNhan_TenNV.Size = new Size(161, 23);
             TiepNhan_TenNV.TabIndex = 9;
             TiepNhan_TenNV.Text = "<Name and Role>";
             // 
@@ -459,108 +461,13 @@
             // 
             pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureBox1.Image = Properties.Resources.avatar;
-            pictureBox1.Location = new Point(720, 5);
+            pictureBox1.Location = new Point(736, 9);
             pictureBox1.Margin = new Padding(4, 3, 4, 3);
             pictureBox1.Name = "pictureBox1";
             pictureBox1.Size = new Size(46, 47);
             pictureBox1.SizeMode = PictureBoxSizeMode.Zoom;
             pictureBox1.TabIndex = 9;
             pictureBox1.TabStop = false;
-            // 
-            // button2
-            // 
-            button2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button2.BackColor = Color.DeepSkyBlue;
-            button2.Location = new Point(2242, 12);
-            button2.Margin = new Padding(4, 3, 4, 3);
-            button2.Name = "button2";
-            button2.Size = new Size(109, 42);
-            button2.TabIndex = 7;
-            button2.Text = "Đăng xuất";
-            button2.UseVisualStyleBackColor = false;
-            // 
-            // label2
-            // 
-            label2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label2.AutoSize = true;
-            label2.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label2.Location = new Point(1982, 22);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(147, 21);
-            label2.TabIndex = 7;
-            label2.Text = "<Name and Role>";
-            // 
-            // pictureBox2
-            // 
-            pictureBox2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox2.Image = Properties.Resources.avatar;
-            pictureBox2.Location = new Point(1928, 8);
-            pictureBox2.Margin = new Padding(4, 3, 4, 3);
-            pictureBox2.Name = "pictureBox2";
-            pictureBox2.Size = new Size(46, 47);
-            pictureBox2.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox2.TabIndex = 7;
-            pictureBox2.TabStop = false;
-            // 
-            // button3
-            // 
-            button3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            button3.BackColor = Color.DeepSkyBlue;
-            button3.Location = new Point(3242, 12);
-            button3.Margin = new Padding(4, 3, 4, 3);
-            button3.Name = "button3";
-            button3.Size = new Size(109, 42);
-            button3.TabIndex = 6;
-            button3.Text = "Đăng xuất";
-            button3.UseVisualStyleBackColor = false;
-            // 
-            // label3
-            // 
-            label3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            label3.AutoSize = true;
-            label3.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            label3.Location = new Point(2982, 22);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(147, 21);
-            label3.TabIndex = 6;
-            label3.Text = "<Name and Role>";
-            // 
-            // pictureBox3
-            // 
-            pictureBox3.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            pictureBox3.Image = Properties.Resources.avatar;
-            pictureBox3.Location = new Point(2928, 8);
-            pictureBox3.Margin = new Padding(4, 3, 4, 3);
-            pictureBox3.Name = "pictureBox3";
-            pictureBox3.Size = new Size(46, 47);
-            pictureBox3.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox3.TabIndex = 6;
-            pictureBox3.TabStop = false;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            label4.Location = new Point(66, 22);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(167, 25);
-            label4.TabIndex = 6;
-            label4.Text = "Thông tin cá nhân";
-            // 
-            // pictureBox4
-            // 
-            pictureBox4.BackColor = Color.DeepSkyBlue;
-            pictureBox4.Image = Properties.Resources.Menu;
-            pictureBox4.Location = new Point(14, 15);
-            pictureBox4.Margin = new Padding(4, 3, 4, 3);
-            pictureBox4.Name = "pictureBox4";
-            pictureBox4.Size = new Size(37, 37);
-            pictureBox4.SizeMode = PictureBoxSizeMode.Zoom;
-            pictureBox4.TabIndex = 6;
-            pictureBox4.TabStop = false;
             // 
             // panelPDK
             // 
@@ -572,9 +479,9 @@
             panelPDK.Controls.Add(PDKView_SearchBox);
             panelPDK.Controls.Add(PDKView_Search);
             panelPDK.Dock = DockStyle.Fill;
-            panelPDK.Location = new Point(194, 62);
+            panelPDK.Location = new Point(0, 0);
             panelPDK.Name = "panelPDK";
-            panelPDK.Size = new Size(1283, 723);
+            panelPDK.Size = new Size(1477, 785);
             panelPDK.TabIndex = 10;
             // 
             // panelKHDonVi
@@ -1060,30 +967,20 @@
             // 
             // panelXLCC
             // 
-            panelXLCC.Controls.Add(button11);
             panelXLCC.Controls.Add(label16);
-            panelXLCC.Controls.Add(GridviewXLCC);
-            panelXLCC.Controls.Add(button7);
-            panelXLCC.Controls.Add(textBox1);
-            panelXLCC.Controls.Add(button6);
-            panelXLCC.Controls.Add(radioButton2);
-            panelXLCC.Controls.Add(radioButton1);
-            panelXLCC.Controls.Add(comboBox2);
+            panelXLCC.Controls.Add(CC_dgv);
+            panelXLCC.Controls.Add(CC_XacNhan);
+            panelXLCC.Controls.Add(CC_SearchBox);
+            panelXLCC.Controls.Add(CC_btnSearch);
+            panelXLCC.Controls.Add(CC_btnDonVi);
+            panelXLCC.Controls.Add(CC_btnTuDo);
+            panelXLCC.Controls.Add(CC_cbKyThi);
             panelXLCC.Controls.Add(label15);
             panelXLCC.Dock = DockStyle.Fill;
-            panelXLCC.Location = new Point(0, 0);
+            panelXLCC.Location = new Point(194, 62);
             panelXLCC.Name = "panelXLCC";
-            panelXLCC.Size = new Size(1477, 785);
+            panelXLCC.Size = new Size(1283, 723);
             panelXLCC.TabIndex = 10;
-            // 
-            // button11
-            // 
-            button11.Location = new Point(561, 37);
-            button11.Name = "button11";
-            button11.Size = new Size(119, 34);
-            button11.TabIndex = 9;
-            button11.Text = "Tìm kiếm";
-            button11.UseVisualStyleBackColor = true;
             // 
             // label16
             // 
@@ -1095,76 +992,77 @@
             label16.TabIndex = 8;
             label16.Text = "Danh sách thí sinh";
             // 
-            // GridviewXLCC
+            // CC_dgv
             // 
-            GridviewXLCC.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            GridviewXLCC.Location = new Point(54, 311);
-            GridviewXLCC.Name = "GridviewXLCC";
-            GridviewXLCC.RowHeadersWidth = 62;
-            GridviewXLCC.Size = new Size(1172, 384);
-            GridviewXLCC.TabIndex = 7;
+            CC_dgv.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            CC_dgv.Location = new Point(54, 311);
+            CC_dgv.Name = "CC_dgv";
+            CC_dgv.RowHeadersWidth = 62;
+            CC_dgv.Size = new Size(1172, 384);
+            CC_dgv.TabIndex = 7;
             // 
-            // button7
+            // CC_XacNhan
             // 
-            button7.BackColor = SystemColors.InactiveCaption;
-            button7.Font = new Font("Segoe UI", 11F);
-            button7.Location = new Point(914, 242);
-            button7.Name = "button7";
-            button7.Size = new Size(312, 51);
-            button7.TabIndex = 6;
-            button7.Text = "Cập nhật trạng thái đã nhận";
-            button7.UseVisualStyleBackColor = false;
+            CC_XacNhan.BackColor = SystemColors.InactiveCaption;
+            CC_XacNhan.Font = new Font("Segoe UI", 11F);
+            CC_XacNhan.Location = new Point(914, 242);
+            CC_XacNhan.Name = "CC_XacNhan";
+            CC_XacNhan.Size = new Size(312, 51);
+            CC_XacNhan.TabIndex = 6;
+            CC_XacNhan.Text = "Cập nhật trạng thái đã nhận";
+            CC_XacNhan.UseVisualStyleBackColor = false;
+            CC_XacNhan.Click += CC_XacNhan_Click;
             // 
-            // textBox1
+            // CC_SearchBox
             // 
-            textBox1.Font = new Font("Segoe UI", 10F);
-            textBox1.Location = new Point(54, 192);
-            textBox1.Name = "textBox1";
-            textBox1.Size = new Size(841, 34);
-            textBox1.TabIndex = 5;
-            textBox1.Text = "Nhập tên, SBD hoặc CCCD của thí sinh";
+            CC_SearchBox.Font = new Font("Segoe UI", 10F);
+            CC_SearchBox.Location = new Point(54, 192);
+            CC_SearchBox.Name = "CC_SearchBox";
+            CC_SearchBox.PlaceholderText = "Nhập tên, SBD hoặc CCCD của thí sinh";
+            CC_SearchBox.Size = new Size(841, 34);
+            CC_SearchBox.TabIndex = 5;
             // 
-            // button6
+            // CC_btnSearch
             // 
-            button6.Location = new Point(916, 193);
-            button6.Name = "button6";
-            button6.Size = new Size(119, 34);
-            button6.TabIndex = 4;
-            button6.Text = "Tìm kiếm";
-            button6.UseVisualStyleBackColor = true;
+            CC_btnSearch.Location = new Point(916, 193);
+            CC_btnSearch.Name = "CC_btnSearch";
+            CC_btnSearch.Size = new Size(119, 34);
+            CC_btnSearch.TabIndex = 4;
+            CC_btnSearch.Text = "Tìm kiếm";
+            CC_btnSearch.UseVisualStyleBackColor = true;
+            CC_btnSearch.Click += CC_btnSearch_Click;
             // 
-            // radioButton2
+            // CC_btnDonVi
             // 
-            radioButton2.AutoSize = true;
-            radioButton2.Font = new Font("Segoe UI", 12F);
-            radioButton2.Location = new Point(838, 116);
-            radioButton2.Name = "radioButton2";
-            radioButton2.Size = new Size(197, 36);
-            radioButton2.TabIndex = 3;
-            radioButton2.TabStop = true;
-            radioButton2.Text = "Thí sinh đơn vị";
-            radioButton2.UseVisualStyleBackColor = true;
+            CC_btnDonVi.AutoSize = true;
+            CC_btnDonVi.Font = new Font("Segoe UI", 12F);
+            CC_btnDonVi.Location = new Point(838, 116);
+            CC_btnDonVi.Name = "CC_btnDonVi";
+            CC_btnDonVi.Size = new Size(197, 36);
+            CC_btnDonVi.TabIndex = 3;
+            CC_btnDonVi.TabStop = true;
+            CC_btnDonVi.Text = "Thí sinh đơn vị";
+            CC_btnDonVi.UseVisualStyleBackColor = true;
             // 
-            // radioButton1
+            // CC_btnTuDo
             // 
-            radioButton1.AutoSize = true;
-            radioButton1.Font = new Font("Segoe UI", 12F);
-            radioButton1.Location = new Point(202, 116);
-            radioButton1.Name = "radioButton1";
-            radioButton1.Size = new Size(187, 36);
-            radioButton1.TabIndex = 2;
-            radioButton1.TabStop = true;
-            radioButton1.Text = "Thí sinh tự do";
-            radioButton1.UseVisualStyleBackColor = true;
+            CC_btnTuDo.AutoSize = true;
+            CC_btnTuDo.Font = new Font("Segoe UI", 12F);
+            CC_btnTuDo.Location = new Point(202, 116);
+            CC_btnTuDo.Name = "CC_btnTuDo";
+            CC_btnTuDo.Size = new Size(187, 36);
+            CC_btnTuDo.TabIndex = 2;
+            CC_btnTuDo.TabStop = true;
+            CC_btnTuDo.Text = "Thí sinh tự do";
+            CC_btnTuDo.UseVisualStyleBackColor = true;
             // 
-            // comboBox2
+            // CC_cbKyThi
             // 
-            comboBox2.FormattingEnabled = true;
-            comboBox2.Location = new Point(202, 36);
-            comboBox2.Name = "comboBox2";
-            comboBox2.Size = new Size(333, 33);
-            comboBox2.TabIndex = 1;
-            comboBox2.Text = "Chọn kỳ thi";
+            CC_cbKyThi.FormattingEnabled = true;
+            CC_cbKyThi.Location = new Point(202, 36);
+            CC_cbKyThi.Name = "CC_cbKyThi";
+            CC_cbKyThi.Size = new Size(333, 33);
+            CC_cbKyThi.TabIndex = 1;
             // 
             // label15
             // 
@@ -2614,18 +2512,48 @@
             label77.TabIndex = 9;
             label77.Text = "Email:";
             // 
+            // panelNotifi
+            // 
+            panelNotifi.Dock = DockStyle.Fill;
+            panelNotifi.Location = new Point(0, 0);
+            panelNotifi.Name = "panelNotifi";
+            panelNotifi.Size = new Size(1477, 785);
+            panelNotifi.TabIndex = 17;
+            // 
+            // panelInfo
+            // 
+            panelInfo.Dock = DockStyle.Fill;
+            panelInfo.Location = new Point(0, 0);
+            panelInfo.Name = "panelInfo";
+            panelInfo.Size = new Size(1477, 785);
+            panelInfo.TabIndex = 0;
+            // 
+            // ptbMenu
+            // 
+            ptbMenu.BackColor = Color.DeepSkyBlue;
+            ptbMenu.Image = Properties.Resources.Menu;
+            ptbMenu.Location = new Point(23, 11);
+            ptbMenu.Margin = new Padding(4);
+            ptbMenu.Name = "ptbMenu";
+            ptbMenu.Size = new Size(38, 36);
+            ptbMenu.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbMenu.TabIndex = 12;
+            ptbMenu.TabStop = false;
+            // 
             // fTiepNhan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1477, 785);
-            Controls.Add(panelPDK);
+            Controls.Add(panelXLCC);
             Controls.Add(panel2);
             Controls.Add(tlpMenuTiepNhan);
+            Controls.Add(panelGiaHan);
+            Controls.Add(panelPDK);
+            Controls.Add(panelInfo);
+            Controls.Add(panelNotifi);
             Controls.Add(panelPDKUpdate);
             Controls.Add(panelPDKAdd);
-            Controls.Add(panelXLCC);
-            Controls.Add(panelGiaHan);
             Name = "fTiepNhan";
             Text = "fTiepNhan";
             Load += fTiepNhan_Load_1;
@@ -2636,9 +2564,6 @@
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox2).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox3).EndInit();
-            ((System.ComponentModel.ISupportInitialize)pictureBox4).EndInit();
             panelPDK.ResumeLayout(false);
             panelPDK.PerformLayout();
             panelKHDonVi.ResumeLayout(false);
@@ -2650,7 +2575,7 @@
             panel4.PerformLayout();
             panelXLCC.ResumeLayout(false);
             panelXLCC.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)GridviewXLCC).EndInit();
+            ((System.ComponentModel.ISupportInitialize)CC_dgv).EndInit();
             panelGiaHan.ResumeLayout(false);
             panelGiaHan.PerformLayout();
             panel7.ResumeLayout(false);
@@ -2677,6 +2602,7 @@
             panelTSTDEdit.PerformLayout();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbMenu).EndInit();
             ResumeLayout(false);
         }
 
@@ -2691,17 +2617,9 @@
         private PictureBox ptbLogoHome;
         private Label lblNameHome;
         private Panel panel2;
-        private Button button2;
-        private Label label2;
-        private PictureBox pictureBox2;
-        private Button button3;
-        private Label label3;
-        private PictureBox pictureBox3;
-        private Label label4;
-        private PictureBox pictureBox4;
         private PictureBox pictureBox1;
         private Label TiepNhan_TenNV;
-        private Button button1;
+        private Button btn_signOut;
         private Button btnThongBao;
         private Panel panelPDK;
         private TextBox PDKView_SearchBox;
@@ -2718,14 +2636,14 @@
         private Label label14;
         private Label label13;
         private Panel panelXLCC;
-        private RadioButton radioButton2;
-        private RadioButton radioButton1;
-        private ComboBox comboBox2;
+        private RadioButton CC_btnDonVi;
+        private RadioButton CC_btnTuDo;
+        private ComboBox CC_cbKyThi;
         private Label label15;
-        private Button button7;
-        private TextBox textBox1;
-        private Button button6;
-        private DataGridView GridviewXLCC;
+        private Button CC_XacNhan;
+        private TextBox CC_SearchBox;
+        private Button CC_btnSearch;
+        private DataGridView CC_dgv;
         private Panel panelGiaHan;
         private Label label16;
         private Label label17;
@@ -2739,7 +2657,6 @@
         private Label label28;
         private Label label27;
         private Button GiaHan_btnGiaHan;
-        private Button button11;
         private Label label34;
         private Label label33;
         private Label label32;
@@ -2904,5 +2821,10 @@
         private ComboBox GiaHan_ChonKyThi;
         private Button PDKView_Return;
         private Button PDKView_Return_1;
+        private System.ComponentModel.BackgroundWorker backgroundWorker1;
+        private Panel panelNotifi;
+        private Panel panelInfo;
+        private Label lblOption;
+        private PictureBox ptbMenu;
     }
 }
