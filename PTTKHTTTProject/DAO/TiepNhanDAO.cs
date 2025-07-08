@@ -186,5 +186,33 @@ namespace PTTKHTTTProject.DAO
                 new SqlParameter("@MaLichThiMoi", SqlDbType.VarChar, 10) { Value = maLichThiMoi }
             );
         }
+
+        public static DataTable TimChungChi(string maKyThi, string tuKhoa, string loaiKH)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaKyThi", string.IsNullOrWhiteSpace(maKyThi) ? (object)DBNull.Value : maKyThi),
+                new SqlParameter("@TuKhoa", string.IsNullOrWhiteSpace(tuKhoa) ? (object)DBNull.Value : tuKhoa),
+                new SqlParameter("@LoaiKH", string.IsNullOrWhiteSpace(loaiKH) ? (object)DBNull.Value : loaiKH),
+            };
+
+            return DataProvider.Instance.ExecuteQuery("TimChungChi", parameters);
+        }
+
+        public static void CapNhatTrangThaiDaNhan(string maBaiThi)
+        {
+            string query = @"
+                UPDATE CHUNGCHI
+                SET CC_TrangThai = N'Đã nhận'
+                WHERE CC_MaBaiThi = @MaBaiThi AND CC_TrangThai != N'Đã nhận';
+            ";
+
+            SqlParameter param = new SqlParameter("@MaBaiThi", SqlDbType.VarChar, 10)
+            {
+                Value = maBaiThi
+            };
+
+            DataProvider.Instance.ExecuteNonQuery(query, param);
+        }
     }
 }

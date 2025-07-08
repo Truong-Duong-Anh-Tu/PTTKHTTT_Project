@@ -13,6 +13,7 @@ using System.Windows.Forms;
 using static PTTKHTTTProject.BUS.TiepNhan;
 using static System.Windows.Forms.VisualStyles.VisualStyleElement.ListView;
 
+
 namespace PTTKHTTTProject
 {
     public partial class fTiepNhan : Form
@@ -23,9 +24,12 @@ namespace PTTKHTTTProject
         {
             InitializeComponent();
             _username = username;
+
         }
         private void fTiepNhan_Load_1(object sender, EventArgs e)
         {
+            LoadInfo();
+
             string? tenNhanVien = TiepNhan.LayTenNhanVien(_username);
 
             if (!string.IsNullOrEmpty(tenNhanVien))
@@ -36,6 +40,20 @@ namespace PTTKHTTTProject
             {
                 TiepNhan_TenNV.Text = "...";
             }
+        }
+
+        private void LoadInfo()
+        {
+            HideAllPanels();
+            panelInfo.Visible = true;
+            panelInfo.BringToFront();
+
+            // Tạo user control
+            ucInfo uc = new ucInfo(_username);
+            uc.Dock = DockStyle.Fill;
+
+            panelInfo.Controls.Clear();
+            panelInfo.Controls.Add(uc);
         }
 
         private void HideAllPanels()
@@ -51,13 +69,86 @@ namespace PTTKHTTTProject
             panelTSTDEdit.Visible = false;
             panelTSTDAdd.Visible = false;
             panelTSDVAdd.Visible = false;
+            panelNotifi.Visible = false;
+            panelInfo.Visible = false;
         }
 
+        // Giao diện cập nhật chứng chỉ
         private void btnXLCC_Click(object sender, EventArgs e)
         {
             HideAllPanels();
             panelXLCC.Visible = true;
             panelXLCC.BringToFront();
+
+            CC_cbKyThi.DataSource = TiepNhan.GetDanhSachKyThi();
+            CC_cbKyThi.DisplayMember = "KT_TenKyThi";
+            CC_cbKyThi.ValueMember = "KT_MaKyThi";
+
+            CC_btnDonVi.Checked = false;
+            CC_btnTuDo.Checked = false;
+        }
+
+        private void LoadChungChi()
+        {
+            string maKyThi = CC_cbKyThi.SelectedValue?.ToString();
+            string tuKhoa = CC_SearchBox.Text.Trim();
+            string loaiKH = null;
+
+            if (CC_btnTuDo.Checked) loaiKH = "Tự do";
+            else if (CC_btnDonVi.Checked) loaiKH = "Đơn vị";
+
+            var dt = TiepNhan.TimChungChi(maKyThi, tuKhoa, loaiKH);
+            CC_dgv.AllowUserToAddRows = false;
+            CC_dgv.DataSource = dt;
+
+            // Nếu chưa thêm cột checkbox thì thêm vào
+            if (!CC_dgv.Columns.Contains("Check"))
+            {
+                DataGridViewCheckBoxColumn chk = new DataGridViewCheckBoxColumn();
+                chk.Name = "Check";
+                chk.HeaderText = "Chọn";
+                CC_dgv.Columns.Insert(0, chk);
+            }
+        }
+
+        private void CC_btnSearch_Click(object sender, EventArgs e)
+        {
+            LoadChungChi();
+        }
+
+        private void CC_XacNhan_Click(object sender, EventArgs e)
+        {
+            List<string> danhSachDuocChon = new List<string>();
+
+            foreach (DataGridViewRow row in CC_dgv.Rows)
+            {
+                // Kiểm tra ô checkbox được chọn
+                bool isChecked = Convert.ToBoolean(row.Cells["colCheck"].Value ?? false);
+
+                if (isChecked)
+                {
+                    string maBaiThi = row.Cells["colMaBaiThi"].Value?.ToString()?.Trim();
+                    if (!string.IsNullOrEmpty(maBaiThi))
+                        danhSachDuocChon.Add(maBaiThi);
+                }
+            }
+
+            if (danhSachDuocChon.Count == 0)
+            {
+                MessageBox.Show("Vui lòng chọn ít nhất 1 chứng chỉ để cập nhật.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            try
+            {
+                TiepNhan.CapNhatDanhSachTrangThaiDaNhan(danhSachDuocChon);
+                MessageBox.Show("Cập nhật trạng thái thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                LoadChungChi(); 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Lỗi khi cập nhật: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
         // Giao diện xử lý gia hạn
@@ -714,6 +805,33 @@ namespace PTTKHTTTProject
             ResetThongTinPhieuDKView();
             _PDKUpdate = "";
         }
+
+        private void btnTTCN_Click(object sender, EventArgs e)
+        {
+            LoadInfo();
+        }
+
+        private void btnThongBao_Click(object sender, EventArgs e)
+        {
+            HideAllPanels();
+            panelNotifi.Visible = true;
+            panelNotifi.BringToFront();
+
+            ucNotification noti = new ucNotification(_username);
+            noti.Dock = DockStyle.Fill;
+
+            panelNotifi.Controls.Clear();
+            panelNotifi.Controls.Add(noti);
+        }
+
+        private void btn_signOut_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("Bạn có muốn đăng xuất không?", "Cancel Confirmation", MessageBoxButtons.YesNo) == System.Windows.Forms.DialogResult.Yes)
+            {
+                this.Close();
+            }
+        }
+
 
     }
 }

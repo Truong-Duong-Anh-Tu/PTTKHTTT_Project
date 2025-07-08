@@ -1227,3 +1227,39 @@ BEGIN
 
 END
 GO
+
+--Tìm kiếm thí sinh để cấp chứng chỉ
+CREATE OR ALTER PROCEDURE TimChungChi
+    @MaKyThi VARCHAR(10) = NULL,
+    @TuKhoa NVARCHAR(100) = NULL,     -- Tên/SBD/SDT
+    @LoaiKH NVARCHAR(20) = NULL       -- Tự do / Đơn vị
+AS
+BEGIN
+    SET NOCOUNT ON;
+
+    SELECT 
+        CC.CC_MaBaiThi,
+        CC.CC_NgayCap,
+        CC.CC_ThoiHan,
+        TS.TS_SoBaoDanh,
+        TS.TS_HoTen,
+        TS.TS_SDT,
+        CC.CC_TrangThai
+    FROM CHUNGCHI CC
+    INNER JOIN BAITHI BT ON CC.CC_MaBaiThi = BT.BT_MaBaiThi
+    INNER JOIN THISINH TS ON BT.BT_SoBaoDanh = TS.TS_SoBaoDanh
+    INNER JOIN PHIEUDANGKYDUTHI PDK ON TS.TS_MaPhieuDangKy = PDK.PDKDT_MaPhieu
+    INNER JOIN KHACHHANG KH ON PDK.PDKDT_MaKhachHang = KH.KH_MaKhachHang
+    INNER JOIN LICHTHI LT ON PDK.PDKDT_MaLichThi = LT.LT_MaLichThi
+    INNER JOIN KYTHI KT ON LT.LT_MaKyThi = KT.KT_MaKyThi
+    WHERE 
+        (@MaKyThi IS NULL OR KT.KT_MaKyThi = @MaKyThi)
+        AND (@LoaiKH IS NULL OR KH.KH_LoaiKhachHang = @LoaiKH)
+        AND (
+            @TuKhoa IS NULL
+            OR TS.TS_SoBaoDanh LIKE '%' + @TuKhoa + '%'
+            OR TS.TS_HoTen LIKE N'%' + @TuKhoa + '%'
+            OR TS.TS_SDT LIKE '%' + @TuKhoa + '%'
+        )
+END
+GO
