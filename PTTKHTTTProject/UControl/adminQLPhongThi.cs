@@ -8,13 +8,14 @@ namespace PTTKHTTTProject.UControl
     public partial class adminQLPhongThi : UserControl
     {
         private bool isAdding = false;
-
+        private DataTable originalDataTable;
         public adminQLPhongThi()
         {
             InitializeComponent();
             PopulateHinhThucThiComboBox();
             LoadPhongThiData();
             SetUIState(false);
+            this.textBoxTimKiem.TextChanged += new System.EventHandler(this.textBoxTimKiem_TextChanged);
         }
 
         private void PopulateHinhThucThiComboBox()
@@ -30,6 +31,7 @@ namespace PTTKHTTTProject.UControl
         {
             try
             {
+                originalDataTable = PhongThiBUS.GetAllPhongThi();
                 dataGridView1.DataSource = PhongThiBUS.GetAllPhongThi();
                 SetupDataGridView();
             }
@@ -208,6 +210,36 @@ namespace PTTKHTTTProject.UControl
             f.ShowDialog();
         }
 
+        private void FilterData()
+        {
+            if (originalDataTable == null) return;
+
+            string searchTerm = textBoxTimKiem.Text.Trim();
+
+            if (string.IsNullOrEmpty(searchTerm))
+            {
+                // Nếu không có từ khóa, hiển thị lại toàn bộ dữ liệu
+                dataGridView1.DataSource = originalDataTable;
+            }
+            else
+            {
+                // Nếu có từ khóa, gọi phương thức tìm kiếm và cập nhật DataGridView
+                try
+                {
+                    DataTable filteredData = PhongThiBUS.SearchPhongThi(searchTerm);
+                    dataGridView1.DataSource = filteredData;
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show("Lỗi khi tìm kiếm: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                }
+            }
+        }
+
+        private void textBoxTimKiem_TextChanged(object sender, EventArgs e)
+        {
+            FilterData();
+        }
         private void adminQLPhongThi_Load(object sender, EventArgs e)
         {
 

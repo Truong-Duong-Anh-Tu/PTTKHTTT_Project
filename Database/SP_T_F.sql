@@ -1246,6 +1246,17 @@ BEGIN
     PRINT N'Đã hoàn tất việc tạo phiếu dự thi tự động.';
 END
 GO
+
+CREATE OR ALTER PROCEDURE usp_SearchPhongThi
+    @SearchTerm NVARCHAR(100)
+AS
+BEGIN
+    SET NOCOUNT ON;
+    SELECT *
+    FROM PHONGTHI
+    WHERE PT_MaPhongThi LIKE '%' + @SearchTerm + '%' OR PT_HinhThuc LIKE '%' + @SearchTerm + '%';
+END
+GO
 -- HẾT PHẦN QUẢN TRỊ HỆ THỐNG
 ------------------------------------------------------
 

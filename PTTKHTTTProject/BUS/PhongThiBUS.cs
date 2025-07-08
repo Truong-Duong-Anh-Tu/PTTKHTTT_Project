@@ -61,5 +61,11 @@ namespace PTTKHTTTProject.BUS
         {
             return PhongThiDAO.GetAvailablePhongThiByDate(ngayThi);
         }
+
+        // Thêm vào lớp PhongThiBUS
+        public static DataTable SearchPhongThi(string searchTerm)
+        {
+            return PhongThiDAO.SearchPhongThi(searchTerm);
+        }
     }
 }

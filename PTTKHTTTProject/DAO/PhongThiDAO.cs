@@ -93,5 +93,14 @@ namespace PTTKHTTTProject.DAO
             };
             return DataProvider.Instance.ExecuteQuerySP("usp_GetAvailablePhongThiByDate", parameters);
         }
+
+        public static DataTable SearchPhongThi(string searchTerm)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@SearchTerm", searchTerm)
+            };
+            return DataProvider.Instance.ExecuteQuerySP("usp_SearchPhongThi", parameters);
+        }
     }
 }
