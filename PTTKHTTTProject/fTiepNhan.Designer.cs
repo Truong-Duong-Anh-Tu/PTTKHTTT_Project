@@ -38,6 +38,7 @@
             btnCapNhatGiaHan = new Button();
             btnThongBao = new Button();
             panel2 = new Panel();
+            ptbMenu = new PictureBox();
             lblOption = new Label();
             btn_signOut = new Button();
             TiepNhan_TenNV = new Label();
@@ -244,11 +245,11 @@
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panelNotifi = new Panel();
             panelInfo = new Panel();
-            ptbMenu = new PictureBox();
             tlpMenuTiepNhan.SuspendLayout();
             tlpLogoName.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelPDK.SuspendLayout();
             panelKHDonVi.SuspendLayout();
@@ -272,7 +273,6 @@
             ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).BeginInit();
             panelTSTDEdit.SuspendLayout();
             panel12.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)ptbMenu).BeginInit();
             SuspendLayout();
             // 
             // tlpMenuTiepNhan
@@ -421,6 +421,18 @@
             panel2.Size = new Size(1283, 62);
             panel2.TabIndex = 8;
             // 
+            // ptbMenu
+            // 
+            ptbMenu.BackColor = Color.DeepSkyBlue;
+            ptbMenu.Image = Properties.Resources.Menu;
+            ptbMenu.Location = new Point(23, 11);
+            ptbMenu.Margin = new Padding(4);
+            ptbMenu.Name = "ptbMenu";
+            ptbMenu.Size = new Size(38, 36);
+            ptbMenu.SizeMode = PictureBoxSizeMode.Zoom;
+            ptbMenu.TabIndex = 12;
+            ptbMenu.TabStop = false;
+            // 
             // lblOption
             // 
             lblOption.AutoSize = true;
@@ -508,9 +520,9 @@
             // 
             PDKView_btnSearchDV.Location = new Point(632, 13);
             PDKView_btnSearchDV.Name = "PDKView_btnSearchDV";
-            PDKView_btnSearchDV.Size = new Size(185, 34);
+            PDKView_btnSearchDV.Size = new Size(115, 34);
             PDKView_btnSearchDV.TabIndex = 11;
-            PDKView_btnSearchDV.Text = "Tìm kiếm tên thí sinh";
+            PDKView_btnSearchDV.Text = "Tìm kiếm";
             PDKView_btnSearchDV.UseVisualStyleBackColor = true;
             PDKView_btnSearchDV.Click += PDKView_btnSearchDV_Click;
             // 
@@ -518,6 +530,7 @@
             // 
             PDKView_SearchBoxDV.Location = new Point(294, 14);
             PDKView_SearchBoxDV.Name = "PDKView_SearchBoxDV";
+            PDKView_SearchBoxDV.PlaceholderText = "Nhập tên thí sinh hoặc số báo danh";
             PDKView_SearchBoxDV.Size = new Size(328, 31);
             PDKView_SearchBoxDV.TabIndex = 10;
             // 
@@ -951,17 +964,17 @@
             // 
             PDKView_SearchBox.Location = new Point(16, 23);
             PDKView_SearchBox.Name = "PDKView_SearchBox";
+            PDKView_SearchBox.PlaceholderText = "Nhập mã phiếu";
             PDKView_SearchBox.Size = new Size(239, 31);
             PDKView_SearchBox.TabIndex = 2;
-            PDKView_SearchBox.Text = "\r\n";
             // 
             // PDKView_Search
             // 
             PDKView_Search.Location = new Point(261, 23);
             PDKView_Search.Name = "PDKView_Search";
-            PDKView_Search.Size = new Size(216, 31);
+            PDKView_Search.Size = new Size(119, 31);
             PDKView_Search.TabIndex = 1;
-            PDKView_Search.Text = "Tìm kiếm qua mã phiếu";
+            PDKView_Search.Text = "Tìm kiếm";
             PDKView_Search.UseVisualStyleBackColor = true;
             PDKView_Search.Click += PDKView_Search_Click;
             // 
@@ -1589,6 +1602,7 @@
             GiaHan_MaPhieuSearch.Font = new Font("Segoe UI", 10F);
             GiaHan_MaPhieuSearch.Location = new Point(39, 73);
             GiaHan_MaPhieuSearch.Name = "GiaHan_MaPhieuSearch";
+            GiaHan_MaPhieuSearch.PlaceholderText = "Nhập mã phiếu";
             GiaHan_MaPhieuSearch.Size = new Size(318, 34);
             GiaHan_MaPhieuSearch.TabIndex = 1;
             // 
@@ -2078,9 +2092,9 @@
             // 
             PDKU_btnSearchDV.Location = new Point(631, 18);
             PDKU_btnSearchDV.Name = "PDKU_btnSearchDV";
-            PDKU_btnSearchDV.Size = new Size(179, 34);
+            PDKU_btnSearchDV.Size = new Size(115, 34);
             PDKU_btnSearchDV.TabIndex = 14;
-            PDKU_btnSearchDV.Text = "Tìm họ tên thí sinh";
+            PDKU_btnSearchDV.Text = "Tìm kiếm";
             PDKU_btnSearchDV.UseVisualStyleBackColor = true;
             PDKU_btnSearchDV.Click += PDKU_btnSearchDV_Click;
             // 
@@ -2088,6 +2102,7 @@
             // 
             PDKU_SearchBoxDV.Location = new Point(299, 18);
             PDKU_SearchBoxDV.Name = "PDKU_SearchBoxDV";
+            PDKU_SearchBoxDV.PlaceholderText = "Nhập tên thí sinh hoặc số báo danh";
             PDKU_SearchBoxDV.Size = new Size(317, 31);
             PDKU_SearchBoxDV.TabIndex = 13;
             // 
@@ -2528,18 +2543,6 @@
             panelInfo.Size = new Size(1477, 785);
             panelInfo.TabIndex = 0;
             // 
-            // ptbMenu
-            // 
-            ptbMenu.BackColor = Color.DeepSkyBlue;
-            ptbMenu.Image = Properties.Resources.Menu;
-            ptbMenu.Location = new Point(23, 11);
-            ptbMenu.Margin = new Padding(4);
-            ptbMenu.Name = "ptbMenu";
-            ptbMenu.Size = new Size(38, 36);
-            ptbMenu.SizeMode = PictureBoxSizeMode.Zoom;
-            ptbMenu.TabIndex = 12;
-            ptbMenu.TabStop = false;
-            // 
             // fTiepNhan
             // 
             AutoScaleDimensions = new SizeF(10F, 25F);
@@ -2563,6 +2566,7 @@
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)ptbMenu).EndInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelPDK.ResumeLayout(false);
             panelPDK.PerformLayout();
@@ -2602,7 +2606,6 @@
             panelTSTDEdit.PerformLayout();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)ptbMenu).EndInit();
             ResumeLayout(false);
         }
 
