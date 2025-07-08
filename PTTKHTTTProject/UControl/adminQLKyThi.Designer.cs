@@ -143,14 +143,14 @@
             // 
             numericUpDownHienThiLePhi.Anchor = AnchorStyles.None;
             numericUpDownHienThiLePhi.BackColor = SystemColors.MenuBar;
-            numericUpDownHienThiLePhi.BorderStyle = BorderStyle.None;
+            numericUpDownHienThiLePhi.BorderStyle = BorderStyle.FixedSingle;
             numericUpDownHienThiLePhi.Font = new Font("Segoe UI", 10F);
             numericUpDownHienThiLePhi.Increment = new decimal(new int[] { 50000, 0, 0, 0 });
-            numericUpDownHienThiLePhi.Location = new Point(122, 143);
+            numericUpDownHienThiLePhi.Location = new Point(122, 141);
             numericUpDownHienThiLePhi.Maximum = new decimal(new int[] { 50000000, 0, 0, 0 });
             numericUpDownHienThiLePhi.Minimum = new decimal(new int[] { 100000, 0, 0, 0 });
             numericUpDownHienThiLePhi.Name = "numericUpDownHienThiLePhi";
-            numericUpDownHienThiLePhi.Size = new Size(180, 26);
+            numericUpDownHienThiLePhi.Size = new Size(180, 30);
             numericUpDownHienThiLePhi.TabIndex = 7;
             numericUpDownHienThiLePhi.Value = new decimal(new int[] { 100000, 0, 0, 0 });
             // 
@@ -158,11 +158,11 @@
             // 
             textBoxTenKyThi.Anchor = AnchorStyles.None;
             textBoxTenKyThi.BackColor = SystemColors.MenuBar;
-            textBoxTenKyThi.BorderStyle = BorderStyle.None;
+            textBoxTenKyThi.BorderStyle = BorderStyle.FixedSingle;
             textBoxTenKyThi.Font = new Font("Segoe UI", 10F);
             textBoxTenKyThi.Location = new Point(122, 83);
             textBoxTenKyThi.Name = "textBoxTenKyThi";
-            textBoxTenKyThi.Size = new Size(180, 23);
+            textBoxTenKyThi.Size = new Size(180, 30);
             textBoxTenKyThi.TabIndex = 6;
             // 
             // labelLePhi
@@ -199,11 +199,11 @@
             // 
             textBoxMaKyThi.Anchor = AnchorStyles.None;
             textBoxMaKyThi.BackColor = SystemColors.MenuBar;
-            textBoxMaKyThi.BorderStyle = BorderStyle.None;
+            textBoxMaKyThi.BorderStyle = BorderStyle.FixedSingle;
             textBoxMaKyThi.Font = new Font("Segoe UI", 10F);
             textBoxMaKyThi.Location = new Point(122, 20);
             textBoxMaKyThi.Name = "textBoxMaKyThi";
-            textBoxMaKyThi.Size = new Size(180, 23);
+            textBoxMaKyThi.Size = new Size(180, 30);
             textBoxMaKyThi.TabIndex = 5;
             // 
             // buttonChinhSua
@@ -230,8 +230,9 @@
             // 
             // textBoxTimKiem
             // 
+            textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.Location = new Point(657, 71);
-            textBoxTimKiem.Margin = new Padding(2, 2, 2, 2);
+            textBoxTimKiem.Margin = new Padding(2);
             textBoxTimKiem.Name = "textBoxTimKiem";
             textBoxTimKiem.PlaceholderText = "Tìm mã kỳ thi / tên kỳ thi";
             textBoxTimKiem.Size = new Size(315, 27);

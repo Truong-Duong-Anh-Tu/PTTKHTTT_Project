@@ -50,6 +50,7 @@
             textBoxMaPhongThi = new TextBox();
             comboBoxHinhThuc = new ComboBox();
             labelChiTietPhongThi = new Label();
+            textBoxTimKiem = new TextBox();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dataGridView1).BeginInit();
             panel2.SuspendLayout();
@@ -79,6 +80,7 @@
             // panel1
             // 
             panel1.BackColor = SystemColors.ButtonHighlight;
+            panel1.Controls.Add(textBoxTimKiem);
             panel1.Controls.Add(buttonXemLichThi);
             panel1.Controls.Add(dataGridView1);
             panel1.Controls.Add(labelDSPhongThi);
@@ -101,10 +103,10 @@
             // dataGridView1
             // 
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dataGridView1.Location = new Point(20, 60);
+            dataGridView1.Location = new Point(20, 98);
             dataGridView1.Name = "dataGridView1";
             dataGridView1.RowHeadersWidth = 51;
-            dataGridView1.Size = new Size(521, 338);
+            dataGridView1.Size = new Size(521, 300);
             dataGridView1.TabIndex = 1;
             dataGridView1.CellClick += dataGridView1_CellClick;
             // 
@@ -301,6 +303,15 @@
             labelChiTietPhongThi.TabIndex = 0;
             labelChiTietPhongThi.Text = "Chi tiết phòng thi";
             // 
+            // textBoxTimKiem
+            // 
+            textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
+            textBoxTimKiem.Location = new Point(255, 60);
+            textBoxTimKiem.Name = "textBoxTimKiem";
+            textBoxTimKiem.PlaceholderText = "Tìm kiếm mã phòng thi / hình thức";
+            textBoxTimKiem.Size = new Size(286, 27);
+            textBoxTimKiem.TabIndex = 3;
+            // 
             // adminQLPhongThi
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -345,5 +356,6 @@
         private TextBox textBoxMaxThiSinh;
         private TextBox textBoxMaPhongThi;
         private ComboBox comboBoxHinhThuc;
+        private TextBox textBoxTimKiem;
     }
 }
