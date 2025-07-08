@@ -17,9 +17,9 @@ namespace PTTKHTTTProject.BUS
             return dt;
         }
 
-        public static DataTable loadPaycheck()
+        public static DataTable loadPaycheck(string filterText)
         {
-            DataTable dt = ManageReceiptDAO.getPaycheck();
+            DataTable dt = ManageReceiptDAO.getPaycheck(filterText);
             return dt;
         }
 

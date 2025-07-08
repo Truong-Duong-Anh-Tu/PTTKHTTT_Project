@@ -74,7 +74,6 @@
             pnlResultExamInfo.Name = "pnlResultExamInfo";
             pnlResultExamInfo.Size = new Size(605, 371);
             pnlResultExamInfo.TabIndex = 0;
-            pnlResultExamInfo.Paint += pnlResultExamInfo_Paint;
             // 
             // tbxPoint
             // 
@@ -90,7 +89,6 @@
             // 
             // dtpdoExamTime
             // 
-            dtpdoExamTime.Checked = false;
             dtpdoExamTime.CustomFormat = "HH:mm:ss";
             dtpdoExamTime.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             dtpdoExamTime.Format = DateTimePickerFormat.Custom;
@@ -99,7 +97,7 @@
             dtpdoExamTime.ShowUpDown = true;
             dtpdoExamTime.Size = new Size(115, 30);
             dtpdoExamTime.TabIndex = 17;
-            dtpdoExamTime.Value = new DateTime(2025, 6, 29, 18, 39, 13, 0);
+            dtpdoExamTime.Value = new DateTime(2025, 7, 4, 0, 0, 0, 0);
             // 
             // btnExit
             // 

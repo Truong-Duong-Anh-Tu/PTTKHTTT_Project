@@ -5,6 +5,7 @@ using System.ComponentModel;
 using System.Data;
 using System.Diagnostics;
 using System.Drawing;
+using System.Globalization;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,6 +20,8 @@ namespace PTTKHTTTProject
         private string SBD;
         private string NameCandidate;
         private string examcode;
+        private ManageResultBUS managebus;
+
         public fUpdateResult(string codeexam, string examType, string examDate, string sBD, string name)
         {
             InitializeComponent();
@@ -27,20 +30,8 @@ namespace PTTKHTTTProject
             SBD = sBD;
             NameCandidate = name;
             examcode = codeexam;
-        }
+            managebus = new ManageResultBUS(examcode);
 
-        private void pnlResultExamInfo_Paint(object sender, PaintEventArgs e)
-        {
-            List<string> temp = ManageResultBUS.loadTimePointAndMarkuint(examcode);
-
-            tbxExamType.Text = ExamType;
-            tbxExamDate.Text = ExamDate;
-            tbxName.Text = NameCandidate;
-            tbxSBD.Text = SBD;
-
-            dtpdoExamTime.Value = DateTime.Parse(temp[0]);
-            tbxPoint.Text = temp[1];
-            tbxDVCT.Text = temp[2];
         }
 
         private void btnExit_Click(object sender, EventArgs e)
@@ -51,7 +42,20 @@ namespace PTTKHTTTProject
 
         private void fUpdateResult_Load(object sender, EventArgs e)
         {
-            dtpdoExamTime.Value = DateTime.Today;
+            tbxExamType.Text = ExamType;
+            tbxExamDate.Text = ExamDate;
+            tbxName.Text = NameCandidate;
+            tbxSBD.Text = SBD;
+
+            decimal point;
+            string dtime;
+            string markunit;
+
+            managebus.loadTimePointAndMarkuint(out point, out dtime, out markunit);
+
+            dtpdoExamTime.Value = DateTime.Parse(dtime);
+            tbxPoint.Text = point < 0 ? string.Empty : point.ToString();
+            tbxDVCT.Text = markunit;
         }
 
         private void btnUpdate_Click(object sender, EventArgs e)
@@ -62,7 +66,18 @@ namespace PTTKHTTTProject
                 string dtime = dtpdoExamTime.Text;
                 string markunit = tbxDVCT.Text;
 
-                ManageResultBUS.updateInfomationOfResultExam(examcode, point, dtime, markunit);
+                if (decimal.TryParse(point, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal parsepoint))
+                {
+                    // result đã có giá trị
+                }
+                else
+                {
+                    MessageBox.Show("Điểm số nhập không đúng định dạng", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                    return;
+                }
+
+
+                managebus.updateInfomationOfResultExam(parsepoint, dtime, markunit);
 
                 if (MessageBox.Show("Đã cập nhật thành công", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
                 {
@@ -85,7 +100,7 @@ namespace PTTKHTTTProject
             {
                 if (MessageBox.Show("Bạn có muốn xóa bài thi này hay không? (Quá trình này không thể hoàn tác)", "Notification", MessageBoxButtons.OKCancel, MessageBoxIcon.Question) == System.Windows.Forms.DialogResult.OK)
                 {
-                    ManageResultBUS.deleteAExam(examcode);
+                    managebus.deleteAExam();
 
                     if (MessageBox.Show("Đã loại bỏ thành công", "Success", MessageBoxButtons.OK, MessageBoxIcon.Information) == System.Windows.Forms.DialogResult.OK)
                     {

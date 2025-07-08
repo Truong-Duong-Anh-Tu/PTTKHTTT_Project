@@ -79,7 +79,7 @@ CREATE TABLE PHONGTHI (
   PT_HinhThuc nvarchar(30) CHECK (PT_HinhThuc IN (N'Tự luận', N'Trắc nghiệm', N'Trắc nghiệm-Tự luận')),
   PT_SLThiSinhToiDa int,
   PT_SLThiSinhToiThieu int,
-  PT_SLNhanVienCoiThi int,
+  PT_SLNhanVienCoiThi int
 )
 GO
 
@@ -181,6 +181,17 @@ CREATE TABLE THONGBAO (
 )
 GO
 
+--Bảng thêm thí sinh
+CREATE TYPE ThiSinhTableType AS TABLE
+(
+    HoTen NVARCHAR(50),
+    NgaySinh DATE,
+    GioiTinh NVARCHAR(3) CHECK (GioiTinh IN (N'Nam', N'Nữ')),
+    Email CHAR(100),
+    SDT CHAR(10),
+    CCCD CHAR(12)
+)
+
 ALTER TABLE NHANVIEN ADD FOREIGN KEY (NV_MaPhongBan) REFERENCES PHONGBAN (PB_MaPhongBan)
 GO
 
@@ -249,8 +260,16 @@ GO
 
 ALTER TABLE THONGBAO ADD FOREIGN KEY (TB_MaNhanVienGui) REFERENCES NHANVIEN (NV_MaNhanVien)
 GO
+
+
+
 -- Xóa database:
 /*
+ALTER DATABASE DB_TRUNGTAMTHI SET SINGLE_USER WITH ROLLBACK IMMEDIATE;
+GO
+
 use master;
+go
+
 drop database DB_TRUNGTAMTHI;
 */

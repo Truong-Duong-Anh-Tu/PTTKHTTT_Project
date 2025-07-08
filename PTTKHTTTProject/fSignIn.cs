@@ -37,10 +37,12 @@ namespace PTTKHTTTProject
                 return;
             }
 
-            if (TaiKhoanBUS.checkSignIn(email, password))
+            var bus = new TaiKhoanBUS(email, password);
+
+            if (bus.checkSignIn())
             {
-                string username = TaiKhoanBUS.getUsername(email);
-                string role = TaiKhoanBUS.CheckRole(username);
+                string username = bus.getUsername();
+                string role = bus.CheckRole(username);
 
                 if (role == "Nhập liệu")
                 {
@@ -51,7 +53,7 @@ namespace PTTKHTTTProject
                 }
                 else if (role == "Tiếp nhận")
                 {
-                    fTiepNhan ftn = new fTiepNhan();
+                    fTiepNhan ftn = new fTiepNhan(username);
                     this.Hide();
                     ftn.ShowDialog();
                     this.Show();

@@ -1,38 +1,21 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="Current" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <PropertyGroup />
   <ItemGroup>
-    <Compile Update="fAdminChinhSuaLichThi.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="fAdminThemLichPhanCong.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="fAdminThemLichThi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="fAdminThemNV.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fAdminChinhSuaNV.cs">
+    <Compile Update="ucManageExamResult.cs">
+      <SubType>UserControl</SubType>
+    <Compile Update="fSuaThiSinhDonVi.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fAdminXemDSLichThi_PhongThi.cs">
+    <Compile Update="fThemThiSinhDonVi.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Update="UControl\adminChinhSuaLichNV.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UControl\adminPhatHanhPhieuDuThi.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UControl\adminQLKyThi.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UControl\adminQLPhongThi.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UControl\adminQLyLichThi.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UControl\adminQuanLyLichNV.cs">
@@ -74,12 +57,6 @@
     <Compile Update="fSignIn.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Update="fSuaThiSinhDonVi.cs">
-      <SubType>Form</SubType>
-    </Compile>
-    <Compile Update="fThemThiSinhDonVi.cs">
-      <SubType>Form</SubType>
-    </Compile>
     <Compile Update="fTiepNhan.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -92,35 +69,28 @@
     <Compile Update="ucInfo.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="ucManageExamResult.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="ucNotification.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UControl\adminChinhSuaLichNV.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UControl\adminQuanLyLichNV.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
-    <Compile Update="UControl\adminQuanLyNV.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UControl\adminSidebar.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="UControl\adminThemLichPhanCong.cs">
+    <Compile Update="UControl\adminThemThongTinLichPhanCong.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Update="UControl\adminTongQuan.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Update="uc_KT_ManageReceipt.cs">
-      <SubType>UserControl</SubType>
-    </Compile>
     <Compile Update="uc_KT_ManageRenewal.cs">
       <SubType>UserControl</SubType>
     </Compile>
+    <Compile Update="uc_KT_ManageReceipt.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Update="Properties\Resources.resx">
+      <SubType>Designer</SubType>
+    </EmbeddedResource>
   </ItemGroup>
 </Project>

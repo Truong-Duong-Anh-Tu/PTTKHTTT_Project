@@ -28,5 +28,80 @@ namespace PTTKHTTTProject.DAO
                 return DataProvider.Instance.ExecuteQuerySP("usp_GetRenewalRequestTable", filter);
             }
         }
+
+        public static DataTable getCreatedRenewal(string filterText)
+        {
+            if (string.IsNullOrEmpty(filterText))
+            {
+                return DataProvider.Instance.ExecuteQuerySP("usp_GetCreatedRenewals");
+            }
+            else
+            {
+                SqlParameter[] filter = new SqlParameter[]
+                {
+                    new SqlParameter("@search", SqlDbType.NVarChar, 50)
+                    {
+                        Value = filterText.Trim()
+                    },
+                };
+                return DataProvider.Instance.ExecuteQuerySP("usp_GetCreatedRenewals", filter);
+            }
+        }
+
+        //Them thong tin phieu giahan vao bang PHIEUTHANHTOAN
+        public void insertIntoCreatedRenewalsTableDAO(string receiptId, string reason, decimal fee)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@lydo", SqlDbType.NVarChar, 100) { Value = reason },
+                new SqlParameter("@sotienthanhtoan", SqlDbType.Int) { Value = fee},
+                new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 20) { Value = "Tiền mặt" },
+            };
+            DataProvider.Instance.ExecuteNonQuerySP("usp_InsertIntoCreatedRenewalsTable", parameters);
+        }
+
+
+        //Cap nhat thong tin phieu thu dung phuong thuc chuyen khoan
+        public void updateCreatedRenewalMethodDAO(string receiptId, string currentValue)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 50) { Value = currentValue },
+            };
+            string query = "UPDATE PHIEUGIAHAN SET PGH_HinhThucThanhToan = @hinhthuc WHERE PGH_MaPhieuDK = @maphieudk";
+            DataProvider.Instance.ExecuteQuery(query, parameters);
+        }
+
+
+        // Cap nhat thong tin phieu thu da thanh toan
+        public void updateCreatedRenewalPaidDAO(string receiptId, string currentValue)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@trangthai", SqlDbType.NVarChar,20) { Value = currentValue },
+            };
+            string query = "UPDATE PHIEUGIAHAN SET PHG_TrangThai = @trangthai WHERE PGH_MaPhieuDK = @maphieudk";
+            DataProvider.Instance.ExecuteQuery(query, parameters);
+
+            string pdk_trangthai;
+            if (currentValue == "Đã thanh toán")
+            {
+                pdk_trangthai = "Đã thanh toán";
+            }
+            else
+            {
+                pdk_trangthai = "Thanh toán gia hạn";
+            }
+            SqlParameter[] parameters2 = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@trangthai", SqlDbType.NVarChar,20) { Value = pdk_trangthai },
+            };
+            query = "UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = @trangthai WHERE PDKDT_MaPhieu = @maphieudk";
+            DataProvider.Instance.ExecuteQuery(query, parameters2);
+        }
     }
 }

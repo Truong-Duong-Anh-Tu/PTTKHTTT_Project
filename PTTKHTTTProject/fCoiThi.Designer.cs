@@ -232,6 +232,7 @@
             Controls.Add(tlpMenu);
             Controls.Add(panel1);
             Name = "fCoiThi";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "GIÁM THỊ COI THI";
             Load += fCoiThi_Load;
             tlpMenu.ResumeLayout(false);

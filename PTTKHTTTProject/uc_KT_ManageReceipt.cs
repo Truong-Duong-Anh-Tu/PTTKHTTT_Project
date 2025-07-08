@@ -87,6 +87,13 @@ namespace PTTKHTTTProject
                     }
                     else if (dtgvResult.Columns.Contains("cbxPaid") && ev.ColumnIndex == dtgvResult.Columns["cbxPaid"].Index)
                     {
+                        //Nếu trạng thái là "Thanh toán gia hạn" thì không cho phép thay đổi trạng thái thanh toán
+                        if (dtgvResult.Rows[ev.RowIndex].Cells["TrangThai"].Value.ToString() == "Thanh toán gia hạn")
+                        {
+                            dtgvResult.Rows[ev.RowIndex].Cells["cbxPaid"].ReadOnly = true;
+                            return;
+                        }
+
                         var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaid"].Value;
                         string currentValueString;
                         if (currentValue == null)
@@ -112,6 +119,7 @@ namespace PTTKHTTTProject
             //dtgvResult = new DataGridView();
             dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
             NotPaycheckTableConfig();
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
         }
 
         private void dtgvResult_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -158,9 +166,13 @@ namespace PTTKHTTTProject
                 {
                     row.Cells["cbxPaid"].Value = true;
                 }
-                else
+                else if(row.Cells["TrangThai"].Value != null && row.Cells["TrangThai"].Value.ToString() == "Chưa thanh toán")
                 {
                     row.Cells["cbxPaid"].Value = false;
+                }
+                else
+                {
+                    row.Cells["cbxPaid"].ReadOnly = true;
                 }
             }
         }
@@ -179,12 +191,23 @@ namespace PTTKHTTTProject
                 {
                     dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
                 }
+                dtgvResult.Columns.Add(btnCol);
             }
             else
             {
-                dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck();
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck("");
+                }
+                //dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck();
                 checkboxConfig();
             }
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
         }
 
         private void rbxNotCreatedPaycheck_CheckedChanged(object sender, EventArgs e)
@@ -203,12 +226,23 @@ namespace PTTKHTTTProject
                     dtgvResult.DataSource = ManageReceiptBUS.loadReceipt("");
                 }
                 dtgvResult.Columns.Add(btnCol);
+                lblCount.Text = "Số yêu cầu chờ duyệt:";
             }
             else
             {
-                dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck();
+                if (txbInput.Text != string.Empty)
+                {
+                    string filter = txbInput.Text.Trim().ToLower();
+                    dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck(filter);
+                }
+                else
+                {
+                    dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck("");
+                }
+                lblCount.Text = "Số phiếu thu đã tạo:";
                 checkboxConfig();
             }
+            txbCount.Text = dtgvResult.Rows.Count.ToString();
         }
     }
 }

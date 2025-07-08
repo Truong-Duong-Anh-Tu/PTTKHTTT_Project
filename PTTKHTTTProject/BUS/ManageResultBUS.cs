@@ -12,6 +12,28 @@ namespace PTTKHTTTProject.BUS
 {
     internal class ManageResultBUS
     {
+        private string _examcode;
+        private decimal _point;
+        private string _dtime;
+        private string _markunit;
+
+        public ManageResultBUS(string examcode)
+        {
+            _examcode = examcode;
+            DataTable temp = ManageResultDAO.getTimePointAndMarkuint(_examcode);
+            object diemSoObj = temp.Rows[0]["BT_DiemSo"];
+            if (diemSoObj != DBNull.Value && decimal.TryParse(diemSoObj.ToString(), out decimal diemSo))
+            {
+                _point = diemSo;
+            }
+            else
+            {
+                _point = -1; // hoặc giá trị mặc định
+            }
+            _dtime = temp.Rows[0]["BT_ThoiGianLamBai"]?.ToString() ?? string.Empty;
+            _markunit = temp.Rows[0]["BT_DonViCham"]?.ToString() ?? string.Empty;
+        }
+
         public static DataTable loadCandidateAndPoint(string examtest)
         {
             string examtype = examtest.Split(' ')[0];
@@ -21,37 +43,23 @@ namespace PTTKHTTTProject.BUS
             return dt;
         }
 
-        public static void updateInfomationOfResultExam(string examcode, string point, string dotime, string markunit)
+        public void updateInfomationOfResultExam(decimal point, string dtime, string markunit)
         {
-            if (decimal.TryParse(point, NumberStyles.Number, CultureInfo.InvariantCulture, out decimal parsepoint))
-            {
-                // result đã có giá trị
-            }
-            else
-            {
-                MessageBox.Show("Điểm số nhập không đúng định dạng", "Miss Information", MessageBoxButtons.OK, MessageBoxIcon.Warning);
-                return;
-            }
+            TimeOnly parsetime = TimeOnly.Parse(dtime);
 
-            TimeOnly parsetime = TimeOnly.Parse(dotime);
-
-            ManageResultDAO.updateInfomationIntoBAITHI(examcode, parsepoint, parsetime, markunit);
+            ManageResultDAO.updateInfomationIntoBAITHI(_examcode, point, parsetime, markunit);
         }
 
-        public static void deleteAExam(string examcode)
+        public void deleteAExam()
         {
-            ManageResultDAO.deleteBAITHI(examcode);
+            ManageResultDAO.deleteBAITHI(_examcode);
         }
 
-        public static List<string> loadTimePointAndMarkuint(string examcode)
+        public void loadTimePointAndMarkuint(out decimal point, out string dtime, out string markunit)
         {
-            DataTable temp = ManageResultDAO.getTimePointAndMarkuint(examcode);
-
-            string point = temp.Rows[0]["BT_DiemSo"]?.ToString() ?? string.Empty;
-            string dtime = temp.Rows[0]["BT_ThoiGianLamBai"]?.ToString() ?? string.Empty;
-            string markunit = temp.Rows[0]["BT_DonViCham"]?.ToString() ?? string.Empty;
-
-            return [dtime, point, markunit];
+            point = _point;
+            dtime = _dtime;
+            markunit = _markunit;
         }
     }
 }
