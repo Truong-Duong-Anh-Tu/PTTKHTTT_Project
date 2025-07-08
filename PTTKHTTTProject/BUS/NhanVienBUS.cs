@@ -1,0 +1,75 @@
+﻿using System.Data;
+using PTTKHTTTProject.DAO;
+
+namespace PTTKHTTTProject.BUS
+{
+    public class NhanVienBUS
+    {
+        private string _username;
+
+        public NhanVienBUS(string username)
+        {
+            _username = username.Trim();
+        }
+
+        public static DataTable GetAllNhanVien()
+        {
+            return NhanVienDAO.GetAllNhanVien();
+        }
+        
+        public static DataTable SearchNhanVien(string searchTerm)
+        {
+            if (string.IsNullOrWhiteSpace(searchTerm))
+                return GetAllNhanVien();
+            
+            return NhanVienDAO.SearchNhanVien(searchTerm);
+        }
+        public static bool AddNhanVien(string maNV, string tenNV, DateTime ngaySinh, string gioiTinh, string email, string sdt, string cccd, string diaChi, string chucVu, int luong, string maPhongBan)
+        {
+            // (Tùy chọn) Thêm các bước kiểm tra logic nghiệp vụ ở đây trước khi gọi DAO
+            return NhanVienDAO.AddNhanVien(maNV, tenNV, ngaySinh, gioiTinh, email, sdt, cccd, diaChi, chucVu, luong, maPhongBan);
+        }
+
+        public static bool DeleteNhanVien(string maNV)
+        {
+            return NhanVienDAO.DeleteNhanVien(maNV);
+        }
+
+        public Dictionary<string, string> getInfoOfUser()
+        {
+            Dictionary<string, string> info = new Dictionary<string, string>();
+
+            DataTable dt = NhanVienDAO.getInfoEmployee(_username);
+            var row = dt.Rows[0];
+
+            info["MaNV"] = row["NV_MaNhanVien"].ToString() ?? "Unknown";
+            info["Hoten"] = row["NV_TenNhanVien"].ToString() ?? "Unknown";
+            info["NSinh"] = Convert.ToDateTime(row["NV_NgaySinh"]).ToString("dd/MM/yyyy") ?? "Unknown";
+            info["GTinh"] = row["NV_GioiTinh"].ToString() ?? "Unknown";
+            info["Email"] = row["NV_Email"].ToString() ?? "Unknown";
+            info["SDT"] = row["NV_SDT"].ToString() ?? "Unknown";
+            info["CCCD"] = row["NV_CCCD"].ToString() ?? "Unknown";
+            info["DChi"] = row["NV_DiaChi"].ToString() ?? "Unknown";
+            info["ChucVu"] = row["NV_ChucVu"].ToString() ?? "Unknown";
+            info["Luong"] = row["NV_Luong"].ToString() ?? "Unknown";
+            info["MaPB"] = row["NV_MaPhongBan"].ToString() ?? "Unknown";
+
+            return info;
+        }
+
+        public static List<string> getAllRecipientEmployee()
+        {
+            List<string> recipients = new List<string>();
+
+            DataTable dt1 = NhanVienDAO.GetRecipients();
+
+            foreach (DataRow dr in dt1.Rows)
+            {
+                string temp = $"{dr["NV_MaNhanVien"].ToString()} - {dr["NV_TenNhanVien"].ToString()} - {dr["NV_ChucVu"].ToString()}";
+                recipients.Add(temp);
+            }
+
+            return recipients;
+        }
+    }
+}
