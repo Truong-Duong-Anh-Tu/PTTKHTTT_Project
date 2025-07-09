@@ -42,13 +42,13 @@ namespace PTTKHTTTProject
         }
 
         //Hủy tạo phiếu gia hạn
-        private void button1_Click(object sender, EventArgs e)
+        private void btnCancel_Click(object sender, EventArgs e)
         {
             this.Close();
         }
 
         //Xác nhận tạo phiếu gia hạn
-        private void button2_Click(object sender, EventArgs e)
+        private void btnConfirm_Click(object sender, EventArgs e)
         {
             try
             {

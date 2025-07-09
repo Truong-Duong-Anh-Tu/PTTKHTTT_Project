@@ -42,12 +42,10 @@
             label2 = new Label();
             label1 = new Label();
             lblHoTen = new Label();
-            button2 = new Button();
+            btnConfirm = new Button();
             lblNoiDung = new Label();
-            button1 = new Button();
-            lblNgayThiGoc = new Label();
+            btnCancel = new Button();
             lblNgayThiGH = new Label();
-            txbNgayThiGoc = new TextBox();
             txbNoiDung = new TextBox();
             label8 = new Label();
             txbHoTen = new TextBox();
@@ -69,12 +67,10 @@
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
             groupBox1.Controls.Add(lblHoTen);
-            groupBox1.Controls.Add(button2);
+            groupBox1.Controls.Add(btnConfirm);
             groupBox1.Controls.Add(lblNoiDung);
-            groupBox1.Controls.Add(button1);
-            groupBox1.Controls.Add(lblNgayThiGoc);
+            groupBox1.Controls.Add(btnCancel);
             groupBox1.Controls.Add(lblNgayThiGH);
-            groupBox1.Controls.Add(txbNgayThiGoc);
             groupBox1.Controls.Add(txbNoiDung);
             groupBox1.Controls.Add(label8);
             groupBox1.Controls.Add(txbHoTen);
@@ -91,7 +87,7 @@
             txbNgayThiGH.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbNgayThiGH.BorderStyle = BorderStyle.None;
             txbNgayThiGH.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbNgayThiGH.Location = new Point(295, 359);
+            txbNgayThiGH.Location = new Point(295, 329);
             txbNgayThiGH.Name = "txbNgayThiGH";
             txbNgayThiGH.ReadOnly = true;
             txbNgayThiGH.Size = new Size(400, 23);
@@ -224,16 +220,16 @@
             lblHoTen.TabIndex = 0;
             lblHoTen.Text = "Thí sinh:";
             // 
-            // button2
+            // btnConfirm
             // 
-            button2.Location = new Point(674, 747);
-            button2.Margin = new Padding(3, 4, 3, 4);
-            button2.Name = "button2";
-            button2.Size = new Size(120, 31);
-            button2.TabIndex = 33;
-            button2.Text = "Tạo phiếu thu";
-            button2.UseVisualStyleBackColor = true;
-            button2.Click += button2_Click;
+            btnConfirm.Location = new Point(674, 747);
+            btnConfirm.Margin = new Padding(3, 4, 3, 4);
+            btnConfirm.Name = "btnConfirm";
+            btnConfirm.Size = new Size(120, 31);
+            btnConfirm.TabIndex = 33;
+            btnConfirm.Text = "Tạo phiếu thu";
+            btnConfirm.UseVisualStyleBackColor = true;
+            btnConfirm.Click += btnConfirm_Click;
             // 
             // lblNoiDung
             // 
@@ -245,48 +241,26 @@
             lblNoiDung.TabIndex = 1;
             lblNoiDung.Text = "Nội dung thu:";
             // 
-            // button1
+            // btnCancel
             // 
-            button1.Location = new Point(801, 747);
-            button1.Margin = new Padding(3, 4, 3, 4);
-            button1.Name = "button1";
-            button1.Size = new Size(86, 31);
-            button1.TabIndex = 32;
-            button1.Text = "Hủy bỏ";
-            button1.UseVisualStyleBackColor = true;
-            button1.Click += button1_Click;
-            // 
-            // lblNgayThiGoc
-            // 
-            lblNgayThiGoc.AutoSize = true;
-            lblNgayThiGoc.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblNgayThiGoc.Location = new Point(127, 313);
-            lblNgayThiGoc.Name = "lblNgayThiGoc";
-            lblNgayThiGoc.Size = new Size(118, 23);
-            lblNgayThiGoc.TabIndex = 3;
-            lblNgayThiGoc.Text = "Ngày thi gốc:";
+            btnCancel.Location = new Point(801, 747);
+            btnCancel.Margin = new Padding(3, 4, 3, 4);
+            btnCancel.Name = "btnCancel";
+            btnCancel.Size = new Size(86, 31);
+            btnCancel.TabIndex = 32;
+            btnCancel.Text = "Hủy bỏ";
+            btnCancel.UseVisualStyleBackColor = true;
+            btnCancel.Click += btnCancel_Click;
             // 
             // lblNgayThiGH
             // 
             lblNgayThiGH.AutoSize = true;
             lblNgayThiGH.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            lblNgayThiGH.Location = new Point(99, 359);
+            lblNgayThiGH.Location = new Point(99, 329);
             lblNgayThiGH.Name = "lblNgayThiGH";
             lblNgayThiGH.Size = new Size(148, 23);
             lblNgayThiGH.TabIndex = 4;
             lblNgayThiGH.Text = "Ngày thi gia hạn:";
-            // 
-            // txbNgayThiGoc
-            // 
-            txbNgayThiGoc.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
-            txbNgayThiGoc.BorderStyle = BorderStyle.None;
-            txbNgayThiGoc.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbNgayThiGoc.Location = new Point(295, 313);
-            txbNgayThiGoc.Name = "txbNgayThiGoc";
-            txbNgayThiGoc.ReadOnly = true;
-            txbNgayThiGoc.Size = new Size(400, 23);
-            txbNgayThiGoc.TabIndex = 29;
-            txbNgayThiGoc.Text = "NODATA";
             // 
             // txbNoiDung
             // 
@@ -343,13 +317,11 @@
         private GroupBox groupBox1;
         private Label label1;
         private Label lblHoTen;
-        private Button button2;
+        private Button btnConfirm;
         private Label lblNoiDung;
-        private Button button1;
+        private Button btnCancel;
         private Label lblSoTienThu;
-        private Label lblNgayThiGoc;
         private Label lblNgayThiGH;
-        private TextBox txbSoTienThu;
         private TextBox txbNoiDung;
         private Label label8;
         private TextBox txbHoTen;
@@ -363,7 +335,6 @@
         private Label label3;
         private TextBox txbLyDo;
         private Label lblLyDo;
-        private TextBox txbNgayThiGoc;
         private TextBox txbNgayThiGH;
     }
 }
