@@ -78,5 +78,11 @@ namespace PTTKHTTTProject.DAO
             return DataProvider.Instance.ExecuteScalarSP<bool>("usp_CheckPhanCongLimit", param);
         }
 
+        public static DataTable getAssignment()
+        {
+            DataTable dt = DataProvider.Instance.ExecuteQuerySP("usp_XemLichPhanCong");
+
+            return dt;
+        }
     }
 }

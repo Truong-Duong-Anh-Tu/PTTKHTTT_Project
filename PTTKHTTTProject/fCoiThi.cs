@@ -45,7 +45,7 @@ namespace PTTKHTTTProject
             btnTCLPC.FlatAppearance.BorderColor = SystemColors.Control;
             btnThongBao.FlatAppearance.BorderColor = SystemColors.Control;
 
-            var bus = new NhanVienBUS(username);
+            var bus = new InfoEmployeeBUS(username);
 
             Dictionary<string, string> info = bus.getInfoOfUser();
 

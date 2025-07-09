@@ -52,6 +52,7 @@
             // 
             // labelDSKyThi
             // 
+            labelDSKyThi.Anchor = AnchorStyles.Top;
             labelDSKyThi.AutoSize = true;
             labelDSKyThi.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             labelDSKyThi.Location = new Point(396, 30);
@@ -160,7 +161,7 @@
             textBoxTenKyThi.BackColor = SystemColors.MenuBar;
             textBoxTenKyThi.BorderStyle = BorderStyle.FixedSingle;
             textBoxTenKyThi.Font = new Font("Segoe UI", 10F);
-            textBoxTenKyThi.Location = new Point(122, 83);
+            textBoxTenKyThi.Location = new Point(122, 80);
             textBoxTenKyThi.Name = "textBoxTenKyThi";
             textBoxTenKyThi.Size = new Size(180, 30);
             textBoxTenKyThi.TabIndex = 6;
@@ -201,7 +202,7 @@
             textBoxMaKyThi.BackColor = SystemColors.MenuBar;
             textBoxMaKyThi.BorderStyle = BorderStyle.FixedSingle;
             textBoxMaKyThi.Font = new Font("Segoe UI", 10F);
-            textBoxMaKyThi.Location = new Point(122, 20);
+            textBoxMaKyThi.Location = new Point(122, 17);
             textBoxMaKyThi.Name = "textBoxMaKyThi";
             textBoxMaKyThi.Size = new Size(180, 30);
             textBoxMaKyThi.TabIndex = 5;
@@ -219,6 +220,7 @@
             // 
             // dataGridViewDSKythi
             // 
+            dataGridViewDSKythi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewDSKythi.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewDSKythi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDSKythi.Location = new Point(489, 107);
@@ -230,6 +232,7 @@
             // 
             // textBoxTimKiem
             // 
+            textBoxTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.Location = new Point(657, 71);
             textBoxTimKiem.Margin = new Padding(2);

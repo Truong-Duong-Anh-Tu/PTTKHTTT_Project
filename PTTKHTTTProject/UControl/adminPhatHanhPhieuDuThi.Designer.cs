@@ -45,6 +45,7 @@
             // 
             // labelPhatHanhPhieuDuThi
             // 
+            labelPhatHanhPhieuDuThi.Anchor = AnchorStyles.Top;
             labelPhatHanhPhieuDuThi.AutoSize = true;
             labelPhatHanhPhieuDuThi.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             labelPhatHanhPhieuDuThi.Location = new Point(357, 12);
@@ -65,6 +66,7 @@
             // 
             // dataGridViewDSCho
             // 
+            dataGridViewDSCho.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewDSCho.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDSCho.Location = new Point(28, 82);
             dataGridViewDSCho.Name = "dataGridViewDSCho";
@@ -74,6 +76,7 @@
             // 
             // labelLichSuPhatHanh
             // 
+            labelLichSuPhatHanh.Anchor = AnchorStyles.Left;
             labelLichSuPhatHanh.AutoSize = true;
             labelLichSuPhatHanh.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 163);
             labelLichSuPhatHanh.Location = new Point(28, 298);
@@ -84,6 +87,7 @@
             // 
             // dataGridViewLichSuPhatHanh
             // 
+            dataGridViewLichSuPhatHanh.Anchor = AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewLichSuPhatHanh.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewLichSuPhatHanh.Location = new Point(28, 337);
             dataGridViewLichSuPhatHanh.Name = "dataGridViewLichSuPhatHanh";
@@ -93,6 +97,7 @@
             // 
             // btnPhatHanh
             // 
+            btnPhatHanh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnPhatHanh.BackColor = Color.SkyBlue;
             btnPhatHanh.Location = new Point(848, 47);
             btnPhatHanh.Name = "btnPhatHanh";
@@ -104,6 +109,7 @@
             // 
             // textBoxTimKiem
             // 
+            textBoxTimKiem.Anchor = AnchorStyles.Right;
             textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.Location = new Point(410, 298);
             textBoxTimKiem.Name = "textBoxTimKiem";
@@ -114,6 +120,7 @@
             // 
             // radioButtonDSCho
             // 
+            radioButtonDSCho.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             radioButtonDSCho.AutoSize = true;
             radioButtonDSCho.Location = new Point(642, 52);
             radioButtonDSCho.Name = "radioButtonDSCho";
@@ -126,6 +133,7 @@
             // 
             // radioButtonDSCho2Tuan
             // 
+            radioButtonDSCho2Tuan.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             radioButtonDSCho2Tuan.AutoSize = true;
             radioButtonDSCho2Tuan.Location = new Point(300, 52);
             radioButtonDSCho2Tuan.Name = "radioButtonDSCho2Tuan";
@@ -138,6 +146,7 @@
             // 
             // buttonDSChoMoiPhatHanh
             // 
+            buttonDSChoMoiPhatHanh.Anchor = AnchorStyles.Right;
             buttonDSChoMoiPhatHanh.BackColor = Color.SkyBlue;
             buttonDSChoMoiPhatHanh.Location = new Point(706, 296);
             buttonDSChoMoiPhatHanh.Name = "buttonDSChoMoiPhatHanh";
@@ -149,6 +158,7 @@
             // 
             // labelGhiChu
             // 
+            labelGhiChu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             labelGhiChu.AutoSize = true;
             labelGhiChu.Location = new Point(475, 544);
             labelGhiChu.Name = "labelGhiChu";
@@ -175,6 +185,7 @@
             Name = "adminPhatHanhPhieuDuThi";
             Size = new Size(1021, 578);
             Load += adminPhatHanhPhieuDuThi_Load;
+            Resize += adminPhatHanhPhieuDuThi_Resize;
             ((System.ComponentModel.ISupportInitialize)dataGridViewDSCho).EndInit();
             ((System.ComponentModel.ISupportInitialize)dataGridViewLichSuPhatHanh).EndInit();
             ResumeLayout(false);

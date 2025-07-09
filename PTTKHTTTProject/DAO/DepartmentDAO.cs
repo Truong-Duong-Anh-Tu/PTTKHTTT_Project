@@ -26,5 +26,10 @@ namespace PTTKHTTTProject.DAO
         {
             return DataProvider.Instance.ExecuteQuerySP("usp_GetAllPhongBan");
         }
+
+        public static DataTable GetPhongBanByTenPhongBan(string TenPhongBan)
+        {
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetPhongBanByTenPhongBan", new SqlParameter("@TenPhongBan", TenPhongBan));
+        }
     }
 }

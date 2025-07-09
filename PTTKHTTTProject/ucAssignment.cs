@@ -23,7 +23,7 @@ namespace PTTKHTTTProject
 
         private void ucAssignment_Load(object sender, EventArgs e)
         {
-            bs_Assignment.DataSource = GuardExamAssignmentBUS.loadAssignment();
+            bs_Assignment.DataSource = EmployeeScheduleBUS.loadAssignment();
             dtgvPhanCong.DataSource = bs_Assignment;
 
             dtgvPhanCong.Columns["PC_MaLichThi"]!.HeaderText = "Lịch thi";

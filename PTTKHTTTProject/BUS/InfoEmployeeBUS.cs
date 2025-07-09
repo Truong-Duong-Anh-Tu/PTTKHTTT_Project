@@ -11,11 +11,18 @@ namespace PTTKHTTTProject.BUS
 {
     internal class InfoEmployeeBUS
     {
-        public static Dictionary<string, string> getInfoOfUser(string username)
+        private string _username;
+
+        public InfoEmployeeBUS(string username)
+        {
+            _username = username.Trim();
+        }
+
+        public Dictionary<string, string> getInfoOfUser()
         {
             Dictionary<string, string> info = new Dictionary<string, string>();
 
-            DataTable dt = InfoEmployeeDAO.getInfoEmployee(username.Trim());
+            DataTable dt = InfoEmployeeDAO.getInfoEmployee(_username);
             var row = dt.Rows[0];
 
             info["MaNV"] = row["NV_MaNhanVien"].ToString() ?? "Unknown";
@@ -72,6 +79,21 @@ namespace PTTKHTTTProject.BUS
         public static DataTable GetAvailableNhanVien()
         {
             return InfoEmployeeDAO.GetAvailableNhanVien();
+        }
+
+        public static List<string> getAllRecipientEmployee()
+        {
+            List<string> recipients = new List<string>();
+
+            DataTable dt1 = InfoEmployeeDAO.GetRecipients();
+
+            foreach (DataRow dr in dt1.Rows)
+            {
+                string temp = $"{dr["NV_MaNhanVien"].ToString()} - {dr["NV_TenNhanVien"].ToString()} - {dr["NV_ChucVu"].ToString()}";
+                recipients.Add(temp);
+            }
+
+            return recipients;
         }
     }
 }

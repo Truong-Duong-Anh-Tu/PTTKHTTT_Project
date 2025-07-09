@@ -122,5 +122,12 @@ namespace PTTKHTTTProject.DAO
         {
             return DataProvider.Instance.ExecuteQuerySP("usp_GetAvailableNhanVienForLichThi");
         }
+
+        public static DataTable GetRecipients()
+        {
+            DataTable dt = DataProvider.Instance.ExecuteQuery("SELECT NV_MaNhanVien, NV_TenNhanVien, NV_ChucVu FROM NHANVIEN");
+
+            return dt;
+        }
     }
 }

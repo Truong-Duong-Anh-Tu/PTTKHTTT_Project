@@ -41,7 +41,7 @@ namespace PTTKHTTTProject
 
             try
             {
-                DataTable dtPhongBan = PhongBanBUS.GetAllPhongBan();
+                DataTable dtPhongBan = DepartmentBUS.GetAllPhongBan();
                 foreach (DataRow row in dtPhongBan.Rows)
                 {
                     // Lưu quan hệ Tên Phòng Ban -> Mã Phòng Ban
@@ -90,7 +90,8 @@ namespace PTTKHTTTProject
         {
             try
             {
-                Dictionary<string, string> info = InfoEmployeeBUS.getInfoOfUser(this.maNhanVien);
+                var busEmployee = new InfoEmployeeBUS(this.maNhanVien);
+                Dictionary<string, string> info = busEmployee.getInfoOfUser();
 
                 textBoxHienThiHoTen.Text = info["Hoten"];
                 textBoxHienThiEmail.Text = info["Email"];
@@ -177,7 +178,7 @@ namespace PTTKHTTTProject
             string chucVu = comboBoxHienThiChucVu.SelectedItem?.ToString() ?? "";
             int luong = (int)numericUpDownLuong.Value;
             string tenPhongBan = textBoxHienThiPhongBan.Text.Trim();
-            string maPhongBan = PhongBanBUS.GetMaPhongBanByTen(tenPhongBan);
+            string maPhongBan = DepartmentBUS.GetMaPhongBanByTen(tenPhongBan);
 
 
             // Validate dữ liệu

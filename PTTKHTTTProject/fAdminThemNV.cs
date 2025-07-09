@@ -71,7 +71,7 @@ namespace PTTKHTTTProject
             string diaChi = textBoxDiaChi.Text;
             string chucVu = comboBoxChucVu.SelectedItem?.ToString() ?? string.Empty;
             string tenPhongBan = textBoxPhongBan.Text;
-            string maPhongBan = PhongBanBUS.GetMaPhongBanByTen(tenPhongBan);
+            string maPhongBan = DepartmentBUS.GetMaPhongBanByTen(tenPhongBan);
             int luong = (int)numericUpDownLuong.Value;
             if (luong <= 0)
             {

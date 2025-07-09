@@ -55,6 +55,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.Control;
             panel1.Controls.Add(panel4);
             panel1.Controls.Add(panel3);
@@ -67,6 +68,7 @@
             // 
             // panel4
             // 
+            panel4.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel4.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel4.BackColor = Color.LightBlue;
             panel4.Controls.Add(label4);
@@ -110,6 +112,7 @@
             // 
             // panel3
             // 
+            panel3.Anchor = AnchorStyles.Top;
             panel3.AutoSizeMode = AutoSizeMode.GrowAndShrink;
             panel3.BackColor = Color.LightBlue;
             panel3.Controls.Add(labelNumberOfExamination);
@@ -198,6 +201,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Microsoft Sans Serif", 16.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(340, 21);
@@ -208,6 +212,7 @@
             // 
             // pictureBox1
             // 
+            pictureBox1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pictureBox1.Image = Properties.Resources.poster;
             pictureBox1.Location = new Point(303, 212);
             pictureBox1.Name = "pictureBox1";

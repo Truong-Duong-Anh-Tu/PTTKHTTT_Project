@@ -90,6 +90,7 @@
             // 
             // pnlMail
             // 
+            pnlMail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlMail.Controls.Add(tbxFullMail);
             pnlMail.Controls.Add(lvListMail);
             pnlMail.Location = new Point(212, 97);
@@ -99,6 +100,7 @@
             // 
             // tbxFullMail
             // 
+            tbxFullMail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             tbxFullMail.BackColor = Color.White;
             tbxFullMail.BorderStyle = BorderStyle.None;
             tbxFullMail.Location = new Point(312, 3);
@@ -110,6 +112,8 @@
             // 
             // lvListMail
             // 
+            lvListMail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lvListMail.BorderStyle = BorderStyle.None;
             lvListMail.Location = new Point(3, 3);
             lvListMail.Name = "lvListMail";
             lvListMail.Size = new Size(303, 467);

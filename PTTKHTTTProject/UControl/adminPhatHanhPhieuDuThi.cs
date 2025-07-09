@@ -146,5 +146,32 @@ namespace PTTKHTTTProject.UControl
             }
             LoadData();
         }
+
+        private void adminPhatHanhPhieuDuThi_Resize(object sender, EventArgs e)
+        {
+            if (this.Visible)
+            {
+                AdjustLayout();
+            }
+        }
+
+        private void AdjustLayout()
+        {
+            // Neo DataGridView sao cho cách button 10px
+            dataGridViewDSCho.Size = new Size(
+                this.Width - 28 - 28, // padding trái/phải
+                buttonDSChoMoiPhatHanh.Top - 10 - dataGridViewDSCho.Top // tính chiều cao phù hợp
+            );
+
+            dataGridViewLichSuPhatHanh.Location = new Point(
+                dataGridViewLichSuPhatHanh.Location.X,
+                buttonDSChoMoiPhatHanh.Bottom + 10
+            );
+
+            dataGridViewLichSuPhatHanh.Size = new Size(
+                this.Width - 28 - 28, // padding trái/phải
+                labelGhiChu.Top - buttonDSChoMoiPhatHanh.Bottom - 10 // tính chiều cao phù hợp
+            );
+        }
     }
 }

@@ -43,6 +43,7 @@
             // 
             // panelSidebar
             // 
+            panelSidebar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             panelSidebar.Location = new Point(1, 0);
             panelSidebar.Name = "panelSidebar";
             panelSidebar.Size = new Size(200, 638);
@@ -51,6 +52,7 @@
             // 
             // panelMain
             // 
+            panelMain.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panelMain.Location = new Point(207, 65);
             panelMain.Name = "panelMain";
             panelMain.Size = new Size(1021, 573);
@@ -59,6 +61,7 @@
             // 
             // panelHeader
             // 
+            panelHeader.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             panelHeader.BackColor = SystemColors.ButtonHighlight;
             panelHeader.Controls.Add(Logout);
             panelHeader.Controls.Add(labelUsername);
@@ -72,6 +75,7 @@
             // 
             // Logout
             // 
+            Logout.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             Logout.BackColor = Color.LightBlue;
             Logout.Location = new Point(905, 14);
             Logout.Name = "Logout";
@@ -83,6 +87,7 @@
             // 
             // labelUsername
             // 
+            labelUsername.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             labelUsername.AutoSize = true;
             labelUsername.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point, 163);
             labelUsername.Location = new Point(766, 21);
@@ -94,6 +99,7 @@
             // 
             // pictureAvatar
             // 
+            pictureAvatar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             pictureAvatar.Image = Properties.Resources.avatar;
             pictureAvatar.Location = new Point(714, 12);
             pictureAvatar.Name = "pictureAvatar";

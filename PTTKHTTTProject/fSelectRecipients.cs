@@ -21,7 +21,7 @@ namespace PTTKHTTTProject
         public fSelectRecipients()
         {
             InitializeComponent();
-            employees = NhanVienBUS.getAllRecipientEmployee();
+            employees = InfoEmployeeBUS.getAllRecipientEmployee();
             departments = DepartmentBUS.getAllRecipientDepartment();
         }
 

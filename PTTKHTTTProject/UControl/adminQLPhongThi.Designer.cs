@@ -59,6 +59,7 @@
             // 
             // labelDSPhongThi
             // 
+            labelDSPhongThi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
             labelDSPhongThi.AutoSize = true;
             labelDSPhongThi.Font = new Font("Segoe UI", 12F, FontStyle.Bold, GraphicsUnit.Point, 163);
             labelDSPhongThi.Location = new Point(169, 15);
@@ -69,6 +70,7 @@
             // 
             // labelQLPhongThi
             // 
+            labelQLPhongThi.Anchor = AnchorStyles.Top;
             labelQLPhongThi.AutoSize = true;
             labelQLPhongThi.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
             labelQLPhongThi.Location = new Point(380, 10);
@@ -79,6 +81,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ButtonHighlight;
             panel1.Controls.Add(textBoxTimKiem);
             panel1.Controls.Add(buttonXemLichThi);
@@ -91,6 +94,7 @@
             // 
             // textBoxTimKiem
             // 
+            textBoxTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBoxTimKiem.BorderStyle = BorderStyle.FixedSingle;
             textBoxTimKiem.Location = new Point(255, 60);
             textBoxTimKiem.Name = "textBoxTimKiem";
@@ -100,6 +104,7 @@
             // 
             // buttonXemLichThi
             // 
+            buttonXemLichThi.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonXemLichThi.BackColor = Color.SkyBlue;
             buttonXemLichThi.Location = new Point(241, 421);
             buttonXemLichThi.Name = "buttonXemLichThi";
@@ -111,6 +116,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(20, 98);
             dataGridView1.Name = "dataGridView1";
@@ -121,6 +127,7 @@
             // 
             // panel2
             // 
+            panel2.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             panel2.BackColor = SystemColors.ButtonHighlight;
             panel2.Controls.Add(buttonLuuThongTin);
             panel2.Controls.Add(buttonXoa);

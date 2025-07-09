@@ -33,5 +33,20 @@ namespace PTTKHTTTProject.BUS
 
             return recipients;
         }
+
+        public static DataTable GetAllPhongBan()
+        {
+            return DepartmentDAO.GetAllPhongBan();
+        }
+
+        public static string GetMaPhongBanByTen(string tenPhongBan)
+        {
+            if (string.IsNullOrWhiteSpace(tenPhongBan))
+                return string.Empty;
+            DataTable dt = DepartmentDAO.GetPhongBanByTenPhongBan(tenPhongBan);
+            if (dt.Rows.Count > 0)
+                return dt.Rows[0]["PB_MaPhongBan"].ToString() ?? string.Empty;
+            return string.Empty;
+        }
     }
 }

@@ -39,6 +39,7 @@
             // 
             // buttonThemNV
             // 
+            buttonThemNV.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             buttonThemNV.BackColor = Color.SkyBlue;
             buttonThemNV.Location = new Point(839, 11);
             buttonThemNV.Margin = new Padding(2);
@@ -51,6 +52,7 @@
             // 
             // dataGridView1
             // 
+            dataGridView1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridView1.BackgroundColor = SystemColors.Control;
             dataGridView1.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridView1.Location = new Point(41, 112);
@@ -64,6 +66,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.ButtonHighlight;
             panel1.Controls.Add(textBox1);
             panel1.Controls.Add(label1);
@@ -75,6 +78,7 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBox1.Location = new Point(684, 19);
             textBox1.Margin = new Padding(2);
             textBox1.Name = "textBox1";

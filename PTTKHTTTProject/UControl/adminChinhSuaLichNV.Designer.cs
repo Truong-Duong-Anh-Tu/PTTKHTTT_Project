@@ -47,9 +47,10 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Top;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 13.8F, FontStyle.Bold);
-            label1.Location = new Point(330, 23);
+            label1.Location = new Point(364, 23);
             label1.Name = "label1";
             label1.Size = new Size(303, 31);
             label1.TabIndex = 0;
@@ -68,6 +69,7 @@
             // 
             // panel1
             // 
+            panel1.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             panel1.BackColor = SystemColors.Control;
             panel1.Controls.Add(dataGridViewDSNVCoiThi);
             panel1.Controls.Add(labelDSNhanVienCoiThi);
@@ -83,6 +85,7 @@
             // 
             // dataGridViewDSNVCoiThi
             // 
+            dataGridViewDSNVCoiThi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewDSNVCoiThi.BackgroundColor = SystemColors.ButtonHighlight;
             dataGridViewDSNVCoiThi.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewDSNVCoiThi.GridColor = Color.White;
@@ -96,9 +99,10 @@
             // 
             // labelDSNhanVienCoiThi
             // 
+            labelDSNhanVienCoiThi.Anchor = AnchorStyles.Top;
             labelDSNhanVienCoiThi.AutoSize = true;
             labelDSNhanVienCoiThi.Font = new Font("Segoe UI", 11F, FontStyle.Bold);
-            labelDSNhanVienCoiThi.Location = new Point(603, 28);
+            labelDSNhanVienCoiThi.Location = new Point(625, 28);
             labelDSNhanVienCoiThi.Name = "labelDSNhanVienCoiThi";
             labelDSNhanVienCoiThi.Size = new Size(253, 25);
             labelDSNhanVienCoiThi.TabIndex = 7;
@@ -106,6 +110,7 @@
             // 
             // buttonLuuThongTin
             // 
+            buttonLuuThongTin.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonLuuThongTin.BackColor = Color.SkyBlue;
             buttonLuuThongTin.Location = new Point(776, 420);
             buttonLuuThongTin.Name = "buttonLuuThongTin";
@@ -117,6 +122,7 @@
             // 
             // buttonChinhSuaThongTin
             // 
+            buttonChinhSuaThongTin.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             buttonChinhSuaThongTin.BackColor = Color.SkyBlue;
             buttonChinhSuaThongTin.Location = new Point(565, 420);
             buttonChinhSuaThongTin.Name = "buttonChinhSuaThongTin";

@@ -247,6 +247,7 @@
             // 
             // textBox1
             // 
+            textBox1.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             textBox1.BackColor = SystemColors.HighlightText;
             textBox1.Location = new Point(616, 134);
             textBox1.Name = "textBox1";
@@ -259,6 +260,7 @@
             // 
             dataGridViewNhanVien.AllowUserToAddRows = false;
             dataGridViewNhanVien.AllowUserToDeleteRows = false;
+            dataGridViewNhanVien.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dataGridViewNhanVien.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dataGridViewNhanVien.Location = new Point(616, 168);
             dataGridViewNhanVien.Name = "dataGridViewNhanVien";
@@ -298,9 +300,10 @@
             // 
             // label3
             // 
+            label3.Anchor = AnchorStyles.Top;
             label3.AutoSize = true;
             label3.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold);
-            label3.Location = new Point(739, 91);
+            label3.Location = new Point(724, 91);
             label3.Name = "label3";
             label3.Size = new Size(173, 23);
             label3.TabIndex = 15;
@@ -308,6 +311,7 @@
             // 
             // btnTimKiem
             // 
+            btnTimKiem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnTimKiem.Location = new Point(889, 133);
             btnTimKiem.Name = "btnTimKiem";
             btnTimKiem.Size = new Size(94, 29);
@@ -318,6 +322,7 @@
             // 
             // btnLuu
             // 
+            btnLuu.Anchor = AnchorStyles.Bottom | AnchorStyles.Right;
             btnLuu.BackColor = Color.SkyBlue;
             btnLuu.Font = new Font("Segoe UI", 9F, FontStyle.Regular, GraphicsUnit.Point, 163);
             btnLuu.ForeColor = Color.Black;

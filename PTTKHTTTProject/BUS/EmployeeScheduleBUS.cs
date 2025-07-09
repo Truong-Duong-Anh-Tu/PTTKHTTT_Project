@@ -71,5 +71,12 @@ namespace PTTKHTTTProject.BUS
             }
             return EmployeeScheduleDAO.IsPhanCongLimitReached(maLichThi);
         }
+
+        public static DataTable loadAssignment()
+        {
+            DataTable dt = EmployeeScheduleDAO.getAssignment();
+
+            return dt;
+        }
     }
 }

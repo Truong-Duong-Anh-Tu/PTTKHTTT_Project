@@ -352,6 +352,11 @@ VALUES
   ('PDTD00018', 'PDKD0001', 'TSD00018', 'LT04', 'P004');
 GO
 
+/*
+delete from CHUNGCHI
+delete from PHIEUDUTHI
+*/
+
 INSERT INTO PHIEUGIAHAN(PGH_MaPhieu, PGH_MaPhieuDK, PGH_LyDoGiaHan, PGH_SoTienThanhToan, PGH_HinhThucThanhToan, PGH_ThoiHan, PHG_TrangThai)
 VALUES 
   ('GH00001', 'PDK00013', N'Muốn hoãn ngày thi khác cho phong thủy', 90000, N'Tiền mặt', '2025-07-15', N'Chưa thanh toán')
