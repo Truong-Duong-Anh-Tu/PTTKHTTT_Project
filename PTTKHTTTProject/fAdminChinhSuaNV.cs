@@ -98,7 +98,7 @@ namespace PTTKHTTTProject
                 textBoxHienThiSDT.Text = info["SDT"];
                 textBoxHienThiCCCD.Text = info["CCCD"];
                 textBoxHienThiDiaChi.Text = info["DChi"];
-                dateTimePickerNgaySinh.Value = DateTime.Parse(info["NSinh"]);
+                dateTimePickerNgaySinh.Value = DateTime.ParseExact(info["NSinh"],"dd/MM/yyyy",System.Globalization.CultureInfo.InvariantCulture);
                 comboBoxGioiTinh.Text = info["GTinh"];
                 numericUpDownLuong.Value = decimal.Parse(info["Luong"]);
                 comboBoxHienThiChucVu.SelectedItem = info["ChucVu"];
