@@ -15,9 +15,11 @@ namespace PTTKHTTTProject
 {
     public partial class uc_KT_ManageRenewal : UserControl
     {
-        public uc_KT_ManageRenewal()
+        private string username;
+        public uc_KT_ManageRenewal(string accessUser)
         {
             InitializeComponent();
+            username = accessUser;
         }
 
         private DataGridViewButtonColumn btnCol = new DataGridViewButtonColumn
@@ -65,12 +67,12 @@ namespace PTTKHTTTProject
                 if (ev.RowIndex >= 0)
                 {
                     //Ma phieu dang ky
-                    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuDK"].Value.ToString();
+                    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
 
                     // Handle button click for creating renewal based on request
                     if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
                     {
-                        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID);
+                        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID, username);
                         previewForm.ShowDialog();
                     }
                     // Handle checkbox click for payment method

@@ -95,5 +95,17 @@ namespace PTTKHTTTProject.DAO
             string query = "UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = @trangthai WHERE PDKDT_MaPhieu = @maphieudk";
             DataProvider.Instance.ExecuteQuery(query, parameters);
         }
+
+        public static int getCountOfCandidatesPerReceiptID(string receiptId) {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+            };
+            string query = "SELECT COUNT(*) FROM PHIEUDANGKYDUTHI JOIN THISINH ON PDKDT_MaPhieu = TS_MaPhieuDangKy WHERE PDKDT_MaPhieu = @maphieudk";
+            var result = DataProvider.Instance.ExecuteScalar(query,parameters);
+            //Chuyển sang dạng int
+
+            return Convert.ToInt32(result);
+        }
     }
 }

@@ -32,13 +32,15 @@ namespace PTTKHTTTProject.BUS
 
             renewalPreview["HoTen"] = row["HoTen"].ToString() ?? "Unknown";
             renewalPreview["KyThi"] = row["TenKyThi"].ToString() ?? "Unknown";
-            //renewalPreview["MaKH"] = row["MaKH"].ToString() ?? "Unknown";
 
-            //renewalPreview["SoTien"] = row["LePhi"].ToString() ?? "Unknown";
+            renewalPreview["MaLichThiMoi"] = row["MaLichThiMoi"].ToString() ?? "Unknown";
+            renewalPreview["NgayThiMoi"] = row.Field<DateTime>("NgayThiMoi").ToString("dd/MM/yyyy") ?? "Unknown";
 
-            //receiptPreview["SoBaoDanh"] = row["TS_SoBaoDanh"].ToString() ?? "Unknown";
-            //receiptPreview["MaPhieu"] = row["PDKDT_MaPhieu"].ToString() ?? "Unknown";
-            //receiptPreview["NgayLap"] = Convert.ToDateTime(row["PDKDT_NgayLap"]).ToString("dd/MM/yyyy") ?? "Unknown";
+            var timeSpan = row.Field<TimeSpan>("GioThi");
+            renewalPreview["GioThi"] = timeSpan.ToString(@"hh\:mm");
+
+            // Lấy ngày lập là hôm nay
+            renewalPreview["NgayLap"] = DateTime.Now.ToString("dd/MM/yyyy");
 
             return renewalPreview;
         }

@@ -55,39 +55,13 @@ namespace PTTKHTTTProject
             if (clicked == btnQLPGH)
             {
                 lblOption.Text = "Quản lý phiếu gia hạn";
-                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageRenewal());
+                CustomUC.openChildControl(pnlChildControl, activeControl, new uc_KT_ManageRenewal(username));
             }
             if (clicked == btnKTThongBao)
             {
                 lblOption.Text = "Thông báo";
                 CustomUC.openChildControl(pnlChildControl, activeControl, new ucNotification(username));
             }
-        }
-
-        private void fKeToan_Load(object sender, EventArgs e)
-        {
-            btnTTCN.BackColor = Color.DeepSkyBlue;
-            btnTTCN.ForeColor = Color.White;
-
-            int size = Math.Min(ptbAvatar.Width, ptbAvatar.Height);
-            ptbAvatar.Size = new Size(size, size);
-
-            GraphicsPath gp = new GraphicsPath();
-            gp.AddEllipse(0, 0, size, size);
-
-            ptbAvatar.Region = new Region(gp);
-
-            btnTTCN.FlatAppearance.BorderColor = SystemColors.Control;
-            btnQLPT.FlatAppearance.BorderColor = SystemColors.Control;
-            btnQLPGH.FlatAppearance.BorderColor = SystemColors.Control;
-            btnKTThongBao.FlatAppearance.BorderColor = SystemColors.Control;
-
-            var bus = new InfoEmployeeBUS(username);
-
-            Dictionary<string, string> info = bus.getInfoOfUser();
-
-            string name = string.IsNullOrWhiteSpace(info["Hoten"]) ? "" : info["Hoten"].Trim().Split(' ').Last();
-            lblName_Role.Text = $"{name} - Nhân viên kế toán";
         }
 
         private void btnKTSignout_Click_1(object sender, EventArgs e)
@@ -101,6 +75,32 @@ namespace PTTKHTTTProject
         private void pnlChildControl_Paint(object sender, PaintEventArgs e)
         {
 
+        }
+
+        private void fKeToan_Load(object sender, EventArgs e)
+        {
+            btnTTCN.BackColor = Color.DeepSkyBlue;
+            btnTTCN.ForeColor = Color.White;
+
+            int size = Math.Min(pictureBox1.Width, pictureBox1.Height);
+            pictureBox1.Size = new Size(size, size);
+
+            GraphicsPath gp = new GraphicsPath();
+            gp.AddEllipse(0, 0, size, size);
+
+            pictureBox1.Region = new Region(gp);
+
+            btnTTCN.FlatAppearance.BorderColor = SystemColors.Control;
+            btnQLPT.FlatAppearance.BorderColor = SystemColors.Control;
+            btnQLPGH.FlatAppearance.BorderColor = SystemColors.Control;
+            btnKTThongBao.FlatAppearance.BorderColor = SystemColors.Control;
+
+            var bus = new InfoEmployeeBUS(username);
+
+            Dictionary<string, string> info = bus.getInfoOfUser();
+
+            string name = string.IsNullOrWhiteSpace(info["Hoten"]) ? "" : info["Hoten"].Trim().Split(' ').Last();
+            label1.Text = $"{name} - Nhân viên kế toán";
         }
     }
 }

@@ -31,10 +31,18 @@ namespace PTTKHTTTProject.BUS
             DataTable dt = ManageReceiptDAO.getReceipt(receiptId.Trim());
             var row = dt.Rows[0];
 
+            int candidate = ManageReceiptDAO.getCountOfCandidatesPerReceiptID(receiptId);
+            float percent = 1;
+
+            if (candidate >= 20)
+            {
+                percent = 0.8f;
+            }
+
             receiptPreview["HoTen"] = row["HoTen"].ToString() ?? "Unknown";
             receiptPreview["MaKH"] = row["MaKhachHang"].ToString() ?? "Unknown";
             receiptPreview["NoiDung"] = "Thu lệ phí " + row["TenKyThi"].ToString() ?? "Unknown";
-            receiptPreview["SoTienThu"] = row["LePhi"].ToString() ?? "Unknown";
+            receiptPreview["SoTienThu"] = Convert.ToString(Convert.ToInt32(row["LePhi"]) * candidate * percent)  ?? "Unknown";
             receiptPreview["NgayThu"] = DateTime.Now.ToString("dd/MM/yyyy");
 
             return receiptPreview;

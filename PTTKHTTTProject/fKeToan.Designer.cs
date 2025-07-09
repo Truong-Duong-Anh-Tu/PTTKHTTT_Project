@@ -40,9 +40,6 @@
             btnKTSignout = new Button();
             label1 = new Label();
             pictureBox1 = new PictureBox();
-            btnSignOut = new Button();
-            lblName_Role = new Label();
-            ptbAvatar = new PictureBox();
             lblOption = new Label();
             ptbMenu = new PictureBox();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
@@ -52,7 +49,6 @@
             ((System.ComponentModel.ISupportInitialize)ptbLogoHome).BeginInit();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)ptbAvatar).BeginInit();
             ((System.ComponentModel.ISupportInitialize)ptbMenu).BeginInit();
             SuspendLayout();
             // 
@@ -144,7 +140,7 @@
             // ptbLogoHome
             // 
             ptbLogoHome.Anchor = AnchorStyles.None;
-            ptbLogoHome.Image = Properties.Resources.logo;
+            ptbLogoHome.Image = Properties.Resources.logonew;
             ptbLogoHome.Location = new Point(11, 4);
             ptbLogoHome.Name = "ptbLogoHome";
             ptbLogoHome.Size = new Size(51, 51);
@@ -171,9 +167,6 @@
             panel1.Controls.Add(btnKTSignout);
             panel1.Controls.Add(label1);
             panel1.Controls.Add(pictureBox1);
-            panel1.Controls.Add(btnSignOut);
-            panel1.Controls.Add(lblName_Role);
-            panel1.Controls.Add(ptbAvatar);
             panel1.Controls.Add(lblOption);
             panel1.Controls.Add(ptbMenu);
             panel1.Location = new Point(149, 0);
@@ -217,39 +210,6 @@
             pictureBox1.TabIndex = 7;
             pictureBox1.TabStop = false;
             // 
-            // btnSignOut
-            // 
-            btnSignOut.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSignOut.BackColor = Color.DeepSkyBlue;
-            btnSignOut.Location = new Point(1730, 9);
-            btnSignOut.Name = "btnSignOut";
-            btnSignOut.Size = new Size(87, 33);
-            btnSignOut.TabIndex = 6;
-            btnSignOut.Text = "Đăng xuất";
-            btnSignOut.UseVisualStyleBackColor = false;
-            // 
-            // lblName_Role
-            // 
-            lblName_Role.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            lblName_Role.AutoSize = true;
-            lblName_Role.Font = new Font("Cambria", 9F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            lblName_Role.Location = new Point(1522, 17);
-            lblName_Role.Name = "lblName_Role";
-            lblName_Role.Size = new Size(117, 17);
-            lblName_Role.TabIndex = 6;
-            lblName_Role.Text = "<Name and Role>";
-            // 
-            // ptbAvatar
-            // 
-            ptbAvatar.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            ptbAvatar.Image = Properties.Resources.avatar;
-            ptbAvatar.Location = new Point(1479, 7);
-            ptbAvatar.Name = "ptbAvatar";
-            ptbAvatar.Size = new Size(37, 37);
-            ptbAvatar.SizeMode = PictureBoxSizeMode.Zoom;
-            ptbAvatar.TabIndex = 6;
-            ptbAvatar.TabStop = false;
-            // 
             // lblOption
             // 
             lblOption.AutoSize = true;
@@ -290,7 +250,9 @@
             Controls.Add(panel1);
             Margin = new Padding(3, 4, 3, 4);
             Name = "fKeToan";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "KẾ TOÁN";
+            Load += fKeToan_Load;
             tlpMenuKeToan.ResumeLayout(false);
             tlpLogoName.ResumeLayout(false);
             tlpLogoName.PerformLayout();
@@ -298,7 +260,6 @@
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
-            ((System.ComponentModel.ISupportInitialize)ptbAvatar).EndInit();
             ((System.ComponentModel.ISupportInitialize)ptbMenu).EndInit();
             ResumeLayout(false);
         }
@@ -312,9 +273,6 @@
         private Button btnTTCN;
         private Button btnQLPGH;
         private Panel panel1;
-        private Button btnSignOut;
-        private Label lblName_Role;
-        private PictureBox ptbAvatar;
         private Label lblOption;
         private PictureBox ptbMenu;
         private PictureBox pictureBox1;

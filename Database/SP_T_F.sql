@@ -256,7 +256,7 @@ create or alter procedure usp_GetRenewalRequestTable
 as
 begin
 	set NOCOUNT on;
-	select PDKDT_MaPhieu as MaPhieu, COALESCE(KHTD_HoTen, KHDV_TenDonVi) AS HoTen, PDKDT_MaKhachHang as MaKH, KT_TenKyThi as TenKyThi, PDKDT_MaLichThi as MaLichThiMoi
+	select PDKDT_MaPhieu as MaPhieu, COALESCE(KHTD_HoTen, KHDV_TenDonVi) AS HoTen, PDKDT_MaKhachHang as MaKH, KT_TenKyThi as TenKyThi, PDKDT_MaLichThi as MaLichThiMoi, LT_NgayThi as NgayThiMoi, LT_TGBatDau as GioThi
 	from PHIEUDANGKYDUTHI
 	LEFT JOIN KHACHHANGHTUDO ON PDKDT_MaKhachHang = KHTD_MaKhachHang
     LEFT JOIN KHACHHANGDONVI ON PDKDT_MaKhachHang = KHDV_MaKhachHang
@@ -271,6 +271,8 @@ begin
             FROM PHIEUGIAHAN
             WHERE PGH_MaPhieuDK = PDKDT_MaPhieu
         ) <= 2
+	AND not exists(select 1 from PHIEUGIAHAN where PHG_TrangThai = N'Chưa thanh toán' and PGH_MaPhieuDK = PDKDT_MaPhieu)
+	AND exists( select 1 from PHIEUTHANHTOAN where PTT_MaPhieuDK = PDKDT_MaPhieu)
 	order by PDKDT_ThoiGianLap
 end;
 go
@@ -283,8 +285,6 @@ go
 EXEC usp_GetRenewalRequestTable @search = N'Quyên';
 go
 */
-
-
 
 --Them thong tin phieu thu vao bang PHIEUTHANHTOAN
 --drop procedure usp_InsertIntoPaycheckTable
@@ -368,7 +368,7 @@ begin
 	DECLARE @newMaPGH varchar(10);
     DECLARE @maxNumber int;
 	DECLARE @today date = CAST(GETDATE() AS date);
-	DECLARE @thoihan date = DATEADD(month, 1, @today);
+	DECLARE @thoihan date = DATEADD(day, 3, @today);
 
     -- Tìm số thứ tự lớn nhất hiện tại trong PTT_MaPhieu
     SELECT @maxNumber = ISNULL(MAX(CAST(SUBSTRING(PGH_MaPhieu, 4, 5) AS int)), 0)
