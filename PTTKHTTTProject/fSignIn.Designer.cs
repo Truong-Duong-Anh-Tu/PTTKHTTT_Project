@@ -32,7 +32,6 @@
             panel2 = new Panel();
             panel3 = new Panel();
             btnSignIn = new Button();
-            llbForgotPassword = new LinkLabel();
             ptbLogo = new PictureBox();
             lblName = new Label();
             tbxUsername = new TextBox();
@@ -77,16 +76,6 @@
             btnSignIn.Text = "ĐĂNG NHẬP";
             btnSignIn.UseVisualStyleBackColor = false;
             btnSignIn.Click += btnSignIn_Click;
-            // 
-            // llbForgotPassword
-            // 
-            llbForgotPassword.AutoSize = true;
-            llbForgotPassword.Location = new Point(474, 325);
-            llbForgotPassword.Name = "llbForgotPassword";
-            llbForgotPassword.Size = new Size(116, 20);
-            llbForgotPassword.TabIndex = 6;
-            llbForgotPassword.TabStop = true;
-            llbForgotPassword.Text = "Quên mật khẩu?";
             // 
             // ptbLogo
             // 
@@ -143,7 +132,6 @@
             Controls.Add(tbxUsername);
             Controls.Add(lblName);
             Controls.Add(ptbLogo);
-            Controls.Add(llbForgotPassword);
             Controls.Add(btnSignIn);
             Controls.Add(panel3);
             Controls.Add(panel2);
@@ -163,7 +151,6 @@
         private Panel panel2;
         private Panel panel3;
         private Button btnSignIn;
-        private LinkLabel llbForgotPassword;
         private PictureBox ptbLogo;
         private Label lblName;
         private TextBox tbxUsername;

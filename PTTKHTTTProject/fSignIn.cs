@@ -101,5 +101,10 @@ namespace PTTKHTTTProject
         {
 
         }
+
+        private void llbForgotPassword_LinkClicked(object sender, LinkLabelLinkClickedEventArgs e)
+        {
+
+        }
     }
 }
