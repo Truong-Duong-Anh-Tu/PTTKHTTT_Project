@@ -43,6 +43,7 @@
             // 
             // pnlManageResult
             // 
+            pnlManageResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlManageResult.Controls.Add(rbxCreatedRenewal);
             pnlManageResult.Controls.Add(rbxPendingRenewal);
             pnlManageResult.Controls.Add(lblCount);
@@ -58,8 +59,9 @@
             // 
             // rbxCreatedRenewal
             // 
+            rbxCreatedRenewal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             rbxCreatedRenewal.AutoSize = true;
-            rbxCreatedRenewal.Location = new Point(747, 39);
+            rbxCreatedRenewal.Location = new Point(758, 39);
             rbxCreatedRenewal.Margin = new Padding(3, 4, 3, 4);
             rbxCreatedRenewal.Name = "rbxCreatedRenewal";
             rbxCreatedRenewal.Size = new Size(169, 24);
@@ -69,6 +71,7 @@
             // 
             // rbxPendingRenewal
             // 
+            rbxPendingRenewal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             rbxPendingRenewal.AutoSize = true;
             rbxPendingRenewal.Checked = true;
             rbxPendingRenewal.Location = new Point(619, 39);
@@ -104,6 +107,7 @@
             // 
             // btnSearchRenewal
             // 
+            btnSearchRenewal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearchRenewal.Location = new Point(907, 76);
             btnSearchRenewal.Margin = new Padding(3, 4, 3, 4);
             btnSearchRenewal.Name = "btnSearchRenewal";
@@ -125,6 +129,7 @@
             // 
             // txbInput
             // 
+            txbInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txbInput.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txbInput.Location = new Point(22, 76);
             txbInput.Name = "txbInput";
@@ -136,6 +141,7 @@
             // 
             dtgvResult.AllowUserToAddRows = false;
             dtgvResult.AllowUserToDeleteRows = false;
+            dtgvResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvResult.BackgroundColor = SystemColors.ControlLightLight;
             dtgvResult.BorderStyle = BorderStyle.None;

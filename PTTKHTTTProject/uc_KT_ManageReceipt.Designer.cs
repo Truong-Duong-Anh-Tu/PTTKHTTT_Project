@@ -43,6 +43,7 @@
             // 
             // pnlManageResult
             // 
+            pnlManageResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlManageResult.Controls.Add(txbCount);
             pnlManageResult.Controls.Add(rbxCreatedPaycheck);
             pnlManageResult.Controls.Add(rbxNotCreatedPaycheck);
@@ -70,6 +71,7 @@
             // 
             // rbxCreatedPaycheck
             // 
+            rbxCreatedPaycheck.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             rbxCreatedPaycheck.AutoSize = true;
             rbxCreatedPaycheck.Location = new Point(771, 39);
             rbxCreatedPaycheck.Margin = new Padding(3, 4, 3, 4);
@@ -81,6 +83,7 @@
             // 
             // rbxNotCreatedPaycheck
             // 
+            rbxNotCreatedPaycheck.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             rbxNotCreatedPaycheck.AutoSize = true;
             rbxNotCreatedPaycheck.Checked = true;
             rbxNotCreatedPaycheck.Location = new Point(619, 39);
@@ -104,6 +107,7 @@
             // 
             // btnSearchReceipt
             // 
+            btnSearchReceipt.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             btnSearchReceipt.Location = new Point(907, 76);
             btnSearchReceipt.Margin = new Padding(3, 4, 3, 4);
             btnSearchReceipt.Name = "btnSearchReceipt";
@@ -125,6 +129,7 @@
             // 
             // txbInput
             // 
+            txbInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txbInput.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             txbInput.Location = new Point(22, 76);
             txbInput.Name = "txbInput";
@@ -136,6 +141,7 @@
             // 
             dtgvResult.AllowUserToAddRows = false;
             dtgvResult.AllowUserToDeleteRows = false;
+            dtgvResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvResult.BackgroundColor = SystemColors.ControlLightLight;
             dtgvResult.BorderStyle = BorderStyle.None;

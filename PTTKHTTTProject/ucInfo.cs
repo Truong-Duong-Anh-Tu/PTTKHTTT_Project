@@ -73,5 +73,20 @@ namespace PTTKHTTTProject
                 borderColor, 2, style,
                 borderColor, 2, style);
         }
+
+        private void pnlSalaryRole_Resize(object sender, EventArgs e)
+        {
+            this.pnlSalaryRole.Invalidate();
+        }
+
+        private void pnlHotenRole_Resize(object sender, EventArgs e)
+        {
+            this.pnlHotenRole.Invalidate();
+        }
+
+        private void pnlInfoNV_Resize(object sender, EventArgs e)
+        {
+            this.pnlInfoNV.Invalidate();
+        }
     }
 }

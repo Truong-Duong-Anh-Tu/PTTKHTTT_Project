@@ -52,6 +52,7 @@
             // 
             // pnlAssignment
             // 
+            pnlAssignment.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlAssignment.Controls.Add(lblTrangThai);
             pnlAssignment.Controls.Add(dtgvPhanCong);
             pnlAssignment.Controls.Add(tbxSearch);
@@ -79,6 +80,7 @@
             dtgvPhanCong.AllowUserToOrderColumns = true;
             dtgvPhanCong.AllowUserToResizeColumns = false;
             dtgvPhanCong.AllowUserToResizeRows = false;
+            dtgvPhanCong.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvPhanCong.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvPhanCong.BackgroundColor = SystemColors.ControlLightLight;
             dtgvPhanCong.CellBorderStyle = DataGridViewCellBorderStyle.None;
@@ -111,6 +113,7 @@
             // 
             // tbxSearch
             // 
+            tbxSearch.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             tbxSearch.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxSearch.Location = new Point(677, 125);
             tbxSearch.Name = "tbxSearch";

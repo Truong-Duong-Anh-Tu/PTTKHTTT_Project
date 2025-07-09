@@ -45,6 +45,7 @@
             // 
             // pnlManageResult
             // 
+            pnlManageResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlManageResult.Controls.Add(cbxExamDate);
             pnlManageResult.Controls.Add(lblChonThiSinh);
             pnlManageResult.Controls.Add(lblChonLich);
@@ -70,6 +71,7 @@
             // 
             // lblChonThiSinh
             // 
+            lblChonThiSinh.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             lblChonThiSinh.AutoSize = true;
             lblChonThiSinh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblChonThiSinh.Location = new Point(853, 51);
@@ -110,6 +112,7 @@
             // 
             // tbxSearchCandidate
             // 
+            tbxSearchCandidate.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             tbxSearchCandidate.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxSearchCandidate.Location = new Point(742, 78);
             tbxSearchCandidate.Name = "tbxSearchCandidate";
@@ -135,6 +138,7 @@
             dtgvResult.AllowUserToOrderColumns = true;
             dtgvResult.AllowUserToResizeColumns = false;
             dtgvResult.AllowUserToResizeRows = false;
+            dtgvResult.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             dtgvResult.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dtgvResult.BackgroundColor = SystemColors.ControlLightLight;
             dtgvResult.CellBorderStyle = DataGridViewCellBorderStyle.None;

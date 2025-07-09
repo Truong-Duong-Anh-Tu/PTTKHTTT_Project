@@ -67,6 +67,7 @@
             // 
             // pnlSalaryRole
             // 
+            pnlSalaryRole.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             pnlSalaryRole.Controls.Add(lblDetailSalary);
             pnlSalaryRole.Controls.Add(ptbSalary);
             pnlSalaryRole.Controls.Add(lblDetailRole);
@@ -77,6 +78,7 @@
             pnlSalaryRole.Size = new Size(1015, 147);
             pnlSalaryRole.TabIndex = 0;
             pnlSalaryRole.Paint += pnlSalaryRole_Paint;
+            pnlSalaryRole.Resize += pnlSalaryRole_Resize;
             // 
             // lblDetailSalary
             // 
@@ -134,6 +136,7 @@
             // 
             // pnlHotenRole
             // 
+            pnlHotenRole.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             pnlHotenRole.Controls.Add(tbxChucVu);
             pnlHotenRole.Controls.Add(lblChucVu);
             pnlHotenRole.Controls.Add(tbxHoTen);
@@ -145,6 +148,7 @@
             pnlHotenRole.Size = new Size(348, 414);
             pnlHotenRole.TabIndex = 1;
             pnlHotenRole.Paint += pnlHotenRole_Paint;
+            pnlHotenRole.Resize += pnlHotenRole_Resize;
             // 
             // tbxChucVu
             // 
@@ -194,7 +198,7 @@
             // 
             // ptbDetailAvatar
             // 
-            ptbDetailAvatar.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
+            ptbDetailAvatar.Anchor = AnchorStyles.None;
             ptbDetailAvatar.Image = Properties.Resources.avatar;
             ptbDetailAvatar.Location = new Point(100, 51);
             ptbDetailAvatar.Name = "ptbDetailAvatar";
@@ -215,6 +219,7 @@
             // 
             // pnlInfoNV
             // 
+            pnlInfoNV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left | AnchorStyles.Right;
             pnlInfoNV.Controls.Add(tbxCCCD);
             pnlInfoNV.Controls.Add(tbxSDT);
             pnlInfoNV.Controls.Add(tbxEmail);
@@ -235,10 +240,11 @@
             pnlInfoNV.Size = new Size(661, 414);
             pnlInfoNV.TabIndex = 2;
             pnlInfoNV.Paint += pnlInfoNV_Paint;
+            pnlInfoNV.Resize += pnlInfoNV_Resize;
             // 
             // tbxCCCD
             // 
-            tbxCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            tbxCCCD.Anchor = AnchorStyles.None;
             tbxCCCD.BorderStyle = BorderStyle.None;
             tbxCCCD.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxCCCD.Location = new Point(409, 196);
@@ -249,7 +255,7 @@
             // 
             // tbxSDT
             // 
-            tbxSDT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            tbxSDT.Anchor = AnchorStyles.None;
             tbxSDT.BorderStyle = BorderStyle.None;
             tbxSDT.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxSDT.Location = new Point(409, 123);
@@ -260,7 +266,7 @@
             // 
             // tbxEmail
             // 
-            tbxEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            tbxEmail.Anchor = AnchorStyles.None;
             tbxEmail.BorderStyle = BorderStyle.None;
             tbxEmail.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxEmail.Location = new Point(409, 51);
@@ -271,7 +277,7 @@
             // 
             // lblCCCD
             // 
-            lblCCCD.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lblCCCD.Anchor = AnchorStyles.None;
             lblCCCD.AutoSize = true;
             lblCCCD.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblCCCD.Location = new Point(348, 196);
@@ -282,7 +288,7 @@
             // 
             // lblSDT
             // 
-            lblSDT.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lblSDT.Anchor = AnchorStyles.None;
             lblSDT.AutoSize = true;
             lblSDT.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblSDT.Location = new Point(348, 123);
@@ -293,7 +299,7 @@
             // 
             // lblEmail
             // 
-            lblEmail.Anchor = AnchorStyles.Top | AnchorStyles.Bottom;
+            lblEmail.Anchor = AnchorStyles.None;
             lblEmail.AutoSize = true;
             lblEmail.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblEmail.Location = new Point(348, 51);
@@ -304,7 +310,7 @@
             // 
             // tbxDiaChi
             // 
-            tbxDiaChi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbxDiaChi.Anchor = AnchorStyles.Left;
             tbxDiaChi.BorderStyle = BorderStyle.None;
             tbxDiaChi.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxDiaChi.Location = new Point(110, 265);
@@ -315,7 +321,7 @@
             // 
             // tbxGioiTinh
             // 
-            tbxGioiTinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbxGioiTinh.Anchor = AnchorStyles.Left;
             tbxGioiTinh.BorderStyle = BorderStyle.None;
             tbxGioiTinh.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxGioiTinh.Location = new Point(110, 196);
@@ -326,7 +332,7 @@
             // 
             // tbxNgaySinh
             // 
-            tbxNgaySinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbxNgaySinh.Anchor = AnchorStyles.Left;
             tbxNgaySinh.BorderStyle = BorderStyle.None;
             tbxNgaySinh.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxNgaySinh.Location = new Point(110, 121);
@@ -337,7 +343,7 @@
             // 
             // tbxMaNV
             // 
-            tbxMaNV.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            tbxMaNV.Anchor = AnchorStyles.Left;
             tbxMaNV.BorderStyle = BorderStyle.None;
             tbxMaNV.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxMaNV.Location = new Point(110, 51);
@@ -348,7 +354,7 @@
             // 
             // lblDiaChi
             // 
-            lblDiaChi.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblDiaChi.Anchor = AnchorStyles.Left;
             lblDiaChi.AutoSize = true;
             lblDiaChi.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblDiaChi.Location = new Point(18, 265);
@@ -359,7 +365,7 @@
             // 
             // lblGioiTinh
             // 
-            lblGioiTinh.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
+            lblGioiTinh.Anchor = AnchorStyles.Left;
             lblGioiTinh.AutoSize = true;
             lblGioiTinh.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblGioiTinh.Location = new Point(17, 196);
@@ -370,6 +376,7 @@
             // 
             // label1
             // 
+            label1.Anchor = AnchorStyles.Left;
             label1.AutoSize = true;
             label1.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             label1.Location = new Point(17, 123);
@@ -380,6 +387,7 @@
             // 
             // lblMaNV
             // 
+            lblMaNV.Anchor = AnchorStyles.Left;
             lblMaNV.AutoSize = true;
             lblMaNV.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
             lblMaNV.Location = new Point(17, 51);
