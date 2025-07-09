@@ -277,7 +277,7 @@
             // 
             // tlpMenuTiepNhan
             // 
-            tlpMenuTiepNhan.BackColor = SystemColors.Control;
+            tlpMenuTiepNhan.BackColor = SystemColors.ButtonHighlight;
             tlpMenuTiepNhan.ColumnCount = 1;
             tlpMenuTiepNhan.ColumnStyles.Add(new ColumnStyle(SizeType.Percent, 50F));
             tlpMenuTiepNhan.Controls.Add(btnQLPDK, 0, 3);
@@ -303,6 +303,7 @@
             // 
             // btnQLPDK
             // 
+            btnQLPDK.BackColor = Color.SkyBlue;
             btnQLPDK.FlatStyle = FlatStyle.Flat;
             btnQLPDK.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnQLPDK.Location = new Point(4, 178);
@@ -311,11 +312,12 @@
             btnQLPDK.Size = new Size(186, 68);
             btnQLPDK.TabIndex = 2;
             btnQLPDK.Text = "Quản lý phiếu đăng ký";
-            btnQLPDK.UseVisualStyleBackColor = true;
+            btnQLPDK.UseVisualStyleBackColor = false;
             btnQLPDK.Click += btnQLPDK_Click;
             // 
             // btnTTCN
             // 
+            btnTTCN.BackColor = Color.SkyBlue;
             btnTTCN.FlatStyle = FlatStyle.Flat;
             btnTTCN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTTCN.Location = new Point(4, 101);
@@ -324,11 +326,12 @@
             btnTTCN.Size = new Size(186, 68);
             btnTTCN.TabIndex = 1;
             btnTTCN.Text = "Thông tin cá nhân";
-            btnTTCN.UseVisualStyleBackColor = true;
+            btnTTCN.UseVisualStyleBackColor = false;
             btnTTCN.Click += btnTTCN_Click;
             // 
             // btnXLCC
             // 
+            btnXLCC.BackColor = Color.SkyBlue;
             btnXLCC.FlatStyle = FlatStyle.Flat;
             btnXLCC.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnXLCC.Location = new Point(4, 255);
@@ -337,7 +340,7 @@
             btnXLCC.Size = new Size(186, 68);
             btnXLCC.TabIndex = 2;
             btnXLCC.Text = "Xử lý trạng thái chứng chỉ";
-            btnXLCC.UseVisualStyleBackColor = true;
+            btnXLCC.UseVisualStyleBackColor = false;
             btnXLCC.Click += btnXLCC_Click;
             // 
             // tlpLogoName
@@ -381,6 +384,7 @@
             // 
             // btnCapNhatGiaHan
             // 
+            btnCapNhatGiaHan.BackColor = Color.SkyBlue;
             btnCapNhatGiaHan.FlatStyle = FlatStyle.Flat;
             btnCapNhatGiaHan.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCapNhatGiaHan.Location = new Point(4, 332);
@@ -389,11 +393,12 @@
             btnCapNhatGiaHan.Size = new Size(186, 68);
             btnCapNhatGiaHan.TabIndex = 4;
             btnCapNhatGiaHan.Text = "Cập nhật lịch thi gia hạn";
-            btnCapNhatGiaHan.UseVisualStyleBackColor = true;
+            btnCapNhatGiaHan.UseVisualStyleBackColor = false;
             btnCapNhatGiaHan.Click += btnCapNhatGiaHan_Click;
             // 
             // btnThongBao
             // 
+            btnThongBao.BackColor = Color.SkyBlue;
             btnThongBao.FlatStyle = FlatStyle.Flat;
             btnThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThongBao.Location = new Point(4, 410);
@@ -402,12 +407,12 @@
             btnThongBao.Size = new Size(186, 68);
             btnThongBao.TabIndex = 9;
             btnThongBao.Text = "Thông báo";
-            btnThongBao.UseVisualStyleBackColor = true;
+            btnThongBao.UseVisualStyleBackColor = false;
             btnThongBao.Click += btnThongBao_Click;
             // 
             // panel2
             // 
-            panel2.BackColor = SystemColors.ControlLight;
+            panel2.BackColor = SystemColors.ButtonHighlight;
             panel2.BorderStyle = BorderStyle.Fixed3D;
             panel2.Controls.Add(ptbMenu);
             panel2.Controls.Add(lblOption);
@@ -483,13 +488,14 @@
             // 
             // panelPDK
             // 
-            panelPDK.Controls.Add(panelKHDonVi);
+            panelPDK.BackColor = SystemColors.ButtonHighlight;
             panelPDK.Controls.Add(panelKHTuDo);
             panelPDK.Controls.Add(btnUpdatePDK);
             panelPDK.Controls.Add(panel4);
             panelPDK.Controls.Add(btnAddPDK);
             panelPDK.Controls.Add(PDKView_SearchBox);
             panelPDK.Controls.Add(PDKView_Search);
+            panelPDK.Controls.Add(panelKHDonVi);
             panelPDK.Dock = DockStyle.Fill;
             panelPDK.Location = new Point(0, 0);
             panelPDK.Name = "panelPDK";
@@ -498,13 +504,14 @@
             // 
             // panelKHDonVi
             // 
+            panelKHDonVi.BorderStyle = BorderStyle.Fixed3D;
             panelKHDonVi.Controls.Add(PDKView_dgvDV);
             panelKHDonVi.Controls.Add(PDKView_btnSearchDV);
             panelKHDonVi.Controls.Add(PDKView_SearchBoxDV);
             panelKHDonVi.Controls.Add(label39);
             panelKHDonVi.Location = new Point(16, 348);
             panelKHDonVi.Name = "panelKHDonVi";
-            panelKHDonVi.Size = new Size(1232, 328);
+            panelKHDonVi.Size = new Size(1232, 337);
             panelKHDonVi.TabIndex = 11;
             // 
             // PDKView_dgvDV
@@ -518,16 +525,18 @@
             // 
             // PDKView_btnSearchDV
             // 
+            PDKView_btnSearchDV.BackColor = Color.SkyBlue;
             PDKView_btnSearchDV.Location = new Point(632, 13);
             PDKView_btnSearchDV.Name = "PDKView_btnSearchDV";
             PDKView_btnSearchDV.Size = new Size(115, 34);
             PDKView_btnSearchDV.TabIndex = 11;
             PDKView_btnSearchDV.Text = "Tìm kiếm";
-            PDKView_btnSearchDV.UseVisualStyleBackColor = true;
+            PDKView_btnSearchDV.UseVisualStyleBackColor = false;
             PDKView_btnSearchDV.Click += PDKView_btnSearchDV_Click;
             // 
             // PDKView_SearchBoxDV
             // 
+            PDKView_SearchBoxDV.BackColor = SystemColors.Control;
             PDKView_SearchBoxDV.Location = new Point(294, 14);
             PDKView_SearchBoxDV.Name = "PDKView_SearchBoxDV";
             PDKView_SearchBoxDV.PlaceholderText = "Nhập tên thí sinh hoặc số báo danh";
@@ -546,6 +555,7 @@
             // 
             // panelKHTuDo
             // 
+            panelKHTuDo.BorderStyle = BorderStyle.Fixed3D;
             panelKHTuDo.Controls.Add(PDKView_CCCDTD);
             panelKHTuDo.Controls.Add(PDKView_DOBTD);
             panelKHTuDo.Controls.Add(PDKView_SDTTD);
@@ -705,24 +715,26 @@
             label6.Font = new Font("Segoe UI", 12F);
             label6.Location = new Point(0, 0);
             label6.Name = "label6";
-            label6.Size = new Size(739, 41);
+            label6.Size = new Size(735, 41);
             label6.TabIndex = 8;
             label6.Text = "Thông tin thí sinh dự thi";
             label6.TextAlign = ContentAlignment.TopCenter;
             // 
             // btnUpdatePDK
             // 
-            btnUpdatePDK.Font = new Font("Segoe UI", 10F);
+            btnUpdatePDK.BackColor = Color.SkyBlue;
+            btnUpdatePDK.Font = new Font("Segoe UI", 9F);
             btnUpdatePDK.Location = new Point(1055, 17);
             btnUpdatePDK.Name = "btnUpdatePDK";
             btnUpdatePDK.Size = new Size(193, 53);
             btnUpdatePDK.TabIndex = 16;
             btnUpdatePDK.Text = "Chỉnh sửa thông tin";
-            btnUpdatePDK.UseVisualStyleBackColor = true;
+            btnUpdatePDK.UseVisualStyleBackColor = false;
             btnUpdatePDK.Click += btnUpdatePDK_Click;
             // 
             // panel4
             // 
+            panel4.BorderStyle = BorderStyle.Fixed3D;
             panel4.Controls.Add(PDKView_LoaiKH);
             panel4.Controls.Add(label79);
             panel4.Controls.Add(PDKView_ED);
@@ -915,7 +927,7 @@
             label7.Font = new Font("Segoe UI", 12F);
             label7.Location = new Point(0, 0);
             label7.Name = "label7";
-            label7.Size = new Size(1232, 32);
+            label7.Size = new Size(1228, 46);
             label7.TabIndex = 9;
             label7.Text = "Thông tin phiếu đăng ký";
             label7.TextAlign = ContentAlignment.TopCenter;
@@ -952,16 +964,18 @@
             // 
             // btnAddPDK
             // 
+            btnAddPDK.BackColor = Color.SkyBlue;
             btnAddPDK.Location = new Point(862, 17);
             btnAddPDK.Name = "btnAddPDK";
             btnAddPDK.Size = new Size(187, 53);
             btnAddPDK.TabIndex = 3;
             btnAddPDK.Text = "Tạo phiếu đăng ký";
-            btnAddPDK.UseVisualStyleBackColor = true;
+            btnAddPDK.UseVisualStyleBackColor = false;
             btnAddPDK.Click += btnAddPDK_Click;
             // 
             // PDKView_SearchBox
             // 
+            PDKView_SearchBox.BackColor = SystemColors.Control;
             PDKView_SearchBox.Location = new Point(16, 23);
             PDKView_SearchBox.Name = "PDKView_SearchBox";
             PDKView_SearchBox.PlaceholderText = "Nhập mã phiếu";
@@ -970,16 +984,19 @@
             // 
             // PDKView_Search
             // 
+            PDKView_Search.BackColor = Color.SkyBlue;
             PDKView_Search.Location = new Point(261, 23);
             PDKView_Search.Name = "PDKView_Search";
             PDKView_Search.Size = new Size(119, 31);
             PDKView_Search.TabIndex = 1;
             PDKView_Search.Text = "Tìm kiếm";
-            PDKView_Search.UseVisualStyleBackColor = true;
+            PDKView_Search.UseVisualStyleBackColor = false;
             PDKView_Search.Click += PDKView_Search_Click;
             // 
             // panelXLCC
             // 
+            panelXLCC.BackColor = SystemColors.ButtonHighlight;
+            panelXLCC.BorderStyle = BorderStyle.Fixed3D;
             panelXLCC.Controls.Add(label16);
             panelXLCC.Controls.Add(CC_dgv);
             panelXLCC.Controls.Add(CC_XacNhan);
@@ -990,9 +1007,9 @@
             panelXLCC.Controls.Add(CC_cbKyThi);
             panelXLCC.Controls.Add(label15);
             panelXLCC.Dock = DockStyle.Fill;
-            panelXLCC.Location = new Point(194, 62);
+            panelXLCC.Location = new Point(0, 0);
             panelXLCC.Name = "panelXLCC";
-            panelXLCC.Size = new Size(1283, 723);
+            panelXLCC.Size = new Size(1477, 785);
             panelXLCC.TabIndex = 10;
             // 
             // label16
@@ -1028,6 +1045,7 @@
             // 
             // CC_SearchBox
             // 
+            CC_SearchBox.BackColor = SystemColors.Control;
             CC_SearchBox.Font = new Font("Segoe UI", 10F);
             CC_SearchBox.Location = new Point(54, 192);
             CC_SearchBox.Name = "CC_SearchBox";
@@ -1071,6 +1089,7 @@
             // 
             // CC_cbKyThi
             // 
+            CC_cbKyThi.BackColor = SystemColors.Control;
             CC_cbKyThi.FormattingEnabled = true;
             CC_cbKyThi.Location = new Point(202, 36);
             CC_cbKyThi.Name = "CC_cbKyThi";
@@ -1089,6 +1108,8 @@
             // 
             // panelGiaHan
             // 
+            panelGiaHan.BackColor = SystemColors.ButtonHighlight;
+            panelGiaHan.BorderStyle = BorderStyle.Fixed3D;
             panelGiaHan.Controls.Add(panel7);
             panelGiaHan.Controls.Add(panel3);
             panelGiaHan.Controls.Add(GiaHan_btnGiaHan);
@@ -1105,6 +1126,7 @@
             // 
             // panel7
             // 
+            panel7.BorderStyle = BorderStyle.Fixed3D;
             panel7.Controls.Add(GiaHan_MaPThi);
             panel7.Controls.Add(GiaHan_SoTS_LichThi);
             panel7.Controls.Add(GiaHan_GioThi);
@@ -1222,12 +1244,13 @@
             label81.Font = new Font("Segoe UI", 12F);
             label81.Location = new Point(0, 0);
             label81.Name = "label81";
-            label81.Size = new Size(648, 38);
+            label81.Size = new Size(644, 38);
             label81.TabIndex = 0;
             label81.Text = "Thông tin lịch thi đã đăng ký";
             // 
             // panel3
             // 
+            panel3.BorderStyle = BorderStyle.Fixed3D;
             panel3.Controls.Add(GiaHan_ChonGioThi);
             panel3.Controls.Add(GiaHan_ChonNgayThi);
             panel3.Controls.Add(GiaHan_ChonKyThi);
@@ -1242,6 +1265,7 @@
             // 
             // GiaHan_ChonGioThi
             // 
+            GiaHan_ChonGioThi.BackColor = SystemColors.Control;
             GiaHan_ChonGioThi.FormattingEnabled = true;
             GiaHan_ChonGioThi.Location = new Point(136, 150);
             GiaHan_ChonGioThi.Name = "GiaHan_ChonGioThi";
@@ -1250,6 +1274,7 @@
             // 
             // GiaHan_ChonNgayThi
             // 
+            GiaHan_ChonNgayThi.BackColor = SystemColors.Control;
             GiaHan_ChonNgayThi.FormattingEnabled = true;
             GiaHan_ChonNgayThi.Location = new Point(136, 100);
             GiaHan_ChonNgayThi.Name = "GiaHan_ChonNgayThi";
@@ -1259,6 +1284,7 @@
             // 
             // GiaHan_ChonKyThi
             // 
+            GiaHan_ChonKyThi.BackColor = SystemColors.Control;
             GiaHan_ChonKyThi.FormattingEnabled = true;
             GiaHan_ChonKyThi.Location = new Point(136, 50);
             GiaHan_ChonKyThi.Name = "GiaHan_ChonKyThi";
@@ -1292,7 +1318,7 @@
             label26.Font = new Font("Segoe UI", 12F);
             label26.Location = new Point(0, 0);
             label26.Name = "label26";
-            label26.Size = new Size(511, 42);
+            label26.Size = new Size(507, 42);
             label26.TabIndex = 6;
             label26.Text = "Vui lòng chọn lịch thi gia hạn";
             // 
@@ -1320,6 +1346,7 @@
             // 
             // panel6
             // 
+            panel6.BorderStyle = BorderStyle.Fixed3D;
             panel6.Controls.Add(GiaHan_SLThiSinh);
             panel6.Controls.Add(label86);
             panel6.Controls.Add(GiaHan_TenNV);
@@ -1409,7 +1436,7 @@
             label19.Font = new Font("Segoe UI", 12F);
             label19.Location = new Point(0, 0);
             label19.Name = "label19";
-            label19.Size = new Size(648, 32);
+            label19.Size = new Size(644, 39);
             label19.TabIndex = 6;
             label19.Text = "Thông tin phiếu đăng ký";
             label19.TextAlign = ContentAlignment.TopCenter;
@@ -1465,6 +1492,7 @@
             // 
             // panel5
             // 
+            panel5.BorderStyle = BorderStyle.Fixed3D;
             panel5.Controls.Add(GiaHan_Email);
             panel5.Controls.Add(GiaHan_SDT);
             panel5.Controls.Add(GiaHan_LoaiKH);
@@ -1542,7 +1570,7 @@
             label18.Font = new Font("Segoe UI", 12F);
             label18.Location = new Point(0, 0);
             label18.Name = "label18";
-            label18.Size = new Size(511, 32);
+            label18.Size = new Size(507, 40);
             label18.TabIndex = 5;
             label18.Text = "Thông tin khách hàng";
             label18.TextAlign = ContentAlignment.TopCenter;
@@ -1589,16 +1617,18 @@
             // 
             // GiaHan_btnPDKSearch
             // 
+            GiaHan_btnPDKSearch.BackColor = Color.SkyBlue;
             GiaHan_btnPDKSearch.Location = new Point(379, 73);
             GiaHan_btnPDKSearch.Name = "GiaHan_btnPDKSearch";
             GiaHan_btnPDKSearch.Size = new Size(112, 34);
             GiaHan_btnPDKSearch.TabIndex = 2;
             GiaHan_btnPDKSearch.Text = "Tìm kiếm";
-            GiaHan_btnPDKSearch.UseVisualStyleBackColor = true;
+            GiaHan_btnPDKSearch.UseVisualStyleBackColor = false;
             GiaHan_btnPDKSearch.Click += GiaHan_btnPDKSearch_Click;
             // 
             // GiaHan_MaPhieuSearch
             // 
+            GiaHan_MaPhieuSearch.BackColor = SystemColors.Control;
             GiaHan_MaPhieuSearch.Font = new Font("Segoe UI", 10F);
             GiaHan_MaPhieuSearch.Location = new Point(39, 73);
             GiaHan_MaPhieuSearch.Name = "GiaHan_MaPhieuSearch";
@@ -1618,11 +1648,12 @@
             // 
             // panelPDKAdd
             // 
+            panelPDKAdd.BackColor = SystemColors.ButtonHighlight;
             panelPDKAdd.Controls.Add(PDKView_Return_1);
-            panelPDKAdd.Controls.Add(panelTSDVAdd);
             panelPDKAdd.Controls.Add(PDKAdd_XacNhan);
             panelPDKAdd.Controls.Add(panel1);
             panelPDKAdd.Controls.Add(panelTSTDAdd);
+            panelPDKAdd.Controls.Add(panelTSDVAdd);
             panelPDKAdd.Dock = DockStyle.Fill;
             panelPDKAdd.Location = new Point(0, 0);
             panelPDKAdd.Name = "panelPDKAdd";
@@ -1631,17 +1662,19 @@
             // 
             // PDKView_Return_1
             // 
+            PDKView_Return_1.BackColor = Color.SkyBlue;
             PDKView_Return_1.Font = new Font("Segoe UI", 10F);
             PDKView_Return_1.Location = new Point(896, 673);
             PDKView_Return_1.Name = "PDKView_Return_1";
             PDKView_Return_1.Size = new Size(136, 38);
             PDKView_Return_1.TabIndex = 15;
             PDKView_Return_1.Text = "Quay lại";
-            PDKView_Return_1.UseVisualStyleBackColor = true;
+            PDKView_Return_1.UseVisualStyleBackColor = false;
             PDKView_Return_1.Click += PDKView_Return_Click;
             // 
             // panelTSDVAdd
             // 
+            panelTSDVAdd.BorderStyle = BorderStyle.Fixed3D;
             panelTSDVAdd.Controls.Add(PDKAdd_dgvTSDV);
             panelTSDVAdd.Controls.Add(PDKAdd_ThemTSDV);
             panelTSDVAdd.Controls.Add(label50);
@@ -1661,12 +1694,13 @@
             // 
             // PDKAdd_ThemTSDV
             // 
+            PDKAdd_ThemTSDV.BackColor = Color.SkyBlue;
             PDKAdd_ThemTSDV.Location = new Point(1080, 14);
             PDKAdd_ThemTSDV.Name = "PDKAdd_ThemTSDV";
             PDKAdd_ThemTSDV.Size = new Size(140, 34);
             PDKAdd_ThemTSDV.TabIndex = 11;
             PDKAdd_ThemTSDV.Text = "Thêm thí sinh";
-            PDKAdd_ThemTSDV.UseVisualStyleBackColor = true;
+            PDKAdd_ThemTSDV.UseVisualStyleBackColor = false;
             PDKAdd_ThemTSDV.Click += PDKAdd_ThemTSDV_Click;
             // 
             // label50
@@ -1682,17 +1716,19 @@
             // 
             // PDKAdd_XacNhan
             // 
+            PDKAdd_XacNhan.BackColor = Color.SkyBlue;
             PDKAdd_XacNhan.Font = new Font("Segoe UI", 10F);
             PDKAdd_XacNhan.Location = new Point(1038, 673);
             PDKAdd_XacNhan.Name = "PDKAdd_XacNhan";
             PDKAdd_XacNhan.Size = new Size(210, 38);
             PDKAdd_XacNhan.TabIndex = 14;
             PDKAdd_XacNhan.Text = "Tạo phiếu đăng ký";
-            PDKAdd_XacNhan.UseVisualStyleBackColor = true;
+            PDKAdd_XacNhan.UseVisualStyleBackColor = false;
             PDKAdd_XacNhan.Click += PDKAdd_XacNhan_Click;
             // 
             // panel1
             // 
+            panel1.BorderStyle = BorderStyle.Fixed3D;
             panel1.Controls.Add(PDKAdd_GioThi);
             panel1.Controls.Add(PDKAdd_btnTuDo);
             panel1.Controls.Add(label70);
@@ -1722,6 +1758,7 @@
             // 
             // PDKAdd_GioThi
             // 
+            PDKAdd_GioThi.BackColor = SystemColors.Control;
             PDKAdd_GioThi.FormattingEnabled = true;
             PDKAdd_GioThi.Location = new Point(946, 107);
             PDKAdd_GioThi.Name = "PDKAdd_GioThi";
@@ -1782,6 +1819,7 @@
             // 
             // PDKAdd_NgayThi
             // 
+            PDKAdd_NgayThi.BackColor = SystemColors.Control;
             PDKAdd_NgayThi.FormattingEnabled = true;
             PDKAdd_NgayThi.Location = new Point(611, 107);
             PDKAdd_NgayThi.Name = "PDKAdd_NgayThi";
@@ -1791,6 +1829,7 @@
             // 
             // PDKAdd_TenKyThi
             // 
+            PDKAdd_TenKyThi.BackColor = SystemColors.Control;
             PDKAdd_TenKyThi.FormattingEnabled = true;
             PDKAdd_TenKyThi.Location = new Point(611, 63);
             PDKAdd_TenKyThi.Name = "PDKAdd_TenKyThi";
@@ -1800,6 +1839,7 @@
             // 
             // PDKAdd_DiaChi
             // 
+            PDKAdd_DiaChi.BackColor = SystemColors.Control;
             PDKAdd_DiaChi.Location = new Point(700, 147);
             PDKAdd_DiaChi.Name = "PDKAdd_DiaChi";
             PDKAdd_DiaChi.Size = new Size(499, 31);
@@ -1807,6 +1847,7 @@
             // 
             // PDKAdd_SDT
             // 
+            PDKAdd_SDT.BackColor = SystemColors.Control;
             PDKAdd_SDT.Location = new Point(164, 189);
             PDKAdd_SDT.Name = "PDKAdd_SDT";
             PDKAdd_SDT.Size = new Size(272, 31);
@@ -1814,6 +1855,7 @@
             // 
             // PDKAdd_Email
             // 
+            PDKAdd_Email.BackColor = SystemColors.Control;
             PDKAdd_Email.Location = new Point(95, 147);
             PDKAdd_Email.Name = "PDKAdd_Email";
             PDKAdd_Email.Size = new Size(341, 31);
@@ -1831,6 +1873,7 @@
             // 
             // PDKAdd_TenKH
             // 
+            PDKAdd_TenKH.BackColor = SystemColors.Control;
             PDKAdd_TenKH.Location = new Point(176, 63);
             PDKAdd_TenKH.Name = "PDKAdd_TenKH";
             PDKAdd_TenKH.Size = new Size(260, 31);
@@ -1892,7 +1935,7 @@
             label46.Font = new Font("Segoe UI", 12F);
             label46.Location = new Point(0, 0);
             label46.Name = "label46";
-            label46.Size = new Size(1232, 32);
+            label46.Size = new Size(1228, 32);
             label46.TabIndex = 9;
             label46.Text = "Thông tin phiếu đăng ký";
             label46.TextAlign = ContentAlignment.TopCenter;
@@ -1929,6 +1972,7 @@
             // 
             // panelTSTDAdd
             // 
+            panelTSTDAdd.BorderStyle = BorderStyle.Fixed3D;
             panelTSTDAdd.Controls.Add(PDKAdd_DOB_TD);
             panelTSTDAdd.Controls.Add(PDKAdd_GioiTinhTD);
             panelTSTDAdd.Controls.Add(PDKAdd_CCCD_TD);
@@ -1949,6 +1993,7 @@
             // 
             // PDKAdd_DOB_TD
             // 
+            PDKAdd_DOB_TD.CalendarMonthBackground = SystemColors.Control;
             PDKAdd_DOB_TD.CustomFormat = "dd/MM/yyyy";
             PDKAdd_DOB_TD.Format = DateTimePickerFormat.Custom;
             PDKAdd_DOB_TD.Location = new Point(475, 121);
@@ -1958,6 +2003,7 @@
             // 
             // PDKAdd_GioiTinhTD
             // 
+            PDKAdd_GioiTinhTD.BackColor = SystemColors.Control;
             PDKAdd_GioiTinhTD.FormattingEnabled = true;
             PDKAdd_GioiTinhTD.Location = new Point(122, 123);
             PDKAdd_GioiTinhTD.Name = "PDKAdd_GioiTinhTD";
@@ -1966,6 +2012,7 @@
             // 
             // PDKAdd_CCCD_TD
             // 
+            PDKAdd_CCCD_TD.BackColor = SystemColors.Control;
             PDKAdd_CCCD_TD.Location = new Point(436, 175);
             PDKAdd_CCCD_TD.Name = "PDKAdd_CCCD_TD";
             PDKAdd_CCCD_TD.Size = new Size(287, 31);
@@ -1973,6 +2020,7 @@
             // 
             // PDKAdd_SDT_TD
             // 
+            PDKAdd_SDT_TD.BackColor = SystemColors.Control;
             PDKAdd_SDT_TD.Location = new Point(504, 69);
             PDKAdd_SDT_TD.Name = "PDKAdd_SDT_TD";
             PDKAdd_SDT_TD.Size = new Size(219, 31);
@@ -1980,6 +2028,7 @@
             // 
             // PDKAdd_Email_TD
             // 
+            PDKAdd_Email_TD.BackColor = SystemColors.Control;
             PDKAdd_Email_TD.Location = new Point(96, 173);
             PDKAdd_Email_TD.Name = "PDKAdd_Email_TD";
             PDKAdd_Email_TD.Size = new Size(256, 31);
@@ -1987,6 +2036,7 @@
             // 
             // PDKAdd_TenTSTD
             // 
+            PDKAdd_TenTSTD.BackColor = SystemColors.Control;
             PDKAdd_TenTSTD.Location = new Point(133, 68);
             PDKAdd_TenTSTD.Name = "PDKAdd_TenTSTD";
             PDKAdd_TenTSTD.Size = new Size(219, 31);
@@ -2058,27 +2108,29 @@
             label58.Font = new Font("Segoe UI", 12F);
             label58.Location = new Point(0, 0);
             label58.Name = "label58";
-            label58.Size = new Size(843, 37);
+            label58.Size = new Size(839, 37);
             label58.TabIndex = 8;
             label58.Text = "Thông tin thí sinh dự thi";
             label58.TextAlign = ContentAlignment.TopCenter;
             // 
             // panelPDKUpdate
             // 
-            panelPDKUpdate.Controls.Add(panelTSDVEdit);
+            panelPDKUpdate.BackColor = SystemColors.ButtonHighlight;
             panelPDKUpdate.Controls.Add(PDKView_Return);
             panelPDKUpdate.Controls.Add(btnDelPDK);
             panelPDKUpdate.Controls.Add(btnSavePDK);
             panelPDKUpdate.Controls.Add(panelTSTDEdit);
             panelPDKUpdate.Controls.Add(panel12);
+            panelPDKUpdate.Controls.Add(panelTSDVEdit);
             panelPDKUpdate.Dock = DockStyle.Fill;
-            panelPDKUpdate.Location = new Point(0, 0);
+            panelPDKUpdate.Location = new Point(194, 62);
             panelPDKUpdate.Name = "panelPDKUpdate";
-            panelPDKUpdate.Size = new Size(1477, 785);
+            panelPDKUpdate.Size = new Size(1283, 723);
             panelPDKUpdate.TabIndex = 15;
             // 
             // panelTSDVEdit
             // 
+            panelTSDVEdit.BorderStyle = BorderStyle.Fixed3D;
             panelTSDVEdit.Controls.Add(PDKU_btnSearchDV);
             panelTSDVEdit.Controls.Add(PDKU_SearchBoxDV);
             panelTSDVEdit.Controls.Add(PDKU_dgvDV);
@@ -2090,16 +2142,18 @@
             // 
             // PDKU_btnSearchDV
             // 
+            PDKU_btnSearchDV.BackColor = Color.SkyBlue;
             PDKU_btnSearchDV.Location = new Point(631, 18);
             PDKU_btnSearchDV.Name = "PDKU_btnSearchDV";
             PDKU_btnSearchDV.Size = new Size(115, 34);
             PDKU_btnSearchDV.TabIndex = 14;
             PDKU_btnSearchDV.Text = "Tìm kiếm";
-            PDKU_btnSearchDV.UseVisualStyleBackColor = true;
+            PDKU_btnSearchDV.UseVisualStyleBackColor = false;
             PDKU_btnSearchDV.Click += PDKU_btnSearchDV_Click;
             // 
             // PDKU_SearchBoxDV
             // 
+            PDKU_SearchBoxDV.BackColor = SystemColors.Control;
             PDKU_SearchBoxDV.Location = new Point(299, 18);
             PDKU_SearchBoxDV.Name = "PDKU_SearchBoxDV";
             PDKU_SearchBoxDV.PlaceholderText = "Nhập tên thí sinh hoặc số báo danh";
@@ -2128,39 +2182,43 @@
             // 
             // PDKView_Return
             // 
+            PDKView_Return.BackColor = Color.SkyBlue;
             PDKView_Return.Font = new Font("Segoe UI", 10F);
             PDKView_Return.Location = new Point(702, 636);
             PDKView_Return.Name = "PDKView_Return";
             PDKView_Return.Size = new Size(112, 38);
             PDKView_Return.TabIndex = 16;
             PDKView_Return.Text = "Quay lại";
-            PDKView_Return.UseVisualStyleBackColor = true;
+            PDKView_Return.UseVisualStyleBackColor = false;
             PDKView_Return.Click += PDKView_Return_Click;
             // 
             // btnDelPDK
             // 
+            btnDelPDK.BackColor = Color.SkyBlue;
             btnDelPDK.Font = new Font("Segoe UI", 10F);
             btnDelPDK.Location = new Point(829, 636);
             btnDelPDK.Name = "btnDelPDK";
             btnDelPDK.Size = new Size(194, 38);
             btnDelPDK.TabIndex = 15;
             btnDelPDK.Text = "Hủy phiếu đăng ký";
-            btnDelPDK.UseVisualStyleBackColor = true;
+            btnDelPDK.UseVisualStyleBackColor = false;
             btnDelPDK.Click += btnDelPDK_Click;
             // 
             // btnSavePDK
             // 
+            btnSavePDK.BackColor = Color.SkyBlue;
             btnSavePDK.Font = new Font("Segoe UI", 10F);
             btnSavePDK.Location = new Point(1038, 636);
             btnSavePDK.Name = "btnSavePDK";
             btnSavePDK.Size = new Size(210, 38);
             btnSavePDK.TabIndex = 14;
             btnSavePDK.Text = "Lưu thay đổi";
-            btnSavePDK.UseVisualStyleBackColor = true;
+            btnSavePDK.UseVisualStyleBackColor = false;
             btnSavePDK.Click += btnSavePDK_Click;
             // 
             // panelTSTDEdit
             // 
+            panelTSTDEdit.BorderStyle = BorderStyle.Fixed3D;
             panelTSTDEdit.Controls.Add(btnSave_TTTD);
             panelTSTDEdit.Controls.Add(PDKU_DOB_TD);
             panelTSTDEdit.Controls.Add(GioiTinh_TSTD);
@@ -2184,16 +2242,18 @@
             // 
             // btnSave_TTTD
             // 
+            btnSave_TTTD.BackColor = Color.SkyBlue;
             btnSave_TTTD.Location = new Point(573, 228);
             btnSave_TTTD.Name = "btnSave_TTTD";
             btnSave_TTTD.Size = new Size(137, 34);
             btnSave_TTTD.TabIndex = 24;
             btnSave_TTTD.Text = "Lưu thay đổi";
-            btnSave_TTTD.UseVisualStyleBackColor = true;
+            btnSave_TTTD.UseVisualStyleBackColor = false;
             btnSave_TTTD.Click += btnSave_TTTD_Click;
             // 
             // PDKU_DOB_TD
             // 
+            PDKU_DOB_TD.CalendarMonthBackground = SystemColors.Control;
             PDKU_DOB_TD.CustomFormat = "dd/MM/yyyy";
             PDKU_DOB_TD.Format = DateTimePickerFormat.Custom;
             PDKU_DOB_TD.Location = new Point(475, 121);
@@ -2203,6 +2263,7 @@
             // 
             // GioiTinh_TSTD
             // 
+            GioiTinh_TSTD.BackColor = SystemColors.Control;
             GioiTinh_TSTD.FormattingEnabled = true;
             GioiTinh_TSTD.Location = new Point(123, 175);
             GioiTinh_TSTD.Name = "GioiTinh_TSTD";
@@ -2220,6 +2281,7 @@
             // 
             // PDKU_CCCD_TD
             // 
+            PDKU_CCCD_TD.BackColor = SystemColors.Control;
             PDKU_CCCD_TD.Location = new Point(436, 175);
             PDKU_CCCD_TD.Name = "PDKU_CCCD_TD";
             PDKU_CCCD_TD.Size = new Size(220, 31);
@@ -2227,6 +2289,7 @@
             // 
             // PDKU_SDT_TD
             // 
+            PDKU_SDT_TD.BackColor = SystemColors.Control;
             PDKU_SDT_TD.Location = new Point(501, 69);
             PDKU_SDT_TD.Name = "PDKU_SDT_TD";
             PDKU_SDT_TD.Size = new Size(220, 31);
@@ -2234,6 +2297,7 @@
             // 
             // PDKU_Email_TD
             // 
+            PDKU_Email_TD.BackColor = SystemColors.Control;
             PDKU_Email_TD.Location = new Point(97, 228);
             PDKU_Email_TD.Name = "PDKU_Email_TD";
             PDKU_Email_TD.Size = new Size(255, 31);
@@ -2241,6 +2305,7 @@
             // 
             // PDKU_TenTS_TD
             // 
+            PDKU_TenTS_TD.BackColor = SystemColors.Control;
             PDKU_TenTS_TD.Location = new Point(132, 123);
             PDKU_TenTS_TD.Name = "PDKU_TenTS_TD";
             PDKU_TenTS_TD.Size = new Size(220, 31);
@@ -2322,13 +2387,14 @@
             label67.Font = new Font("Segoe UI", 12F);
             label67.Location = new Point(0, 0);
             label67.Name = "label67";
-            label67.Size = new Size(739, 32);
+            label67.Size = new Size(735, 32);
             label67.TabIndex = 8;
             label67.Text = "Thông tin thí sinh dự thi";
             label67.TextAlign = ContentAlignment.TopCenter;
             // 
             // panel12
             // 
+            panel12.BorderStyle = BorderStyle.Fixed3D;
             panel12.Controls.Add(PDKU_LoaiKH);
             panel12.Controls.Add(label1);
             panel12.Controls.Add(PDKU_TenNV);
@@ -2410,6 +2476,7 @@
             // 
             // PDKU_DiaChi
             // 
+            PDKU_DiaChi.BackColor = SystemColors.Control;
             PDKU_DiaChi.Location = new Point(705, 150);
             PDKU_DiaChi.Name = "PDKU_DiaChi";
             PDKU_DiaChi.Size = new Size(395, 31);
@@ -2417,6 +2484,7 @@
             // 
             // PDKU_SDT
             // 
+            PDKU_SDT.BackColor = SystemColors.Control;
             PDKU_SDT.Location = new Point(164, 150);
             PDKU_SDT.Name = "PDKU_SDT";
             PDKU_SDT.Size = new Size(284, 31);
@@ -2424,6 +2492,7 @@
             // 
             // PDKU_Email
             // 
+            PDKU_Email.BackColor = SystemColors.Control;
             PDKU_Email.Location = new Point(95, 105);
             PDKU_Email.Name = "PDKU_Email";
             PDKU_Email.Size = new Size(353, 31);
@@ -2431,6 +2500,7 @@
             // 
             // PDKU_TenKH
             // 
+            PDKU_TenKH.BackColor = SystemColors.Control;
             PDKU_TenKH.Location = new Point(179, 63);
             PDKU_TenKH.Name = "PDKU_TenKH";
             PDKU_TenKH.Size = new Size(269, 31);
@@ -2492,7 +2562,7 @@
             label74.Font = new Font("Segoe UI", 12F);
             label74.Location = new Point(0, 0);
             label74.Name = "label74";
-            label74.Size = new Size(1232, 32);
+            label74.Size = new Size(1228, 32);
             label74.TabIndex = 9;
             label74.Text = "Thông tin phiếu đăng ký";
             label74.TextAlign = ContentAlignment.TopCenter;
@@ -2529,6 +2599,7 @@
             // 
             // panelNotifi
             // 
+            panelNotifi.BorderStyle = BorderStyle.Fixed3D;
             panelNotifi.Dock = DockStyle.Fill;
             panelNotifi.Location = new Point(0, 0);
             panelNotifi.Name = "panelNotifi";
@@ -2537,6 +2608,7 @@
             // 
             // panelInfo
             // 
+            panelInfo.BorderStyle = BorderStyle.Fixed3D;
             panelInfo.Dock = DockStyle.Fill;
             panelInfo.Location = new Point(0, 0);
             panelInfo.Name = "panelInfo";
@@ -2548,15 +2620,15 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1477, 785);
-            Controls.Add(panelXLCC);
+            Controls.Add(panelPDKUpdate);
             Controls.Add(panel2);
             Controls.Add(tlpMenuTiepNhan);
+            Controls.Add(panelPDKAdd);
+            Controls.Add(panelXLCC);
             Controls.Add(panelGiaHan);
             Controls.Add(panelPDK);
             Controls.Add(panelInfo);
             Controls.Add(panelNotifi);
-            Controls.Add(panelPDKUpdate);
-            Controls.Add(panelPDKAdd);
             Name = "fTiepNhan";
             Text = "fTiepNhan";
             Load += fTiepNhan_Load_1;
