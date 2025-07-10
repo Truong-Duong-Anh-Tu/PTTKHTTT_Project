@@ -92,8 +92,30 @@ namespace PTTKHTTTProject.BUS
                 string temp = $"{dr["NV_MaNhanVien"].ToString()} - {dr["NV_TenNhanVien"].ToString()} - {dr["NV_ChucVu"].ToString()}";
                 recipients.Add(temp);
             }
-
             return recipients;
+        }
+
+        public static bool IsValidEmail(string email)
+        {
+            try
+            {
+                var addr = new System.Net.Mail.MailAddress(email);
+                return addr.Address == email;
+            }
+            catch
+            {
+                return false;
+            }
+        }
+
+        public static bool IsValidPhone(string phone)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{10}$");
+        }
+
+        public static bool IsValidCCCD(string cccd)
+        {
+            return System.Text.RegularExpressions.Regex.IsMatch(cccd, @"^\d{12}$");
         }
     }
 }

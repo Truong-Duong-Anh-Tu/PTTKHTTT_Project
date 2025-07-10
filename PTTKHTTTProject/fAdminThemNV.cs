@@ -96,21 +96,21 @@ namespace PTTKHTTTProject
                 return;
             }
             // Kiểm tra định dạng email
-            if (!IsValidEmail(email))
+            if (!InfoEmployeeBUS.IsValidEmail(email))
             {
                 MessageBox.Show("Email không hợp lệ. Vui lòng nhập đúng định dạng email.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Kiểm tra số điện thoại 10 số
-            if (!IsValidPhone(sdt))
+            if (!InfoEmployeeBUS.IsValidPhone(sdt))
             {
                 MessageBox.Show("Số điện thoại phải gồm đúng 10 chữ số.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
             }
 
             // Kiểm tra CCCD 12 số
-            if (!IsValidCCCD(cccd))
+            if (!InfoEmployeeBUS.IsValidCCCD(cccd))
             {
                 MessageBox.Show("CCCD phải gồm đúng 12 chữ số.", "Lỗi định dạng", MessageBoxButtons.OK, MessageBoxIcon.Warning);
                 return;
@@ -136,28 +136,6 @@ namespace PTTKHTTTProject
             {
                 MessageBox.Show("Lỗi khi thêm nhân viên: " + ex.Message, "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
             }
-        }
-        private bool IsValidEmail(string email)
-        {
-            try
-            {
-                var addr = new System.Net.Mail.MailAddress(email);
-                return addr.Address == email;
-            }
-            catch
-            {
-                return false;
-            }
-        }
-
-        private bool IsValidPhone(string phone)
-        {
-            return System.Text.RegularExpressions.Regex.IsMatch(phone, @"^\d{10}$");
-        }
-
-        private bool IsValidCCCD(string cccd)
-        {
-            return System.Text.RegularExpressions.Regex.IsMatch(cccd, @"^\d{12}$");
         }
         private void pictureBoxThoat_Click(object sender, EventArgs e)
         {
