@@ -63,7 +63,7 @@ namespace PTTKHTTTProject.UControl
             if (comboBoxKyThi.SelectedItem is string selectedKyThi)
             {
                 string maKyThi = selectedKyThi.Split(' ')[0];
-                dtLichThi = EmployeeScheduleDAO.GetLichThiByKyThi(maKyThi);
+                dtLichThi = ExamTypeBUS.GetLichThiByKyThi(maKyThi);
                 comboBoxLichThi.DataSource = dtLichThi;
                 comboBoxLichThi.DisplayMember = "DisplayText";
                 comboBoxLichThi.ValueMember = "LT_MaLichThi";

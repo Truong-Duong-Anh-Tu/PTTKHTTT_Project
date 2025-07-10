@@ -1132,7 +1132,7 @@ END;
 GO
 
 -- Cập nhật tất cả các phân công sau khi qua ngày
-CREATE OR ALTER PROCEDURE usp_UpdateAllExamStatus
+CREATE OR ALTER PROCEDURE usp_UpdateAllExamStatusInEmployeeSchedule
 AS
 BEGIN
     SET NOCOUNT ON;

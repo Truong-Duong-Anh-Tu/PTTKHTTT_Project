@@ -38,20 +38,11 @@ namespace PTTKHTTTProject.DAO
             int result = DataProvider.Instance.ExecuteScalarSP<int>("usp_DeletePhanCong", parameters);
             return result == 1;
         }
-
-        public static DataTable GetLichThiByKyThi(string maKyThi)
-        {
-            SqlParameter[] parameters = new SqlParameter[]
-            {
-        new SqlParameter("@MaKyThi", maKyThi)
-            };
-            return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThiByKyThi", parameters);
-        }
         public static void UpdateAllExamStatus()
         {
             try
             {
-                DataProvider.Instance.ExecuteNonQuerySP("usp_UpdateAllExamStatus");
+                DataProvider.Instance.ExecuteNonQuerySP("usp_UpdateAllExamStatusInEmployeeSchedule");
             }
             catch (Exception ex)
             {

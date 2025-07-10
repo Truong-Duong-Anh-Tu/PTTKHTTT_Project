@@ -10,6 +10,14 @@ namespace PTTKHTTTProject.DAO
 {
     internal class ExamTypeDAO
     {
+        public static DataTable GetLichThiByKyThi(string maKyThi)
+        {
+            SqlParameter[] parameters = new SqlParameter[]
+            {
+                new SqlParameter("@MaKyThi", maKyThi)
+            };
+            return DataProvider.Instance.ExecuteQuerySP("usp_GetLichThiByKyThi", parameters);
+        }
         public static int GetTotalExamCount()
         {
             try

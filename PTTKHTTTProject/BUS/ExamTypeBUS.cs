@@ -10,7 +10,14 @@ namespace PTTKHTTTProject.BUS
 {
     internal class ExamTypeBUS
     {
-
+        public static DataTable GetLichThiByKyThi(string maKyThi)
+        {
+            if (string.IsNullOrWhiteSpace(maKyThi))
+            {
+                throw new ArgumentException("Mã kỳ thi không được để trống.", nameof(maKyThi));
+            }
+            return ExamTypeDAO.GetLichThiByKyThi(maKyThi);
+        }
         public static List<string> loadExamType()
         {
 
