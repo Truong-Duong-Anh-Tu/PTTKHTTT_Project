@@ -767,7 +767,6 @@ BEGIN
     SELECT LT_MaLichThi, 
            CONVERT(varchar, LT_NgayThi, 103) + ' - Ca lúc ' + CONVERT(varchar(5), LT_TGBatDau, 108) AS DisplayText,
            LT_MaPhongThi,
-           LT_NgayThi,
            LT_TGBatDau,
            LT_TGKetThuc
     FROM LICHTHI
