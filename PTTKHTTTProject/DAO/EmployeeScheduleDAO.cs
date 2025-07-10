@@ -16,7 +16,6 @@ namespace PTTKHTTTProject.DAO
             return dt;
         }
 
-        // THÊM PHƯƠNG THỨC MỚI
         public static bool UpdateEmployeeSchedule(string maLichThi, string maNVCU, string maNVMoi)
         {
             SqlParameter[] parameters = new SqlParameter[]
@@ -40,7 +39,6 @@ namespace PTTKHTTTProject.DAO
             return result == 1;
         }
 
-        // Thêm vào cuối file, bên trong lớp EmployeeScheduleDAO
         public static DataTable GetLichThiByKyThi(string maKyThi)
         {
             SqlParameter[] parameters = new SqlParameter[]
