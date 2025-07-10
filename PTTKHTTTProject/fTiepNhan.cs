@@ -20,6 +20,7 @@ namespace PTTKHTTTProject
     {
         private string _username;
         private string _PDKUpdate;
+        private List<Button> Sidebar_Buttons;
         public fTiepNhan(string username)
         {
             InitializeComponent();
@@ -29,6 +30,8 @@ namespace PTTKHTTTProject
         private void fTiepNhan_Load_1(object sender, EventArgs e)
         {
             LoadInfo();
+
+            Sidebar_Buttons = new List<Button> { btnQLPDK, btnTTCN, btnThongBao, btnXLCC, btnCapNhatGiaHan };
 
             string? tenNhanVien = TiepNhan.LayTenNhanVien(_username);
 
@@ -41,6 +44,19 @@ namespace PTTKHTTTProject
                 TiepNhan_TenNV.Text = "...";
             }
         }
+
+        private void HighlightSelectedButton(Button selectedBtn)
+        {
+            Color activeColor = Color.LightBlue;   // Màu khi được chọn
+            Color normalColor = Color.WhiteSmoke;       // Màu bình thường
+
+            foreach (Button btn in Sidebar_Buttons)
+            {
+                btn.BackColor = (btn == selectedBtn) ? activeColor : normalColor;
+                btn.ForeColor = (btn == selectedBtn) ? Color.Black : Color.Black; // tùy chỉnh thêm nếu cần
+            }
+        }
+
 
         private void LoadInfo()
         {
@@ -76,6 +92,7 @@ namespace PTTKHTTTProject
         // Giao diện cập nhật chứng chỉ
         private void btnXLCC_Click(object sender, EventArgs e)
         {
+            HighlightSelectedButton(btnXLCC);
             HideAllPanels();
             panelXLCC.Visible = true;
             panelXLCC.BringToFront();
@@ -154,6 +171,7 @@ namespace PTTKHTTTProject
         // Giao diện xử lý gia hạn
         private void btnCapNhatGiaHan_Click(object sender, EventArgs e)
         {
+            HighlightSelectedButton(btnCapNhatGiaHan);
             HideAllPanels();
             panelGiaHan.Visible = true;
             panelGiaHan.BringToFront();
@@ -271,6 +289,7 @@ namespace PTTKHTTTProject
         // Chọn tính năng quản lý phiếu đăng ký
         private void btnQLPDK_Click(object sender, EventArgs e)
         {
+            HighlightSelectedButton(btnQLPDK);
             HideAllPanels();
             panelPDK.Visible = true;
             panelPDK.BringToFront();
@@ -808,11 +827,13 @@ namespace PTTKHTTTProject
 
         private void btnTTCN_Click(object sender, EventArgs e)
         {
+            HighlightSelectedButton(btnTTCN);
             LoadInfo();
         }
 
         private void btnThongBao_Click(object sender, EventArgs e)
         {
+            HighlightSelectedButton(btnThongBao);
             HideAllPanels();
             panelNotifi.Visible = true;
             panelNotifi.BringToFront();

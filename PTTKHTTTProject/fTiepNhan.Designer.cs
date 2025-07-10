@@ -44,11 +44,6 @@
             TiepNhan_TenNV = new Label();
             pictureBox1 = new PictureBox();
             panelPDK = new Panel();
-            panelKHDonVi = new Panel();
-            PDKView_dgvDV = new DataGridView();
-            PDKView_btnSearchDV = new Button();
-            PDKView_SearchBoxDV = new TextBox();
-            label39 = new Label();
             panelKHTuDo = new Panel();
             PDKView_CCCDTD = new Label();
             PDKView_DOBTD = new Label();
@@ -91,6 +86,11 @@
             btnAddPDK = new Button();
             PDKView_SearchBox = new TextBox();
             PDKView_Search = new Button();
+            panelKHDonVi = new Panel();
+            PDKView_dgvDV = new DataGridView();
+            PDKView_btnSearchDV = new Button();
+            PDKView_SearchBoxDV = new TextBox();
+            label39 = new Label();
             panelXLCC = new Panel();
             label16 = new Label();
             CC_dgv = new DataGridView();
@@ -154,10 +154,6 @@
             label17 = new Label();
             panelPDKAdd = new Panel();
             PDKView_Return_1 = new Button();
-            panelTSDVAdd = new Panel();
-            PDKAdd_dgvTSDV = new DataGridView();
-            PDKAdd_ThemTSDV = new Button();
-            label50 = new Label();
             PDKAdd_XacNhan = new Button();
             panel1 = new Panel();
             PDKAdd_GioThi = new ComboBox();
@@ -196,12 +192,11 @@
             label56 = new Label();
             label57 = new Label();
             label58 = new Label();
+            panelTSDVAdd = new Panel();
+            PDKAdd_dgvTSDV = new DataGridView();
+            PDKAdd_ThemTSDV = new Button();
+            label50 = new Label();
             panelPDKUpdate = new Panel();
-            panelTSDVEdit = new Panel();
-            PDKU_btnSearchDV = new Button();
-            PDKU_SearchBoxDV = new TextBox();
-            PDKU_dgvDV = new DataGridView();
-            label59 = new Label();
             PDKView_Return = new Button();
             btnDelPDK = new Button();
             btnSavePDK = new Button();
@@ -242,6 +237,11 @@
             label75 = new Label();
             label76 = new Label();
             label77 = new Label();
+            panelTSDVEdit = new Panel();
+            PDKU_btnSearchDV = new Button();
+            PDKU_SearchBoxDV = new TextBox();
+            PDKU_dgvDV = new DataGridView();
+            label59 = new Label();
             backgroundWorker1 = new System.ComponentModel.BackgroundWorker();
             panelNotifi = new Panel();
             panelInfo = new Panel();
@@ -252,10 +252,10 @@
             ((System.ComponentModel.ISupportInitialize)ptbMenu).BeginInit();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             panelPDK.SuspendLayout();
-            panelKHDonVi.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PDKView_dgvDV).BeginInit();
             panelKHTuDo.SuspendLayout();
             panel4.SuspendLayout();
+            panelKHDonVi.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PDKView_dgvDV).BeginInit();
             panelXLCC.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)CC_dgv).BeginInit();
             panelGiaHan.SuspendLayout();
@@ -264,15 +264,15 @@
             panel6.SuspendLayout();
             panel5.SuspendLayout();
             panelPDKAdd.SuspendLayout();
-            panelTSDVAdd.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PDKAdd_dgvTSDV).BeginInit();
             panel1.SuspendLayout();
             panelTSTDAdd.SuspendLayout();
+            panelTSDVAdd.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PDKAdd_dgvTSDV).BeginInit();
             panelPDKUpdate.SuspendLayout();
-            panelTSDVEdit.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).BeginInit();
             panelTSTDEdit.SuspendLayout();
             panel12.SuspendLayout();
+            panelTSDVEdit.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).BeginInit();
             SuspendLayout();
             // 
             // tlpMenuTiepNhan
@@ -303,7 +303,7 @@
             // 
             // btnQLPDK
             // 
-            btnQLPDK.BackColor = Color.SkyBlue;
+            btnQLPDK.BackColor = SystemColors.Control;
             btnQLPDK.FlatStyle = FlatStyle.Flat;
             btnQLPDK.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnQLPDK.Location = new Point(4, 178);
@@ -317,7 +317,7 @@
             // 
             // btnTTCN
             // 
-            btnTTCN.BackColor = Color.SkyBlue;
+            btnTTCN.BackColor = SystemColors.Control;
             btnTTCN.FlatStyle = FlatStyle.Flat;
             btnTTCN.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnTTCN.Location = new Point(4, 101);
@@ -331,7 +331,7 @@
             // 
             // btnXLCC
             // 
-            btnXLCC.BackColor = Color.SkyBlue;
+            btnXLCC.BackColor = SystemColors.Control;
             btnXLCC.FlatStyle = FlatStyle.Flat;
             btnXLCC.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnXLCC.Location = new Point(4, 255);
@@ -384,7 +384,7 @@
             // 
             // btnCapNhatGiaHan
             // 
-            btnCapNhatGiaHan.BackColor = Color.SkyBlue;
+            btnCapNhatGiaHan.BackColor = SystemColors.Control;
             btnCapNhatGiaHan.FlatStyle = FlatStyle.Flat;
             btnCapNhatGiaHan.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnCapNhatGiaHan.Location = new Point(4, 332);
@@ -398,7 +398,7 @@
             // 
             // btnThongBao
             // 
-            btnThongBao.BackColor = Color.SkyBlue;
+            btnThongBao.BackColor = SystemColors.Control;
             btnThongBao.FlatStyle = FlatStyle.Flat;
             btnThongBao.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point, 0);
             btnThongBao.Location = new Point(4, 410);
@@ -501,57 +501,6 @@
             panelPDK.Name = "panelPDK";
             panelPDK.Size = new Size(1477, 785);
             panelPDK.TabIndex = 10;
-            // 
-            // panelKHDonVi
-            // 
-            panelKHDonVi.BorderStyle = BorderStyle.Fixed3D;
-            panelKHDonVi.Controls.Add(PDKView_dgvDV);
-            panelKHDonVi.Controls.Add(PDKView_btnSearchDV);
-            panelKHDonVi.Controls.Add(PDKView_SearchBoxDV);
-            panelKHDonVi.Controls.Add(label39);
-            panelKHDonVi.Location = new Point(16, 348);
-            panelKHDonVi.Name = "panelKHDonVi";
-            panelKHDonVi.Size = new Size(1232, 337);
-            panelKHDonVi.TabIndex = 11;
-            // 
-            // PDKView_dgvDV
-            // 
-            PDKView_dgvDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            PDKView_dgvDV.Location = new Point(13, 59);
-            PDKView_dgvDV.Name = "PDKView_dgvDV";
-            PDKView_dgvDV.RowHeadersWidth = 62;
-            PDKView_dgvDV.Size = new Size(1207, 266);
-            PDKView_dgvDV.TabIndex = 12;
-            // 
-            // PDKView_btnSearchDV
-            // 
-            PDKView_btnSearchDV.BackColor = Color.SkyBlue;
-            PDKView_btnSearchDV.Location = new Point(632, 13);
-            PDKView_btnSearchDV.Name = "PDKView_btnSearchDV";
-            PDKView_btnSearchDV.Size = new Size(115, 34);
-            PDKView_btnSearchDV.TabIndex = 11;
-            PDKView_btnSearchDV.Text = "Tìm kiếm";
-            PDKView_btnSearchDV.UseVisualStyleBackColor = false;
-            PDKView_btnSearchDV.Click += PDKView_btnSearchDV_Click;
-            // 
-            // PDKView_SearchBoxDV
-            // 
-            PDKView_SearchBoxDV.BackColor = SystemColors.Control;
-            PDKView_SearchBoxDV.Location = new Point(294, 14);
-            PDKView_SearchBoxDV.Name = "PDKView_SearchBoxDV";
-            PDKView_SearchBoxDV.PlaceholderText = "Nhập tên thí sinh hoặc số báo danh";
-            PDKView_SearchBoxDV.Size = new Size(328, 31);
-            PDKView_SearchBoxDV.TabIndex = 10;
-            // 
-            // label39
-            // 
-            label39.AutoSize = true;
-            label39.Font = new Font("Segoe UI", 12F);
-            label39.Location = new Point(13, 12);
-            label39.Name = "label39";
-            label39.Size = new Size(274, 32);
-            label39.TabIndex = 9;
-            label39.Text = "Thông tin thí sinh dự thi";
             // 
             // panelKHTuDo
             // 
@@ -992,6 +941,57 @@
             PDKView_Search.Text = "Tìm kiếm";
             PDKView_Search.UseVisualStyleBackColor = false;
             PDKView_Search.Click += PDKView_Search_Click;
+            // 
+            // panelKHDonVi
+            // 
+            panelKHDonVi.BorderStyle = BorderStyle.Fixed3D;
+            panelKHDonVi.Controls.Add(PDKView_dgvDV);
+            panelKHDonVi.Controls.Add(PDKView_btnSearchDV);
+            panelKHDonVi.Controls.Add(PDKView_SearchBoxDV);
+            panelKHDonVi.Controls.Add(label39);
+            panelKHDonVi.Location = new Point(16, 348);
+            panelKHDonVi.Name = "panelKHDonVi";
+            panelKHDonVi.Size = new Size(1232, 337);
+            panelKHDonVi.TabIndex = 11;
+            // 
+            // PDKView_dgvDV
+            // 
+            PDKView_dgvDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PDKView_dgvDV.Location = new Point(13, 59);
+            PDKView_dgvDV.Name = "PDKView_dgvDV";
+            PDKView_dgvDV.RowHeadersWidth = 62;
+            PDKView_dgvDV.Size = new Size(1207, 266);
+            PDKView_dgvDV.TabIndex = 12;
+            // 
+            // PDKView_btnSearchDV
+            // 
+            PDKView_btnSearchDV.BackColor = Color.SkyBlue;
+            PDKView_btnSearchDV.Location = new Point(632, 13);
+            PDKView_btnSearchDV.Name = "PDKView_btnSearchDV";
+            PDKView_btnSearchDV.Size = new Size(115, 34);
+            PDKView_btnSearchDV.TabIndex = 11;
+            PDKView_btnSearchDV.Text = "Tìm kiếm";
+            PDKView_btnSearchDV.UseVisualStyleBackColor = false;
+            PDKView_btnSearchDV.Click += PDKView_btnSearchDV_Click;
+            // 
+            // PDKView_SearchBoxDV
+            // 
+            PDKView_SearchBoxDV.BackColor = SystemColors.Control;
+            PDKView_SearchBoxDV.Location = new Point(294, 14);
+            PDKView_SearchBoxDV.Name = "PDKView_SearchBoxDV";
+            PDKView_SearchBoxDV.PlaceholderText = "Nhập tên thí sinh hoặc số báo danh";
+            PDKView_SearchBoxDV.Size = new Size(328, 31);
+            PDKView_SearchBoxDV.TabIndex = 10;
+            // 
+            // label39
+            // 
+            label39.AutoSize = true;
+            label39.Font = new Font("Segoe UI", 12F);
+            label39.Location = new Point(13, 12);
+            label39.Name = "label39";
+            label39.Size = new Size(274, 32);
+            label39.TabIndex = 9;
+            label39.Text = "Thông tin thí sinh dự thi";
             // 
             // panelXLCC
             // 
@@ -1672,48 +1672,6 @@
             PDKView_Return_1.UseVisualStyleBackColor = false;
             PDKView_Return_1.Click += PDKView_Return_Click;
             // 
-            // panelTSDVAdd
-            // 
-            panelTSDVAdd.BorderStyle = BorderStyle.Fixed3D;
-            panelTSDVAdd.Controls.Add(PDKAdd_dgvTSDV);
-            panelTSDVAdd.Controls.Add(PDKAdd_ThemTSDV);
-            panelTSDVAdd.Controls.Add(label50);
-            panelTSDVAdd.Location = new Point(17, 341);
-            panelTSDVAdd.Name = "panelTSDVAdd";
-            panelTSDVAdd.Size = new Size(1232, 320);
-            panelTSDVAdd.TabIndex = 12;
-            // 
-            // PDKAdd_dgvTSDV
-            // 
-            PDKAdd_dgvTSDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            PDKAdd_dgvTSDV.Location = new Point(13, 59);
-            PDKAdd_dgvTSDV.Name = "PDKAdd_dgvTSDV";
-            PDKAdd_dgvTSDV.RowHeadersWidth = 62;
-            PDKAdd_dgvTSDV.Size = new Size(1207, 249);
-            PDKAdd_dgvTSDV.TabIndex = 12;
-            // 
-            // PDKAdd_ThemTSDV
-            // 
-            PDKAdd_ThemTSDV.BackColor = Color.SkyBlue;
-            PDKAdd_ThemTSDV.Location = new Point(1080, 14);
-            PDKAdd_ThemTSDV.Name = "PDKAdd_ThemTSDV";
-            PDKAdd_ThemTSDV.Size = new Size(140, 34);
-            PDKAdd_ThemTSDV.TabIndex = 11;
-            PDKAdd_ThemTSDV.Text = "Thêm thí sinh";
-            PDKAdd_ThemTSDV.UseVisualStyleBackColor = false;
-            PDKAdd_ThemTSDV.Click += PDKAdd_ThemTSDV_Click;
-            // 
-            // label50
-            // 
-            label50.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label50.AutoSize = true;
-            label50.Font = new Font("Segoe UI", 12F);
-            label50.Location = new Point(13, 18);
-            label50.Name = "label50";
-            label50.Size = new Size(274, 32);
-            label50.TabIndex = 9;
-            label50.Text = "Thông tin thí sinh dự thi";
-            // 
             // PDKAdd_XacNhan
             // 
             PDKAdd_XacNhan.BackColor = Color.SkyBlue;
@@ -2113,6 +2071,48 @@
             label58.Text = "Thông tin thí sinh dự thi";
             label58.TextAlign = ContentAlignment.TopCenter;
             // 
+            // panelTSDVAdd
+            // 
+            panelTSDVAdd.BorderStyle = BorderStyle.Fixed3D;
+            panelTSDVAdd.Controls.Add(PDKAdd_dgvTSDV);
+            panelTSDVAdd.Controls.Add(PDKAdd_ThemTSDV);
+            panelTSDVAdd.Controls.Add(label50);
+            panelTSDVAdd.Location = new Point(17, 341);
+            panelTSDVAdd.Name = "panelTSDVAdd";
+            panelTSDVAdd.Size = new Size(1232, 320);
+            panelTSDVAdd.TabIndex = 12;
+            // 
+            // PDKAdd_dgvTSDV
+            // 
+            PDKAdd_dgvTSDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PDKAdd_dgvTSDV.Location = new Point(13, 59);
+            PDKAdd_dgvTSDV.Name = "PDKAdd_dgvTSDV";
+            PDKAdd_dgvTSDV.RowHeadersWidth = 62;
+            PDKAdd_dgvTSDV.Size = new Size(1207, 249);
+            PDKAdd_dgvTSDV.TabIndex = 12;
+            // 
+            // PDKAdd_ThemTSDV
+            // 
+            PDKAdd_ThemTSDV.BackColor = Color.SkyBlue;
+            PDKAdd_ThemTSDV.Location = new Point(1080, 14);
+            PDKAdd_ThemTSDV.Name = "PDKAdd_ThemTSDV";
+            PDKAdd_ThemTSDV.Size = new Size(140, 34);
+            PDKAdd_ThemTSDV.TabIndex = 11;
+            PDKAdd_ThemTSDV.Text = "Thêm thí sinh";
+            PDKAdd_ThemTSDV.UseVisualStyleBackColor = false;
+            PDKAdd_ThemTSDV.Click += PDKAdd_ThemTSDV_Click;
+            // 
+            // label50
+            // 
+            label50.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label50.AutoSize = true;
+            label50.Font = new Font("Segoe UI", 12F);
+            label50.Location = new Point(13, 18);
+            label50.Name = "label50";
+            label50.Size = new Size(274, 32);
+            label50.TabIndex = 9;
+            label50.Text = "Thông tin thí sinh dự thi";
+            // 
             // panelPDKUpdate
             // 
             panelPDKUpdate.BackColor = SystemColors.ButtonHighlight;
@@ -2127,58 +2127,6 @@
             panelPDKUpdate.Name = "panelPDKUpdate";
             panelPDKUpdate.Size = new Size(1283, 723);
             panelPDKUpdate.TabIndex = 15;
-            // 
-            // panelTSDVEdit
-            // 
-            panelTSDVEdit.BorderStyle = BorderStyle.Fixed3D;
-            panelTSDVEdit.Controls.Add(PDKU_btnSearchDV);
-            panelTSDVEdit.Controls.Add(PDKU_SearchBoxDV);
-            panelTSDVEdit.Controls.Add(PDKU_dgvDV);
-            panelTSDVEdit.Controls.Add(label59);
-            panelTSDVEdit.Location = new Point(17, 314);
-            panelTSDVEdit.Name = "panelTSDVEdit";
-            panelTSDVEdit.Size = new Size(1232, 294);
-            panelTSDVEdit.TabIndex = 12;
-            // 
-            // PDKU_btnSearchDV
-            // 
-            PDKU_btnSearchDV.BackColor = Color.SkyBlue;
-            PDKU_btnSearchDV.Location = new Point(631, 18);
-            PDKU_btnSearchDV.Name = "PDKU_btnSearchDV";
-            PDKU_btnSearchDV.Size = new Size(115, 34);
-            PDKU_btnSearchDV.TabIndex = 14;
-            PDKU_btnSearchDV.Text = "Tìm kiếm";
-            PDKU_btnSearchDV.UseVisualStyleBackColor = false;
-            PDKU_btnSearchDV.Click += PDKU_btnSearchDV_Click;
-            // 
-            // PDKU_SearchBoxDV
-            // 
-            PDKU_SearchBoxDV.BackColor = SystemColors.Control;
-            PDKU_SearchBoxDV.Location = new Point(299, 18);
-            PDKU_SearchBoxDV.Name = "PDKU_SearchBoxDV";
-            PDKU_SearchBoxDV.PlaceholderText = "Nhập tên thí sinh hoặc số báo danh";
-            PDKU_SearchBoxDV.Size = new Size(317, 31);
-            PDKU_SearchBoxDV.TabIndex = 13;
-            // 
-            // PDKU_dgvDV
-            // 
-            PDKU_dgvDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            PDKU_dgvDV.Location = new Point(13, 59);
-            PDKU_dgvDV.Name = "PDKU_dgvDV";
-            PDKU_dgvDV.RowHeadersWidth = 62;
-            PDKU_dgvDV.Size = new Size(1207, 225);
-            PDKU_dgvDV.TabIndex = 12;
-            // 
-            // label59
-            // 
-            label59.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
-            label59.AutoSize = true;
-            label59.Font = new Font("Segoe UI", 12F);
-            label59.Location = new Point(13, 18);
-            label59.Name = "label59";
-            label59.Size = new Size(274, 32);
-            label59.TabIndex = 9;
-            label59.Text = "Thông tin thí sinh dự thi";
             // 
             // PDKView_Return
             // 
@@ -2597,6 +2545,58 @@
             label77.TabIndex = 9;
             label77.Text = "Email:";
             // 
+            // panelTSDVEdit
+            // 
+            panelTSDVEdit.BorderStyle = BorderStyle.Fixed3D;
+            panelTSDVEdit.Controls.Add(PDKU_btnSearchDV);
+            panelTSDVEdit.Controls.Add(PDKU_SearchBoxDV);
+            panelTSDVEdit.Controls.Add(PDKU_dgvDV);
+            panelTSDVEdit.Controls.Add(label59);
+            panelTSDVEdit.Location = new Point(17, 314);
+            panelTSDVEdit.Name = "panelTSDVEdit";
+            panelTSDVEdit.Size = new Size(1232, 294);
+            panelTSDVEdit.TabIndex = 12;
+            // 
+            // PDKU_btnSearchDV
+            // 
+            PDKU_btnSearchDV.BackColor = Color.SkyBlue;
+            PDKU_btnSearchDV.Location = new Point(631, 18);
+            PDKU_btnSearchDV.Name = "PDKU_btnSearchDV";
+            PDKU_btnSearchDV.Size = new Size(115, 34);
+            PDKU_btnSearchDV.TabIndex = 14;
+            PDKU_btnSearchDV.Text = "Tìm kiếm";
+            PDKU_btnSearchDV.UseVisualStyleBackColor = false;
+            PDKU_btnSearchDV.Click += PDKU_btnSearchDV_Click;
+            // 
+            // PDKU_SearchBoxDV
+            // 
+            PDKU_SearchBoxDV.BackColor = SystemColors.Control;
+            PDKU_SearchBoxDV.Location = new Point(299, 18);
+            PDKU_SearchBoxDV.Name = "PDKU_SearchBoxDV";
+            PDKU_SearchBoxDV.PlaceholderText = "Nhập tên thí sinh hoặc số báo danh";
+            PDKU_SearchBoxDV.Size = new Size(317, 31);
+            PDKU_SearchBoxDV.TabIndex = 13;
+            // 
+            // PDKU_dgvDV
+            // 
+            PDKU_dgvDV.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            PDKU_dgvDV.Location = new Point(13, 59);
+            PDKU_dgvDV.Name = "PDKU_dgvDV";
+            PDKU_dgvDV.RowHeadersWidth = 62;
+            PDKU_dgvDV.Size = new Size(1207, 225);
+            PDKU_dgvDV.TabIndex = 12;
+            // 
+            // label59
+            // 
+            label59.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
+            label59.AutoSize = true;
+            label59.Font = new Font("Segoe UI", 12F);
+            label59.Location = new Point(13, 18);
+            label59.Name = "label59";
+            label59.Size = new Size(274, 32);
+            label59.TabIndex = 9;
+            label59.Text = "Thông tin thí sinh dự thi";
+            // 
             // panelNotifi
             // 
             panelNotifi.BorderStyle = BorderStyle.Fixed3D;
@@ -2642,13 +2642,13 @@
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             panelPDK.ResumeLayout(false);
             panelPDK.PerformLayout();
-            panelKHDonVi.ResumeLayout(false);
-            panelKHDonVi.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PDKView_dgvDV).EndInit();
             panelKHTuDo.ResumeLayout(false);
             panelKHTuDo.PerformLayout();
             panel4.ResumeLayout(false);
             panel4.PerformLayout();
+            panelKHDonVi.ResumeLayout(false);
+            panelKHDonVi.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PDKView_dgvDV).EndInit();
             panelXLCC.ResumeLayout(false);
             panelXLCC.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)CC_dgv).EndInit();
@@ -2663,21 +2663,21 @@
             panel5.ResumeLayout(false);
             panel5.PerformLayout();
             panelPDKAdd.ResumeLayout(false);
-            panelTSDVAdd.ResumeLayout(false);
-            panelTSDVAdd.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PDKAdd_dgvTSDV).EndInit();
             panel1.ResumeLayout(false);
             panel1.PerformLayout();
             panelTSTDAdd.ResumeLayout(false);
             panelTSTDAdd.PerformLayout();
+            panelTSDVAdd.ResumeLayout(false);
+            panelTSDVAdd.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PDKAdd_dgvTSDV).EndInit();
             panelPDKUpdate.ResumeLayout(false);
-            panelTSDVEdit.ResumeLayout(false);
-            panelTSDVEdit.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).EndInit();
             panelTSTDEdit.ResumeLayout(false);
             panelTSTDEdit.PerformLayout();
             panel12.ResumeLayout(false);
             panel12.PerformLayout();
+            panelTSDVEdit.ResumeLayout(false);
+            panelTSDVEdit.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)PDKU_dgvDV).EndInit();
             ResumeLayout(false);
         }
 
