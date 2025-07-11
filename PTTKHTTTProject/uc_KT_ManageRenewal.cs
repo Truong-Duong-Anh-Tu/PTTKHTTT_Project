@@ -66,18 +66,20 @@ namespace PTTKHTTTProject
             {
                 if (ev.RowIndex >= 0)
                 {
-                    //Ma phieu dang ky
-                    var selectedRenewalID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
-
                     // Handle button click for creating renewal based on request
                     if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
                     {
-                        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedRenewalID, username);
+                        //Ma phieu dang ky
+                        var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuDK"].Value.ToString();
+
+                        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID, username);
                         previewForm.ShowDialog();
                     }
                     // Handle checkbox click for payment method
                     else if (dtgvResult.Columns.Contains("cbxPaymentMethod") && ev.ColumnIndex == dtgvResult.Columns["cbxPaymentMethod"].Index)
                     {
+                        var selectedRenewalID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+
                         var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaymentMethod"].Value;
                         string currentValueString;
                         if (currentValue == null)
@@ -96,6 +98,8 @@ namespace PTTKHTTTProject
                     }
                     else if (dtgvResult.Columns.Contains("cbxPaid") && ev.ColumnIndex == dtgvResult.Columns["cbxPaid"].Index)
                     {
+                        var selectedRenewalID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+
                         var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaid"].Value;
                         string currentValueString;
                         if (currentValue == null)

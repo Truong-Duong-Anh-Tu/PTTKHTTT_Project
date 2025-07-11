@@ -57,18 +57,21 @@ namespace PTTKHTTTProject
             {
                 if (ev.RowIndex >= 0)
                 {
-                    //Ma phieu dang ky
-                    var selectedPaycheckID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuTT"].Value.ToString();
-
                     // Handle button click for creating receipt
                     if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
                     {
-                        fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedPaycheckID, username);
+                        //Ma phieu dang ky
+                        var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+
+                        fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedReceiptID, username);
                         previewForm.ShowDialog();
                     }
                     // Handle checkbox click for payment method
                     else if (dtgvResult.Columns.Contains("cbxPaymentMethod") && ev.ColumnIndex == dtgvResult.Columns["cbxPaymentMethod"].Index)
                     {
+                        //Ma phieu dang ky
+                        var selectedPaycheckID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuTT"].Value.ToString();
+
                         var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaymentMethod"].Value;
                         string currentValueString;
                         if (currentValue == null)
@@ -87,6 +90,9 @@ namespace PTTKHTTTProject
                     }
                     else if (dtgvResult.Columns.Contains("cbxPaid") && ev.ColumnIndex == dtgvResult.Columns["cbxPaid"].Index)
                     {
+                        //Ma phieu dang ky
+                        var selectedPaycheckID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuTT"].Value.ToString();
+
                         //Nếu trạng thái là "Thanh toán gia hạn" thì không cho phép thay đổi trạng thái thanh toán
                         if (dtgvResult.Rows[ev.RowIndex].Cells["TrangThai"].Value.ToString() == "Thanh toán gia hạn")
                         {
