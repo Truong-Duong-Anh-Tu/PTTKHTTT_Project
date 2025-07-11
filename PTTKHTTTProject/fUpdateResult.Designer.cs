@@ -165,6 +165,7 @@
             tbxDVCT.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
             tbxDVCT.Location = new Point(154, 280);
             tbxDVCT.Name = "tbxDVCT";
+            tbxDVCT.PlaceholderText = "Nhập mã đơn vị";
             tbxDVCT.Size = new Size(265, 30);
             tbxDVCT.TabIndex = 12;
             // 

@@ -117,5 +117,12 @@ namespace PTTKHTTTProject.BUS
         {
             return System.Text.RegularExpressions.Regex.IsMatch(cccd, @"^\d{12}$");
         }
+
+        public string getDepartmentOfUser()
+        {
+            string department = InfoEmployeeDAO.getDepartmentOfEmployee(_username);
+
+            return department != null ? department : string.Empty;
+        }
     }
 }
