@@ -58,15 +58,23 @@ Vào folder Database, lần lượt chạy các file sao theo thứ tự
 
 ## Build chương trình
 - Vào thư mục **Relase** chạy 1 trong 2 file (.msi hoặc setup.exe)  
-- Nhấn Next khi cửa sổ này xuất hiện  
-<img width="618" height="506" alt="image" src="https://github.com/user-attachments/assets/676663c6-379e-4d8d-8d66-204456d0182c" />  
-- Chọn đường dẫn để lưu chương trình ở mục Folder. (có thể nhấn Browse … để tìm đường dẫn thích hợp). Chọn Everyone nếu muốn cài đặt chương trình trên tất cả các User, hoặc Just me nếu chỉ cài đặt tên User hiện tại đang đăng nhập trên máy tính. Sau đó nhấn Next   
-<img width="616" height="506" alt="image" src="https://github.com/user-attachments/assets/2ebac3a6-465d-4b70-86c1-6272f58e7c64" />  
-- Nhấn Next khi thông báo này xuất hiện   
-<img width="616" height="505" alt="image" src="https://github.com/user-attachments/assets/3900a995-4ad3-4535-ae44-8a8651eaf212" />  
+- Nhấn Next khi cửa sổ này xuất hiện
+
+<img width="618" height="506" alt="image" src="https://github.com/user-attachments/assets/676663c6-379e-4d8d-8d66-204456d0182c" />
+
+- Chọn đường dẫn để lưu chương trình ở mục Folder. (có thể nhấn Browse … để tìm đường dẫn thích hợp). Chọn Everyone nếu muốn cài đặt chương trình trên tất cả các User, hoặc Just me nếu chỉ cài đặt tên User hiện tại đang đăng nhập trên máy tính. Sau đó nhấn Next
+
+<img width="616" height="506" alt="image" src="https://github.com/user-attachments/assets/2ebac3a6-465d-4b70-86c1-6272f58e7c64" />
+
+- Nhấn Next khi thông báo này xuất hiện
+
+<img width="616" height="505" alt="image" src="https://github.com/user-attachments/assets/3900a995-4ad3-4535-ae44-8a8651eaf212" />
+
 - Nếu có thông báo cảnh báo cài đặt ứng dụng không tin cậy( hay các thông báo tương tự từ hệ điều hành), nhấn Yes/OK.  
-- Khi có cửa sổ này hiện lên thì quá trình cài đặt đã hoàn tất. Nhấn Close để thoát.  
-<img width="614" height="509" alt="image" src="https://github.com/user-attachments/assets/ef7a10b5-68ca-420a-8d5d-1faffb80db44" />  
+- Khi có cửa sổ này hiện lên thì quá trình cài đặt đã hoàn tất. Nhấn Close để thoát.
+
+<img width="614" height="509" alt="image" src="https://github.com/user-attachments/assets/ef7a10b5-68ca-420a-8d5d-1faffb80db44" /> 
+
 Trong thư mục đã chọn ở trên, chạy file .exe để khởi động chương trình  
 
 Nếu có Visual Studio, có thể mở file .sln và chạy với chế độ Start Without Debugging.
