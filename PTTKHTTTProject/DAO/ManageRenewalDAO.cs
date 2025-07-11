@@ -63,27 +63,27 @@ namespace PTTKHTTTProject.DAO
 
 
         //Cap nhat thong tin phieu thu dung phuong thuc chuyen khoan
-        public void updateCreatedRenewalMethodDAO(string receiptId, string currentValue)
+        public void updateCreatedRenewalMethodDAO(string renewalId, string currentValue)
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@maphieugh", SqlDbType.VarChar, 10) { Value = renewalId },
                 new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 50) { Value = currentValue },
             };
-            string query = "UPDATE PHIEUGIAHAN SET PGH_HinhThucThanhToan = @hinhthuc WHERE PGH_MaPhieuDK = @maphieudk";
+            string query = "UPDATE PHIEUGIAHAN SET PGH_HinhThucThanhToan = @hinhthuc WHERE PGH_MaPhieu = @maphieugh";
             DataProvider.Instance.ExecuteQuery(query, parameters);
         }
 
 
         // Cap nhat thong tin phieu thu da thanh toan
-        public void updateCreatedRenewalPaidDAO(string receiptId, string currentValue)
+        public void updateCreatedRenewalPaidDAO(string renewalId, string currentValue)
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@maphieugh", SqlDbType.VarChar, 10) { Value = renewalId },
                 new SqlParameter("@trangthai", SqlDbType.NVarChar,20) { Value = currentValue },
             };
-            string query = "UPDATE PHIEUGIAHAN SET PHG_TrangThai = @trangthai WHERE PGH_MaPhieuDK = @maphieudk";
+            string query = "UPDATE PHIEUGIAHAN SET PHG_TrangThai = @trangthai WHERE PGH_MaPhieu = @maphieugh";
             DataProvider.Instance.ExecuteQuery(query, parameters);
 
             string pdk_trangthai;
@@ -95,6 +95,10 @@ namespace PTTKHTTTProject.DAO
             {
                 pdk_trangthai = "Thanh toán gia hạn";
             }
+
+            query = "SELECT PGH_MaPhieuDK FROM PHIEUGIAHAN WHERE PGH_MaPhieu = @maphieugh";
+            var receiptId = DataProvider.Instance.ExecuteScalar(query, new SqlParameter("@maphieugh", renewalId));
+
             SqlParameter[] parameters2 = new SqlParameter[]
             {
                 new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },

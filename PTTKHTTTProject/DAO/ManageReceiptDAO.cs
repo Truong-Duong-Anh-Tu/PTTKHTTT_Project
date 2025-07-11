@@ -72,27 +72,31 @@ namespace PTTKHTTTProject.DAO
 
 
         //Cap nhat thong tin phieu thu dung phuong thuc chuyen khoan
-        public void updatePaycheckMethodDAO(string receiptId, string currentValue)
+        public void updatePaycheckMethodDAO(string paycheckId, string currentValue)
         {
             SqlParameter[] parameters = new SqlParameter[]
             {
-                new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
+                new SqlParameter("@maphieutt", SqlDbType.VarChar, 10) { Value = paycheckId },
                 new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 50) { Value = currentValue },
             };
-            string query = "UPDATE PHIEUTHANHTOAN SET PTT_HinhThucThanhToan = @hinhthuc WHERE PTT_MaPhieuDK = @maphieudk";
+            string query = "UPDATE PHIEUTHANHTOAN SET PTT_HinhThucThanhToan = @hinhthuc WHERE PTT_MaPhieu = @maphieutt";
             DataProvider.Instance.ExecuteQuery(query, parameters);
         }
 
 
         // Cap nhat thong tin phieu thu da thanh toan
-        public void updatePaycheckPaidDAO(string receiptId, string currentValue)
+        public void updatePaycheckPaidDAO(string paycheckId, string currentValue)
         {
+            string query = "SELECT PTT_MaPhieuDK FROM PHIEUTHANHTOAN WHERE PTT_MaPhieu = @maphieutt";
+            var receiptId = DataProvider.Instance.ExecuteScalar(query, new SqlParameter("@maphieutt", paycheckId));
+
             SqlParameter[] parameters = new SqlParameter[]
             {
                 new SqlParameter("@maphieudk", SqlDbType.VarChar, 10) { Value = receiptId },
                 new SqlParameter("@trangthai", SqlDbType.NVarChar,20) { Value = currentValue },
             };
-            string query = "UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = @trangthai WHERE PDKDT_MaPhieu = @maphieudk";
+
+            query = "UPDATE PHIEUDANGKYDUTHI SET PDKDT_TrangThaiThanhToan = @trangthai WHERE PDKDT_MaPhieu = @maphieudk";
             DataProvider.Instance.ExecuteQuery(query, parameters);
         }
 

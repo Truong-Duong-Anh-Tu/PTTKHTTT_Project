@@ -60,12 +60,12 @@ namespace PTTKHTTTProject.BUS
         }
 
         //Cap nhat thong tin phieu gia han dung phuong thuc chuyen khoan
-        public static void updateCreatedRenewalMethod(string receiptId, string currentValue)
+        public static void updateCreatedRenewalMethod(string renewalId, string currentValue)
         {
             try
             {
                 ManageRenewalDAO dao = new ManageRenewalDAO();
-                dao.updateCreatedRenewalMethodDAO(receiptId, currentValue);
+                dao.updateCreatedRenewalMethodDAO(renewalId, currentValue);
             }
             catch (Exception ex)
             {
@@ -75,12 +75,12 @@ namespace PTTKHTTTProject.BUS
         }
 
         //Cap nhat thong tin phieu gia han da duoc thanh toan
-        public static void updateCreatedRenewalPaid(string receiptId, string currentValue)
+        public static void updateCreatedRenewalPaid(string renewalId, string currentValue)
         {
             try
             {
                 ManageRenewalDAO dao = new ManageRenewalDAO();
-                dao.updateCreatedRenewalPaidDAO(receiptId, currentValue);
+                dao.updateCreatedRenewalPaidDAO(renewalId, currentValue);
             }
             catch (Exception ex)
             {

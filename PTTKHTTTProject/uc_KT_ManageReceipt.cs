@@ -58,12 +58,12 @@ namespace PTTKHTTTProject
                 if (ev.RowIndex >= 0)
                 {
                     //Ma phieu dang ky
-                    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+                    var selectedPaycheckID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuTT"].Value.ToString();
 
                     // Handle button click for creating receipt
                     if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
                     {
-                        fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedReceiptID, username);
+                        fKT_CreateReceipt_Preview previewForm = new fKT_CreateReceipt_Preview(selectedPaycheckID, username);
                         previewForm.ShowDialog();
                     }
                     // Handle checkbox click for payment method
@@ -83,7 +83,7 @@ namespace PTTKHTTTProject
                         {
                             currentValueString = "Chuyển khoản";
                         }
-                        ManageReceiptBUS.updatePaycheckMethod(selectedReceiptID, currentValueString);
+                        ManageReceiptBUS.updatePaycheckMethod(selectedPaycheckID, currentValueString);
                     }
                     else if (dtgvResult.Columns.Contains("cbxPaid") && ev.ColumnIndex == dtgvResult.Columns["cbxPaid"].Index)
                     {
@@ -108,7 +108,7 @@ namespace PTTKHTTTProject
                         {
                             currentValueString = "Đã thanh toán";
                         }
-                        ManageReceiptBUS.updatePaycheckPaid(selectedReceiptID, currentValueString);
+                        ManageReceiptBUS.updatePaycheckPaid(selectedPaycheckID, currentValueString);
                     }
                 }
             };

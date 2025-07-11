@@ -63,12 +63,12 @@ namespace PTTKHTTTProject.BUS
         }
 
         //Cap nhat thong tin phieu thu dung phuong thuc chuyen khoan
-        public static void updatePaycheckMethod(string receiptId, string currentValue)
+        public static void updatePaycheckMethod(string paycheckId, string currentValue)
         {
             try
             {
                 ManageReceiptDAO dao = new ManageReceiptDAO();
-                dao.updatePaycheckMethodDAO(receiptId, currentValue);
+                dao.updatePaycheckMethodDAO(paycheckId, currentValue);
             }
             catch (Exception ex)
             {
@@ -78,12 +78,12 @@ namespace PTTKHTTTProject.BUS
         }
 
         //Cap nhat thong tin phieu thu da duoc thanh toan
-        public static void updatePaycheckPaid(string receiptId, string currentValue)
+        public static void updatePaycheckPaid(string paycheckId, string currentValue)
         {
             try
             {
                 ManageReceiptDAO dao = new ManageReceiptDAO();
-                dao.updatePaycheckPaidDAO(receiptId, currentValue);
+                dao.updatePaycheckPaidDAO(paycheckId, currentValue);
             }
             catch (Exception ex)
             {

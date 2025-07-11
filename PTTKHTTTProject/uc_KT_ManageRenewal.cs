@@ -54,10 +54,10 @@ namespace PTTKHTTTProject
 
             //dtgvResult.CellContentClick += (s, ev) =>
             //{
-            //    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+            //    var selectedRenewalID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
             //    if (ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index && ev.RowIndex >= 0)
             //    {
-            //        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID);
+            //        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedRenewalID);
             //        previewForm.ShowDialog();
             //    }
             //};
@@ -67,12 +67,12 @@ namespace PTTKHTTTProject
                 if (ev.RowIndex >= 0)
                 {
                     //Ma phieu dang ky
-                    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuDK"].Value.ToString();
+                    var selectedRenewalID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
 
                     // Handle button click for creating renewal based on request
                     if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
                     {
-                        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedReceiptID, username);
+                        fKT_CreateRenewal_Preview previewForm = new fKT_CreateRenewal_Preview(selectedRenewalID, username);
                         previewForm.ShowDialog();
                     }
                     // Handle checkbox click for payment method
@@ -92,7 +92,7 @@ namespace PTTKHTTTProject
                         {
                             currentValueString = "Chuyển khoản";
                         }
-                        ManageRenewalBUS.updateCreatedRenewalMethod(selectedReceiptID, currentValueString);
+                        ManageRenewalBUS.updateCreatedRenewalMethod(selectedRenewalID, currentValueString);
                     }
                     else if (dtgvResult.Columns.Contains("cbxPaid") && ev.ColumnIndex == dtgvResult.Columns["cbxPaid"].Index)
                     {
@@ -110,7 +110,7 @@ namespace PTTKHTTTProject
                         {
                             currentValueString = "Đã thanh toán";
                         }
-                        ManageRenewalBUS.updateCreatedRenewalPaid(selectedReceiptID, currentValueString);
+                        ManageRenewalBUS.updateCreatedRenewalPaid(selectedRenewalID, currentValueString);
                     }
                 }
             };
