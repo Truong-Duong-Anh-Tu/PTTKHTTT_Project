@@ -22,7 +22,8 @@ namespace PTTKHTTTProject.BUS
         {
             List<Dictionary<string, string>> listMail = new List<Dictionary<string, string>>();
 
-            string department = TaiKhoanDAO.getRole(_username);
+            var bus = new InfoEmployeeBUS(_username.Trim());
+            string department = bus.getDepartmentOfUser();
 
             DataTable dt = MailDAO.getReceiveMail(_username.Trim(), department.Trim());
 
