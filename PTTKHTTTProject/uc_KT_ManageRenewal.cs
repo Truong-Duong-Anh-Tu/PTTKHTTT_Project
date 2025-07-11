@@ -67,7 +67,7 @@ namespace PTTKHTTTProject
                 if (ev.RowIndex >= 0)
                 {
                     //Ma phieu dang ky
-                    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieu"].Value.ToString();
+                    var selectedReceiptID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuDK"].Value.ToString();
 
                     // Handle button click for creating renewal based on request
                     if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
