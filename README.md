@@ -79,5 +79,12 @@ Trong thư mục đã chọn ở trên, chạy file .exe để khởi động ch
 
 Nếu có Visual Studio, có thể mở file .sln và chạy với chế độ Start Without Debugging.
 
+## CHẠY CHƯƠNG TRÌNH:
+- Đăng nhập vào tài khoản trên hệ thống:
+  + Admin: phanguyet@ttthi.vn
+  + Nhân viên nhập liệu: ltnhat@ttthi.vn
+  + Nhân viên tiếp nhận: ndthang@ttthi.vn
+  + Nhân viên kế toán: hxphu@ttthi.vn
+  + Nhân viên coi thi: ltcam@ttthi.vn
 
 
