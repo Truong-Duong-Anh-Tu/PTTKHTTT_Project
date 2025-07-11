@@ -1034,7 +1034,7 @@
             // CC_XacNhan
             // 
             CC_XacNhan.BackColor = SystemColors.InactiveCaption;
-            CC_XacNhan.Font = new Font("Segoe UI", 11F);
+            CC_XacNhan.Font = new Font("Segoe UI", 9F);
             CC_XacNhan.Location = new Point(914, 242);
             CC_XacNhan.Name = "CC_XacNhan";
             CC_XacNhan.Size = new Size(312, 51);
@@ -1335,7 +1335,7 @@
             // GiaHan_btnGiaHan
             // 
             GiaHan_btnGiaHan.BackColor = SystemColors.ActiveCaption;
-            GiaHan_btnGiaHan.Font = new Font("Segoe UI", 10F);
+            GiaHan_btnGiaHan.Font = new Font("Segoe UI", 9F);
             GiaHan_btnGiaHan.Location = new Point(997, 61);
             GiaHan_btnGiaHan.Name = "GiaHan_btnGiaHan";
             GiaHan_btnGiaHan.Size = new Size(251, 53);
@@ -2123,9 +2123,9 @@
             panelPDKUpdate.Controls.Add(panel12);
             panelPDKUpdate.Controls.Add(panelTSDVEdit);
             panelPDKUpdate.Dock = DockStyle.Fill;
-            panelPDKUpdate.Location = new Point(194, 62);
+            panelPDKUpdate.Location = new Point(0, 0);
             panelPDKUpdate.Name = "panelPDKUpdate";
-            panelPDKUpdate.Size = new Size(1283, 723);
+            panelPDKUpdate.Size = new Size(1477, 785);
             panelPDKUpdate.TabIndex = 15;
             // 
             // PDKView_Return
@@ -2620,15 +2620,15 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1477, 785);
-            Controls.Add(panelPDKUpdate);
             Controls.Add(panel2);
             Controls.Add(tlpMenuTiepNhan);
-            Controls.Add(panelPDKAdd);
-            Controls.Add(panelXLCC);
             Controls.Add(panelGiaHan);
             Controls.Add(panelPDK);
             Controls.Add(panelInfo);
             Controls.Add(panelNotifi);
+            Controls.Add(panelPDKUpdate);
+            Controls.Add(panelPDKAdd);
+            Controls.Add(panelXLCC);
             Name = "fTiepNhan";
             Text = "fTiepNhan";
             Load += fTiepNhan_Load_1;
