@@ -66,6 +66,7 @@ namespace PTTKHTTTProject
             {
                 if (ev.RowIndex >= 0)
                 {
+
                     // Handle button click for creating renewal based on request
                     if (dtgvResult.Columns.Contains("btnAction") && ev.ColumnIndex == dtgvResult.Columns["btnAction"].Index)
                     {
@@ -164,10 +165,12 @@ namespace PTTKHTTTProject
             {
                 if (row.Cells["TrangThai"].Value != null && row.Cells["TrangThai"].Value.ToString() == "Đã thanh toán")
                 {
+                    Debug.WriteLine("abc" + row.Cells["TrangThai"].Value!.ToString());
                     row.Cells["cbxPaid"].Value = true;
                 }
                 else
                 {
+                    Debug.WriteLine("def" + row.Cells["TrangThai"].Value!.ToString());
                     row.Cells["cbxPaid"].Value = false;
                 }
             }

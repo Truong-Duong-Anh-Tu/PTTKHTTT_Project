@@ -69,9 +69,9 @@ namespace PTTKHTTTProject
                     // Handle checkbox click for payment method
                     else if (dtgvResult.Columns.Contains("cbxPaymentMethod") && ev.ColumnIndex == dtgvResult.Columns["cbxPaymentMethod"].Index)
                     {
+
                         //Ma phieu dang ky
                         var selectedPaycheckID = dtgvResult.Rows[ev.RowIndex].Cells["MaPhieuTT"].Value.ToString();
-
                         var currentValue = dtgvResult.Rows[ev.RowIndex].Cells["cbxPaymentMethod"].Value;
                         string currentValueString;
                         if (currentValue == null)

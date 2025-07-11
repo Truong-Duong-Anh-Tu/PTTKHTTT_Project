@@ -2,9 +2,11 @@
 using System;
 using System.Collections.Generic;
 using System.Data;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.StartPanel;
 
 namespace PTTKHTTTProject.DAO
 {
@@ -58,7 +60,7 @@ namespace PTTKHTTTProject.DAO
                 new SqlParameter("@sotienthanhtoan", SqlDbType.Int) { Value = fee},
                 new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 20) { Value = "Tiền mặt" },
             };
-            DataProvider.Instance.ExecuteNonQuerySP("usp_InsertIntoCreatedRenewalsTable", parameters);
+            DataProvider.Instance.ExecuteQuerySP("usp_InsertIntoCreatedRenewalsTable", parameters);
         }
 
 
@@ -70,6 +72,7 @@ namespace PTTKHTTTProject.DAO
                 new SqlParameter("@maphieugh", SqlDbType.VarChar, 10) { Value = renewalId },
                 new SqlParameter("@hinhthuc", SqlDbType.NVarChar, 50) { Value = currentValue },
             };
+
             string query = "UPDATE PHIEUGIAHAN SET PGH_HinhThucThanhToan = @hinhthuc WHERE PGH_MaPhieu = @maphieugh";
             DataProvider.Instance.ExecuteQuery(query, parameters);
         }
@@ -83,6 +86,7 @@ namespace PTTKHTTTProject.DAO
                 new SqlParameter("@maphieugh", SqlDbType.VarChar, 10) { Value = renewalId },
                 new SqlParameter("@trangthai", SqlDbType.NVarChar,20) { Value = currentValue },
             };
+
             string query = "UPDATE PHIEUGIAHAN SET PHG_TrangThai = @trangthai WHERE PGH_MaPhieu = @maphieugh";
             DataProvider.Instance.ExecuteQuery(query, parameters);
 
