@@ -22,6 +22,10 @@ namespace PTTKHTTTProject
         private void fAdminChinhSuaNV_Load(object sender, EventArgs e)
         {
             InitializeMappings();
+            // Thêm các lựa chọn cho ComboBox giới tính
+            comboBoxGioiTinh.Items.Clear();
+            comboBoxGioiTinh.Items.Add("Nam");
+            comboBoxGioiTinh.Items.Add("Nữ");
             // Chỉ tải dữ liệu nếu có mã nhân viên
             if (!string.IsNullOrEmpty(this.maNhanVien))
             {
