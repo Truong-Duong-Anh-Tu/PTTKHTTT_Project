@@ -199,20 +199,19 @@ namespace PTTKHTTTProject.DAO
             return DataProvider.Instance.ExecuteQuerySP("TimChungChi", parameters);
         }
 
-        public static void CapNhatTrangThaiDaNhan(string maBaiThi)
+        public static bool CapNhatTrangThaiDaNhan(string maBaiThi)
         {
             string query = @"
-                UPDATE CHUNGCHI
-                SET CC_TrangThai = N'Đã nhận'
-                WHERE CC_MaBaiThi = @MaBaiThi AND CC_TrangThai != N'Đã nhận';
-            ";
+        UPDATE CHUNGCHI
+        SET CC_TrangThai = N'Đã nhận'
+        WHERE CC_MaBaiThi = @MaBaiThi AND CC_TrangThai != N'Đã nhận';
+    ";
 
-            SqlParameter param = new SqlParameter("@MaBaiThi", SqlDbType.VarChar, 10)
-            {
-                Value = maBaiThi
-            };
+            SqlParameter param = new SqlParameter("@MaBaiThi", maBaiThi);
+            int affected = DataProvider.Instance.ExecuteNonQuery(query, param);
 
-            DataProvider.Instance.ExecuteNonQuery(query, param);
+            return affected > 0; // true nếu có dòng được cập nhật
         }
+
     }
 }

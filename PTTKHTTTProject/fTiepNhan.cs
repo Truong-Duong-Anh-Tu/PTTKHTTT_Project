@@ -158,9 +158,19 @@ namespace PTTKHTTTProject
 
             try
             {
-                TiepNhan.CapNhatDanhSachTrangThaiDaNhan(danhSachDuocChon);
-                MessageBox.Show("Cập nhật trạng thái thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                LoadChungChi(); 
+                var trungLap = TiepNhan.CapNhatDanhSachTrangThaiDaNhan(danhSachDuocChon);
+
+                if (trungLap.Count == 0)
+                {
+                    MessageBox.Show("Cập nhật trạng thái thành công.", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                }
+                else
+                {
+                    string danhSachTrung = string.Join(", ", trungLap);
+                    MessageBox.Show($"Một số chứng chỉ đã được nhận trước đó:\n{danhSachTrung}", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                }
+
+                LoadChungChi();
             }
             catch (Exception ex)
             {

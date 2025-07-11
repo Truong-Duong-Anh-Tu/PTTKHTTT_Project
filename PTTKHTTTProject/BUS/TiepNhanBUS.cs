@@ -85,15 +85,22 @@ namespace PTTKHTTTProject.BUS
             return TiepNhanDAO.TimChungChi(maKyThi, tuKhoa, loaiKH);
         }
 
-        public static void CapNhatDanhSachTrangThaiDaNhan(List<string> danhSachMaBaiThi)
+        public static List<string> CapNhatDanhSachTrangThaiDaNhan(List<string> danhSachMaBaiThi)
         {
             if (danhSachMaBaiThi == null || danhSachMaBaiThi.Count == 0)
                 throw new ArgumentException("Danh sách mã bài thi không hợp lệ.");
 
+            List<string> biTrung = new List<string>();
+
             foreach (var ma in danhSachMaBaiThi.Distinct())
             {
-                TiepNhanDAO.CapNhatTrangThaiDaNhan(ma);
+                bool capNhat = TiepNhanDAO.CapNhatTrangThaiDaNhan(ma);
+                if (!capNhat)
+                    biTrung.Add(ma);
             }
+
+            return biTrung;
         }
+
     }
 }
