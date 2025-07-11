@@ -218,7 +218,7 @@ namespace PTTKHTTTProject
                 }
                 dtgvResult.Columns.Add(btnCol);
                 lblCount.Text = "Số yêu cầu chờ duyệt:";
-                lblSearchReceipt.Text = "Danh sách chờ tạo phiếu gia hạn";
+                lblSearchRenewal.Text = "Danh sách chờ tạo phiếu gia hạn";
             }
             else
             {
@@ -232,7 +232,7 @@ namespace PTTKHTTTProject
                     dtgvResult.DataSource = ManageRenewalBUS.loadCreatedRenewal("");
                 }
                 lblCount.Text = "Số phiếu thu đã tạo:";
-                lblSearchReceipt.Text = "Danh sách phiếu gia hạn đã tạo";
+                lblSearchRenewal.Text = "Danh sách phiếu gia hạn đã tạo";
                 checkboxConfig();
             }
             txbCount.Text = dtgvResult.Rows.Count.ToString();

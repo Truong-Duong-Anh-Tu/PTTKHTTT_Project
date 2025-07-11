@@ -34,7 +34,7 @@
             lblCount = new Label();
             txbCount = new TextBox();
             btnSearchRenewal = new Button();
-            lblSearchReceipt = new Label();
+            lblSearchRenewal = new Label();
             txbInput = new TextBox();
             dtgvResult = new DataGridView();
             pnlManageResult.SuspendLayout();
@@ -49,22 +49,22 @@
             pnlManageResult.Controls.Add(lblCount);
             pnlManageResult.Controls.Add(txbCount);
             pnlManageResult.Controls.Add(btnSearchRenewal);
-            pnlManageResult.Controls.Add(lblSearchReceipt);
+            pnlManageResult.Controls.Add(lblSearchRenewal);
             pnlManageResult.Controls.Add(txbInput);
             pnlManageResult.Controls.Add(dtgvResult);
             pnlManageResult.Location = new Point(0, 0);
+            pnlManageResult.Margin = new Padding(3, 2, 3, 2);
             pnlManageResult.Name = "pnlManageResult";
-            pnlManageResult.Size = new Size(1015, 567);
+            pnlManageResult.Size = new Size(888, 425);
             pnlManageResult.TabIndex = 1;
             // 
             // rbxCreatedRenewal
             // 
             rbxCreatedRenewal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             rbxCreatedRenewal.AutoSize = true;
-            rbxCreatedRenewal.Location = new Point(758, 39);
-            rbxCreatedRenewal.Margin = new Padding(3, 4, 3, 4);
+            rbxCreatedRenewal.Location = new Point(677, 29);
             rbxCreatedRenewal.Name = "rbxCreatedRenewal";
-            rbxCreatedRenewal.Size = new Size(169, 24);
+            rbxCreatedRenewal.Size = new Size(134, 19);
             rbxCreatedRenewal.TabIndex = 34;
             rbxCreatedRenewal.Text = "Đã tạo phiếu gia hạn";
             rbxCreatedRenewal.UseVisualStyleBackColor = true;
@@ -74,10 +74,9 @@
             rbxPendingRenewal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
             rbxPendingRenewal.AutoSize = true;
             rbxPendingRenewal.Checked = true;
-            rbxPendingRenewal.Location = new Point(619, 39);
-            rbxPendingRenewal.Margin = new Padding(3, 4, 3, 4);
+            rbxPendingRenewal.Location = new Point(550, 29);
             rbxPendingRenewal.Name = "rbxPendingRenewal";
-            rbxPendingRenewal.Size = new Size(133, 24);
+            rbxPendingRenewal.Size = new Size(108, 19);
             rbxPendingRenewal.TabIndex = 33;
             rbxPendingRenewal.TabStop = true;
             rbxPendingRenewal.Text = "Yêu cầu gia hạn";
@@ -87,9 +86,9 @@
             // lblCount
             // 
             lblCount.AutoSize = true;
-            lblCount.Location = new Point(22, 44);
+            lblCount.Location = new Point(19, 33);
             lblCount.Name = "lblCount";
-            lblCount.Size = new Size(152, 20);
+            lblCount.Size = new Size(123, 15);
             lblCount.TabIndex = 32;
             lblCount.Text = "Số yêu cầu chờ duyệt:";
             // 
@@ -98,43 +97,44 @@
             txbCount.Anchor = AnchorStyles.Top | AnchorStyles.Bottom | AnchorStyles.Left;
             txbCount.BorderStyle = BorderStyle.None;
             txbCount.Font = new Font("Segoe UI", 11.25F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            txbCount.Location = new Point(180, 39);
+            txbCount.Location = new Point(158, 29);
+            txbCount.Margin = new Padding(3, 2, 3, 2);
             txbCount.Name = "txbCount";
             txbCount.ReadOnly = true;
-            txbCount.Size = new Size(161, 25);
+            txbCount.Size = new Size(141, 20);
             txbCount.TabIndex = 28;
             txbCount.Text = "NODATA";
             // 
             // btnSearchRenewal
             // 
             btnSearchRenewal.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSearchRenewal.Location = new Point(907, 76);
-            btnSearchRenewal.Margin = new Padding(3, 4, 3, 4);
+            btnSearchRenewal.Location = new Point(794, 57);
             btnSearchRenewal.Name = "btnSearchRenewal";
-            btnSearchRenewal.Size = new Size(86, 35);
+            btnSearchRenewal.Size = new Size(75, 26);
             btnSearchRenewal.TabIndex = 5;
             btnSearchRenewal.Text = "Tìm";
             btnSearchRenewal.UseVisualStyleBackColor = true;
             btnSearchRenewal.Click += btnSearchRenewal_Click;
             // 
-            // lblSearchReceipt
+            // lblSearchRenewal
             // 
-            lblSearchReceipt.AutoSize = true;
-            lblSearchReceipt.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            lblSearchReceipt.Location = new Point(3, 3);
-            lblSearchReceipt.Name = "lblSearchReceipt";
-            lblSearchReceipt.Size = new Size(263, 23);
-            lblSearchReceipt.TabIndex = 4;
-            lblSearchReceipt.Text = "Danh sách chờ tạo phiếu gia hạn";
+            lblSearchRenewal.AutoSize = true;
+            lblSearchRenewal.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            lblSearchRenewal.Location = new Point(3, 2);
+            lblSearchRenewal.Name = "lblSearchRenewal";
+            lblSearchRenewal.Size = new Size(215, 19);
+            lblSearchRenewal.TabIndex = 4;
+            lblSearchRenewal.Text = "Danh sách chờ tạo phiếu gia hạn";
             // 
             // txbInput
             // 
             txbInput.Anchor = AnchorStyles.Top | AnchorStyles.Left | AnchorStyles.Right;
             txbInput.Font = new Font("Segoe UI", 10.2F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            txbInput.Location = new Point(22, 76);
+            txbInput.Location = new Point(19, 57);
+            txbInput.Margin = new Padding(3, 2, 3, 2);
             txbInput.Name = "txbInput";
             txbInput.PlaceholderText = "Nhập Tên hoặc Mã thí sinh";
-            txbInput.Size = new Size(878, 30);
+            txbInput.Size = new Size(769, 26);
             txbInput.TabIndex = 3;
             // 
             // dtgvResult
@@ -146,22 +146,22 @@
             dtgvResult.BackgroundColor = SystemColors.ControlLightLight;
             dtgvResult.BorderStyle = BorderStyle.None;
             dtgvResult.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dtgvResult.Location = new Point(22, 136);
+            dtgvResult.Location = new Point(19, 102);
+            dtgvResult.Margin = new Padding(3, 2, 3, 2);
             dtgvResult.MultiSelect = false;
             dtgvResult.Name = "dtgvResult";
             dtgvResult.RowHeadersWidth = 51;
             dtgvResult.SelectionMode = DataGridViewSelectionMode.FullRowSelect;
-            dtgvResult.Size = new Size(971, 411);
+            dtgvResult.Size = new Size(850, 308);
             dtgvResult.TabIndex = 0;
             // 
             // uc_KT_ManageRenewal
             // 
-            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleDimensions = new SizeF(7F, 15F);
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(pnlManageResult);
-            Margin = new Padding(3, 4, 3, 4);
             Name = "uc_KT_ManageRenewal";
-            Size = new Size(1021, 573);
+            Size = new Size(893, 430);
             Load += uc_KT_ManageRenewal_Load;
             pnlManageResult.ResumeLayout(false);
             pnlManageResult.PerformLayout();
@@ -172,7 +172,7 @@
         #endregion
 
         private Panel pnlManageResult;
-        private Label lblSearchReceipt;
+        private Label lblSearchRenewal;
         private TextBox txbInput;
         private DataGridView dtgvResult;
         private Button btnSearchRenewal;
