@@ -227,6 +227,7 @@ namespace PTTKHTTTProject
                 }
                 dtgvResult.Columns.Add(btnCol);
                 lblCount.Text = "Số yêu cầu chờ duyệt:";
+                lblSearchReceipt.Text = "Danh sách các khoản chờ thanh toán";
             }
             else
             {
@@ -240,6 +241,7 @@ namespace PTTKHTTTProject
                     dtgvResult.DataSource = ManageReceiptBUS.loadPaycheck("");
                 }
                 lblCount.Text = "Số phiếu thu đã tạo:";
+                lblSearchReceipt.Text = "Danh sách các phiếu thu đã tạo";
                 checkboxConfig();
             }
             txbCount.Text = dtgvResult.Rows.Count.ToString();
