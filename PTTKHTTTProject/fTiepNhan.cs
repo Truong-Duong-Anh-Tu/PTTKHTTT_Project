@@ -140,7 +140,7 @@ namespace PTTKHTTTProject
             foreach (DataGridViewRow row in CC_dgv.Rows)
             {
                 // Kiểm tra ô checkbox được chọn
-                bool isChecked = Convert.ToBoolean(row.Cells["colCheck"].Value ?? false);
+                bool isChecked = Convert.ToBoolean(row.Cells["Check"].Value ?? false);
 
                 if (isChecked)
                 {

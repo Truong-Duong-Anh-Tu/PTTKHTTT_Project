@@ -489,17 +489,17 @@
             // panelPDK
             // 
             panelPDK.BackColor = SystemColors.ButtonHighlight;
+            panelPDK.Controls.Add(panelKHDonVi);
             panelPDK.Controls.Add(panelKHTuDo);
             panelPDK.Controls.Add(btnUpdatePDK);
             panelPDK.Controls.Add(panel4);
             panelPDK.Controls.Add(btnAddPDK);
             panelPDK.Controls.Add(PDKView_SearchBox);
             panelPDK.Controls.Add(PDKView_Search);
-            panelPDK.Controls.Add(panelKHDonVi);
             panelPDK.Dock = DockStyle.Fill;
-            panelPDK.Location = new Point(0, 0);
+            panelPDK.Location = new Point(194, 62);
             panelPDK.Name = "panelPDK";
-            panelPDK.Size = new Size(1477, 785);
+            panelPDK.Size = new Size(1283, 723);
             panelPDK.TabIndex = 10;
             // 
             // panelKHTuDo
@@ -2132,9 +2132,9 @@
             // 
             PDKView_Return.BackColor = Color.SkyBlue;
             PDKView_Return.Font = new Font("Segoe UI", 10F);
-            PDKView_Return.Location = new Point(702, 636);
+            PDKView_Return.Location = new Point(731, 636);
             PDKView_Return.Name = "PDKView_Return";
-            PDKView_Return.Size = new Size(112, 38);
+            PDKView_Return.Size = new Size(112, 45);
             PDKView_Return.TabIndex = 16;
             PDKView_Return.Text = "Quay lại";
             PDKView_Return.UseVisualStyleBackColor = false;
@@ -2144,11 +2144,11 @@
             // 
             btnDelPDK.BackColor = Color.SkyBlue;
             btnDelPDK.Font = new Font("Segoe UI", 10F);
-            btnDelPDK.Location = new Point(829, 636);
+            btnDelPDK.Location = new Point(862, 636);
             btnDelPDK.Name = "btnDelPDK";
-            btnDelPDK.Size = new Size(194, 38);
+            btnDelPDK.Size = new Size(161, 44);
             btnDelPDK.TabIndex = 15;
-            btnDelPDK.Text = "Hủy phiếu đăng ký";
+            btnDelPDK.Text = "Xóa phiếu";
             btnDelPDK.UseVisualStyleBackColor = false;
             btnDelPDK.Click += btnDelPDK_Click;
             // 
@@ -2158,7 +2158,7 @@
             btnSavePDK.Font = new Font("Segoe UI", 10F);
             btnSavePDK.Location = new Point(1038, 636);
             btnSavePDK.Name = "btnSavePDK";
-            btnSavePDK.Size = new Size(210, 38);
+            btnSavePDK.Size = new Size(210, 44);
             btnSavePDK.TabIndex = 14;
             btnSavePDK.Text = "Lưu thay đổi";
             btnSavePDK.UseVisualStyleBackColor = false;
@@ -2620,15 +2620,15 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1477, 785);
+            Controls.Add(panelPDK);
             Controls.Add(panel2);
             Controls.Add(tlpMenuTiepNhan);
-            Controls.Add(panelGiaHan);
-            Controls.Add(panelPDK);
             Controls.Add(panelInfo);
             Controls.Add(panelNotifi);
             Controls.Add(panelPDKUpdate);
             Controls.Add(panelPDKAdd);
             Controls.Add(panelXLCC);
+            Controls.Add(panelGiaHan);
             Name = "fTiepNhan";
             Text = "fTiepNhan";
             Load += fTiepNhan_Load_1;
