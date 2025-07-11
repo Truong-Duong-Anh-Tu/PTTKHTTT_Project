@@ -144,7 +144,7 @@ namespace PTTKHTTTProject
 
                 if (isChecked)
                 {
-                    string maBaiThi = row.Cells["colMaBaiThi"].Value?.ToString()?.Trim();
+                    string maBaiThi = row.Cells["CC_MaBaiThi"].Value?.ToString()?.Trim();
                     if (!string.IsNullOrEmpty(maBaiThi))
                         danhSachDuocChon.Add(maBaiThi);
                 }
