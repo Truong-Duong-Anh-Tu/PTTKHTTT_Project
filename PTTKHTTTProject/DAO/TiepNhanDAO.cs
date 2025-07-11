@@ -196,7 +196,7 @@ namespace PTTKHTTTProject.DAO
                 new SqlParameter("@LoaiKH", string.IsNullOrWhiteSpace(loaiKH) ? (object)DBNull.Value : loaiKH),
             };
 
-            return DataProvider.Instance.ExecuteQuery("TimChungChi", parameters);
+            return DataProvider.Instance.ExecuteQuerySP("TimChungChi", parameters);
         }
 
         public static void CapNhatTrangThaiDaNhan(string maBaiThi)

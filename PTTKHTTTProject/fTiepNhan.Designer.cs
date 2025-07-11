@@ -2123,9 +2123,9 @@
             panelPDKUpdate.Controls.Add(panel12);
             panelPDKUpdate.Controls.Add(panelTSDVEdit);
             panelPDKUpdate.Dock = DockStyle.Fill;
-            panelPDKUpdate.Location = new Point(194, 62);
+            panelPDKUpdate.Location = new Point(0, 0);
             panelPDKUpdate.Name = "panelPDKUpdate";
-            panelPDKUpdate.Size = new Size(1283, 723);
+            panelPDKUpdate.Size = new Size(1477, 785);
             panelPDKUpdate.TabIndex = 15;
             // 
             // PDKView_Return
@@ -2620,15 +2620,15 @@
             AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1477, 785);
-            Controls.Add(panelPDKUpdate);
             Controls.Add(panel2);
             Controls.Add(tlpMenuTiepNhan);
-            Controls.Add(panelPDKAdd);
             Controls.Add(panelXLCC);
             Controls.Add(panelGiaHan);
             Controls.Add(panelPDK);
             Controls.Add(panelInfo);
             Controls.Add(panelNotifi);
+            Controls.Add(panelPDKUpdate);
+            Controls.Add(panelPDKAdd);
             Name = "fTiepNhan";
             Text = "fTiepNhan";
             Load += fTiepNhan_Load_1;
