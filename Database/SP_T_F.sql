@@ -256,7 +256,7 @@ create or alter procedure usp_GetRenewalRequestTable
 as
 begin
 	set NOCOUNT on;
-	select PDKDT_MaPhieu as MaPhieu, COALESCE(KHTD_HoTen, KHDV_TenDonVi) AS HoTen, PDKDT_MaKhachHang as MaKH, KT_TenKyThi as TenKyThi, PDKDT_MaLichThi as MaLichThiMoi, LT_NgayThi as NgayThiMoi, LT_TGBatDau as GioThi
+	select PDKDT_MaPhieu as MaPhieuDK, COALESCE(KHTD_HoTen, KHDV_TenDonVi) AS HoTen, PDKDT_MaKhachHang as MaKH, KT_TenKyThi as TenKyThi, PDKDT_MaLichThi as MaLichThiMoi, LT_NgayThi as NgayThiMoi, LT_TGBatDau as GioThi
 	from PHIEUDANGKYDUTHI
 	LEFT JOIN KHACHHANGHTUDO ON PDKDT_MaKhachHang = KHTD_MaKhachHang
     LEFT JOIN KHACHHANGDONVI ON PDKDT_MaKhachHang = KHDV_MaKhachHang

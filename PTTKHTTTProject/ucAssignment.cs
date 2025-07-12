@@ -39,6 +39,7 @@ namespace PTTKHTTTProject
             //dtgvPhanCong.Columns["LT_MaPhongThi"]!.Width = 20;
 
             dtgvPhanCong.Columns["LT_NgayThi"]!.HeaderText = "Ngày thi";
+            dtgvPhanCong.Columns["LT_NgayThi"]!.DefaultCellStyle.Format = "dd/MM/yyyy";
             //dtgvPhanCong.Columns["LT_NgayThi"]!.Width = 20;
 
             dtgvPhanCong.Columns["LT_TGBatDau"]!.HeaderText = "Giờ thi";
