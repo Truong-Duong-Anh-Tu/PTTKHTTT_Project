@@ -279,6 +279,7 @@ go
 
 /*
 select * from PHIEUGIAHAN
+delete from PHIEUGIAHAN where PGH_MaPhieu = 'GH00001';
 
 EXEC usp_GetRenewalRequestTable;
 go
@@ -425,6 +426,7 @@ begin
 	PTT_SoTienThanhToan as SoTienThanhToan,
 	PTT_HinhThucThanhToan as HinhThuc,
 	PTT_ThoiHan as ThoiHan,
+	PTT_GhiChu as GhiChu,
 	PDKDT_TrangThaiThanhToan as TrangThai
 	from PHIEUTHANHTOAN
 	join PHIEUDANGKYDUTHI on PDKDT_MaPhieu = PTT_MaPhieuDK
